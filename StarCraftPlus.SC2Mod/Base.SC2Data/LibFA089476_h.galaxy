@@ -1,0 +1,16 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: ShibusaLib
+//--------------------------------------------------------------------------------------------------
+// Structures
+struct libFA089476_gs_Player {
+    bool lv_isInTargetMode;
+};
+
+// Variable Declarations
+libFA089476_gs_Player[17] libFA089476_gv_players;
+
+// Library Initialization
+void libFA089476_InitVariables ();
+

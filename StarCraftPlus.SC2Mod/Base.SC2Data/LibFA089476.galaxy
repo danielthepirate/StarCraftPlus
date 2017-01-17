@@ -1,0 +1,34 @@
+include "TriggerLibs/natives"
+
+include "LibFA089476_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: ShibusaLib
+//--------------------------------------------------------------------------------------------------
+// Variable Initialization
+bool libFA089476_InitVariables_completed = false;
+
+void libFA089476_InitVariables () {
+    if (libFA089476_InitVariables_completed) {
+        return;
+    }
+
+    libFA089476_InitVariables_completed = true;
+
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libFA089476_InitLib_completed = false;
+
+void libFA089476_InitLib () {
+    if (libFA089476_InitLib_completed) {
+        return;
+    }
+
+    libFA089476_InitLib_completed = true;
+
+    libFA089476_InitVariables();
+}
+
