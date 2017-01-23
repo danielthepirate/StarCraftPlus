@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CValidatorLocationEnumArea id="IsNexusNearby">
+        <AreaArray Radius="6.5" Validator="IsNexus"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="IsNexusNearbyBehav">
+        <Value value="1"/>
+        <Behavior value="IsNexusNearby"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNexusNotNearbyBehav">
+        <Behavior value="IsNexusNearby"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsWarpgateNearbyBehav">
+        <Value value="1"/>
+        <Behavior value="IsWarpGateNearby"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="IsWarpGateNearby">
+        <AreaArray Radius="4.75" Validator="IsWarpgate"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="NexusWarpGateNotNearby">
+        <Type value="And"/>
+        <CombineArray value="IsNexusNearbyBehav"/>
+        <CombineArray value="IsWarpgateNearbyBehav"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="NexusNotNearbyWarpGateNearby">
+        <Type value="And"/>
+        <CombineArray value="IsNexusNotNearbyBehav"/>
+        <CombineArray value="IsWarpgateNearbyBehav"/>
+    </CValidatorCombine>
+</Catalog>

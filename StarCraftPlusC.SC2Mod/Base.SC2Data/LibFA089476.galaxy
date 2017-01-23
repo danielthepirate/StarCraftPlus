@@ -1,0 +1,565 @@
+include "TriggerLibs/NativeLib"
+include "Lib6FD6BD78_h"
+
+include "LibFA089476_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: ShibusaLib
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libFA089476_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Variable Initialization
+bool libFA089476_InitVariables_completed = false;
+
+void libFA089476_InitVariables () {
+    if (libFA089476_InitVariables_completed) {
+        return;
+    }
+
+    libFA089476_InitVariables_completed = true;
+
+    libFA089476_gv_hotkey.lv_supplyDepot = "S";
+    libFA089476_gv_hotkey.lv_commandCenter = "C";
+    libFA089476_gv_hotkey.lv_barracks = "B";
+    libFA089476_gv_hotkey.lv_engineeringBay = "E";
+    libFA089476_gv_hotkey.lv_refinery = "R";
+    libFA089476_gv_hotkey.lv_missileTurret = "T";
+    libFA089476_gv_hotkey.lv_sensorTower = "N";
+    libFA089476_gv_hotkey.lv_factory = "F";
+    libFA089476_gv_hotkey.lv_ghostAcademy = "G";
+    libFA089476_gv_hotkey.lv_bunker = "U";
+    libFA089476_gv_hotkey.lv_starport = "S";
+    libFA089476_gv_hotkey.lv_armory = "A";
+    libFA089476_gv_hotkey.lv_fusionCore = "C";
+    libFA089476_gv_hotkey.lv_sCV = "S";
+    libFA089476_gv_hotkey.lv_marine = "A";
+    libFA089476_gv_hotkey.lv_marauder = "D";
+    libFA089476_gv_hotkey.lv_reaper = "R";
+    libFA089476_gv_hotkey.lv_ghost = "G";
+    libFA089476_gv_hotkey.lv_hellion = "E";
+    libFA089476_gv_hotkey.lv_siegeTank = "S";
+    libFA089476_gv_hotkey.lv_widowMine = "D";
+    libFA089476_gv_hotkey.lv_cyclone = "N";
+    libFA089476_gv_hotkey.lv_hellbat = "R";
+    libFA089476_gv_hotkey.lv_thor = "T";
+    libFA089476_gv_hotkey.lv_viking = "V";
+    libFA089476_gv_hotkey.lv_medivac = "D";
+    libFA089476_gv_hotkey.lv_raven = "R";
+    libFA089476_gv_hotkey.lv_banshee = "E";
+    libFA089476_gv_hotkey.lv_battleCruiser = "B";
+    libFA089476_gv_hotkey.lv_liberator = "N";
+    libFA089476_gv_hotkey.lv_nuke = "N";
+    libFA089476_gv_hotkey.lv_infantryWeapons = "E";
+    libFA089476_gv_hotkey.lv_infantryArmor = "A";
+    libFA089476_gv_hotkey.lv_combatShield = "C";
+    libFA089476_gv_hotkey.lv_stimpack = "T";
+    libFA089476_gv_hotkey.lv_concussiveShells = "G";
+    libFA089476_gv_hotkey.lv_autoTracking = "H";
+    libFA089476_gv_hotkey.lv_structureArmor = "B";
+    libFA089476_gv_hotkey.lv_neosteelFrame = "N";
+    libFA089476_gv_hotkey.lv_vehicleWeapons = "E";
+    libFA089476_gv_hotkey.lv_shipWeapons = "S";
+    libFA089476_gv_hotkey.lv_vehicleShipArmor = "V";
+    libFA089476_gv_hotkey.lv_infernalPreIgniters = "I";
+    libFA089476_gv_hotkey.lv_drillingClaws = "C";
+    libFA089476_gv_hotkey.lv_magFieldAccellerators = "R";
+    libFA089476_gv_hotkey.lv_highCapacityFuelTanks = "R";
+    libFA089476_gv_hotkey.lv_explosiveShrapnelShells = "E";
+    libFA089476_gv_hotkey.lv_corvidReactor = "T";
+    libFA089476_gv_hotkey.lv_cloakingField = "C";
+    libFA089476_gv_hotkey.lv_hyperflightRotors = "B";
+    libFA089476_gv_hotkey.lv_advancedBallistics = "N";
+    libFA089476_gv_hotkey.lv_personalCloaking = "C";
+    libFA089476_gv_hotkey.lv_behemothReactor = "B";
+    libFA089476_gv_hotkey.lv_weaponRefit = "R";
+    libFA089476_gv_hotkey.lv_hatchery = "H";
+    libFA089476_gv_hotkey.lv_spawningPool = "S";
+    libFA089476_gv_hotkey.lv_evolutionChamber = "V";
+    libFA089476_gv_hotkey.lv_extractor = "E";
+    libFA089476_gv_hotkey.lv_roachWarren = "R";
+    libFA089476_gv_hotkey.lv_banelingNest = "B";
+    libFA089476_gv_hotkey.lv_spineCrawler = "C";
+    libFA089476_gv_hotkey.lv_sporeCrawler = "A";
+    libFA089476_gv_hotkey.lv_infestationPit = "I";
+    libFA089476_gv_hotkey.lv_hydraliskDen = "H";
+    libFA089476_gv_hotkey.lv_spire = "S";
+    libFA089476_gv_hotkey.lv_nydusNetwork = "N";
+    libFA089476_gv_hotkey.lv_ultraliskCavern = "U";
+    libFA089476_gv_hotkey.lv_lair = "L";
+    libFA089476_gv_hotkey.lv_hive = "H";
+    libFA089476_gv_hotkey.lv_greaterSpire = "G";
+    libFA089476_gv_hotkey.lv_queen = "Q";
+    libFA089476_gv_hotkey.lv_drone = "D";
+    libFA089476_gv_hotkey.lv_overlord = "V";
+    libFA089476_gv_hotkey.lv_mutalisk = "T";
+    libFA089476_gv_hotkey.lv_zergling = "Z";
+    libFA089476_gv_hotkey.lv_infestor = "F";
+    libFA089476_gv_hotkey.lv_roach = "R";
+    libFA089476_gv_hotkey.lv_swarmHost = "A";
+    libFA089476_gv_hotkey.lv_hydralisk = "H";
+    libFA089476_gv_hotkey.lv_viper = "E";
+    libFA089476_gv_hotkey.lv_corruptor = "C";
+    libFA089476_gv_hotkey.lv_ultralisk = "U";
+    libFA089476_gv_hotkey.lv_nydusWorm = "N";
+    libFA089476_gv_hotkey.lv_overseer = "V";
+    libFA089476_gv_hotkey.lv_baneling = "E";
+    libFA089476_gv_hotkey.lv_ravager = "V";
+    libFA089476_gv_hotkey.lv_lurker = "E";
+    libFA089476_gv_hotkey.lv_broodlord = "B";
+    libFA089476_gv_hotkey.lv_burrow = "B";
+    libFA089476_gv_hotkey.lv_pneumatizedCarapace = "P";
+    libFA089476_gv_hotkey.lv_adrenalGlands = "A";
+    libFA089476_gv_hotkey.lv_metabolicBoost = "M";
+    libFA089476_gv_hotkey.lv_meleeAttacks = "M";
+    libFA089476_gv_hotkey.lv_missileAttacks = "A";
+    libFA089476_gv_hotkey.lv_groundCarapace = "C";
+    libFA089476_gv_hotkey.lv_muscularAugmentation = "A";
+    libFA089476_gv_hotkey.lv_groovedSpines = "G";
+    libFA089476_gv_hotkey.lv_tunnelingClaws = "T";
+    libFA089476_gv_hotkey.lv_glialReconstitution = "G";
+    libFA089476_gv_hotkey.lv_centrifugalHooks = "C";
+    libFA089476_gv_hotkey.lv_pathogenGlands = "G";
+    libFA089476_gv_hotkey.lv_neuralParasite = "E";
+    libFA089476_gv_hotkey.lv_flyerAttacks = "A";
+    libFA089476_gv_hotkey.lv_flyerCarapace = "C";
+    libFA089476_gv_hotkey.lv_chitinousPlating = "C";
+    libFA089476_gv_hotkey.lv_nexus = "N";
+    libFA089476_gv_hotkey.lv_pylon = "E";
+    libFA089476_gv_hotkey.lv_assimilator = "A";
+    libFA089476_gv_hotkey.lv_gateway = "G";
+    libFA089476_gv_hotkey.lv_forge = "F";
+    libFA089476_gv_hotkey.lv_cyberneticsCore = "Y";
+    libFA089476_gv_hotkey.lv_photonCannon = "C";
+    libFA089476_gv_hotkey.lv_stargate = "S";
+    libFA089476_gv_hotkey.lv_roboticsFacility = "R";
+    libFA089476_gv_hotkey.lv_twilightCouncil = "C";
+    libFA089476_gv_hotkey.lv_fleetBeacon = "F";
+    libFA089476_gv_hotkey.lv_roboticsBay = "B";
+    libFA089476_gv_hotkey.lv_templarArchives = "T";
+    libFA089476_gv_hotkey.lv_darkShrine = "D";
+    libFA089476_gv_hotkey.lv_probe = "E";
+    libFA089476_gv_hotkey.lv_mothershipCore = "M";
+    libFA089476_gv_hotkey.lv_zealot = "Z";
+    libFA089476_gv_hotkey.lv_sentry = "E";
+    libFA089476_gv_hotkey.lv_stalker = "S";
+    libFA089476_gv_hotkey.lv_highTemplar = "T";
+    libFA089476_gv_hotkey.lv_darkTemplar = "D";
+    libFA089476_gv_hotkey.lv_adept = "H";
+    libFA089476_gv_hotkey.lv_phoenix = "X";
+    libFA089476_gv_hotkey.lv_oracle = "T";
+    libFA089476_gv_hotkey.lv_voidRay = "V";
+    libFA089476_gv_hotkey.lv_tempest = "E";
+    libFA089476_gv_hotkey.lv_carrier = "C";
+    libFA089476_gv_hotkey.lv_observer = "B";
+    libFA089476_gv_hotkey.lv_warpPrism = "A";
+    libFA089476_gv_hotkey.lv_immortal = "I";
+    libFA089476_gv_hotkey.lv_colossus = "C";
+    libFA089476_gv_hotkey.lv_disruptor = "D";
+    libFA089476_gv_hotkey.lv_mothership = "M";
+    libFA089476_gv_hotkey.lv_archon = "C";
+    libFA089476_gv_hotkey.lv_groundWeapons = "G";
+    libFA089476_gv_hotkey.lv_groundArmor = "A";
+    libFA089476_gv_hotkey.lv_shields = "S";
+    libFA089476_gv_hotkey.lv_airWeapons = "E";
+    libFA089476_gv_hotkey.lv_airArmor = "A";
+    libFA089476_gv_hotkey.lv_warpGate = "G";
+    libFA089476_gv_hotkey.lv_charge = "C";
+    libFA089476_gv_hotkey.lv_blink = "B";
+    libFA089476_gv_hotkey.lv_resonatingGlaives = "A";
+    libFA089476_gv_hotkey.lv_graviticBoost = "B";
+    libFA089476_gv_hotkey.lv_graviticDrive = "G";
+    libFA089476_gv_hotkey.lv_extendedThermalLance = "E";
+    libFA089476_gv_hotkey.lv_anionPulseCrystals = "R";
+    libFA089476_gv_hotkey.lv_gravitonCatapult = "G";
+    libFA089476_gv_hotkey.lv_psionicStorm = "T";
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: AutomateWorkerProductionInitialization
+//--------------------------------------------------------------------------------------------------
+bool libFA089476_gt_AutomateWorkerProductionInitialization_Func (bool testConds, bool runActions) {
+    string auto517E0BD5_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.0625, c_timeGame);
+    PlayerGroupLoopBegin(PlayerGroupAll());
+    for ( ; !PlayerGroupLoopDone() ; PlayerGroupLoopStep() ) {
+        auto517E0BD5_val = PlayerRace(PlayerGroupLoopCurrent());
+        if (auto517E0BD5_val == "Terr") {
+            UnitIssueOrder(UnitGroupClosestToPoint(UnitGroup(null, PlayerGroupLoopCurrent(), RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), PlayerStartLocation(PlayerGroupLoopCurrent())), Order(AbilityCommand("CommandCenterTrain", 0)), c_orderQueueAddToEnd);
+        }
+        else if (auto517E0BD5_val == "Prot") {
+            UnitIssueOrder(UnitGroupClosestToPoint(UnitGroup(null, PlayerGroupLoopCurrent(), RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), PlayerStartLocation(PlayerGroupLoopCurrent())), Order(AbilityCommand("NexusTrain", 0)), c_orderQueueAddToEnd);
+        }
+        else if (auto517E0BD5_val == "Zerg") {
+            UnitIssueOrder(UnitGroupClosestToPoint(UnitGroupSearch("Larva", PlayerGroupLoopCurrent(), PlayerStartLocation(PlayerGroupLoopCurrent()), 8.0, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), PlayerStartLocation(PlayerGroupLoopCurrent())), Order(AbilityCommand("LarvaTrain", 0)), c_orderQueueReplace);
+        }
+        else {
+        }
+    }
+    PlayerGroupLoopEnd();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libFA089476_gt_AutomateWorkerProductionInitialization_Init () {
+    libFA089476_gt_AutomateWorkerProductionInitialization = TriggerCreate("libFA089476_gt_AutomateWorkerProductionInitialization_Func");
+    TriggerAddEventMapInit(libFA089476_gt_AutomateWorkerProductionInitialization);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AutomateWorkerProduction
+//--------------------------------------------------------------------------------------------------
+bool libFA089476_gt_AutomateWorkerProduction_Func (bool testConds, bool runActions) {
+    string auto5D012041_val;
+
+    // Variable Declarations
+    unitgroup lv_resource;
+    region lv_resourceRegion;
+    fixed lv_resourceRadius;
+    unit lv_townHall;
+    int lv_playerIndex;
+    int lv_townHallSaturatedCount;
+
+    // Variable Initialization
+    lv_resource = UnitGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "SCV") || (UnitGetType(EventUnitProgressUnit()) == "Drone") || (UnitGetType(EventUnitProgressUnit()) == "Probe")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_townHall = EventUnit();
+    lv_resourceRadius = 15.0;
+    lv_resourceRegion = RegionCircle(UnitGetPosition(lv_townHall), lv_resourceRadius);
+    lv_resource = UnitGroup(null, c_playerAny, lv_resourceRegion, UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    lv_townHallSaturatedCount = (UnitGroupCount(lv_resource, c_unitCountAlive) * 2);
+    UnitGroupLoopBegin(lv_resource);
+    for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+        if (((UnitGetType(UnitGroupLoopCurrent()) == "Assimilator") || (UnitGetType(UnitGroupLoopCurrent()) == "Refinery") || (UnitGetType(UnitGroupLoopCurrent()) == "Extractor"))) {
+            lv_townHallSaturatedCount = (lv_townHallSaturatedCount + 1);
+        }
+    }
+    UnitGroupLoopEnd();
+    if ((UnitCount(null, lv_playerIndex, lv_resourceRegion, UnitFilter((1 << c_targetFilterWorker), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterSummoned - 32))), 0) <= lv_townHallSaturatedCount)) {
+        auto5D012041_val = PlayerRace(lv_playerIndex);
+        if (auto5D012041_val == "Terr") {
+            UnitIssueOrder(lv_townHall, Order(AbilityCommand("CommandCenterTrain", 0)), c_orderQueueAddToEnd);
+        }
+        else if (auto5D012041_val == "Prot") {
+            UnitIssueOrder(lv_townHall, Order(AbilityCommand("NexusTrain", 0)), c_orderQueueAddToEnd);
+        }
+        else if (auto5D012041_val == "Zerg") {
+            UnitIssueOrder(UnitGroupClosestToPoint(UnitGroupSearch("Larva", lv_playerIndex, UnitGetPosition(lv_townHall), 8.0, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), UnitGetPosition(lv_townHall)), Order(AbilityCommand("LarvaTrain", 0)), c_orderQueueReplace);
+        }
+        else {
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libFA089476_gt_AutomateWorkerProduction_Init () {
+    libFA089476_gt_AutomateWorkerProduction = TriggerCreate("libFA089476_gt_AutomateWorkerProduction_Func");
+    TriggerAddEventUnitTrainProgress(libFA089476_gt_AutomateWorkerProduction, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AutomateGatherVespene
+//--------------------------------------------------------------------------------------------------
+bool libFA089476_gt_AutomateGatherVespene_Func (bool testConds, bool runActions) {
+    int auto0ED17859_ae;
+    int auto0ED17859_ai;
+
+    // Variable Declarations
+    unit lv_vespeneBuilding;
+    unitgroup lv_vespeneWorkersPotential;
+    fixed lv_vespeneWorkerRadius;
+    int lv_vespeneWorkersAddition;
+    unit lv_vespeneWorker;
+    unit lv_workerTarget;
+    int lv_workerIndex;
+    int lv_playerIndex;
+
+    // Variable Initialization
+    lv_vespeneWorkersPotential = UnitGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "Assimilator") || (UnitGetType(EventUnitProgressUnit()) == "Refinery") || (UnitGetType(EventUnitProgressUnit()) == "Extractor")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_vespeneBuilding = EventUnitProgressUnit();
+    lv_playerIndex = UnitGetOwner(lv_vespeneBuilding);
+    lv_vespeneWorkersAddition = 3;
+    lv_vespeneWorkerRadius = 12.0;
+    lv_vespeneWorkersPotential = UnitGroup(null, lv_playerIndex, RegionCircle(UnitGetPosition(lv_vespeneBuilding), lv_vespeneWorkerRadius), UnitFilter((1 << c_targetFilterWorker), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterSummoned - 32))), 0);
+    UnitGroupLoopBegin(lv_vespeneWorkersPotential);
+    for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+        lv_workerTarget = OrderGetTargetUnit(UnitOrder(UnitGroupLoopCurrent(), 0));
+        if (((UnitHasBehavior2(UnitGroupLoopCurrent(), "CarryHarvestableVespeneGeyserGas") == true) || (UnitHasBehavior2(UnitGroupLoopCurrent(), "CarryHarvestableVespeneGeyserGasProtoss") == true) || (UnitHasBehavior2(UnitGroupLoopCurrent(), "CarryHarvestableVespeneGeyserGasZerg") == true)) && ((UnitGetType(lv_workerTarget) == "Refinery") || (UnitGetType(lv_workerTarget) == "Extractor") || (UnitGetType(lv_workerTarget) == "Assimilator"))) {
+            UnitGroupRemove(lv_vespeneWorkersPotential, UnitGroupLoopCurrent());
+        }
+    }
+    UnitGroupLoopEnd();
+    auto0ED17859_ae = lv_vespeneWorkersAddition;
+    auto0ED17859_ai = 1;
+    lv_workerIndex = 1;
+    for ( ; ( (auto0ED17859_ai >= 0 && lv_workerIndex <= auto0ED17859_ae) || (auto0ED17859_ai <= 0 && lv_workerIndex >= auto0ED17859_ae) ) ; lv_workerIndex += auto0ED17859_ai ) {
+        lv_vespeneWorker = UnitGroupClosestToPoint(lv_vespeneWorkersPotential, UnitGetPosition(lv_vespeneBuilding));
+        UnitGroupRemove(lv_vespeneWorkersPotential, lv_vespeneWorker);
+        UnitIssueOrder(lv_vespeneWorker, OrderTargetingUnit(AbilityCommand("DroneHarvest", 0), lv_vespeneBuilding), c_orderQueueReplace);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libFA089476_gt_AutomateGatherVespene_Init () {
+    libFA089476_gt_AutomateGatherVespene = TriggerCreate("libFA089476_gt_AutomateGatherVespene_Func");
+    TriggerAddEventUnitConstructProgress(libFA089476_gt_AutomateGatherVespene, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AutomateExpansionWorkerProduction
+//--------------------------------------------------------------------------------------------------
+bool libFA089476_gt_AutomateExpansionWorkerProduction_Func (bool testConds, bool runActions) {
+    string auto9E44F9EA_val;
+
+    // Variable Declarations
+    unitgroup lv_resource;
+    region lv_resourceRegion;
+    fixed lv_resourceRadius;
+    unit lv_townHall;
+    unitgroup lv_larva;
+    int lv_larvaCount;
+    int lv_playerIndex;
+
+    // Variable Initialization
+    lv_resource = UnitGroupEmpty();
+    lv_larva = UnitGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "CommandCenter") || (UnitGetType(EventUnitProgressUnit()) == "Nexus") || (UnitGetType(EventUnitProgressUnit()) == "Hatchery")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_townHall = EventUnitProgressUnit();
+    lv_playerIndex = UnitGetOwner(lv_townHall);
+    lv_resourceRadius = 15.0;
+    lv_resourceRegion = RegionCircle(UnitGetPosition(lv_townHall), lv_resourceRadius);
+    lv_resource = UnitGroup(null, c_playerAny, lv_resourceRegion, UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupLoopBegin(lv_resource);
+    for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+        if (((UnitGetType(UnitGroupLoopCurrent()) == "Assimilator") || (UnitGetType(UnitGroupLoopCurrent()) == "Refinery") || (UnitGetType(UnitGroupLoopCurrent()) == "Extractor"))) {
+            UnitGroupRemove(lv_resource, UnitGroupLoopCurrent());
+        }
+    }
+    UnitGroupLoopEnd();
+    auto9E44F9EA_val = UnitGetType(EventUnitProgressUnit());
+    if (auto9E44F9EA_val == "CommandCenter") {
+        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyCommand", 0), UnitGroupUnit(lv_resource, 1)), c_orderQueueReplace);
+        UnitIssueOrder(lv_townHall, Order(AbilityCommand("CommandCenterTrain", 0)), c_orderQueueAddToEnd);
+    }
+    else if (auto9E44F9EA_val == "Nexus") {
+        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyNexus", 0), UnitGroupUnit(lv_resource, 1)), c_orderQueueReplace);
+        UnitIssueOrder(lv_townHall, Order(AbilityCommand("NexusTrain", 0)), c_orderQueueAddToEnd);
+    }
+    else if (auto9E44F9EA_val == "Hatchery") {
+        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyHatchery", 1), UnitGroupUnit(lv_resource, 1)), c_orderQueueReplace);
+        while ((lv_larvaCount == 0)) {
+            lv_larva = UnitGroup("Larva", lv_playerIndex, lv_resourceRegion, UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+            lv_larvaCount = UnitGroupCount(lv_larva, c_unitCountAlive);
+            Wait(0.0625, c_timeGame);
+        }
+        UnitIssueOrder(UnitGroupClosestToPoint(lv_larva, UnitGetPosition(lv_townHall)), Order(AbilityCommand("LarvaTrain", 0)), c_orderQueueReplace);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libFA089476_gt_AutomateExpansionWorkerProduction_Init () {
+    libFA089476_gt_AutomateExpansionWorkerProduction = TriggerCreate("libFA089476_gt_AutomateExpansionWorkerProduction_Func");
+    TriggerAddEventUnitConstructProgress(libFA089476_gt_AutomateExpansionWorkerProduction, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WarpGateResearchGatewayBuilt
+//--------------------------------------------------------------------------------------------------
+bool libFA089476_gt_WarpGateResearchGatewayBuilt_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unitConstructed;
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "Gateway"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unitConstructed = EventUnitProgressUnit();
+    while ((PowerLevel(lv_playerIndex, UnitGetPosition(lv_unitConstructed), "PowerSource") < 1) && (UnitIsAlive(lv_unitConstructed) == true)) {
+        Wait(0.0625, c_timeGame);
+        lv_playerIndex = UnitGetOwner(lv_unitConstructed);
+        if ((TechTreeUpgradeCount(lv_playerIndex, "WarpGateResearch", c_techCountCompleteOnly) == 1)) {
+            UnitIssueOrder(lv_unitConstructed, Order(AbilityCommand("UpgradeToWarpGate", 0)), c_orderQueueReplace);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libFA089476_gt_WarpGateResearchGatewayBuilt_Init () {
+    libFA089476_gt_WarpGateResearchGatewayBuilt = TriggerCreate("libFA089476_gt_WarpGateResearchGatewayBuilt_Func");
+    TriggerAddEventUnitConstructProgress(libFA089476_gt_WarpGateResearchGatewayBuilt, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WarpGateResearchUpgradeGates
+//--------------------------------------------------------------------------------------------------
+bool libFA089476_gt_WarpGateResearchUpgradeGates_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unitgroup lv_playerGateways;
+    int lv_playerIndex;
+
+    // Variable Initialization
+    lv_playerGateways = UnitGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((libNtve_gf_TriggeringProgressUpgrade() == "WarpGateResearch"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_playerGateways = UnitGroup("Gateway", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupLoopBegin(lv_playerGateways);
+    for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+        UnitGroupIssueOrder(lv_playerGateways, Order(AbilityCommand("UpgradeToWarpGate", 0)), c_orderQueueReplace);
+    }
+    UnitGroupLoopEnd();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libFA089476_gt_WarpGateResearchUpgradeGates_Init () {
+    libFA089476_gt_WarpGateResearchUpgradeGates = TriggerCreate("libFA089476_gt_WarpGateResearchUpgradeGates_Func");
+    TriggerAddEventUnitResearchProgress(libFA089476_gt_WarpGateResearchUpgradeGates, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MuleHarvestNearestResoures
+//--------------------------------------------------------------------------------------------------
+bool libFA089476_gt_MuleHarvestNearestResoures_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unitCreated;
+    unitgroup lv_resources;
+    fixed lv_muleExpireDelay;
+
+    // Variable Initialization
+    lv_resources = UnitGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) == "MULE"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unitCreated = EventUnitCreatedUnit();
+    lv_resources = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupRemoveUnitGroup(lv_resources, UnitGroup("Refinery", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    UnitGroupRemoveUnitGroup(lv_resources, UnitGroup("Assimilator", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    UnitGroupRemoveUnitGroup(lv_resources, UnitGroup("Extractor", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    lv_muleExpireDelay = StringToFixed(CatalogFieldValueGet(c_gameCatalogEffect, "CalldownMULECreatePersistent", "ExpireDelay", c_playerAny));
+    Wait((lv_muleExpireDelay + 0.0625), c_timeGame);
+    UnitIssueOrder(lv_unitCreated, OrderTargetingUnit(AbilityCommand("MULEGather", 0), UnitGroupClosestToPoint(lv_resources, UnitGetPosition(lv_unitCreated))), c_orderQueueAddToEnd);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libFA089476_gt_MuleHarvestNearestResoures_Init () {
+    libFA089476_gt_MuleHarvestNearestResoures = TriggerCreate("libFA089476_gt_MuleHarvestNearestResoures_Func");
+    TriggerAddEventUnitCreated(libFA089476_gt_MuleHarvestNearestResoures, null, null, null);
+}
+
+void libFA089476_InitTriggers () {
+    libFA089476_gt_AutomateWorkerProductionInitialization_Init();
+    libFA089476_gt_AutomateWorkerProduction_Init();
+    libFA089476_gt_AutomateGatherVespene_Init();
+    libFA089476_gt_AutomateExpansionWorkerProduction_Init();
+    libFA089476_gt_WarpGateResearchGatewayBuilt_Init();
+    libFA089476_gt_WarpGateResearchUpgradeGates_Init();
+    libFA089476_gt_MuleHarvestNearestResoures_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libFA089476_InitLib_completed = false;
+
+void libFA089476_InitLib () {
+    if (libFA089476_InitLib_completed) {
+        return;
+    }
+
+    libFA089476_InitLib_completed = true;
+
+    libFA089476_InitLibraries();
+    libFA089476_InitVariables();
+    libFA089476_InitTriggers();
+}
+
+include "Lib6FD6BD78"
+
