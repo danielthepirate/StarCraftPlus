@@ -1,3 +1,0 @@
-﻿DocInfo/DescLong=A StarCraft II mod aimed at creating more accessable gameplay for players of all skill levels.
-DocInfo/DescShort=Any
-DocInfo/Name=StarCraftPlus
