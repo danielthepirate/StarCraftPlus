@@ -1,14 +1,39 @@
 include "TriggerLibs/natives"
 
 //--------------------------------------------------------------------------------------------------
-// Library: ShibusaLib
+// Library: StarCraftPlus Lib
 //--------------------------------------------------------------------------------------------------
+// Preset Declarations
+const int libSCPL_ge_UnitTrainState_SlotNeutral = 0;
+const int libSCPL_ge_UnitTrainState_SlotTrain1 = 1;
+const int libSCPL_ge_UnitTrainState_SlotTrain2 = 2;
+const int libSCPL_ge_UnitTrainState_SlotCancel1 = 3;
+const int libSCPL_ge_UnitTrainState_SlotCancel2 = 4;
+const int libSCPL_ge_CustomIndex_TrainIndex = 0;
+
 // Structures
-struct libFA089476_gs_Players {
+struct libSCPL_gs_ResourcePanel {
+    int lv_mineralCounter;
+    int lv_mineralSpend;
+    int lv_vespeneCounter;
+    int lv_vespeneSpend;
+};
+
+struct libSCPL_gs_Constant {
+    int lv_spendBufferMinerals;
+    int lv_spendBufferVespene;
+    fixed lv_spendTickIncrement;
+};
+
+struct libSCPL_gs_Player {
     bool lv_isInTargetMode;
 };
 
-struct libFA089476_gs_Hotkeys {
+struct libSCPL_gs_UI {
+    libSCPL_gs_ResourcePanel lv_resourcePanel;
+};
+
+struct libSCPL_gs_Hotkey {
     string lv_supplyDepot;
     string lv_commandCenter;
     string lv_barracks;
@@ -166,18 +191,27 @@ struct libFA089476_gs_Hotkeys {
 };
 
 // Variable Declarations
-libFA089476_gs_Players[17] libFA089476_gv_player;
-libFA089476_gs_Hotkeys libFA089476_gv_hotkey;
+libSCPL_gs_Player[17] libSCPL_gv_player;
+libSCPL_gs_UI libSCPL_gv_uI;
+libSCPL_gs_Constant libSCPL_gv_constants;
+libSCPL_gs_Hotkey libSCPL_gv_hotkey;
+
+// Function Declarations
+void libSCPL_gf_InitializeSpendOverTime ();
+void libSCPL_gf_UnitTrainStateSet (unit lp_trainUnit, int lp_trainUnitState);
+int libSCPL_gf_UnitTrainState (unit lp_trainUnit);
+int libSCPL_gf_UsedTrainingSlotCount (unit lp_unit);
+fixed libSCPL_gf_PlayerAvailableMinerals (int lp_playerIndex);
+fixed libSCPL_gf_PlayerAvailableVespene (int lp_playerIndex);
 
 // Trigger Declarations
-trigger libFA089476_gt_AutomateWorkerProductionInitialization;
-trigger libFA089476_gt_AutomateWorkerProduction;
-trigger libFA089476_gt_AutomateGatherVespene;
-trigger libFA089476_gt_AutomateExpansionWorkerProduction;
-trigger libFA089476_gt_WarpGateResearchGatewayBuilt;
-trigger libFA089476_gt_WarpGateResearchUpgradeGates;
-trigger libFA089476_gt_MuleHarvestNearestResoures;
+trigger libSCPL_gt_InitializationPlus;
+trigger libSCPL_gt_TrainUnitRefund;
+trigger libSCPL_gt_TrainUnitStart;
+trigger libSCPL_gt_TrainUnitCancel;
+trigger libSCPL_gt_ResourceDisplayMinerals;
+trigger libSCPL_gt_ResourceDisplayVespene;
 
 // Library Initialization
-void libFA089476_InitVariables ();
+void libSCPL_InitVariables ();
 

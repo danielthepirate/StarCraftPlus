@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
     <CGame id="Dflt">
-        <TriggerLibs Id="6FD6BD78"/>
-        <TriggerLibs Id="FA089476"/>
+        <TriggerLibs Id="PPRL"/>
+        <TriggerLibs Id="SCPL"/>
         <!-- Test Builds -->
         <!-- <AIBuilds index="213" Enabled="0"/>
              <AIBuilds index="214" Enabled="0"/>

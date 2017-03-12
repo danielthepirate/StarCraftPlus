@@ -5,3 +5,5 @@ DocInfo/DescShort=Any
 DocInfo/Name=StarCraftPlus
 RequirementNode/Tooltip/CountBehaviorPowerSourceFastCompleteOnlyAtUnit22563247=Near Warp Gate
 RequirementNode/Tooltip/CountBehaviorPowerSourceFastCompleteOnlyAtUnitNearWarpGateorNexus=Near Nexus
+UI/ResourceName2=Minerals
+UI/ResourceName3=Vespene
