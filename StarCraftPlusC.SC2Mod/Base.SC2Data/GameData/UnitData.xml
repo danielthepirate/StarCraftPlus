@@ -450,6 +450,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="AutoLower" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <CostResource index="Minerals" value="50"/>
     </CUnit>
     <CUnit id="SupplyDepotLowered">
         <BehaviorArray Link="IncreasedLifeAndShields"/>
@@ -459,6 +460,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="AutoRaise" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <CostResource index="Minerals" value="50"/>
     </CUnit>
     <CUnit id="SwarmHostBurrowedMP">
         <BehaviorArray Link="IncreasedLifeAndShields"/>
