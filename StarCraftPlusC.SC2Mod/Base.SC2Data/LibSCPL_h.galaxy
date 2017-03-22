@@ -8,10 +8,6 @@ const int libSCPL_ge_GenericEvent_ResourceSpend = 0;
 string libSCPL_ge_GenericEvent_Ident (int lp_val);
 const int libSCPL_ge_GenericParameter_TriggeringPlayer = 0;
 string libSCPL_ge_GenericParameter_Ident (int lp_val);
-const int libSCPL_ge_CustomIndex_Slot1 = 0;
-const int libSCPL_ge_CustomIndex_Slot2 = 1;
-const int libSCPL_ge_CustomIndex_SlotID1 = 2;
-const int libSCPL_ge_CustomIndex_SlotID2 = 3;
 
 // Structures
 struct libSCPL_gs_ResourcePanel {
@@ -254,7 +250,6 @@ trigger libSCPL_gt_ProgressUnitStart;
 trigger libSCPL_gt_ProgressNydusWormUpfrontCostAdjustment;
 trigger libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment;
 trigger libSCPL_gt_ProgressWarpgateUnitSwap;
-trigger libSCPL_gt_ProgressBuildingStartCommented;
 trigger libSCPL_gt_ProgressUnitStartCommented;
 trigger libSCPL_gt_ProgressUnitStartCommentedTest;
 trigger libSCPL_gt_ProgressUnitCancelCommented;
