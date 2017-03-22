@@ -1,0 +1,55 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: PIRL Plus
+//--------------------------------------------------------------------------------------------------
+// Structures
+struct libPPRL_gs_SupportPanelRecord {
+    int lv_main;
+    int lv_header;
+    int[21] lv_entry;
+    int[21] lv_field;
+    int[21] lv_value;
+    int lv_maxEntryCount;
+    string[21] lv_updateEvent;
+    string lv_eventParameter;
+};
+
+// Variable Declarations
+libPPRL_gs_SupportPanelRecord libPPRL_gv_supportPanel;
+
+// Function Declarations
+int libPPRL_gf_UserDataInstanceID (string lp_userType, string lp_userDataInstance);
+void libPPRL_gf_SendActorMessageToUnitGroup (string lp_actorMessage, unitgroup lp_unitGroup);
+void libPPRL_gf_ShakeCameraForPlayer (int lp_p, string lp_cameraSetting);
+fixed libPPRL_gf_ConvertBooleanToReal (bool lp_boolean);
+void libPPRL_gf_DebugFlashUnit (unit lp_unit);
+void libPPRL_gf_DebugPoint (point lp_point);
+void libPPRL_gf_DebugPoint2 (point lp_point, fixed lp_radius);
+void libPPRL_gf_DebugPoint3 (point lp_point, fixed lp_width, fixed lp_height);
+void libPPRL_gf_DebugPoint4 (point lp_point, fixed lp_duration);
+void libPPRL_gf_DebugPoint5 (point lp_point, fixed lp_duration);
+void libPPRL_gf_DebugString (string lp_message);
+void libPPRL_gf_DebugPanelShow ();
+void libPPRL_gf_DebugPanelHide ();
+void libPPRL_gf_DebugPanelSetFieldValue (int lp_entry, string lp_string);
+void libPPRL_gf_DebugPanelSetFieldName (int lp_entry, string lp_string);
+bool libPPRL_gf_AngleIsBetweenBounds (fixed lp_angle, fixed lp_minBound, fixed lp_maxBound);
+bool libPPRL_gf_StringIsValid2 (int lp_integer);
+int libPPRL_gf_SignInteger (int lp_inputInteger);
+fixed libPPRL_gf_SignReal (fixed lp_inputReal);
+point libPPRL_gf_ConstrainPointToRegion (point lp_point, region lp_contrainedRegion);
+string libPPRL_gf_DeCamel (string lp_camelCaseString);
+string libPPRL_gf_Capitalize (string lp_input);
+bool libPPRL_gf_StringIsValid (string lp_string);
+string libPPRL_gf_ConvertPointXYtoString (point lp_point, int lp_precision);
+void libPPRL_gf_AddTimeToTimer (timer lp_timer, fixed lp_additionalTime);
+void libPPRL_gf_HideAllUIFramesForPlayers (playergroup lp_playerGroup);
+bool libPPRL_gf_UnitHasBehaviorWithBehaviorFlag (unit lp_unit, int lp_behaviorFlag);
+
+// Trigger Declarations
+trigger libPPRL_gt_DebugPanelInitialize;
+
+// Library Initialization
+void libPPRL_InitVariables ();
+

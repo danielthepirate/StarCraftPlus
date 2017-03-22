@@ -1,0 +1,9 @@
+UI/ResourceIconNoBackground2=Assets\Textures\icon-mineral-nobg.dds
+UI/ResourceIconNoBackground2_Prot=Assets\Textures\icon-mineral-nobg.dds
+UI/ResourceIconNoBackground2_Terr=Assets\Textures\icon-mineral-nobg.dds
+UI/ResourceIconNoBackground2_Zerg=Assets\Textures\icon-mineral-nobg.dds
+
+UI/ResourceIconNoBackground3=Assets\Textures\icon-gas-terran-nobg.dds
+UI/ResourceIconNoBackground3_Prot=Assets\Textures\icon-gas-protoss-nobg.dds
+UI/ResourceIconNoBackground3_Terr=Assets\Textures\icon-gas-terran-nobg.dds
+UI/ResourceIconNoBackground3_Zerg=Assets\Textures\icon-gas-zerg_nobg.dds

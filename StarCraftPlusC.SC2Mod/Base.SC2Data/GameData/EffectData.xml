@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CEffectEnumArea id="DebugPoint">
+        <EditorCategories value=""/>
+        <DebugTrace value="1"/>
+        <AreaArray Radius="0.1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DebugPointCircle">
+        <EditorCategories value=""/>
+        <DebugTrace value="1"/>
+        <AreaArray Radius="0.1"/>
+    </CEffectEnumArea>
+    <CEffectIssueOrder id="AutoWallLowerOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="SupplyDepotLowerHidden"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoWallRaiseOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="SupplyDepotRaiseHidden"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="AutoWallLowerSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="1.75" Effect="AutoWallLowerOrder"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="AutoWallRaiseOrderAdd">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AutoWallRaiseOrder"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AutoWallRaiseAdd">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AutoWallRaise"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AutoWallRaisePreventionAdd">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AutoWallRaisePrevention"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="AutoWallRaiseRemove">
+        <EditorCategories value=""/>
+        <BehaviorLink value="AutoWallRaise"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="AutoWallRaiseRemoveOrder">
+        <EditorCategories value=""/>
+        <BehaviorLink value="AutoWallRaiseOrder"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="AutoWallRaiseRemovePrevention">
+        <EditorCategories value=""/>
+        <BehaviorLink value="AutoWallRaisePrevention"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="AutoWallRaiseRemoveSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallRaiseRemove"/>
+        <EffectArray value="AutoWallRaiseRemoveOrder"/>
+        <EffectArray value="AutoWallRaiseRemovePrevention"/>
+    </CEffectSet>
+    <CEffectEnumArea id="AutoWallRaiseSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.75" Effect="AutoWallRaisePreventionAdd"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="AutoWallRaiseSearchPre">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.75" Effect="AutoWallRaiseAdd"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AutoWallRaiseSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallRaiseSearch"/>
+        <EffectArray value="AutoWallRaiseOrderAdd"/>
+    </CEffectSet>
+</Catalog>

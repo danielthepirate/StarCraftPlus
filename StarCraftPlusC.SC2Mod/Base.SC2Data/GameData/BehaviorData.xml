@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CBehaviorBuff id="IncreasedLifeAndShields">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxFractionArray index="Life" value="1"/>
+            <VitalMaxFractionArray index="Shields" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="IsNexusNearby">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="IsNexusNearby"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="IsWarpGateNearby">
+        <Cost>
+            <Charge Link="Behavior/IsNexusNearby"/>
+            <Cooldown Link="Behavior/IsNexusNearby"/>
+        </Cost>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="IsWarpGateNearby"/>
+        <DamageResponse>
+            <Cost>
+                <Charge Link="Behavior/IsNexusNearby"/>
+                <Cooldown Link="Behavior/IsNexusNearby"/>
+            </Cost>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorPowerSource id="PowerSource">
+        <Requirements value="IsNexusNotNearbyBehav"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="PowerSourceFast">
+        <Requirements value="IsNexusNotNearbyBehav"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="PowerSourceFast2">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-building-protoss-pylon.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
+        <Requirements value="IsNexusNearbyBehav"/>
+        <PowerLevel value="2"/>
+        <Radius value="12"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorBuff id="CarrierAutocastOff">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarrierAutocastOn">
+        <Cost>
+            <Charge Link="Behavior/CarrierAutocastOff"/>
+            <Cooldown Link="Behavior/CarrierAutocastOff"/>
+        </Cost>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <DamageResponse>
+            <Cost>
+                <Charge Link="Behavior/CarrierAutocastOff"/>
+                <Cooldown Link="Behavior/CarrierAutocastOff"/>
+            </Cost>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TimeWarpProduction">
+        <Modification TimeScale="1.1428"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallLower">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="AutoWallRaiseRemoveSet"/>
+        <PeriodicEffect value="AutoWallLowerSearch"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallRaise"/>
+            <BehaviorLinkDisableArray value="AutoWallRaiseOrder"/>
+            <BehaviorLinkDisableArray value="AutoWallRaisePrevention"/>
+            <BehaviorLinkDisableArray value="AutoWallRaisePre"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaisePre">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallRaiseSearchPre"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaiseOrder">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallRaiseOrder"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaisePrevention">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.125"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallRaiseOrder"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaise">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="AutoWallRaisePreventionAdd"/>
+        <PeriodicEffect value="AutoWallRaiseSet"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+</Catalog>

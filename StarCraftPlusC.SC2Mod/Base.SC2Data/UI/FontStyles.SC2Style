@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StyleFile>
+    <Style name="DebugText" font="UI\Fonts\Eurostile-Reg.otf" height="24" vjustify="Top" hjustify="Left" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,255,255,255" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0" outlinewidth="0"/>
+    <Style name="DebugPanel" font="UI\Fonts\Eurostile-Bol.otf" height="32" vjustify="Top" hjustify="Left" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,255,255,255" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0" outlinewidth="0"/>
+</StyleFile>

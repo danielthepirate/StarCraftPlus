@@ -1,0 +1,270 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: StarCraftPlus Lib
+//--------------------------------------------------------------------------------------------------
+// Preset Declarations
+const int libSCPL_ge_GenericEvent_ResourceSpend = 0;
+string libSCPL_ge_GenericEvent_Ident (int lp_val);
+const int libSCPL_ge_GenericParameter_TriggeringPlayer = 0;
+string libSCPL_ge_GenericParameter_Ident (int lp_val);
+const int libSCPL_ge_CustomIndex_Slot1 = 0;
+const int libSCPL_ge_CustomIndex_Slot2 = 1;
+const int libSCPL_ge_CustomIndex_SlotID1 = 2;
+const int libSCPL_ge_CustomIndex_SlotID2 = 3;
+
+// Structures
+struct libSCPL_gs_ResourcePanel {
+    int lv_mineralSpend;
+    int lv_vespeneSpend;
+};
+
+struct libSCPL_gs_Constant {
+    int lv_spendBufferMinerals;
+    int lv_spendBufferVespene;
+    fixed lv_spendTickIncrement;
+    fixed lv_spendTickIncrementBoosted;
+};
+
+struct libSCPL_gs_Player {
+    fixed lv_resourceSpendMinerals;
+    fixed lv_resourceSpendVespene;
+    bool lv_isInTargetMode;
+    unitgroup lv_progressUnits;
+};
+
+struct libSCPL_gs_UI {
+    libSCPL_gs_ResourcePanel lv_resourcePanel;
+};
+
+struct libSCPL_gs_Hotkey {
+    string lv_supplyDepot;
+    string lv_commandCenter;
+    string lv_barracks;
+    string lv_engineeringBay;
+    string lv_refinery;
+    string lv_missileTurret;
+    string lv_sensorTower;
+    string lv_factory;
+    string lv_ghostAcademy;
+    string lv_bunker;
+    string lv_starport;
+    string lv_armory;
+    string lv_fusionCore;
+    string lv_sCV;
+    string lv_marine;
+    string lv_marauder;
+    string lv_reaper;
+    string lv_ghost;
+    string lv_hellion;
+    string lv_siegeTank;
+    string lv_widowMine;
+    string lv_cyclone;
+    string lv_hellbat;
+    string lv_thor;
+    string lv_viking;
+    string lv_medivac;
+    string lv_raven;
+    string lv_banshee;
+    string lv_battleCruiser;
+    string lv_liberator;
+    string lv_nuke;
+    string lv_infantryWeapons;
+    string lv_infantryArmor;
+    string lv_combatShield;
+    string lv_stimpack;
+    string lv_concussiveShells;
+    string lv_autoTracking;
+    string lv_structureArmor;
+    string lv_neosteelFrame;
+    string lv_vehicleWeapons;
+    string lv_shipWeapons;
+    string lv_vehicleShipArmor;
+    string lv_infernalPreIgniters;
+    string lv_drillingClaws;
+    string lv_magFieldAccellerators;
+    string lv_highCapacityFuelTanks;
+    string lv_explosiveShrapnelShells;
+    string lv_corvidReactor;
+    string lv_cloakingField;
+    string lv_hyperflightRotors;
+    string lv_advancedBallistics;
+    string lv_personalCloaking;
+    string lv_behemothReactor;
+    string lv_weaponRefit;
+    string lv_hatchery;
+    string lv_spawningPool;
+    string lv_evolutionChamber;
+    string lv_extractor;
+    string lv_roachWarren;
+    string lv_banelingNest;
+    string lv_spineCrawler;
+    string lv_sporeCrawler;
+    string lv_infestationPit;
+    string lv_hydraliskDen;
+    string lv_spire;
+    string lv_nydusNetwork;
+    string lv_ultraliskCavern;
+    string lv_lair;
+    string lv_hive;
+    string lv_greaterSpire;
+    string lv_queen;
+    string lv_drone;
+    string lv_overlord;
+    string lv_mutalisk;
+    string lv_zergling;
+    string lv_infestor;
+    string lv_roach;
+    string lv_swarmHost;
+    string lv_hydralisk;
+    string lv_viper;
+    string lv_corruptor;
+    string lv_ultralisk;
+    string lv_nydusWorm;
+    string lv_overseer;
+    string lv_baneling;
+    string lv_ravager;
+    string lv_lurker;
+    string lv_broodlord;
+    string lv_burrow;
+    string lv_pneumatizedCarapace;
+    string lv_adrenalGlands;
+    string lv_metabolicBoost;
+    string lv_meleeAttacks;
+    string lv_missileAttacks;
+    string lv_groundCarapace;
+    string lv_muscularAugmentation;
+    string lv_groovedSpines;
+    string lv_tunnelingClaws;
+    string lv_glialReconstitution;
+    string lv_centrifugalHooks;
+    string lv_pathogenGlands;
+    string lv_neuralParasite;
+    string lv_flyerAttacks;
+    string lv_flyerCarapace;
+    string lv_chitinousPlating;
+    string lv_nexus;
+    string lv_pylon;
+    string lv_assimilator;
+    string lv_gateway;
+    string lv_forge;
+    string lv_cyberneticsCore;
+    string lv_photonCannon;
+    string lv_stargate;
+    string lv_roboticsFacility;
+    string lv_twilightCouncil;
+    string lv_fleetBeacon;
+    string lv_roboticsBay;
+    string lv_templarArchives;
+    string lv_darkShrine;
+    string lv_probe;
+    string lv_mothershipCore;
+    string lv_zealot;
+    string lv_sentry;
+    string lv_stalker;
+    string lv_highTemplar;
+    string lv_darkTemplar;
+    string lv_adept;
+    string lv_phoenix;
+    string lv_oracle;
+    string lv_voidRay;
+    string lv_tempest;
+    string lv_carrier;
+    string lv_observer;
+    string lv_warpPrism;
+    string lv_immortal;
+    string lv_colossus;
+    string lv_disruptor;
+    string lv_mothership;
+    string lv_archon;
+    string lv_groundWeapons;
+    string lv_groundArmor;
+    string lv_shields;
+    string lv_airWeapons;
+    string lv_airArmor;
+    string lv_warpGate;
+    string lv_charge;
+    string lv_blink;
+    string lv_resonatingGlaives;
+    string lv_graviticBoost;
+    string lv_graviticDrive;
+    string lv_extendedThermalLance;
+    string lv_anionPulseCrystals;
+    string lv_gravitonCatapult;
+    string lv_psionicStorm;
+};
+
+// Variable Declarations
+libSCPL_gs_Player[17] libSCPL_gv_player;
+libSCPL_gs_UI libSCPL_gv_uI;
+libSCPL_gs_Constant libSCPL_gv_constants;
+libSCPL_gs_Hotkey libSCPL_gv_hotkey;
+
+// Function Declarations
+void libSCPL_gf_InitializeSpendOverTime ();
+int libSCPL_gf_UsedTrainingSlotCount (unit lp_unit);
+fixed libSCPL_gf_PlayerAvailableMinerals (int lp_playerIndex);
+fixed libSCPL_gf_PlayerAvailableVespene (int lp_playerIndex);
+bool libSCPL_gf_UnitProgressStateIsProgressing (unit lp_unit, int lp_slot);
+fixed libSCPL_gf_TickIncrementActual (unit lp_parentUnit);
+fixed libSCPL_gf_TimeExpectedActual (unit lp_parentUnit, int lp_slot);
+fixed libSCPL_gf_NormalizeBuildingProgress (fixed lp_value);
+void libSCPL_gf_UnitProgressRefundSet (unit lp_unit, int lp_resource, fixed lp_refundValue);
+fixed libSCPL_gf_UnitProgressRefund (unit lp_unit, int lp_resource);
+void libSCPL_gf_UnitProgressCarryOverSet (unit lp_unit, int lp_resource, fixed lp_refundValue);
+fixed libSCPL_gf_UnitProgressCarryOver (unit lp_unit, int lp_resource);
+void libSCPL_gf_BuildingPauseStateSet (unit lp_unit, bool lp_state);
+bool libSCPL_gf_BuildingPauseState (unit lp_unit);
+string libSCPL_gf_AbilityMorphUnit (string lp_ability, unit lp_unit);
+void libSCPL_gf_UnitMorphProgressSet (unit lp_unit, fixed lp_progress);
+fixed libSCPL_gf_UnitMorphProgress (unit lp_unit);
+bool libSCPL_gf_RegisterExists (string lp_unitType);
+fixed libSCPL_gf_GetBuildTime (string lp_object);
+fixed libSCPL_gf_GetCostMinerals (string lp_object);
+fixed libSCPL_gf_GetCostVespene (string lp_object);
+void libSCPL_gf_RegisterBuildTime (string lp_object, fixed lp_cost);
+void libSCPL_gf_RegisterCostMinerals (string lp_object, fixed lp_cost);
+void libSCPL_gf_RegisterCostVespene (string lp_object, fixed lp_cost);
+fixed libSCPL_gf_UnitProgressState (unit lp_unit, int lp_slot);
+void libSCPL_gf_UnitProgressStateSet (unit lp_unit, int lp_slot, fixed lp_value);
+void libSCPL_gf_DebugPanelUpdateSpendOverTime ();
+void libSCPL_gf_InitializeResourceUI ();
+void libSCPL_gf_ResourceDisplaySpendAdd (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
+void libSCPL_gf_ResourceDisplaySpendRemove (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
+void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer);
+
+// Trigger Declarations
+trigger libSCPL_gt_InitializationPlus;
+trigger libSCPL_gt_ProgressAccounting;
+trigger libSCPL_gt_ProgressMorphRefundOneStage;
+trigger libSCPL_gt_ProgressMorphRefundTwoStage;
+trigger libSCPL_gt_ProgressMorphStart;
+trigger libSCPL_gt_ProgressMorphCancel;
+trigger libSCPL_gt_ProgressUpgradeRefund;
+trigger libSCPL_gt_ProgressUpgradeStart;
+trigger libSCPL_gt_ProgressArmamentStartRefund;
+trigger libSCPL_gt_ProgressArmamentStart;
+trigger libSCPL_gt_ProgressBuildingStartRefund;
+trigger libSCPL_gt_ProgressBuildingStart;
+trigger libSCPL_gt_ProgressBuildingSCVStart;
+trigger libSCPL_gt_ProgressBuildingSCVResume;
+trigger libSCPL_gt_ProgressBuildingCancel;
+trigger libSCPL_gt_ProgressUnitStartRefund;
+trigger libSCPL_gt_ProgressUnitStart;
+trigger libSCPL_gt_ProgressNydusWormUpfrontCostAdjustment;
+trigger libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment;
+trigger libSCPL_gt_ProgressWarpgateUnitSwap;
+trigger libSCPL_gt_ProgressBuildingStartCommented;
+trigger libSCPL_gt_ProgressUnitStartCommented;
+trigger libSCPL_gt_ProgressUnitStartCommentedTest;
+trigger libSCPL_gt_ProgressUnitCancelCommented;
+trigger libSCPL_gt_ResourceConvertVespene;
+trigger libSCPL_gt_ResourceConvertMinerals;
+trigger libSCPL_gt_ResourceDisplaySpend;
+trigger libSCPL_gt_AutoWallOrderLower;
+trigger libSCPL_gt_AutoWallOrderRaise;
+trigger libSCPL_gt_AutoWallOrderToggle;
+
+// Library Initialization
+void libSCPL_InitVariables ();
+
