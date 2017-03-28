@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+		
+		<Frame type="Frame" name="BuilderCommandContainer" template="CommandSidebar/CommandContainer">
+			<Anchor relative="$parent/InfoPanel"/>
+			
+		</Frame>
+		<Frame type="Frame" name="TrainerCommandContainer" template="CommandSidebar/CommandContainer">
+			<Anchor relative="$parent/InfoPanel"/>
+			
+		</Frame>
+		<Frame type="Frame" name="ResearcherCommandContainer" template="CommandSidebar/CommandContainer">
+			<Anchor relative="$parent/InfoPanel"/>
+			
+		</Frame>
+		<Frame type="TabControl" name="SideBarTab">
+			<Anchor side="Left" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/>
+			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/>
+			<Width val="300"/>
+			<Height val="38"/>
+        
+			<TabListItem val="SidebarBuildings"/>
+			<TabListItem val="SidebarUnits"/>
+			<TabListItem val="SidebarResearch"/>
+			<TabListItem val="SidebarInfoPanel"/>
+			<PanelListItem val="$parent/BuilderCommandContainer"/>
+			<PanelListItem val="$parent/TrainerCommandContainer"/>
+			<PanelListItem val="$parent/ResearcherCommandContainer"/>
+			<PanelListItem val="$parent/InfoPanel"/>
+			<SelectedIndex val="3"/>
+
+			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
+				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Frame type="Label" name="MenuLabel">
+					<Text val="Bldgs"/>
+				</Frame>
+				<Shortcut val="@Button/Hotkey/SidebarBuildings"/>
+			</Frame>
+			<Frame type="Button" name="SidebarUnits" template="CommandSidebar/SideBarTabButtonTemplate">
+				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="0"/>
+				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>"/>
+				<Frame type="Label" name="MenuLabel">
+					<Text val="Units"/>
+				</Frame>
+				<Shortcut val="@Button/Hotkey/SidebarUnits"/>
+			</Frame>
+			<Frame type="Button" name="SidebarResearch" template="CommandSidebar/SideBarTabButtonTemplate">
+				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="0"/>
+				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>"/>
+				<Frame type="Label" name="MenuLabel">
+					<Text val="Rsrch"/>
+				</Frame>
+				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
+			</Frame>
+			<Frame type="Button" name="SidebarInfoPanel" template="CommandSidebar/SideBarTabButtonTemplate">
+				<Anchor side="Left" relative="$parent/SidebarResearch" pos="Max" offset="0"/>
+				<Anchor side="Top" relative="$parent/SidebarResearch" pos="Min" offset="0"/>"/>
+				<Frame type="Label" name="MenuLabel">
+					<Text val="Info"/>
+				</Frame>
+				<Shortcut val="@Button/Hotkey/SidebarInfoPanel"/>
+			</Frame>
+		</Frame>
+		
+	</Frame>
+</Desc>

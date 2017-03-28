@@ -1,0 +1,142 @@
+//--------------------------------------------------------------------------------------------------
+// Custom Script: IsActiveUser
+//--------------------------------------------------------------------------------------------------
+bool IsActiveUser (int player) {
+    bool active = (PlayerStatus(player) == c_playerStatusActive);
+    bool user = (PlayerType(player) == c_playerTypeUser);
+    return (active && user);
+}
+//--------------------------------------------------------------------------------------------------
+
+
+void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar, string submenu);
+
+
+struct CMSDB_SidebarPaths{
+	string builder;
+	string trainer;
+	string researcher;
+};
+
+CMSDB_SidebarPaths sidebarPaths;
+
+void CMSDB_SidebarPathsInit(){
+	sidebarPaths.builder = "UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel1";
+	sidebarPaths.trainer = "UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel1";
+	sidebarPaths.researcher = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel1";
+	//sidebarPaths.builder = "UIContainer/ConsoleUIContainer/BuilderCommandPanel";
+}
+
+struct CMSDB_PlayerData{
+	int sidebar;
+	playergroup pg;
+	string race;
+	unitgroup dummies;
+	unitgroup idleWorkers;
+	unitgroup townhalls;
+	
+};
+
+CMSDB_PlayerData[c_maxPlayers] playerData;
+
+
+
+trigger CMSDB_ReplaceBuildOrders;
+
+bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit u;
+    unitgroup ug;
+    unit dummy;
+    point lv_position;
+	string ability;
+	int player;
+	region r;
+	order o;
+	
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "ProbeDummy"))) {
+            return false;
+        }
+    }
+	r = RegionEntireMap();
+    u = UnitGroupUnit(UnitGroupIdle(1, true), 1);
+    dummy = EventUnit();
+	player = 1;
+	o = EventUnitOrder();
+	ability = AbilityCommandGetAbility(OrderGetAbilityCommand(o));
+	TriggerDebugOutput (1, StringToText(ability), true);
+	
+	if(ability=="ForgeResearch"){
+		ug = UnitGroup ("Forge", player, r, null, 0);
+		u = UnitGroupUnit(ug, 1);
+		UnitIssueOrder(u, o, c_orderQueueReplace);
+		UnitControlGroupAddUnits(player,1,ug);
+	}
+	else if (ability=="ProtossBuild"){
+		ug = UnitGroupIdle(1, true);
+		u = UnitGroupUnit(ug, 1);
+		UnitIssueOrder(u, o, c_orderQueueReplace);
+		
+	}
+	
+    UnitIssueOrder(dummy, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
+    UnitIssueOrder(dummy, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    return true;
+}
+
+
+
+
+
+
+
+
+
+void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar, string submenu){
+    int SideBarDlg = DialogControlHookupStandard(c_triggerControlTypeCommandPanel, sidebar);
+	DialogControlSetPropertyAsUnitGroup(SideBarDlg, c_triggerControlPropertyUnitGroup, pg, u);
+	if (submenu!=null){
+		DialogControlSetPropertyAsString (SideBarDlg, c_triggerControlPropertySubmenu, pg, submenu);
+	}
+}
+
+void CMSDB_PlayerDataInit(){
+	int Player = 1;
+	string CMSDBDummyUserData = "ComandSidebarDummyUnits";
+	string DummyBuilderType;
+    point unitPos = RegionGetCenter(RegionEntireMap());
+	for(Player=0;Player < c_maxPlayers;Player+=1){
+		if (IsActiveUser(Player)) {
+            playerData[Player].race = PlayerRace (Player);
+            playerData[Player].pg = PlayerGroupSingle(Player);
+			DummyBuilderType = UserDataGetUnit(CMSDBDummyUserData, playerData[Player].race, "Builder", 1);
+            playerData[Player].dummies = UnitGroupEmpty();
+			UnitGroupAddUnitGroup(playerData[Player].dummies, UnitCreate(1,DummyBuilderType,c_unitCreateIgnorePlacement, Player,unitPos,0.0));
+			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.builder,null);
+			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.trainer,"PBl1");
+			
+        }
+	}
+}
+
+
+void CMSDB_Init(){
+	int i = 0;
+	CMSDB_ReplaceBuildOrders = TriggerCreate("CMSDB_ReplaceBuildOrders_Func");
+	
+	
+	CMSDB_SidebarPathsInit();
+	CMSDB_PlayerDataInit();
+	for(i=0;i<32;i+=1){
+		TriggerAddEventUnitOrder(CMSDB_ReplaceBuildOrders, null, AbilityCommand("ProtossBuild", i));
+		TriggerAddEventUnitOrder(CMSDB_ReplaceBuildOrders, null, AbilityCommand("ForgeResearch", i));
+	}
+	
+	
+}
+
+void InitCommandSideBar(){
+	CMSDB_Init();
+}

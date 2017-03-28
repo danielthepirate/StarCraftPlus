@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CUser id="ComandSidebarDummyUnits">
+        <Fields Id="Builder" Type="Unit" Count="2"/>
+        <Fields Id="Trainer" Type="Unit" Count="2"/>
+        <Fields Id="Researcher" Type="Unit" Count="2"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="Terr">
+            <Unit Unit="ProbeDummy">
+                <Field Id="Builder"/>
+            </Unit>
+            <Unit Unit="ProbeDummy">
+                <Field Id="Trainer"/>
+            </Unit>
+            <Unit Unit="ProbeDummy">
+                <Field Id="Researcher"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Zerg">
+            <Unit Unit="ProbeDummy">
+                <Field Id="Builder"/>
+            </Unit>
+            <Unit Unit="ProbeDummy">
+                <Field Id="Trainer"/>
+            </Unit>
+            <Unit Unit="ProbeDummy">
+                <Field Id="Researcher"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Prot">
+            <Unit Unit="ProbeDummy">
+                <Field Id="Builder"/>
+            </Unit>
+            <Unit Unit="ProbeDummy">
+                <Field Id="Trainer"/>
+            </Unit>
+			<Unit Unit="ProbeDummy">
+                <Field Id="Trainer" Index="1"/>
+            </Unit>
+            <Unit Unit="ProbeDummy">
+                <Field Id="Researcher"/>
+            </Unit>
+			<Unit Unit="ProbeDummy">
+                <Field Id="Researcher" Index="1"/>
+            </Unit>
+        </Instances>
+    </CUser>
+</Catalog>
