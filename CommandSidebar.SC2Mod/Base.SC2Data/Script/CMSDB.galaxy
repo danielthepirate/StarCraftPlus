@@ -1,3 +1,6 @@
+include "Script/CMSDB_h"
+
+
 //--------------------------------------------------------------------------------------------------
 // Custom Script: IsActiveUser
 //--------------------------------------------------------------------------------------------------
@@ -9,22 +12,25 @@ bool IsActiveUser (int player) {
 //--------------------------------------------------------------------------------------------------
 
 
-void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar, string submenu);
+
 
 
 struct CMSDB_SidebarPaths{
-	string builder;
-	string trainer;
-	string researcher;
+	string[2] builder;
+	string[2] trainer;
+	string[2] researcher;
 };
 
 CMSDB_SidebarPaths sidebarPaths;
 
 void CMSDB_SidebarPathsInit(){
-	sidebarPaths.builder = "UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel1";
-	sidebarPaths.trainer = "UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel1";
-	sidebarPaths.researcher = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel1";
-	//sidebarPaths.builder = "UIContainer/ConsoleUIContainer/BuilderCommandPanel";
+	sidebarPaths.builder[0] = "UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel1";
+	sidebarPaths.trainer[0] = "UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel1";
+	sidebarPaths.researcher[0] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel1";
+	
+	sidebarPaths.builder[1] = "UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel2";
+	sidebarPaths.trainer[1] = "UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel2";
+	sidebarPaths.researcher[1] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel2";
 }
 
 struct CMSDB_PlayerData{
