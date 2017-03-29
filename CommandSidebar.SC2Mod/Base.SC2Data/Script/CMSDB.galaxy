@@ -87,8 +87,6 @@ bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
 		
 	}
 	
-    UnitIssueOrder(dummy, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
-    UnitIssueOrder(dummy, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
     return true;
 }
 
