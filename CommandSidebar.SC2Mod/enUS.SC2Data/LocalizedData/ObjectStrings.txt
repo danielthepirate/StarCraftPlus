@@ -1,2 +1,3 @@
 ﻿Actor/Name/ProbeDummy=ProbeDummy
+User/Name/ComandSidebarAbilLinks=ComandSidebarAbilLinks
 User/Name/ComandSidebarDummyUnits=ComandSidebarDummyUnits

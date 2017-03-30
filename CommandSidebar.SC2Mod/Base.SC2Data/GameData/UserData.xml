@@ -3,6 +3,7 @@
     <CUser id="ComandSidebarDummyUnits">
         <Fields Id="Builder" Type="Unit" Count="2"/>
         <Fields Id="Trainer" Type="Unit" Count="2"/>
+        <Fields Id="Warper" Type="Unit" Count="2"/>
         <Fields Id="Researcher" Type="Unit" Count="2"/>
         <Instances Id="[Default]"/>
         <Instances Id="Terr">
@@ -11,6 +12,9 @@
             </Unit>
             <Unit Unit="ProbeDummy">
                 <Field Id="Trainer"/>
+            </Unit>
+            <Unit Unit="ProbeDummy">
+                <Field Id="Warper"/>
             </Unit>
             <Unit Unit="ProbeDummy">
                 <Field Id="Researcher"/>
@@ -24,6 +28,9 @@
                 <Field Id="Trainer"/>
             </Unit>
             <Unit Unit="ProbeDummy">
+                <Field Id="Warper"/>
+            </Unit>
+            <Unit Unit="ProbeDummy">
                 <Field Id="Researcher"/>
             </Unit>
         </Instances>
@@ -34,14 +41,210 @@
             <Unit Unit="ProbeDummy">
                 <Field Id="Trainer"/>
             </Unit>
-			<Unit Unit="ProbeDummy">
+            <Unit Unit="ProbeDummy">
                 <Field Id="Trainer" Index="1"/>
+            </Unit>
+            <Unit Unit="ProbeDummy">
+                <Field Id="Warper"/>
             </Unit>
             <Unit Unit="ProbeDummy">
                 <Field Id="Researcher"/>
             </Unit>
-			<Unit Unit="ProbeDummy">
+            <Unit Unit="ProbeDummy">
                 <Field Id="Researcher" Index="1"/>
+            </Unit>
+        </Instances>
+    </CUser>
+    <CUser id="ComandSidebarOrderRedirect">
+        <Fields Id="DummyCaster" Type="Unit" Count="1"/>
+        <Fields Id="RealCaster" Type="Unit" Count="1"/>
+        <Fields Id="UseIdle" Type="Int"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="ProtossBuild">
+            <Int Int="1">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="Probe">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="UpgradeToWarpGate">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="Gateway">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="MorphBackToGateway">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="WarpGate">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="NexusTrain">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="Nexus">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="NexusTrainMothership">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="Nexus">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="NexusTrainMothershipCore">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="Nexus">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="GatewayTrain">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="Gateway">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="WarpGateTrain">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="WarpGate">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="RoboticsFacilityTrain">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="RoboticsFacility">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="StargateTrain">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="Stargate">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="ForgeResearch">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="Forge">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="CyberneticsCoreResearch">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="CyberneticsCore">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="TwilightCouncilResearch">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="TwilightCouncil">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="TemplarArchivesResearch">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="TemplarArchives">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="DarkShrineResearch">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="DarkShrine">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="FleetBeaconResearch">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="FleetBeacon">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+<Instances Id="RoboticsBayResearch">
+            <Int Int="0">
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="RoboticsBay">
+                <Field Id="RealCaster"/>
             </Unit>
         </Instances>
     </CUser>

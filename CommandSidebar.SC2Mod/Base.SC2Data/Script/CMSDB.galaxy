@@ -42,12 +42,30 @@ struct CMSDB_PlayerData{
 	unitgroup townhalls;
 	
 };
-
 CMSDB_PlayerData[c_maxPlayers] playerData;
 
 
+struct CMSDB_OrderRedirectData{
+	int useIdle;
+	string abil;
+	string dummyCaster;
+	string realCaster;
+};
+
+typedef structref<CMSDB_OrderRedirectData> CMSDB_OrderRedirect;
+
 
 trigger CMSDB_ReplaceBuildOrders;
+
+bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string abil){
+	string CMDSBOrderRedirectData = "ComandSidebarOrderRedirect";
+	orderdata.abil = abil;
+	orderdata.useIdle = UserDataGetInt(CMDSBOrderRedirectData, abil, "UseIdle", 1);
+	orderdata.dummyCaster = UserDataGetUnit(CMDSBOrderRedirectData, abil, "DummyCaster", 1);
+	orderdata.realCaster = UserDataGetUnit(CMDSBOrderRedirectData, abil, "RealCaster", 1);
+	return true;
+}
+
 
 bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
     // Variable Declarations
@@ -55,36 +73,59 @@ bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
     unitgroup ug;
     unit dummy;
     point lv_position;
-	string ability;
+	string abil;
 	int player;
 	region r;
 	order o;
+	CMSDB_OrderRedirectData orderdata;
 	
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnit()) == "ProbeDummy"))) {
-            return false;
-        }
-    }
 	r = RegionEntireMap();
     u = UnitGroupUnit(UnitGroupIdle(1, true), 1);
     dummy = EventUnit();
 	player = 1;
 	o = EventUnitOrder();
-	ability = AbilityCommandGetAbility(OrderGetAbilityCommand(o));
-	TriggerDebugOutput (1, StringToText(ability), true);
 	
-	if(ability=="ForgeResearch"){
-		ug = UnitGroup ("Forge", player, r, null, 0);
-		u = UnitGroupUnit(ug, 1);
-		UnitIssueOrder(u, o, c_orderQueueReplace);
-		UnitControlGroupAddUnits(player,1,ug);
-	}
-	else if (ability=="ProtossBuild"){
+	abil = AbilityCommandGetAbility(OrderGetAbilityCommand(o));
+	
+	CMSDB_OrderRedirectGetFromUserData(orderdata, abil);
+	
+    if (testConds) {
+        if (!((UnitGetType(dummy) == orderdata.dummyCaster))) {
+            return false;
+        }
+    }
+	
+	if(orderdata.useIdle>0){
 		ug = UnitGroupIdle(1, true);
 		u = UnitGroupUnit(ug, 1);
-		UnitIssueOrder(u, o, c_orderQueueReplace);
+	}
+	else{
+		ug = UnitGroup (orderdata.realCaster, player, r, null, 0);
+		u = UnitGroupUnit(ug, 1);
+	}
+	
+	if(AbilityClass(abil)==c_classIdCAbilBuild){
+		UnitIssueOrder(dummy, Order(AbilityCommand("stop", c_abilStopCmdStop)), c_orderQueueReplace);
+		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		//UnitIssueOrder(u, o, c_orderQueueReplace);
+	}
+	else if(AbilityClass(abil)==c_classIdCAbilResearch){
 		
+		UnitIssueOrder(dummy, Order(AbilityCommand("que5", c_abilQueueCmdCancelLast)), c_orderQueueReplace);
+		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		//UnitIssueOrder(u, o, c_orderQueueReplace);
+	}
+	else if(AbilityClass(abil)==c_classIdCAbilTrain){
+		
+		UnitIssueOrder(dummy, Order(AbilityCommand("que5", c_abilQueueCmdCancelLast)), c_orderQueueReplace);
+		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		//UnitIssueOrder(u, o, c_orderQueueReplace);
+	}
+	else if(AbilityClass(abil)==c_classIdCAbilWarpTrain){
+		
+		UnitIssueOrder(dummy, Order(AbilityCommand("que5", c_abilQueueCmdCancelLast)), c_orderQueueReplace);
+		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		//UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
 	
     return true;
@@ -118,9 +159,14 @@ void CMSDB_PlayerDataInit(){
 			DummyBuilderType = UserDataGetUnit(CMSDBDummyUserData, playerData[Player].race, "Builder", 1);
             playerData[Player].dummies = UnitGroupEmpty();
 			UnitGroupAddUnitGroup(playerData[Player].dummies, UnitCreate(1,DummyBuilderType,c_unitCreateIgnorePlacement, Player,unitPos,0.0));
-			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.builder,null);
-			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.trainer,"PBl1");
+			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.researcher[0],"PRsrch");
+			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.builder[0],"PBuild");
+			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.trainer[0],"PTrain");
 			
+			
+			UnitCreate(2,"Probe",c_unitCreateIgnorePlacement, Player,unitPos,0.0);
+			PlayerModifyPropertyInt (Player, c_playerPropMinerals, c_playerPropOperSetTo, 5000);
+			PlayerModifyPropertyInt (Player, c_playerPropVespene, c_playerPropOperSetTo, 5000);
         }
 	}
 }
@@ -128,17 +174,22 @@ void CMSDB_PlayerDataInit(){
 
 void CMSDB_Init(){
 	int i = 0;
+	int j = 0;
+	string CMDSBOrderRedirectData = "ComandSidebarOrderRedirect";
+	int TotalItems = UserDataInstanceCount(CMDSBOrderRedirectData);
+	string abil;
+	
+	
 	CMSDB_ReplaceBuildOrders = TriggerCreate("CMSDB_ReplaceBuildOrders_Func");
-	
-	
 	CMSDB_SidebarPathsInit();
 	CMSDB_PlayerDataInit();
-	for(i=0;i<32;i+=1){
-		TriggerAddEventUnitOrder(CMSDB_ReplaceBuildOrders, null, AbilityCommand("ProtossBuild", i));
-		TriggerAddEventUnitOrder(CMSDB_ReplaceBuildOrders, null, AbilityCommand("ForgeResearch", i));
+	
+	for(i = 1;i<=TotalItems;i+=1){
+		abil = UserDataInstance (CMDSBOrderRedirectData, i);
+		for(j=0;j<32;j+=1){
+			TriggerAddEventUnitOrder(CMSDB_ReplaceBuildOrders, null, AbilityCommand(abil, j));
+		}
 	}
-	
-	
 }
 
 void InitCommandSideBar(){
