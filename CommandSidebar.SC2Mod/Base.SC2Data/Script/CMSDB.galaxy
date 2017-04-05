@@ -5,20 +5,20 @@ include "Script/CMSDB_h"
 // Custom Script: IsActiveUser
 //--------------------------------------------------------------------------------------------------
 bool IsActiveUser (int player) {
-    bool active = (PlayerStatus(player) == c_playerStatusActive);
-    bool user = (PlayerType(player) == c_playerTypeUser);
-    return (active && user);
+	bool active = (PlayerStatus(player) == c_playerStatusActive);
+	bool user = (PlayerType(player) == c_playerTypeUser);
+	return (active && user);
 }
 //--------------------------------------------------------------------------------------------------
 
 
 
-
+typedef string[2] paths;
 
 struct CMSDB_SidebarPaths{
-	string[2] builder;
-	string[2] trainer;
-	string[2] researcher;
+	paths builder;
+	paths trainer;
+	paths researcher;
 };
 
 CMSDB_SidebarPaths sidebarPaths;
@@ -38,6 +38,9 @@ struct CMSDB_PlayerData{
 	playergroup pg;
 	string race;
 	unitgroup dummies;
+	unitgroup builder;
+	unitgroup trainer;
+	unitgroup researcher;
 	unitgroup idleWorkers;
 	unitgroup townhalls;
 	
@@ -68,11 +71,11 @@ bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string ab
 
 
 bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit u;
-    unitgroup ug;
-    unit dummy;
-    point lv_position;
+	// Variable Declarations
+	unit u;
+	unitgroup ug;
+	unit dummy;
+	point lv_position;
 	string abil;
 	int player;
 	region r;
@@ -80,8 +83,8 @@ bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
 	CMSDB_OrderRedirectData orderdata;
 	
 	r = RegionEntireMap();
-    u = UnitGroupUnit(UnitGroupIdle(1, true), 1);
-    dummy = EventUnit();
+	u = UnitGroupUnit(UnitGroupIdle(1, true), 1);
+	dummy = EventUnit();
 	player = 1;
 	o = EventUnitOrder();
 	
@@ -89,11 +92,13 @@ bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
 	
 	CMSDB_OrderRedirectGetFromUserData(orderdata, abil);
 	
-    if (testConds) {
-        if (!((UnitGetType(dummy) == orderdata.dummyCaster))) {
-            return false;
-        }
-    }
+	if (testConds) {
+		if (!((UnitGetType(dummy) == orderdata.dummyCaster))) {
+			if (!(UnitHasBehavior(dummy,"SidebarDummy"))) {
+			return false;
+			}
+		}
+	}
 	
 	if(orderdata.useIdle>0){
 		ug = UnitGroupIdle(1, true);
@@ -128,7 +133,7 @@ bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
 		//UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
 	
-    return true;
+	return true;
 }
 
 
@@ -139,35 +144,84 @@ bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
 
 
 
-void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar, string submenu){
-    int SideBarDlg = DialogControlHookupStandard(c_triggerControlTypeCommandPanel, sidebar);
+void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar){
+	int SideBarDlg = DialogControlHookupStandard(c_triggerControlTypeCommandPanel, sidebar);
 	DialogControlSetPropertyAsUnitGroup(SideBarDlg, c_triggerControlPropertyUnitGroup, pg, u);
-	if (submenu!=null){
-		DialogControlSetPropertyAsString (SideBarDlg, c_triggerControlPropertySubmenu, pg, submenu);
+	DialogControlSetPropertyAsInt(SideBarDlg, c_triggerControlPropertySelectionIndex, pg, 2);
+}
+
+unitgroup CMSDB_InitDummies(int player){
+	int i = 0;
+	int j = 0;
+	unitgroup ug;
+	unitgroup[2] subgroup;
+	string[2] unitid;
+	arrayref<paths> path;
+	string dummytype;
+	
+	string CMSDBDummyUserData = "ComandSidebarDummyUnits";
+	int TotalItems = UserDataFieldCount (CMSDBDummyUserData);
+	point unitPos = RegionGetCenter(RegionEntireMap());
+
+	TriggerDebugOutput(1, StringToText("Player "+IntToString(player)+" Race: "+playerData[player].race), CMSDB_DebugOutput);
+	TriggerDebugOutput(1, StringToText("Total Items: "+IntToString(TotalItems)), CMSDB_DebugOutput);
+	
+	
+	for(i = 1;i<=TotalItems;i+=1){
+		dummytype = UserDataField(CMSDBDummyUserData, i);
+		TriggerDebugOutput(1, StringToText(dummytype), CMSDB_DebugOutput);
+		
+		if (dummytype == "Builder"){
+			ug = playerData[player].builder;
+			path = sidebarPaths.builder;
+		}
+		else if (dummytype == "Trainer"){
+			ug = playerData[player].trainer;
+			path = sidebarPaths.trainer;
+		}
+		else if (dummytype == "Researcher"){
+			ug = playerData[player].researcher;
+			path = sidebarPaths.researcher;
+		}
+		else if (dummytype == "Warper"){
+			continue;
+		}
+		for(j = 0;j<2;j+=1){
+			subgroup[j] = UnitGroupEmpty();
+			unitid[j] = UserDataGetUnit(CMSDBDummyUserData, playerData[player].race, dummytype, j+1);
+			UnitGroupAddUnitGroup(subgroup[j], UnitCreate(1,unitid[j],c_unitCreateIgnorePlacement, player,unitPos,0.0));
+			CMSDB_AttachDummyToSidebar(subgroup[j], playerData[player].pg, path[j]);
+			UnitGroupAddUnitGroup(ug,subgroup[j]);
+			TriggerDebugOutput(1, StringToText(unitid[j]), CMSDB_DebugOutput);
+			TriggerDebugOutput(1, StringToText(path[j]), CMSDB_DebugOutput);
+		}
 	}
+	return ug;
 }
 
 void CMSDB_PlayerDataInit(){
-	int Player = 1;
+	int player = 1;
 	string CMSDBDummyUserData = "ComandSidebarDummyUnits";
 	string DummyBuilderType;
-    point unitPos = RegionGetCenter(RegionEntireMap());
-	for(Player=0;Player < c_maxPlayers;Player+=1){
-		if (IsActiveUser(Player)) {
-            playerData[Player].race = PlayerRace (Player);
-            playerData[Player].pg = PlayerGroupSingle(Player);
-			DummyBuilderType = UserDataGetUnit(CMSDBDummyUserData, playerData[Player].race, "Builder", 1);
-            playerData[Player].dummies = UnitGroupEmpty();
-			UnitGroupAddUnitGroup(playerData[Player].dummies, UnitCreate(1,DummyBuilderType,c_unitCreateIgnorePlacement, Player,unitPos,0.0));
-			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.researcher[0],"PRsrch");
-			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.builder[0],"PBuild");
-			CMSDB_AttachDummyToSidebar(playerData[Player].dummies, playerData[Player].pg, sidebarPaths.trainer[0],"PTrain");
+	point unitPos = RegionGetCenter(RegionEntireMap());
+	for(player=0;player < c_maxPlayers;player+=1){
+		if (IsActiveUser(player)) {
+			playerData[player].race = PlayerRace (player);
+			playerData[player].pg = PlayerGroupSingle(player);
+			DummyBuilderType = UserDataGetUnit(CMSDBDummyUserData, playerData[player].race, "Builder", 1);
+			playerData[player].dummies = UnitGroupEmpty();
+			playerData[player].builder = UnitGroupEmpty();
+			playerData[player].trainer = UnitGroupEmpty();
+			playerData[player].researcher = UnitGroupEmpty();
 			
+			CMSDB_InitDummies(player);
 			
-			UnitCreate(2,"Probe",c_unitCreateIgnorePlacement, Player,unitPos,0.0);
-			PlayerModifyPropertyInt (Player, c_playerPropMinerals, c_playerPropOperSetTo, 5000);
-			PlayerModifyPropertyInt (Player, c_playerPropVespene, c_playerPropOperSetTo, 5000);
-        }
+			UnitCreate(2,"Probe",c_unitCreateIgnorePlacement, player,unitPos,0.0);
+			UnitCreate(2,"SCV",c_unitCreateIgnorePlacement, player,unitPos,0.0);
+			UnitCreate(2,"Drone",c_unitCreateIgnorePlacement, player,unitPos,0.0);
+			PlayerModifyPropertyInt (player, c_playerPropMinerals, c_playerPropOperSetTo, 5000);
+			PlayerModifyPropertyInt (player, c_playerPropVespene, c_playerPropOperSetTo, 5000);
+		}
 	}
 }
 

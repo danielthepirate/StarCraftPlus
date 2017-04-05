@@ -1,3 +1,4 @@
 ﻿Actor/Name/ProbeDummy=ProbeDummy
+Unit/Name/SIDEBARCASTER_BASE=Sidebar Caster Base
 User/Name/ComandSidebarAbilLinks=ComandSidebarAbilLinks
 User/Name/ComandSidebarDummyUnits=ComandSidebarDummyUnits

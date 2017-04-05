@@ -7,50 +7,80 @@
         <Fields Id="Researcher" Type="Unit" Count="2"/>
         <Instances Id="[Default]"/>
         <Instances Id="Terr">
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="Builder"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+			<Unit Unit="SdbPBuild2">
+                <Field Id="Builder" Index="1"/>
+            </Unit>
+            <Unit Unit="SdbPTrain1">
                 <Field Id="Trainer"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPTrain2">
+                <Field Id="Trainer" Index="1"/>
+            </Unit>
+            <Unit Unit="SdbPWarp1">
                 <Field Id="Warper"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SIDEBARCASTER_BASE">
+                <Field Id="Warper" Index="1"/>
+            </Unit>
+            <Unit Unit="SdbPRsrch1">
                 <Field Id="Researcher"/>
+            </Unit>
+            <Unit Unit="SdbPRsrch2">
+                <Field Id="Researcher" Index="1"/>
             </Unit>
         </Instances>
         <Instances Id="Zerg">
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="Builder"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+			<Unit Unit="SdbPBuild2">
+                <Field Id="Builder" Index="1"/>
+            </Unit>
+            <Unit Unit="SdbPTrain1">
                 <Field Id="Trainer"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPTrain2">
+                <Field Id="Trainer" Index="1"/>
+            </Unit>
+            <Unit Unit="SdbPWarp1">
                 <Field Id="Warper"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SIDEBARCASTER_BASE">
+                <Field Id="Warper" Index="1"/>
+            </Unit>
+            <Unit Unit="SdbPRsrch1">
                 <Field Id="Researcher"/>
+            </Unit>
+            <Unit Unit="SdbPRsrch2">
+                <Field Id="Researcher" Index="1"/>
             </Unit>
         </Instances>
         <Instances Id="Prot">
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="Builder"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+			<Unit Unit="SdbPBuild2">
+                <Field Id="Builder" Index="1"/>
+            </Unit>
+            <Unit Unit="SdbPTrain1">
                 <Field Id="Trainer"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPTrain2">
                 <Field Id="Trainer" Index="1"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPWarp1">
                 <Field Id="Warper"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SIDEBARCASTER_BASE">
+                <Field Id="Warper" Index="1"/>
+            </Unit>
+            <Unit Unit="SdbPRsrch1">
                 <Field Id="Researcher"/>
             </Unit>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPRsrch2">
                 <Field Id="Researcher" Index="1"/>
             </Unit>
         </Instances>
@@ -64,183 +94,183 @@
             <Int Int="1">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="Probe">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="UpgradeToWarpGate">
+		<Instances Id="UpgradeToWarpGate">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="Gateway">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="MorphBackToGateway">
+		<Instances Id="MorphBackToGateway">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="WarpGate">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="NexusTrain">
+		<Instances Id="NexusTrain">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="Nexus">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="NexusTrainMothership">
+		<Instances Id="NexusTrainMothership">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="Nexus">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="NexusTrainMothershipCore">
+		<Instances Id="NexusTrainMothershipCore">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="Nexus">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="GatewayTrain">
+		<Instances Id="GatewayTrain">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="Gateway">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="WarpGateTrain">
+		<Instances Id="WarpGateTrain">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="WarpGate">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="RoboticsFacilityTrain">
+		<Instances Id="RoboticsFacilityTrain">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="RoboticsFacility">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="StargateTrain">
+		<Instances Id="StargateTrain">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="Stargate">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="ForgeResearch">
+		<Instances Id="ForgeResearch">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="Forge">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="CyberneticsCoreResearch">
+		<Instances Id="CyberneticsCoreResearch">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="CyberneticsCore">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="TwilightCouncilResearch">
+		<Instances Id="TwilightCouncilResearch">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="TwilightCouncil">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="TemplarArchivesResearch">
+		<Instances Id="TemplarArchivesResearch">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="TemplarArchives">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="DarkShrineResearch">
+		<Instances Id="DarkShrineResearch">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="DarkShrine">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="FleetBeaconResearch">
+		<Instances Id="FleetBeaconResearch">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="FleetBeacon">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="RoboticsBayResearch">
+		<Instances Id="RoboticsBayResearch">
             <Int Int="0">
                 <Field Id="UseIdle"/>
             </Int>
-            <Unit Unit="ProbeDummy">
+            <Unit Unit="SdbPBuild1">
                 <Field Id="DummyCaster"/>
             </Unit>
             <Unit Unit="RoboticsBay">

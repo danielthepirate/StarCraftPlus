@@ -1,3 +1,5 @@
+bool CMSDB_DebugOutput = true;
+
 void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar, string submenu);
 bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions);
 void CMSDB_SidebarPathsInit();
