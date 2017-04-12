@@ -1,7 +1,18 @@
 bool CMSDB_DebugOutput = true;
 
+trigger CMSDB_ReplaceBuildOrders;
+typedef string[2] paths;
+
+
+const string CMDSB_ORDERREDIRECTDATA = "ComandSidebarOrderRedirect";
+const string CMSDB_DUMMYUSERDATA = "ComandSidebarDummyUnits";
+
+bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string abil);
 void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar, string submenu);
 bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions);
+
+
+unitgroup CMSDB_InitDummies(int player);
 void CMSDB_SidebarPathsInit();
 void CMSDB_PlayerDataInit();
 void CMSDB_Init();

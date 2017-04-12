@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
+	<!--
+		Hi
+	-->
 	<Frame type="Button" name="SideBarTabButtonTemplate">
         <Width val="74"/>
         <Height val="38"/>

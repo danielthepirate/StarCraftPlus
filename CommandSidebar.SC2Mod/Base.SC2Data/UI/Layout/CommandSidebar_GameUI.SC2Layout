@@ -83,7 +83,7 @@
 			</Frame>
 			<Frame type="Button" name="SidebarUnits" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="0"/>
-				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>"/>
+				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="Units"/>
 				</Frame>
@@ -91,7 +91,7 @@
 			</Frame>
 			<Frame type="Button" name="SidebarResearch" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="0"/>
-				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>"/>
+				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="Rsrch"/>
 				</Frame>
@@ -99,7 +99,7 @@
 			</Frame>
 			<Frame type="Button" name="SidebarInfoPanel" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Left" relative="$parent/SidebarResearch" pos="Max" offset="0"/>
-				<Anchor side="Top" relative="$parent/SidebarResearch" pos="Min" offset="0"/>"/>
+				<Anchor side="Top" relative="$parent/SidebarResearch" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="Info"/>
 				</Frame>
