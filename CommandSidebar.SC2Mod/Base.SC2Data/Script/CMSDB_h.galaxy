@@ -1,15 +1,53 @@
-bool CMSDB_DebugOutput = true;
+//CONSTANTS
+const string CMDSB_ORDERREDIRECTDATA = "ComandSidebarOrderRedirect";
+const string CMSDB_DUMMYUSERDATA = "ComandSidebarDummyUnits";
+const string c_CMDSB_orderRedirectData = "ComandSidebarOrderRedirect";
+const string c_CMSDB_dummyUserData = "ComandSidebarDummyUnits";
 
-trigger CMSDB_ReplaceBuildOrders;
+//STRUCT DEFINITIONS
+struct CMSDB_SidebarPaths{
+	paths builder;
+	paths trainer;
+	paths researcher;
+};
+
+struct CMSDB_PlayerData{
+	int sidebar;
+	playergroup pg;
+	string race;
+	unitgroup dummies;
+	unitgroup builder;
+	unitgroup trainer;
+	unitgroup researcher;
+	unitgroup idleWorkers;
+	unitgroup townhalls;
+};
+
+struct CMSDB_OrderRedirectData{
+	int useIdle;
+	string abil;
+	string dummyCaster;
+	string realCaster;
+};
+
+//TYPE DEFINITIONS
+typedef structref<CMSDB_OrderRedirectData> CMSDB_OrderRedirect;
 typedef string[2] paths;
 
 
-const string CMDSB_ORDERREDIRECTDATA = "ComandSidebarOrderRedirect";
-const string CMSDB_DUMMYUSERDATA = "ComandSidebarDummyUnits";
+//GLOBALS
+bool CMSDB_DebugOutput = true;
+CMSDB_SidebarPaths sidebarPaths;
+CMSDB_PlayerData[c_maxPlayers] playerData;
 
+trigger CMSDB_InterceptOrder;
+
+
+
+//FUNCTIONS
 bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string abil);
 void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar, string submenu);
-bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions);
+bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions);
 
 
 unitgroup CMSDB_InitDummies(int player);

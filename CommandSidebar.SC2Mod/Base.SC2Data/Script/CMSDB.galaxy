@@ -1,53 +1,9 @@
+include "Script/ActiveUserLib"
 include "Script/CMSDB_h"
-
-
-//--------------------------------------------------------------------------------------------------
-// Custom Script: IsActiveUser
-//--------------------------------------------------------------------------------------------------
-bool IsActiveUser (int player) {
-	bool active = (PlayerStatus(player) == c_playerStatusActive);
-	bool user = (PlayerType(player) == c_playerTypeUser);
-	return (active && user);
-}
 
 //--------------------------------------------------------------------------------------------------
 // Struct Declaration
 //--------------------------------------------------------------------------------------------------
-
-
-struct CMSDB_SidebarPaths{
-	paths builder;
-	paths trainer;
-	paths researcher;
-};
-
-CMSDB_SidebarPaths sidebarPaths;
-
-
-struct CMSDB_PlayerData{
-	int sidebar;
-	playergroup pg;
-	string race;
-	unitgroup dummies;
-	unitgroup builder;
-	unitgroup trainer;
-	unitgroup researcher;
-	unitgroup idleWorkers;
-	unitgroup townhalls;
-	
-};
-CMSDB_PlayerData[c_maxPlayers] playerData;
-
-
-struct CMSDB_OrderRedirectData{
-	int useIdle;
-	string abil;
-	string dummyCaster;
-	string realCaster;
-};
-
-typedef structref<CMSDB_OrderRedirectData> CMSDB_OrderRedirect;
-
 
 void CMSDB_SidebarPathsInit(){
 	sidebarPaths.builder[0] = "UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel1";
@@ -69,7 +25,7 @@ bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string ab
 }
 
 
-bool CMSDB_ReplaceBuildOrders_Func (bool testConds, bool runActions) {
+bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	unit u;
 	unitgroup ug;
 	unit dummy;
@@ -205,6 +161,8 @@ void CMSDB_PlayerDataInit(){
 			
 			CMSDB_InitDummies(player);
 			
+			
+			//Debug test stuff
 			UnitCreate(2,"Probe",c_unitCreateIgnorePlacement, player,unitPos,0.0);
 			UnitCreate(2,"SCV",c_unitCreateIgnorePlacement, player,unitPos,0.0);
 			UnitCreate(2,"Drone",c_unitCreateIgnorePlacement, player,unitPos,0.0);
@@ -222,14 +180,14 @@ void CMSDB_Init(){
 	string abil;
 	
 	
-	CMSDB_ReplaceBuildOrders = TriggerCreate("CMSDB_ReplaceBuildOrders_Func");
+	CMSDB_InterceptOrder = TriggerCreate("CMSDB_InterceptOrder_Func");
 	CMSDB_SidebarPathsInit();
 	CMSDB_PlayerDataInit();
 	
 	for(i = 1;i<=n;i+=1){
 		abil = UserDataInstance (CMDSB_ORDERREDIRECTDATA, i);
 		for(j=0;j<32;j+=1){
-			TriggerAddEventUnitOrder(CMSDB_ReplaceBuildOrders, null, AbilityCommand(abil, j));
+			TriggerAddEventUnitOrder(CMSDB_InterceptOrder, null, AbilityCommand(abil, j));
 		}
 	}
 }
