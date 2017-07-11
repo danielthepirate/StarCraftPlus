@@ -5,6 +5,7 @@ const string c_CMDSB_orderRedirectData = "ComandSidebarOrderRedirect";
 const string c_CMSDB_dummyUserData = "ComandSidebarDummyUnits";
 
 //STRUCT DEFINITIONS
+typedef string[2] paths;
 struct CMSDB_SidebarPaths{
 	paths builder;
 	paths trainer;
@@ -32,7 +33,7 @@ struct CMSDB_OrderRedirectData{
 
 //TYPE DEFINITIONS
 typedef structref<CMSDB_OrderRedirectData> CMSDB_OrderRedirect;
-typedef string[2] paths;
+
 
 
 //GLOBALS
