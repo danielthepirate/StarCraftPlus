@@ -47,7 +47,7 @@ trigger CMSDB_InterceptOrder;
 
 //FUNCTIONS
 bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string abil);
-void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar, string submenu);
+void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar);
 bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions);
 
 
