@@ -28,7 +28,7 @@ struct CMSDB_OrderRedirectData{
 	int useIdle;
 	string abil;
 	string dummyCaster;
-	string realCaster;
+	string[3] realCaster;
 	string realAbil;
 };
 
