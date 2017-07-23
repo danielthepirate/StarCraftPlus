@@ -87,7 +87,7 @@
     </CUser>
     <CUser id="ComandSidebarOrderRedirect">
         <Fields Id="DummyCaster" Type="Unit" Count="1"/>
-        <Fields Id="RealCaster" Type="Unit" Count="1"/>
+        <Fields Id="RealCaster" Type="Unit" Count="3"/>
         <Fields Id="RealAbilIndex" Type="AbilCmd"/>
         <Fields Id="UseIdle" Type="Int"/>
         <Fields Id="RealAbil" Type="GameLink" GameLinkType="Abil"/>
@@ -134,6 +134,12 @@
             </Unit>
             <Unit Unit="CommandCenter">
                 <Field Id="RealCaster"/>
+            </Unit>
+            <Unit Unit="OrbitalCommand">
+                <Field Id="RealCaster" Index="1"/>
+            </Unit>
+            <Unit Unit="PlanetaryFortress">
+                <Field Id="RealCaster" Index="2"/>
             </Unit>
         </Instances>
         <Instances Id="BarracksTrain">
@@ -311,6 +317,12 @@
             <Unit Unit="Hatchery">
                 <Field Id="RealCaster"/>
             </Unit>
+            <Unit Unit="Lair">
+                <Field Id="RealCaster" Index="1"/>
+            </Unit>
+            <Unit Unit="Hive">
+                <Field Id="RealCaster" Index="2"/>
+            </Unit>
         </Instances>
         <Instances Id="LarvaTrain">
             <AbilCmd Abil="LarvaTrain" Cmd="11">
@@ -416,6 +428,12 @@
             <Unit Unit="Hatchery">
                 <Field Id="RealCaster"/>
             </Unit>
+            <Unit Unit="Lair">
+                <Field Id="RealCaster" Index="1"/>
+            </Unit>
+            <Unit Unit="Hive">
+                <Field Id="RealCaster" Index="2"/>
+            </Unit>
         </Instances>
         <Instances Id="SpawningPoolResearch">
             <Int>
@@ -448,6 +466,9 @@
             </Unit>
             <Unit Unit="HydraliskDen">
                 <Field Id="RealCaster"/>
+            </Unit>
+			<Unit Unit="LurkerDenMP">
+                <Field Id="RealCaster" Index="1"/>
             </Unit>
         </Instances>
         <Instances Id="RoachWarrenResearch">
@@ -492,6 +513,9 @@
             </Unit>
             <Unit Unit="Spire">
                 <Field Id="RealCaster"/>
+            </Unit>
+            <Unit Unit="GreaterSpire">
+                <Field Id="RealCaster" Index="1"/>
             </Unit>
         </Instances>
         <Instances Id="UltraliskCavernResearch">
@@ -591,6 +615,9 @@
             </Unit>
             <Unit Unit="HighTemplar">
                 <Field Id="RealCaster"/>
+            </Unit>
+            <Unit Unit="DarkTemplar">
+                <Field Id="RealCaster" Index="1"/>
             </Unit>
         </Instances>
         <Instances Id="ForgeResearch">

@@ -20,7 +20,9 @@ bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string ab
 	orderdata.abil = abil;
 	orderdata.useIdle = UserDataGetInt(CMDSB_ORDERREDIRECTDATA, abil, "UseIdle", 1);
 	orderdata.dummyCaster = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "DummyCaster", 1);
-	orderdata.realCaster = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "RealCaster", 1);
+	orderdata.realCaster[0] = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "RealCaster", 1);
+	orderdata.realCaster[1] = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "RealCaster", 2);
+	orderdata.realCaster[2] = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "RealCaster", 3);
 	orderdata.realAbil = UserDataGetGameLink(CMDSB_ORDERREDIRECTDATA, abil, "RealAbil", 1);
 	return true;
 }
@@ -43,6 +45,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	dummy = EventUnit();
 	player = 1;
 	o = EventUnitOrder();
+	ug = UnitGroupEmpty();
 	
 	abil = AbilityCommandGetAbility(OrderGetAbilityCommand(o));
 	abilCmdIndex = AbilityCommandGetCommand(OrderGetAbilityCommand(o));
@@ -61,7 +64,14 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		u = UnitGroupUnit(ug, 1);
 	}
 	else{
-		ug = UnitGroup (orderdata.realCaster, player, r, null, 0);
+		//ug = UnitGroup (orderdata.realCaster[0], player, r, null, 0);
+		UnitGroupAddUnitGroup(ug,  UnitGroup (orderdata.realCaster[0], player, r, null, 0));
+		if(orderdata.realCaster[1] != "") {
+			UnitGroupAddUnitGroup(ug,  UnitGroup (orderdata.realCaster[1], player, r, null, 0));
+		}
+		if(orderdata.realCaster[2] != "") {
+			UnitGroupAddUnitGroup(ug,  UnitGroup (orderdata.realCaster[2], player, r, null, 0));
+		}
 		u = UnitGroupUnit(ug, 1);
 	}
 	if(orderdata.realAbil != ""){
