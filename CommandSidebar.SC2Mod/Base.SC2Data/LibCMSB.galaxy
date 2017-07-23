@@ -1,15 +1,10 @@
-include "TriggerLibs/NativeLib"
+include "TriggerLibs/natives"
 
 include "LibCMSB_h"
 
 //--------------------------------------------------------------------------------------------------
 // Library: CommandSidebar
 //--------------------------------------------------------------------------------------------------
-// External Library Initialization
-void libCMSB_InitLibraries () {
-    libNtve_InitVariables();
-}
-
 // Custom Script
 //--------------------------------------------------------------------------------------------------
 // Custom Script: Script
@@ -18,48 +13,6 @@ include "Script/CMSDB"
 
 void libCMSB_InitCustomScript () {
     InitCommandSideBar();
-}
-
-// Triggers
-//--------------------------------------------------------------------------------------------------
-// Trigger: ReplaceOrders
-//--------------------------------------------------------------------------------------------------
-bool libCMSB_gt_ReplaceOrders_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_unit;
-    unit lv_dummyUnit;
-    point lv_position;
-
-    // Variable Initialization
-    lv_dummyUnit = EventUnit();
-	return false;
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnit()) == "ProbeDummy"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_unit = UnitGroupUnit(UnitGroupIdle(1, true), 1);
-    lv_dummyUnit = EventUnit();
-    UnitIssueOrder(lv_unit, EventUnitOrder(), c_orderQueueReplace);
-    UnitIssueOrder(lv_dummyUnit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libCMSB_gt_ReplaceOrders_Init () {
-    libCMSB_gt_ReplaceOrders = TriggerCreate("libCMSB_gt_ReplaceOrders_Func");
-    TriggerAddEventUnitOrder(libCMSB_gt_ReplaceOrders, null, AbilityCommand("ProtossBuild", 1));
-}
-
-void libCMSB_InitTriggers () {
-    libCMSB_gt_ReplaceOrders_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -74,8 +27,6 @@ void libCMSB_InitLib () {
 
     libCMSB_InitLib_completed = true;
 
-    libCMSB_InitLibraries();
     libCMSB_InitCustomScript();
-    libCMSB_InitTriggers();
 }
 

@@ -1,10 +1,11 @@
-﻿Behavior/Name/SidebarDummy=SidebarDummy
+﻿Abil/Name/LarvaTrainDummyRedirect=Larva Morph
+Behavior/Name/SidebarDummy=SidebarDummy
 Button/Name/PylonDummy=Pylon
 Button/Tooltip/ProbeDummy=Basic worker unit. Can gather resources and warp in Protoss structures.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/PylonDummy=Provides supply.<n/>Supply allows you to warp in more units.<n/>Creates power for nearby structures.
-DocInfo/DescLong=Completely devoid of any description whatsoever.
+DocInfo/DescLong=Command Sidebar for StarCraft Plus
 DocInfo/DescShort=Any
-DocInfo/Name=Just Another StarCraft II Mod
+DocInfo/Name=Command Sidebar
 Unit/Name/ProbeDummy=ProbeDummy
 Unit/Name/SdbPBuild1=Sidebar Protoss Build 1
 Unit/Name/SdbPBuild2=Sidebar Protoss Build 2
