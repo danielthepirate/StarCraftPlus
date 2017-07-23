@@ -29,6 +29,7 @@ struct CMSDB_OrderRedirectData{
 	string abil;
 	string dummyCaster;
 	string realCaster;
+	string realAbil;
 };
 
 //TYPE DEFINITIONS
@@ -37,7 +38,7 @@ typedef structref<CMSDB_OrderRedirectData> CMSDB_OrderRedirect;
 
 
 //GLOBALS
-bool CMSDB_DebugOutput = true;
+bool CMSDB_DebugOutput = false;
 CMSDB_SidebarPaths sidebarPaths;
 CMSDB_PlayerData[c_maxPlayers] playerData;
 

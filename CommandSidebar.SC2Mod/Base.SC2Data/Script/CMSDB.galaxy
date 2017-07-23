@@ -21,6 +21,7 @@ bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string ab
 	orderdata.useIdle = UserDataGetInt(CMDSB_ORDERREDIRECTDATA, abil, "UseIdle", 1);
 	orderdata.dummyCaster = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "DummyCaster", 1);
 	orderdata.realCaster = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "RealCaster", 1);
+	orderdata.realAbil = UserDataGetGameLink(CMDSB_ORDERREDIRECTDATA, abil, "RealAbil", 1);
 	return true;
 }
 
@@ -30,7 +31,9 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	unitgroup ug;
 	unit dummy;
 	string abil;
+	int abilCmdIndex;
 	int player;
+	abilcmd redirAbil;
 	region r;
 	order o;
 	CMSDB_OrderRedirectData orderdata;
@@ -42,7 +45,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	o = EventUnitOrder();
 	
 	abil = AbilityCommandGetAbility(OrderGetAbilityCommand(o));
-	
+	abilCmdIndex = AbilityCommandGetCommand(OrderGetAbilityCommand(o));
 	CMSDB_OrderRedirectGetFromUserData(orderdata, abil);
 	
 	if (testConds) {
@@ -60,6 +63,11 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	else{
 		ug = UnitGroup (orderdata.realCaster, player, r, null, 0);
 		u = UnitGroupUnit(ug, 1);
+	}
+	if(orderdata.realAbil != ""){
+		redirAbil = AbilityCommand(orderdata.realAbil, abilCmdIndex);
+		OrderSetAbilityCommand (o, redirAbil);
+		TriggerDebugOutput(1, StringToText("Abil Substitution: "+orderdata.realAbil+" From: "+abil), CMSDB_DebugOutput);
 	}
 	
 	if(AbilityClass(abil) == c_classIdCAbilBuild){

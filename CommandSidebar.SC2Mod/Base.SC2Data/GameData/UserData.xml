@@ -10,7 +10,7 @@
             <Unit Unit="SdbTBuild1">
                 <Field Id="Builder"/>
             </Unit>
-			<Unit Unit="SdbTBuild2">
+            <Unit Unit="SdbTBuild2">
                 <Field Id="Builder" Index="1"/>
             </Unit>
             <Unit Unit="SdbTTrain1">
@@ -36,7 +36,7 @@
             <Unit Unit="SdbZBuild1">
                 <Field Id="Builder"/>
             </Unit>
-			<Unit Unit="SdbZBuild2">
+            <Unit Unit="SdbZBuild2">
                 <Field Id="Builder" Index="1"/>
             </Unit>
             <Unit Unit="SdbZTrain1">
@@ -62,7 +62,7 @@
             <Unit Unit="SdbPBuild1">
                 <Field Id="Builder"/>
             </Unit>
-			<Unit Unit="SdbPBuild2">
+            <Unit Unit="SdbPBuild2">
                 <Field Id="Builder" Index="1"/>
             </Unit>
             <Unit Unit="SdbPTrain1">
@@ -88,9 +88,11 @@
     <CUser id="ComandSidebarOrderRedirect">
         <Fields Id="DummyCaster" Type="Unit" Count="1"/>
         <Fields Id="RealCaster" Type="Unit" Count="1"/>
+        <Fields Id="RealAbilIndex" Type="AbilCmd"/>
         <Fields Id="UseIdle" Type="Int"/>
+        <Fields Id="RealAbil" Type="GameLink" GameLinkType="Abil"/>
         <Instances Id="[Default]"/>
-		<Instances Id="TerranBuild">
+        <Instances Id="TerranBuild">
             <Int Int="1">
                 <Field Id="UseIdle"/>
             </Int>
@@ -101,8 +103,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="UpgradeToOrbital">
-            <Int Int="0">
+        <Instances Id="UpgradeToOrbital">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -112,8 +114,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="UpgradeToPlanetaryFortress">
-            <Int Int="0">
+        <Instances Id="UpgradeToPlanetaryFortress">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -123,8 +125,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="CommandCenterTrain">
-            <Int Int="0">
+        <Instances Id="CommandCenterTrain">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -134,8 +136,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="BarracksTrain">
-            <Int Int="0">
+        <Instances Id="BarracksTrain">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -145,8 +147,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="FactoryTrain">
-            <Int Int="0">
+        <Instances Id="FactoryTrain">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -156,8 +158,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="StarportTrain">
-            <Int Int="0">
+        <Instances Id="StarportTrain">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -167,8 +169,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="ArmSiloWithNuke">
-            <Int Int="0">
+        <Instances Id="ArmSiloWithNuke">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -178,8 +180,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="EngineeringBayResearch">
-            <Int Int="0">
+        <Instances Id="EngineeringBayResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -189,8 +191,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="BarracksTechLabResearch">
-            <Int Int="0">
+        <Instances Id="BarracksTechLabResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -200,8 +202,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="ArmoryResearch">
-            <Int Int="0">
+        <Instances Id="ArmoryResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -211,8 +213,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="FactoryTechLabResearch">
-            <Int Int="0">
+        <Instances Id="FactoryTechLabResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -222,8 +224,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="StarportTechLabResearch">
-            <Int Int="0">
+        <Instances Id="StarportTechLabResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -233,8 +235,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="GhostAcademyResearch">
-            <Int Int="0">
+        <Instances Id="GhostAcademyResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -244,8 +246,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="FusionCoreResearch">
-            <Int Int="0">
+        <Instances Id="FusionCoreResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -255,8 +257,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="ZergBuild">
-            <Int Int="0">
+        <Instances Id="ZergBuild">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -266,8 +268,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="UpgradeToLair">
-            <Int Int="0">
+        <Instances Id="UpgradeToLair">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -277,8 +279,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="UpgradeToHive">
-            <Int Int="0">
+        <Instances Id="UpgradeToHive">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -288,8 +290,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="UpgradeToGreaterSpire">
-            <Int Int="0">
+        <Instances Id="UpgradeToGreaterSpire">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -299,8 +301,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="TrainQueen">
-            <Int Int="0">
+        <Instances Id="TrainQueen">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -310,10 +312,13 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="LarvaTrain">
-            <Int Int="0">
-                <Field Id="UseIdle"/>
-            </Int>
+        <Instances Id="LarvaTrain">
+            <AbilCmd Abil="LarvaTrain" Cmd="11">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="LarvaTrain">
+                <Field Id="RealAbil"/>
+            </GameLink>
             <Unit Unit="ProbeDummy">
                 <Field Id="DummyCaster"/>
             </Unit>
@@ -321,8 +326,22 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="BuildNydusCanal">
-            <Int Int="0">
+        <Instances Id="LarvaTrainDummyRedirect">
+            <AbilCmd Abil="LarvaTrain" Cmd="11">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="LarvaTrain">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="Larva">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+        <Instances Id="BuildNydusCanal">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -332,8 +351,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="MorphToOverseer">
-            <Int Int="0">
+        <Instances Id="MorphToOverseer">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -343,8 +362,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="MorphZerglingToBaneling">
-            <Int Int="0">
+        <Instances Id="MorphZerglingToBaneling">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -354,8 +373,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="MorphToRavager">
-            <Int Int="0">
+        <Instances Id="MorphToRavager">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -365,8 +384,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="MorphToLurker">
-            <Int Int="0">
+        <Instances Id="MorphToLurker">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -376,8 +395,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="MorphToBroodLord">
-            <Int Int="0">
+        <Instances Id="MorphToBroodLord">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -387,8 +406,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="LairResearch">
-            <Int Int="0">
+        <Instances Id="LairResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -398,8 +417,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="SpawningPoolResearch">
-            <Int Int="0">
+        <Instances Id="SpawningPoolResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -409,8 +428,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="evolutionchamberresearch">
-            <Int Int="0">
+        <Instances Id="evolutionchamberresearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -420,8 +439,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="HydraliskDenResearch">
-            <Int Int="0">
+        <Instances Id="HydraliskDenResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -431,8 +450,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="RoachWarrenResearch">
-            <Int Int="0">
+        <Instances Id="RoachWarrenResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -442,8 +461,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="BanelingNestResearch">
-            <Int Int="0">
+        <Instances Id="BanelingNestResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -453,8 +472,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="InfestationPitResearch">
-            <Int Int="0">
+        <Instances Id="InfestationPitResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -464,8 +483,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="SpireResearch">
-            <Int Int="0">
+        <Instances Id="SpireResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -475,8 +494,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="UltraliskCavernResearch">
-            <Int Int="0">
+        <Instances Id="UltraliskCavernResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -486,8 +505,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="ProtossBuild">
-            <Int Int="0">
+        <Instances Id="ProtossBuild">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -497,8 +516,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="NexusTrain">
-            <Int Int="0">
+        <Instances Id="NexusTrain">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -508,8 +527,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="NexusTrainMothershipCore">
-            <Int Int="0">
+        <Instances Id="NexusTrainMothershipCore">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -519,8 +538,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="GatewayTrain">
-            <Int Int="0">
+        <Instances Id="GatewayTrain">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -530,8 +549,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="StargateTrain">
-            <Int Int="0">
+        <Instances Id="StargateTrain">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -541,8 +560,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="RoboticsFacilityTrain">
-            <Int Int="0">
+        <Instances Id="RoboticsFacilityTrain">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -552,8 +571,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="MorphToMothership">
-            <Int Int="0">
+        <Instances Id="MorphToMothership">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -563,8 +582,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="ArchonWarp">
-            <Int Int="0">
+        <Instances Id="ArchonWarp">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -574,8 +593,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="ForgeResearch">
-            <Int Int="0">
+        <Instances Id="ForgeResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -585,8 +604,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="CyberneticsCoreResearch">
-            <Int Int="0">
+        <Instances Id="CyberneticsCoreResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -596,8 +615,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="TwilightCouncilResearch">
-            <Int Int="0">
+        <Instances Id="TwilightCouncilResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -607,8 +626,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="RoboticsBayResearch">
-            <Int Int="0">
+        <Instances Id="RoboticsBayResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -618,8 +637,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="FleetBeaconResearch">
-            <Int Int="0">
+        <Instances Id="FleetBeaconResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -629,8 +648,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="TemplarArchivesResearch">
-            <Int Int="0">
+        <Instances Id="TemplarArchivesResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">
@@ -640,8 +659,8 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-<Instances Id="DarkShrineResearch">
-            <Int Int="0">
+        <Instances Id="DarkShrineResearch">
+            <Int>
                 <Field Id="UseIdle"/>
             </Int>
             <Unit Unit="ProbeDummy">

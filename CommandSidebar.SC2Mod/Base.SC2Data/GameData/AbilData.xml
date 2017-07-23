@@ -1,5 +1,61 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CAbilTrain id="LarvaTrainDummyRedirect">
+        <OrderArray index="0" Model="Assets\UI\Cursors\WayPointConfirmSwarm\WayPointConfirmSwarm.m3"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
+        <Activity value="UI/Morphing"/>
+        <Flags index="Select" value="1"/>
+        <Flags index="WaitForFood" value="0"/>
+        <Range value="4"/>
+        <InfoArray index="Train1" Time="17" Alert="TrainWorkerComplete">
+            <Button DefaultButtonFace="Drone"/>
+            <Unit value="Drone"/>
+        </InfoArray>
+        <InfoArray index="Train2" Time="24">
+            <Button DefaultButtonFace="Zergling" Requirements="HaveSpawningPool"/>
+            <Unit value="Zergling"/>
+            <Unit value="Zergling"/>
+        </InfoArray>
+        <InfoArray index="Train3" Time="25">
+            <Button DefaultButtonFace="Overlord"/>
+            <Unit value="Overlord"/>
+        </InfoArray>
+        <InfoArray index="Train4" Time="33">
+            <Button DefaultButtonFace="Hydralisk" Requirements="HaveHydraliskDen"/>
+            <Unit value="Hydralisk"/>
+        </InfoArray>
+        <InfoArray index="Train5" Time="33">
+            <Button DefaultButtonFace="Mutalisk" Requirements="HaveSpire"/>
+            <Unit value="Mutalisk"/>
+        </InfoArray>
+        <InfoArray index="Train7" Time="55">
+            <Button DefaultButtonFace="Ultralisk" Requirements="HaveUltraliskCavern"/>
+            <Unit value="Ultralisk"/>
+        </InfoArray>
+        <InfoArray index="Train8" Time="35">
+            <Button Requirements="HaveBanelingNest"/>
+        </InfoArray>
+        <InfoArray index="Train10" Time="27">
+            <Button DefaultButtonFace="Roach" Requirements="HaveBanelingNest2"/>
+            <Unit value="Roach"/>
+        </InfoArray>
+        <InfoArray index="Train11" Time="50">
+            <Button DefaultButtonFace="Infestor" Requirements="HaveInfestationPit"/>
+            <Unit value="Infestor"/>
+        </InfoArray>
+        <InfoArray index="Train12" Time="40">
+            <Button DefaultButtonFace="Corruptor" Requirements="HaveSpire"/>
+            <Unit value="Corruptor"/>
+        </InfoArray>
+        <InfoArray index="Train13" Time="40">
+            <Button DefaultButtonFace="Viper" Requirements="HaveHive"/>
+            <Unit value="Viper"/>
+        </InfoArray>
+        <InfoArray index="Train15" Time="40">
+            <Button DefaultButtonFace="SwarmHostMP" Requirements="HaveInfestationPit"/>
+            <Unit value="SwarmHostMP"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilBuild id="ProtossBuild">
         <!-- <AbilSetId value="ProtBuild"/> -->
     </CAbilBuild>
