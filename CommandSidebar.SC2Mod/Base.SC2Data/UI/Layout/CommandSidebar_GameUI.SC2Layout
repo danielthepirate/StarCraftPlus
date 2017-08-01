@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
 	<Frame type="Frame" name="GameUI" file="GameUI">
+		<!-- 
 		<Frame type="Frame" name="RaceCheck">
 			<Handle val="RaceCheck"/>
 			<Anchor relative="$parent"/>
@@ -43,18 +44,40 @@
 				</State>
 			</StateGroup>
 		</Frame>
+		-->
 	</Frame>
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
 		<Frame type="Frame" name="BuilderCommandContainer" template="CommandSidebar/CommandContainer">
 			<Anchor relative="$parent/InfoPanel"/>
 			
+			<Frame type="CommandPanel" name="CommandPanel1">
+				<Handle val="BuilderCommandPanel1"/>
+			</Frame>
+			<Frame type="CommandPanel" name="CommandPanel2">
+				<Handle val="BuilderCommandPanel2"/>
+			</Frame>
+			
 		</Frame>
 		<Frame type="Frame" name="TrainerCommandContainer" template="CommandSidebar/CommandContainer">
 			<Anchor relative="$parent/InfoPanel"/>
 			
+			<Frame type="CommandPanel" name="CommandPanel1">
+				<Handle val="TrainerCommandPanel1"/>
+			</Frame>
+			<Frame type="CommandPanel" name="CommandPanel2">
+				<Handle val="TrainerCommandPanel2"/>
+			</Frame>
+			
 		</Frame>
 		<Frame type="Frame" name="ResearcherCommandContainer" template="CommandSidebar/CommandContainer">
 			<Anchor relative="$parent/InfoPanel"/>
+			
+			<Frame type="CommandPanel" name="CommandPanel1">
+				<Handle val="ResearcherCommandPanel1"/>
+			</Frame>
+			<Frame type="CommandPanel" name="CommandPanel2">
+				<Handle val="ResearcherCommandPanel2"/>
+			</Frame>
 			
 		</Frame>
 		<Frame type="TabControl" name="SideBarTab">
@@ -108,4 +131,8 @@
 		</Frame>
 		
 	</Frame>
+	
+	
+	
+	
 </Desc>

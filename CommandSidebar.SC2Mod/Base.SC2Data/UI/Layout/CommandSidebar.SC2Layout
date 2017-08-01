@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
-	<!--
-		Hi
-	-->
 	<Frame type="Button" name="SideBarTabButtonTemplate">
         <Width val="74"/>
         <Height val="38"/>
@@ -53,8 +50,10 @@
 		<UseGridHotkeys val="false"/>
 
         <Frame type="CommandTooltip" name="TestCommandTooltip" template="CommandButton/CommandTooltipTemplate">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="120"/>
-            <Anchor side="Right" relative="$parent" pos="Min" offset="0"/>
+           <!--  <Anchor side="Bottom" relative="$parent" pos="Max" offset="-220"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/> -->
+			<PositionFixed  val="false"/>
         </Frame>
 
         <Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandSidebarButtonTemplate">

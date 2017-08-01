@@ -8,7 +8,7 @@
         <Flags index="WaitForFood" value="0"/>
         <Range value="4"/>
         <InfoArray index="Train1" Time="17" Alert="TrainWorkerComplete">
-            <Button DefaultButtonFace="Drone"/>
+            <Button DefaultButtonFace="Drone" Requirements="HaveLarva"/>
             <Unit value="Drone"/>
         </InfoArray>
         <InfoArray index="Train2" Time="24">
