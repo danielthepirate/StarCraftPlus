@@ -28,4 +28,51 @@
         <CombineArray value="IsNexusNotNearbyBehav"/>
         <CombineArray value="IsWarpgateNearbyBehav"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareChargeUsed id="OverlordDontRemoveCooldownifNoCharges">
+        <WhichUnit Value="Source"/>
+        <OtherUnit Value="Source"/>
+        <ChargeLink value="Abil/CreepTumorBuild"/>
+        <Location value="Unit"/>
+        <Ability value="CreepTumorBuild"/>
+    </CValidatorUnitCompareChargeUsed>
+    <CValidatorUnitCompareChargeUsed id="CreepTumorBehaviorValidator">
+        <WhichUnit Value="Source"/>
+        <OtherUnit Value="Source"/>
+        <ChargeLink value="Abil/CreepTumorBuild"/>
+        <Location value="Unit"/>
+        <Ability value="CreepTumorBuild"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareChargeUsed>
+    <CValidatorLocationEnumArea id="SupplyDepotLowerEnemyEnumerate">
+        <WhichLocation Value="OriginUnit"/>
+        <AreaArray Radius="2.5"/>
+        <Compare value="Eq"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <LaunchLocation Value="OriginUnit"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="SupplyDepotRaiseAllyEnumerate">
+        <WhichLocation Value="OriginUnit"/>
+        <AreaArray Radius="2.5"/>
+        <Compare value="Eq"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <LaunchLocation Value="OriginUnit"/>
+        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Hidden"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="SupplyDepotRaiseEnemyEnumerate">
+        <WhichLocation Value="OriginUnit"/>
+        <AreaArray Radius="2.5"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <LaunchLocation Value="OriginUnit"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Hidden"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="SupplyDepotRaiseNot">
+        <Type value="And"/>
+        <CombineArray value="SupplyDepotLowerEnemyEnumerate"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SupplyDepotRaiseOr">
+        <CombineArray value="SupplyDepotRaiseEnemyEnumerate"/>
+        <CombineArray value="SupplyDepotRaiseAllyEnumerate"/>
+    </CValidatorCombine>
 </Catalog>

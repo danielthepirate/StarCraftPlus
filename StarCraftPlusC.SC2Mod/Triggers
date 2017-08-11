@@ -5533,7 +5533,6 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="F463A414"/>
         </Element>
         <Element Type="FunctionCall" Id="2E6FAB04">
-            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="02F55C7B"/>
             <Parameter Type="Param" Library="SCPL" Id="40D6D9C8"/>
             <Parameter Type="Param" Library="SCPL" Id="625C0AA3"/>
@@ -5552,7 +5551,6 @@
             <Preset Type="PresetValue" Library="Ntve" Id="06067E90"/>
         </Element>
         <Element Type="FunctionCall" Id="B907315D">
-            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="02F55C7B"/>
             <Parameter Type="Param" Library="SCPL" Id="9252F974"/>
             <Parameter Type="Param" Library="SCPL" Id="677BA06C"/>

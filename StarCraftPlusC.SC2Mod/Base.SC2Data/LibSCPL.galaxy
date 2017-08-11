@@ -215,6 +215,8 @@ void libSCPL_gf_InitializeSpendOverTime () {
     // Implementation
     libSCPL_gf_InitializeResourceUI();
     lv_gamePlayers = PlayerGroupActive();
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 

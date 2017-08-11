@@ -17,4 +17,11 @@
         <AlertIcon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
+	<CButton id="CreepTumorAutocast">
+        <Icon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
+        <Hotkey value="Button/Hotkey/BuildCreepTumorPropagate2"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="BuildCreepTumorPropagate"/>
+    </CButton>
 </Catalog>
