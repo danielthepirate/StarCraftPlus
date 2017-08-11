@@ -16,17 +16,12 @@ void libSCPL_InitLibraries () {
 bool libSCPL_InitVariables_completed = false;
 
 void libSCPL_InitVariables () {
-    int init_i;
-
     if (libSCPL_InitVariables_completed) {
         return;
     }
 
     libSCPL_InitVariables_completed = true;
 
-    for (init_i = 0; init_i <= 16; init_i += 1) {
-        libSCPL_gv_player[init_i].lv_progressUnits = UnitGroupEmpty();
-    }
     libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend = c_invalidDialogControlId;
     libSCPL_gv_constants.lv_spendBufferMinerals = 1000;
@@ -536,7 +531,7 @@ void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer) {
     TriggerSendEvent(lv_event);
 }
 
-unitgroup libSCPL_gf_HarvestableMinerals () {
+unitgroup libSCPL_gf_PlayerHarvestableMinerals () {
     unitgroup autoCF505826_g;
     int autoCF505826_u;
 
@@ -559,7 +554,7 @@ unitgroup libSCPL_gf_HarvestableMinerals () {
     return lv_harvestable;
 }
 
-unitgroup libSCPL_gf_HarvestableGas (int lp_playerIndex) {
+unitgroup libSCPL_gf_PlayerHarvestableGas (int lp_playerIndex) {
     unitgroup auto21C76C5E_g;
     int auto21C76C5E_u;
 
@@ -651,7 +646,7 @@ unitgroup libSCPL_gf_PlayerTownHalls (int lp_playerIndex) {
     return lv_townHallGroup;
 }
 
-unitgroup libSCPL_gf_UnitsInUnitGroupChargeLink (unitgroup lp_unitGroup, string lp_chargeLink, fixed lp_chargeValue) {
+unitgroup libSCPL_gf_UnitsInUnitGroupMatchingChargeLink (unitgroup lp_unitGroup, string lp_chargeLink, fixed lp_chargeValue) {
     unitgroup autoBE7DE37B_g;
     int autoBE7DE37B_u;
 
@@ -667,20 +662,20 @@ unitgroup libSCPL_gf_UnitsInUnitGroupChargeLink (unitgroup lp_unitGroup, string 
     autoBE7DE37B_u = 1;
     for ( ; autoBE7DE37B_u <= UnitGroupCount(autoBE7DE37B_g, c_unitCountAll) ; autoBE7DE37B_u += BoolToInt(lv_unit == UnitGroupUnit(autoBE7DE37B_g, autoBE7DE37B_u)) ) {
         lv_unit = UnitGroupUnit(autoBE7DE37B_g, autoBE7DE37B_u);
-        if ((libSCPL_gf_UnitChargeGet(lv_unit, lp_chargeLink) == lp_chargeValue)) {
+        if ((libSCPL_gf_UnitChargeLink(lv_unit, lp_chargeLink) == lp_chargeValue)) {
             UnitGroupAdd(lv_chargeLinkUnits, lv_unit);
         }
     }
     return lv_chargeLinkUnits;
 }
 
-void libSCPL_gf_UnitChargeSet (unit lp_unit, string lp_chargeLink, fixed lp_chargeValue) {
+void libSCPL_gf_UnitChargeLinkSet (unit lp_unit, string lp_chargeLink, fixed lp_chargeValue) {
     // Implementation
     libNtve_gf_UnitRemoveChargeUsed(lp_unit, (lp_chargeLink));
     UnitAddChargeUsed(lp_unit, (lp_chargeLink), lp_chargeValue);
 }
 
-fixed libSCPL_gf_UnitChargeGet (unit lp_unit, string lp_chargeLink) {
+fixed libSCPL_gf_UnitChargeLink (unit lp_unit, string lp_chargeLink) {
     // Implementation
     return UnitGetChargeUsed(lp_unit, (lp_chargeLink));
 }
@@ -703,119 +698,6 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
 void libSCPL_gt_InitializationPlus_Init () {
     libSCPL_gt_InitializationPlus = TriggerCreate("libSCPL_gt_InitializationPlus_Func");
     TriggerAddEventTimeElapsed(libSCPL_gt_InitializationPlus, 0.0, c_timeGame);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Worker Set Harvest State
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_WorkerSetHarvestState_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_unit;
-    unit lv_targetUnit;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_unit = EventUnit();
-    lv_targetUnit = OrderGetTargetUnit(EventUnitOrder());
-    if (((UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGas") == true) || (UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGasProtoss") == true) || (UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGasZerg") == true))) {
-        libSCPL_gf_UnitChargeSet(lv_unit, "HarvestMinerals", 0.0);
-        libSCPL_gf_UnitChargeSet(lv_unit, "HarvestGas", 1.0);
-    }
-    if (((UnitHasBehavior2(lv_targetUnit, "MineralFieldMinerals") == true) || (UnitHasBehavior2(lv_targetUnit, "MineralFieldMinerals750") == true) || (UnitHasBehavior2(lv_targetUnit, "HighYieldMineralFieldMinerals") == true) || (UnitHasBehavior2(lv_targetUnit, "HighYieldMineralFieldMinerals750") == true) || (UnitHasBehavior2(lv_targetUnit, "MineralFieldMineralsNoRemove") == true))) {
-        libSCPL_gf_UnitChargeSet(lv_unit, "HarvestMinerals", 1.0);
-        libSCPL_gf_UnitChargeSet(lv_unit, "HarvestGas", 0.0);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_WorkerSetHarvestState_Init () {
-    libSCPL_gt_WorkerSetHarvestState = TriggerCreate("libSCPL_gt_WorkerSetHarvestState_Func");
-    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestState, null, AbilityCommand("SCVHarvest", 0));
-    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestState, null, AbilityCommand("MULEGather", 0));
-    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestState, null, AbilityCommand("DroneHarvest", 0));
-    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestState, null, AbilityCommand("ProbeHarvest", 0));
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Worker Set Harvest State None
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_WorkerSetHarvestStateNone_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_unit;
-    unit lv_targetUnit;
-
-    // Variable Initialization
-
-    // Conditions
-    if (testConds) {
-        if (!(((UnitGetType(EventUnit()) == "Probe") || (UnitGetType(EventUnit()) == "SCV") || (UnitGetType(EventUnit()) == "Drone") || (UnitGetType(EventUnit()) == "MULE")))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_unit = EventUnit();
-    libSCPL_gf_UnitChargeSet(lv_unit, "HarvestMinerals", 0.0);
-    libSCPL_gf_UnitChargeSet(lv_unit, "HarvestGas", 0.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_WorkerSetHarvestStateNone_Init () {
-    libSCPL_gt_WorkerSetHarvestStateNone = TriggerCreate("libSCPL_gt_WorkerSetHarvestStateNone_Func");
-    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestStateNone, null, AbilityCommand("move", 0));
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Worker Idle Harvest Resume
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_WorkerIdleHarvestResume_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_unit;
-    int lv_playerIndex;
-
-    // Variable Initialization
-
-    // Conditions
-    if (testConds) {
-        if (!(((UnitGetType(EventUnit()) == "Probe") || (UnitGetType(EventUnit()) == "SCV") || (UnitGetType(EventUnit()) == "Drone") || (UnitGetType(EventUnit()) == "MULE")))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_unit = EventUnit();
-    lv_playerIndex = UnitGetOwner(lv_unit);
-    if (((UnitHasBehavior2(lv_unit, "CarryHarvestableVespeneGeyserGas") == true) || (UnitHasBehavior2(lv_unit, "CarryHarvestableVespeneGeyserGasProtoss") == true) || (UnitHasBehavior2(lv_unit, "CarryHarvestableVespeneGeyserGasZerg") == true) || (UnitHasBehavior2(lv_unit, "CarryHighYieldMineralFieldMinerals") == true) || (UnitHasBehavior2(lv_unit, "CarryMineralFieldMinerals") == true) || (UnitHasBehavior2(lv_unit, "CarryMineralFieldMineralsNoRemove") == true))) {
-        UnitIssueOrder(lv_unit, Order(AbilityCommand("DroneHarvest", 1)), c_orderQueueReplace);
-    }
-    else if ((libSCPL_gf_UnitChargeGet(lv_unit, "HarvestMinerals") == 1)) {
-        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("DroneHarvest", 0), UnitGroupClosestToPoint(libSCPL_gf_HarvestableMinerals(), UnitGetPosition(lv_unit))), c_orderQueueReplace);
-    }
-    else if ((libSCPL_gf_UnitChargeGet(lv_unit, "HarvestGas") == 1)) {
-        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("DroneHarvest", 0), UnitGroupClosestToPoint(libSCPL_gf_HarvestableGas(lv_playerIndex), UnitGetPosition(lv_unit))), c_orderQueueReplace);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_WorkerIdleHarvestResume_Init () {
-    libSCPL_gt_WorkerIdleHarvestResume = TriggerCreate("libSCPL_gt_WorkerIdleHarvestResume_Func");
-    TriggerAddEventUnitBecomesIdle(libSCPL_gt_WorkerIdleHarvestResume, null, true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3132,72 +3014,81 @@ void libSCPL_gt_ResourceConvertMinerals_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Spend
+// Trigger: Automated Expansion Worker Production
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_AutomatedExpansionWorkerProduction_Func (bool testConds, bool runActions) {
+    string auto9E44F9EA_val;
+
     // Variable Declarations
-    string lv_event;
-    string lv_param;
+    unitgroup lv_resource;
+    region lv_resourceRegion;
+    fixed lv_resourceRadius;
+    unit lv_townHall;
+    unitgroup lv_larva;
+    int lv_larvaCount;
     int lv_playerIndex;
-    fixed lv_spend;
-    string lv_spendDisplay;
 
     // Variable Initialization
-    lv_event = "";
-    lv_param = "";
-    lv_spendDisplay = "";
+    lv_resource = UnitGroupEmpty();
+    lv_larva = UnitGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "CommandCenter") || (UnitGetType(EventUnitProgressUnit()) == "Nexus") || (UnitGetType(EventUnitProgressUnit()) == "Hatchery")))) {
+            return false;
+        }
+    }
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    lv_event = libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend);
-    lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
-    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName(lv_event, lv_param));
-    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals * (1.0 / libSCPL_gv_constants.lv_spendTickIncrement));
-    if ((lv_spend > 0.0)) {
-        lv_spendDisplay = ("( - " + FixedToString(lv_spend, 0) + ")");
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, PlayerGroupSingle(lv_playerIndex), true);
+    lv_townHall = EventUnitProgressUnit();
+    lv_playerIndex = UnitGetOwner(lv_townHall);
+    lv_resourceRadius = 15.0;
+    lv_resourceRegion = RegionCircle(UnitGetPosition(lv_townHall), lv_resourceRadius);
+    lv_resource = UnitGroup(null, c_playerAny, lv_resourceRegion, UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupLoopBegin(lv_resource);
+    for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+        if (((UnitGetType(UnitGroupLoopCurrent()) == "Assimilator") || (UnitGetType(UnitGroupLoopCurrent()) == "Refinery") || (UnitGetType(UnitGroupLoopCurrent()) == "Extractor"))) {
+            UnitGroupRemove(lv_resource, UnitGroupLoopCurrent());
+        }
+    }
+    UnitGroupLoopEnd();
+    auto9E44F9EA_val = UnitGetType(EventUnitProgressUnit());
+    if (auto9E44F9EA_val == "CommandCenter") {
+        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyCommand", 0), UnitGroupUnit(lv_resource, 1)), c_orderQueueReplace);
+        UnitIssueOrder(lv_townHall, Order(AbilityCommand("CommandCenterTrain", 0)), c_orderQueueAddToEnd);
+    }
+    else if (auto9E44F9EA_val == "Nexus") {
+        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyNexus", 0), UnitGroupUnit(lv_resource, 1)), c_orderQueueReplace);
+        UnitIssueOrder(lv_townHall, Order(AbilityCommand("NexusTrain", 0)), c_orderQueueAddToEnd);
+    }
+    else if (auto9E44F9EA_val == "Hatchery") {
+        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyHatchery", 1), UnitGroupUnit(lv_resource, 1)), c_orderQueueReplace);
+        while ((lv_larvaCount == 0)) {
+            lv_larva = UnitGroup("Larva", lv_playerIndex, lv_resourceRegion, UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+            lv_larvaCount = UnitGroupCount(lv_larva, c_unitCountAlive);
+            Wait(0.0625, c_timeGame);
+        }
+        UnitIssueOrder(UnitGroupClosestToPoint(lv_larva, UnitGetPosition(lv_townHall)), Order(AbilityCommand("LarvaTrain", 0)), c_orderQueueReplace);
     }
     else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, PlayerGroupSingle(lv_playerIndex), false);
-    }
-    if ((lv_spend > libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex))) {
-        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
-    }
-    else {
-        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, Color(100,100,100), PlayerGroupSingle(lv_playerIndex));
-    }
-    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene * (1.0 / libSCPL_gv_constants.lv_spendTickIncrement));
-    if ((lv_spend > 0.0)) {
-        lv_spendDisplay = ("( - " + FixedToString(lv_spend, 0) + ")");
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, PlayerGroupSingle(lv_playerIndex), true);
-    }
-    else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, PlayerGroupSingle(lv_playerIndex), false);
-    }
-    if ((lv_spend > libSCPL_gf_PlayerAvailableVespene(lv_playerIndex))) {
-        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
-    }
-    else {
-        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, Color(100,100,100), PlayerGroupSingle(lv_playerIndex));
     }
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplaySpend_Init () {
-    libSCPL_gt_ResourceDisplaySpend = TriggerCreate("libSCPL_gt_ResourceDisplaySpend_Func");
-    TriggerAddEventGeneric(libSCPL_gt_ResourceDisplaySpend, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend));
+void libSCPL_gt_AutomatedExpansionWorkerProduction_Init () {
+    libSCPL_gt_AutomatedExpansionWorkerProduction = TriggerCreate("libSCPL_gt_AutomatedExpansionWorkerProduction_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_AutomatedExpansionWorkerProduction, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AutomateWorkerProductionInitialization
+// Trigger: Automate Worker Production Initialize
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutomateWorkerProductionInitialization_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_AutomateWorkerProductionInitialize_Func (bool testConds, bool runActions) {
     string auto517E0BD5_val;
 
     // Actions
@@ -3226,13 +3117,13 @@ bool libSCPL_gt_AutomateWorkerProductionInitialization_Func (bool testConds, boo
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutomateWorkerProductionInitialization_Init () {
-    libSCPL_gt_AutomateWorkerProductionInitialization = TriggerCreate("libSCPL_gt_AutomateWorkerProductionInitialization_Func");
-    TriggerAddEventMapInit(libSCPL_gt_AutomateWorkerProductionInitialization);
+void libSCPL_gt_AutomateWorkerProductionInitialize_Init () {
+    libSCPL_gt_AutomateWorkerProductionInitialize = TriggerCreate("libSCPL_gt_AutomateWorkerProductionInitialize_Func");
+    TriggerAddEventMapInit(libSCPL_gt_AutomateWorkerProductionInitialize);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AutomateWorkerProduction
+// Trigger: Automate Worker Production
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_AutomateWorkerProduction_Func (bool testConds, bool runActions) {
     string auto5D012041_val;
@@ -3298,9 +3189,9 @@ void libSCPL_gt_AutomateWorkerProduction_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AutomateGatherVespene
+// Trigger: Automate Worker Gather Vespene
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutomateGatherVespene_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_AutomateWorkerGatherVespene_Func (bool testConds, bool runActions) {
     int auto0ED17859_ae;
     int auto0ED17859_ai;
 
@@ -3354,33 +3245,61 @@ bool libSCPL_gt_AutomateGatherVespene_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutomateGatherVespene_Init () {
-    libSCPL_gt_AutomateGatherVespene = TriggerCreate("libSCPL_gt_AutomateGatherVespene_Func");
-    TriggerAddEventUnitConstructProgress(libSCPL_gt_AutomateGatherVespene, null, c_unitProgressStageComplete);
+void libSCPL_gt_AutomateWorkerGatherVespene_Init () {
+    libSCPL_gt_AutomateWorkerGatherVespene = TriggerCreate("libSCPL_gt_AutomateWorkerGatherVespene_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_AutomateWorkerGatherVespene, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AutomateExpansionWorkerProduction
+// Trigger: Worker Set Harvest State
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutomateExpansionWorkerProduction_Func (bool testConds, bool runActions) {
-    string auto9E44F9EA_val;
-
+bool libSCPL_gt_WorkerSetHarvestState_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unitgroup lv_resource;
-    region lv_resourceRegion;
-    fixed lv_resourceRadius;
-    unit lv_townHall;
-    unitgroup lv_larva;
-    int lv_larvaCount;
-    int lv_playerIndex;
+    unit lv_unit;
+    unit lv_targetUnit;
 
     // Variable Initialization
-    lv_resource = UnitGroupEmpty();
-    lv_larva = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_targetUnit = OrderGetTargetUnit(EventUnitOrder());
+    if (((UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGas") == true) || (UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGasProtoss") == true) || (UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGasZerg") == true))) {
+        libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestMinerals", 0.0);
+        libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestGas", 1.0);
+    }
+    if (((UnitHasBehavior2(lv_targetUnit, "MineralFieldMinerals") == true) || (UnitHasBehavior2(lv_targetUnit, "MineralFieldMinerals750") == true) || (UnitHasBehavior2(lv_targetUnit, "HighYieldMineralFieldMinerals") == true) || (UnitHasBehavior2(lv_targetUnit, "HighYieldMineralFieldMinerals750") == true) || (UnitHasBehavior2(lv_targetUnit, "MineralFieldMineralsNoRemove") == true))) {
+        libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestMinerals", 1.0);
+        libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestGas", 0.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_WorkerSetHarvestState_Init () {
+    libSCPL_gt_WorkerSetHarvestState = TriggerCreate("libSCPL_gt_WorkerSetHarvestState_Func");
+    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestState, null, AbilityCommand("SCVHarvest", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestState, null, AbilityCommand("MULEGather", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestState, null, AbilityCommand("DroneHarvest", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestState, null, AbilityCommand("ProbeHarvest", 0));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Worker Set Harvest State None
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_WorkerSetHarvestStateNone_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+    unit lv_targetUnit;
+
+    // Variable Initialization
 
     // Conditions
     if (testConds) {
-        if (!(((UnitGetType(EventUnitProgressUnit()) == "CommandCenter") || (UnitGetType(EventUnitProgressUnit()) == "Nexus") || (UnitGetType(EventUnitProgressUnit()) == "Hatchery")))) {
+        if (!(((UnitGetType(EventUnit()) == "Probe") || (UnitGetType(EventUnit()) == "SCV") || (UnitGetType(EventUnit()) == "Drone") || (UnitGetType(EventUnit()) == "MULE")))) {
             return false;
         }
     }
@@ -3390,49 +3309,81 @@ bool libSCPL_gt_AutomateExpansionWorkerProduction_Func (bool testConds, bool run
         return true;
     }
 
-    lv_townHall = EventUnitProgressUnit();
-    lv_playerIndex = UnitGetOwner(lv_townHall);
-    lv_resourceRadius = 15.0;
-    lv_resourceRegion = RegionCircle(UnitGetPosition(lv_townHall), lv_resourceRadius);
-    lv_resource = UnitGroup(null, c_playerAny, lv_resourceRegion, UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupLoopBegin(lv_resource);
-    for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
-        if (((UnitGetType(UnitGroupLoopCurrent()) == "Assimilator") || (UnitGetType(UnitGroupLoopCurrent()) == "Refinery") || (UnitGetType(UnitGroupLoopCurrent()) == "Extractor"))) {
-            UnitGroupRemove(lv_resource, UnitGroupLoopCurrent());
+    lv_unit = EventUnit();
+    libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestMinerals", 0.0);
+    libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestGas", 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_WorkerSetHarvestStateNone_Init () {
+    libSCPL_gt_WorkerSetHarvestStateNone = TriggerCreate("libSCPL_gt_WorkerSetHarvestStateNone_Func");
+    TriggerAddEventUnitOrder(libSCPL_gt_WorkerSetHarvestStateNone, null, AbilityCommand("move", 0));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Worker Idle Harvest Resume
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_WorkerIdleHarvestResume_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "Probe") || (UnitGetType(EventUnit()) == "SCV") || (UnitGetType(EventUnit()) == "Drone") || (UnitGetType(EventUnit()) == "MULE")))) {
+            return false;
         }
     }
-    UnitGroupLoopEnd();
-    auto9E44F9EA_val = UnitGetType(EventUnitProgressUnit());
-    if (auto9E44F9EA_val == "CommandCenter") {
-        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyCommand", 0), UnitGroupUnit(lv_resource, 1)), c_orderQueueReplace);
-        UnitIssueOrder(lv_townHall, Order(AbilityCommand("CommandCenterTrain", 0)), c_orderQueueAddToEnd);
+
+    // Actions
+    if (!runActions) {
+        return true;
     }
-    else if (auto9E44F9EA_val == "Nexus") {
-        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyNexus", 0), UnitGroupUnit(lv_resource, 1)), c_orderQueueReplace);
-        UnitIssueOrder(lv_townHall, Order(AbilityCommand("NexusTrain", 0)), c_orderQueueAddToEnd);
+
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    if (((UnitHasBehavior2(lv_unit, "CarryHarvestableVespeneGeyserGas") == true) || (UnitHasBehavior2(lv_unit, "CarryHarvestableVespeneGeyserGasProtoss") == true) || (UnitHasBehavior2(lv_unit, "CarryHarvestableVespeneGeyserGasZerg") == true) || (UnitHasBehavior2(lv_unit, "CarryHighYieldMineralFieldMinerals") == true) || (UnitHasBehavior2(lv_unit, "CarryMineralFieldMinerals") == true) || (UnitHasBehavior2(lv_unit, "CarryMineralFieldMineralsNoRemove") == true))) {
+        UnitIssueOrder(lv_unit, Order(AbilityCommand("DroneHarvest", 1)), c_orderQueueReplace);
     }
-    else if (auto9E44F9EA_val == "Hatchery") {
-        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyHatchery", 1), UnitGroupUnit(lv_resource, 1)), c_orderQueueReplace);
-        while ((lv_larvaCount == 0)) {
-            lv_larva = UnitGroup("Larva", lv_playerIndex, lv_resourceRegion, UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-            lv_larvaCount = UnitGroupCount(lv_larva, c_unitCountAlive);
-            Wait(0.0625, c_timeGame);
-        }
-        UnitIssueOrder(UnitGroupClosestToPoint(lv_larva, UnitGetPosition(lv_townHall)), Order(AbilityCommand("LarvaTrain", 0)), c_orderQueueReplace);
+    else if ((libSCPL_gf_UnitChargeLink(lv_unit, "HarvestMinerals") == 1)) {
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("DroneHarvest", 0), UnitGroupClosestToPoint(libSCPL_gf_PlayerHarvestableMinerals(), UnitGetPosition(lv_unit))), c_orderQueueReplace);
     }
-    else {
+    else if ((libSCPL_gf_UnitChargeLink(lv_unit, "HarvestGas") == 1)) {
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("DroneHarvest", 0), UnitGroupClosestToPoint(libSCPL_gf_PlayerHarvestableGas(lv_playerIndex), UnitGetPosition(lv_unit))), c_orderQueueReplace);
     }
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutomateExpansionWorkerProduction_Init () {
-    libSCPL_gt_AutomateExpansionWorkerProduction = TriggerCreate("libSCPL_gt_AutomateExpansionWorkerProduction_Func");
-    TriggerAddEventUnitConstructProgress(libSCPL_gt_AutomateExpansionWorkerProduction, null, c_unitProgressStageComplete);
+void libSCPL_gt_WorkerIdleHarvestResume_Init () {
+    libSCPL_gt_WorkerIdleHarvestResume = TriggerCreate("libSCPL_gt_WorkerIdleHarvestResume_Func");
+    TriggerAddEventUnitBecomesIdle(libSCPL_gt_WorkerIdleHarvestResume, null, true);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: WarpGateResearchGatewayBuilt
+// Trigger: Unit Life And Shield Scaling On Creation
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "GlobalIncreasedLifeAndShields", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Init () {
+    libSCPL_gt_UnitLifeAndShieldScalingOnCreation = TriggerCreate("libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Func");
+    TriggerAddEventUnitRegion(libSCPL_gt_UnitLifeAndShieldScalingOnCreation, null, RegionEntireMap(), true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Warp Gate Research Gateway Built
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_WarpGateResearchGatewayBuilt_Func (bool testConds, bool runActions) {
     // Variable Declarations
@@ -3471,9 +3422,9 @@ void libSCPL_gt_WarpGateResearchGatewayBuilt_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: WarpGateResearchUpgradeGates
+// Trigger: Warp Gate Research Upgrade All Gates
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_WarpGateResearchUpgradeGates_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_WarpGateResearchUpgradeAllGates_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unitgroup lv_playerGateways;
     int lv_playerIndex;
@@ -3504,9 +3455,9 @@ bool libSCPL_gt_WarpGateResearchUpgradeGates_Func (bool testConds, bool runActio
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_WarpGateResearchUpgradeGates_Init () {
-    libSCPL_gt_WarpGateResearchUpgradeGates = TriggerCreate("libSCPL_gt_WarpGateResearchUpgradeGates_Func");
-    TriggerAddEventUnitResearchProgress(libSCPL_gt_WarpGateResearchUpgradeGates, null, c_unitProgressStageComplete);
+void libSCPL_gt_WarpGateResearchUpgradeAllGates_Init () {
+    libSCPL_gt_WarpGateResearchUpgradeAllGates = TriggerCreate("libSCPL_gt_WarpGateResearchUpgradeAllGates_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_WarpGateResearchUpgradeAllGates, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3826,11 +3777,71 @@ void libSCPL_gt_CreepPointGeneration_Init () {
     TriggerAddEventMapInit(libSCPL_gt_CreepPointGeneration);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Spend
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_event;
+    string lv_param;
+    int lv_playerIndex;
+    fixed lv_spend;
+    string lv_spendDisplay;
+
+    // Variable Initialization
+    lv_event = "";
+    lv_param = "";
+    lv_spendDisplay = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_event = libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend);
+    lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
+    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName(lv_event, lv_param));
+    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals * (1.0 / libSCPL_gv_constants.lv_spendTickIncrement));
+    if ((lv_spend > 0.0)) {
+        lv_spendDisplay = ("( - " + FixedToString(lv_spend, 0) + ")");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, PlayerGroupSingle(lv_playerIndex), true);
+    }
+    else {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, PlayerGroupSingle(lv_playerIndex), false);
+    }
+    if ((lv_spend > libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex))) {
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
+    }
+    else {
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, Color(100,100,100), PlayerGroupSingle(lv_playerIndex));
+    }
+    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene * (1.0 / libSCPL_gv_constants.lv_spendTickIncrement));
+    if ((lv_spend > 0.0)) {
+        lv_spendDisplay = ("( - " + FixedToString(lv_spend, 0) + ")");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, PlayerGroupSingle(lv_playerIndex), true);
+    }
+    else {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, PlayerGroupSingle(lv_playerIndex), false);
+    }
+    if ((lv_spend > libSCPL_gf_PlayerAvailableVespene(lv_playerIndex))) {
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
+    }
+    else {
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, Color(100,100,100), PlayerGroupSingle(lv_playerIndex));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplaySpend_Init () {
+    libSCPL_gt_ResourceDisplaySpend = TriggerCreate("libSCPL_gt_ResourceDisplaySpend_Func");
+    TriggerAddEventGeneric(libSCPL_gt_ResourceDisplaySpend, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend));
+}
+
 void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
-    libSCPL_gt_WorkerSetHarvestState_Init();
-    libSCPL_gt_WorkerSetHarvestStateNone_Init();
-    libSCPL_gt_WorkerIdleHarvestResume_Init();
     libSCPL_gt_ProgressAccounting_Init();
     libSCPL_gt_ProgressMorphRefundOneStage_Init();
     libSCPL_gt_ProgressMorphRefundTwoStage_Init();
@@ -3855,13 +3866,16 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ProgressUnitCancelCommented_Init();
     libSCPL_gt_ResourceConvertVespene_Init();
     libSCPL_gt_ResourceConvertMinerals_Init();
-    libSCPL_gt_ResourceDisplaySpend_Init();
-    libSCPL_gt_AutomateWorkerProductionInitialization_Init();
+    libSCPL_gt_AutomatedExpansionWorkerProduction_Init();
+    libSCPL_gt_AutomateWorkerProductionInitialize_Init();
     libSCPL_gt_AutomateWorkerProduction_Init();
-    libSCPL_gt_AutomateGatherVespene_Init();
-    libSCPL_gt_AutomateExpansionWorkerProduction_Init();
+    libSCPL_gt_AutomateWorkerGatherVespene_Init();
+    libSCPL_gt_WorkerSetHarvestState_Init();
+    libSCPL_gt_WorkerSetHarvestStateNone_Init();
+    libSCPL_gt_WorkerIdleHarvestResume_Init();
+    libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Init();
     libSCPL_gt_WarpGateResearchGatewayBuilt_Init();
-    libSCPL_gt_WarpGateResearchUpgradeGates_Init();
+    libSCPL_gt_WarpGateResearchUpgradeAllGates_Init();
     libSCPL_gt_MuleHarvestNearestResoures_Init();
     libSCPL_gt_AutoWallOrderLower_Init();
     libSCPL_gt_AutoWallOrderRaise_Init();
@@ -3869,6 +3883,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_CreepTumorAutoSpread_Init();
     libSCPL_gt_CreepPointTargetDetermination_Init();
     libSCPL_gt_CreepPointGeneration_Init();
+    libSCPL_gt_ResourceDisplaySpend_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

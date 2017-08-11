@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <CBehaviorBuff id="IncreasedLifeAndShields">
+    <CBehaviorBuff id="GlobalIncreasedLifeAndShields">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Modification>
@@ -104,7 +104,7 @@
         <PeriodicEffect value="AutoWallRaiseSet"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
-	<CBehaviorBuff id="DisableAutoCreepifnoCharges">
+    <CBehaviorBuff id="DisableAutoCreepifnoCharges">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DisableValidatorArray value="CreepTumorBehaviorValidator"/>
         <Modification>
