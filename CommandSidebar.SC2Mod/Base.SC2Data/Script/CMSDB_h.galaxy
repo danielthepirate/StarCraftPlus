@@ -50,6 +50,7 @@ trigger CMSDB_InterceptOrder;
 bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string abil);
 void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar);
 bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions);
+void CMSDB_DebugInit(int player, point unitPos);
 
 
 unitgroup CMSDB_InitDummies(int player);
