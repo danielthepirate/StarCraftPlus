@@ -191,6 +191,10 @@ struct libSCPL_gs_Hotkey {
 };
 
 // Variable Declarations
+point[21][13] libSCPL_gv_creepPointListSpreadToPointsPlayer;
+point[31] libSCPL_gv_generatePoints;
+point[31] libSCPL_gv_creepAvoidRegion;
+int libSCPL_gv_generatePointsInt;
 libSCPL_gs_Player[17] libSCPL_gv_player;
 libSCPL_gs_UI libSCPL_gv_uI;
 libSCPL_gs_Constant libSCPL_gv_constants;
@@ -228,9 +232,18 @@ void libSCPL_gf_InitializeResourceUI ();
 void libSCPL_gf_ResourceDisplaySpendAdd (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
 void libSCPL_gf_ResourceDisplaySpendRemove (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
 void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer);
+unitgroup libSCPL_gf_HarvestableMinerals ();
+unitgroup libSCPL_gf_HarvestableGas (int lp_playerIndex);
+unitgroup libSCPL_gf_PlayerTownHalls (int lp_playerIndex);
+unitgroup libSCPL_gf_UnitsInUnitGroupChargeLink (unitgroup lp_unitGroup, string lp_chargeLink, fixed lp_chargeValue);
+void libSCPL_gf_UnitChargeSet (unit lp_unit, string lp_chargeLink, fixed lp_chargeValue);
+fixed libSCPL_gf_UnitChargeGet (unit lp_unit, string lp_chargeLink);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
+trigger libSCPL_gt_WorkerSetHarvestState;
+trigger libSCPL_gt_WorkerSetHarvestStateNone;
+trigger libSCPL_gt_WorkerIdleHarvestResume;
 trigger libSCPL_gt_ProgressAccounting;
 trigger libSCPL_gt_ProgressMorphRefundOneStage;
 trigger libSCPL_gt_ProgressMorphRefundTwoStage;
@@ -256,9 +269,19 @@ trigger libSCPL_gt_ProgressUnitCancelCommented;
 trigger libSCPL_gt_ResourceConvertVespene;
 trigger libSCPL_gt_ResourceConvertMinerals;
 trigger libSCPL_gt_ResourceDisplaySpend;
+trigger libSCPL_gt_AutomateWorkerProductionInitialization;
+trigger libSCPL_gt_AutomateWorkerProduction;
+trigger libSCPL_gt_AutomateGatherVespene;
+trigger libSCPL_gt_AutomateExpansionWorkerProduction;
+trigger libSCPL_gt_WarpGateResearchGatewayBuilt;
+trigger libSCPL_gt_WarpGateResearchUpgradeGates;
+trigger libSCPL_gt_MuleHarvestNearestResoures;
 trigger libSCPL_gt_AutoWallOrderLower;
 trigger libSCPL_gt_AutoWallOrderRaise;
 trigger libSCPL_gt_AutoWallOrderToggle;
+trigger libSCPL_gt_CreepTumorAutoSpread;
+trigger libSCPL_gt_CreepPointTargetDetermination;
+trigger libSCPL_gt_CreepPointGeneration;
 
 // Library Initialization
 void libSCPL_InitVariables ();

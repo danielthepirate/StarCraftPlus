@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CGame id="Dflt">
+        <TriggerLibs Id="FA089476"/>
+        <!-- Test Builds -->
+        <!-- <AIBuilds index="213" Enabled="0"/>
+             <AIBuilds index="214" Enabled="0"/>
+             <AIBuilds index="215" Enabled="1"/> -->
+    </CGame>
+</Catalog>

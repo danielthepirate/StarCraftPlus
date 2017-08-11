@@ -7,5 +7,6 @@
 <Effect id="DebugPointCircle"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
+<Unit id="InvisibleTargetDummy"/>
 <Unit id="WarpAdept"/>
 </Preload>
