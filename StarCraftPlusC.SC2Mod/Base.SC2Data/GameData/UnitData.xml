@@ -128,30 +128,35 @@
     <CUnit id="StarportFlying">
         <Food value="10"/>
     </CUnit>
-    <CUnit id="SupplyDepot">
-        <BehaviorArray Link="AutoWallLower"/>
-        <AbilArray Link="SupplyDepotLowerHidden"/>
-        <AbilArray Link="AutoWallToggle"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="AutoLower" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
-        </CardLayouts>
-        <Food value="0"/>
-        <CostResource index="Minerals" value="50"/>
-    </CUnit>
-    <CUnit id="SupplyDepotLowered">
-        <BehaviorArray Link="AutoWallRaisePre"/>
-        <AbilArray Link="SupplyDepotRaiseHidden"/>
-        <AbilArray Link="AutoWallToggle"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="AutoRaise" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
-        </CardLayouts>
-        <CostResource index="Minerals" value="50"/>
-        <Food value="0"/>
-    </CUnit>
     <CUnit id="OverlordTransport">
         <CostResource index="Minerals" value="75"/>
         <CostResource index="Vespene" value="25"/>
         <Food value="0"/>
+    </CUnit>
+    <CUnit id="SupplyDepot">
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Locust" value="0"/>
+        <Food value="0"/>
+        <CostResource index="Minerals" value="50"/>
+        <AbilArray Link="SupplyDepotLowerHidden"/>
+        <AbilArray Link="AutoWallToggle"/>
+        <BehaviorArray Link="AutoWallLowerCooldown"/>
+        <BehaviorArray Link="AutoWallForceField"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AutoLower" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <Footprint value=""/>
+    </CUnit>
+    <CUnit id="SupplyDepotLowered">
+        <Food value="0"/>
+        <CostResource index="Minerals" value="50"/>
+        <AbilArray Link="SupplyDepotRaiseHidden"/>
+        <AbilArray Link="AutoWallToggle"/>
+        <BehaviorArray Link="AutoWallRaiseCooldown"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AutoRaise" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="UltraliskCavern">
         <Food value="10"/>

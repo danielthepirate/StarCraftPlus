@@ -248,6 +248,10 @@ fixed libSCPL_gf_UnitChargeLink (unit lp_unit, string lp_chargeLink);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
+trigger libSCPL_gt_AUTOWALL01;
+trigger libSCPL_gt_AUTOWALL02;
+trigger libSCPL_gt_AUTOWALL03;
+trigger libSCPL_gt_AUTOWALL04;
 trigger libSCPL_gt__0;
 trigger libSCPL_gt__1;
 trigger libSCPL_gt__2;
@@ -291,9 +295,6 @@ trigger libSCPL_gt_UnitLifeAndShieldScalingOnCreation;
 trigger libSCPL_gt_WarpGateResearchGatewayBuilt;
 trigger libSCPL_gt_WarpGateResearchUpgradeAllGates;
 trigger libSCPL_gt_MuleHarvestNearestResoures;
-trigger libSCPL_gt_AutoWallOrderLower;
-trigger libSCPL_gt_AutoWallOrderRaise;
-trigger libSCPL_gt_AutoWallOrderToggle;
 trigger libSCPL_gt_CreepTumorAutoSpread;
 trigger libSCPL_gt_CreepPointTargetDetermination;
 trigger libSCPL_gt_CreepPointGeneration;

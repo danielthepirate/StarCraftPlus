@@ -616,8 +616,6 @@
         <AutoCastValidatorArray value="CasterEnergyGE50"/>
     </CAbilEffectTarget>
     <CAbilMorph id="SupplyDepotLower">
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
         <AutoCastFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Dead"/>
         <AutoCastValidatorArray value="SupplyDepotLowerEnemyEnumerate"/>
         <AutoCastRange value="1.25"/>
@@ -625,8 +623,6 @@
         <AutoCastCountMax value="4294967295"/>
     </CAbilMorph>
     <CAbilMorph id="SupplyDepotRaise">
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
         <AutoCastFilters value="Self;Neutral,Enemy,Dead"/>
         <AutoCastValidatorArray value="SupplyDepotRaiseOr"/>
         <AutoCastRange value="0.5"/>

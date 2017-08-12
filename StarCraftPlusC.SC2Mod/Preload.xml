@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Preload>
 <Actor id="SYSTEM_ActorConfig"/>
-<Behavior id="AutoWallLower"/>
-<Behavior id="AutoWallRaisePre"/>
 <Behavior id="GameIncreasedLifeAndShields"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>

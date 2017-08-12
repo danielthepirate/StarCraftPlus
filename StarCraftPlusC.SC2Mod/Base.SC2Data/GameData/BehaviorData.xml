@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CBehaviorBuff id="AutoWallForceField">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallForceField"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaise">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.25"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallRaiseSearch"/>
+        <FinalEffect value="AutoWallRaiseOrder"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaiseCooldown">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Duration value="0.0625"/>
+        <InitialEffect value="AutoWallLowerRemove"/>
+        <ExpireEffect value="AutoWallRaise"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallLowerCooldown">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <InitialEffect value="AutoWallRaiseRemove"/>
+        <ExpireEffect value="AutoWallLower"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameDroneMorphMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="17"/>
@@ -70,43 +103,7 @@
     <CBehaviorBuff id="AutoWallLower">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Period value="0.0625"/>
-        <InitialEffect value="AutoWallRaiseRemoveSet"/>
         <PeriodicEffect value="AutoWallLowerSearch"/>
-        <Modification>
-            <BehaviorLinkDisableArray value="AutoWallRaise"/>
-            <BehaviorLinkDisableArray value="AutoWallRaiseOrder"/>
-            <BehaviorLinkDisableArray value="AutoWallRaisePrevention"/>
-            <BehaviorLinkDisableArray value="AutoWallRaisePre"/>
-        </Modification>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AutoWallRaisePre">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="AutoWallRaiseSearchPre"/>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AutoWallRaiseOrder">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="AutoWallRaiseOrder"/>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AutoWallRaisePrevention">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <BuffFlags index="RefreshStack" value="1"/>
-        <Duration value="0.125"/>
-        <Modification>
-            <BehaviorLinkDisableArray value="AutoWallRaiseOrder"/>
-        </Modification>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AutoWallRaise">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Period value="0.0625"/>
-        <InitialEffect value="AutoWallRaisePreventionAdd"/>
-        <PeriodicEffect value="AutoWallRaiseSet"/>
-        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DisableAutoCreepifnoCharges">
         <EditorCategories value="AbilityorEffectType:Units"/>
