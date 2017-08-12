@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <CValidatorLocationEnumArea id="AutoWallNoAlliesInRange">
-        <AreaArray Radius="1.75"/>
-        <Compare value="NE"/>
-        <LaunchLocation Value="SourceUnit"/>
-        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
-    </CValidatorLocationEnumArea>
-    <CValidatorLocationEnumArea id="AutoWallAlliesInRange">
-        <AreaArray Radius="1.75"/>
-        <LaunchLocation Value="SourceUnit"/>
-        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
-    </CValidatorLocationEnumArea>
+    <CValidatorUnitType id="AutoWallConstructionFootprint">
+        <Value value="SupplyDepotConstructionFootprint"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="AutoWallLoweredManual">
+        <Behavior value="AutoWallManualRaiseCooldown"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="AutoWallAutocastEnabled">
+        <Value value="1"/>
+        <Behavior value="AutoWallAutocastBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorLocationEnumArea id="IsNexusNearby">
         <AreaArray Radius="6.5" Validator="IsNexus"/>
     </CValidatorLocationEnumArea>

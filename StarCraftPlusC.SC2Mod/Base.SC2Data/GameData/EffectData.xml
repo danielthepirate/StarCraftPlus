@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CEffectApplyBehavior id="AutoWallAutocastBehavior">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectApplyForce id="AutoWallForce">
         <EditorCategories value=""/>
         <Amount value="0.25"/>
     </CEffectApplyForce>
     <CEffectEnumArea id="AutoWallForceField">
         <EditorCategories value=""/>
-        <DebugTrace value="1"/>
-        <SearchFilters value="Ground;Self,Player,Ally,Structure,Missile,UnderConstruction,Dead,Hidden"/>
+        <SearchFilters value="Ground;Self,Structure,Missile,UnderConstruction,Dead,Hidden"/>
         <AreaArray RectangleWidth="2" RectangleHeight="2" Effect="AutoWallForce"/>
     </CEffectEnumArea>
+    <CEffectIssueOrder id="AutoWallConstructionComplete">
+        <EditorCategories value=""/>
+        <Abil value="AutoWallConstructionComplete"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="AutoWallManualLowerAbility">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallLowerOrder"/>
+        <EffectArray value="AutoWallManualRaiseCooldown"/>
+    </CEffectSet>
+    <CEffectSet id="AutoWallManualRaiseAbility">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallRaiseOrder"/>
+        <EffectArray value="AutoWallToggleOff"/>
+        <EffectArray value="AutoWallManualRaiseCooldown"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="AutoWallManualRaise">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AutoWallManualRaiseCooldown">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="AutoWallManualRaiseRemove">
+        <EditorCategories value=""/>
+        <BehaviorLink value="AutoWallManualRaise"/>
+    </CEffectRemoveBehavior>
     <CEffectApplyBehavior id="AutoWallRaise">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
@@ -19,18 +46,20 @@
     </CEffectApplyBehavior>
     <CEffectEnumArea id="AutoWallRaiseSearch">
         <EditorCategories value=""/>
-        <DebugTrace value="1"/>
         <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1.75" Effect="AutoWallRaiseSearchSet"/>
     </CEffectEnumArea>
     <CEffectSet id="AutoWallLowerSearchSet">
         <EditorCategories value=""/>
-        <EffectArray value="DebugPoint"/>
         <EffectArray value="AutoWallLowerOrder"/>
     </CEffectSet>
+    <CEffectEnumArea id="AutoWallManualRaiseSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.75" Effect="AutoWallManualRaiseSearchSet"/>
+    </CEffectEnumArea>
     <CEffectSet id="AutoWallRaiseSearchSet">
         <EditorCategories value=""/>
-        <EffectArray value="DebugPoint"/>
         <EffectArray value="AutoWallRaise"/>
     </CEffectSet>
     <CEffectRemoveBehavior id="AutoWallLowerRemove">
@@ -39,10 +68,27 @@
     </CEffectRemoveBehavior>
     <CEffectEnumArea id="AutoWallLowerSearch">
         <EditorCategories value=""/>
-        <DebugTrace value="1"/>
         <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1.75" Effect="AutoWallLowerSearchSet"/>
     </CEffectEnumArea>
+    <CEffectSet id="AutoWallManualRaiseSearchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallRaise"/>
+        <EffectArray value="AutoWallManualRaiseRemove"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="AutoWallToggleOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallToggle"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoWallToggleOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallToggle"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
     <CEffectEnumArea id="DebugPoint">
         <EditorCategories value=""/>
         <DebugTrace value="1"/>
@@ -56,12 +102,12 @@
     <CEffectIssueOrder id="AutoWallLowerOrder">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
-        <Abil value="SupplyDepotLowerHidden"/>
+        <Abil value="AutoWallLowerHidden"/>
     </CEffectIssueOrder>
     <CEffectIssueOrder id="AutoWallRaiseOrder">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
-        <Abil value="SupplyDepotRaiseHidden"/>
+        <Abil value="AutoWallRaiseHidden"/>
     </CEffectIssueOrder>
     <CEffectRemoveBehavior id="AutoWallRaiseRemove">
         <EditorCategories value=""/>
@@ -71,6 +117,11 @@
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
     </CEffectApplyBehavior>
+    <CEffectEnumArea id="GameMineralsNearTownHallSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="HarvestableResource;Player,Ally,Enemy,Missile,Dead,Hidden"/>
+        <AreaArray Radius="16" Effect="GameMineralsNearTownHall"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="OverlordAutoCreepCooldownReducerBehavior">
         <ValidatorArray index="0" value="IsCreepTumor"/>
         <EditorCategories value=""/>
@@ -92,4 +143,7 @@
         <ImpactLocation Value="SourceUnit"/>
         <ValidatorArray value="OverlordDontRemoveCooldownifNoCharges"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="GameMineralsNearTownHall">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
 </Catalog>

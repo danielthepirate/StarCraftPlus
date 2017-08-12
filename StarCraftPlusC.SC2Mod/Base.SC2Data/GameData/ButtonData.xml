@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
     <CButton id="AutoLower">
-        <Icon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
+        <Icon value="Assets\Textures\btn-building-terran-supplydepotlowered.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-supplydepotlowered.dds"/>
+        <Hotkey value="Button/Hotkey/AutoRaise"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="AutoWallToggle"/>
     </CButton>
@@ -12,12 +13,7 @@
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="AutoWallToggle"/>
     </CButton>
-    <CButton id="AutoWallToggle">
-        <Icon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
-        <EditorCategories value="Race:Terran"/>
-    </CButton>
-	<CButton id="CreepTumorAutocast">
+    <CButton id="CreepTumorAutocast">
         <Icon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
         <Hotkey value="Button/Hotkey/BuildCreepTumorPropagate2"/>

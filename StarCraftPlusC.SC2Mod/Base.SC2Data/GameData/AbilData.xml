@@ -63,6 +63,26 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
     </CAbilResearch>
+    <CAbilEffectInstant id="AutoWallLowerManual">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallManualLowerAbility"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Lower"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallRaiseManual">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallManualRaiseAbility"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleOffHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallToggleOff"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleOnHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallToggleOn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
     <CAbilResearch id="BanelingNestResearch">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -433,6 +453,23 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
     </CAbilTrain>
+    <CAbilMorph id="AutoWallConstructionComplete" parent="SupplyDepotRaise">
+        <Name value="Abil/Name/AutoWallConstructionComplete"/>
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <EffectArray index="Start" value=""/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <CAbilResearch id="TemplarArchivesResearch">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -448,6 +485,8 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <InfoArray index="Build2" Unit="SupplyDepotConstructor"/>
+        <EffectArray index="Finish" value="AutoWallConstructionComplete"/>
     </CAbilBuild>
     <CAbilTrain id="TrainQueen">
         <RefundFraction>
@@ -556,16 +595,21 @@
     </CAbilResearch>
     <CAbilEffectInstant id="AutoWallToggle">
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <Flags index="AllowMovement" value="1"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallToggle"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+        <Effect index="0" value="AutoWallAutocastBehavior"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CastIntroTime value="0.0625"/>
     </CAbilEffectInstant>
-    <CAbilMorph id="SupplyDepotLowerHidden" parent="SupplyDepotLower">
-        <Name value="Abil/Name/SupplyDepotLowerHidden"/>
-    </CAbilMorph>
-    <CAbilMorph id="SupplyDepotRaiseHidden" parent="SupplyDepotRaise">
-        <Name value="Abil/Name/SupplyDepotRaiseHidden"/>
-    </CAbilMorph>
     <CAbilEffectInstant id="AutomaticSpawnCreepTumor">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="SpreadCreepTumorDummy"/>
@@ -615,18 +659,10 @@
         <AutoCastValidatorArray value="IsHatchery"/>
         <AutoCastValidatorArray value="CasterEnergyGE50"/>
     </CAbilEffectTarget>
-    <CAbilMorph id="SupplyDepotLower">
-        <AutoCastFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Dead"/>
-        <AutoCastValidatorArray value="SupplyDepotLowerEnemyEnumerate"/>
-        <AutoCastRange value="1.25"/>
-        <AutoCastCountMin value="1"/>
-        <AutoCastCountMax value="4294967295"/>
+    <CAbilMorph id="AutoWallLowerHidden" parent="SupplyDepotLower">
+        <Name value="Abil/Name/AutoWallLowerHidden"/>
     </CAbilMorph>
-    <CAbilMorph id="SupplyDepotRaise">
-        <AutoCastFilters value="Self;Neutral,Enemy,Dead"/>
-        <AutoCastValidatorArray value="SupplyDepotRaiseOr"/>
-        <AutoCastRange value="0.5"/>
-        <AutoCastCountMin value="1"/>
-        <AutoCastCountMax value="1"/>
+    <CAbilMorph id="AutoWallRaiseHidden" parent="SupplyDepotRaise">
+        <Name value="Abil/Name/AutoWallRaiseHidden"/>
     </CAbilMorph>
 </Catalog>

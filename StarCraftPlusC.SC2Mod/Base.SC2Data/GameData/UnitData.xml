@@ -11,6 +11,7 @@
     </CUnit>
     <CUnit id="CommandCenter">
         <Food value="25"/>
+        <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
     </CUnit>
     <CUnit id="CommandCenterFlying">
         <Food value="25"/>
@@ -42,9 +43,11 @@
     </CUnit>
     <CUnit id="Hatchery">
         <Food value="25"/>
+        <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
     </CUnit>
     <CUnit id="Hive">
         <Food value="25"/>
+        <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
     </CUnit>
     <CUnit id="HydraliskDen">
         <Food value="10"/>
@@ -54,12 +57,14 @@
     </CUnit>
     <CUnit id="Lair">
         <Food value="25"/>
+        <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
     </CUnit>
     <CUnit id="LurkerDenMP">
         <Food value="10"/>
     </CUnit>
     <CUnit id="Nexus">
         <Food value="25"/>
+        <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
     </CUnit>
     <CUnit id="NydusCanal">
         <CostResource index="Minerals" value="0"/>
@@ -69,6 +74,7 @@
     </CUnit>
     <CUnit id="OrbitalCommand">
         <Food value="25"/>
+        <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
     </CUnit>
     <CUnit id="OrbitalCommandFlying">
         <Food value="25"/>
@@ -86,6 +92,7 @@
     </CUnit>
     <CUnit id="PlanetaryFortress">
         <Food value="25"/>
+        <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
     </CUnit>
     <CUnit id="Probe">
         <CostResource index="Minerals" value="0"/>
@@ -139,22 +146,46 @@
         <Collide index="Locust" value="0"/>
         <Food value="0"/>
         <CostResource index="Minerals" value="50"/>
-        <AbilArray Link="SupplyDepotLowerHidden"/>
+        <AbilArray index="1" Link="AutoWallLowerHidden"/>
+        <AbilArray Link="AutoWallLowerManual"/>
         <AbilArray Link="AutoWallToggle"/>
+        <AbilArray Link="AutoWallToggleOnHidden"/>
+        <AbilArray Link="AutoWallToggleOffHidden"/>
         <BehaviorArray Link="AutoWallLowerCooldown"/>
         <BehaviorArray Link="AutoWallForceField"/>
+        <BehaviorArray Link="AutoWallAutocastBehavior"/>
         <CardLayouts index="0">
+            <LayoutButtons index="2" AbilCmd="AutoWallLowerManual,Execute"/>
             <LayoutButtons Face="AutoLower" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
         </CardLayouts>
-        <Footprint value=""/>
+        <Footprint value="Footprint2x2Underground"/>
+    </CUnit>
+    <CUnit id="SupplyDepotConstructor" parent="SupplyDepot">
+        <Name value="Unit/Name/SupplyDepotConstructor"/>
+        <Description value="Button/Tooltip/SupplyDepotConstructor"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Locust" value="0"/>
+        <Food value="0"/>
+        <CostResource index="Minerals" value="50"/>
+        <AbilArray index="1" Link="AutoWallConstructionComplete"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" AbilCmd="AutoWallLowerManual,Execute"/>
+            <LayoutButtons Face="AutoLower" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SupplyDepotLowered">
         <Food value="0"/>
         <CostResource index="Minerals" value="50"/>
-        <AbilArray Link="SupplyDepotRaiseHidden"/>
+        <AbilArray index="1" Link="AutoWallRaiseManual"/>
+        <AbilArray Link="AutoWallRaiseHidden"/>
         <AbilArray Link="AutoWallToggle"/>
+        <AbilArray Link="AutoWallToggleOnHidden"/>
+        <AbilArray Link="AutoWallToggleOffHidden"/>
         <BehaviorArray Link="AutoWallRaiseCooldown"/>
+        <BehaviorArray Link="AutoWallAutocastBehavior"/>
         <CardLayouts index="0">
+            <LayoutButtons index="0" AbilCmd="AutoWallRaiseManual,Execute"/>
             <LayoutButtons Face="AutoRaise" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>

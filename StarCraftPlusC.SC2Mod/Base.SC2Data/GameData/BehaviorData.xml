@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CBehaviorBuff id="AutoWallAutocastBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AutoWallForceField">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
         <Period value="0.0625"/>
         <PeriodicEffect value="AutoWallForceField"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AutoWallRaise">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BuffFlags index="RefreshStack" value="1"/>
-        <Duration value="0.25"/>
+        <Duration value="0.125"/>
         <Period value="0.0625"/>
         <PeriodicEffect value="AutoWallRaiseSearch"/>
         <FinalEffect value="AutoWallRaiseOrder"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="AutoWallAutocastEnabled"/>
+        <RemoveValidatorArray value="AutoWallLoweredManual"/>
+        <ExpireEffect value="AutoWallManualRaiseRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallManualRaise">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AutoWallAutocastEnabled"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallManualRaiseSearch"/>
         <Modification>
             <BehaviorLinkDisableArray value="AutoWallForceField"/>
         </Modification>
@@ -26,12 +47,26 @@
         <Modification>
             <BehaviorLinkDisableArray value="AutoWallForceField"/>
         </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+        <RemoveValidatorArray value="AutoWallLoweredManual"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AutoWallLowerCooldown">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="0.0625"/>
         <InitialEffect value="AutoWallRaiseRemove"/>
         <ExpireEffect value="AutoWallLower"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallManualRaiseCooldown">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Duration value="0.0625"/>
+        <InitialEffect value="AutoWallLowerRemove"/>
+        <ExpireEffect value="AutoWallManualRaise"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameDroneMorphMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -44,6 +79,20 @@
             <VitalMaxFractionArray index="Life" value="1"/>
             <VitalMaxFractionArray index="Shields" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameMineralsNearTownHall">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="Extend" value="1"/>
+        <Duration value="0.625"/>
+        <Replace value="FarthestDistance"/>
+        <ReplaceLocation Value="TargetUnit"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameMineralsNearTownHallSearch">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="GameMineralsNearTownHallSearch"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="IsNexusNearby">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -104,6 +153,9 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Period value="0.0625"/>
         <PeriodicEffect value="AutoWallLowerSearch"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="AutoWallAutocastEnabled"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DisableAutoCreepifnoCharges">
         <EditorCategories value="AbilityorEffectType:Units"/>
