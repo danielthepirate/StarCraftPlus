@@ -46,6 +46,7 @@ string libPPRL_gf_ConvertPointXYtoString (point lp_point, int lp_precision);
 void libPPRL_gf_AddTimeToTimer (timer lp_timer, fixed lp_additionalTime);
 void libPPRL_gf_HideAllUIFramesForPlayers (playergroup lp_playerGroup);
 bool libPPRL_gf_UnitHasBehaviorWithBehaviorFlag (unit lp_unit, int lp_behaviorFlag);
+unitgroup libPPRL_gf_UnitsInUnitGroupMatchingBehavior (unitgroup lp_unitGroup, string lp_behavior, bool lp_match);
 
 // Trigger Declarations
 trigger libPPRL_gt_DebugPanelInitialize;

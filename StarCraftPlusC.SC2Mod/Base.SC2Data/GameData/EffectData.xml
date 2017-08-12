@@ -73,7 +73,11 @@
         <EffectArray value="AutoWallRaiseSearch"/>
         <EffectArray value="AutoWallRaiseOrderAdd"/>
     </CEffectSet>
-	<CEffectApplyBehavior id="OverlordAutoCreepCooldownReducerBehavior">
+    <CEffectApplyBehavior id="GameDroneMorphMarker">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="OverlordAutoCreepCooldownReducerBehavior">
         <ValidatorArray index="0" value="IsCreepTumor"/>
         <EditorCategories value=""/>
         <Behavior value="OverlordAutoCreepCooldownReduction"/>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <CBehaviorBuff id="GlobalIncreasedLifeAndShields">
+    <CBehaviorBuff id="GameDroneMorphMarker">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="17"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameIncreasedLifeAndShields">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Modification>

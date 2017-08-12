@@ -448,6 +448,29 @@ bool libPPRL_gf_UnitHasBehaviorWithBehaviorFlag (unit lp_unit, int lp_behaviorFl
     return false;
 }
 
+unitgroup libPPRL_gf_UnitsInUnitGroupMatchingBehavior (unitgroup lp_unitGroup, string lp_behavior, bool lp_match) {
+    unitgroup autoCE902C40_g;
+    int autoCE902C40_u;
+
+    // Variable Declarations
+    unitgroup lv_behaviorUnits;
+    unit lv_unit;
+
+    // Variable Initialization
+    lv_behaviorUnits = UnitGroupEmpty();
+
+    // Implementation
+    autoCE902C40_g = lp_unitGroup;
+    autoCE902C40_u = 1;
+    for ( ; autoCE902C40_u <= UnitGroupCount(autoCE902C40_g, c_unitCountAll) ; autoCE902C40_u += BoolToInt(lv_unit == UnitGroupUnit(autoCE902C40_g, autoCE902C40_u)) ) {
+        lv_unit = UnitGroupUnit(autoCE902C40_g, autoCE902C40_u);
+        if ((UnitHasBehavior2(lv_unit, lp_behavior) == lp_match)) {
+            UnitGroupAdd(lv_behaviorUnits, lv_unit);
+        }
+    }
+    return lv_behaviorUnits;
+}
+
 // Triggers
 //--------------------------------------------------------------------------------------------------
 // Trigger: Debug Panel Initialize

@@ -1,6 +1,7 @@
 ﻿Abil/Name/AutoWallToggle=Auto Wall Toggle
 Abil/Name/SupplyDepotLowerHidden=Supply Depot Lower Hidden
 Abil/Name/SupplyDepotRaiseHidden=Supply Depot Raise Hidden
+Behavior/Name/GameDroneMorphMarker=Game Drone Morph Marker
 Behavior/Name/IsNexusNearby=IsNexusNearby
 Behavior/Name/IsWarpGateNearby=IsWarpGateNearby
 Button/Name/AutoLower=Auto Lower
@@ -22,6 +23,7 @@ Effect/Name/AutoWallRaiseRemoveSet=Auto Wall Raise Remove Set
 Effect/Name/AutoWallRaiseSearch=Auto Wall Raise Search
 Effect/Name/AutoWallRaiseSearchPre=Auto Wall Raise Search Pre
 Effect/Name/AutoWallRaiseSet=Auto Wall Raise Set
+Effect/Name/GameDroneMorphMarker=Game Drone Morph Marker
 RequirementNode/Tooltip/CountBehaviorPowerSourceFastCompleteOnlyAtUnit22563247=Near Warp Gate
 RequirementNode/Tooltip/CountBehaviorPowerSourceFastCompleteOnlyAtUnitNearWarpGateorNexus=Near Nexus
 UI/ResourceName2=Minerals

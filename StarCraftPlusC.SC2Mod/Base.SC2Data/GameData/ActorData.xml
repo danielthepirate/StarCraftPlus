@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-	 <CActorUnit id="InvisibleTargetDummy">
+    <!--                                                                                         -->
+    <!-- Egg ................................................................................... -->
+    <!--                                                                                         -->
+    <CActorUnit id="Egg">
+        <Aliases value="_Morph"/>
+        <On Terms="Signal.*.MorphCancel; ModelVariation 0" Send="Create EggsplosionGeneric0"/>
+        <On Terms="Signal.*.MorphCancel; ModelVariation 1" Send="Create EggsplosionGeneric1"/>
+        <On Terms="Signal.*.MorphCancel; ModelVariation 2" Send="Create EggsplosionGeneric2"/>
+        <On Terms="Signal.*.MorphCancel" Send="Destroy"/>
+    </CActorUnit>
+    <CActorUnit id="InvisibleTargetDummy">
         <On Terms="ActorCreation" Send="SetVisibility"/>
         <On Terms="ActorCreation" Send="SetOpacity"/>
         <ModelFlags index="AllowHitTest" value="0"/>
         <ModelFlags index="UpdateVisibility" value="0"/>
+    </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Larva ................................................................................. -->
+    <!--                                                                                         -->
+    <CActorUnit id="Larva">
+        <On Terms="ActorCreation" Target="_Morph" Send="Signal MorphCancel"/>
     </CActorUnit>
     <CActorPower id="PowerFast">
         <On index="0" removed="1"/>

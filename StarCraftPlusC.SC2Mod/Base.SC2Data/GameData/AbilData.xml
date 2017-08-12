@@ -222,6 +222,8 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <Flags index="KillOnCancel" value="0"/>
+        <InfoArray index="Train1" Effect="GameDroneMorphMarker"/>
     </CAbilTrain>
     <CAbilMorph id="LurkerAspectMP">
         <RefundFraction>
@@ -564,7 +566,7 @@
     <CAbilMorph id="SupplyDepotRaiseHidden" parent="SupplyDepotRaise">
         <Name value="Abil/Name/SupplyDepotRaiseHidden"/>
     </CAbilMorph>
-	<CAbilEffectInstant id="AutomaticSpawnCreepTumor">
+    <CAbilEffectInstant id="AutomaticSpawnCreepTumor">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="SpreadCreepTumorDummy"/>
         <Flags index="AutoCast" value="1"/>
