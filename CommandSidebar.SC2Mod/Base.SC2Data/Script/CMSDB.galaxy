@@ -180,16 +180,20 @@ void CMSDB_PlayerDataInit(){
 			CMSDB_InitDummies(player);
 			
 			
-			//Debug test stuff
-			UnitCreate(2,"Probe",c_unitCreateIgnorePlacement, player,unitPos,0.0);
-			UnitCreate(2,"SCV",c_unitCreateIgnorePlacement, player,unitPos,0.0);
-			UnitCreate(2,"Drone",c_unitCreateIgnorePlacement, player,unitPos,0.0);
-			PlayerModifyPropertyInt (player, c_playerPropMinerals, c_playerPropOperSetTo, 5000);
-			PlayerModifyPropertyInt (player, c_playerPropVespene, c_playerPropOperSetTo, 5000);
+			// CMSDB_DebugInit(player, unitPos);
 		}
 	}
 }
 
+
+void CMSDB_DebugInit(int player, point unitPos){
+	//Debug test stuff
+	UnitCreate(2,"Probe",c_unitCreateIgnorePlacement, player,unitPos,0.0);
+	UnitCreate(2,"SCV",c_unitCreateIgnorePlacement, player,unitPos,0.0);
+	UnitCreate(2,"Drone",c_unitCreateIgnorePlacement, player,unitPos,0.0);
+	PlayerModifyPropertyInt (player, c_playerPropMinerals, c_playerPropOperSetTo, 5000);
+	PlayerModifyPropertyInt (player, c_playerPropVespene, c_playerPropOperSetTo, 5000);
+}
 
 void CMSDB_Init(){
 	int i = 0;

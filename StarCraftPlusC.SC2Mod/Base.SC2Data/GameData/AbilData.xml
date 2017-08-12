@@ -564,4 +564,71 @@
     <CAbilMorph id="SupplyDepotRaiseHidden" parent="SupplyDepotRaise">
         <Name value="Abil/Name/SupplyDepotRaiseHidden"/>
     </CAbilMorph>
+	<CAbilEffectInstant id="AutomaticSpawnCreepTumor">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="SpreadCreepTumorDummy"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <HideCount value="1"/>
+            </Charge>
+            <Cooldown TimeStart="30"/>
+        </Cost>
+        <AutoCastAcquireLevel value="Passive"/>
+        <AutoCastFilters value="-;-"/>
+        <AutoCastRange value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CreepTumorAutocast" PreemptLevel="1">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutomaticSpawnCreepTumor2">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="SpreadCreepTumorDummy"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <HideCount value="1"/>
+                <TimeStart value="30"/>
+            </Charge>
+            <Cooldown TimeStart="30"/>
+        </Cost>
+        <AutoCastFilters value="Visible;-"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CreepTumorAutocast">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="SpawnLarva">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy,UnderConstruction"/>
+        <AutoCastRange value="5"/>
+        <AutoCastValidatorArray value="IsHatchery"/>
+        <AutoCastValidatorArray value="CasterEnergyGE50"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="SupplyDepotLower">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Dead"/>
+        <AutoCastValidatorArray value="SupplyDepotLowerEnemyEnumerate"/>
+        <AutoCastRange value="1.25"/>
+        <AutoCastCountMin value="1"/>
+        <AutoCastCountMax value="4294967295"/>
+    </CAbilMorph>
+    <CAbilMorph id="SupplyDepotRaise">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastFilters value="Self;Neutral,Enemy,Dead"/>
+        <AutoCastValidatorArray value="SupplyDepotRaiseOr"/>
+        <AutoCastRange value="0.5"/>
+        <AutoCastCountMin value="1"/>
+        <AutoCastCountMax value="1"/>
+    </CAbilMorph>
 </Catalog>

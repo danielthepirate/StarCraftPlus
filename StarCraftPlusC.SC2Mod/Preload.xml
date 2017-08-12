@@ -3,9 +3,11 @@
 <Actor id="SYSTEM_ActorConfig"/>
 <Behavior id="AutoWallLower"/>
 <Behavior id="AutoWallRaisePre"/>
+<Behavior id="GlobalIncreasedLifeAndShields"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
+<Unit id="InvisibleTargetDummy"/>
 <Unit id="WarpAdept"/>
 </Preload>

@@ -1,459 +1,144 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <!--                                                                                         -->
-    <!--                                                                                         -->
-    <!-- Defaults ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!--                                                                                         -->
-    <!--                                                                                         -->
-    <CUnit default="1" id="BroodlingDefault">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Adept">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Archon">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Armory">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Assimilator">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="AutoTurret">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Baneling">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="BanelingBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="BanelingCocoon">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
     <CUnit id="BanelingNest">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Banshee">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="Barracks">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="BarracksFlying">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="BarracksReactor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="BarracksTechLab">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Battlecruiser">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="BroodLord">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="BroodLordCocoon">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Broodling">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="BroodlingEscort">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Bunker">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Carrier">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Changeling">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="ChangelingMarine">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="ChangelingMarineShield">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="ChangelingZealot">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="ChangelingZergling">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="ChangelingZerglingWings">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Colossus">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="CommandCenter">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="25"/>
     </CUnit>
     <CUnit id="CommandCenterFlying">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Corruptor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="CreepTumor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="25"/>
     </CUnit>
     <CUnit id="CreepTumorBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="CreepTumorQueen">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="CyberneticsCore">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Cyclone">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="DarkShrine">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="DarkTemplar">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Disruptor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <BehaviorArray Link="DisableAutoCreepifnoCharges"/>
+        <AbilArray Link="AutomaticSpawnCreepTumor2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="CreepTumorAutocast" Type="AbilCmd" AbilCmd="AutomaticSpawnCreepTumor2,Execute" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Drone">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
         <CostResource index="Minerals" value="0"/>
     </CUnit>
     <CUnit id="DroneBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
         <CostResource index="Minerals" value="0"/>
     </CUnit>
-    <CUnit id="EngineeringBay">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="EvolutionChamber">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Extractor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
     <CUnit id="Factory">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="FactoryFlying">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="FactoryReactor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="FactoryTechLab">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="FleetBeacon">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="ForceField">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Forge">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="FusionCore">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="Gateway">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Ghost">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="GhostAcademy">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="GreaterSpire">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="Hatchery">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Hellion">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="HellionTank">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="HighTemplar">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="25"/>
     </CUnit>
     <CUnit id="Hive">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Hydralisk">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="HydraliskBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="25"/>
     </CUnit>
     <CUnit id="HydraliskDen">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Immortal">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="InfestationPit">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="InfestedTerransEgg">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="InfestedTerransEggPlacement">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Infestor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="InfestorBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="InfestorTerran">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="InfestorTerranBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Interceptor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="Lair">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Larva">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Liberator">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="LiberatorAG">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="LocustMP">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="LocustMPFlying">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="LocustMPPrecursor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="25"/>
     </CUnit>
     <CUnit id="LurkerDenMP">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="LurkerMP">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="LurkerMPBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="LurkerMPEgg">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="MULE">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Marauder">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Marine">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Medivac">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="MissileTurret">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Mothership">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="MothershipCore">
-        <!--BehaviorArray index="0" Link="MothershipCoreDeath"/-->
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Mutalisk">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="Nexus">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="25"/>
     </CUnit>
     <CUnit id="NydusCanal">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
         <CostResource index="Minerals" value="0"/>
         <CostResource index="Vespene" value="0"/>
         <CostResource index="Terrazine" value="100"/>
         <CostResource index="Custom" value="100"/>
     </CUnit>
-    <CUnit id="NydusCanalAttacker">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="NydusNetwork">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Observer">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Oracle">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="OracleStasisTrap">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
     <CUnit id="OrbitalCommand">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="25"/>
     </CUnit>
     <CUnit id="OrbitalCommandFlying">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="25"/>
     </CUnit>
     <CUnit id="Overlord">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="0"/>
+        <CostResource index="Minerals" value="50"/>
     </CUnit>
     <CUnit id="OverlordCocoon">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-        <!--Attributes index="Massive" value="1"/>
-        <BehaviorArray Link="MassiveVoidRayVulnerability"/-->
+        <Food value="0"/>
+        <CostResource index="Minerals" value="50"/>
     </CUnit>
     <CUnit id="Overseer">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Phoenix">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="PhotonCannon">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="0"/>
     </CUnit>
     <CUnit id="PlanetaryFortress">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="25"/>
     </CUnit>
     <CUnit id="Probe">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
         <CostResource index="Minerals" value="0"/>
     </CUnit>
     <CUnit id="Pylon">
         <BehaviorArray Link="PowerSourceFast2"/>
         <BehaviorArray Link="IsNexusNearby"/>
         <BehaviorArray Link="IsWarpGateNearby"/>
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="0"/>
+        <CostResource index="Minerals" value="50"/>
     </CUnit>
-    <CUnit id="Queen">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="QueenBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Ravager">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="RavagerBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="RavagerCocoon">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Raven">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Reactor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Reaper">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Refinery">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Roach">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="RoachBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+    <CUnit id="PylonOvercharged">
+        <BehaviorArray Link="PowerSourceFast2"/>
+        <BehaviorArray Link="IsNexusNearby"/>
+        <BehaviorArray Link="IsWarpGateNearby"/>
+        <Food value="0"/>
+        <CostResource index="Minerals" value="50"/>
     </CUnit>
     <CUnit id="RoachWarren">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="RoboticsBay">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="RoboticsFacility">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="SCV">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
         <CostResource index="Minerals" value="0"/>
     </CUnit>
-    <CUnit id="SensorTower">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Sentry">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="SiegeTank">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="SiegeTankSieged">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
     <CUnit id="SpawningPool">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="SpineCrawler">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="SpineCrawlerUprooted">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="Spire">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="SporeCrawler">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="SporeCrawlerUprooted">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Stalker">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="Stargate">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="Starport">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="StarportFlying">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="StarportReactor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="StarportTechLab">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="SupplyDepot">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
         <BehaviorArray Link="AutoWallLower"/>
         <AbilArray Link="SupplyDepotLowerHidden"/>
         <AbilArray Link="AutoWallToggle"/>
         <CardLayouts index="0">
             <LayoutButtons Face="AutoLower" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <Food value="0"/>
         <CostResource index="Minerals" value="50"/>
     </CUnit>
     <CUnit id="SupplyDepotLowered">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
         <BehaviorArray Link="AutoWallRaisePre"/>
         <AbilArray Link="SupplyDepotRaiseHidden"/>
         <AbilArray Link="AutoWallToggle"/>
@@ -461,66 +146,15 @@
             <LayoutButtons Face="AutoRaise" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <CostResource index="Minerals" value="50"/>
-    </CUnit>
-    <CUnit id="SwarmHostBurrowedMP">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="SwarmHostMP">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="TechLab">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Tempest">
-        <!--WeaponArray Link="TempestGround"/-->
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="TemplarArchive">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Thor">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="ThorAP">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="TwilightCouncil">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Ultralisk">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="UltraliskBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="UltraliskCavern">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Viper">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="VoidRay">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="WarpPrism">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="WarpPrismPhasing">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="WidowMine"/>
-    <CUnit id="WidowMineBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-    </CUnit>
-    <CUnit id="Zealot"/>
-    <CUnit id="Zergling"/>
-    <CUnit id="ZerglingBurrowed">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
+        <Food value="0"/>
     </CUnit>
     <CUnit id="OverlordTransport">
-        <BehaviorArray Link="IncreasedLifeAndShields"/>
-        <CostResource index="Minerals" value="125"/>
+        <CostResource index="Minerals" value="75"/>
         <CostResource index="Vespene" value="25"/>
+        <Food value="0"/>
+    </CUnit>
+    <CUnit id="UltraliskCavern">
+        <Food value="10"/>
     </CUnit>
     <CUnit id="WarpDarkTemplar" parent="DarkTemplar">
         <Name value="Unit/Name/WarpDarkTemplar"/>
@@ -529,6 +163,9 @@
         <CostResource index="Vespene" value="0"/>
         <CostResource index="Terrazine" value="125"/>
         <CostResource index="Custom" value="125"/>
+    </CUnit>
+    <CUnit id="WarpGate">
+        <Food value="10"/>
     </CUnit>
     <CUnit id="WarpHighTemplar" parent="HighTemplar">
         <Name value="Unit/Name/WarpHighTemplar"/>
@@ -567,5 +204,19 @@
         <Description value="Button/Tooltip/WarpZealot"/>
         <CostResource index="Minerals" value="0"/>
         <CostResource index="Terrazine" value="100"/>
+    </CUnit>
+    <CUnit id="InvisibleTargetDummy">
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <PlaneArray index="Ground" value="0"/>
+        <Speed value="8"/>
+        <Acceleration value="1000"/>
+        <AbilArray Link="move"/>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <InnerRadius value="1"/>
+        <BehaviorArray index="0" removed="1"/>
     </CUnit>
 </Catalog>

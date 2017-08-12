@@ -10,11 +10,6 @@ const int libSCPL_ge_GenericParameter_TriggeringPlayer = 0;
 string libSCPL_ge_GenericParameter_Ident (int lp_val);
 
 // Structures
-struct libSCPL_gs_ResourcePanel {
-    int lv_mineralSpend;
-    int lv_vespeneSpend;
-};
-
 struct libSCPL_gs_Constant {
     int lv_spendBufferMinerals;
     int lv_spendBufferVespene;
@@ -25,12 +20,11 @@ struct libSCPL_gs_Constant {
 struct libSCPL_gs_Player {
     fixed lv_resourceSpendMinerals;
     fixed lv_resourceSpendVespene;
-    bool lv_isInTargetMode;
-    unitgroup lv_progressUnits;
 };
 
-struct libSCPL_gs_UI {
-    libSCPL_gs_ResourcePanel lv_resourcePanel;
+struct libSCPL_gs_UI_ResourcePanel {
+    int lv_mineralSpend;
+    int lv_vespeneSpend;
 };
 
 struct libSCPL_gs_Hotkey {
@@ -190,7 +184,15 @@ struct libSCPL_gs_Hotkey {
     string lv_psionicStorm;
 };
 
+struct libSCPL_gs_UI {
+    libSCPL_gs_UI_ResourcePanel lv_resourcePanel;
+};
+
 // Variable Declarations
+point[21][13] libSCPL_gv_creepPointListSpreadToPointsPlayer;
+point[31] libSCPL_gv_generatePoints;
+point[31] libSCPL_gv_creepAvoidRegion;
+int libSCPL_gv_generatePointsInt;
 libSCPL_gs_Player[17] libSCPL_gv_player;
 libSCPL_gs_UI libSCPL_gv_uI;
 libSCPL_gs_Constant libSCPL_gv_constants;
@@ -228,6 +230,12 @@ void libSCPL_gf_InitializeResourceUI ();
 void libSCPL_gf_ResourceDisplaySpendAdd (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
 void libSCPL_gf_ResourceDisplaySpendRemove (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
 void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer);
+unitgroup libSCPL_gf_PlayerHarvestableMinerals ();
+unitgroup libSCPL_gf_PlayerHarvestableGas (int lp_playerIndex);
+unitgroup libSCPL_gf_PlayerTownHalls (int lp_playerIndex);
+unitgroup libSCPL_gf_UnitsInUnitGroupMatchingChargeLink (unitgroup lp_unitGroup, string lp_chargeLink, fixed lp_chargeValue);
+void libSCPL_gf_UnitChargeLinkSet (unit lp_unit, string lp_chargeLink, fixed lp_chargeValue);
+fixed libSCPL_gf_UnitChargeLink (unit lp_unit, string lp_chargeLink);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
@@ -255,10 +263,24 @@ trigger libSCPL_gt_ProgressUnitStartCommentedTest;
 trigger libSCPL_gt_ProgressUnitCancelCommented;
 trigger libSCPL_gt_ResourceConvertVespene;
 trigger libSCPL_gt_ResourceConvertMinerals;
-trigger libSCPL_gt_ResourceDisplaySpend;
+trigger libSCPL_gt_AutomatedExpansionWorkerProduction;
+trigger libSCPL_gt_AutomateWorkerProductionInitialize;
+trigger libSCPL_gt_AutomateWorkerProduction;
+trigger libSCPL_gt_AutomateWorkerGatherVespene;
+trigger libSCPL_gt_WorkerSetHarvestState;
+trigger libSCPL_gt_WorkerSetHarvestStateNone;
+trigger libSCPL_gt_WorkerIdleHarvestResume;
+trigger libSCPL_gt_UnitLifeAndShieldScalingOnCreation;
+trigger libSCPL_gt_WarpGateResearchGatewayBuilt;
+trigger libSCPL_gt_WarpGateResearchUpgradeAllGates;
+trigger libSCPL_gt_MuleHarvestNearestResoures;
 trigger libSCPL_gt_AutoWallOrderLower;
 trigger libSCPL_gt_AutoWallOrderRaise;
 trigger libSCPL_gt_AutoWallOrderToggle;
+trigger libSCPL_gt_CreepTumorAutoSpread;
+trigger libSCPL_gt_CreepPointTargetDetermination;
+trigger libSCPL_gt_CreepPointGeneration;
+trigger libSCPL_gt_ResourceDisplaySpend;
 
 // Library Initialization
 void libSCPL_InitVariables ();

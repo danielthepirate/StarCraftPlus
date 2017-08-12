@@ -73,4 +73,25 @@
         <EffectArray value="AutoWallRaiseSearch"/>
         <EffectArray value="AutoWallRaiseOrderAdd"/>
     </CEffectSet>
+	<CEffectApplyBehavior id="OverlordAutoCreepCooldownReducerBehavior">
+        <ValidatorArray index="0" value="IsCreepTumor"/>
+        <EditorCategories value=""/>
+        <Behavior value="OverlordAutoCreepCooldownReduction"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="OverlordAutoCreepCooldownReductSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Structure;Ally,Neutral,Enemy,Missile,Dead,Hidden"/>
+        <AreaArray Radius="8" Effect="OverlordAutoCreepCooldownReducerBehavior"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="OverlordAutoCreepCooldownReduction">
+        <ValidatorArray value="IsCreepTumor"/>
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <Cost Abil="AutomaticSpawnCreepTumor2,Execute" CooldownOperation="Add" CooldownTimeUse="-0.25"/>
+    </CEffectModifyUnit>
+    <CEffectDamage id="SpreadCreepTumorDummy">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="OverlordDontRemoveCooldownifNoCharges"/>
+    </CEffectDamage>
 </Catalog>

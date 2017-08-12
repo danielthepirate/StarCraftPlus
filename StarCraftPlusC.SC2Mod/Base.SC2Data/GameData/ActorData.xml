@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+	 <CActorUnit id="InvisibleTargetDummy">
+        <On Terms="ActorCreation" Send="SetVisibility"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="UpdateVisibility" value="0"/>
+    </CActorUnit>
     <CActorPower id="PowerFast">
         <On index="0" removed="1"/>
         <On index="1" removed="1"/>
@@ -16,7 +22,6 @@
         <VisualArray value="UnpoweredVisualLow"/>
         <VisualArray value="PowerVisualFastLow"/>
     </CActorPower>
-    <!--                                                                                         -->
     <CActorSplat id="PowerVisual">
         <On Terms="ActorOrphan" Send="Destroy"/>
     </CActorSplat>

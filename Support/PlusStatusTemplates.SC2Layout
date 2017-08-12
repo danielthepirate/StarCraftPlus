@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="UnitStatusBar" name="UnitStatusBarTemplate">
+        <Height val="10"/>
+        <Width val="93"/>
+        <BackgroundShown val="true"/>
+        <BackgroundColor val="0,0,0"/>
+        <BarInsetRect top="0" left="0" bottom="0" right="0"/>
+        <BackgroundInsetRect top="1" left="1" bottom="1" right="1"/>
+    </Frame>
+
+    <Frame type="UnitStatusFrame" name="PlusUnitStatusTemplate" template="TriggerDialogFrame/TriggerControlUnitStatusTemplate">
+        <Frame type="UnitStatusProgressBar" name="UnitStatusProgressBarTemplate" template="PlusStatusTemplates/UnitStatusBarTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="108"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="120"/>
+            <Height val="6"/>
+            <Width val="140"/>
+            <Texture val="Assets/Textures/white.dds"/>
+        </Frame>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="148"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="120"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+    </Frame>
+</Desc>
