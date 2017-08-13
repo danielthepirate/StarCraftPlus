@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+	<Frame type="GameUI" name="GameUI" file="GameUI">
+		<ConsoleWorldBottomOffset val="0"/>
+	</Frame>
+
+    <Frame type="Frame" name="GameUI/UIContainer" file="GameUI">
+		
+		<Frame type="Frame" name="Initializer">
+			<Anchor relative="$parent"/>
+			
+			<Animation name="LayoutInitializer">
+				<Event event="OnShown" action="Reset,Play"/>
+				<Controller type="Visibility" end="Loop" frame="$StandardCommandPanel">
+					<Key type="Bool" time="0" value="false"/>
+				</Controller>
+			</Animation>
+		</Frame>
+		
+		<Frame type="ConsolePanel" name="ConsolePanel">
+			
+			<!-- BACKGROUND FRAMES -->
+			<!-- <Frame type="Image" name="CommandPanelBackground" template="PlusTemplates/CommandBackgroundTemplate"> -->
+				<!-- <Anchor side="Top" relative="$StandardCommandPanel" pos="Min" offset="-6"/> -->
+				<!-- <Anchor side="Left" relative="$PortraitPanel" pos="Min" offset="-6"/> -->
+				<!-- <Anchor side="Bottom" relative="$StandardCommandPanel" pos="Max" offset="-4"/> -->
+				<!-- <Anchor side="Right" relative="$StandardCommandPanel" pos="Max" offset="-4"/> -->
+				
+				<!-- <Alpha val="164"/> -->
+				<!-- <RenderType val="HDR"/> -->
+				<!-- <RenderPriority val="10"/> -->
+			<!-- </Frame> -->
+			
+			<Frame type="Image" name="MinimapBackground" template="PlusTemplates/CommandBackgroundTemplate">
+				<Anchor side="Top" relative="$parent/MinimapStub" pos="Min" offset="26"/>
+				<Anchor side="Left" relative="$parent/MinimapStub" pos="Min" offset="0"/>
+				<Anchor side="Bottom" relative="$parent/MinimapStub" pos="Max" offset="0"/>
+				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="12"/>
+			</Frame>
+			
+			<Frame type="Image" name="InfoPanelBackground" template="PlusTemplates/CommandBackgroundTemplate">
+				<Anchor side="Top" relative="$parent/InfoStub" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/MinimapBackground" pos="Max" offset="0"/>
+				<Anchor side="Bottom" relative="$parent/InfoStub" pos="Max" offset="0"/>
+				<Anchor side="Right" relative="$parent/InfoStub" pos="Max" offset="0"/>
+				<RenderType val="HDR"/>
+				<RenderPriority val="10"/>
+			</Frame>
+			
+			<!-- CONSOLE MODELS -->
+			<Frame type="Model" name="MinimapModel">
+            	<Visible val="false"/>
+			</Frame>
+			<Frame type="Model" name="InfopanelModel">
+				<Visible val="false"/>
+			</Frame>
+			<Frame type="Model" name="CommandPanelModel">
+				<Visible val="false"/>
+			</Frame>
+		
+			<!-- PORTRAIT FRAME -->
+			<Frame type="PortraitPanel" name="PortraitPanel">
+				<!-- <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/> -->
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+				<Anchor side="Right" relative="$StandardCommandPanel" pos="Min" offset="-12"/>
+				<Width val="152"/>
+				<Height val="232"/>
+				
+				<Handle val="PortraitPanel"/>
+			</Frame>
+			
+			<!-- CONSOLE FRAMES -->
+			<Frame type="Frame" name="MinimapStub">
+				<Width val="380"/>
+				<Height val="332"/>
+			</Frame>
+	
+			<Frame type="Frame" name="InfoStub">
+				<Height val="244"/>
+			</Frame>
+	
+			<Frame type="Frame" name="CommandStub">
+				<Width val="450"/>
+				<Height val="301"/>
+			</Frame>
+			
+		</Frame>
+		
+		<Frame type="Frame" name="ConsoleUIContainer">
+		
+			<Frame type="InfoPanel" name="InfoPanel">
+				<!-- <Anchor side="Left" relative="$parent" pos="Mid" offset="-395"/> -->
+				<Anchor side="Left" relative="$parent" pos="Mid" offset="-600"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-20"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="185"/>
+				<Height val="199"/>
+				
+				<Handle val="InfoPanel"/>
+            </Frame>
+		
+			<Frame type="CommandPanel" name="CommandPanel">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-338"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="4"/>
+				<Width val="400"/>
+                <Height val="242"/>
+				<Visible val="false"/>
+				<!-- <Enabled val="false"/> -->
+				<Handle val="StandardCommandPanel"/>
+			</Frame>
+			
+		</Frame>
+		
+		<Frame type="Frame" name="FullscreenUpperContainer">
+			<Frame type="Frame" name="MenuBarConsoleAnchor">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-236"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+			</Frame>
+		</Frame>
+    </Frame>
+</Desc>

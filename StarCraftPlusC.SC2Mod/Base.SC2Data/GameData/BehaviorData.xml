@@ -1,12 +1,132 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <CBehaviorBuff id="GlobalIncreasedLifeAndShields">
+    <CBehaviorBuff id="AutoWallAutocastBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoCreepSpreadAutocastBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallForceField">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallForceField"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaise">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.125"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallRaiseSearch"/>
+        <FinalEffect value="AutoWallRaiseOrder"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="AutoWallAutocastEnabled"/>
+        <RemoveValidatorArray value="AutoWallLoweredManual"/>
+        <ExpireEffect value="AutoWallManualRaiseRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallManualRaise">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AutoWallAutocastEnabled"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallManualRaiseSearch"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaiseCooldown">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Duration value="0.0625"/>
+        <InitialEffect value="AutoWallLowerRemove"/>
+        <ExpireEffect value="AutoWallRaise"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+        <RemoveValidatorArray value="AutoWallLoweredManual"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallLowerCooldown">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <InitialEffect value="AutoWallRaiseRemove"/>
+        <ExpireEffect value="AutoWallLower"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallManualRaiseCooldown">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Duration value="0.0625"/>
+        <InitialEffect value="AutoWallLowerRemove"/>
+        <ExpireEffect value="AutoWallManualRaise"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CreepTumorEnhancedCreepGrowth">
+        <Face value="CreepTumorEnhancedCreepGrowthAura"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.375"/>
+        <Modification TimeScale="1.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameAutoCreepNodeSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="GameAutoCreepTargetSearch"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameAutoCreepNodeTargetCapped">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="KillSource"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameAutoCreepSpreadReady">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="-1"/>
+        <Period value="28"/>
+        <PeriodicEffect value="GameAutoCreepSpreadHook"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="AutoCreepAutocastEnabled"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameDroneMorphMarker">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="17"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameIncreasedLifeAndShields">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Modification>
             <VitalMaxFractionArray index="Life" value="1"/>
             <VitalMaxFractionArray index="Shields" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameMineralsNearTownHall">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="Extend" value="1"/>
+        <Duration value="0.625"/>
+        <Replace value="FarthestDistance"/>
+        <ReplaceLocation Value="TargetUnit"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameMineralsNearTownHallSearch">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="GameMineralsNearTownHallSearch"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="IsNexusNearby">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -25,6 +145,12 @@
                 <Cooldown Link="Behavior/IsNexusNearby"/>
             </Cost>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OverlordEnhancedCreepGrowthAura">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="OverlordCreepGrowthAuraSearch"/>
     </CBehaviorBuff>
     <CBehaviorPowerSource id="PowerSource">
         <Requirements value="IsNexusNotNearbyBehav"/>
@@ -66,60 +192,10 @@
     <CBehaviorBuff id="AutoWallLower">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Period value="0.0625"/>
-        <InitialEffect value="AutoWallRaiseRemoveSet"/>
         <PeriodicEffect value="AutoWallLowerSearch"/>
-        <Modification>
-            <BehaviorLinkDisableArray value="AutoWallRaise"/>
-            <BehaviorLinkDisableArray value="AutoWallRaiseOrder"/>
-            <BehaviorLinkDisableArray value="AutoWallRaisePrevention"/>
-            <BehaviorLinkDisableArray value="AutoWallRaisePre"/>
-        </Modification>
         <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AutoWallRaisePre">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="AutoWallRaiseSearchPre"/>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AutoWallRaiseOrder">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="AutoWallRaiseOrder"/>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AutoWallRaisePrevention">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <BuffFlags index="RefreshStack" value="1"/>
-        <Duration value="0.125"/>
-        <Modification>
-            <BehaviorLinkDisableArray value="AutoWallRaiseOrder"/>
-        </Modification>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AutoWallRaise">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Period value="0.0625"/>
-        <InitialEffect value="AutoWallRaisePreventionAdd"/>
-        <PeriodicEffect value="AutoWallRaiseSet"/>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="DisableAutoCreepifnoCharges">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="CreepTumorBehaviorValidator"/>
-        <Modification>
-            <AbilLinkDisableArray value="AutomaticSpawnCreepTumor2"/>
-        </Modification>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OverlordAutoCreepCooldownReduction">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="0.5"/>
-        <Period value="0.25"/>
-        <PeriodicEffect value="OverlordAutoCreepCooldownReduction"/>
-        <Modification>
-            <RateMultiplierArray index="Creep" value="2"/>
-        </Modification>
+        <DisableValidatorArray value="AutoWallAutocastEnabled"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OverlordCooldownReducer">
         <InfoFlags index="Hidden" value="1"/>
@@ -130,4 +206,16 @@
             <RateMultiplierArray index="Creep" value="2"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorCreepSource id="CreepGrowthMediumEnhanced">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <Period value="0.28"/>
+        <Start value="Footprint4x4CreepSourceGrown"/>
+        <Birth value="Footprint4x4CreepSourceStart"/>
+        <Grown value="Footprint4x4CreepSourceGrown"/>
+        <DisableValidatorArray value="HasEnhancedCreepGrowth"/>
+    </CBehaviorCreepSource>
+    <CBehaviorCreepSource id="makeCreep4x4">
+        <DisableValidatorArray value="NoEnhancedCreepGrowth"/>
+    </CBehaviorCreepSource>
 </Catalog>

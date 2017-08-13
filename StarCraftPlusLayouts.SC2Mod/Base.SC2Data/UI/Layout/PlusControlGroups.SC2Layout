@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+	
+		<Frame type="Image" name="ControlGroupListener00" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener00"/>
+		</Frame>
+		<Frame type="Image" name="ControlGroupListener01" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener01"/>
+		</Frame>
+		<Frame type="Image" name="ControlGroupListener02" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener02"/>
+		</Frame>
+		<Frame type="Image" name="ControlGroupListener03" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener03"/>
+		</Frame>
+		<Frame type="Image" name="ControlGroupListener04" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener04"/>
+		</Frame>
+		<Frame type="Image" name="ControlGroupListener05" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener05"/>
+		</Frame>
+		<Frame type="Image" name="ControlGroupListener06" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener06"/>
+		</Frame>
+		<Frame type="Image" name="ControlGroupListener07" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener07"/>
+		</Frame>
+		<Frame type="Image" name="ControlGroupListener08" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener08"/>
+		</Frame>
+		<Frame type="Image" name="ControlGroupListener09" template="PlusTemplates/ControlGroupListenerTemplate">
+			<Handle val="ControlGroupListener09"/>
+		</Frame>
+	
+		<Frame type="ControlGroupPanel" name="ControlGroupPanel">
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton0" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener00/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener00/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton1" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener01/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener01/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton2" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener02/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener02/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton3" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener03/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener03/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton4" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener04/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener04/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton5" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener05/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener05/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton6" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener06/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener06/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton7" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener07/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener07/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton8" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener08/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener08/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton9" template="PlusTemplates/ControlGroupButtonTemplate">
+				<Frame type="Image" name="NormalImage">
+					<AdjustmentColor val="{$ControlGroupListener09/@AdjustmentColor}"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<AdjustmentColor val="{$ControlGroupListener09/@AdjustmentColor}"/>
+				</Frame>
+			</Frame>
+			
+		</Frame>
+    </Frame>
+</Desc>

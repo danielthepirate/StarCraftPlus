@@ -81,6 +81,21 @@ fixed libPPRL_gf_ConvertBooleanToReal (bool lp_boolean) {
     return IntToFixed(BoolToInt(lp_boolean));
 }
 
+string libPPRL_gf_ConvertIntegerToStringDoubleDigit (int lp_integer) {
+    // Variable Declarations
+    string lv_integerString;
+
+    // Variable Initialization
+    lv_integerString = "";
+
+    // Implementation
+    lv_integerString = IntToString(lp_integer);
+    if ((StringLength(lv_integerString) == 1)) {
+        lv_integerString = ("0" + lv_integerString);
+    }
+    return lv_integerString;
+}
+
 void libPPRL_gf_DebugFlashUnit (unit lp_unit) {
     // Implementation
     libNtve_gf_SendActorMessageToUnit(lp_unit, "SetTintColor 255,0,0");
@@ -446,6 +461,29 @@ bool libPPRL_gf_UnitHasBehaviorWithBehaviorFlag (unit lp_unit, int lp_behaviorFl
         }
     }
     return false;
+}
+
+unitgroup libPPRL_gf_UnitsInUnitGroupMatchingBehavior (unitgroup lp_unitGroup, string lp_behavior, bool lp_match) {
+    unitgroup autoCE902C40_g;
+    int autoCE902C40_u;
+
+    // Variable Declarations
+    unitgroup lv_behaviorUnits;
+    unit lv_unit;
+
+    // Variable Initialization
+    lv_behaviorUnits = UnitGroupEmpty();
+
+    // Implementation
+    autoCE902C40_g = lp_unitGroup;
+    autoCE902C40_u = 1;
+    for ( ; autoCE902C40_u <= UnitGroupCount(autoCE902C40_g, c_unitCountAll) ; autoCE902C40_u += BoolToInt(lv_unit == UnitGroupUnit(autoCE902C40_g, autoCE902C40_u)) ) {
+        lv_unit = UnitGroupUnit(autoCE902C40_g, autoCE902C40_u);
+        if ((UnitHasBehavior2(lv_unit, lp_behavior) == lp_match)) {
+            UnitGroupAdd(lv_behaviorUnits, lv_unit);
+        }
+    }
+    return lv_behaviorUnits;
 }
 
 // Triggers

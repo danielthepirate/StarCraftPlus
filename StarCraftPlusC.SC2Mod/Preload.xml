@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Preload>
 <Actor id="SYSTEM_ActorConfig"/>
-<Behavior id="AutoWallLower"/>
-<Behavior id="AutoWallRaisePre"/>
-<Behavior id="GlobalIncreasedLifeAndShields"/>
+<Behavior id="GameIncreasedLifeAndShields"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
+<Unit id="SCV"/>
+<Unit id="Probe"/>
+<Unit id="Drone"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
-<Unit id="InvisibleTargetDummy"/>
+<Unit id="ThorAP"/>
 <Unit id="WarpAdept"/>
+<Unit id="GameAutoCreepNodeTarget"/>
 </Preload>
