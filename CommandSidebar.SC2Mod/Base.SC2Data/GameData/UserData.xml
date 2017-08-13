@@ -5,6 +5,7 @@
         <Fields Id="Trainer" Type="Unit" Count="2"/>
         <Fields Id="Warper" Type="Unit" Count="2"/>
         <Fields Id="Researcher" Type="Unit" Count="2"/>
+        <Fields Id="GlobalCaster" Type="Unit" Count="2"/>
         <Instances Id="[Default]"/>
         <Instances Id="Terr">
             <Unit Unit="SdbTBuild1">
@@ -31,6 +32,10 @@
             <Unit Unit="SdbTRsrch2">
                 <Field Id="Researcher" Index="1"/>
             </Unit>
+			<Unit Unit="SdbTAbils1">
+                <Field Id="GlobalCaster"/>
+            </Unit>
+            
         </Instances>
         <Instances Id="Zerg">
             <Unit Unit="SdbZBuild1">
@@ -57,6 +62,10 @@
             <Unit Unit="SdbZRsrch2">
                 <Field Id="Researcher" Index="1"/>
             </Unit>
+			<Unit Unit="SdbZAbils1">
+                <Field Id="GlobalCaster"/>
+            </Unit>
+            
         </Instances>
         <Instances Id="Prot">
             <Unit Unit="SdbPBuild1">
@@ -83,6 +92,10 @@
             <Unit Unit="SdbPRsrch2">
                 <Field Id="Researcher" Index="1"/>
             </Unit>
+			<Unit Unit="SdbPAbils1">
+                <Field Id="GlobalCaster"/>
+            </Unit>
+            
         </Instances>
     </CUser>
     <CUser id="ComandSidebarOrderRedirect">

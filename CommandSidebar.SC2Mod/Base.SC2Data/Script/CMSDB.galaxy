@@ -9,21 +9,23 @@ void CMSDB_SidebarPathsInit(){
 	sidebarPaths.builder[0] = "UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel1";
 	sidebarPaths.trainer[0] = "UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel1";
 	sidebarPaths.researcher[0] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel1";
+	sidebarPaths.caster[0] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel1";
 	
 	sidebarPaths.builder[1] = "UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel2";
 	sidebarPaths.trainer[1] = "UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel2";
 	sidebarPaths.researcher[1] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel2";
+	sidebarPaths.caster[1] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel2";
 }
 
 
-bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string abil){
+bool CMSDB_OrderRedirectGetData(CMSDB_OrderRedirect orderdata, string abil){
 	orderdata.abil = abil;
-	orderdata.useIdle = UserDataGetInt(CMDSB_ORDERREDIRECTDATA, abil, "UseIdle", 1);
-	orderdata.dummyCaster = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "DummyCaster", 1);
-	orderdata.realCaster[0] = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "RealCaster", 1);
-	orderdata.realCaster[1] = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "RealCaster", 2);
-	orderdata.realCaster[2] = UserDataGetUnit(CMDSB_ORDERREDIRECTDATA, abil, "RealCaster", 3);
-	orderdata.realAbil = UserDataGetGameLink(CMDSB_ORDERREDIRECTDATA, abil, "RealAbil", 1);
+	orderdata.useIdle = UserDataGetInt(c_CMDSB_orderRedirectData, abil, "UseIdle", 1);
+	orderdata.dummyCaster = UserDataGetUnit(c_CMDSB_orderRedirectData, abil, "DummyCaster", 1);
+	orderdata.realCaster[0] = UserDataGetUnit(c_CMDSB_orderRedirectData, abil, "RealCaster", 1);
+	orderdata.realCaster[1] = UserDataGetUnit(c_CMDSB_orderRedirectData, abil, "RealCaster", 2);
+	orderdata.realCaster[2] = UserDataGetUnit(c_CMDSB_orderRedirectData, abil, "RealCaster", 3);
+	orderdata.realAbil = UserDataGetGameLink(c_CMDSB_orderRedirectData, abil, "RealAbil", 1);
 	return true;
 }
 
@@ -49,7 +51,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	
 	abil = AbilityCommandGetAbility(OrderGetAbilityCommand(o));
 	abilCmdIndex = AbilityCommandGetCommand(OrderGetAbilityCommand(o));
-	CMSDB_OrderRedirectGetFromUserData(orderdata, abil);
+	CMSDB_OrderRedirectGetData(orderdata, abil);
 	
 	if (testConds) {
 		if (!((UnitGetType(dummy) == orderdata.dummyCaster))) {
@@ -103,6 +105,12 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
 		//UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
+	else if(AbilityClass(abil) == c_classIdCAbilMorph){
+		
+		UnitIssueOrder(dummy, Order(AbilityCommand("que5", c_abilQueueCmdCancelLast)), c_orderQueueReplace);
+		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		//UnitIssueOrder(u, o, c_orderQueueReplace);
+	}
 	
 	return true;
 }
@@ -123,7 +131,7 @@ unitgroup CMSDB_InitDummies(int player){
 	arrayref<paths> path;
 	string dummytype;
 	
-	int n = UserDataFieldCount (CMSDB_DUMMYUSERDATA);
+	int n = UserDataFieldCount (c_CMSDB_dummyUserData);
 	point unitPos = RegionGetCenter(RegionEntireMap());
 
 	TriggerDebugOutput(1, StringToText("Player "+IntToString(player)+" Race: "+playerData[player].race), CMSDB_DebugOutput);
@@ -132,7 +140,7 @@ unitgroup CMSDB_InitDummies(int player){
 	
 	
 	for(i = 1;i<=n;i+=1){
-		dummytype = UserDataField(CMSDB_DUMMYUSERDATA, i);
+		dummytype = UserDataField(c_CMSDB_dummyUserData, i);
 		TriggerDebugOutput(1, StringToText(dummytype), CMSDB_DebugOutput);
 		
 		if (dummytype == "Builder"){
@@ -147,12 +155,16 @@ unitgroup CMSDB_InitDummies(int player){
 			ug = playerData[player].researcher;
 			path = sidebarPaths.researcher;
 		}
+		else if (dummytype == "GlobalCaster"){
+			ug = playerData[player].caster;
+			path = sidebarPaths.caster;
+		}
 		else if (dummytype == "Warper"){
 			continue;
 		}
 		for(j = 0;j<2;j+=1){
 			subgroup[j] = UnitGroupEmpty();
-			unitid[j] = UserDataGetUnit(CMSDB_DUMMYUSERDATA, playerData[player].race, dummytype, j+1);
+			unitid[j] = UserDataGetUnit(c_CMSDB_dummyUserData, playerData[player].race, dummytype, j+1);
 			UnitGroupAddUnitGroup(subgroup[j], UnitCreate(1,unitid[j],c_unitCreateIgnorePlacement, player,unitPos,0.0));
 			CMSDB_AttachDummyToSidebar(subgroup[j], playerData[player].pg, path[j]);
 			UnitGroupAddUnitGroup(ug,subgroup[j]);
@@ -171,7 +183,7 @@ void CMSDB_PlayerDataInit(){
 		if (IsActiveUser(player)) {
 			playerData[player].race = PlayerRace (player);
 			playerData[player].pg = PlayerGroupSingle(player);
-			DummyBuilderType = UserDataGetUnit(CMSDB_DUMMYUSERDATA, playerData[player].race, "Builder", 1);
+			DummyBuilderType = UserDataGetUnit(c_CMSDB_dummyUserData, playerData[player].race, "Builder", 1);
 			playerData[player].dummies = UnitGroupEmpty();
 			playerData[player].builder = UnitGroupEmpty();
 			playerData[player].trainer = UnitGroupEmpty();
@@ -198,7 +210,7 @@ void CMSDB_DebugInit(int player, point unitPos){
 void CMSDB_Init(){
 	int i = 0;
 	int j = 0;
-	int n = UserDataInstanceCount(CMDSB_ORDERREDIRECTDATA);
+	int n = UserDataInstanceCount(c_CMDSB_orderRedirectData);
 	string abil;
 	
 	
@@ -207,7 +219,7 @@ void CMSDB_Init(){
 	CMSDB_PlayerDataInit();
 	
 	for(i = 1;i<=n;i+=1){
-		abil = UserDataInstance (CMDSB_ORDERREDIRECTDATA, i);
+		abil = UserDataInstance (c_CMDSB_orderRedirectData, i);
 		for(j=0;j<32;j+=1){
 			TriggerAddEventUnitOrder(CMSDB_InterceptOrder, null, AbilityCommand(abil, j));
 		}
