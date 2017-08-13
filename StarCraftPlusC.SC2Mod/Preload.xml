@@ -6,6 +6,9 @@
 <Effect id="DebugPointCircle"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
-<Unit id="InvisibleTargetDummy"/>
+<Unit id="Queen"/>
+<Unit id="CreepTumorBurrowed"/>
+<Unit id="CreepTumorQueen"/>
 <Unit id="WarpAdept"/>
+<Unit id="GameAutoCreepNodeTarget"/>
 </Preload>

@@ -17,11 +17,11 @@
         <Food value="25"/>
     </CUnit>
     <CUnit id="CreepTumorBurrowed">
-        <BehaviorArray Link="DisableAutoCreepifnoCharges"/>
-        <AbilArray Link="AutomaticSpawnCreepTumor2"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="CreepTumorAutocast" Type="AbilCmd" AbilCmd="AutomaticSpawnCreepTumor2,Execute" Row="2" Column="1"/>
-        </CardLayouts>
+        <BehaviorArray Link="GameAutoCreepNodeSearch"/>
+        <BehaviorArray Link="GameAutoCreepSpreadReady"/>
+    </CUnit>
+    <CUnit id="CreepTumorQueen">
+        <BehaviorArray Link="GameAutoCreepSpreadReady"/>
     </CUnit>
     <CUnit id="Drone">
         <CostResource index="Minerals" value="0"/>
@@ -34,6 +34,30 @@
     </CUnit>
     <CUnit id="FactoryFlying">
         <Food value="10"/>
+    </CUnit>
+    <CUnit id="GameAutoCreepNodeTarget">
+        <Race value="Zerg"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="ShowResources" value="0"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <FlagArray index="ClearRallyOnTargetLost" value="0"/>
+        <FlagArray index="IgnoreAttackAlert" value="1"/>
+        <FlagArray index="PlayerRevivable" value="0"/>
+        <FlagArray index="CameraFollow" value="0"/>
+        <PlacementFootprint value="CreepTumorQueen"/>
+        <EditorCategories value=""/>
     </CUnit>
     <CUnit id="Gateway">
         <Food value="10"/>
@@ -163,14 +187,8 @@
     <CUnit id="SupplyDepotConstructor" parent="SupplyDepot">
         <Name value="Unit/Name/SupplyDepotConstructor"/>
         <Description value="Button/Tooltip/SupplyDepotConstructor"/>
-        <Collide index="Ground" value="0"/>
-        <Collide index="ForceField" value="0"/>
-        <Collide index="Locust" value="0"/>
-        <Food value="0"/>
-        <CostResource index="Minerals" value="50"/>
         <AbilArray index="1" Link="AutoWallConstructionComplete"/>
         <CardLayouts index="0">
-            <LayoutButtons index="2" AbilCmd="AutoWallLowerManual,Execute"/>
             <LayoutButtons Face="AutoLower" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>

@@ -89,6 +89,11 @@
         <CmdFlags index="SetAutoCast" value="1"/>
         <CmdFlags index="SetAutoCastOn" value="1"/>
     </CEffectIssueOrder>
+    <CEffectSet id="CreepTumorLaunchMissileSet">
+        <EffectArray index="0" value="GameAutoCreepSpreadReadyRemove"/>
+        <EffectArray index="1" value="CreepTumorBuildAB"/>
+        <EffectArray value="CreepTumorLaunchMissile"/>
+    </CEffectSet>
     <CEffectEnumArea id="DebugPoint">
         <EditorCategories value=""/>
         <DebugTrace value="1"/>
@@ -113,6 +118,24 @@
         <EditorCategories value=""/>
         <BehaviorLink value="AutoWallRaise"/>
     </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="GameAutoCreepNodeTargetCapped">
+        <ValidatorArray index="0" value="AutoCreepTargetNodeReachable"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="GameAutoCreepSpreadReadyRemove">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="GameAutoCreepSpreadReady"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="GameAutoCreepSpreadHook">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="GameAutoCreepTargetSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Invulnerable;Ally,Neutral,Enemy,Missile,Dead"/>
+        <AreaArray Radius="10" Effect="GameAutoCreepNodeTargetCapped"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="GameDroneMorphMarker">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
@@ -138,11 +161,6 @@
         <ImpactUnit Value="Source"/>
         <Cost Abil="AutomaticSpawnCreepTumor2,Execute" CooldownOperation="Add" CooldownTimeUse="-0.25"/>
     </CEffectModifyUnit>
-    <CEffectDamage id="SpreadCreepTumorDummy">
-        <EditorCategories value=""/>
-        <ImpactLocation Value="SourceUnit"/>
-        <ValidatorArray value="OverlordDontRemoveCooldownifNoCharges"/>
-    </CEffectDamage>
     <CEffectApplyBehavior id="GameMineralsNearTownHall">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>

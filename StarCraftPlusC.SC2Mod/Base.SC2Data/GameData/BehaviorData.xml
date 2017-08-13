@@ -68,6 +68,21 @@
             <BehaviorLinkDisableArray value="AutoWallForceField"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameAutoCreepNodeSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="GameAutoCreepTargetSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameAutoCreepNodeTargetCapped">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="KillSource"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameAutoCreepSpreadReady">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="-1"/>
+        <Period value="24"/>
+        <PeriodicEffect value="GameAutoCreepSpreadHook"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameDroneMorphMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="17"/>
@@ -156,14 +171,6 @@
         <InfoFlags index="Hidden" value="1"/>
         <DisableValidatorArray value="AutoWallAutocastEnabled"/>
         <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="DisableAutoCreepifnoCharges">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="CreepTumorBehaviorValidator"/>
-        <Modification>
-            <AbilLinkDisableArray value="AutomaticSpawnCreepTumor2"/>
-        </Modification>
-        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OverlordAutoCreepCooldownReduction">
         <EditorCategories value="AbilityorEffectType:Units"/>

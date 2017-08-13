@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CValidatorUnitType id="AutoCreepTargetNode">
+        <Value value="GameAutoCreepNodeTarget"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="AutoCreepTargetNodeReachable">
+        <Type value="And"/>
+        <CombineArray value="AutoCreepTargetNode"/>
+        <CombineArray value="CliffLevelEqualSource"/>
+        <CombineArray value="TargetOnCreep"/>
+    </CValidatorCombine>
     <CValidatorUnitType id="AutoWallConstructionFootprint">
         <Value value="SupplyDepotConstructionFootprint"/>
     </CValidatorUnitType>
@@ -10,6 +19,10 @@
         <Value value="1"/>
         <Behavior value="AutoWallAutocastBehavior"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationCompareCliffLevel id="CliffLevelEqualSource">
+        <WhichLocation Value="TargetUnit"/>
+        <OtherLocation Value="SourceUnit"/>
+    </CValidatorLocationCompareCliffLevel>
     <CValidatorLocationEnumArea id="IsNexusNearby">
         <AreaArray Radius="6.5" Validator="IsNexus"/>
     </CValidatorLocationEnumArea>
@@ -44,14 +57,6 @@
         <ChargeLink value="Abil/CreepTumorBuild"/>
         <Location value="Unit"/>
         <Ability value="CreepTumorBuild"/>
-    </CValidatorUnitCompareChargeUsed>
-    <CValidatorUnitCompareChargeUsed id="CreepTumorBehaviorValidator">
-        <WhichUnit Value="Source"/>
-        <OtherUnit Value="Source"/>
-        <ChargeLink value="Abil/CreepTumorBuild"/>
-        <Location value="Unit"/>
-        <Ability value="CreepTumorBuild"/>
-        <Value value="1"/>
     </CValidatorUnitCompareChargeUsed>
     <CValidatorLocationEnumArea id="SupplyDepotLowerEnemyEnumerate">
         <WhichLocation Value="OriginUnit"/>
