@@ -50,7 +50,7 @@
     <CEffectEnumArea id="AutoWallRaiseSearch">
         <EditorCategories value=""/>
         <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.75" Effect="AutoWallRaiseSearchSet"/>
+        <AreaArray Radius="1.5" Effect="AutoWallRaiseSearchSet"/>
     </CEffectEnumArea>
     <CEffectSet id="AutoWallLowerSearchSet">
         <EditorCategories value=""/>
@@ -59,7 +59,7 @@
     <CEffectEnumArea id="AutoWallManualRaiseSearch">
         <EditorCategories value=""/>
         <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.75" Effect="AutoWallManualRaiseSearchSet"/>
+        <AreaArray Radius="1.5" Effect="AutoWallManualRaiseSearchSet"/>
     </CEffectEnumArea>
     <CEffectSet id="AutoWallRaiseSearchSet">
         <EditorCategories value=""/>
@@ -72,7 +72,7 @@
     <CEffectEnumArea id="AutoWallLowerSearch">
         <EditorCategories value=""/>
         <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.75" Effect="AutoWallLowerSearchSet"/>
+        <AreaArray Radius="1.5" Effect="AutoWallLowerSearchSet"/>
     </CEffectEnumArea>
     <CEffectSet id="AutoWallManualRaiseSearchSet">
         <EditorCategories value=""/>

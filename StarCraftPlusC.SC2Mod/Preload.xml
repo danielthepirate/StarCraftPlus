@@ -4,11 +4,12 @@
 <Behavior id="GameIncreasedLifeAndShields"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
+<Unit id="SCV"/>
+<Unit id="Probe"/>
+<Unit id="Drone"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
-<Unit id="Queen"/>
-<Unit id="CreepTumorQueen"/>
-<Unit id="OverlordTransport"/>
+<Unit id="ThorAP"/>
 <Unit id="WarpAdept"/>
 <Unit id="GameAutoCreepNodeTarget"/>
 </Preload>
