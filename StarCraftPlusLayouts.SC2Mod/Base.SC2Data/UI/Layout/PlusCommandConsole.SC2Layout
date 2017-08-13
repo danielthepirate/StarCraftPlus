@@ -11,7 +11,7 @@
 			
 			<Animation name="LayoutInitializer">
 				<Event event="OnShown" action="Reset,Play"/>
-				<Controller type="Visibility" end="Pause" frame="$StandardCommandPanel/CommandButton01">
+				<Controller type="Visibility" end="Loop" frame="$StandardCommandPanel">
 					<Key type="Bool" time="0" value="false"/>
 				</Controller>
 			</Animation>
@@ -43,6 +43,8 @@
 				<Anchor side="Left" relative="$parent/MinimapBackground" pos="Max" offset="0"/>
 				<Anchor side="Bottom" relative="$parent/InfoStub" pos="Max" offset="0"/>
 				<Anchor side="Right" relative="$parent/InfoStub" pos="Max" offset="0"/>
+				<RenderType val="HDR"/>
+				<RenderPriority val="10"/>
 			</Frame>
 			
 			<!-- CONSOLE MODELS -->
@@ -59,7 +61,7 @@
 			<!-- PORTRAIT FRAME -->
 			<Frame type="PortraitPanel" name="PortraitPanel">
 				<!-- <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/> -->
-				<Anchor side="Bottom" relative="$StandardCommandPanel" pos="Max" offset="-9"/>
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
 				<Anchor side="Right" relative="$StandardCommandPanel" pos="Min" offset="-12"/>
 				<Width val="152"/>
 				<Height val="232"/>
@@ -101,7 +103,8 @@
                 <Anchor side="Right" relative="$parent" pos="Max" offset="4"/>
 				<Width val="400"/>
                 <Height val="242"/>
-				
+				<Visible val="false"/>
+				<!-- <Enabled val="false"/> -->
 				<Handle val="StandardCommandPanel"/>
 			</Frame>
 			

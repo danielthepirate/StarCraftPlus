@@ -62,10 +62,12 @@
 
         <Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandSidebarButtonTemplate">
             <!-- <Anchor side="Left" relative="$parent" pos="Min" offset="10"/> -->
-            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-            <Anchor side="Left" relative="$InfoPanel/UnitPanel/UnitWireFrame" pos="Min" offset="64"/>
+            <Anchor side="Left" relative="$GridR" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$GridR" pos="Min" offset="0"/>
             <TooltipFrame val="TestCommandTooltip"/>
             <HotkeyUse val="CommanderAbility0"/>
+			
+			<Shortcut val="T"/>
         </Frame>
 		
 		<Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandSidebarButtonTemplate">
@@ -79,12 +81,16 @@
 			<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="0"/>
             <Anchor side="Top" relative="$parent/CommandButton01" pos="Min" offset="0"/>
             <Visible val="false"/>
+			
+			<Shortcut val="Z"/>
         </Frame>      
 
         <Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandSidebarButtonTemplate">
 			<Anchor side="Left" relative="$parent/CommandButton02" pos="Max" offset="0"/>
             <Anchor side="Top" relative="$parent/CommandButton02" pos="Min" offset="0"/>
             <Visible val="false"/>
+			
+			<BlocksShortcuts val="true"/>
         </Frame>
 
         <Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandSidebarButtonTemplate">
@@ -226,12 +232,12 @@
 				<Anchor side="Left" relative="$parent/$parent/CommandPanel1/CommandButton00" pos="Min" offset="64"/>
 			</Frame>
 			
-			<Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandButtonInvisible"></Frame>
-			<Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandButtonInvisible"></Frame>
-			<Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandButtonInvisible"></Frame>
-			<Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandButtonInvisible"></Frame>
-			<Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandButtonInvisible"></Frame>
-			<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandButtonInvisible"></Frame>
+			<Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandButtonInvisible"/>
 		</Frame>
 	</Frame>
 	

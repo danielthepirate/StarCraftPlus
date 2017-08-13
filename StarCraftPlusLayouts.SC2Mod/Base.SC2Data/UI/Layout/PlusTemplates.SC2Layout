@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
 
+	<Animation name="ShortcutKill">
+		<Event event="OnShown" action="Reset,Play"/>
+		<Controller type="Property" property="BlocksShortcuts" end="Pause">
+			<Key type="Property" time="0" value="true"/>
+		</Controller>
+	</Animation>
+
 	<Animation name="ColorizeVitalsTemplate">
 		<Event event="EventColorize" action="Reset,Play"/>
 		<Event event="EventPause" action="Pause"/>

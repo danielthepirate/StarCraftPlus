@@ -47,6 +47,16 @@
 		-->
 	</Frame>
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+	
+		<!-- <Frame type="Frame" name="ActiveUnitCommands" template="CommandSidebar/CommandContainer"> -->
+			<!-- <Anchor relative="$parent/InfoPanel"/> -->
+			
+			<!-- <Frame type="CommandPanel" name="CommandPanel2"> -->
+				<!-- <Visible val="false"/> -->
+			<!-- </Frame> -->
+		<!-- </Frame> -->
+
+	
 		<Frame type="Frame" name="BuilderCommandContainer" template="CommandSidebar/CommandContainer">
 			<Anchor relative="$parent/InfoPanel"/>
 			
