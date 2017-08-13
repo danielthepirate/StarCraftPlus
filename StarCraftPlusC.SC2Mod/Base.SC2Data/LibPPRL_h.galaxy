@@ -23,6 +23,7 @@ int libPPRL_gf_UserDataInstanceID (string lp_userType, string lp_userDataInstanc
 void libPPRL_gf_SendActorMessageToUnitGroup (string lp_actorMessage, unitgroup lp_unitGroup);
 void libPPRL_gf_ShakeCameraForPlayer (int lp_p, string lp_cameraSetting);
 fixed libPPRL_gf_ConvertBooleanToReal (bool lp_boolean);
+string libPPRL_gf_ConvertIntegerToStringDoubleDigit (int lp_integer);
 void libPPRL_gf_DebugFlashUnit (unit lp_unit);
 void libPPRL_gf_DebugPoint (point lp_point);
 void libPPRL_gf_DebugPoint2 (point lp_point, fixed lp_radius);

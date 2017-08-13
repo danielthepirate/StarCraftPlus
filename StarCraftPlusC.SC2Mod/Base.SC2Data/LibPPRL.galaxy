@@ -81,6 +81,21 @@ fixed libPPRL_gf_ConvertBooleanToReal (bool lp_boolean) {
     return IntToFixed(BoolToInt(lp_boolean));
 }
 
+string libPPRL_gf_ConvertIntegerToStringDoubleDigit (int lp_integer) {
+    // Variable Declarations
+    string lv_integerString;
+
+    // Variable Initialization
+    lv_integerString = "";
+
+    // Implementation
+    lv_integerString = IntToString(lp_integer);
+    if ((StringLength(lv_integerString) == 1)) {
+        lv_integerString = ("0" + lv_integerString);
+    }
+    return lv_integerString;
+}
+
 void libPPRL_gf_DebugFlashUnit (unit lp_unit) {
     // Implementation
     libNtve_gf_SendActorMessageToUnit(lp_unit, "SetTintColor 255,0,0");
