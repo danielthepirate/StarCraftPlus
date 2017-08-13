@@ -183,6 +183,24 @@
     <CUnit id="SCV">
         <CostResource index="Minerals" value="0"/>
     </CUnit>
+    <CUnit id="SdbTRsrch1">
+        <CardLayouts index="0">
+            <LayoutButtons index="24" Face="ResearchHighCapacityFuelTanks" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research15" Row="2" Column="3"/>
+            <LayoutButtons index="25" Face="ResearchRavenRecalibratedExplosives" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research14" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SdbTRsrch2">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="ResearchRavenEnergyUpgrade" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research4" Row="0" Column="0"/>
+            <LayoutButtons index="2" Face="ResearchBansheeCloak" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research1" Row="0" Column="1"/>
+            <LayoutButtons index="3" Face="BansheeSpeed" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research10" Row="0" Column="2"/>
+            <LayoutButtons index="4" Face="ResearchBallisticRange" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research16" Row="0" Column="3"/>
+            <LayoutButtons index="5" Face="ResearchPersonalCloaking" Type="AbilCmd" AbilCmd="GhostAcademyResearch,Research1" Row="0" Column="4"/>
+            <LayoutButtons index="6" Face="ResearchBattlecruiserSpecializations" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research1" Row="1" Column="0"/>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SpawningPool">
         <Food value="10"/>
     </CUnit>

@@ -82,7 +82,8 @@
 		</Frame>
 		<Frame type="TabControl" name="SideBarTab">
 			<Anchor side="Left" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/>
-			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/>
+			<!-- <Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/> -->
+			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="-12"/>
 			<Width val="300"/>
 			<Height val="38"/>
         

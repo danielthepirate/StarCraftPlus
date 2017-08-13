@@ -5693,6 +5693,7 @@
             <Action Type="FunctionCall" Library="SCPL" Id="8EBE6D55"/>
             <Action Type="FunctionCall" Library="SCPL" Id="5B7BE359"/>
             <Action Type="FunctionCall" Library="SCPL" Id="3C4303A1"/>
+            <Action Type="FunctionCall" Library="SCPL" Id="0F69A91B"/>
         </Element>
         <Element Type="FunctionCall" Id="3223058F">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="BF7A3439"/>
@@ -5759,6 +5760,9 @@
         </Element>
         <Element Type="FunctionCall" Id="3C4303A1">
             <FunctionDef Type="FunctionDef" Library="SCPL" Id="14B75319"/>
+        </Element>
+        <Element Type="FunctionCall" Id="0F69A91B">
+            <FunctionDef Type="FunctionDef" Library="SCPL" Id="E1D66860"/>
         </Element>
         <Element Type="Category" Id="F0DEBB43">
             <Item Type="Trigger" Library="SCPL" Id="C32FA832"/>
@@ -59321,6 +59325,16 @@
             <ValueType Type="bool"/>
         </Element>
         <Element Type="Category" Id="5EB4728E">
+            <Item Type="Category" Library="SCPL" Id="852CCD4E"/>
+            <Item Type="Category" Library="SCPL" Id="B0D8B5A0"/>
+        </Element>
+        <Element Type="Category" Id="852CCD4E">
+            <Item Type="FunctionDef" Library="SCPL" Id="E1D66860"/>
+        </Element>
+        <Element Type="FunctionDef" Id="E1D66860">
+            <FlagAction/>
+        </Element>
+        <Element Type="Category" Id="B0D8B5A0">
             <Item Type="Trigger" Library="SCPL" Id="7EDA6553"/>
             <Item Type="FunctionDef" Library="SCPL" Id="42F95A48"/>
             <Item Type="FunctionDef" Library="SCPL" Id="A2546105"/>

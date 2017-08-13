@@ -30,12 +30,14 @@
             <Text val="@UI/Menu"/>
         </Frame>
     </Frame>
+	
 	<Frame type="CommandButton" name="CommandSidebarButtonTemplate" template="CommandButton/CommandButtonTemplate">
 		<TooltipFrame val="TestCommandTooltip"/>
 		<Width val="64"/>
         <Height val="64"/>
         
 	</Frame>
+	
 	<Frame type="CommandButton" name="CommandButtonInvisible" template="CommandSidebar/CommandSidebarButtonTemplate">
 		<Anchor side="Top" relative="$parent" pos="Max" offset="0"/>
 		<Anchor side="Left" relative="$parent" pos="Max" offset="0"/>
@@ -44,7 +46,9 @@
 		<Width val="0"/>
 		<Height val="0"/>
 	</Frame>
+	
 	<Frame type="CommandPanel" name="CommandSidebarPanelTemplate" template="CommandPanel/CommandPanelTemplate">
+	
 		<HideUnusedButtons val="false"/>
 		<DisplayCancelCommandCard val="false"/>
 		<UseGridHotkeys val="false"/>
@@ -57,17 +61,20 @@
         </Frame>
 
         <Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandSidebarButtonTemplate">
+            <!-- <Anchor side="Left" relative="$parent" pos="Min" offset="10"/> -->
             <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$InfoPanel/UnitPanel/UnitWireFrame" pos="Min" offset="64"/>
             <TooltipFrame val="TestCommandTooltip"/>
             <HotkeyUse val="CommanderAbility0"/>
         </Frame>
+		
 		<Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandSidebarButtonTemplate">
             <Anchor side="Left" relative="$parent/CommandButton00" pos="Max" offset="0"/>
             <Anchor side="Top" relative="$parent/CommandButton00" pos="Min" offset="0"/>
             <TooltipFrame val="TestCommandTooltip"/>
             <HotkeyUse val="CommanderAbility1"/>
         </Frame>
+		
         <Frame type="CommandButton" name="CommandButton02" template="CommandSidebar/CommandSidebarButtonTemplate">
 			<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="0"/>
             <Anchor side="Top" relative="$parent/CommandButton01" pos="Min" offset="0"/>
@@ -105,7 +112,8 @@
         </Frame>
 
         <Frame type="CommandButton" name="CommandButton08" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton00" pos="Min" offset="0"/>
+			<!-- <Anchor side="Left" relative="$parent/CommandButton00" pos="Min" offset="0"/> -->
+			<Anchor side="Left" relative="$parent/CommandButton00" pos="Min" offset="32"/>
             <Anchor side="Top" relative="$parent/CommandButton00" pos="Max" offset="0"/>
             <Visible val="false"/>
         </Frame>
@@ -199,21 +207,25 @@
 	<Frame type="Frame" name="CommandContainer">
 		<Frame type="CommandPanel" name="CommandPanel1" template="CommandSidebar/CommandSidebarPanelTemplate">
 			<Anchor relative="$parent"/>
-			
 		</Frame>
+		
 		<Frame type="CommandPanel" name="CommandPanel2" template="CommandSidebar/CommandSidebarPanelTemplate">
 			<Anchor side="Left" relative="$parent/CommandPanel1" pos="Min" offset="0"/>
 			<Anchor side="Right" relative="$parent/CommandPanel1" pos="Max" offset="0"/>
 			<Anchor side="Top" relative="$parent/CommandPanel1/CommandButton00" pos="Max" offset="0"/>
 			<Anchor side="Bottom" relative="$this" pos="Min" offset="128"/>
+			
 			<Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandSidebarButtonTemplate">
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Left" relative="$parent/$parent/CommandPanel1/CommandButton14" pos="Max" offset="0"/>
 			</Frame>
+			
 			<Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandSidebarButtonTemplate">
 				<Anchor side="Top" relative="$parent/$parent/CommandPanel1/CommandButton08" pos="Max" offset="0"/>
-				<Anchor side="Left" relative="$parent/$parent/CommandPanel1/CommandButton00" pos="Min" offset="0"/>
+				<!-- <Anchor side="Left" relative="$parent/$parent/CommandPanel1/CommandButton00" pos="Min" offset="0"/> -->
+				<Anchor side="Left" relative="$parent/$parent/CommandPanel1/CommandButton00" pos="Min" offset="64"/>
 			</Frame>
+			
 			<Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandButtonInvisible"></Frame>
 			<Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandButtonInvisible"></Frame>
 			<Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandButtonInvisible"></Frame>

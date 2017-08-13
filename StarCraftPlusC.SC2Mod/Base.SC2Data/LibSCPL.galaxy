@@ -1030,6 +1030,9 @@ void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex) {
     UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOffHidden", 0)), c_orderQueueReplace);
 }
 
+void libSCPL_gf_InitializeConsolePlus () {
+}
+
 void libSCPL_gf_InitializeResourceUI () {
     // Implementation
     DialogControlHookupStandard(c_triggerControlTypeLabel, "UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel2Spend");
@@ -1387,6 +1390,7 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
     libSCPL_gv_map.lv_baseRegion = RegionCircle(Point(0.0, 0.0), 0.125);
     libSCPL_gf_InitializeSpendOverTime();
     libSCPL_gf_InitializeAutomatedWorkerProduction();
+    libSCPL_gf_InitializeConsolePlus();
     return true;
 }
 

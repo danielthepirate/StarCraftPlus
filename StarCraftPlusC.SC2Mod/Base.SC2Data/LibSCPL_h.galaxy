@@ -254,6 +254,7 @@ point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target);
 bool libSCPL_gf_AutoCreepPointValidActive (unit lp_node, point lp_point);
 void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOn (int lp_playerIndex);
 void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex);
+void libSCPL_gf_InitializeConsolePlus ();
 void libSCPL_gf_InitializeResourceUI ();
 void libSCPL_gf_ResourceDisplaySpendAdd (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
 void libSCPL_gf_ResourceDisplaySpendRemove (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
