@@ -24,6 +24,8 @@ struct libSCPL_gs_Player {
     unitgroup lv_autoCreepNodeTargets;
     unitgroup lv_autoCreepNodes;
     int lv_autoCreepNodeCount;
+    bool lv_globalTerran_AutoWallToggle;
+    bool lv_globalZerg_CreepSpreadToggle;
 };
 
 struct libSCPL_gs_Map {
@@ -250,6 +252,8 @@ void libSCPL_gf_AutoCreepSpreadTowardsTargetNode (int lp_playerIndex, unit lp_no
 bool libSCPL_gf_PointsHaveHeightDifference (point lp_pointA, point lp_pointB);
 point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target);
 bool libSCPL_gf_AutoCreepPointValidActive (unit lp_node, point lp_point);
+void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOn (int lp_playerIndex);
+void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex);
 void libSCPL_gf_InitializeResourceUI ();
 void libSCPL_gf_ResourceDisplaySpendAdd (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
 void libSCPL_gf_ResourceDisplaySpendRemove (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
@@ -317,10 +321,12 @@ trigger libSCPL_gt_UnitLifeAndShieldScalingOnCreation;
 trigger libSCPL_gt_WarpGateResearchGatewayBuilt;
 trigger libSCPL_gt_WarpGateResearchUpgradeAllGates;
 trigger libSCPL_gt_MuleHarvestNearestResoures;
+trigger libSCPL_gt_PlayerAutoWallUnitCreated;
 trigger libSCPL_gt_AutoCreepTumorNodeCreateParent;
 trigger libSCPL_gt_AutoCreepTumorNodeCreateChild;
 trigger libSCPL_gt_AutoCreepTumorNodeTargetReached;
 trigger libSCPL_gt_AutoCreepTumorReady;
+trigger libSCPL_gt_PlayerAutoCreepSpreadUnitCreated;
 trigger libSCPL_gt_ResourceDisplaySpend;
 
 // Library Initialization

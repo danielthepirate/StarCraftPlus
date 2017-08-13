@@ -73,14 +73,41 @@
         <Effect index="0" value="AutoWallManualRaiseAbility"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoCreepSpread">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoCreepSpreadAutocastBehavior"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CastIntroTime value="0.0625"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoCreepSpreadAutocastToggle">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="AutoWallToggleOffHidden">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="AutoWallToggleOff"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoCreepSpreadOffHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoCreepSpreadOff"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="AutoWallToggleOnHidden">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="AutoWallToggleOn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoCreepSpreadOnHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoCreepSpreadOn"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
     </CAbilEffectInstant>
     <CAbilResearch id="BanelingNestResearch">
@@ -613,9 +640,10 @@
     <CAbilEffectTarget id="SpawnLarva">
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
-        <AutoCastFilters value="Visible;Neutral,Enemy,UnderConstruction"/>
-        <AutoCastRange value="5"/>
-        <AutoCastValidatorArray value="IsHatchery"/>
+        <AutoCastFilters value="Structure;Ally,Neutral,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="IsHatcheryLairOrHive"/>
+        <AutoCastValidatorArray value="NotContaminated"/>
         <AutoCastValidatorArray value="CasterEnergyGE50"/>
     </CAbilEffectTarget>
     <CAbilMorph id="AutoWallLowerHidden" parent="SupplyDepotLower">

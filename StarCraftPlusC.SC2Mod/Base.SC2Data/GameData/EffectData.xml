@@ -3,6 +3,9 @@
     <CEffectApplyBehavior id="AutoWallAutocastBehavior">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AutoCreepSpreadAutocastBehavior">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectApplyForce id="AutoWallForce">
         <EditorCategories value=""/>
         <Amount value="0.25"/>
@@ -82,6 +85,12 @@
         <Abil value="AutoWallToggle"/>
         <CmdFlags index="SetAutoCast" value="1"/>
     </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoCreepSpreadOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoCreepSpread"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
     <CEffectIssueOrder id="AutoWallToggleOn">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
@@ -89,6 +98,17 @@
         <CmdFlags index="SetAutoCast" value="1"/>
         <CmdFlags index="SetAutoCastOn" value="1"/>
     </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoCreepSpreadOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoCreepSpread"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectApplyBehavior id="CreepTumorEnhancedCreepGrowth">
+        <ValidatorArray index="0" value="IsCreepTumorAny"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectSet id="CreepTumorLaunchMissileSet">
         <EffectArray index="0" value="GameAutoCreepSpreadReadyRemove"/>
         <EffectArray index="1" value="CreepTumorBuildAB"/>
@@ -145,23 +165,12 @@
         <SearchFilters value="HarvestableResource;Player,Ally,Enemy,Missile,Dead,Hidden"/>
         <AreaArray Radius="16" Effect="GameMineralsNearTownHall"/>
     </CEffectEnumArea>
-    <CEffectApplyBehavior id="OverlordAutoCreepCooldownReducerBehavior">
-        <ValidatorArray index="0" value="IsCreepTumor"/>
-        <EditorCategories value=""/>
-        <Behavior value="OverlordAutoCreepCooldownReduction"/>
-    </CEffectApplyBehavior>
-    <CEffectEnumArea id="OverlordAutoCreepCooldownReductSearch">
-        <EditorCategories value=""/>
-        <SearchFilters value="Structure;Ally,Neutral,Enemy,Missile,Dead,Hidden"/>
-        <AreaArray Radius="8" Effect="OverlordAutoCreepCooldownReducerBehavior"/>
-    </CEffectEnumArea>
-    <CEffectModifyUnit id="OverlordAutoCreepCooldownReduction">
-        <ValidatorArray value="IsCreepTumor"/>
-        <EditorCategories value=""/>
-        <ImpactUnit Value="Source"/>
-        <Cost Abil="AutomaticSpawnCreepTumor2,Execute" CooldownOperation="Add" CooldownTimeUse="-0.25"/>
-    </CEffectModifyUnit>
     <CEffectApplyBehavior id="GameMineralsNearTownHall">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
+    <CEffectEnumArea id="OverlordCreepGrowthAuraSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Ally,Neutral,Enemy,Missile,Dead,Hidden"/>
+        <AreaArray Radius="11" Effect="CreepTumorEnhancedCreepGrowth"/>
+    </CEffectEnumArea>
 </Catalog>

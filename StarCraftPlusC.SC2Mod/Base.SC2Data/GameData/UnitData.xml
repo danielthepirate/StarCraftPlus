@@ -16,12 +16,27 @@
     <CUnit id="CommandCenterFlying">
         <Food value="25"/>
     </CUnit>
+    <CUnit id="CreepTumor">
+        <BehaviorArray Link="CreepGrowthMediumEnhanced"/>
+    </CUnit>
     <CUnit id="CreepTumorBurrowed">
+        <BehaviorArray Link="CreepGrowthMediumEnhanced"/>
         <BehaviorArray Link="GameAutoCreepNodeSearch"/>
         <BehaviorArray Link="GameAutoCreepSpreadReady"/>
+        <AbilArray Link="AutoCreepSpread"/>
+        <AbilArray Link="AutoCreepSpreadOnHidden"/>
+        <AbilArray Link="AutoCreepSpreadOffHidden"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AutoCreepSpreadAutocastToggle" Type="AbilCmd" AbilCmd="AutoCreepSpread,Execute" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="CreepTumorQueen">
+        <BehaviorArray Link="CreepGrowthMediumEnhanced"/>
         <BehaviorArray Link="GameAutoCreepSpreadReady"/>
+        <AbilArray Link="AutoCreepSpread"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AutoCreepSpreadAutocastToggle" Type="AbilCmd" AbilCmd="AutoCreepSpread,Execute" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Drone">
         <CostResource index="Minerals" value="0"/>
@@ -43,6 +58,7 @@
         <FlagArray index="Unselectable" value="1"/>
         <FlagArray index="Untargetable" value="1"/>
         <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="NoDraw" value="1"/>
         <FlagArray index="Uncloakable" value="1"/>
         <FlagArray index="Undetectable" value="1"/>
         <FlagArray index="KillCredit" value="0"/>
@@ -106,6 +122,24 @@
     <CUnit id="Overlord">
         <Food value="0"/>
         <CostResource index="Minerals" value="50"/>
+        <Sight value="13"/>
+        <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="OverlordEnhancedCreepGrowthAura"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Behavior value="OverlordEnhancedCreepGrowthAura"/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="OverlordCocoon">
         <Food value="0"/>
@@ -113,6 +147,11 @@
     </CUnit>
     <CUnit id="Overseer">
         <Food value="0"/>
+        <Sight value="13"/>
+        <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="OverlordEnhancedCreepGrowthAura" Type="Passive" Behavior="OverlordEnhancedCreepGrowthAura" Row="1" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="PlanetaryFortress">
         <Food value="25"/>
@@ -163,6 +202,11 @@
         <CostResource index="Minerals" value="75"/>
         <CostResource index="Vespene" value="25"/>
         <Food value="0"/>
+        <Sight value="13"/>
+        <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="OverlordEnhancedCreepGrowthAura" Type="Passive" Behavior="OverlordEnhancedCreepGrowthAura" Row="1" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SupplyDepot">
         <Collide index="Ground" value="0"/>

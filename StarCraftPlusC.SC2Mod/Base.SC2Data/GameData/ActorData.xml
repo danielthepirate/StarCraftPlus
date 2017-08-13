@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorModel id="CreepTumorEnhancedCreepGrowthModel" parent="ModelAnimationStyleContinuous">
+        <EditorCategories value=""/>
+        <On Terms="Behavior.CreepTumorEnhancedCreepGrowth.On" Send="Create"/>
+        <On Terms="Behavior.CreepTumorEnhancedCreepGrowth.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.500000 BSD"/>
+    </CActorModel>
     <!--                                                                                         -->
     <!-- Egg ................................................................................... -->
     <!--                                                                                         -->
@@ -106,6 +112,23 @@
         <Subject Filters="Unit" Terms="ScopeContains _Selectable; ValidateUnit TargetIsPlayer 0 Probe; ValidatePosition CliffLevelEqualOrLesser ::QueryDirector ::Main; ValidateUnitType IsNexus"/>
         <OnResponse Target="_Selectable" Send="Signal PylonPowerCheckNexus" Scope="QueryDirector"/>
     </CActorQueryResponse>
+    <CActorRange id="OverlordEnhancedCreepGrowthAuraRange">
+        <On Terms="SelectionLocalUpdate.Overlord.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.OverlordTransport.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.Overseer.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.Overlord.Stop" Send="Destroy"/>
+        <On Terms="SelectionLocalUpdate.OverlordTransport.Stop" Send="Destroy"/>
+        <On Terms="SelectionLocalUpdate.Overseer.Stop" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Overlord; Selected" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo OverlordTransport" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo Overseer" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo OverlordTransport; Selected" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Overseer; Selected" Send="Create"/>
+        <Range value="11.000000"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="1.750000"/>
+        <RangeFlags index="Minimap" value="1"/>
+    </CActorRange>
     <CActorUnit id="SupplyDepotConstructor" parent="SupplyDepot" unitName="SupplyDepotConstructor">
         <On index="0" Terms="UnitBirth.SupplyDepotConstructor"/>
         <On index="1" Terms="UnitBirth.SupplyDepotConstructor"/>

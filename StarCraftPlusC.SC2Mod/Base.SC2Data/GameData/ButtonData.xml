@@ -13,11 +13,19 @@
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="AutoWallToggle"/>
     </CButton>
-    <CButton id="CreepTumorAutocast">
+    <CButton id="AutoCreepSpreadAutocastToggle">
         <Icon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
         <Hotkey value="Button/Hotkey/BuildCreepTumorPropagate2"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="BuildCreepTumorPropagate"/>
+    </CButton>
+    <CButton id="OverlordEnhancedCreepGrowthAura">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
+    </CButton>
+    <CButton id="CreepTumorEnhancedCreepGrowthAura">
+        <TooltipImage value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
     </CButton>
 </Catalog>

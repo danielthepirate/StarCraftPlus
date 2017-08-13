@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CModel id="CreepTumorEnhancedCreepGrowthModel">
+        <Model value="Assets\Effects\Zerg\CreepTumorFrenzy\CreepTumorFrenzy.m3"/>
+    </CModel>
     <CModel id="PowerVisualFast2" parent="UI">
         <Model value="Assets/UI/Feedback/Pylon_WarpIn_Radius/Pylon_WarpIn_Radius.m3"/>
         <ScaleMax value="0.900000,0.900000,0.900000"/>

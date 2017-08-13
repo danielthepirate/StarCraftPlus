@@ -32,6 +32,8 @@ void libSCPL_InitVariables () {
     for (init_i = 0; init_i <= 16; init_i += 1) {
         libSCPL_gv_player[init_i].lv_autoCreepNodeTargets = UnitGroupEmpty();
         libSCPL_gv_player[init_i].lv_autoCreepNodes = UnitGroupEmpty();
+        libSCPL_gv_player[init_i].lv_globalTerran_AutoWallToggle = true;
+        libSCPL_gv_player[init_i].lv_globalZerg_CreepSpreadToggle = true;
     }
     libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend = c_invalidDialogControlId;
@@ -626,6 +628,7 @@ void libSCPL_gf_PlayerAutoWallGlobalRaise (int lp_playerIndex) {
     lv_unitGroup = UnitGroupEmpty();
 
     // Implementation
+    libSCPL_gv_player[lp_playerIndex].lv_globalTerran_AutoWallToggle = false;
     lv_unitGroup = UnitGroup("SupplyDepotLowered", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallRaiseManual", 0)), c_orderQueueReplace);
 }
@@ -650,6 +653,7 @@ void libSCPL_gf_PlayerAutoWallGlobalToggleOn (int lp_playerIndex) {
     lv_unitGroup = UnitGroupEmpty();
 
     // Implementation
+    libSCPL_gv_player[lp_playerIndex].lv_globalTerran_AutoWallToggle = true;
     lv_unitGroup = UnitGroup("SupplyDepot", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOnHidden", 0)), c_orderQueueReplace);
     lv_unitGroup = UnitGroup("SupplyDepotLowered", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
@@ -664,6 +668,7 @@ void libSCPL_gf_PlayerAutoWallGlobalToggleOff (int lp_playerIndex) {
     lv_unitGroup = UnitGroupEmpty();
 
     // Implementation
+    libSCPL_gv_player[lp_playerIndex].lv_globalTerran_AutoWallToggle = false;
     lv_unitGroup = UnitGroup("SupplyDepot", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOffHidden", 0)), c_orderQueueReplace);
     lv_unitGroup = UnitGroup("SupplyDepotLowered", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
@@ -993,6 +998,36 @@ bool libSCPL_gf_AutoCreepPointValidActive (unit lp_node, point lp_point) {
         return false;
     }
     return true;
+}
+
+void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOn (int lp_playerIndex) {
+    // Variable Declarations
+    unitgroup lv_unitGroup;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Implementation
+    libSCPL_gv_player[lp_playerIndex].lv_globalZerg_CreepSpreadToggle = true;
+    lv_unitGroup = UnitGroup("CreepTumorQueen", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOnHidden", 0)), c_orderQueueReplace);
+    lv_unitGroup = UnitGroup("CreepTumorBurrowed", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOnHidden", 0)), c_orderQueueReplace);
+}
+
+void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex) {
+    // Variable Declarations
+    unitgroup lv_unitGroup;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Implementation
+    libSCPL_gv_player[lp_playerIndex].lv_globalZerg_CreepSpreadToggle = false;
+    lv_unitGroup = UnitGroup("CreepTumorQueen", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOffHidden", 0)), c_orderQueueReplace);
+    lv_unitGroup = UnitGroup("CreepTumorBurrowed", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOffHidden", 0)), c_orderQueueReplace);
 }
 
 void libSCPL_gf_InitializeResourceUI () {
@@ -1400,6 +1435,7 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "CreepTumorQueen", 0, 1, PointWithOffsetPolar(PlayerStartLocation(1), 8.0, AngleBetweenPoints(PlayerStartLocation(1), RegionGetCenter(RegionEntireMap()))));
     libSCPL_gf_AutoCreepTumorNodeParentAdd(UnitLastCreated());
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "Queen", 0, 1, PointWithOffsetPolar(PlayerStartLocation(1), 6.0, AngleBetweenPoints(PlayerStartLocation(1), RegionGetCenter(RegionEntireMap()))));
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "OverlordTransport", 0, 1, PointWithOffsetPolar(PlayerStartLocation(1), 10.0, AngleBetweenPoints(PlayerStartLocation(1), RegionGetCenter(RegionEntireMap()))));
     return true;
 }
 
@@ -1413,6 +1449,12 @@ void libSCPL_gt__1_Init () {
 // Trigger: 2
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff(1);
     return true;
 }
 
@@ -1431,8 +1473,7 @@ bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "CreepTumorBurrowed", 0, 10, PointWithOffsetPolar(PlayerStartLocation(1), 8.0, AngleBetweenPoints(PlayerStartLocation(1), RegionGetCenter(RegionEntireMap()))));
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Queen", 0, 10, PointWithOffsetPolar(PlayerStartLocation(1), 10.0, AngleBetweenPoints(PlayerStartLocation(1), RegionGetCenter(RegionEntireMap()))));
+    libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOn(1);
     return true;
 }
 
@@ -4431,6 +4472,35 @@ void libSCPL_gt_MuleHarvestNearestResoures_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Player Auto Wall Unit Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_PlayerAutoWallUnitCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    if ((libSCPL_gv_player[lv_playerIndex].lv_globalTerran_AutoWallToggle == false)) {
+        UnitIssueOrder(lv_unit, Order(AbilityCommand("AutoWallToggleOffHidden", 0)), c_orderQueueReplace);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_PlayerAutoWallUnitCreated_Init () {
+    libSCPL_gt_PlayerAutoWallUnitCreated = TriggerCreate("libSCPL_gt_PlayerAutoWallUnitCreated_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_PlayerAutoWallUnitCreated, null, AbilityCommand("AutoWallConstructionComplete", 0), c_abilMorphStageUnitEnd, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Auto Creep Tumor Node Create Parent
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_AutoCreepTumorNodeCreateParent_Func (bool testConds, bool runActions) {
@@ -4546,6 +4616,35 @@ void libSCPL_gt_AutoCreepTumorReady_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Player Auto Creep Spread Unit Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    if ((libSCPL_gv_player[lv_playerIndex].lv_globalZerg_CreepSpreadToggle == false)) {
+        UnitIssueOrder(lv_unit, Order(AbilityCommand("AutoCreepSpreadOffHidden", 0)), c_orderQueueReplace);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Init () {
+    libSCPL_gt_PlayerAutoCreepSpreadUnitCreated = TriggerCreate("libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_PlayerAutoCreepSpreadUnitCreated, null, AbilityCommand("BurrowCreepTumorDown", 0), c_abilMorphStageUnitEnd, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Resource Display Spend
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
@@ -4657,10 +4756,12 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_WarpGateResearchGatewayBuilt_Init();
     libSCPL_gt_WarpGateResearchUpgradeAllGates_Init();
     libSCPL_gt_MuleHarvestNearestResoures_Init();
+    libSCPL_gt_PlayerAutoWallUnitCreated_Init();
     libSCPL_gt_AutoCreepTumorNodeCreateParent_Init();
     libSCPL_gt_AutoCreepTumorNodeCreateChild_Init();
     libSCPL_gt_AutoCreepTumorNodeTargetReached_Init();
     libSCPL_gt_AutoCreepTumorReady_Init();
+    libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Init();
     libSCPL_gt_ResourceDisplaySpend_Init();
 }
 

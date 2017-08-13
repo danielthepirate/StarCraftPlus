@@ -23,6 +23,30 @@
         <WhichLocation Value="TargetUnit"/>
         <OtherLocation Value="SourceUnit"/>
     </CValidatorLocationCompareCliffLevel>
+    <CValidatorUnitCompareBehaviorCount id="HasEnhancedCreepGrowth">
+        <Value value="1"/>
+        <Behavior value="CreepTumorEnhancedCreepGrowth"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="AutoCreepAutocastEnabled">
+        <Value value="1"/>
+        <Behavior value="AutoCreepSpreadAutocastBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoEnhancedCreepGrowth">
+        <Behavior value="CreepTumorEnhancedCreepGrowth"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="IsCreepTumorAny">
+        <CombineArray value="IsCreepTumor"/>
+        <CombineArray value="IsCreepTumorQueen"/>
+        <CombineArray value="IsCreepTumorUnburrowed"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="IsCreepTumorUnburrowed">
+        <ResultFailed value="CantTargetThatUnit"/>
+        <Value value="CreepTumor"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsCreepTumorQueen">
+        <ResultFailed value="CantTargetThatUnit"/>
+        <Value value="CreepTumorQueen"/>
+    </CValidatorUnitType>
     <CValidatorLocationEnumArea id="IsNexusNearby">
         <AreaArray Radius="6.5" Validator="IsNexus"/>
     </CValidatorLocationEnumArea>

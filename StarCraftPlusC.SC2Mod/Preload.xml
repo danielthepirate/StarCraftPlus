@@ -7,8 +7,8 @@
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
 <Unit id="Queen"/>
-<Unit id="CreepTumorBurrowed"/>
 <Unit id="CreepTumorQueen"/>
+<Unit id="OverlordTransport"/>
 <Unit id="WarpAdept"/>
 <Unit id="GameAutoCreepNodeTarget"/>
 </Preload>
