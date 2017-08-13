@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
     <Include path="UI/Layout/PlusTemplates.SC2Layout"/>
-    <Include path="UI/Layout/PlusResourcePanel.SC2Layout"/>
     <Include path="UI/Layout/PIRLTemplates.SC2Layout"/>
     <Include path="UI/Layout/PIRLDebugPanel.SC2Layout"/>
+    <Include path="UI/Layout/PlusResourcePanel.SC2Layout"/>
     <Include path="UI/Layout/PlusControlGroups.SC2Layout"/>
 </Desc>
