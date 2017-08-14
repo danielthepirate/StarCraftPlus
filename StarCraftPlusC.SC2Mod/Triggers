@@ -5933,9 +5933,6 @@
         <Element Type="Trigger" Id="D5650250">
             <Event Type="FunctionCall" Library="SCPL" Id="F8600350"/>
             <Action Type="FunctionCall" Library="SCPL" Id="22EF4EED"/>
-            <Action Type="FunctionCall" Library="SCPL" Id="AC089CE3"/>
-            <Action Type="FunctionCall" Library="SCPL" Id="FE712512"/>
-            <Action Type="FunctionCall" Library="SCPL" Id="D80F3BA6"/>
             <Action Type="FunctionCall" Library="SCPL" Id="BE7A9F0B"/>
             <Action Type="FunctionCall" Library="SCPL" Id="79EAF6AB"/>
         </Element>
@@ -5985,7 +5982,7 @@
         </Element>
         <Element Type="Param" Id="47714D99">
             <ParameterDef Type="ParamDef" Library="SCPL" Id="88CFD0DF"/>
-            <Value>Marine</Value>
+            <Value>Barracks</Value>
             <ValueType Type="gamelink"/>
             <ValueGameType Type="Unit"/>
         </Element>
@@ -5993,72 +5990,6 @@
             <ParameterDef Type="ParamDef" Library="SCPL" Id="816EA26A"/>
             <Value>8.0</Value>
             <ValueType Type="fixed"/>
-        </Element>
-        <Element Type="FunctionCall" Id="AC089CE3">
-            <FunctionDef Type="FunctionDef" Library="SCPL" Id="3FC40D3C"/>
-            <Parameter Type="Param" Library="SCPL" Id="E7827EB7"/>
-            <Parameter Type="Param" Library="SCPL" Id="C1708B88"/>
-            <Parameter Type="Param" Library="SCPL" Id="FCA51FBA"/>
-        </Element>
-        <Element Type="Param" Id="E7827EB7">
-            <ParameterDef Type="ParamDef" Library="SCPL" Id="4E7D02D3"/>
-            <Value>1</Value>
-            <ValueType Type="int"/>
-        </Element>
-        <Element Type="Param" Id="C1708B88">
-            <ParameterDef Type="ParamDef" Library="SCPL" Id="88CFD0DF"/>
-            <Value>SiegeTank</Value>
-            <ValueType Type="gamelink"/>
-            <ValueGameType Type="Unit"/>
-        </Element>
-        <Element Type="Param" Id="FCA51FBA">
-            <ParameterDef Type="ParamDef" Library="SCPL" Id="816EA26A"/>
-            <Value>6.0</Value>
-            <ValueType Type="fixed"/>
-        </Element>
-        <Element Type="FunctionCall" Id="FE712512">
-            <FunctionDef Type="FunctionDef" Library="SCPL" Id="3FC40D3C"/>
-            <Parameter Type="Param" Library="SCPL" Id="91B44B26"/>
-            <Parameter Type="Param" Library="SCPL" Id="EA056BBF"/>
-            <Parameter Type="Param" Library="SCPL" Id="78846630"/>
-        </Element>
-        <Element Type="Param" Id="91B44B26">
-            <ParameterDef Type="ParamDef" Library="SCPL" Id="4E7D02D3"/>
-            <Value>1</Value>
-            <ValueType Type="int"/>
-        </Element>
-        <Element Type="Param" Id="EA056BBF">
-            <ParameterDef Type="ParamDef" Library="SCPL" Id="88CFD0DF"/>
-            <Value>Battlecruiser</Value>
-            <ValueType Type="gamelink"/>
-            <ValueGameType Type="Unit"/>
-        </Element>
-        <Element Type="Param" Id="78846630">
-            <ParameterDef Type="ParamDef" Library="SCPL" Id="816EA26A"/>
-            <Value>7.0</Value>
-            <ValueType Type="fixed"/>
-        </Element>
-        <Element Type="FunctionCall" Id="D80F3BA6">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
-            <Parameter Type="Param" Library="SCPL" Id="6A26CD05"/>
-            <Parameter Type="Param" Library="SCPL" Id="3D0D8899"/>
-            <Parameter Type="Param" Library="SCPL" Id="F3E7B056"/>
-        </Element>
-        <Element Type="Param" Id="6A26CD05">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
-            <Value>1</Value>
-            <ValueType Type="int"/>
-        </Element>
-        <Element Type="Param" Id="3D0D8899">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
-            <Value>1</Value>
-            <ValueType Type="int"/>
-        </Element>
-        <Element Type="Param" Id="F3E7B056">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
-            <Value>Stimpack</Value>
-            <ValueType Type="gamelink"/>
-            <ValueGameType Type="Upgrade"/>
         </Element>
         <Element Type="FunctionCall" Id="BE7A9F0B">
             <Disabled/>

@@ -1446,10 +1446,7 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "SiegeTank", 6.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Battlecruiser", 7.0);
-    TechTreeUpgradeAddLevel(1, "Stimpack", 1);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Barracks", 8.0);
     return true;
 }
 

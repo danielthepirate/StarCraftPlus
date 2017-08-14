@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <!-- Balance change for balance patch of Nov 11th 2013 (combined Air/Ground vehicle upgrades)-->
+    <!-- Balance test 3/12 (separate Air/Ground vehicle upgrades)-->
+    <!-- Balance test 6/30 (combine Air/Ground mech armor upgrades)-->
+    <CUnit id="Armory">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="TerranShipWeaponsLevel1" Type="AbilCmd" AbilCmd="ArmoryResearch,Research12" Row="0" Column="0"/>
+            <LayoutButtons index="7" Face="TerranShipWeaponsLevel2" Type="AbilCmd" AbilCmd="ArmoryResearch,Research13" Row="0" Column="0"/>
+            <LayoutButtons index="8" Face="TerranShipWeaponsLevel3" Type="AbilCmd" AbilCmd="ArmoryResearch,Research14" Row="0" Column="0"/>
+            <LayoutButtons index="9" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="0" Column="2"/>
+            <LayoutButtons index="10" Face="TerranVehicleAndShipPlatingLevel1" Type="AbilCmd" AbilCmd="ArmoryResearch,Research15" Row="0" Column="0"/>
+            <LayoutButtons index="11" Face="TerranVehicleAndShipPlatingLevel2" Type="AbilCmd" AbilCmd="ArmoryResearch,Research16" Row="0" Column="0"/>
+            <LayoutButtons index="12" Face="TerranVehicleAndShipPlatingLevel3" Type="AbilCmd" AbilCmd="ArmoryResearch,Research17" Row="0" Column="0"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="AutoTurret">
         <CardLayouts index="0">
             <LayoutButtons index="0" Column="2"/>
@@ -7,6 +21,11 @@
     </CUnit>
     <CUnit id="BanelingNest">
         <Food value="10"/>
+    </CUnit>
+    <CUnit id="Banshee">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="CloakOffBanshee"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Barracks">
         <Food value="10"/>
@@ -327,13 +346,13 @@
     </CUnit>
     <CUnit id="SdbTRsrch2">
         <CardLayouts index="0">
-            <LayoutButtons index="1" Face="ResearchRavenEnergyUpgrade" Type="Passive" AbilCmd="" Row="0" Column="0"/>
+            <LayoutButtons index="1" Face="ResearchRavenEnergyUpgrade" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research4" Row="0" Column="0"/>
             <LayoutButtons index="2" Face="ResearchBansheeCloak" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research1" Row="0" Column="1"/>
             <LayoutButtons index="3" Face="BansheeSpeed" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research10" Row="0" Column="2"/>
             <LayoutButtons index="4" Face="ResearchBallisticRange" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research16" Row="0" Column="3"/>
             <LayoutButtons index="5" Face="ResearchPersonalCloaking" Type="AbilCmd" AbilCmd="GhostAcademyResearch,Research1" Row="0" Column="4"/>
             <LayoutButtons index="6" Face="ResearchBattlecruiserSpecializations" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research1" Row="1" Column="0"/>
-            <LayoutButtons index="7" Face="ResearchRavenEnergyUpgrade" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research4" Row="0" Column="0"/>
+            <LayoutButtons index="7" Face="ResearchRavenEnergyUpgrade" Type="Passive" AbilCmd="" Row="0" Column="0"/>
             <LayoutButtons index="8" Face="ResearchBansheeCloak" Type="Passive" AbilCmd="" Row="0" Column="1"/>
             <LayoutButtons Face="BansheeSpeed" Type="Passive" Row="0" Column="2"/>
             <LayoutButtons Face="ResearchBallisticRange" Type="Passive" Row="0" Column="3"/>

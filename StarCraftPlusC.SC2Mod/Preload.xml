@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Preload>
 <Actor id="SYSTEM_ActorConfig"/>
-<Behavior id="GameIncreasedLifeAndShields"/>
 <Behavior id="GameWorkerHarvestGasMarker"/>
+<Behavior id="GameIncreasedLifeAndShields"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
-<Unit id="SiegeTank"/>
+<Unit id="Barracks"/>
 <Unit id="SCV"/>
-<Unit id="Marine"/>
-<Unit id="Battlecruiser"/>
 <Unit id="Probe"/>
 <Unit id="Drone"/>
 <Unit id="Zergling"/>
