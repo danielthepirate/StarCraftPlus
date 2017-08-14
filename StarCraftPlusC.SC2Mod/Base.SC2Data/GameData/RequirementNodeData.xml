@@ -1,141 +1,115 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
     <CRequirementAnd id="AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitBarracksCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitBarracksTechLabCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheatCountUnitGhostAcademyCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitBarracksCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitBarracksTechLabCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitGhostAcademyCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitFactoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitFactoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitFactoryTechLabCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnly609241497TechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitFactoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitFactoryTechLabCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitArmoryCompleteOnly609241497TechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitFactoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitFactoryTechLabCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitFusionCoreCompleteOnly4211141650TechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitFactoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitFactoryTechLabCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitFusionCoreCompleteOnly4211141650TechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitStarportCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitStarportTechLabCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheatCountUnitFusionCoreCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitStarportCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitStarportTechLabCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitFusionCoreCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq1004646809CountUpgradeTerranShipWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq1004646809CountUpgradeTerranShipWeaponsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq1121594928CountUpgradeTerranVehicleArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq1121594928CountUpgradeTerranVehicleArmorsLevel1CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq1256514689CountUpgradeTerranVehicleAndShipWeaponsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq1256514689CountUpgradeTerranVehicleAndShipWeaponsLevel1CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq1429793488CountUpgradeTerranInfantryWeaponsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheatCountUnitEngineeringBayCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq1429793488CountUpgradeTerranInfantryWeaponsLevel1CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitEngineeringBayCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq1834932227CountUpgradeTerranVehicleWeaponsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq1834932227CountUpgradeTerranVehicleWeaponsLevel1CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq1864353859CountUpgradeTerranShipArmorsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq1864353859CountUpgradeTerranShipArmorsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq2326683880CountUpgradeTerranVehicleAndShipArmorsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq2326683880CountUpgradeTerranVehicleAndShipArmorsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq2517918925CountUpgradeTerranVehicleArmorsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq2517918925CountUpgradeTerranVehicleArmorsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq285961020CountUpgradeTerranShipWeaponsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq285961020CountUpgradeTerranShipWeaponsLevel1CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq3052852033CountUpgradeTerranShipArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq3052852033CountUpgradeTerranShipArmorsLevel1CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq3342497887CountUpgradeTerranInfantryWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheatCountUnitEngineeringBayCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq3342497887CountUpgradeTerranInfantryWeaponsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitEngineeringBayCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq3446134918CountUpgradeTerranInfantryArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheatCountUnitEngineeringBayCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq3446134918CountUpgradeTerranInfantryArmorsLevel1CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitEngineeringBayCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq3722837715CountUpgradeTerranInfantryArmorsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheatCountUnitEngineeringBayCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq3722837715CountUpgradeTerranInfantryArmorsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitEngineeringBayCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq514164946CountUpgradeTerranVehicleAndShipWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq514164946CountUpgradeTerranVehicleAndShipWeaponsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq611800619CountUpgradeTerranVehicleAndShipArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq611800619CountUpgradeTerranVehicleAndShipArmorsLevel1CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq894233239CountUpgradeTerranVehicleWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Eq894233239CountUpgradeTerranVehicleWeaponsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndOr96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheatNot866976074CountUnitNukeQueuedOrBetterAtUnitCountUnitGhostAcademyCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Or96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheat"/>
         <OperandArray value="Not866976074CountUnitNukeQueuedOrBetterAtUnit"/>
         <OperandArray value="CountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
@@ -160,19 +134,15 @@
         <Count Link="Barracks" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitBarracksCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Barracks" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitBarracksTechLabCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="BarracksTechLab" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitFactoryCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Factory" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitFactoryTechLabCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="FactoryTechLab" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitFusionCoreCompleteOnly4211141650TechTreeCheat">
@@ -180,18 +150,19 @@
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitGhostAcademyCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="GhostAcademy" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitOrbitalCommandCompleteOnlyTechTreeCheat">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="OrbitalCommand" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitStarportCompleteOnly4195804750TechTreeCheat">
         <Count Link="Starport" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitStarportCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Starport" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitStarportTechLabCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="StarportTechLab" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementEq id="Eq3446134918CountUpgradeTerranInfantryArmorsLevel1CompleteOnly1">

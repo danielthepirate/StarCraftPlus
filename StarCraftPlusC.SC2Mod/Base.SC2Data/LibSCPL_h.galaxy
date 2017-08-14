@@ -296,6 +296,7 @@ trigger libSCPL_gt_ProgressBuildingStartRefund;
 trigger libSCPL_gt_ProgressBuildingStart;
 trigger libSCPL_gt_ProgressBuildingSCVStart;
 trigger libSCPL_gt_ProgressBuildingSCVResume;
+trigger libSCPL_gt_ProgressBuildingSCVRefundUndo;
 trigger libSCPL_gt_ProgressBuildingCancel;
 trigger libSCPL_gt_ProgressUnitStartRefund;
 trigger libSCPL_gt_ProgressUnitStart;

@@ -9,7 +9,6 @@
 <Unit id="Drone"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
-<Unit id="ThorAP"/>
 <Unit id="WarpAdept"/>
 <Unit id="GameAutoCreepNodeTarget"/>
 </Preload>
