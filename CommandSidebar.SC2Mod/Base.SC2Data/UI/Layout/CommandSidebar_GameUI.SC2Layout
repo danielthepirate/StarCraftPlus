@@ -118,7 +118,7 @@
 			<PanelListItem val="$parent/TrainerCommandContainer"/>
 			<PanelListItem val="$parent/ResearcherCommandContainer"/>
 			<PanelListItem val="$parent/InfoPanel"/>
-			<SelectedIndex val="3"/>
+			<SelectedIndex val="1"/>
 
 			<Frame type="Button" name="SidebarGlobal" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
@@ -132,7 +132,7 @@
 				<Anchor side="Left" relative="$parent/SidebarGlobal" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarGlobal" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Construct (F3)"/>
+					<Text val="Construct (F4)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarBuildings"/>
 			</Frame>
@@ -141,7 +141,7 @@
 				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Train (F4)"/>
+					<Text val="Train (F5)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarUnits"/>
 			</Frame>
@@ -150,7 +150,7 @@
 				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Research (F5)"/>
+					<Text val="Research (F6)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
 			</Frame>
@@ -159,10 +159,22 @@
 				<Anchor side="Left" relative="$parent/SidebarResearch" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarResearch" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Info (F6)"/>
+					<Text val="Info (F7)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarInfoPanel"/>
 			</Frame>
+			
+			<StateGroup name="InfoPanelState">
+				<DefaultState val="InfoNotVisible"/>
+				<State name="InfoNotVisible">
+					<When type="Property" frame="SidebarInfoPanel" Toggled="false"/>
+					<Action type="SetProperty" Visible="false" frame="$InfoPanel"/>
+				</State>
+				<State name="InfoVisible">
+					<When type="Property" frame="SidebarInfoPanel" Toggled="true"/>
+					<Action type="SetProperty" Visible="true" frame="$InfoPanel"/>
+				</State>
+			</StateGroup>
 			
 		</Frame>
 		

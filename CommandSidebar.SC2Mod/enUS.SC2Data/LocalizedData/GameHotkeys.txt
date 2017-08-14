@@ -1,6 +1,6 @@
 ﻿Button/Hotkey/PylonDummy=Insert
-Button/Hotkey/SidebarBuildings=F3
-Button/Hotkey/SidebarUnits=F4
-Button/Hotkey/SidebarResearch=F5
-Button/Hotkey/SidebarInfoPanel=F6
-Button/Hotkey/SidebarGlobal=F6
+Button/Hotkey/SidebarBuildings=F4
+Button/Hotkey/SidebarUnits=F5
+Button/Hotkey/SidebarResearch=F6
+Button/Hotkey/SidebarInfoPanel=F7
+Button/Hotkey/SidebarGlobal=F3
