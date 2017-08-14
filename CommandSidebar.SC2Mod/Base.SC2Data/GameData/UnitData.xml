@@ -7,6 +7,9 @@
         <FlagArray index="NoPortraitTalk" value="1"/>
         <FlagArray index="Unstoppable" value="1"/>
         <PlaneArray index="Air" value="1"/>
+		<EnergyStart value="5000"/>
+        <EnergyMax value="5000"/>
+        <EnergyRegenRate value="100"/>
         <Mover value="Fly"/>
         <Speed value="0.0078"/>
         <Acceleration value="1"/>
@@ -22,6 +25,7 @@
         <MinimapRadius value="0"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
     </CUnit>
+	<CUnit id="SdbBlank" parent="SIDEBARCASTER_BASE" />
     <CUnit id="SdbPBuild1" parent="SIDEBARCASTER_BASE">
         <AbilArray Link="ProtossBuild"/>
         <CardLayouts>
@@ -444,22 +448,13 @@
         </CardLayouts>
     </CUnit>
 	<CUnit id="SdbTAbils1" parent="SIDEBARCASTER_BASE">
-        <AbilArray Link="ProtossBuild"/>
+        <AbilArray Link="CalldownMULE"/>
+        <AbilArray Link="SupplyDrop"/>
+        <AbilArray Link="ScannerSweep"/>
         <CardLayouts>
-            <LayoutButtons Face="Nexus" Type="AbilCmd" AbilCmd="ProtossBuild,Build1" Row="0" Column="0"/>
-            <LayoutButtons Face="Pylon" Type="AbilCmd" AbilCmd="ProtossBuild,Build2" Row="0" Column="1"/>
-            <LayoutButtons Face="Assimilator" Type="AbilCmd" AbilCmd="ProtossBuild,Build3" Row="0" Column="2"/>
-            <LayoutButtons Face="Gateway" Type="AbilCmd" AbilCmd="ProtossBuild,Build4" Row="0" Column="3"/>
-            <LayoutButtons Face="Forge" Type="AbilCmd" AbilCmd="ProtossBuild,Build5" Row="0" Column="4"/>
-            <LayoutButtons Face="CyberneticsCore" Type="AbilCmd" AbilCmd="ProtossBuild,Build15" Row="1" Column="0"/>
-            <LayoutButtons Face="PhotonCannon" Type="AbilCmd" AbilCmd="ProtossBuild,Build8" Row="1" Column="1"/>
-            <LayoutButtons Face="Stargate" Type="AbilCmd" AbilCmd="ProtossBuild,Build10" Row="1" Column="2"/>
-            <LayoutButtons Face="RoboticsFacility" Type="AbilCmd" AbilCmd="ProtossBuild,Build14" Row="1" Column="3"/>
-            <LayoutButtons Face="TwilightCouncil" Type="AbilCmd" AbilCmd="ProtossBuild,Build7" Row="1" Column="4"/>
-            <LayoutButtons Face="FleetBeacon" Type="AbilCmd" AbilCmd="ProtossBuild,Build6" Row="2" Column="0"/>
-            <LayoutButtons Face="RoboticsBay" Type="AbilCmd" AbilCmd="ProtossBuild,Build13" Row="2" Column="1"/>
-            <LayoutButtons Face="TemplarArchive" Type="AbilCmd" AbilCmd="ProtossBuild,Build11" Row="2" Column="2"/>
-            <LayoutButtons Face="DarkShrine" Type="AbilCmd" AbilCmd="ProtossBuild,Build12" Row="2" Column="3"/>
+			<LayoutButtons Face="Scan" Type="AbilCmd" AbilCmd="ScannerSweep,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="CalldownMULE" Type="AbilCmd" AbilCmd="CalldownMULE,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="SupplyDrop" Type="AbilCmd" AbilCmd="SupplyDrop,Execute" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
 	<CUnit id="SdbZAbils1" parent="SIDEBARCASTER_BASE">

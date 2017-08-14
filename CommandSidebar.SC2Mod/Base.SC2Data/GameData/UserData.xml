@@ -23,7 +23,7 @@
             <Unit Unit="SdbPWarp1">
                 <Field Id="Warper"/>
             </Unit>
-            <Unit Unit="SIDEBARCASTER_BASE">
+            <Unit Unit="SdbBlank">
                 <Field Id="Warper" Index="1"/>
             </Unit>
             <Unit Unit="SdbTRsrch1">
@@ -34,6 +34,9 @@
             </Unit>
 			<Unit Unit="SdbTAbils1">
                 <Field Id="GlobalCaster"/>
+            </Unit>
+            <Unit Unit="SdbBlank">
+                <Field Id="GlobalCaster" Index="1"/>
             </Unit>
             
         </Instances>
@@ -53,7 +56,7 @@
             <Unit Unit="SdbZWarp1">
                 <Field Id="Warper"/>
             </Unit>
-            <Unit Unit="SIDEBARCASTER_BASE">
+            <Unit Unit="SdbBlank">
                 <Field Id="Warper" Index="1"/>
             </Unit>
             <Unit Unit="SdbZRsrch1">
@@ -64,6 +67,9 @@
             </Unit>
 			<Unit Unit="SdbZAbils1">
                 <Field Id="GlobalCaster"/>
+            </Unit>
+            <Unit Unit="SdbBlank">
+                <Field Id="GlobalCaster" Index="1"/>
             </Unit>
             
         </Instances>
@@ -83,7 +89,7 @@
             <Unit Unit="SdbPWarp1">
                 <Field Id="Warper"/>
             </Unit>
-            <Unit Unit="SIDEBARCASTER_BASE">
+            <Unit Unit="SdbBlank">
                 <Field Id="Warper" Index="1"/>
             </Unit>
             <Unit Unit="SdbPRsrch1">
@@ -94,6 +100,9 @@
             </Unit>
 			<Unit Unit="SdbPAbils1">
                 <Field Id="GlobalCaster"/>
+            </Unit>
+            <Unit Unit="SdbBlank">
+                <Field Id="GlobalCaster" Index="1"/>
             </Unit>
             
         </Instances>
@@ -276,6 +285,40 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
+		<Instances Id="ScannerSweep">
+            <Int>
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="OrbitalCommand">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+		<Instances Id="SupplyDrop">
+            <Int>
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="OrbitalCommand">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+		<Instances Id="CalldownMULE">
+            <Int>
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="OrbitalCommand">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+		
         <Instances Id="ZergBuild">
             <Int>
                 <Field Id="UseIdle"/>

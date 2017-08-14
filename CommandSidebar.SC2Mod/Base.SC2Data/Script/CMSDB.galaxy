@@ -9,12 +9,12 @@ void CMSDB_SidebarPathsInit(){
 	sidebarPaths.builder[0] = "UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel1";
 	sidebarPaths.trainer[0] = "UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel1";
 	sidebarPaths.researcher[0] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel1";
-	sidebarPaths.caster[0] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel1";
+	sidebarPaths.caster[0] = "UIContainer/ConsoleUIContainer/GlobalCommandContainer/CommandPanel1";
 	
 	sidebarPaths.builder[1] = "UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel2";
 	sidebarPaths.trainer[1] = "UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel2";
 	sidebarPaths.researcher[1] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel2";
-	sidebarPaths.caster[1] = "UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel2";
+	sidebarPaths.caster[1] = "UIContainer/ConsoleUIContainer/GlobalCommandContainer/CommandPanel2";
 }
 
 
@@ -105,9 +105,15 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
 		//UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
-	else if(AbilityClass(abil) == c_classIdCAbilMorph){
+	else if((AbilityClass(abil) == c_classIdCAbilMorph) && (abilCmdIndex != c_abilMorphCmdCancel)){
 		
-		UnitIssueOrder(dummy, Order(AbilityCommand("que5", c_abilQueueCmdCancelLast)), c_orderQueueReplace);
+		UnitIssueOrder(dummy, Order(AbilityCommand(abil, c_abilMorphCmdCancel)), c_orderQueueReplace);
+		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		//UnitIssueOrder(u, o, c_orderQueueReplace);
+	}
+	else if(AbilityClass(abil) == c_classIdCAbilEffectTarget){
+		
+		UnitIssueOrder(dummy, Order(AbilityCommand(abil, c_abilEffectTargetCmdCancel)), c_orderQueueReplace);
 		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
 		//UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
