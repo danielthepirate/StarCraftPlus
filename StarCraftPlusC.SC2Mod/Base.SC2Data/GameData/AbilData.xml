@@ -150,6 +150,9 @@
             <Button Requirements="HaveBarracksWithTechLab"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilEffectTarget id="CalldownMULE">
+        <CmdButtonArray index="Execute" Requirements="HaveOrbitalCommandOnGround"/>
+    </CAbilEffectTarget>
     <CAbilTrain id="CommandCenterTrain">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -458,6 +461,9 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
     </CAbilTrain>
+    <CAbilEffectTarget id="ScannerSweep">
+        <CmdButtonArray index="Execute" Requirements="HaveOrbitalCommandOnGround"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="SpawningPoolResearch">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -541,6 +547,9 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilEffectTarget id="SupplyDrop">
+        <CmdButtonArray index="Execute" Requirements="HaveOrbitalCommandOnGround"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="TemplarArchivesResearch">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>

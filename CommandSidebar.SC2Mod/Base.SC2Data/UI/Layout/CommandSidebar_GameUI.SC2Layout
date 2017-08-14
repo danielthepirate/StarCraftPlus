@@ -127,6 +127,8 @@
 					<Text val="Global (F3)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarGlobal"/>
+				
+				<Visible val="false"/>
 			</Frame>
 			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Left" relative="$parent/SidebarGlobal" pos="Max" offset="-2"/>

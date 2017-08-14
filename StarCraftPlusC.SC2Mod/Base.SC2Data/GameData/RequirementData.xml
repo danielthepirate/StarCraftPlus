@@ -25,6 +25,9 @@
     <CRequirement id="HaveFactoryAndArmory" parent="HaveAttachedBarrTechLabAndShadowOps">
         <NodeArray index="Use" Link="AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="HaveOrbitalCommandOnGround">
+        <NodeArray index="Use" Link="CountUnitOrbitalCommandCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
     <CRequirement id="HaveStarportOnGround">
         <EditorCategories value="Race:Terran,TechType:Unit"/>
         <CanBeSuppressed index="Use" value="0"/>
