@@ -5,6 +5,7 @@
         <Fields Id="Trainer" Type="Unit" Count="2"/>
         <Fields Id="Warper" Type="Unit" Count="2"/>
         <Fields Id="Researcher" Type="Unit" Count="2"/>
+        <Fields Id="GlobalCaster" Type="Unit" Count="2"/>
         <Instances Id="[Default]"/>
         <Instances Id="Terr">
             <Unit Unit="SdbTBuild1">
@@ -22,7 +23,7 @@
             <Unit Unit="SdbPWarp1">
                 <Field Id="Warper"/>
             </Unit>
-            <Unit Unit="SIDEBARCASTER_BASE">
+            <Unit Unit="SdbBlank">
                 <Field Id="Warper" Index="1"/>
             </Unit>
             <Unit Unit="SdbTRsrch1">
@@ -31,6 +32,13 @@
             <Unit Unit="SdbTRsrch2">
                 <Field Id="Researcher" Index="1"/>
             </Unit>
+			<Unit Unit="SdbTAbils1">
+                <Field Id="GlobalCaster"/>
+            </Unit>
+            <Unit Unit="SdbBlank">
+                <Field Id="GlobalCaster" Index="1"/>
+            </Unit>
+            
         </Instances>
         <Instances Id="Zerg">
             <Unit Unit="SdbZBuild1">
@@ -48,7 +56,7 @@
             <Unit Unit="SdbZWarp1">
                 <Field Id="Warper"/>
             </Unit>
-            <Unit Unit="SIDEBARCASTER_BASE">
+            <Unit Unit="SdbBlank">
                 <Field Id="Warper" Index="1"/>
             </Unit>
             <Unit Unit="SdbZRsrch1">
@@ -57,6 +65,13 @@
             <Unit Unit="SdbZRsrch2">
                 <Field Id="Researcher" Index="1"/>
             </Unit>
+			<Unit Unit="SdbZAbils1">
+                <Field Id="GlobalCaster"/>
+            </Unit>
+            <Unit Unit="SdbBlank">
+                <Field Id="GlobalCaster" Index="1"/>
+            </Unit>
+            
         </Instances>
         <Instances Id="Prot">
             <Unit Unit="SdbPBuild1">
@@ -74,7 +89,7 @@
             <Unit Unit="SdbPWarp1">
                 <Field Id="Warper"/>
             </Unit>
-            <Unit Unit="SIDEBARCASTER_BASE">
+            <Unit Unit="SdbBlank">
                 <Field Id="Warper" Index="1"/>
             </Unit>
             <Unit Unit="SdbPRsrch1">
@@ -83,6 +98,13 @@
             <Unit Unit="SdbPRsrch2">
                 <Field Id="Researcher" Index="1"/>
             </Unit>
+			<Unit Unit="SdbPAbils1">
+                <Field Id="GlobalCaster"/>
+            </Unit>
+            <Unit Unit="SdbBlank">
+                <Field Id="GlobalCaster" Index="1"/>
+            </Unit>
+            
         </Instances>
     </CUser>
     <CUser id="ComandSidebarOrderRedirect">
@@ -263,6 +285,40 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
+		<Instances Id="ScannerSweep">
+            <Int>
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="OrbitalCommand">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+		<Instances Id="SupplyDrop">
+            <Int>
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="OrbitalCommand">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+		<Instances Id="CalldownMULE">
+            <Int>
+                <Field Id="UseIdle"/>
+            </Int>
+            <Unit Unit="ProbeDummy">
+                <Field Id="DummyCaster"/>
+            </Unit>
+            <Unit Unit="OrbitalCommand">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+		
         <Instances Id="ZergBuild">
             <Int>
                 <Field Id="UseIdle"/>

@@ -5,11 +5,14 @@ const string c_CMDSB_orderRedirectData = "ComandSidebarOrderRedirect";
 const string c_CMSDB_dummyUserData = "ComandSidebarDummyUnits";
 
 //STRUCT DEFINITIONS
-typedef string[2] paths;
+typedef string[2] paths;	//This is probably my worst use of a type definition, 
+							//but came in handy to pass a certain array and keep
+							// a large if block clean, hehe
 struct CMSDB_SidebarPaths{
 	paths builder;
 	paths trainer;
 	paths researcher;
+	paths caster;
 };
 
 struct CMSDB_PlayerData{
@@ -20,6 +23,7 @@ struct CMSDB_PlayerData{
 	unitgroup builder;
 	unitgroup trainer;
 	unitgroup researcher;
+	unitgroup caster;
 	unitgroup idleWorkers;
 	unitgroup townhalls;
 };
@@ -47,7 +51,7 @@ trigger CMSDB_InterceptOrder;
 
 
 //FUNCTIONS
-bool CMSDB_OrderRedirectGetFromUserData(CMSDB_OrderRedirect orderdata, string abil);
+bool CMSDB_OrderRedirectGetData(CMSDB_OrderRedirect orderdata, string abil);
 void CMSDB_AttachDummyToSidebar(unitgroup u, playergroup pg, string sidebar);
 bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions);
 void CMSDB_DebugInit(int player, point unitPos);

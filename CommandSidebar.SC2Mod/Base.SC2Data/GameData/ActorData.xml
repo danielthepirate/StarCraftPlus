@@ -13,6 +13,8 @@
 		<Macros value="RemoveFlyerHelperMacro"/>
 	</CActorUnit>
 	<CActorUnit id="SIDEBARCASTER_BASE" parent="GenericSidebarCasterBase" unitName="SIDEBARCASTER_BASE"/>
+	<CActorUnit id="SdbBlank" parent="GenericSidebarCasterBase" unitName="SdbBlank"/>
+	
 	<CActorUnit id="SdbPBuild1" parent="GenericSidebarCasterBase" unitName="SdbPBuild1"/>
 	<CActorUnit id="SdbPBuild2" parent="GenericSidebarCasterBase" unitName="SdbPBuild2"/>
 	<CActorUnit id="SdbPRsrch1" parent="GenericSidebarCasterBase" unitName="SdbPRsrch1"/>
@@ -20,6 +22,7 @@
 	<CActorUnit id="SdbPTrain1" parent="GenericSidebarCasterBase" unitName="SdbPTrain1"/>
 	<CActorUnit id="SdbPTrain2" parent="GenericSidebarCasterBase" unitName="SdbPTrain2"/>
 	<CActorUnit id="SdbPWarp1" parent="GenericSidebarCasterBase" unitName="SdbPWarp1"/>
+	<CActorUnit id="SdbPAbils1" parent="GenericSidebarCasterBase" unitName="SdbPAbils1"/>
 	
 	<CActorUnit id="SdbTBuild1" parent="GenericSidebarCasterBase" unitName="SdbTBuild1"/>
 	<CActorUnit id="SdbTBuild2" parent="GenericSidebarCasterBase" unitName="SdbTBuild2"/>
@@ -28,6 +31,7 @@
 	<CActorUnit id="SdbTTrain1" parent="GenericSidebarCasterBase" unitName="SdbTTrain1"/>
 	<CActorUnit id="SdbTTrain2" parent="GenericSidebarCasterBase" unitName="SdbTTrain2"/>
 	<CActorUnit id="SdbTWarp1" parent="GenericSidebarCasterBase" unitName="SdbTWarp1"/>
+	<CActorUnit id="SdbTAbils1" parent="GenericSidebarCasterBase" unitName="SdbTAbils1"/>
 	
 	<CActorUnit id="SdbZBuild1" parent="GenericSidebarCasterBase" unitName="SdbZBuild1"/>
 	<CActorUnit id="SdbZBuild2" parent="GenericSidebarCasterBase" unitName="SdbZBuild2"/>
@@ -36,49 +40,7 @@
 	<CActorUnit id="SdbZTrain1" parent="GenericSidebarCasterBase" unitName="SdbZTrain1"/>
 	<CActorUnit id="SdbZTrain2" parent="GenericSidebarCasterBase" unitName="SdbZTrain2"/>
 	<CActorUnit id="SdbZWarp1" parent="GenericSidebarCasterBase" unitName="SdbZWarp1"/>
+	<CActorUnit id="SdbZAbils1" parent="GenericSidebarCasterBase" unitName="SdbZAbils1"/>
 
-	<CActorUnit id="ProbeDummy" parent="GenericUnitStandard" unitName="ProbeDummy">
-		<Aliases value="_UnitSmall"/>
-		<Macros value="CarryAnim"/>
-		<Macros value="BuildAnim"/>
-		<On Terms="Abil.ProbeHarvest.Start" Send="AnimPlay Work Work PlayForever"/>
-		<On Terms="Abil.ProbeHarvest.Stop" Send="AnimClear Work"/>
-		<On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundSmall"/>
-		<On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
-		<On Terms="Abil.ProbeHarvest.Start" Send="StatusSet CloakSound 1"/>
-		<On Terms="Behavior.CarryHarvestableVespeneGeyserGasProtoss.Create" Send="StatusSet CloakSound 1"/>
-		<On Terms="Confirmation.Probe.Start" Send="StatusSet CloakSound 0"/>
-		<On Terms="Behavior.CloakFieldEffect.Create; IsStatus CloakSound 0" Send="Create Worker_CloakFieldOn"/>
-		<On Terms="Behavior.CloakFieldEffect.Destroy; IsStatus CloakSound 0" Send="Create Worker_CloakFieldOff"/>
-		<Model value="Probe"/>
-		<AnimBlendTime value="0.250000"/>
-		<ModelFlags index="OutlineEmitter" value="1"/>
-		<BuildModel value="Probe"/>
-		<DeathArray index="Normal" ModelLink="ProbeDeath" SoundLink="Probe_Explode"/>
-		<DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathSmall" Name="Hallucination"/>
-		<PlacementModel value="Probe"/>
-		<PortraitModel value="ProbePortrait"/>
-		<BarOffset value="40"/>
-		<BarWidth value="42"/>
-		<ErrorArray Error="MustTargetUnit" Sound="Alert_ProtossPlaceOnVespeneGeyser"/>
-		<GroupIcon>
-			<Image value="Assets\Textures\Wireframe-Protoss-Probe.dds"/>
-		</GroupIcon>
-		<HeroIcon value="Assets\Textures\btn-unit-protoss-probe.dds"/>
-		<LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
-		<SoundArray index="Ready" value="Probe_Ready"/>
-		<SoundArray index="Help" value="Alert_ProtossEconomyUnderAttack"/>
-		<SoundArray index="What" value="Probe_What"/>
-		<SoundArray index="Yes" value="Probe_Yes"/>
-		<SoundArray index="Pissed" value="Probe_Pissed"/>
-		<UnitIcon value="Assets\Textures\btn-unit-protoss-probe.dds"/>
-		<Wireframe>
-			<Image value="Assets\Textures\Wireframe-Protoss-Probe.dds"/>
-		</Wireframe>
-		<WireframeShield>
-			<Image value="Assets\Textures\Wireframe-Protoss-Probe-Shield01.dds"/>
-			<Image value="Assets\Textures\Wireframe-Protoss-Probe-Shield02.dds"/>
-			<Image value="Assets\Textures\Wireframe-Protoss-Probe-Shield03.dds"/>
-		</WireframeShield>
-	</CActorUnit>
+	
 </Catalog>
