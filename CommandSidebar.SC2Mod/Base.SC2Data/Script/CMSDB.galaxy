@@ -62,7 +62,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	}
 	
 	if(orderdata.useIdle>0){
-		ug = UnitGroupIdle(1, true);
+		ug = UnitGroupIdle(player, true);
 		u = UnitGroupUnit(ug, 1);
 	}
 	else{
