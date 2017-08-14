@@ -48,6 +48,7 @@
 	</Frame>
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
 	
+
 		<!-- <Frame type="Frame" name="ActiveUnitCommands" template="CommandSidebar/CommandContainer"> -->
 			<!-- <Anchor relative="$parent/InfoPanel"/> -->
 			
@@ -57,6 +58,17 @@
 		<!-- </Frame> -->
 
 	
+		<Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainer">
+			<Anchor relative="$parent/InfoPanel"/>
+			
+			<Frame type="CommandPanel" name="CommandPanel1">
+				<Handle val="GlobalCommandPanel1"/>
+			</Frame>
+			<Frame type="CommandPanel" name="CommandPanel2">
+				<Handle val="GlobalCommandPanel2"/>
+			</Frame>
+			
+		</Frame>
 		<Frame type="Frame" name="BuilderCommandContainer" template="CommandSidebar/CommandContainer">
 			<Anchor relative="$parent/InfoPanel"/>
 			
@@ -96,19 +108,29 @@
 			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="-16"/>
 			<Height val="38"/>
         
+			<TabListItem val="SidebarGlobal"/>
 			<TabListItem val="SidebarBuildings"/>
 			<TabListItem val="SidebarUnits"/>
 			<TabListItem val="SidebarResearch"/>
 			<TabListItem val="SidebarInfoPanel"/>
+			<PanelListItem val="$parent/GlobalCommandContainer"/>
 			<PanelListItem val="$parent/BuilderCommandContainer"/>
 			<PanelListItem val="$parent/TrainerCommandContainer"/>
 			<PanelListItem val="$parent/ResearcherCommandContainer"/>
 			<PanelListItem val="$parent/InfoPanel"/>
 			<SelectedIndex val="3"/>
 
-			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
+			<Frame type="Button" name="SidebarGlobal" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Frame type="Label" name="MenuLabel">
+					<Text val="Global (F3)"/>
+				</Frame>
+				<Shortcut val="@Button/Hotkey/SidebarGlobal"/>
+			</Frame>
+			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
+				<Anchor side="Left" relative="$parent/SidebarGlobal" pos="Max" offset="-2"/>
+				<Anchor side="Top" relative="$parent/SidebarGlobal" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="Construct (F3)"/>
 				</Frame>
