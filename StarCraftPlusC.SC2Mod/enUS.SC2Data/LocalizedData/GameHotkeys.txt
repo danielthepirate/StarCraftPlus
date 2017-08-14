@@ -1,2 +1,3 @@
 ﻿Button/Hotkey/AutoRaise=T
 Button/Hotkey/BuildCreepTumorPropagate2=T
+Button/Hotkey/GlobalGridButton=

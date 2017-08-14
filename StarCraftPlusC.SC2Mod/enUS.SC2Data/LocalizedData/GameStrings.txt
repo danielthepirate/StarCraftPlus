@@ -17,6 +17,7 @@ Button/Name/AutoCreepSpreadAutocastToggle=Automatic Spread
 Button/Name/AutoLower=Auto Lower
 Button/Name/AutoRaise=Auto Raise
 Button/Name/CreepTumorEnhancedCreepGrowthAura=Metastatic Aura
+Button/Name/GlobalGridButton=GlobalGridButton
 Button/Name/OverlordEnhancedCreepGrowthAura=Metastatic Aura
 Button/Tooltip/AutoCreepSpreadAutocastToggle=Automatically spread creep across the map.
 Button/Tooltip/AutoLower=Automatically lower the structure when your units are nearby.

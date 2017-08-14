@@ -92,9 +92,8 @@
 		</Frame>
 		<Frame type="TabControl" name="SideBarTab">
 			<Anchor side="Left" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/>
-			<!-- <Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/> -->
-			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="-12"/>
-			<Width val="300"/>
+			<Anchor side="Right" relative="SidebarInfoPanel" pos="Max" offset="0"/>
+			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="-16"/>
 			<Height val="38"/>
         
 			<TabListItem val="SidebarBuildings"/>
@@ -111,34 +110,38 @@
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Bldgs"/>
+					<Text val="Construct (F3)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarBuildings"/>
 			</Frame>
+			
 			<Frame type="Button" name="SidebarUnits" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Units"/>
+					<Text val="Train (F4)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarUnits"/>
 			</Frame>
+			
 			<Frame type="Button" name="SidebarResearch" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Rsrch"/>
+					<Text val="Research (F5)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
 			</Frame>
+			
 			<Frame type="Button" name="SidebarInfoPanel" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Left" relative="$parent/SidebarResearch" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/SidebarResearch" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarResearch" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Info"/>
+					<Text val="Info (F6)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarInfoPanel"/>
 			</Frame>
+			
 		</Frame>
 		
 	</Frame>
