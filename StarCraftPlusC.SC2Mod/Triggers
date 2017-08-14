@@ -5775,6 +5775,7 @@
             <Item Type="Trigger" Library="SCPL" Id="6320394D"/>
         </Element>
         <Element Type="Trigger" Id="C32FA832">
+            <Disabled/>
             <InitOff/>
             <Variable Type="Variable" Library="SCPL" Id="8716326E"/>
             <Event Type="FunctionCall" Library="SCPL" Id="9883B8E3"/>
@@ -5929,6 +5930,7 @@
             <Preset Type="PresetValue" Library="Ntve" Id="06588939"/>
         </Element>
         <Element Type="Trigger" Id="D5650250">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="F8600350"/>
             <Action Type="FunctionCall" Library="SCPL" Id="7CB0186A"/>
             <Action Type="FunctionCall" Library="SCPL" Id="F9EEF54B"/>
@@ -6414,6 +6416,7 @@
             <ValueType Type="int"/>
         </Element>
         <Element Type="Trigger" Id="D5BEEADE">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="DD693CFE"/>
             <Action Type="FunctionCall" Library="SCPL" Id="9A1B7C87"/>
         </Element>
@@ -6460,6 +6463,7 @@
             <ValueType Type="int"/>
         </Element>
         <Element Type="Trigger" Id="74A050C8">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="46804931"/>
             <Action Type="FunctionCall" Library="SCPL" Id="A049F933"/>
         </Element>
@@ -6506,6 +6510,7 @@
             <ValueType Type="int"/>
         </Element>
         <Element Type="Trigger" Id="BA04E164">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="BC1B3DB0"/>
             <Action Type="FunctionCall" Library="SCPL" Id="6AD3FC79"/>
             <Action Type="FunctionCall" Library="SCPL" Id="2B437923"/>
@@ -6563,6 +6568,7 @@
             <ValueType Type="fixed"/>
         </Element>
         <Element Type="Trigger" Id="E4E0B4F3">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="C616C0E1"/>
             <Action Type="FunctionCall" Library="SCPL" Id="2C17DF97"/>
         </Element>
@@ -6609,6 +6615,7 @@
             <ValueType Type="fixed"/>
         </Element>
         <Element Type="Trigger" Id="E6E8B94A">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="AAEA6FDF"/>
             <Action Type="FunctionCall" Library="SCPL" Id="63ACC02F"/>
             <Action Type="FunctionCall" Library="SCPL" Id="DE7AC0E4"/>
@@ -6762,6 +6769,7 @@
             <ValueType Type="fixed"/>
         </Element>
         <Element Type="Trigger" Id="6320394D">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="01A1286A"/>
             <Action Type="FunctionCall" Library="SCPL" Id="1D49DE47"/>
             <Action Type="FunctionCall" Library="SCPL" Id="C0F2C5E8"/>

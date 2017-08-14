@@ -76,11 +76,16 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		}
 		u = UnitGroupUnit(ug, 1);
 	}
+	
+	
 	if(orderdata.realAbil != ""){
 		redirAbil = AbilityCommand(orderdata.realAbil, abilCmdIndex);
 		OrderSetAbilityCommand (o, redirAbil);
 		TriggerDebugOutput(1, StringToText("Abil Substitution: "+orderdata.realAbil+" From: "+abil), CMSDB_DebugOutput);
 	}
+	
+	
+	
 	
 	if(AbilityClass(abil) == c_classIdCAbilBuild){
 		UnitIssueOrder(dummy, Order(AbilityCommand("stop", c_abilStopCmdStop)), c_orderQueueReplace);
@@ -196,7 +201,6 @@ void CMSDB_PlayerDataInit(){
 			playerData[player].researcher = UnitGroupEmpty();
 			
 			CMSDB_InitDummies(player);
-			
 			
 			// CMSDB_DebugInit(player, unitPos);
 		}

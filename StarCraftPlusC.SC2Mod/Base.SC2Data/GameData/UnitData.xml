@@ -273,6 +273,12 @@
     </CUnit>
     <CUnit id="SCV">
         <CostResource index="Minerals" value="0"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Row="2"/>
+            <LayoutButtons index="7" Row="2"/>
+            <LayoutButtons index="8" Row="1"/>
+            <LayoutButtons index="9" Row="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SdbTBuild1">
         <CardLayouts index="0">
