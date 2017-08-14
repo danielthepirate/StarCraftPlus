@@ -45,7 +45,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	r = RegionEntireMap();
 	u = UnitGroupUnit(UnitGroupIdle(1, true), 1);
 	dummy = EventUnit();
-	player = 1;
+	player = UnitGetOwner(EventUnit());
 	o = EventUnitOrder();
 	ug = UnitGroupEmpty();
 	
