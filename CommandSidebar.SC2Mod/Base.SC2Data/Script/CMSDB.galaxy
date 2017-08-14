@@ -43,9 +43,9 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	CMSDB_OrderRedirectData orderdata;
 	
 	r = RegionEntireMap();
-	u = UnitGroupUnit(UnitGroupIdle(1, true), 1);
+	u = UnitGroupUnit(UnitGroupIdle(player, true), 1);
 	dummy = EventUnit();
-	player = 1;
+	player = UnitGetOwner(dummy);
 	o = EventUnitOrder();
 	ug = UnitGroupEmpty();
 	
@@ -62,7 +62,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	}
 	
 	if(orderdata.useIdle>0){
-		ug = UnitGroupIdle(1, true);
+		ug = UnitGroupIdle(player, true);
 		u = UnitGroupUnit(ug, 1);
 	}
 	else{
