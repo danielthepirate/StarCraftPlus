@@ -1,17 +1,43 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CUnit id="AutoTurret">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="BanelingNest">
         <Food value="10"/>
     </CUnit>
     <CUnit id="Barracks">
         <Food value="10"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="0" Column="2"/>
+            <LayoutButtons index="2" Face="Marauder" Type="AbilCmd" AbilCmd="BarracksTrain,Train4" Row="0" Column="0"/>
+            <LayoutButtons index="3" Column="0"/>
+            <LayoutButtons index="12" Face="Reaper" Type="AbilCmd" AbilCmd="BarracksTrain,Train2" Row="0" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="BarracksFlying">
         <Food value="10"/>
     </CUnit>
+    <CUnit id="BarracksTechLab">
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Column="0"/>
+            <LayoutButtons index="4" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Bunker">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Column="2"/>
+            <LayoutButtons index="11" Face="Stop" Type="AbilCmd" AbilCmd="StopRedirect,Execute" Row="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="CommandCenter">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="12" Row="0" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="CommandCenterFlying">
         <Food value="25"/>
@@ -44,11 +70,40 @@
     <CUnit id="DroneBurrowed">
         <CostResource index="Minerals" value="0"/>
     </CUnit>
+    <CUnit id="EngineeringBay">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Row="0" Column="0"/>
+            <LayoutButtons index="7" Row="0" Column="0"/>
+            <LayoutButtons index="8" Row="0"/>
+            <LayoutButtons index="9" Column="0"/>
+            <LayoutButtons index="10" Column="0"/>
+            <LayoutButtons index="11" Column="0"/>
+            <LayoutButtons index="12" Row="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Factory">
         <Food value="10"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="0"/>
+            <LayoutButtons index="11" Row="0" Column="2"/>
+            <LayoutButtons index="12" Face="WidowMine" Type="AbilCmd" AbilCmd="FactoryTrain,Train25" Row="0" Column="0"/>
+            <LayoutButtons index="13" Face="BuildCyclone" Type="AbilCmd" AbilCmd="FactoryTrain,Train8" Row="0" Column="0"/>
+            <LayoutButtons index="14" Face="Thor" Type="AbilCmd" AbilCmd="FactoryTrain,Train5" Row="0" Column="0"/>
+            <LayoutButtons index="15" Face="HellionTank" Type="AbilCmd" AbilCmd="FactoryTrain,Train7" Row="0" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="FactoryFlying">
         <Food value="10"/>
+    </CUnit>
+    <CUnit id="FactoryTechLab">
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Face="ResearchDrillClaws" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research5" Row="0" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="FusionCore">
+        <CardLayouts index="0">
+            <LayoutButtons index="4" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="0" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="GameAutoCreepNodeTarget">
         <Race value="Zerg"/>
@@ -78,6 +133,11 @@
     <CUnit id="Gateway">
         <Food value="10"/>
     </CUnit>
+    <CUnit id="GhostAcademy">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="GreaterSpire">
         <Food value="10"/>
     </CUnit>
@@ -99,8 +159,33 @@
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
     </CUnit>
+    <CUnit id="Liberator">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="LiberatorAGRangeUpgrade" Type="Passive" Requirements="HaveLiberatorRange" Row="2" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="LiberatorAG">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="2"/>
+            <LayoutButtons index="3" Face="LiberatorAGRangeUpgrade" Type="Passive" Requirements="HaveLiberatorRange" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="LurkerDenMP">
         <Food value="10"/>
+    </CUnit>
+    <CUnit id="MULE">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Row="2"/>
+            <LayoutButtons index="8" Row="2"/>
+            <LayoutButtons index="9" Row="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Medivac"/>
+    <CUnit id="MissileTurret">
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Column="2"/>
+            <LayoutButtons index="5" Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Nexus">
         <Food value="25"/>
@@ -157,6 +242,11 @@
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
     </CUnit>
+    <CUnit id="PointDefenseDrone">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="PointDefense" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Probe">
         <CostResource index="Minerals" value="0"/>
     </CUnit>
@@ -182,6 +272,14 @@
     </CUnit>
     <CUnit id="SCV">
         <CostResource index="Minerals" value="0"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Row="2"/>
+            <LayoutButtons index="7" Row="2"/>
+            <LayoutButtons index="8" Face="Halt" Type="AbilCmd" AbilCmd="TerranBuild,Halt" SubmenuCardId="" Column="4"/>
+            <LayoutButtons index="9" Face="Spray" Type="AbilCmd" AbilCmd="SprayTerran,Execute" SubmenuCardId="" Column="3"/>
+            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="11" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SdbTRsrch1">
         <CardLayouts index="0">
@@ -201,6 +299,12 @@
             <LayoutButtons index="8" removed="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="SensorTower">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Row="2"/>
+            <LayoutButtons index="3" Row="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SpawningPool">
         <Food value="10"/>
     </CUnit>
@@ -212,6 +316,14 @@
     </CUnit>
     <CUnit id="Starport">
         <Food value="10"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="0"/>
+            <LayoutButtons index="2" Column="0"/>
+            <LayoutButtons index="3" Column="0"/>
+            <LayoutButtons index="4" Row="0" Column="0"/>
+            <LayoutButtons index="13" Row="0" Column="2"/>
+            <LayoutButtons index="14" Face="Liberator" Type="AbilCmd" AbilCmd="StarportTrain,Train7" Row="0" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="StarportFlying">
         <Food value="10"/>
@@ -224,6 +336,15 @@
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
         <CardLayouts index="0">
             <LayoutButtons Face="OverlordEnhancedCreepGrowthAura" Type="Passive" Behavior="OverlordEnhancedCreepGrowthAura" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="StarportTechLab">
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Face="ResearchBansheeCloak" AbilCmd="StarportTechLabResearch,Research1" Column="0"/>
+            <LayoutButtons index="3" Face="ResearchRavenEnergyUpgrade" AbilCmd="StarportTechLabResearch,Research4" Column="0"/>
+            <LayoutButtons index="4" Face="BansheeSpeed" AbilCmd="StarportTechLabResearch,Research10" Row="0" Column="0"/>
+            <LayoutButtons index="5" Face="ResearchRavenRecalibratedExplosives" AbilCmd="StarportTechLabResearch,Research14" Column="0"/>
+            <LayoutButtons index="7" Face="ResearchBallisticRange" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research16" Row="0" Column="0"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SupplyDepot">
@@ -242,6 +363,7 @@
         <BehaviorArray Link="AutoWallAutocastBehavior"/>
         <CardLayouts index="0">
             <LayoutButtons index="2" AbilCmd="AutoWallLowerManual,Execute"/>
+            <LayoutButtons index="3" Row="0" Column="2"/>
             <LayoutButtons Face="AutoLower" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <Footprint value="Footprint2x2Underground"/>

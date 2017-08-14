@@ -42,10 +42,6 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
-        <InfoArray index="Ammo1" Time="20">
-            <Charge Link="Abil/##id##"/>
-            <Cooldown Link="Abil/##id##"/>
-        </InfoArray>
     </CAbilArmMagazine>
     <CAbilResearch id="ArmoryResearch">
         <RefundFraction>
@@ -141,6 +137,18 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveBarracksOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveBarracksOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="HaveBarracksWithTechLabAndGhostAcademy"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="HaveBarracksWithTechLab"/>
+        </InfoArray>
     </CAbilTrain>
     <CAbilTrain id="CommandCenterTrain">
         <RefundFraction>
@@ -197,6 +205,24 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveFactoryWithTechLab"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="HaveFactoryWithTechLabAndArmory"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Button Requirements="HaveFactoryOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button Requirements="HaveFactoryAndArmory"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Button Requirements="HaveFactoryOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train25">
+            <Button Requirements="HaveFactoryOnGround"/>
+        </InfoArray>
     </CAbilTrain>
     <CAbilResearch id="FleetBeaconResearch">
         <RefundFraction>
@@ -479,6 +505,24 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveStarportOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveStarportWithTechLab"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="HaveStarportWithTechLab"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="HaveStarportWithTechLabAndFusionCore"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="HaveStarportOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button Requirements="HaveStarportOnGround"/>
+        </InfoArray>
     </CAbilTrain>
     <CAbilMorph id="AutoWallConstructionComplete" parent="SupplyDepotRaise">
         <Name value="Abil/Name/AutoWallConstructionComplete"/>
