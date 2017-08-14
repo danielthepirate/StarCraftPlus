@@ -20,17 +20,6 @@
 		<Frame type="ConsolePanel" name="ConsolePanel">
 			
 			<!-- BACKGROUND FRAMES -->
-			<!-- <Frame type="Image" name="CommandPanelBackground" template="PlusTemplates/CommandBackgroundTemplate"> -->
-				<!-- <Anchor side="Top" relative="$StandardCommandPanel" pos="Min" offset="-6"/> -->
-				<!-- <Anchor side="Left" relative="$PortraitPanel" pos="Min" offset="-6"/> -->
-				<!-- <Anchor side="Bottom" relative="$StandardCommandPanel" pos="Max" offset="-4"/> -->
-				<!-- <Anchor side="Right" relative="$StandardCommandPanel" pos="Max" offset="-4"/> -->
-				
-				<!-- <Alpha val="164"/> -->
-				<!-- <RenderType val="HDR"/> -->
-				<!-- <RenderPriority val="10"/> -->
-			<!-- </Frame> -->
-			
 			<Frame type="Image" name="MinimapBackground" template="PlusTemplates/CommandBackgroundTemplate">
 				<Anchor side="Top" relative="$parent/MinimapStub" pos="Min" offset="26"/>
 				<Anchor side="Left" relative="$parent/MinimapStub" pos="Min" offset="0"/>
@@ -60,9 +49,8 @@
 		
 			<!-- PORTRAIT FRAME -->
 			<Frame type="PortraitPanel" name="PortraitPanel">
-				<!-- <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/> -->
 				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
-				<Anchor side="Right" relative="$StandardCommandPanel" pos="Min" offset="-12"/>
+				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="180"/>
 				<Width val="152"/>
 				<Height val="232"/>
 				
@@ -89,13 +77,26 @@
 		<Frame type="Frame" name="ConsoleUIContainer">
 		
 			<Frame type="InfoPanel" name="InfoPanel">
-				<!-- <Anchor side="Left" relative="$parent" pos="Mid" offset="-395"/> -->
 				<Anchor side="Left" relative="$parent" pos="Mid" offset="-600"/>
-                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-20"/>
-                <Anchor side="Right" relative="$parent" pos="Mid" offset="185"/>
-				<Height val="199"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="300"/>
+				<Height val="208"/>
 				
 				<Handle val="InfoPanel"/>
+				
+				<Frame type="Frame" name="UnitPanel">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Left" relative="$parent" pos="Min" offset="150"/>
+					<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+					<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				</Frame>
+				
+				<Frame type="Frame" name="InfoPaneGroup">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Left" relative="$parent" pos="Min" offset="150"/>
+					<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+					<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				</Frame>
             </Frame>
 		
 			<Frame type="CommandPanel" name="CommandPanel">
@@ -104,7 +105,6 @@
 				<Width val="400"/>
                 <Height val="242"/>
 				<Visible val="false"/>
-				<!-- <Enabled val="false"/> -->
 				<Handle val="StandardCommandPanel"/>
 			</Frame>
 			

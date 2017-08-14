@@ -34,6 +34,7 @@
 		</Frame>
 	
 		<Frame type="ControlGroupPanel" name="ControlGroupPanel">
+			<Anchor side="Bottom" relative="$parent/InfoPanel" pos="Min" offset="4"/>
 			
 			<Frame type="ControlGroupButton" name="ControlGroupButton0" template="PlusTemplates/ControlGroupButtonTemplate">
 				<Frame type="Image" name="NormalImage">
