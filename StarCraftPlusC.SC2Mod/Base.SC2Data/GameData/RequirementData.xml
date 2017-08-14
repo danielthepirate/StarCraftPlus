@@ -198,6 +198,9 @@
     <CRequirement id="LearnTransformationServos">
         <NodeArray index="Use" Link="AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnly609241497TechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="NeverUse">
+        <NodeArray index="Use" Link="1"/>
+    </CRequirement>
     <CRequirement id="TrainNuke">
         <NodeArray index="Use" Link="AndOr96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheatNot866976074CountUnitNukeQueuedOrBetterAtUnitCountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
     </CRequirement>

@@ -106,6 +106,9 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="17"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameWorkerHarvestGasMarker">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameIncreasedLifeAndShields">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>

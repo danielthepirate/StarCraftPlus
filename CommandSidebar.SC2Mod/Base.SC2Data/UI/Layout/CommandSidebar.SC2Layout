@@ -27,6 +27,18 @@
 			<Text val="{$parent/$parent/@Text}"/>
 			<RenderPriority val="520"/>
 		</Frame>
+		
+		<StateGroup name="VisibleState">
+			<DefaultState val="NotVisible"/>
+			<State name="Visible">
+				<When type="Property" frame="HotkeyLabel" Text="" operator="NotEqual"/>
+				<Action type="SetProperty" Visible="true"/>
+			</State>
+			<State name="NotVisible">
+				<When type="Property" frame="HotkeyLabel" Text=""/>
+				<Action type="SetProperty" Visible="false"/>
+			</State>
+		</StateGroup>
 	</Frame>
 	
 	<Frame type="Button" name="SideBarTabButtonTemplate">
@@ -262,111 +274,111 @@
 			 <Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandSidebarButtonTemplate">
 				<Anchor side="Left" relative="$GridR" pos="Max" offset="#GridGap"/>
 				<Anchor side="Top" relative="$GridR" pos="Min" offset="0"/>
-				<Shortcut val="T"/><Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="T"/>
-				</Frame>
+				<!-- <Shortcut val="T"/><Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="T"/> -->
+				<!-- </Frame> -->
 			</Frame>
 			
-			<Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="Y"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="Y"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="Y"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="Y"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 			
-			<Frame type="CommandButton" name="CommandButton02" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="U"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="U"/>
-				</Frame>
-			</Frame>      
+			<!-- <Frame type="CommandButton" name="CommandButton02" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="U"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="U"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame>       -->
 	
-			<Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="I"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="I"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="I"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="I"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 	
-			<Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="O"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="O"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="O"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="O"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 			
-			<Frame type="CommandButton" name="CommandButton05" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="P"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="P"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton05" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="P"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="P"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 			
 			<Frame type="CommandButton" name="CommandButton06" template="CommandSidebar/CommandSidebarButtonTemplate">
 				<Anchor side="Left" relative="$GridS" pos="Max" offset="#GridGap"/>
 				<Anchor side="Top" relative="$GridS" pos="Min" offset="0"/>
-				<Shortcut val="D"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="D"/>
-				</Frame>
+				<!-- <Shortcut val="D"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="D"/> -->
+				<!-- </Frame> -->
 			</Frame>
 	
-			<Frame type="CommandButton" name="CommandButton07" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="F"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="F"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton07" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="F"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="F"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 	
-			<Frame type="CommandButton" name="CommandButton08" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="G"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="G"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton08" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="G"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="G"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 	
-			<Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="H"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="H"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="H"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="H"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 	
-			<Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="I"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="I"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="I"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="I"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 	
-			<Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="J"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="J"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="J"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="J"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 	
-			<Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="K"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="K"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="K"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="K"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
+	
+			<!-- <Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="L"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="L"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 	
 			<Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="L"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="L"/>
-				</Frame>
-			</Frame>
-	
-			<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandSidebarButtonTemplate">
 				<Anchor side="Left" relative="$GridA" pos="Min" offset="34"/>
 				<Anchor side="Top" relative="$GridA" pos="Max" offset="#HeightGap"/>
-				<Shortcut val="Z"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="Z"/>
-				</Frame>
+				<!-- <Shortcut val="Z"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="Z"/> -->
+				<!-- </Frame> -->
 			</Frame>
 			
 		</Frame>
@@ -381,46 +393,46 @@
 				<Anchor side="Left" relative="$parent/$parent/CommandPanel1/CommandButton14" pos="Max" offset="#GridGap"/>
 				<Anchor side="Top" relative="$parent/$parent/CommandPanel1/CommandButton14" pos="Min" offset="0"/>
 				
-				<Shortcut val="X"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="X"/>
-				</Frame>
+				<!-- <Shortcut val="X"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="X"/> -->
+				<!-- </Frame> -->
 			</Frame>
 			
-			<Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="C"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="C"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="C"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="C"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 			
-			<Frame type="CommandButton" name="CommandButton02" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="V"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="V"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton02" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="V"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="V"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 			
-			<Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="B"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="B"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="B"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="B"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 			
-			<Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="N"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="N"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="N"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="N"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 			
-			<Frame type="CommandButton" name="CommandButton05" template="CommandSidebar/CommandSidebarButtonTemplate">
-				<Shortcut val="M"/>
-				<Frame type="Label" name="GridHotkeyFrame/HotkeyLabel">
-					<Text val="M"/>
-				</Frame>
-			</Frame>
+			<!-- <Frame type="CommandButton" name="CommandButton05" template="CommandSidebar/CommandSidebarButtonTemplate"> -->
+				<!-- <Shortcut val="M"/> -->
+				<!-- <Frame type="Label" name="GridHotkeyFrame/HotkeyLabel"> -->
+					<!-- <Text val="M"/> -->
+				<!-- </Frame> -->
+			<!-- </Frame> -->
 			
 			<Frame type="CommandButton" name="CommandButton06" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton07" template="CommandSidebar/CommandButtonInvisible"/>

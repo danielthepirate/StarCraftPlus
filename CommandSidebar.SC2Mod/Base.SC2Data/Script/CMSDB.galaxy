@@ -1,3 +1,4 @@
+include "Script/PiratedLib"
 include "Script/ActiveUserLib"
 include "Script/CMSDB_h"
 
@@ -89,6 +90,10 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	
 	if(AbilityClass(abil) == c_classIdCAbilBuild){
 		UnitIssueOrder(dummy, Order(AbilityCommand("stop", c_abilStopCmdStop)), c_orderQueueReplace);
+		
+		// Build orders ignore workers harvesting gas
+		ug = Pir_WorkerGroupNotHarvestingGas(ug);
+		
 		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
 		//UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
@@ -113,8 +118,10 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	else if((AbilityClass(abil) == c_classIdCAbilMorph) && (abilCmdIndex != c_abilMorphCmdCancel)){
 		
 		UnitIssueOrder(dummy, Order(AbilityCommand(abil, c_abilMorphCmdCancel)), c_orderQueueReplace);
-		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
-		//UnitIssueOrder(u, o, c_orderQueueReplace);
+		
+		// UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		Pir_UnitCancelQueue(u);
+		UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
 	else if(AbilityClass(abil) == c_classIdCAbilEffectTarget){
 		

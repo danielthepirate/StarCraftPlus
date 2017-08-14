@@ -77,9 +77,6 @@
     <CButton id="ArmorpiercingMode">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Armory">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="AssaultMode">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -116,7 +113,6 @@
     <CButton id="AutoLower">
         <Icon value="Assets\Textures\btn-building-terran-supplydepotlowered.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-terran-supplydepotlowered.dds"/>
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="AutoWallToggle"/>
     </CButton>
@@ -125,12 +121,10 @@
         <AlertIcon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="AutoWallToggle"/>
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="AutoCreepSpreadAutocastToggle">
         <Icon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="BuildCreepTumorPropagate"/>
     </CButton>
@@ -147,18 +141,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BanelingNest">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Banshee">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="BansheeSpeed">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Barracks">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Battlecruiser">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BattlecruiserWeaponsIgnoreArmor">
@@ -191,9 +173,6 @@
     <CButton id="BuildCreepTumorPropagate">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="BuildCyclone">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="BuildTechLabBarracks">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -207,9 +186,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BuildingStasis">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Bunker">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BunkerLoad">
@@ -288,9 +264,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="CombatDrugs">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="CommandCenter">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="CommandCenterLoad">
@@ -1181,9 +1154,6 @@
     <CButton id="EnableBuildingAttack">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="EngineeringBay">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="Ensnare">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -1250,9 +1220,6 @@
     <CButton id="FaceEmbrace">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Factory">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="Feedback">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -1283,9 +1250,6 @@
     <CButton id="FungalGrowth">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="FusionCore">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="Gateway">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -1305,12 +1269,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="GenerateCreep">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Ghost">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="GhostAcademy">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="GhostHoldFire">
@@ -1348,12 +1306,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Heal">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Hellion">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="HellionTank">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Herd">
@@ -1443,9 +1395,6 @@
     <CButton id="Leech">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Liberator">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="LiberatorAAMode">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -1504,12 +1453,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="MagFieldLaunchers">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Marauder">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Marine">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="MassRecall">
@@ -1827,9 +1770,6 @@
     <CButton id="MaximumThrust">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Medivac">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="MedivacLoad">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -1870,9 +1810,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="MissileTankRegen">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="MissileTurret">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="MorphBackToGateway">
@@ -2051,13 +1988,11 @@
     </CButton>
     <CButton id="OverlordEnhancedCreepGrowthAura">
         <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="CreepTumorEnhancedCreepGrowthAura">
         <TooltipImage value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="OverlordTransportLoad">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -2254,22 +2189,13 @@
     <CButton id="RavagerRange">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Raven">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="RavenRecalibratedExplosives">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Reactor">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Reaper">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="ReaperSpeed">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Refinery">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ReleaseInterceptors">
@@ -2284,19 +2210,10 @@
     <CButton id="ResearchAdeptShieldUpgrade">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="ResearchBallisticRange">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchBansheeCloak">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="ResearchBarrier">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchBattlecruiserEnergyUpgrade">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchBattlecruiserSpecializations">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchBurrow">
@@ -2308,22 +2225,16 @@
     <CButton id="ResearchCombatDrugs">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
+    <CButton id="ResearchComplete">
+        <Icon value="Assets\Textures\btn-blank.dds"/>
+    </CButton>
     <CButton id="ResearchDarkTemplarBlink">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchDrillClaws">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchDurableMaterials">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchExplosiveShrapnelShells">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchExtendedThermalLance">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchGhostEnergyUpgrade">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchGraviticBooster">
@@ -2333,15 +2244,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchHallucination">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchHiSecAutoTracking">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchHighCapacityBarrels">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchHighCapacityFuelTanks">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchHighTemplarEnergyUpgrade">
@@ -2359,12 +2261,6 @@
     <CButton id="ResearchJotunBoosters">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="ResearchLiberatorAGMode">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchLockOnRangeUpgrade">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="ResearchLocustLifetimeIncrease">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -2374,40 +2270,13 @@
     <CButton id="ResearchMagFieldLaunchers">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="ResearchMedivacEnergyUpgrade">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchNeosteelFrame">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="ResearchNeuralParasite">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchPersonalCloaking">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchPsiStorm">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="ResearchPunisherGrenades">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchRapidDeployment">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="ResearchRavagerRange">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchRavenEnergyUpgrade">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchRavenRecalibratedExplosives">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchSeekerMissile">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchShieldWall">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchSiegeTech">
@@ -2417,9 +2286,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchStrikeCannons">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ResearchTransformationServos">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ResearchVoidRaySpeedUpgrade">
@@ -2458,9 +2324,6 @@
     <CButton id="RoboticsFacility">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="SCV">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="STBomber">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -2485,9 +2348,6 @@
     <CButton id="SelfRepair">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="SensorTower">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="Sentry">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -2501,12 +2361,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SetRallyPointSwarmHost">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="SiegeMode">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="SiegeTank">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SingleRecall">
@@ -2574,21 +2428,6 @@
     <CButton id="Stargate">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Starport">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Stim">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="StimMarauder">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="StimRedirect">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Stimpack">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="Stop">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -2616,9 +2455,7 @@
     <CButton id="SummonNydusWorm">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="SupplyDepot">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
+    <CButton id="SupplyDepot"/>
     <CButton id="SupplyDrop">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -2673,51 +2510,6 @@
     <CButton id="TerranBuildAdvanced">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="TerranInfantryArmorLevel1">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranInfantryArmorLevel2">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranInfantryArmorLevel3">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranInfantryWeaponsLevel1">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranInfantryWeaponsLevel2">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranInfantryWeaponsLevel3">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranShipPlatingLevel1">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranShipPlatingLevel2">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranShipPlatingLevel3">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranShipWeaponsLevel1">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranShipWeaponsLevel2">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranShipWeaponsLevel3">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranVehicleAndShipPlatingLevel1">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranVehicleAndShipPlatingLevel2">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranVehicleAndShipPlatingLevel3">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="TerranVehicleAndShipWeaponsLevel1">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -2725,27 +2517,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="TerranVehicleAndShipWeaponsLevel3">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranVehiclePlatingLevel1">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranVehiclePlatingLevel2">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranVehiclePlatingLevel3">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranVehicleWeaponsLevel1">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranVehicleWeaponsLevel2">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="TerranVehicleWeaponsLevel3">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Thor">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="TimeStop">
@@ -2784,16 +2555,10 @@
     <CButton id="Unsiege">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="UpgradeBuildingArmorLevel1">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="UpgradeToPlanetaryFortress">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="UpgradeToWarpGate">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="VikingFighter">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Viper">
@@ -2851,9 +2616,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="WeaponsFree">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="WidowMine">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="WidowMineBioSplash">

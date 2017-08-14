@@ -206,6 +206,8 @@ libSCPL_gs_UI libSCPL_gv_uI;
 libSCPL_gs_Hotkey libSCPL_gv_hotkey;
 
 // Function Declarations
+unit libSCPL_gf_DebugPlayerUnit (int lp_playerIndex, string lp_unitType);
+void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType, fixed lp_offset);
 void libSCPL_gf_InitializeSpendOverTime ();
 int libSCPL_gf_UsedTrainingSlotCount (unit lp_unit);
 fixed libSCPL_gf_PlayerAvailableMinerals (int lp_playerIndex);
@@ -258,6 +260,7 @@ void libSCPL_gf_InitializeConsolePlus ();
 void libSCPL_gf_InitializeResourceUI ();
 void libSCPL_gf_ResourceDisplaySpendAdd (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
 void libSCPL_gf_ResourceDisplaySpendRemove (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
+unitgroup libSCPL_gf_WorkerGroupNotHarvestingGas (unitgroup lp_ug);
 void libSCPL_gf_DebugTextTag (point lp_point, string lp_string, fixed lp_duration);
 unitgroup libSCPL_gf_MapVespeneGeysers ();
 unit libSCPL_gf_PlayerTownHallClosest (point lp_point, int lp_playerIndex);
@@ -275,6 +278,8 @@ void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
+trigger libSCPL_gt__1;
+trigger libSCPL_gt__0;
 trigger libSCPL_gt_ProgressAccounting;
 trigger libSCPL_gt_ProgressMorphRefundOneStage;
 trigger libSCPL_gt_ProgressMorphRefundTwoStage;

@@ -11,9 +11,9 @@
 			
 			<Animation name="LayoutInitializer">
 				<Event event="OnShown" action="Reset,Play"/>
-				<Controller type="Visibility" end="Pause" frame="$StandardCommandPanel">
-					<Key type="Bool" time="0" value="false"/>
-				</Controller>
+				<!-- <Controller type="Visibility" end="Pause" frame="$StandardCommandPanel"> -->
+					<!-- <Key type="Bool" time="0" value="false"/> -->
+				<!-- </Controller> -->
 				<Controller type="Visibility" end="Pause" frame="$InfoPanel">
 					<Key type="Bool" time="0" value="false"/>
 				</Controller>
