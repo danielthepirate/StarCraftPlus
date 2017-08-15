@@ -12,6 +12,15 @@
 			<Animation name="LayoutInitializer">
 				<Event event="OnShown" action="Reset,Play"/>
 				<Controller type="Visibility" end="Pause" frame="$StandardCommandPanel">
+					<!-- <Key type="Bool" time="0" value="false"/> -->
+				</Controller>
+				<Controller type="Visibility" end="Pause" frame="$GlobalRally00/GameButtonBorderImage">
+					<Key type="Bool" time="0" value="false"/>
+				</Controller>
+				<Controller type="Visibility" end="Pause" frame="$GlobalRally01/GameButtonBorderImage">
+					<Key type="Bool" time="0" value="false"/>
+				</Controller>
+				<Controller type="Visibility" end="Pause" frame="$GlobalRally02/GameButtonBorderImage">
 					<Key type="Bool" time="0" value="false"/>
 				</Controller>
 			</Animation>
@@ -77,7 +86,6 @@
 		<Frame type="Frame" name="ConsoleUIContainer">
 		
 			<!-- INFO PANEL -->
-			
 			<Frame type="Frame" name="InfoPanelAnchor">
 				<Anchor side="Left" relative="$parent" pos="Mid" offset="-600"/>
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
@@ -87,7 +95,6 @@
 				<Handle val="InfoPanel"/>
 			</Frame>
 			
-			<!-- INFO PANEL -->
 			<Frame type="InfoPanel" name="InfoPanel">
 				<Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-236"/>
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
@@ -117,13 +124,21 @@
 				<Visible val="false"/>
 				<Handle val="StandardCommandPanel"/>
 			</Frame>
-			
+
+			<!-- MISSION TIME -->
+			<Frame type="MissionTimePanel" name="MissionTimePanel">
+                <Anchor side="Bottom" relative="$MenuBarConsoleAnchor" pos="Max" offset="42"/>
+                <Anchor side="Left" relative="$MenuBarConsoleAnchor" pos="Max" offset="-92"/>
+                <Width val="200"/>
+                <Height val="44"/>
+            </Frame>
 		</Frame>
 		
 		<Frame type="Frame" name="FullscreenUpperContainer">
 			<Frame type="Frame" name="MenuBarConsoleAnchor">
 				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-236"/>
                 <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+				<Handle val="MenuBarConsoleAnchor"/>
 			</Frame>
 		</Frame>
     </Frame>

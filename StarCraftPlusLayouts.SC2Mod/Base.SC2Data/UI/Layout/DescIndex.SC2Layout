@@ -5,6 +5,7 @@
     <Include path="UI/Layout/PIRLDebugPanel.SC2Layout"/>
     <Include path="UI/Layout/PlusCommandConsole.SC2Layout"/>
     <Include path="UI/Layout/PlusCommandCard.SC2Layout"/>
+    <Include path="UI/Layout/PlusGlobalRally.SC2Layout"/>
     <Include path="UI/Layout/PlusResourcePanel.SC2Layout"/>
     <Include path="UI/Layout/PlusControlGroups.SC2Layout"/>
 </Desc>

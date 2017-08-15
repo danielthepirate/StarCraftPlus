@@ -308,6 +308,11 @@
 			<Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandButtonInvisible"/>
+			
+			<!-- <Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/RallyButtonTemplate"> -->
+				<!-- <Anchor side="Left" relative="$parent" pos="Min" offset="0"/> -->
+				<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="0"/> -->
+			<!-- </Frame> -->
 		</Frame>
 	</Frame>
 	
