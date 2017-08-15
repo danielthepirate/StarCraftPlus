@@ -48,18 +48,8 @@
 	</Frame>
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
 	
-
-		<!-- <Frame type="Frame" name="ActiveUnitCommands" template="CommandSidebar/CommandContainer"> -->
-			<!-- <Anchor relative="$parent/InfoPanel"/> -->
-			
-			<!-- <Frame type="CommandPanel" name="CommandPanel2"> -->
-				<!-- <Visible val="false"/> -->
-			<!-- </Frame> -->
-		<!-- </Frame> -->
-
-	
 		<Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainer">
-			<Anchor relative="$parent/InfoPanel"/>
+			<Anchor relative="$parent/InfoPanelAnchor"/>
 			
 			<Frame type="CommandPanel" name="CommandPanel1">
 				<Handle val="GlobalCommandPanel1"/>
@@ -70,7 +60,7 @@
 			
 		</Frame>
 		<Frame type="Frame" name="BuilderCommandContainer" template="CommandSidebar/CommandContainer">
-			<Anchor relative="$parent/InfoPanel"/>
+			<Anchor relative="$parent/InfoPanelAnchor"/>
 			
 			<Frame type="CommandPanel" name="CommandPanel1">
 				<Handle val="BuilderCommandPanel1"/>
@@ -81,7 +71,7 @@
 			
 		</Frame>
 		<Frame type="Frame" name="TrainerCommandContainer" template="CommandSidebar/CommandContainer">
-			<Anchor relative="$parent/InfoPanel"/>
+			<Anchor relative="$parent/InfoPanelAnchor"/>
 			
 			<Frame type="CommandPanel" name="CommandPanel1">
 				<Handle val="TrainerCommandPanel1"/>
@@ -92,7 +82,7 @@
 			
 		</Frame>
 		<Frame type="Frame" name="ResearcherCommandContainer" template="CommandSidebar/CommandContainer">
-			<Anchor relative="$parent/InfoPanel"/>
+			<Anchor relative="$parent/InfoPanelAnchor"/>
 			
 			<Frame type="CommandPanel" name="CommandPanel1">
 				<Handle val="ResearcherCommandPanel1"/>
@@ -104,7 +94,7 @@
 		</Frame>
 		<Frame type="TabControl" name="SideBarTab">
 			<Anchor side="Left" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/>
-			<Anchor side="Right" relative="SidebarInfoPanel" pos="Max" offset="0"/>
+			<Anchor side="Right" relative="SidebarResearch" pos="Max" offset="0"/>
 			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="-16"/>
 			<Height val="38"/>
         
@@ -112,12 +102,10 @@
 			<TabListItem val="SidebarBuildings"/>
 			<TabListItem val="SidebarUnits"/>
 			<TabListItem val="SidebarResearch"/>
-			<TabListItem val="SidebarInfoPanel"/>
 			<PanelListItem val="$parent/GlobalCommandContainer"/>
 			<PanelListItem val="$parent/BuilderCommandContainer"/>
 			<PanelListItem val="$parent/TrainerCommandContainer"/>
 			<PanelListItem val="$parent/ResearcherCommandContainer"/>
-			<PanelListItem val="$parent/InfoPanel"/>
 			<SelectedIndex val="1"/>
 
 			<Frame type="Button" name="SidebarGlobal" template="CommandSidebar/SideBarTabButtonTemplate">
@@ -128,7 +116,7 @@
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarGlobal"/>
 				
-				<Visible val="false"/>
+				<Visible val="true"/>
 			</Frame>
 			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Left" relative="$parent/SidebarGlobal" pos="Max" offset="-2"/>
@@ -156,28 +144,6 @@
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
 			</Frame>
-			
-			<Frame type="Button" name="SidebarInfoPanel" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Left" relative="$parent/SidebarResearch" pos="Max" offset="-2"/>
-				<Anchor side="Top" relative="$parent/SidebarResearch" pos="Min" offset="0"/>
-				<Frame type="Label" name="MenuLabel">
-					<Text val="Info (F7)"/>
-				</Frame>
-				<Shortcut val="@Button/Hotkey/SidebarInfoPanel"/>
-			</Frame>
-			
-			<StateGroup name="InfoPanelState">
-				<DefaultState val="InfoNotVisible"/>
-				<State name="InfoNotVisible">
-					<When type="Property" frame="SidebarInfoPanel" Toggled="false"/>
-					<Action type="SetProperty" Visible="false" frame="$InfoPanel"/>
-				</State>
-				<State name="InfoVisible">
-					<When type="Property" frame="SidebarInfoPanel" Toggled="true"/>
-					<Action type="SetProperty" Visible="true" frame="$InfoPanel"/>
-				</State>
-			</StateGroup>
-			
 		</Frame>
 		
 	</Frame>

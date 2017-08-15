@@ -14,9 +14,6 @@
 				<Controller type="Visibility" end="Pause" frame="$StandardCommandPanel">
 					<Key type="Bool" time="0" value="false"/>
 				</Controller>
-				<Controller type="Visibility" end="Pause" frame="$InfoPanel">
-					<Key type="Bool" time="0" value="false"/>
-				</Controller>
 			</Animation>
 		</Frame>
 		
@@ -79,13 +76,23 @@
 		
 		<Frame type="Frame" name="ConsoleUIContainer">
 		
-			<Frame type="InfoPanel" name="InfoPanel">
+			<!-- INFO PANEL -->
+			
+			<Frame type="Frame" name="InfoPanelAnchor">
 				<Anchor side="Left" relative="$parent" pos="Mid" offset="-600"/>
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
                 <Anchor side="Right" relative="$parent" pos="Mid" offset="300"/>
 				<Height val="208"/>
 				
 				<Handle val="InfoPanel"/>
+			</Frame>
+			
+			<!-- INFO PANEL -->
+			<Frame type="InfoPanel" name="InfoPanel">
+				<Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-236"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
+                <Anchor side="Right" relative="$parent/InfoPanelAnchor" pos="Max" offset="500"/>
+				<Height val="208"/>
 				
 				<Frame type="Frame" name="UnitPanel">
 					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>

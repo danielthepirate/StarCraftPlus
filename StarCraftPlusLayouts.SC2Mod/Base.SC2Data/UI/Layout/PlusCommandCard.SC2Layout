@@ -5,19 +5,7 @@
 	
     <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
 		<Frame type="Frame" name="ActiveUnitCommandContainer">
-			<Anchor relative="$parent/InfoPanel"/>
-			
-			<StateGroup name="VisibleState">
-				<DefaultState val="NotVisible"/>
-				<State name="Visible">
-					<When type="Property" frame="$InfoPanel" Visible="false"/>
-					<Action type="SetProperty" Visible="true"/>
-				</State>
-				<State name="NotVisible">
-					<When type="Property" frame="$InfoPanel" Visible="true"/>
-					<Action type="SetProperty" Visible="false"/>
-				</State>
-			</StateGroup>
+			<Anchor relative="$parent/InfoPanelAnchor"/>
 			
 			<Frame type="CommandPanel" name="ActiveUnitCommandContainer" template="CommandSidebar/CommandSidebarPanelTemplate">
 				<Anchor relative="$parent"/>
