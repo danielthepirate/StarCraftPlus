@@ -74,6 +74,21 @@
             <BehaviorLinkDisableArray value="AutoWallForceField"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableVespeneGeyserGas">
+        <FinalEffect value="GameResources4DummyVespene"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableVespeneGeyserGasProtoss">
+        <FinalEffect value="GameResources4DummyVespene"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableVespeneGeyserGasZerg">
+        <FinalEffect value="GameResources4DummyVespene"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHighYieldMineralFieldMinerals">
+        <FinalEffect value="GameResources7DummyMinerals"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryMineralFieldMinerals">
+        <FinalEffect value="GameResources5DummyMinerals"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CreepTumorEnhancedCreepGrowth">
         <Face value="CreepTumorEnhancedCreepGrowthAura"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>

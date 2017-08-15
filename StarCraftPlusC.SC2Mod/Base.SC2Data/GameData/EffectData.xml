@@ -114,6 +114,11 @@
         <EffectArray index="1" value="CreepTumorBuildAB"/>
         <EffectArray value="CreepTumorLaunchMissile"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="DebugEffectHook">
+        <ValidatorArray value="IsReturningResources"/>
+        <ValidatorArray value="NotDead"/>
+        <EditorCategories value=""/>
+    </CEffectCreatePersistent>
     <CEffectEnumArea id="DebugPoint">
         <EditorCategories value=""/>
         <DebugTrace value="1"/>
@@ -168,6 +173,27 @@
     <CEffectApplyBehavior id="GameMineralsNearTownHall">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameResources5DummyMinerals">
+        <ValidatorArray value="NotDead"/>
+        <ValidatorArray value="IsReturningResources"/>
+        <EditorCategories value=""/>
+        <Resources index="Terrazine" value="5"/>
+        <ResourcesCollected index="Terrazine" value="5"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameResources4DummyVespene">
+        <ValidatorArray value="NotDead"/>
+        <ValidatorArray value="IsReturningResources"/>
+        <EditorCategories value=""/>
+        <Resources index="Custom" value="4"/>
+        <ResourcesCollected index="Custom" value="4"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameResources7DummyMinerals">
+        <ValidatorArray value="NotDead"/>
+        <ValidatorArray value="IsReturningResources"/>
+        <EditorCategories value=""/>
+        <Resources index="Terrazine" value="7"/>
+        <ResourcesCollected index="Terrazine" value="7"/>
+    </CEffectModifyPlayer>
     <CEffectEnumArea id="OverlordCreepGrowthAuraSearch">
         <EditorCategories value=""/>
         <SearchFilters value="Ground;Ally,Neutral,Enemy,Missile,Dead,Hidden"/>

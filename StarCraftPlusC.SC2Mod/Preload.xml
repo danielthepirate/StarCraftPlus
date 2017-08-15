@@ -5,7 +5,6 @@
 <Behavior id="GameIncreasedLifeAndShields"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
-<Unit id="Barracks"/>
 <Unit id="SCV"/>
 <Unit id="Probe"/>
 <Unit id="Drone"/>

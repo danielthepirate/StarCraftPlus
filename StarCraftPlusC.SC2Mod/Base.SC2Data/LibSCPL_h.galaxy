@@ -207,8 +207,11 @@ libSCPL_gs_Hotkey libSCPL_gv_hotkey;
 
 // Function Declarations
 unit libSCPL_gf_DebugPlayerUnit (int lp_playerIndex, string lp_unitType);
+unit libSCPL_gf_DebugSelectedUnit (int lp_playerIndex);
 void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType, fixed lp_offset);
 void libSCPL_gf_InitializeSpendOverTime ();
+void libSCPL_gf_PlayerResourcesAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
+void libSCPL_gf_PlayerResourcesSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 int libSCPL_gf_UsedTrainingSlotCount (unit lp_unit);
 fixed libSCPL_gf_PlayerAvailableMinerals (int lp_playerIndex);
 fixed libSCPL_gf_PlayerAvailableVespene (int lp_playerIndex);
@@ -258,8 +261,8 @@ void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOn (int lp_playerIndex);
 void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex);
 void libSCPL_gf_InitializeConsolePlus ();
 void libSCPL_gf_InitializeResourceUI ();
-void libSCPL_gf_ResourceDisplaySpendAdd (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
-void libSCPL_gf_ResourceDisplaySpendRemove (fixed lp_minerals, fixed lp_vespene, int lp_playerIndex);
+void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
+void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 unitgroup libSCPL_gf_WorkerGroupNotHarvestingGas (unitgroup lp_ug);
 void libSCPL_gf_DebugTextTag (point lp_point, string lp_string, fixed lp_duration);
 unitgroup libSCPL_gf_MapVespeneGeysers ();
@@ -278,9 +281,10 @@ void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
+trigger libSCPL_gt_UntitledTrigger001;
 trigger libSCPL_gt__1;
+trigger libSCPL_gt__2;
 trigger libSCPL_gt__0;
-trigger libSCPL_gt_ProgressAccounting;
 trigger libSCPL_gt_ProgressMorphRefundOneStage;
 trigger libSCPL_gt_ProgressMorphRefundTwoStage;
 trigger libSCPL_gt_ProgressMorphStart;
@@ -303,8 +307,6 @@ trigger libSCPL_gt_ProgressWarpgateUnitSwap;
 trigger libSCPL_gt_ProgressUnitStartCommented;
 trigger libSCPL_gt_ProgressUnitStartCommentedTest;
 trigger libSCPL_gt_ProgressUnitCancelCommented;
-trigger libSCPL_gt_ResourceConvertVespene;
-trigger libSCPL_gt_ResourceConvertMinerals;
 trigger libSCPL_gt_AutoWorkerProductionCheckWorkerSlot;
 trigger libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg;
 trigger libSCPL_gt_AutoWorkerProductionCheckVespeneHarvester;
@@ -326,6 +328,7 @@ trigger libSCPL_gt_AutoCreepTumorNodeCreateChild;
 trigger libSCPL_gt_AutoCreepTumorNodeTargetReached;
 trigger libSCPL_gt_AutoCreepTumorReady;
 trigger libSCPL_gt_PlayerAutoCreepSpreadUnitCreated;
+trigger libSCPL_gt_ProgressAccounting;
 trigger libSCPL_gt_ResourceDisplaySpend;
 
 // Library Initialization
