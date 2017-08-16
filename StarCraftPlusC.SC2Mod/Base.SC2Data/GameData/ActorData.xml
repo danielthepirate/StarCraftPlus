@@ -30,6 +30,219 @@
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarFlags index="Custom" value="0"/>
     </CActorUnit>
+    <CActorModel id="GameGlobalRallyCursorTarget01" parent="CursorModel" abil="GameGlobalRallyTarget00">
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On index="0" Send="Create CursorRegion"/>
+        <On index="1" Terms="ActorDestruction" Target="CursorRegion"/>
+        <On index="2" Terms="ActorOrphan"/>
+        <On index="3" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On index="4" Terms="Abil.GameGlobalRallyTarget01.Cursor" Send="Create"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranFactory"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossRoboticsFacility"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpLowerByDot2"/>
+        <Model value="GameGlobalRallyCursorTarget"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyCursorTarget02" parent="CursorModel" abil="GameGlobalRallyTarget00">
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On index="0" Send="Create CursorRegion"/>
+        <On index="1" Terms="ActorDestruction" Target="CursorRegion"/>
+        <On index="2" Terms="ActorOrphan"/>
+        <On index="3" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On index="4" Terms="Abil.GameGlobalRallyTarget02.Cursor" Send="Create"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranStarport"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossStargate"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpLowerByDot2"/>
+        <Model value="GameGlobalRallyCursorTarget"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorUnit id="GameGlobalRallyTarget00" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyTarget00"/>
+    <CActorModel id="GameGlobalRallyCursorTarget00" parent="CursorModel" abil="GameGlobalRallyTarget00">
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On index="0" Send="Create CursorRegion"/>
+        <On index="1" Terms="ActorDestruction" Target="CursorRegion"/>
+        <On index="2" Terms="ActorOrphan"/>
+        <On index="3" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranBarracks"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossGateway"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergHatchery"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpHigherOfTerrainAndWater SOpLowerByDot2"/>
+        <Model value="GameGlobalRallyCursorTarget"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTarget01Persistent" parent="ModelAddition">
+        <Aliases index="0" removed="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
+        <On Terms="UnitBirth.GameGlobalRallyTarget01" Send="Create"/>
+        <On Terms="UnitDeath.GameGlobalRallyTarget01" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranFactory"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossRoboticsFacility"/>
+        <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
+        <Model value="GameGlobalRallyTargetPersistent"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorUnit id="GameGlobalRallyTarget01" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyTarget01"/>
+    <CActorModel id="GameGlobalRallyTarget00Persistent" parent="ModelAddition">
+        <Aliases index="0" removed="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
+        <On Terms="UnitBirth.GameGlobalRallyTarget00" Send="Create"/>
+        <On Terms="UnitDeath.GameGlobalRallyTarget00" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranBarracks"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossGateway"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergHatchery"/>
+        <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
+        <Model value="GameGlobalRallyTargetPersistent"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTarget02Persistent" parent="ModelAddition">
+        <Aliases index="0" removed="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
+        <On Terms="UnitBirth.GameGlobalRallyTarget02" Send="Create"/>
+        <On Terms="UnitDeath.GameGlobalRallyTarget02" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranStarport"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossStargate"/>
+        <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
+        <Model value="GameGlobalRallyTargetPersistent"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetProtossStargate" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetZergHatchery" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetTerranBarracks" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorUnit id="GameGlobalRallyTarget02" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyTarget02"/>
+    <CActorModel id="GameGlobalRallyTargetTerranFactory" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetProtossRoboticsFacility" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetTerranStarport" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetProtossGateway" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
     <CActorUnit id="InvisibleTargetDummy">
         <On Terms="ActorCreation" Send="SetVisibility"/>
         <On Terms="ActorCreation" Send="SetOpacity"/>
@@ -129,6 +342,18 @@
         <IconArcLength value="1.750000"/>
         <RangeFlags index="Minimap" value="1"/>
     </CActorRange>
+    <CActorUnit id="GameGlobalRallyCaster" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyCaster">
+        <BuildModel value="Invisible"/>
+        <PlacementModel value="Invisible"/>
+    </CActorUnit>
+    <CActorSiteOpLocalOffset id="SOpLowerByDot2">
+        <EditorCategories value=""/>
+        <LocalOffset value="0.000000,0.000000,-0.200000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpHigherBy2Dot5">
+        <EditorCategories value=""/>
+        <LocalOffset value="0.000000,0.000000,2.500000"/>
+    </CActorSiteOpLocalOffset>
     <CActorUnit id="SupplyDepotConstructor" parent="SupplyDepot" unitName="SupplyDepotConstructor">
         <On index="0" Terms="UnitBirth.SupplyDepotConstructor"/>
         <On index="1" Terms="UnitBirth.SupplyDepotConstructor"/>

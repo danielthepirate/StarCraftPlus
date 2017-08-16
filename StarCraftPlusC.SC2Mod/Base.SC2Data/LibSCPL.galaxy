@@ -17,6 +17,7 @@ bool libSCPL_InitVariables_completed = false;
 
 void libSCPL_InitVariables () {
     int init_i;
+    int init_i1;
 
     if (libSCPL_InitVariables_completed) {
         return;
@@ -34,9 +35,13 @@ void libSCPL_InitVariables () {
         libSCPL_gv_player[init_i].lv_autoCreepNodes = UnitGroupEmpty();
         libSCPL_gv_player[init_i].lv_globalTerran_AutoWallToggle = true;
         libSCPL_gv_player[init_i].lv_globalZerg_CreepSpreadToggle = true;
+        for (init_i1 = 0; init_i1 <= 3; init_i1 += 1) {
+            libSCPL_gv_player[init_i].lv_globalRallyGroup[init_i1] = UnitGroupEmpty();
+        }
     }
     libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend = c_invalidDialogControlId;
+    libSCPL_gv_uI.lv_uCB.lv_globalRallyCommandCard = c_invalidDialogControlId;
     libSCPL_gv_hotkey.lv_supplyDepot = "S";
     libSCPL_gv_hotkey.lv_commandCenter = "C";
     libSCPL_gv_hotkey.lv_barracks = "B";
@@ -220,6 +225,13 @@ void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType,
     libNtve_gf_CreateUnitsWithDefaultFacing(1, lp_unitType, 0, lp_playerIndex, PointWithOffsetPolar(PlayerStartLocation(lp_playerIndex), lp_offset, AngleBetweenPoints(PlayerStartLocation(lp_playerIndex), RegionGetCenter(RegionEntireMap()))));
 }
 
+void libSCPL_gf_InitializeGlobalRallyCaster (int lp_playerIndex) {
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameGlobalRallyCaster", c_unitCreateIgnorePlacement, lp_playerIndex, Point(0.0, 0.0));
+    libSCPL_gv_player[lp_playerIndex].lv_globalRallyCaster = UnitLastCreated();
+    libNtve_gf_SetDialogItemUnitGroup(libSCPL_gv_uI.lv_uCB.lv_globalRallyCommandCard, libNtve_gf_ConvertUnitToUnitGroup(UnitLastCreated()), PlayerGroupSingle(lp_playerIndex));
+}
+
 void libSCPL_gf_InitializeSpendOverTime () {
     playergroup auto2BCF2D93_g;
     int auto2BCF2D93_p;
@@ -234,8 +246,6 @@ void libSCPL_gf_InitializeSpendOverTime () {
     // Implementation
     libSCPL_gf_InitializeResourceUI();
     lv_gamePlayers = PlayerGroupActive();
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 
@@ -1061,6 +1071,9 @@ void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex) {
 }
 
 void libSCPL_gf_InitializeConsolePlus () {
+    // Implementation
+    DialogControlHookupStandard(c_triggerControlTypeCommandPanel, "UIContainer/ConsoleUIContainer/GlobalRallyPanel");
+    libSCPL_gv_uI.lv_uCB.lv_globalRallyCommandCard = DialogControlLastCreated();
 }
 
 void libSCPL_gf_InitializeResourceUI () {
@@ -1438,6 +1451,14 @@ void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer) {
 // Trigger: Initialization Plus
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
+    playergroup autoE8E742EE_g;
+    int autoE8E742EE_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
     // Actions
     if (!runActions) {
         return true;
@@ -1447,6 +1468,12 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
     libSCPL_gf_InitializeSpendOverTime();
     libSCPL_gf_InitializeAutomatedWorkerProduction();
     libSCPL_gf_InitializeConsolePlus();
+    autoE8E742EE_g = PlayerGroupActive(); 
+    autoE8E742EE_p = 1;
+    for ( ; autoE8E742EE_p <= PlayerGroupCount(autoE8E742EE_g) ; autoE8E742EE_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(autoE8E742EE_g, autoE8E742EE_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(autoE8E742EE_g, autoE8E742EE_p);
+        libSCPL_gf_InitializeGlobalRallyCaster(lv_playerIndex);
+    }
     return true;
 }
 
@@ -1454,25 +1481,6 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
 void libSCPL_gt_InitializationPlus_Init () {
     libSCPL_gt_InitializationPlus = TriggerCreate("libSCPL_gt_InitializationPlus_Func");
     TriggerAddEventTimeElapsed(libSCPL_gt_InitializationPlus, 0.0, c_timeGame);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Untitled Trigger 001
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_UntitledTrigger001_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libPPRL_gf_DebugString(("!!!!"));
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_UntitledTrigger001_Init () {
-    libSCPL_gt_UntitledTrigger001 = TriggerCreate("libSCPL_gt_UntitledTrigger001_Func");
-    TriggerAddEventPlayerEffectUsed(libSCPL_gt_UntitledTrigger001, 1, "DebugEffectHook");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1484,7 +1492,12 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UnitKill(libSCPL_gf_DebugSelectedUnit(1));
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Barracks", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Factory", 8.0);
+    PlayerModifyPropertyInt(1, c_playerPropVespene, c_playerPropOperAdd, 500);
+    PlayerModifyPropertyInt(1, c_playerPropMinerals, c_playerPropOperAdd, 500);
+    PlayerModifyPropertyInt(1, c_playerPropCustom, c_playerPropOperAdd, 500);
+    PlayerModifyPropertyInt(1, c_playerPropTerrazine, c_playerPropOperAdd, 500);
     return true;
 }
 
@@ -1503,7 +1516,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Drone", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "GhostAcademy", 8.0);
     return true;
 }
 
@@ -1511,6 +1524,25 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
 void libSCPL_gt__2_Init () {
     libSCPL_gt__2 = TriggerCreate("libSCPL_gt__2_Func");
     TriggerAddEventKeyPressed(libSCPL_gt__2, c_playerAny, c_keyNumPad2, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 3
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitKill(libSCPL_gf_DebugSelectedUnit(1));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__3_Init () {
+    libSCPL_gt__3 = TriggerCreate("libSCPL_gt__3_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__3, c_playerAny, c_keyNumPad3, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1535,6 +1567,685 @@ bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
 void libSCPL_gt__0_Init () {
     libSCPL_gt__0 = TriggerCreate("libSCPL_gt__0_Func");
     TriggerAddEventKeyPressed(libSCPL_gt__0, c_playerAny, c_keyNumPad0, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Space
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_Space_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupLoopBegin(UnitGroup("GhostAcademy", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+        if ((UnitMagazineCount(UnitGroupLoopCurrent(), "ArmSiloWithNuke") != 0)) {
+            libPPRL_gf_DebugString(("Armed Nuke Detected"));
+        }
+        if (((UnitCheckProgressState(UnitGroupLoopCurrent(), 1, c_unitProgressStateActive) == true) || (UnitCheckProgressState(UnitGroupLoopCurrent(), 1, c_unitProgressStatePaused) == true))) {
+            libPPRL_gf_DebugString(("Arming Detected"));
+        }
+    }
+    UnitGroupLoopEnd();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_Space_Init () {
+    libSCPL_gt_Space = TriggerCreate("libSCPL_gt_Space_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt_Space, c_playerAny, c_keySpace, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 00 Target Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally00TargetCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_rallyUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) == "GameGlobalRallyTarget00"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 0;
+    lv_rallyUnit = EventUnitCreatedUnit();
+    lv_playerIndex = UnitGetOwner(lv_rallyUnit);
+    libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex] = lv_rallyUnit;
+    UnitGroupIssueOrder(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], OrderTargetingUnit(AbilityCommand("Rally", 0), lv_rallyUnit), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally00TargetCreated_Init () {
+    libSCPL_gt_GlobalRally00TargetCreated = TriggerCreate("libSCPL_gt_GlobalRally00TargetCreated_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_GlobalRally00TargetCreated, null, "GameGlobalRallyTarget00", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 01 Target Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally01TargetCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_rallyUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) == "GameGlobalRallyTarget01"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 1;
+    lv_rallyUnit = EventUnitCreatedUnit();
+    lv_playerIndex = UnitGetOwner(lv_rallyUnit);
+    libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex] = lv_rallyUnit;
+    UnitGroupIssueOrder(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], OrderTargetingUnit(AbilityCommand("Rally", 0), lv_rallyUnit), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally01TargetCreated_Init () {
+    libSCPL_gt_GlobalRally01TargetCreated = TriggerCreate("libSCPL_gt_GlobalRally01TargetCreated_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_GlobalRally01TargetCreated, null, "GameGlobalRallyTarget01", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 02 Target Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally02TargetCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_rallyUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) == "GameGlobalRallyTarget02"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 2;
+    lv_rallyUnit = EventUnitCreatedUnit();
+    lv_playerIndex = UnitGetOwner(lv_rallyUnit);
+    libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex] = lv_rallyUnit;
+    UnitGroupIssueOrder(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], OrderTargetingUnit(AbilityCommand("Rally", 0), lv_rallyUnit), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally02TargetCreated_Init () {
+    libSCPL_gt_GlobalRally02TargetCreated = TriggerCreate("libSCPL_gt_GlobalRally02TargetCreated_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_GlobalRally02TargetCreated, null, "GameGlobalRallyTarget02", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 00 Producer Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally00ProducerCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "Barracks")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 0;
+    lv_productionUnit = EventUnitProgressUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget00", -1.0);
+    UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], lv_productionUnit);
+    UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally00ProducerCreated_Init () {
+    libSCPL_gt_GlobalRally00ProducerCreated = TriggerCreate("libSCPL_gt_GlobalRally00ProducerCreated_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally00ProducerCreated, false);
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GlobalRally00ProducerCreated, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 00 Producer Create Morph
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally00ProducerCreateMorph_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "Barracks")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 0;
+    lv_productionUnit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget00", -1.0);
+    UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally00ProducerCreateMorph_Init () {
+    libSCPL_gt_GlobalRally00ProducerCreateMorph = TriggerCreate("libSCPL_gt_GlobalRally00ProducerCreateMorph_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally00ProducerCreateMorph, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_GlobalRally00ProducerCreateMorph, null, AbilityCommand("BarracksLand", 0), c_abilMorphStageUnitEnd, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 00 Producer Remove Morph
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally00ProducerRemoveMorph_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "BarracksFlying")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 0;
+    lv_productionUnit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget00", 1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally00ProducerRemoveMorph_Init () {
+    libSCPL_gt_GlobalRally00ProducerRemoveMorph = TriggerCreate("libSCPL_gt_GlobalRally00ProducerRemoveMorph_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally00ProducerRemoveMorph, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_GlobalRally00ProducerRemoveMorph, null, AbilityCommand("BarracksLiftOff", 0), c_abilMorphStageUnitStart, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 00 Producer Remove Kill
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally00ProducerRemoveKill_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "Barracks")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 0;
+    lv_productionUnit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget00", 1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally00ProducerRemoveKill_Init () {
+    libSCPL_gt_GlobalRally00ProducerRemoveKill = TriggerCreate("libSCPL_gt_GlobalRally00ProducerRemoveKill_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally00ProducerRemoveKill, false);
+    TriggerAddEventUnitDied(libSCPL_gt_GlobalRally00ProducerRemoveKill, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 01 Producer Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally01ProducerCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "Factory")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 1;
+    lv_productionUnit = EventUnitProgressUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget01", -1.0);
+    UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], lv_productionUnit);
+    UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally01ProducerCreated_Init () {
+    libSCPL_gt_GlobalRally01ProducerCreated = TriggerCreate("libSCPL_gt_GlobalRally01ProducerCreated_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally01ProducerCreated, false);
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GlobalRally01ProducerCreated, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 01 Producer Create Morph
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally01ProducerCreateMorph_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "Factory")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 1;
+    lv_productionUnit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget01", -1.0);
+    UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally01ProducerCreateMorph_Init () {
+    libSCPL_gt_GlobalRally01ProducerCreateMorph = TriggerCreate("libSCPL_gt_GlobalRally01ProducerCreateMorph_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally01ProducerCreateMorph, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_GlobalRally01ProducerCreateMorph, null, AbilityCommand("FactoryLand", 0), c_abilMorphStageUnitEnd, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 01 Producer Remove Morph
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally01ProducerRemoveMorph_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "FactoryFlying")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 1;
+    lv_productionUnit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget01", 1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally01ProducerRemoveMorph_Init () {
+    libSCPL_gt_GlobalRally01ProducerRemoveMorph = TriggerCreate("libSCPL_gt_GlobalRally01ProducerRemoveMorph_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally01ProducerRemoveMorph, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_GlobalRally01ProducerRemoveMorph, null, AbilityCommand("FactoryLiftOff", 0), c_abilMorphStageUnitStart, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 01 Producer Remove Kill
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally01ProducerRemoveKill_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "Factory")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 1;
+    lv_productionUnit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget01", 1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally01ProducerRemoveKill_Init () {
+    libSCPL_gt_GlobalRally01ProducerRemoveKill = TriggerCreate("libSCPL_gt_GlobalRally01ProducerRemoveKill_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally01ProducerRemoveKill, false);
+    TriggerAddEventUnitDied(libSCPL_gt_GlobalRally01ProducerRemoveKill, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 02 Producer Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally02ProducerCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "Starport")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 2;
+    lv_productionUnit = EventUnitProgressUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget02", -1.0);
+    UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], lv_productionUnit);
+    UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally02ProducerCreated_Init () {
+    libSCPL_gt_GlobalRally02ProducerCreated = TriggerCreate("libSCPL_gt_GlobalRally02ProducerCreated_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally02ProducerCreated, false);
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GlobalRally02ProducerCreated, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 02 Producer Create Morph
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally02ProducerCreateMorph_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "Starport")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 2;
+    lv_productionUnit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget02", -1.0);
+    UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally02ProducerCreateMorph_Init () {
+    libSCPL_gt_GlobalRally02ProducerCreateMorph = TriggerCreate("libSCPL_gt_GlobalRally02ProducerCreateMorph_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally02ProducerCreateMorph, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_GlobalRally02ProducerCreateMorph, null, AbilityCommand("StarportLand", 0), c_abilMorphStageUnitEnd, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 02 Producer Remove Morph
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally02ProducerRemoveMorph_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "StarportFlying")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 2;
+    lv_productionUnit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget02", 1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally02ProducerRemoveMorph_Init () {
+    libSCPL_gt_GlobalRally02ProducerRemoveMorph = TriggerCreate("libSCPL_gt_GlobalRally02ProducerRemoveMorph_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally02ProducerRemoveMorph, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_GlobalRally02ProducerRemoveMorph, null, AbilityCommand("StarportLiftOff", 0), c_abilMorphStageUnitStart, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 02 Producer Remove Kill
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally02ProducerRemoveKill_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_productionUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnit()) == "Starport")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 2;
+    lv_productionUnit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_productionUnit);
+    PlayerAddChargeUsed(lv_playerIndex, "Abil/GameGlobalRallyTarget02", 1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally02ProducerRemoveKill_Init () {
+    libSCPL_gt_GlobalRally02ProducerRemoveKill = TriggerCreate("libSCPL_gt_GlobalRally02ProducerRemoveKill_Func");
+    TriggerEnable(libSCPL_gt_GlobalRally02ProducerRemoveKill, false);
+    TriggerAddEventUnitDied(libSCPL_gt_GlobalRally02ProducerRemoveKill, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 00 Attach Unit
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally00AttachUnit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_rallyUnit;
+    unit lv_targetUnit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitDamageSourceUnit());
+    lv_targetUnit = EventUnit();
+    lv_rallyUnit = libSCPL_gf_DebugPlayerUnit(lv_playerIndex, "GameGlobalRallyTarget00");
+    UnitBehaviorAdd(lv_rallyUnit, "KineticFollow", lv_targetUnit, 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally00AttachUnit_Init () {
+    libSCPL_gt_GlobalRally00AttachUnit = TriggerCreate("libSCPL_gt_GlobalRally00AttachUnit_Func");
+    TriggerAddEventUnitDamaged(libSCPL_gt_GlobalRally00AttachUnit, null, c_unitDamageTypeAny, c_unitDamageEither, "GlobalRallyTarget00UnitImpact");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 01 Attach Unit
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally01AttachUnit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_rallyUnit;
+    unit lv_targetUnit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitDamageSourceUnit());
+    lv_targetUnit = EventUnit();
+    lv_rallyUnit = libSCPL_gf_DebugPlayerUnit(lv_playerIndex, "GameGlobalRallyTarget01");
+    UnitBehaviorAdd(lv_rallyUnit, "KineticFollow", lv_targetUnit, 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally01AttachUnit_Init () {
+    libSCPL_gt_GlobalRally01AttachUnit = TriggerCreate("libSCPL_gt_GlobalRally01AttachUnit_Func");
+    TriggerAddEventUnitDamaged(libSCPL_gt_GlobalRally01AttachUnit, null, c_unitDamageTypeAny, c_unitDamageEither, "GlobalRallyTarget01UnitImpact");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 02 Attach Unit
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally02AttachUnit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_rallyUnit;
+    unit lv_targetUnit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitDamageSourceUnit());
+    lv_targetUnit = EventUnit();
+    lv_rallyUnit = libSCPL_gf_DebugPlayerUnit(lv_playerIndex, "GameGlobalRallyTarget02");
+    UnitBehaviorAdd(lv_rallyUnit, "KineticFollow", lv_targetUnit, 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally02AttachUnit_Init () {
+    libSCPL_gt_GlobalRally02AttachUnit = TriggerCreate("libSCPL_gt_GlobalRally02AttachUnit_Func");
+    TriggerAddEventUnitDamaged(libSCPL_gt_GlobalRally02AttachUnit, null, c_unitDamageTypeAny, c_unitDamageEither, "GlobalRallyTarget02UnitImpact");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1566,6 +2277,9 @@ bool libSCPL_gt_ProgressMorphRefundOneStage_Func (bool testConds, bool runAction
     lv_registerName = CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, "InfoArray[" + IntToString(lv_progressIndex) + "].Unit", c_playerAny);
     lv_progressUnitType = (CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, ("InfoArray[" + IntToString(lv_progressIndex) + "].Unit"), c_playerAny));
     lv_progressUnitType = UnitGetType(EventUnit());
+    if (((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("UpgradeToOrbitalUCB", 0)) || (OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("UpgradeToPlanetaryFortressUCB", 0)))) {
+        lv_progressUnitType = "CommandCenter";
+    }
     lv_costMinerals = (UnitTypeGetCost(UnitTypeFromString(lv_registerName), c_unitCostMinerals) - UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals));
     lv_costVespene = (UnitTypeGetCost(UnitTypeFromString(lv_registerName), c_unitCostVespene) - UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene));
     lv_costTime = StringToFixed(CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, "InfoArray[" + IntToString(lv_progressIndex) + "].SectionArray[" + IntToString(0) + "].DurationArray[" + IntToString(0) + "]", c_playerAny));
@@ -1584,6 +2298,9 @@ void libSCPL_gt_ProgressMorphRefundOneStage_Init () {
     libSCPL_gt_ProgressMorphRefundOneStage = TriggerCreate("libSCPL_gt_ProgressMorphRefundOneStage_Func");
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefundOneStage, null, AbilityCommand("UpgradeToOrbital", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefundOneStage, null, AbilityCommand("UpgradeToPlanetaryFortress", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefundOneStage, null, AbilityCommand("UpgradeToOrbitalUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefundOneStage, null, AbilityCommand("UpgradeToPlanetaryFortressUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefundOneStage, null, AbilityCommand("MorphDummyTrainNukeUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefundOneStage, null, AbilityCommand("MorphToMothership", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefundOneStage, null, AbilityCommand("UpgradeToLair", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefundOneStage, null, AbilityCommand("UpgradeToHive", 0));
@@ -4133,6 +4850,9 @@ bool libSCPL_gt_AutoWorkerProductionCheckExpansion_Func (bool testConds, bool ru
         }
     }
     UnitGroupLoopEnd();
+    if ((UnitGroupCount(lv_resourceGroup, c_unitCountAlive) < 1)) {
+        return true;
+    }
     lv_resourceClosest = UnitGroupClosestToPoint(lv_resourceGroup, UnitGetPosition(lv_townHall));
     lv_expansionWorkerPoint = PointWithOffsetPolar(UnitGetPosition(lv_townHall), 2.5, AngleBetweenPoints(UnitGetPosition(lv_townHall), UnitGetPosition(lv_resourceClosest)));
     auto9E44F9EA_val = UnitGetType(EventUnitProgressUnit());
@@ -4483,6 +5203,46 @@ void libSCPL_gt_MuleHarvestNearestResoures_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Command Center Morph Start
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_CommandCenterMorphStart_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemove(EventUnit(), "GameUCBCommandCenterChargeLink", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_CommandCenterMorphStart_Init () {
+    libSCPL_gt_CommandCenterMorphStart = TriggerCreate("libSCPL_gt_CommandCenterMorphStart_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_CommandCenterMorphStart, null, AbilityCommand("UpgradeToOrbital", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_CommandCenterMorphStart, null, AbilityCommand("UpgradeToPlanetaryFortress", 0), c_abilMorphStageUnitStart, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Command Center Morph Cancel
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_CommandCenterMorphCancel_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "GameUCBCommandCenterChargeLink", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_CommandCenterMorphCancel_Init () {
+    libSCPL_gt_CommandCenterMorphCancel = TriggerCreate("libSCPL_gt_CommandCenterMorphCancel_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_CommandCenterMorphCancel, null, AbilityCommand("UpgradeToOrbital", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_CommandCenterMorphCancel, null, AbilityCommand("UpgradeToPlanetaryFortress", 0), c_unitAbilStageCancel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Player Auto Wall Unit Created
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_PlayerAutoWallUnitCreated_Func (bool testConds, bool runActions) {
@@ -4756,10 +5516,29 @@ void libSCPL_gt_ResourceDisplaySpend_Init () {
 
 void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
-    libSCPL_gt_UntitledTrigger001_Init();
     libSCPL_gt__1_Init();
     libSCPL_gt__2_Init();
+    libSCPL_gt__3_Init();
     libSCPL_gt__0_Init();
+    libSCPL_gt_Space_Init();
+    libSCPL_gt_GlobalRally00TargetCreated_Init();
+    libSCPL_gt_GlobalRally01TargetCreated_Init();
+    libSCPL_gt_GlobalRally02TargetCreated_Init();
+    libSCPL_gt_GlobalRally00ProducerCreated_Init();
+    libSCPL_gt_GlobalRally00ProducerCreateMorph_Init();
+    libSCPL_gt_GlobalRally00ProducerRemoveMorph_Init();
+    libSCPL_gt_GlobalRally00ProducerRemoveKill_Init();
+    libSCPL_gt_GlobalRally01ProducerCreated_Init();
+    libSCPL_gt_GlobalRally01ProducerCreateMorph_Init();
+    libSCPL_gt_GlobalRally01ProducerRemoveMorph_Init();
+    libSCPL_gt_GlobalRally01ProducerRemoveKill_Init();
+    libSCPL_gt_GlobalRally02ProducerCreated_Init();
+    libSCPL_gt_GlobalRally02ProducerCreateMorph_Init();
+    libSCPL_gt_GlobalRally02ProducerRemoveMorph_Init();
+    libSCPL_gt_GlobalRally02ProducerRemoveKill_Init();
+    libSCPL_gt_GlobalRally00AttachUnit_Init();
+    libSCPL_gt_GlobalRally01AttachUnit_Init();
+    libSCPL_gt_GlobalRally02AttachUnit_Init();
     libSCPL_gt_ProgressMorphRefundOneStage_Init();
     libSCPL_gt_ProgressMorphRefundTwoStage_Init();
     libSCPL_gt_ProgressMorphStart_Init();
@@ -4797,6 +5576,8 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_WarpGateResearchGatewayBuilt_Init();
     libSCPL_gt_WarpGateResearchUpgradeAllGates_Init();
     libSCPL_gt_MuleHarvestNearestResoures_Init();
+    libSCPL_gt_CommandCenterMorphStart_Init();
+    libSCPL_gt_CommandCenterMorphCancel_Init();
     libSCPL_gt_PlayerAutoWallUnitCreated_Init();
     libSCPL_gt_AutoCreepTumorNodeCreateParent_Init();
     libSCPL_gt_AutoCreepTumorNodeCreateChild_Init();

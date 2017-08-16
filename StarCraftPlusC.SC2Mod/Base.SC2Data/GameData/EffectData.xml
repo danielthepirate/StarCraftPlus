@@ -143,6 +143,9 @@
         <EditorCategories value=""/>
         <BehaviorLink value="AutoWallRaise"/>
     </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="DoNothing">
+        <EditorCategories value=""/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="GameAutoCreepNodeTargetCapped">
         <ValidatorArray index="0" value="AutoCreepTargetNodeReachable"/>
         <EditorCategories value=""/>
@@ -194,6 +197,247 @@
         <Resources index="Terrazine" value="7"/>
         <ResourcesCollected index="Terrazine" value="7"/>
     </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBCommandCenterChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/CommandCenter"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGhostAcademyChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/GhostAcademy"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGhostAcademyChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GhostAcademy"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally00ChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/GlobalRally00"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBCommandCenterChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/CommandCenter"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally01ChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/GlobalRally01"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally00ChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GlobalRally00"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally02ChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/GlobalRally02"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally01ChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GlobalRally01"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally02ChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GlobalRally02"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectSet id="GlobalRallyTarget01Set">
+        <EditorCategories value=""/>
+        <EffectArray value="GlobalRallyTarget01Create"/>
+        <EffectArray value="GlobalRallyTarget01UnitImpact"/>
+    </CEffectSet>
+    <CEffectDamage id="GlobalRallyTarget00UnitImpact">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="GlobalRallyTarget00Clear">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <AreaArray MaxCount="1" Radius="500" Effect="GlobalRallyTarget00KillRemove"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GlobalRallyTarget00Set">
+        <EditorCategories value=""/>
+        <EffectArray value="GlobalRallyTarget00Create"/>
+        <EffectArray value="GlobalRallyTarget00UnitImpact"/>
+    </CEffectSet>
+    <CEffectSet id="GlobalRallyTarget02Set">
+        <EditorCategories value=""/>
+        <EffectArray value="GlobalRallyTarget02Create"/>
+        <EffectArray value="GlobalRallyTarget02UnitImpact"/>
+    </CEffectSet>
+    <CEffectDamage id="GlobalRallyTarget01UnitImpact">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="GlobalRallyTarget01">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <InitialEffect value="GlobalRallyTarget01Clear"/>
+        <FinalEffect value="GlobalRallyTarget01Set"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="GlobalRallyTarget02UnitImpact">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="GlobalRallyTarget02">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <InitialEffect value="GlobalRallyTarget02Clear"/>
+        <FinalEffect value="GlobalRallyTarget02Set"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GlobalRallyTarget01Clear">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <AreaArray MaxCount="1" Radius="500" Effect="GlobalRallyTarget01KillRemove"/>
+    </CEffectEnumArea>
+    <CEffectCreateUnit id="GlobalRallyTarget00Create">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnUnit value="GameGlobalRallyTarget00"/>
+    </CEffectCreateUnit>
+    <CEffectCreatePersistent id="GlobalRallyTarget00">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <InitialEffect value="GlobalRallyTarget00Clear"/>
+        <FinalEffect value="GlobalRallyTarget00Set"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GlobalRallyTarget02Clear">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <AreaArray MaxCount="1" Radius="500" Effect="GlobalRallyTarget02KillRemove"/>
+    </CEffectEnumArea>
+    <CEffectCreateUnit id="GlobalRallyTarget01Create">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="KineticFollowApply"/>
+        <SpawnUnit value="GameGlobalRallyTarget01"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="GlobalRallyTarget00KillRemove">
+        <ValidatorArray value="IsGlobalRallyTarget00"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectCreateUnit id="GlobalRallyTarget02Create">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="KineticFollowApply"/>
+        <SpawnUnit value="GameGlobalRallyTarget02"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="GlobalRallyTarget01KillRemove">
+        <ValidatorArray value="IsGlobalRallyTarget01"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectDamage id="GlobalRallyTarget02KillRemove">
+        <ValidatorArray value="IsGlobalRallyTarget02"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectApplyKinetic id="KineticFollow">
+        <EditorCategories value=""/>
+    </CEffectApplyKinetic>
     <CEffectEnumArea id="OverlordCreepGrowthAuraSearch">
         <EditorCategories value=""/>
         <SearchFilters value="Ground;Ally,Neutral,Enemy,Missile,Dead,Hidden"/>

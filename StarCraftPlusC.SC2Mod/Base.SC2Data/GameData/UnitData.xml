@@ -35,6 +35,7 @@
             <LayoutButtons index="3" Column="0"/>
             <LayoutButtons index="12" Face="Reaper" Type="AbilCmd" AbilCmd="BarracksTrain,Train2" Row="0" Column="0"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
     </CUnit>
     <CUnit id="BarracksFlying">
         <Food value="10"/>
@@ -54,6 +55,7 @@
     <CUnit id="CommandCenter">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
+        <BehaviorArray Link="GameUCBCommandCenterChargeLink"/>
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="2"/>
             <LayoutButtons index="12" Row="0" Column="2"/>
@@ -111,6 +113,7 @@
             <LayoutButtons index="14" Face="Thor" Type="AbilCmd" AbilCmd="FactoryTrain,Train5" Row="0" Column="0"/>
             <LayoutButtons index="15" Face="HellionTank" Type="AbilCmd" AbilCmd="FactoryTrain,Train7" Row="0" Column="0"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRally01ChargeLink"/>
     </CUnit>
     <CUnit id="FactoryFlying">
         <Food value="10"/>
@@ -150,13 +153,82 @@
         <PlacementFootprint value="CreepTumorQueen"/>
         <EditorCategories value=""/>
     </CUnit>
+    <CUnit id="GameGlobalRallyTarget00" parent="SIDEBARCASTER_BASE">
+        <Race value="Terr"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="NoDraw" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="ShowResources" value="0"/>
+        <FlagArray index="PlayerRevivable" value="0"/>
+        <FlagArray index="CameraFollow" value="0"/>
+        <Speed value="160"/>
+        <Acceleration value="1000"/>
+        <AbilArray index="0" Link="move"/>
+        <AbilArray index="1" removed="1"/>
+        <AbilArray index="2" removed="1"/>
+        <AbilArray index="3" removed="1"/>
+        <WeaponArray index="0" Link=""/>
+    </CUnit>
+    <CUnit id="GameGlobalRallyTarget01" parent="SIDEBARCASTER_BASE">
+        <Race value="Terr"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="NoDraw" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="ShowResources" value="0"/>
+        <FlagArray index="PlayerRevivable" value="0"/>
+        <FlagArray index="CameraFollow" value="0"/>
+        <AbilArray index="0" removed="1"/>
+        <AbilArray index="1" removed="1"/>
+        <AbilArray index="2" removed="1"/>
+        <AbilArray index="3" removed="1"/>
+        <WeaponArray index="0" Link=""/>
+    </CUnit>
+    <CUnit id="GameGlobalRallyTarget02" parent="SIDEBARCASTER_BASE">
+        <Race value="Terr"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="NoDraw" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="ShowResources" value="0"/>
+        <FlagArray index="PlayerRevivable" value="0"/>
+        <FlagArray index="CameraFollow" value="0"/>
+        <AbilArray index="0" removed="1"/>
+        <AbilArray index="1" removed="1"/>
+        <AbilArray index="2" removed="1"/>
+        <AbilArray index="3" removed="1"/>
+        <WeaponArray index="0" Link=""/>
+    </CUnit>
     <CUnit id="Gateway">
         <Food value="10"/>
     </CUnit>
     <CUnit id="GhostAcademy">
         <CardLayouts index="0">
+            <LayoutButtons index="4" Row="1"/>
             <LayoutButtons index="5" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="0" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGhostAcademyChargeLink"/>
     </CUnit>
     <CUnit id="GreaterSpire">
         <Food value="10"/>
@@ -301,9 +373,11 @@
     </CUnit>
     <CUnit id="SdbTBuild1">
         <CardLayouts index="0">
-            <LayoutButtons index="14" removed="1"/>
-            <LayoutButtons index="15" removed="1"/>
+            <LayoutButtons index="14" Face="UCBOrbitalCommand" Type="AbilCmd" AbilCmd="UpgradeToOrbitalUCB,Execute" Row="2" Column="4"/>
+            <LayoutButtons index="15" Face="UCBUpgradeToPlanetaryFortress" Type="AbilCmd" AbilCmd="UpgradeToPlanetaryFortressUCB,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <AbilArray index="5" Link="UpgradeToOrbitalUCB"/>
+        <AbilArray index="6" Link="UpgradeToPlanetaryFortressUCB"/>
     </CUnit>
     <CUnit id="SdbTRsrch1">
         <CardLayouts index="0">
@@ -360,9 +434,37 @@
             <LayoutButtons Face="ResearchBattlecruiserSpecializations" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="GameGlobalRallyCaster" parent="SIDEBARCASTER_BASE">
+        <Race value="Terr"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="NoDraw" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="ShowResources" value="0"/>
+        <FlagArray index="PlayerRevivable" value="0"/>
+        <FlagArray index="CameraFollow" value="0"/>
+        <AbilArray index="0" Link="GameGlobalRallyTarget00"/>
+        <AbilArray index="1" Link="GameGlobalRallyTarget01"/>
+        <AbilArray index="2" Link="GameGlobalRallyTarget02"/>
+        <AbilArray index="3" removed="1"/>
+        <WeaponArray index="0" Link=""/>
+        <CardLayouts>
+            <LayoutButtons Face="GlobalRallyBarracks" Type="AbilCmd" AbilCmd="GameGlobalRallyTarget00,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="GlobalRallyFactory" Type="AbilCmd" AbilCmd="GameGlobalRallyTarget01,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="GlobalRallyStarport" Type="AbilCmd" AbilCmd="GameGlobalRallyTarget02,Execute" Row="0" Column="2"/>
+            <LayoutButtons Face="Cancel" Type="CancelTargetMode" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SdbTTrain2">
+        <AbilArray index="8" Link="MorphDummyTrainNukeUCB"/>
         <CardLayouts index="0">
-            <LayoutButtons index="3" removed="1"/>
+            <LayoutButtons index="3" Face="NukeArmUCB" Type="AbilCmd" AbilCmd="MorphDummyTrainNukeUCB,Execute" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SensorTower">
@@ -390,6 +492,7 @@
             <LayoutButtons index="13" Row="0" Column="2"/>
             <LayoutButtons index="14" Face="Liberator" Type="AbilCmd" AbilCmd="StarportTrain,Train7" Row="0" Column="0"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRally02ChargeLink"/>
     </CUnit>
     <CUnit id="StarportFlying">
         <Food value="10"/>

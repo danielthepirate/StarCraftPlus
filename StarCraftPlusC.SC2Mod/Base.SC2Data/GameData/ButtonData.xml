@@ -528,6 +528,30 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="GlobalGridButton"/>
+    <CButton id="GlobalRallyBarracks">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowHotkey" value="0"/>
+        <Icon value="Assets\Textures\btn-building-terran-barracks.dds"/>
+        <Hotkey value="Button/Hotkey/GlobalRallyBarracks"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="GlobalRallyFactory">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowHotkey" value="0"/>
+        <Icon value="Assets\Textures\btn-building-terran-factory.dds"/>
+        <Hotkey value="Button/Hotkey/GlobalRallyFactory"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="GlobalRallyStarport">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowHotkey" value="0"/>
+        <Icon value="Assets\Textures\btn-building-terran-starport.dds"/>
+        <Hotkey value="Button/Hotkey/GlobalRallyStarport"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+    </CButton>
     <CButton id="Grapple">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -782,6 +806,17 @@
     <CButton id="NexusPhaseShift">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
+    <CButton id="NukeArm">
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="NukeArmUCB">
+        <Icon value="Assets\Textures\btn-ability-terran-armnuke.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-armnuke.dds"/>
+        <Hotkey value="Button/Hotkey/NukeArmUCB"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="NukeArm"/>
+        <Universal value="1"/>
+    </CButton>
     <CButton id="NydusCanal">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -844,6 +879,13 @@
     </CButton>
     <CButton id="OracleWeaponOn">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
+    </CButton>
+    <CButton id="UCBOrbitalCommand">
+        <Icon value="Assets\Textures\BTN-Building-Terran-SurveillanceStation.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Building-Terran-SurveillanceStation.dds"/>
+        <Hotkey value="Button/Hotkey/UCBOrbitalCommand"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="OrbitalCommand"/>
     </CButton>
     <CButton id="Overcharge">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -1021,12 +1063,6 @@
     <CButton id="QueenMPSpawnBroodlings">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="RallyEgg">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="RallyOverlord">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="RapidDeployment">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -1178,15 +1214,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Sentry">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="SetRallyPoint">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="SetRallyPoint2">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="SetRallyPointSwarmHost">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SingleRecall">
@@ -1351,6 +1378,13 @@
     </CButton>
     <CButton id="UltraliskWeaponCooldown">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
+    </CButton>
+    <CButton id="UCBUpgradeToPlanetaryFortress">
+        <Icon value="Assets\Textures\btn-building-terran-planetaryfortress.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-planetaryfortress.dds"/>
+        <Hotkey value="Button/Hotkey/UCBUpgradeToPlanetaryFortress"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="UpgradeToPlanetaryFortress"/>
     </CButton>
     <CButton id="UpgradeToWarpGate">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>

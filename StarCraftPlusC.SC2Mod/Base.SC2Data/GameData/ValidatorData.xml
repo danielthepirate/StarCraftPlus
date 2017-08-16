@@ -57,6 +57,14 @@
         <WhichLocation Value="TargetUnit"/>
         <OtherLocation Value="SourceUnit"/>
     </CValidatorLocationCompareCliffLevel>
+    <CValidatorCombine id="CommandCenterNotMorphing">
+        <Type value="And"/>
+        <CombineArray value="CommandCenterNotMorphingOC"/>
+        <CombineArray value="CommandCenterNotMorphingPF"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="CommandCenterNotMorphingOC">
+        <AbilLink value="UpgradeToOrbital"/>
+    </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareBehaviorCount id="HasEnhancedCreepGrowth">
         <Value value="1"/>
         <Behavior value="CreepTumorEnhancedCreepGrowth"/>
@@ -65,6 +73,18 @@
         <Value value="1"/>
         <Behavior value="AutoCreepSpreadAutocastBehavior"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareOrderCount id="CommandCenterNotMorphingPF">
+        <AbilLink value="UpgradeToPlanetaryFortress"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitType id="IsGlobalRallyTarget00">
+        <Value value="GameGlobalRallyTarget00"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsGlobalRallyTarget01">
+        <Value value="GameGlobalRallyTarget01"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsGlobalRallyTarget02">
+        <Value value="GameGlobalRallyTarget02"/>
+    </CValidatorUnitType>
     <CValidatorUnitCompareBehaviorCount id="NoEnhancedCreepGrowth">
         <Behavior value="CreepTumorEnhancedCreepGrowth"/>
     </CValidatorUnitCompareBehaviorCount>

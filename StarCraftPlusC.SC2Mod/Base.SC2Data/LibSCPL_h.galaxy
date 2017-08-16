@@ -26,6 +26,9 @@ struct libSCPL_gs_Player {
     int lv_autoCreepNodeCount;
     bool lv_globalTerran_AutoWallToggle;
     bool lv_globalZerg_CreepSpreadToggle;
+    unit lv_globalRallyCaster;
+    unit[4] lv_globalRallyTarget;
+    unitgroup[4] lv_globalRallyGroup;
 };
 
 struct libSCPL_gs_Map {
@@ -35,6 +38,10 @@ struct libSCPL_gs_Map {
 struct libSCPL_gs_UI_ResourcePanel {
     int lv_mineralSpend;
     int lv_vespeneSpend;
+};
+
+struct libSCPL_gs_UI_UniversalCommandBar {
+    int lv_globalRallyCommandCard;
 };
 
 struct libSCPL_gs_Hotkey {
@@ -196,6 +203,7 @@ struct libSCPL_gs_Hotkey {
 
 struct libSCPL_gs_UI {
     libSCPL_gs_UI_ResourcePanel lv_resourcePanel;
+    libSCPL_gs_UI_UniversalCommandBar lv_uCB;
 };
 
 // Variable Declarations
@@ -209,6 +217,7 @@ libSCPL_gs_Hotkey libSCPL_gv_hotkey;
 unit libSCPL_gf_DebugPlayerUnit (int lp_playerIndex, string lp_unitType);
 unit libSCPL_gf_DebugSelectedUnit (int lp_playerIndex);
 void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType, fixed lp_offset);
+void libSCPL_gf_InitializeGlobalRallyCaster (int lp_playerIndex);
 void libSCPL_gf_InitializeSpendOverTime ();
 void libSCPL_gf_PlayerResourcesAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_PlayerResourcesSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
@@ -281,10 +290,29 @@ void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
-trigger libSCPL_gt_UntitledTrigger001;
 trigger libSCPL_gt__1;
 trigger libSCPL_gt__2;
+trigger libSCPL_gt__3;
 trigger libSCPL_gt__0;
+trigger libSCPL_gt_Space;
+trigger libSCPL_gt_GlobalRally00TargetCreated;
+trigger libSCPL_gt_GlobalRally01TargetCreated;
+trigger libSCPL_gt_GlobalRally02TargetCreated;
+trigger libSCPL_gt_GlobalRally00ProducerCreated;
+trigger libSCPL_gt_GlobalRally00ProducerCreateMorph;
+trigger libSCPL_gt_GlobalRally00ProducerRemoveMorph;
+trigger libSCPL_gt_GlobalRally00ProducerRemoveKill;
+trigger libSCPL_gt_GlobalRally01ProducerCreated;
+trigger libSCPL_gt_GlobalRally01ProducerCreateMorph;
+trigger libSCPL_gt_GlobalRally01ProducerRemoveMorph;
+trigger libSCPL_gt_GlobalRally01ProducerRemoveKill;
+trigger libSCPL_gt_GlobalRally02ProducerCreated;
+trigger libSCPL_gt_GlobalRally02ProducerCreateMorph;
+trigger libSCPL_gt_GlobalRally02ProducerRemoveMorph;
+trigger libSCPL_gt_GlobalRally02ProducerRemoveKill;
+trigger libSCPL_gt_GlobalRally00AttachUnit;
+trigger libSCPL_gt_GlobalRally01AttachUnit;
+trigger libSCPL_gt_GlobalRally02AttachUnit;
 trigger libSCPL_gt_ProgressMorphRefundOneStage;
 trigger libSCPL_gt_ProgressMorphRefundTwoStage;
 trigger libSCPL_gt_ProgressMorphStart;
@@ -322,6 +350,8 @@ trigger libSCPL_gt_UnitLifeAndShieldScalingOnCreation;
 trigger libSCPL_gt_WarpGateResearchGatewayBuilt;
 trigger libSCPL_gt_WarpGateResearchUpgradeAllGates;
 trigger libSCPL_gt_MuleHarvestNearestResoures;
+trigger libSCPL_gt_CommandCenterMorphStart;
+trigger libSCPL_gt_CommandCenterMorphCancel;
 trigger libSCPL_gt_PlayerAutoWallUnitCreated;
 trigger libSCPL_gt_AutoCreepTumorNodeCreateParent;
 trigger libSCPL_gt_AutoCreepTumorNodeCreateChild;

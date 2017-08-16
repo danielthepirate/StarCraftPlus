@@ -92,9 +92,19 @@
 			</Frame>
 			
 		</Frame>
-		<Frame type="TabControl" name="SideBarTab">
+		
+		<Frame type="Frame" name="SideBarTabAnchor">
+			<Anchor side="Top" relative="$parent/ControlGroupPanel" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/>
+			<Anchor side="Bottom" relative="$MenuBarConsoleAnchor" pos="Max" offset="0"/>
+			<Anchor side="Right" relative="$MenuBarConsoleAnchor" pos="Min" offset="0"/>
+		</Frame>
+		
+		<Frame type="TabControl" name="SideBarTab">
+			<!-- <Anchor side="Left" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/> -->
+			<!-- <Anchor side="Right" relative="$parent/SideBarTabAnchor" pos="Mid" offset="0"/> -->
 			<Anchor side="Right" relative="SidebarResearch" pos="Max" offset="0"/>
+			<Anchor side="Left" relative="$parent/SideBarTabAnchor" pos="Mid" offset="-253"/>
 			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="-16"/>
 			<Height val="38"/>
         
@@ -112,7 +122,7 @@
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Global (F3)"/>
+					<Text val="Global (F6)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarGlobal"/>
 				
@@ -122,7 +132,7 @@
 				<Anchor side="Left" relative="$parent/SidebarGlobal" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarGlobal" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Construct (F4)"/>
+					<Text val="Construct (F7)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarBuildings"/>
 			</Frame>
@@ -131,7 +141,7 @@
 				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Train (F5)"/>
+					<Text val="Train (F8)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarUnits"/>
 			</Frame>
@@ -140,7 +150,7 @@
 				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Research (F6)"/>
+					<Text val="Research (F9)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
 			</Frame>

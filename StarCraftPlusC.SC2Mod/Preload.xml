@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Preload>
 <Actor id="SYSTEM_ActorConfig"/>
+<Behavior id="GameUCBCommandCenterChargeLink"/>
 <Behavior id="GameWorkerHarvestGasMarker"/>
 <Behavior id="GameIncreasedLifeAndShields"/>
+<Behavior id="KineticFollow"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
+<Unit id="Barracks"/>
+<Unit id="GhostAcademy"/>
+<Unit id="Factory"/>
 <Unit id="SCV"/>
 <Unit id="Probe"/>
 <Unit id="Drone"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
 <Unit id="WarpAdept"/>
+<Unit id="GameGlobalRallyTarget00"/>
+<Unit id="GameGlobalRallyTarget01"/>
+<Unit id="GameGlobalRallyTarget02"/>
 <Unit id="GameAutoCreepNodeTarget"/>
+<Unit id="GameGlobalRallyCaster"/>
 </Preload>

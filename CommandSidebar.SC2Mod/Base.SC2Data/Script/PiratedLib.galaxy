@@ -30,3 +30,23 @@ void Pir_UnitCancelQueue (unit u){
 		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
 	}
 }
+
+unitgroup Pir_GhostAcademyAvailable(unitgroup ug) {
+
+	unitgroup available = UnitGroupCopy(ug);
+	unitgroup unavailable = UnitGroupEmpty();
+	int count = UnitGroupCount(ug, c_unitCountAll);
+	int index;
+	unit u;
+	
+	for (index = 1; index <= count; index += 1){
+		u = UnitGroupUnit(ug, index);
+				
+		if ((UnitMagazineCount(u, "ArmSiloWithNuke") > 0) || (UnitCheckProgressState(u, 1, c_unitProgressStateEmpty) == false)) {
+            UnitGroupAdd(unavailable,u);
+        }
+	}
+	
+	UnitGroupRemoveUnitGroup(available, unavailable);
+	return available;
+}

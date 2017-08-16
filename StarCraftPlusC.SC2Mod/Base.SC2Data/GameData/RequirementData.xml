@@ -8,6 +8,11 @@
     <CRequirement id="HaveBarracksWithTechLab" parent="HaveAttachedBarrTechLabAndShadowOps">
         <NodeArray index="Use" Link="AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="HaveCommandCenterOnGround">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="CountUnitCommandCenterCompleteOnly1610623376TechTreeCheat"/>
+    </CRequirement>
     <CRequirement id="HaveFactoryOnGround">
         <EditorCategories value="Race:Terran,TechType:Unit"/>
         <CanBeSuppressed index="Use" value="0"/>
@@ -202,6 +207,12 @@
         <NodeArray index="Use" Link="1"/>
     </CRequirement>
     <CRequirement id="TrainNuke">
-        <NodeArray index="Use" Link="AndOr96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheatNot866976074CountUnitNukeQueuedOrBetterAtUnitCountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Use" Link="AndOr96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheatCountUnitGhostAcademyCompleteOnlyTechTreeCheatNot1833567690CountUnitNukeQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="UCBOrbitalCommand">
+        <NodeArray index="Use" Link="AndCountUnitCommandCenterCompleteOnlyCountUnitBarracksCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UCBPlanetaryFortress">
+        <NodeArray index="Use" Link="AndCountUnitCommandCenterCompleteOnlyCountUnitEngineeringBayCompleteOnly"/>
     </CRequirement>
 </Catalog>

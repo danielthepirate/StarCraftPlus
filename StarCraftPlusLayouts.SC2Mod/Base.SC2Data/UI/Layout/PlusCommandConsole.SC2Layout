@@ -12,7 +12,7 @@
 			<Animation name="LayoutInitializer">
 				<Event event="OnShown" action="Reset,Play"/>
 				<Controller type="Visibility" end="Pause" frame="$StandardCommandPanel">
-					<!-- <Key type="Bool" time="0" value="false"/> -->
+					<Key type="Bool" time="0" value="false"/>
 				</Controller>
 				<Controller type="Visibility" end="Pause" frame="$GlobalRally00/GameButtonBorderImage">
 					<Key type="Bool" time="0" value="false"/>
@@ -33,7 +33,8 @@
 				<Anchor side="Top" relative="$parent/MinimapStub" pos="Min" offset="26"/>
 				<Anchor side="Left" relative="$parent/MinimapStub" pos="Min" offset="0"/>
 				<Anchor side="Bottom" relative="$parent/MinimapStub" pos="Max" offset="0"/>
-				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="12"/>
+				<!-- <Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="12"/> -->
+				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="58"/>
 			</Frame>
 			
 			<Frame type="Image" name="InfoPanelBackground" template="PlusTemplates/CommandBackgroundTemplate">
@@ -59,7 +60,8 @@
 			<!-- PORTRAIT FRAME -->
 			<Frame type="PortraitPanel" name="PortraitPanel">
 				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
-				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="180"/>
+				<!-- <Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="180"/> -->
+				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="212"/>
 				<Width val="152"/>
 				<Height val="232"/>
 				
@@ -87,7 +89,8 @@
 		
 			<!-- INFO PANEL -->
 			<Frame type="Frame" name="InfoPanelAnchor">
-				<Anchor side="Left" relative="$parent" pos="Mid" offset="-600"/>
+				<!-- <Anchor side="Left" relative="$parent" pos="Mid" offset="-600"/> -->
+				<Anchor side="Left" relative="$parent" pos="Mid" offset="-562"/>
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
                 <Anchor side="Right" relative="$parent" pos="Mid" offset="300"/>
 				<Height val="208"/>
@@ -96,7 +99,8 @@
 			</Frame>
 			
 			<Frame type="InfoPanel" name="InfoPanel">
-				<Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-236"/>
+				<!-- <Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-236"/> -->
+				<Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-224"/>
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
                 <Anchor side="Right" relative="$parent/InfoPanelAnchor" pos="Max" offset="500"/>
 				<Height val="208"/>

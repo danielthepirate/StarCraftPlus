@@ -80,13 +80,28 @@
             <Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
         </Frame>
 		
+		<Frame type="Image" name="CountLabelBackground">
+			<Anchor side="Top" relative="$parent/CountLabel" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/CountLabel" pos="Min" offset="-2"/>
+            <Anchor side="Right" relative="$parent/CountLabel" pos="Max" offset="-4"/>
+			<RenderPriority val="520"/>
+			<Height val="21	"/>
+			<Alpha val="200"/>
+			<Color val="0,0,0"/>
+		</Frame>
+		
 		<Frame type="Label" name="CountLabel">
             <Anchor side="Top" relative="$parent" pos="Min" offset="4"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="-1"/>
+            <RenderPriority val="520"/>
             <Width val="37"/>
             <Style val="IdleButtonCharge"/>
-            <RenderPriority val="520"/>
+			<Text val="{$parent/ChargeLabel/@Text}"/>
         </Frame>
+		
+		<Frame type="Label" name="ChargeLabel">
+			<Alpha val="0"/>
+		</Frame>
 
         <Frame type="CommandHotkeyFrame" name="HotkeyFrame" template="StandardTemplates/HotkeyFrameTemplate">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>

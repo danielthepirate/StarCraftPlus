@@ -78,16 +78,32 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		u = UnitGroupUnit(ug, 1);
 	}
 	
-	
 	if(orderdata.realAbil != ""){
 		redirAbil = AbilityCommand(orderdata.realAbil, abilCmdIndex);
 		OrderSetAbilityCommand (o, redirAbil);
 		TriggerDebugOutput(1, StringToText("Abil Substitution: "+orderdata.realAbil+" From: "+abil), CMSDB_DebugOutput);
 	}
 	
+	if(abil == "MorphDummyTrainNukeUCB"){
+		// Normal ArmMagazine redirect sends the order to ALL ghost academy's (I guess BestUnit flag doesnt work?)
+		// There's definitely a cleaner way to do this, but this works
 	
+		if(abilCmdIndex == 0){
+			o = Order(AbilityCommand("ArmSiloWithNuke", 0));
+			ug = Pir_GhostAcademyAvailable(ug);
+			u = UnitGroupUnit(ug, 1);
+			
+			// Player charge shenanigans is unfortunately necessary to get the dummy ability and real ability work together
+			PlayerAddChargeUsed(player, "UCB/GhostAcademy", -1.0);
+			UnitIssueOrder(dummy, Order(AbilityCommand(abil, c_abilMorphCmdCancel)), c_orderQueueReplace);
+			UnitIssueOrder(u, o, c_orderQueueReplace);
+			PlayerAddChargeUsed(player, "UCB/GhostAcademy", 1.0);
+		}
+		return true;
+	}
 	
-	
+	TriggerDebugOutput(1,StringToText("get out " + abil),true);
+
 	if(AbilityClass(abil) == c_classIdCAbilBuild){
 		UnitIssueOrder(dummy, Order(AbilityCommand("stop", c_abilStopCmdStop)), c_orderQueueReplace);
 		
@@ -98,6 +114,12 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		//UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
 	else if(AbilityClass(abil) == c_classIdCAbilResearch){
+		
+		UnitIssueOrder(dummy, Order(AbilityCommand("que5", c_abilQueueCmdCancelLast)), c_orderQueueReplace);
+		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		//UnitIssueOrder(u, o, c_orderQueueReplace);
+	}
+	else if(AbilityClass(abil) == c_classIdCAbilArmMagazine){
 		
 		UnitIssueOrder(dummy, Order(AbilityCommand("que5", c_abilQueueCmdCancelLast)), c_orderQueueReplace);
 		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
@@ -119,9 +141,9 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		
 		UnitIssueOrder(dummy, Order(AbilityCommand(abil, c_abilMorphCmdCancel)), c_orderQueueReplace);
 		
-		// UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
 		Pir_UnitCancelQueue(u);
-		UnitIssueOrder(u, o, c_orderQueueReplace);
+		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		// UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
 	else if(AbilityClass(abil) == c_classIdCAbilEffectTarget){
 		
@@ -154,8 +176,6 @@ unitgroup CMSDB_InitDummies(int player){
 
 	TriggerDebugOutput(1, StringToText("Player "+IntToString(player)+" Race: "+playerData[player].race), CMSDB_DebugOutput);
 	TriggerDebugOutput(1, StringToText("Total Items: "+IntToString(n)), CMSDB_DebugOutput);
-	
-	
 	
 	for(i = 1;i<=n;i+=1){
 		dummytype = UserDataField(c_CMSDB_dummyUserData, i);

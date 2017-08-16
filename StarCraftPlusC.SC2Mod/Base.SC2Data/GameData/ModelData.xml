@@ -3,6 +3,72 @@
     <CModel id="CreepTumorEnhancedCreepGrowthModel">
         <Model value="Assets\Effects\Zerg\CreepTumorFrenzy\CreepTumorFrenzy.m3"/>
     </CModel>
+    <CModel id="GameGlobalRallyCursorTarget" parent="UI">
+        <Model value="Assets\UI\Feedback\WayPointConfirm_TeamColor\WayPointConfirm_TeamColor.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetPersistent">
+        <Model value="Assets\UI\Feedback\WayPointMove_TeamColor\WayPointMove_TeamColor.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTarget01Persistent">
+        <Model value="Assets\UI\Feedback\WayPointConfirm_TeamColor\WayPointConfirm_TeamColor.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTarget02Persistent">
+        <Model value="Assets\UI\Feedback\WayPointConfirm_TeamColor\WayPointConfirm_TeamColor.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetProtossStargate">
+        <Model value="Assets\Buildings\Protoss\StargatePlacement\StargatePlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetZergHatchery">
+        <Model value="Assets\Buildings\Zerg\HatcheryPlacement\HatcheryPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetTerranBarracks">
+        <Model value="Assets\Buildings\Terran\BarracksPlacement\BarracksPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetTerranFactory">
+        <Model value="Assets\Buildings\Terran\FactoryPlacement\FactoryPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetProtossRoboticsFacility">
+        <Model value="Assets\Buildings\Protoss\RoboticsFacilityPlacement\RoboticsFacilityPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetTerranStarport">
+        <Model value="Assets\Buildings\Terran\StarportPlacement\StarportPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetProtossGateway">
+        <Model value="Assets\Buildings\Protoss\GatewayPlacement\GatewayPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
     <CModel id="PowerVisualFast2" parent="UI">
         <Model value="Assets/UI/Feedback/Pylon_WarpIn_Radius/Pylon_WarpIn_Radius.m3"/>
         <ScaleMax value="0.900000,0.900000,0.900000"/>

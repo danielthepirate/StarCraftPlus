@@ -42,6 +42,16 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <AbilSetId value="ArmNuke"/>
+        <InfoArray index="Ammo1">
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GhostAcademy"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/##id##"/>
+        </InfoArray>
     </CAbilArmMagazine>
     <CAbilResearch id="ArmoryResearch">
         <RefundFraction>
@@ -251,6 +261,30 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
     </CAbilResearch>
+    <CAbilEffectTarget id="GameGlobalRallyTarget01">
+        <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <Effect index="0" value="GlobalRallyTarget01"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge CountMax="99" Link="UCB/GlobalRally01" Location="Player"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Rally"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GameGlobalRallyTarget02">
+        <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <Effect index="0" value="GlobalRallyTarget02"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge CountMax="99" Link="UCB/GlobalRally02" Location="Player"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Rally"/>
+    </CAbilEffectTarget>
     <CAbilTrain id="GatewayTrain">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -464,6 +498,18 @@
     <CAbilEffectTarget id="ScannerSweep">
         <CmdButtonArray index="Execute" Requirements="HaveOrbitalCommandOnGround"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="GameGlobalRallyTarget00">
+        <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <Effect index="0" value="GlobalRallyTarget00"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge CountMax="99" Link="UCB/GlobalRally00" Location="Player"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Rally"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="SpawningPoolResearch">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -625,12 +671,30 @@
         </RefundFraction>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToOrbital">
+        <AbilSetId value="OrbitalCommand"/>
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
             <Resource index="Vespene" value="0"/>
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToOrbitalUCB" parent="UpgradeToOrbital">
+        <Name value="Abil/Name/UpgradeToOrbitalUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UCBOrbitalCommand">
+            <Flags index="Continuous" value="1"/>
+        </CmdButtonArray>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/CommandCenter"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/UpgradeToPlanetaryFortress"/>
+        </Cost>
+        <Flags index="IgnoreUnitCost" value="1"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToPlanetaryFortress">
         <RefundFraction>
@@ -639,6 +703,41 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <AbilSetId value="PlanetaryFortress"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToPlanetaryFortressUCB" parent="UpgradeToPlanetaryFortress">
+        <Name value="Abil/Name/UpgradeToPlanetaryFortressUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UCBPlanetaryFortress">
+            <Flags index="Continuous" value="1"/>
+        </CmdButtonArray>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/CommandCenter"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <Flags index="IgnoreUnitCost" value="1"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphDummyTrainNukeUCB" parent="UpgradeToPlanetaryFortress">
+        <Name value="Abil/Name/MorphDummyTrainNukeUCB"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="NukeArm" Requirements="TrainNuke"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GhostAcademy"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <InfoArray index="0" Unit="Nuke"/>
+        <ValidatorArray index="0" removed="1"/>
     </CAbilMorph>
     <CAbilWarpTrain id="WarpGateTrain">
         <RefundFraction>

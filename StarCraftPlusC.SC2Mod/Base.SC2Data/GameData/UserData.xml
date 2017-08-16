@@ -4,5 +4,19 @@
         <Instances index="1" Id="TerranBuild">
             <Int index="0" removed="1"/>
         </Instances>
+        <Instances index="2" Id="UpgradeToOrbitalUCB">
+            <Int index="0" removed="1"/>
+        </Instances>
+        <Instances index="3" Id="UpgradeToPlanetaryFortressUCB">
+            <Int index="0" removed="1"/>
+        </Instances>
+        <Instances Id="MorphDummyTrainNukeUCB">
+            <GameLink GameLink="ArmSiloWithNuke">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="GhostAcademy">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
     </CUser>
 </Catalog>

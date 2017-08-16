@@ -121,6 +121,36 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="17"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBCommandCenterChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBCommandCenterChargeAdd"/>
+        <FinalEffect value="GameUCBCommandCenterChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGhostAcademyChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBGhostAcademyChargeAdd"/>
+        <FinalEffect value="GameUCBGhostAcademyChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGlobalRally00ChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBGlobalRally00ChargeAdd"/>
+        <FinalEffect value="GameUCBGlobalRally00ChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGlobalRally01ChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBGlobalRally01ChargeAdd"/>
+        <FinalEffect value="GameUCBGlobalRally01ChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGlobalRally02ChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBGlobalRally02ChargeAdd"/>
+        <FinalEffect value="GameUCBGlobalRally02ChargeRemove"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameWorkerHarvestGasMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
@@ -163,6 +193,10 @@
                 <Cooldown Link="Behavior/IsNexusNearby"/>
             </Cost>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KineticFollow">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="KineticFollow"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OverlordEnhancedCreepGrowthAura">
         <InfoFlags index="Hidden" value="1"/>
