@@ -7,9 +7,8 @@
 <Behavior id="KineticFollow"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
-<Unit id="Barracks"/>
+<Unit id="SupplyDepot"/>
 <Unit id="GhostAcademy"/>
-<Unit id="Factory"/>
 <Unit id="SCV"/>
 <Unit id="Probe"/>
 <Unit id="Drone"/>

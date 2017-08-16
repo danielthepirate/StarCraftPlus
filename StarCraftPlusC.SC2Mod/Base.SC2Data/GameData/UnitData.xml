@@ -371,6 +371,18 @@
             <LayoutButtons index="9" Row="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="SdbTAbils1">
+        <AbilArray Link="AutoWallToggleUCB"/>
+        <AbilArray Link="AutoWallRaiseUCB"/>
+        <AbilArray Link="AutoWallLowerUCB"/>
+        <AbilArray Link="AutoWallToggleUCBOnHidden"/>
+        <AbilArray Link="AutoWallToggleUCBOffHidden"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AutoWallRaiseUCB" Type="AbilCmd" AbilCmd="AutoWallRaiseUCB,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="AutoWallLowerUCB" Type="AbilCmd" AbilCmd="AutoWallLowerUCB,Execute" Row="1" Column="2"/>
+            <LayoutButtons Face="AutoWallToggleUCB" Type="AbilCmd" AbilCmd="AutoWallToggleUCB,Execute" Row="1" Column="3"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SdbTBuild1">
         <CardLayouts index="0">
             <LayoutButtons index="14" Face="UCBOrbitalCommand" Type="AbilCmd" AbilCmd="UpgradeToOrbitalUCB,Execute" Row="2" Column="4"/>

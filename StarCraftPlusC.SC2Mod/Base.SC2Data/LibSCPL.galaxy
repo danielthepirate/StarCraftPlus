@@ -39,9 +39,12 @@ void libSCPL_InitVariables () {
             libSCPL_gv_player[init_i].lv_globalRallyGroup[init_i1] = UnitGroupEmpty();
         }
     }
-    libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend = c_invalidDialogControlId;
-    libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend = c_invalidDialogControlId;
-    libSCPL_gv_uI.lv_uCB.lv_globalRallyCommandCard = c_invalidDialogControlId;
+    libSCPL_gv_uI.lv_resourceMineralSpend = c_invalidDialogControlId;
+    libSCPL_gv_uI.lv_resourceVespeneSpend = c_invalidDialogControlId;
+    libSCPL_gv_uI.lv_consoleRallyCommandCard = c_invalidDialogControlId;
+    for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
+        libSCPL_gv_uI.lv_consoleControlGroupAnimListener[init_i1] = c_invalidDialogControlId;
+    }
     libSCPL_gv_hotkey.lv_supplyDepot = "S";
     libSCPL_gv_hotkey.lv_commandCenter = "C";
     libSCPL_gv_hotkey.lv_barracks = "B";
@@ -229,7 +232,7 @@ void libSCPL_gf_InitializeGlobalRallyCaster (int lp_playerIndex) {
     // Implementation
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameGlobalRallyCaster", c_unitCreateIgnorePlacement, lp_playerIndex, Point(0.0, 0.0));
     libSCPL_gv_player[lp_playerIndex].lv_globalRallyCaster = UnitLastCreated();
-    libNtve_gf_SetDialogItemUnitGroup(libSCPL_gv_uI.lv_uCB.lv_globalRallyCommandCard, libNtve_gf_ConvertUnitToUnitGroup(UnitLastCreated()), PlayerGroupSingle(lp_playerIndex));
+    libNtve_gf_SetDialogItemUnitGroup(libSCPL_gv_uI.lv_consoleRallyCommandCard, libNtve_gf_ConvertUnitToUnitGroup(UnitLastCreated()), PlayerGroupSingle(lp_playerIndex));
 }
 
 void libSCPL_gf_InitializeSpendOverTime () {
@@ -244,8 +247,9 @@ void libSCPL_gf_InitializeSpendOverTime () {
     lv_gamePlayers = PlayerGroupEmpty();
 
     // Implementation
-    libSCPL_gf_InitializeResourceUI();
     lv_gamePlayers = PlayerGroupActive();
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 
@@ -660,61 +664,6 @@ bool auto_libSCPL_gf_AutoWorkerProductionZergInitial_TriggerFunc (bool testConds
     return true;
 }
 
-void libSCPL_gf_PlayerAutoWallGlobalRaise (int lp_playerIndex) {
-    // Variable Declarations
-    unitgroup lv_unitGroup;
-
-    // Variable Initialization
-    lv_unitGroup = UnitGroupEmpty();
-
-    // Implementation
-    libSCPL_gv_player[lp_playerIndex].lv_globalTerran_AutoWallToggle = false;
-    lv_unitGroup = UnitGroup("SupplyDepotLowered", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallRaiseManual", 0)), c_orderQueueReplace);
-}
-
-void libSCPL_gf_PlayerAutoWallGlobalLower (int lp_playerIndex) {
-    // Variable Declarations
-    unitgroup lv_unitGroup;
-
-    // Variable Initialization
-    lv_unitGroup = UnitGroupEmpty();
-
-    // Implementation
-    lv_unitGroup = UnitGroup("SupplyDepot", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallLowerManual", 0)), c_orderQueueReplace);
-}
-
-void libSCPL_gf_PlayerAutoWallGlobalToggleOn (int lp_playerIndex) {
-    // Variable Declarations
-    unitgroup lv_unitGroup;
-
-    // Variable Initialization
-    lv_unitGroup = UnitGroupEmpty();
-
-    // Implementation
-    libSCPL_gv_player[lp_playerIndex].lv_globalTerran_AutoWallToggle = true;
-    lv_unitGroup = UnitGroup("SupplyDepot", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOnHidden", 0)), c_orderQueueReplace);
-    lv_unitGroup = UnitGroup("SupplyDepotLowered", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOnHidden", 0)), c_orderQueueReplace);
-}
-
-void libSCPL_gf_PlayerAutoWallGlobalToggleOff (int lp_playerIndex) {
-    // Variable Declarations
-    unitgroup lv_unitGroup;
-
-    // Variable Initialization
-    lv_unitGroup = UnitGroupEmpty();
-
-    // Implementation
-    libSCPL_gv_player[lp_playerIndex].lv_globalTerran_AutoWallToggle = false;
-    lv_unitGroup = UnitGroup("SupplyDepot", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOffHidden", 0)), c_orderQueueReplace);
-    lv_unitGroup = UnitGroup("SupplyDepotLowered", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOffHidden", 0)), c_orderQueueReplace);
-}
-
 void libSCPL_gf_AutoCreepTargetNodesGenerateInitial (int lp_playerIndex) {
     unitgroup autoE3DCD47F_g;
     int autoE3DCD47F_u;
@@ -1070,18 +1019,29 @@ void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex) {
     UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOffHidden", 0)), c_orderQueueReplace);
 }
 
-void libSCPL_gf_InitializeConsolePlus () {
-    // Implementation
-    DialogControlHookupStandard(c_triggerControlTypeCommandPanel, "UIContainer/ConsoleUIContainer/GlobalRallyPanel");
-    libSCPL_gv_uI.lv_uCB.lv_globalRallyCommandCard = DialogControlLastCreated();
-}
+void libSCPL_gf_InitializeUIHookups () {
+    int autoAAAC514B_ae;
+    int autoAAAC514B_ai;
 
-void libSCPL_gf_InitializeResourceUI () {
+    // Variable Declarations
+    int lv_frameIndex;
+
+    // Variable Initialization
+
     // Implementation
     DialogControlHookupStandard(c_triggerControlTypeLabel, "UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel2Spend");
-    libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend = DialogControlLastCreated();
+    libSCPL_gv_uI.lv_resourceMineralSpend = DialogControlLastCreated();
     DialogControlHookupStandard(c_triggerControlTypeLabel, "UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel3Spend");
-    libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend = DialogControlLastCreated();
+    libSCPL_gv_uI.lv_resourceVespeneSpend = DialogControlLastCreated();
+    DialogControlHookupStandard(c_triggerControlTypeCommandPanel, "UIContainer/ConsoleUIContainer/GlobalRallyPanel");
+    libSCPL_gv_uI.lv_consoleRallyCommandCard = DialogControlLastCreated();
+    autoAAAC514B_ae = 9;
+    autoAAAC514B_ai = 1;
+    lv_frameIndex = 0;
+    for ( ; ( (autoAAAC514B_ai >= 0 && lv_frameIndex <= autoAAAC514B_ae) || (autoAAAC514B_ai <= 0 && lv_frameIndex >= autoAAAC514B_ae) ) ; lv_frameIndex += autoAAAC514B_ai ) {
+        DialogControlHookupStandard(c_triggerControlTypeImage, ("UIContainer/ConsoleUIContainer/ControlGroupListener" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
+        libSCPL_gv_uI.lv_consoleControlGroupAnimListener[(lv_frameIndex + 1)] = DialogControlLastCreated();
+    }
 }
 
 void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene) {
@@ -1096,6 +1056,28 @@ void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_miner
     libSCPL_gv_player[lp_playerIndex].lv_resourceSpendMinerals -= lp_minerals;
     libSCPL_gv_player[lp_playerIndex].lv_resourceSpendVespene -= lp_vespene;
     libSCPL_gf_GenericEventResourceSpendChanges(lp_playerIndex);
+}
+
+void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex) {
+    int autoD8374162_ae;
+    int autoD8374162_ai;
+
+    // Variable Declarations
+    int lv_frameIndex;
+    unitgroup lv_controlGroup;
+    int lv_controlGroupCount;
+
+    // Variable Initialization
+    lv_controlGroup = UnitGroupEmpty();
+
+    // Implementation
+    autoD8374162_ae = 9;
+    autoD8374162_ai = 1;
+    lv_frameIndex = 0;
+    for ( ; ( (autoD8374162_ai >= 0 && lv_frameIndex <= autoD8374162_ae) || (autoD8374162_ai <= 0 && lv_frameIndex >= autoD8374162_ae) ) ; lv_frameIndex += autoD8374162_ai ) {
+        lv_controlGroup = UnitSubgroupSelected(1);
+        libNtve_gf_CopyUnitControlGroups(UnitLastCreated(), EventUnit());
+    }
 }
 
 unitgroup libSCPL_gf_WorkerGroupNotHarvestingGas (unitgroup lp_ug) {
@@ -1465,9 +1447,9 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
     }
 
     libSCPL_gv_map.lv_baseRegion = RegionCircle(Point(0.0, 0.0), 0.125);
+    libSCPL_gf_InitializeUIHookups();
     libSCPL_gf_InitializeSpendOverTime();
     libSCPL_gf_InitializeAutomatedWorkerProduction();
-    libSCPL_gf_InitializeConsolePlus();
     autoE8E742EE_g = PlayerGroupActive(); 
     autoE8E742EE_p = 1;
     for ( ; autoE8E742EE_p <= PlayerGroupCount(autoE8E742EE_g) ; autoE8E742EE_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(autoE8E742EE_g, autoE8E742EE_p)) ) {
@@ -1492,12 +1474,9 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Barracks", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Factory", 8.0);
-    PlayerModifyPropertyInt(1, c_playerPropVespene, c_playerPropOperAdd, 500);
-    PlayerModifyPropertyInt(1, c_playerPropMinerals, c_playerPropOperAdd, 500);
-    PlayerModifyPropertyInt(1, c_playerPropCustom, c_playerPropOperAdd, 500);
-    PlayerModifyPropertyInt(1, c_playerPropTerrazine, c_playerPropOperAdd, 500);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "SupplyDepot", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "SupplyDepot", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "SupplyDepot", 8.0);
     return true;
 }
 
@@ -5243,6 +5222,125 @@ void libSCPL_gt_CommandCenterMorphCancel_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: UCB Auto Wall Raise
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBAutoWallRaise_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unitgroup lv_unitGroup;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    libSCPL_gv_player[lv_playerIndex].lv_globalTerran_AutoWallToggle = false;
+    lv_unitGroup = UnitGroup("SupplyDepotLowered", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallRaiseManual", 0)), c_orderQueueReplace);
+    UnitIssueOrder(EventUnit(), Order(AbilityCommand("AutoWallToggleUCBOffHidden", 0)), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBAutoWallRaise_Init () {
+    libSCPL_gt_UCBAutoWallRaise = TriggerCreate("libSCPL_gt_UCBAutoWallRaise_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_UCBAutoWallRaise, null, AbilityCommand("AutoWallRaiseUCB", 0), c_abilEffectStageCast, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Auto Wall Lower
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBAutoWallLower_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unitgroup lv_unitGroup;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_unitGroup = UnitGroup("SupplyDepot", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallLowerManual", 0)), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBAutoWallLower_Init () {
+    libSCPL_gt_UCBAutoWallLower = TriggerCreate("libSCPL_gt_UCBAutoWallLower_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_UCBAutoWallLower, null, AbilityCommand("AutoWallLowerUCB", 0), c_abilEffectStageCast, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Auto Wall Toggle On
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBAutoWallToggleOn_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unitgroup lv_unitGroup;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    libSCPL_gv_player[lv_playerIndex].lv_globalTerran_AutoWallToggle = true;
+    lv_unitGroup = UnitGroup("SupplyDepot", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOnHidden", 0)), c_orderQueueReplace);
+    lv_unitGroup = UnitGroup("SupplyDepotLowered", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOnHidden", 0)), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBAutoWallToggleOn_Init () {
+    libSCPL_gt_UCBAutoWallToggleOn = TriggerCreate("libSCPL_gt_UCBAutoWallToggleOn_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(libSCPL_gt_UCBAutoWallToggleOn, null, AbilityCommand("AutoWallToggleUCB", 0), c_unitAbilAutoCastChangeOn, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Auto Wall Toggle Off
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBAutoWallToggleOff_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unitgroup lv_unitGroup;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_unitGroup = UnitGroup("SupplyDepot", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOffHidden", 0)), c_orderQueueReplace);
+    lv_unitGroup = UnitGroup("SupplyDepotLowered", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoWallToggleOffHidden", 0)), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBAutoWallToggleOff_Init () {
+    libSCPL_gt_UCBAutoWallToggleOff = TriggerCreate("libSCPL_gt_UCBAutoWallToggleOff_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(libSCPL_gt_UCBAutoWallToggleOff, null, AbilityCommand("AutoWallToggleUCB", 0), c_unitAbilAutoCastChangeOff, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Player Auto Wall Unit Created
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_PlayerAutoWallUnitCreated_Func (bool testConds, bool runActions) {
@@ -5416,42 +5514,6 @@ void libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Progress Accounting
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ProgressAccounting_Func (bool testConds, bool runActions) {
-    playergroup auto16B593C4_g;
-    int auto16B593C4_p;
-
-    // Variable Declarations
-    playergroup lv_gamePlayers;
-    int lv_playerIndex;
-
-    // Variable Initialization
-    lv_gamePlayers = PlayerGroupEmpty();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_gamePlayers = PlayerGroupActive();
-    auto16B593C4_g = lv_gamePlayers; 
-    auto16B593C4_p = 1;
-    for ( ; auto16B593C4_p <= PlayerGroupCount(auto16B593C4_g) ; auto16B593C4_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto16B593C4_g, auto16B593C4_p)) ) {
-        lv_playerIndex = PlayerGroupPlayer(auto16B593C4_g, auto16B593C4_p);
-        libSCPL_gf_GenericEventResourceSpendChanges(lv_playerIndex);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ProgressAccounting_Init () {
-    libSCPL_gt_ProgressAccounting = TriggerCreate("libSCPL_gt_ProgressAccounting_Func");
-    TriggerEnable(libSCPL_gt_ProgressAccounting, false);
-    TriggerAddEventTimePeriodic(libSCPL_gt_ProgressAccounting, 0.125, c_timeGame);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: Resource Display Spend
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
@@ -5478,32 +5540,32 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
     lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals * (1.0 / libSCPL_gv_constants.lv_spendTickIncrement));
     if ((lv_spend > 0.0)) {
         lv_spendDisplay = ("( - " + FixedToString(lv_spend, 0) + ")");
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, PlayerGroupSingle(lv_playerIndex), true);
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), true);
     }
     else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, PlayerGroupSingle(lv_playerIndex), false);
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), false);
     }
     if ((lv_spend > libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex))) {
-        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourceMineralSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
     }
     else {
-        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_mineralSpend, Color(100,100,100), PlayerGroupSingle(lv_playerIndex));
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourceMineralSpend, Color(100,100,100), PlayerGroupSingle(lv_playerIndex));
     }
     lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene * (1.0 / libSCPL_gv_constants.lv_spendTickIncrement));
     if ((lv_spend > 0.0)) {
         lv_spendDisplay = ("( - " + FixedToString(lv_spend, 0) + ")");
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, PlayerGroupSingle(lv_playerIndex), true);
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), true);
     }
     else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, PlayerGroupSingle(lv_playerIndex), false);
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), false);
     }
     if ((lv_spend > libSCPL_gf_PlayerAvailableVespene(lv_playerIndex))) {
-        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourceVespeneSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
     }
     else {
-        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourcePanel.lv_vespeneSpend, Color(100,100,100), PlayerGroupSingle(lv_playerIndex));
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourceVespeneSpend, Color(100,100,100), PlayerGroupSingle(lv_playerIndex));
     }
     return true;
 }
@@ -5512,6 +5574,53 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
 void libSCPL_gt_ResourceDisplaySpend_Init () {
     libSCPL_gt_ResourceDisplaySpend = TriggerCreate("libSCPL_gt_ResourceDisplaySpend_Func");
     TriggerAddEventGeneric(libSCPL_gt_ResourceDisplaySpend, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Update Trigger
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupUpdateTrigger_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libSCPL_gt_ControlGroupUpdateTrigger, false);
+    TriggerEnable(libSCPL_gt_ControlGroupUpdate, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupUpdateTrigger_Init () {
+    libSCPL_gt_ControlGroupUpdateTrigger = TriggerCreate("libSCPL_gt_ControlGroupUpdateTrigger_Func");
+    TriggerEnable(libSCPL_gt_ControlGroupUpdateTrigger, false);
+    TriggerAddEventUnitDamaged(libSCPL_gt_ControlGroupUpdateTrigger, null, c_unitDamageTypeAny, c_unitDamageEither, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Update
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupUpdate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libSCPL_gt_ControlGroupUpdate, false);
+    TriggerEnable(libSCPL_gt_ControlGroupUpdateTrigger, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupUpdate_Init () {
+    libSCPL_gt_ControlGroupUpdate = TriggerCreate("libSCPL_gt_ControlGroupUpdate_Func");
+    TriggerEnable(libSCPL_gt_ControlGroupUpdate, false);
+    TriggerAddEventTimePeriodic(libSCPL_gt_ControlGroupUpdate, 0.125, c_timeGame);
 }
 
 void libSCPL_InitTriggers () {
@@ -5578,14 +5687,19 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_MuleHarvestNearestResoures_Init();
     libSCPL_gt_CommandCenterMorphStart_Init();
     libSCPL_gt_CommandCenterMorphCancel_Init();
+    libSCPL_gt_UCBAutoWallRaise_Init();
+    libSCPL_gt_UCBAutoWallLower_Init();
+    libSCPL_gt_UCBAutoWallToggleOn_Init();
+    libSCPL_gt_UCBAutoWallToggleOff_Init();
     libSCPL_gt_PlayerAutoWallUnitCreated_Init();
     libSCPL_gt_AutoCreepTumorNodeCreateParent_Init();
     libSCPL_gt_AutoCreepTumorNodeCreateChild_Init();
     libSCPL_gt_AutoCreepTumorNodeTargetReached_Init();
     libSCPL_gt_AutoCreepTumorReady_Init();
     libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Init();
-    libSCPL_gt_ProgressAccounting_Init();
     libSCPL_gt_ResourceDisplaySpend_Init();
+    libSCPL_gt_ControlGroupUpdateTrigger_Init();
+    libSCPL_gt_ControlGroupUpdate_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

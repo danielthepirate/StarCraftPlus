@@ -86,7 +86,7 @@
             <Anchor side="Right" relative="$parent/CountLabel" pos="Max" offset="-4"/>
 			<RenderPriority val="520"/>
 			<Height val="21	"/>
-			<Alpha val="200"/>
+			<Alpha val="232"/>
 			<Color val="0,0,0"/>
 		</Frame>
 		

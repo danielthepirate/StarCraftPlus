@@ -105,6 +105,19 @@
         <CmdFlags index="SetAutoCast" value="1"/>
         <CmdFlags index="SetAutoCastOn" value="1"/>
     </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoWallToggleUCBOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoWallToggleUCBOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
     <CEffectApplyBehavior id="CreepTumorEnhancedCreepGrowth">
         <ValidatorArray index="0" value="IsCreepTumorAny"/>
         <EditorCategories value=""/>

@@ -35,13 +35,11 @@ struct libSCPL_gs_Map {
     region lv_baseRegion;
 };
 
-struct libSCPL_gs_UI_ResourcePanel {
-    int lv_mineralSpend;
-    int lv_vespeneSpend;
-};
-
-struct libSCPL_gs_UI_UniversalCommandBar {
-    int lv_globalRallyCommandCard;
+struct libSCPL_gs_UI {
+    int lv_resourceMineralSpend;
+    int lv_resourceVespeneSpend;
+    int lv_consoleRallyCommandCard;
+    int[11] lv_consoleControlGroupAnimListener;
 };
 
 struct libSCPL_gs_Hotkey {
@@ -201,11 +199,6 @@ struct libSCPL_gs_Hotkey {
     string lv_psionicStorm;
 };
 
-struct libSCPL_gs_UI {
-    libSCPL_gs_UI_ResourcePanel lv_resourcePanel;
-    libSCPL_gs_UI_UniversalCommandBar lv_uCB;
-};
-
 // Variable Declarations
 libSCPL_gs_Constant libSCPL_gv_constants;
 libSCPL_gs_Player[17] libSCPL_gv_player;
@@ -251,10 +244,6 @@ void libSCPL_gf_InitializeAutomatedWorkerProduction ();
 void libSCPL_gf_AutoWorkerProduction (unit lp_townHall, int lp_playerIndex);
 void libSCPL_gf_AutoWorkerProductionZerg (unit lp_townHall, int lp_playerIndex, int lp_larvaLeftover);
 void libSCPL_gf_AutoWorkerProductionZergInitial (unit lp_townHall, int lp_playerIndex, int lp_larvaLeftover);
-void libSCPL_gf_PlayerAutoWallGlobalRaise (int lp_playerIndex);
-void libSCPL_gf_PlayerAutoWallGlobalLower (int lp_playerIndex);
-void libSCPL_gf_PlayerAutoWallGlobalToggleOn (int lp_playerIndex);
-void libSCPL_gf_PlayerAutoWallGlobalToggleOff (int lp_playerIndex);
 void libSCPL_gf_AutoCreepTargetNodesGenerateInitial (int lp_playerIndex);
 void libSCPL_gf_AutoCreepTargetNodesSortInitial (int lp_playerIndex);
 void libSCPL_gf_AutoCreepTargetNodeCreate (int lp_playerIndex, point lp_point);
@@ -268,10 +257,10 @@ point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target);
 bool libSCPL_gf_AutoCreepPointValidActive (unit lp_node, point lp_point);
 void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOn (int lp_playerIndex);
 void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex);
-void libSCPL_gf_InitializeConsolePlus ();
-void libSCPL_gf_InitializeResourceUI ();
+void libSCPL_gf_InitializeUIHookups ();
 void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
+void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex);
 unitgroup libSCPL_gf_WorkerGroupNotHarvestingGas (unitgroup lp_ug);
 void libSCPL_gf_DebugTextTag (point lp_point, string lp_string, fixed lp_duration);
 unitgroup libSCPL_gf_MapVespeneGeysers ();
@@ -352,14 +341,19 @@ trigger libSCPL_gt_WarpGateResearchUpgradeAllGates;
 trigger libSCPL_gt_MuleHarvestNearestResoures;
 trigger libSCPL_gt_CommandCenterMorphStart;
 trigger libSCPL_gt_CommandCenterMorphCancel;
+trigger libSCPL_gt_UCBAutoWallRaise;
+trigger libSCPL_gt_UCBAutoWallLower;
+trigger libSCPL_gt_UCBAutoWallToggleOn;
+trigger libSCPL_gt_UCBAutoWallToggleOff;
 trigger libSCPL_gt_PlayerAutoWallUnitCreated;
 trigger libSCPL_gt_AutoCreepTumorNodeCreateParent;
 trigger libSCPL_gt_AutoCreepTumorNodeCreateChild;
 trigger libSCPL_gt_AutoCreepTumorNodeTargetReached;
 trigger libSCPL_gt_AutoCreepTumorReady;
 trigger libSCPL_gt_PlayerAutoCreepSpreadUnitCreated;
-trigger libSCPL_gt_ProgressAccounting;
 trigger libSCPL_gt_ResourceDisplaySpend;
+trigger libSCPL_gt_ControlGroupUpdateTrigger;
+trigger libSCPL_gt_ControlGroupUpdate;
 
 // Library Initialization
 void libSCPL_InitVariables ();

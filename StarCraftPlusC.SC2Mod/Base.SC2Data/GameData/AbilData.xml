@@ -73,11 +73,13 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="AutoWallManualLowerAbility"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Lower"/>
+        <AbilSetId value="AutoLower"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AutoWallRaiseManual">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="AutoWallManualRaiseAbility"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+        <AbilSetId value="AutoRaise"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AutoCreepSpread">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -93,6 +95,41 @@
         <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
         <CastIntroTime value="0.0625"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="AutoCreepSpreadAutocastToggle">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallLowerUCB">
+        <AbilSetId value="AutoLower"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallLowerUCB">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleUCBOnHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallToggleUCBOn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleUCB">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallAutocastBehavior"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallToggleUCB">
             <Flags index="AllowSelfCast" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
@@ -114,6 +151,25 @@
     <CAbilEffectInstant id="AutoCreepSpreadOnHidden">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="AutoCreepSpreadOn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallRaiseUCB">
+        <AbilSetId value="AutoRaise"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallRaiseUCB">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleUCBOffHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallToggleUCBOff"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
     </CAbilEffectInstant>
     <CAbilResearch id="BanelingNestResearch">
