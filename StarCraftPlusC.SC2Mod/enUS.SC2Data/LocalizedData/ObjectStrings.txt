@@ -1,6 +1,9 @@
-﻿Abil/EditorPrefix/MorphDummyTrainNukeUCB=Ghost Academy -
+﻿Abil/EditorPrefix/CalldownMULEUCB=Orbital Command -
+Abil/EditorPrefix/MorphDummyTrainNukeUCB=Ghost Academy -
+Abil/EditorPrefix/ScannerSweepUCB=Orbital Command -
 Abil/EditorPrefix/SupplyDepotLower=Auto Wall
 Abil/EditorPrefix/SupplyDepotRaise=Auto Wall
+Abil/EditorPrefix/SupplyDropUCB=Orbital Command -
 Abil/EditorPrefix/UpgradeToOrbitalUCB=Command Center -
 Abil/EditorPrefix/UpgradeToPlanetaryFortressUCB=Command Center -
 Abil/EditorSuffix/UpgradeToOrbitalUCB=UCB
@@ -73,13 +76,17 @@ Button/EditorSuffix/AutoRaise=(Auto Wall)
 Button/EditorSuffix/AutoWallLowerUCB=(UCB)
 Button/EditorSuffix/AutoWallRaiseUCB=(UCB)
 Button/EditorSuffix/AutoWallToggleUCB=(UCB)
+Button/EditorSuffix/CalldownMULEUCB=(UCB)
 Button/EditorSuffix/CloakOffBanshee=(Banshee)
 Button/EditorSuffix/CreepTumorEnhancedCreepGrowthAura=(Creep Tumor)
 Button/EditorSuffix/NukeArmUCB=(UCB)
 Button/EditorSuffix/OverlordEnhancedCreepGrowthAura=(Overlord)
 Button/EditorSuffix/Raise=(Auto Wall)
+Button/EditorSuffix/ScanUCB=(UCB)
+Button/EditorSuffix/SupplyDropUCB=(UCB)
 Button/EditorSuffix/UCBOrbitalCommand=(UCB)
 Button/EditorSuffix/UCBUpgradeToPlanetaryFortress=(UCB)
+Effect/EditorPrefix/SupplyDropApplyTempBehaviorDummy=Command Center -
 Model/Name/CreepTumorEnhancedCreepGrowthModel=Creep Tumor Enhanced Creep Growth Model
 Model/Name/GameGlobalRallyCursorTarget=Game Global Rally Cursor Target
 Model/Name/GameGlobalRallyTarget01Persistent=Game Global Rally Target 01 Persistent
@@ -112,6 +119,7 @@ Requirement/Name/IsWarpGateNearbyBehav=IsWarpGateNearbyBehav
 Requirement/Name/IsWarpGateNotNearbyBehav=IsWarpGateNotNearbyBehav
 Requirement/Name/NeverUse=NeverUse
 Requirement/Name/UCBOrbitalCommand=UCB Orbital Command
+Requirement/Name/UCBOrbitalCommandEnergy50=UCB Orbital Command Energy 50
 Requirement/Name/UCBPlanetaryFortress=UCB Planetary Fortress
 RequirementNode/Name/AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheat=CountUnit(Barracks,CompleteOnly)[TechTreeCheat] && CountUnit(BarracksTechLab,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheatCountUnitGhostAcademyCompleteOnly=CountUnit(Barracks,CompleteOnly)[TechTreeCheat] && CountUnit(BarracksTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(GhostAcademy,CompleteOnly)
@@ -122,6 +130,7 @@ RequirementNode/Name/AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactor
 RequirementNode/Name/AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnly609241497TechTreeCheat=CountUnit(Factory,CompleteOnly)[TechTreeCheat] && CountUnit(FactoryTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(Armory,CompleteOnly){Armory}[TechTreeCheat]
 RequirementNode/Name/AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat=CountUnit(Factory,CompleteOnly)[TechTreeCheat] && CountUnit(FactoryTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitFusionCoreCompleteOnly4211141650TechTreeCheat=CountUnit(Factory,CompleteOnly)[TechTreeCheat] && CountUnit(FactoryTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(FusionCore,CompleteOnly){FusionCore}[TechTreeCheat]
+RequirementNode/Name/AndCountUnitOrbitalCommandCompleteOnlyTechTreeCheatCountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704=CountUnit(OrbitalCommand,CompleteOnly)[TechTreeCheat] && CountBehavior(GameUCBOrbitalCommandEnergy50GE,CompleteOnly){Orbital Command Has 50 Energy}
 RequirementNode/Name/AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheat=CountUnit(Starport,CompleteOnly)[TechTreeCheat] && CountUnit(StarportTechLab,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheatCountUnitFusionCoreCompleteOnlyTechTreeCheat=CountUnit(Starport,CompleteOnly)[TechTreeCheat] && CountUnit(StarportTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(FusionCore,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq1004646809CountUpgradeTerranShipWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranShipWeaponsLevel2,CompleteOnly) == {Terran Ship Weapons Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
@@ -141,6 +150,7 @@ RequirementNode/Name/AndEq514164946CountUpgradeTerranVehicleAndShipWeaponsLevel2
 RequirementNode/Name/AndEq611800619CountUpgradeTerranVehicleAndShipArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranVehicleAndShipArmorsLevel1,CompleteOnly) == {Terran Vehicle And Ship Plating Level 1}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq894233239CountUpgradeTerranVehicleWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranVehicleWeaponsLevel2,CompleteOnly) == {Terran Vehicle Weapons Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndOr96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheatCountUnitGhostAcademyCompleteOnlyTechTreeCheatNot1833567690CountUnitNukeQueuedOrBetterAtUnit=(CountUnit(Factory,CompleteOnly){Factory}[TechTreeCheat] || {Factory}CountUnit(FactoryFlying,CompleteOnly){Flying Factory}[TechTreeCheat]) && CountUnit(GhostAcademy,CompleteOnly)[TechTreeCheat] && !{Unarmed Ghost Academy}CountUnit(Nuke,QueuedOrBetterAtUnit)
+RequirementNode/Name/CountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704=CountBehavior(GameUCBOrbitalCommandEnergy50GE,CompleteOnly){Orbital Command Has 50 Energy}
 RequirementNode/Name/CountBehaviorIsNexusNearbyCompleteOnlyAtUnit=CountBehavior(IsNexusNearby,CompleteOnlyAtUnit)
 RequirementNode/Name/CountBehaviorIsWarpGateNearbyCompleteOnlyAtUnit=CountBehavior(IsWarpGateNearby,CompleteOnlyAtUnit)
 RequirementNode/Name/CountBehaviorPowerSourceFastCompleteOnlyAtUnit22563247=CountBehavior(PowerSourceFast,CompleteOnlyAtUnit){Near Warp Gate}

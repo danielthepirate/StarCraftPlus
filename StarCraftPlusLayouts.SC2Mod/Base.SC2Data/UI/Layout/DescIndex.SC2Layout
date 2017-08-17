@@ -8,4 +8,5 @@
     <Include path="UI/Layout/PlusGlobalRally.SC2Layout"/>
     <Include path="UI/Layout/PlusResourcePanel.SC2Layout"/>
     <Include path="UI/Layout/PlusControlGroups.SC2Layout"/>
+    <Include path="UI/Layout/PlusRaceCheck.SC2Layout"/>
 </Desc>

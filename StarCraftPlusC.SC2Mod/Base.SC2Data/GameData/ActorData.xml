@@ -354,6 +354,9 @@
         <EditorCategories value=""/>
         <LocalOffset value="0.000000,0.000000,2.500000"/>
     </CActorSiteOpLocalOffset>
+    <CActorSplat id="ScannerSweepCursorSplat">
+        <On Terms="Abil.ScannerSweepUCB.Cursor" Send="Create"/>
+    </CActorSplat>
     <CActorUnit id="SupplyDepotConstructor" parent="SupplyDepot" unitName="SupplyDepotConstructor">
         <On index="0" Terms="UnitBirth.SupplyDepotConstructor"/>
         <On index="1" Terms="UnitBirth.SupplyDepotConstructor"/>

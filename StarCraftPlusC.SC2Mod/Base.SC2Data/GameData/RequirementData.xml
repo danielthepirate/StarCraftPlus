@@ -215,4 +215,7 @@
     <CRequirement id="UCBPlanetaryFortress">
         <NodeArray index="Use" Link="AndCountUnitCommandCenterCompleteOnlyCountUnitEngineeringBayCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="UCBOrbitalCommandEnergy50">
+        <NodeArray index="Use" Link="AndCountUnitOrbitalCommandCompleteOnlyTechTreeCheatCountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704"/>
+    </CRequirement>
 </Catalog>

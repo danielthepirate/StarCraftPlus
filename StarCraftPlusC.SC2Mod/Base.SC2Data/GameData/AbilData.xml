@@ -216,8 +216,10 @@
             <Button Requirements="HaveBarracksWithTechLab"/>
         </InfoArray>
     </CAbilTrain>
-    <CAbilEffectTarget id="CalldownMULE">
-        <CmdButtonArray index="Execute" Requirements="HaveOrbitalCommandOnGround"/>
+    <CAbilEffectTarget id="CalldownMULEUCB" parent="CalldownMULE">
+        <Name value="Abil/Name/CalldownMULEUCB"/>
+        <Effect index="0" value="CalldownMULECreateUnitDummy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CalldownMULEUCB" Requirements="UCBOrbitalCommandEnergy50"/>
     </CAbilEffectTarget>
     <CAbilTrain id="CommandCenterTrain">
         <RefundFraction>
@@ -551,9 +553,6 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
     </CAbilTrain>
-    <CAbilEffectTarget id="ScannerSweep">
-        <CmdButtonArray index="Execute" Requirements="HaveOrbitalCommandOnGround"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="GameGlobalRallyTarget00">
         <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
         <Effect index="0" value="GlobalRallyTarget00"/>
@@ -565,6 +564,11 @@
         <Range value="500"/>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Rally"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ScannerSweepUCB" parent="ScannerSweep">
+        <Name value="Abil/Name/ScannerSweepUCB"/>
+        <Effect index="0" value="DoNothing"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ScanUCB" Requirements="UCBOrbitalCommandEnergy50"/>
     </CAbilEffectTarget>
     <CAbilResearch id="SpawningPoolResearch">
         <RefundFraction>
@@ -649,8 +653,10 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
-    <CAbilEffectTarget id="SupplyDrop">
-        <CmdButtonArray index="Execute" Requirements="HaveOrbitalCommandOnGround"/>
+    <CAbilEffectTarget id="SupplyDropUCB" parent="SupplyDrop">
+        <Name value="Abil/Name/SupplyDropUCB"/>
+        <Effect index="0" value="SupplyDropApplyTempBehaviorDummy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SupplyDropUCB" Requirements="UCBOrbitalCommandEnergy50"/>
     </CAbilEffectTarget>
     <CAbilResearch id="TemplarArchivesResearch">
         <RefundFraction>

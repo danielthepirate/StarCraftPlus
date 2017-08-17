@@ -176,8 +176,12 @@
     <CButton id="BurrowedMove">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="CalldownMULE">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
+    <CButton id="CalldownMULEUCB">
+        <Icon value="Assets\Textures\BTN-Unit-Terran-mule.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Unit-Terran-mule.dds"/>
+        <Hotkey value="Button/Hotkey/CalldownMULEUCB"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="CalldownMULE"/>
     </CButton>
     <CButton id="Carrier">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -543,10 +547,9 @@
     <CButton id="GlobalRallyBarracks">
         <TooltipFlags index="ShowName" value="0"/>
         <TooltipFlags index="ShowHotkey" value="0"/>
-        <Icon value="Assets\Textures\btn-building-terran-barracks.dds"/>
+        <Icon value="Assets\Textures\ui_selectarmy_normalpressed_terran.dds"/>
         <Hotkey value="Button/Hotkey/GlobalRallyBarracks"/>
         <EditorCategories value="Race:Terran"/>
-        <TintRacially value="1"/>
     </CButton>
     <CButton id="GlobalRallyFactory">
         <TooltipFlags index="ShowName" value="0"/>
@@ -554,7 +557,6 @@
         <Icon value="Assets\Textures\btn-building-terran-factory.dds"/>
         <Hotkey value="Button/Hotkey/GlobalRallyFactory"/>
         <EditorCategories value="Race:Terran"/>
-        <TintRacially value="1"/>
     </CButton>
     <CButton id="GlobalRallyStarport">
         <TooltipFlags index="ShowName" value="0"/>
@@ -562,7 +564,6 @@
         <Icon value="Assets\Textures\btn-building-terran-starport.dds"/>
         <Hotkey value="Button/Hotkey/GlobalRallyStarport"/>
         <EditorCategories value="Race:Terran"/>
-        <TintRacially value="1"/>
     </CButton>
     <CButton id="Grapple">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -898,6 +899,20 @@
         <Hotkey value="Button/Hotkey/AutoWallToggleUCB"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
+    <CButton id="ScanUCB">
+        <Icon value="Assets\Textures\btn-ability-terran-scannersweep-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-scannersweep-color.dds"/>
+        <Hotkey value="Button/Hotkey/ScanUCB"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="Scan"/>
+    </CButton>
+    <CButton id="SupplyDropUCB">
+        <Icon value="Assets\Textures\BTN-Ability-Terran-CalldownExtraSupplies-color.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Ability-Terran-CalldownExtraSupplies-color.dds"/>
+        <Hotkey value="Button/Hotkey/SupplyDropUCB"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="SupplyDrop"/>
+    </CButton>
     <CButton id="UCBOrbitalCommand">
         <Icon value="Assets\Textures\BTN-Building-Terran-SurveillanceStation.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Building-Terran-SurveillanceStation.dds"/>
@@ -1219,9 +1234,6 @@
     <CButton id="STBomber">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Scan">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="Scout">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -1313,9 +1325,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SupplyDepot"/>
-    <CButton id="SupplyDrop">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="SwarmHost">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>

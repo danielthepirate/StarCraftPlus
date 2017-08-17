@@ -145,9 +145,9 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	}
 	else if(AbilityClass(abil) == c_classIdCAbilEffectTarget){
 		
-		TriggerDebugOutput(1, StringToText("A"), true);
-		
+		// This doesn't seem to actually be cancelling the initial ability, so I'm implementing dummy versions of each global spell
 		UnitIssueOrder(dummy, Order(AbilityCommand(abil, c_abilEffectTargetCmdCancel)), c_orderQueueReplace);
+
 		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
 		//UnitIssueOrder(u, o, c_orderQueueReplace);
 	}

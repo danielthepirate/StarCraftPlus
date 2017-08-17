@@ -26,28 +26,7 @@
 		</Controller>
 	</Animation>
 	
-	<Frame type="CommandButton" name="RallyButtonTemplate" template="CommandButton/CommandButtonTemplate">
-		<Width val="92"/>
-        <Height val="72"/>
-        <HitTestFrame val="HitTestFrame"/>
-		
-		<Frame type="Image" name="BackgroundImage">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-            <Width val="92"/>
-            <Height val="62"/>
-            <Texture val="@@UI/UnitButtonsFrameArmy"/>
-            <RenderPriority val="500"/>
-            <DesaturateOnDisable val="false"/>
-        </Frame>
-		
-		<Frame type="Image" name="BackgroundImageInner">
-            <Anchor side="Top" relative="$parent/BackgroundImage" pos="Min" offset="4"/>
-            <Anchor side="Left" relative="$parent/BackgroundImage" pos="Min" offset="4"/>
-			<Anchor side="Bottom" relative="$parent/BackgroundImage" pos="Max" offset="-6"/>
-            <Anchor side="Right" relative="$parent/BackgroundImage" pos="Max" offset="-6"/>
-			<Texture val="Assets/Textures/btn-border-normal.dds"/>
-        </Frame>
+	<Frame type="CommandButton" name="RallyButtonTemplate" template="ArmyButton/ArmyButtonTemplate">
 		
 		<Frame type="Image" name="NormalImage">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
@@ -59,6 +38,7 @@
 			<Color val="128,255,128"/>
 			<ColorAdjustMode val="AddSelf"/>
 			<AdjustmentColor val="8,8,8"/>
+			<Alpha val="0"/>
         </Frame>
 
         <Frame type="Image" name="HoverImage">
@@ -71,24 +51,71 @@
 			<Color val="128,255,128"/>
 			<ColorAdjustMode val="AddSelf"/>
 			<AdjustmentColor val="40,40,40"/>
+			<Alpha val="0"/>
         </Frame>
 		
-		<Frame type="Frame" name="HitTestFrame">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
-            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-8"/>
-            <Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
-            <Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
+		<Frame type="Image" name="NormalImageActual">
+			<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="7"/>
+            <Width val="85"/>
+            <Height val="62"/>
+			<TextureCoords val="0.0,	0.0,	0.5,	1.0"/>
+			<Texture val="@@UI/RallyButton00Normal"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImageActual">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="7"/>
+            <Width val="85"/>
+            <Height val="62"/>
+			<TextureCoords val="0.0,	0.0,	0.5,	1.0"/>
+			<Texture val="@@UI/RallyButton00Hover"/>
+			<Visible val="false"/>
         </Frame>
 		
-		<Frame type="Image" name="CountLabelBackground">
-			<Anchor side="Top" relative="$parent/CountLabel" pos="Min" offset="-1"/>
-            <Anchor side="Left" relative="$parent/CountLabel" pos="Min" offset="-2"/>
-            <Anchor side="Right" relative="$parent/CountLabel" pos="Max" offset="-4"/>
-			<RenderPriority val="520"/>
-			<Height val="21	"/>
-			<Alpha val="232"/>
-			<Color val="0,0,0"/>
-		</Frame>
+		<Animation name="MouseHover">
+			<Event event="OnMouseEnter" action="Reset,Play"/>
+			<Controller type="State" stateGroup="HoverState" end="Pause">
+				<Key type="Identifier" time="0" value="Hover"/>
+			</Controller>
+		</Animation>
+		<Animation name="MouseNormal">
+			<Event event="OnMouseExit" action="Play"/>
+			<Controller type="State" stateGroup="HoverState" end="Reset">
+				<Key type="Identifier" time="0" value="Normal"/>
+			</Controller>
+		</Animation>
+		
+		<Animation name="MouseDown">
+			<Event event="Pushed" action="Reset,Play"/>
+			<Controller type="State" stateGroup="ButtonState" end="Pause">
+				<Key type="Identifier" time="0" value="ButtonDown"/>
+			</Controller>
+		</Animation>
+		<Animation name="MouseUp">
+			<Event event="Normal" action="Play"/>
+			<Controller type="State" stateGroup="ButtonState" end="Reset">
+				<Key type="Identifier" time="0" value="ButtonUp"/>
+			</Controller>
+		</Animation>
+		
+		<StateGroup name="HoverState">
+			<DefaultState val="Normal"/>
+			<State name="Normal"/>
+			<State name="Hover">
+				<Action type="SetProperty" frame="NormalImageActual" visible="false"/>
+				<Action type="SetProperty" frame="HoverImageActual" visible="true"/>
+			</State>
+		</StateGroup>
+		
+		<StateGroup name="ButtonState">
+			<DefaultState val="ButtonUp"/>
+			<State name="ButtonUp"/>
+			<State name="ButtonDown">
+				<Action type="SetProperty" frame="NormalImageActual" textureCoords="0.5,0,1,1"/>
+				<Action type="SetProperty" frame="HoverImageActual" textureCoords="0.5,0,1,1"/>
+			</State>
+		</StateGroup>
 		
 		<Frame type="Label" name="CountLabel">
             <Anchor side="Top" relative="$parent" pos="Min" offset="4"/>

@@ -30,11 +30,11 @@
 			
 			<!-- BACKGROUND FRAMES -->
 			<Frame type="Image" name="MinimapBackground" template="PlusTemplates/CommandBackgroundTemplate">
-				<Anchor side="Top" relative="$parent/MinimapStub" pos="Min" offset="26"/>
+				<Anchor side="Top" relative="$parent/MinimapStub" pos="Min" offset="24"/>
 				<Anchor side="Left" relative="$parent/MinimapStub" pos="Min" offset="0"/>
 				<Anchor side="Bottom" relative="$parent/MinimapStub" pos="Max" offset="0"/>
 				<!-- <Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="12"/> -->
-				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="58"/>
+				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="50"/>
 			</Frame>
 			
 			<Frame type="Image" name="InfoPanelBackground" template="PlusTemplates/CommandBackgroundTemplate">

@@ -151,6 +151,16 @@
         <InitialEffect value="GameUCBGlobalRally02ChargeAdd"/>
         <FinalEffect value="GameUCBGlobalRally02ChargeRemove"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBOrbitalCommandEnergy50GE">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterEnergyGE50"/>
+        <FinalEffect value="GameUCBOrbitalCommandEnergy50LT"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBOrbitalCommandEnergy50LT">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterEnergyLT50"/>
+        <FinalEffect value="GameUCBOrbitalCommandEnergy50GE"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameWorkerHarvestGasMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>

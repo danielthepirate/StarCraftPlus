@@ -118,6 +118,11 @@
         <Abil value="AutoWallToggleUCB"/>
         <CmdFlags index="SetAutoCast" value="1"/>
     </CEffectIssueOrder>
+    <CEffectCreateUnit id="CalldownMULECreateUnitDummy">
+        <ValidatorArray value="MULETargetCheck"/>
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+    </CEffectCreateUnit>
     <CEffectApplyBehavior id="CreepTumorEnhancedCreepGrowth">
         <ValidatorArray index="0" value="IsCreepTumorAny"/>
         <EditorCategories value=""/>
@@ -320,6 +325,12 @@
             </Charge>
         </Cost>
     </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBOrbitalCommandEnergy50GE">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBOrbitalCommandEnergy50LT">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectSet id="GlobalRallyTarget01Set">
         <EditorCategories value=""/>
         <EffectArray value="GlobalRallyTarget01Create"/>
@@ -456,4 +467,11 @@
         <SearchFilters value="Ground;Ally,Neutral,Enemy,Missile,Dead,Hidden"/>
         <AreaArray Radius="11" Effect="CreepTumorEnhancedCreepGrowth"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="SupplyDropApplyTempBehaviorDummy">
+        <ValidatorArray index="0" value="IsSupplyDepotEitherFlavor"/>
+        <ValidatorArray value="NotSupplyDrop"/>
+        <ValidatorArray value="NotSupplyDropEnRoute"/>
+        <ValidatorArray value="IsSupplyDepotMorphing"/>
+        <EditorCategories value="Race:Terran"/>
+    </CEffectApplyBehavior>
 </Catalog>

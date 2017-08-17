@@ -1,51 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
-	<Frame type="Frame" name="GameUI" file="GameUI">
-		<!-- 
-		<Frame type="Frame" name="RaceCheck">
-			<Handle val="RaceCheck"/>
-			<Anchor relative="$parent"/>
-			<Frame type="Frame" name="Prot">
-				<Anchor relative="$parent"/>
-				<RequiredDefines val="Prot"/>
-				<StateGroup name="RaceCheckSend">
-					<DefaultState val="Send"/>
-					<State name="Send">
-						<Action type="SetState" frame="$parent" group="RaceCheck" state="IsProt"/> 
-					</State>
-				</StateGroup>
-			</Frame>
-			<Frame type="Frame" name="Terr">
-				<Anchor relative="$parent"/>
-				<RequiredDefines val="Terr"/>
-				<StateGroup name="RaceCheckSend">
-					<DefaultState val="Send"/>
-					<State name="Send">
-						<Action type="SetState" frame="$parent" group="RaceCheck" state="IsTerr"/> 
-					</State>
-				</StateGroup>
-			</Frame>
-			<Frame type="Frame" name="Zerg">
-				<Anchor relative="$parent"/>
-				<RequiredDefines val="Zerg"/>
-				<StateGroup name="RaceCheckSend">
-					<DefaultState val="Send"/>
-					<State name="Send">
-						<Action type="SetState" frame="$parent" group="RaceCheck" state="IsZerg"/> 
-					</State>
-				</StateGroup>
-			</Frame>
-			<StateGroup name="RaceCheck">
-				<State name="IsProt">
-				</State>
-				<State name="IsTerr">
-				</State>
-				<State name="IsZerg">
-				</State>
-			</StateGroup>
-		</Frame>
-		-->
-	</Frame>
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
 	
 		<Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainer">

@@ -41,16 +41,11 @@
 			<!-- </Frame> -->
         </Frame>
 		
-		<Frame type="IdleButton" name="IdleButton">
-			<TooltipFrame val="RallyCommandTooltip"/>
-		</Frame>
-		<Frame type="ArmyButton" name="ArmyButton">
-			<TooltipFrame val="RallyCommandTooltip"/>
-		</Frame>
+		
 		
 		<Frame type="CommandPanel" name="GlobalRallyPanel" template="CommandSidebar/CommandSidebarPanelTemplate">
 			<Anchor side="Top" relative="$parent/ArmyButton" pos="Min" offset="0"/>
-			<Anchor side="Left" relative="$parent/ArmyButton" pos="Max" offset="-4"/>
+			<Anchor side="Left" relative="$parent/ArmyButton" pos="Max" offset="-6"/>
 			<Anchor side="Bottom" relative="$parent/ArmyButton" pos="Max" offset="0"/>
 			<Anchor side="Right" relative="CommandButton02" pos="Max" offset="0"/>
 			<RenderPriority val="500"/>
@@ -60,24 +55,45 @@
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<TooltipFrame val="RallyCommandTooltip"/>
 				<Handle val="GlobalRally00"/>
-				<Tooltip val="Global Rally Barracks (&lt;c val=&quot;FFFFFF&quot;&gt;F3&lt;/c&gt;)"/>
 			</Frame>
 			
 			<Frame type="CommandButton" name="CommandButton01" template="PlusTemplates/RallyButtonTemplate">
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-				<Anchor side="Left" relative="$parent/CommandButton00" pos="Max" offset="-4"/>
+				<Anchor side="Left" relative="$parent/CommandButton00" pos="Max" offset="-6"/>
 				<TooltipFrame val="RallyCommandTooltip"/>
 				<Handle val="GlobalRally01"/>
-				<Tooltip val="Global Rally Factory (&lt;c val=&quot;FFFFFF&quot;&gt;F4&lt;/c&gt;)"/>
 			</Frame>
 			
 			<Frame type="CommandButton" name="CommandButton02" template="PlusTemplates/RallyButtonTemplate">
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-				<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="-4"/>
+				<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="-6"/>
 				<TooltipFrame val="RallyCommandTooltip"/>
 				<Handle val="GlobalRally02"/>
-				<Tooltip val="Global Rally Starport (&lt;c val=&quot;FFFFFF&quot;&gt;F5&lt;/c&gt;)"/>
 			</Frame>
+			
+			<StateGroup name="RaceState">
+				<DefaultState val="Initialize"/>
+				<State name="Initialize">
+					<Action type="SetProperty" frame="CommandButton00/NormalImageActual" texture="@@UI/RallyButton00Normal"/>
+					<Action type="SetProperty" frame="CommandButton00/HoverImageActual" texture="@@UI/RallyButton00Hover"/>
+					<Action type="SetProperty" frame="CommandButton01/NormalImageActual" texture="@@UI/RallyButton01Normal"/>
+					<Action type="SetProperty" frame="CommandButton01/HoverImageActual" texture="@@UI/RallyButton01Hover"/>
+					<Action type="SetProperty" frame="CommandButton02/NormalImageActual" texture="@@UI/RallyButton02Normal"/>
+					<Action type="SetProperty" frame="CommandButton02/HoverImageActual" texture="@@UI/RallyButton02Hover"/>
+				</State>
+				<State name="Terran">
+					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
+					<Action type="SetProperty" frame="CommandButton00" tooltip="Global Rally Barracks (&lt;c val=&quot;FFFFFF&quot;&gt;F3&lt;/c&gt;)"/>
+					<Action type="SetProperty" frame="CommandButton01" tooltip="Global Rally Factory (&lt;c val=&quot;FFFFFF&quot;&gt;F4&lt;/c&gt;)"/>
+					<Action type="SetProperty" frame="CommandButton02" tooltip="Global Rally Starport (&lt;c val=&quot;FFFFFF&quot;&gt;F5&lt;/c&gt;)"/>
+				</State>
+				<State name="Protoss">
+					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+				</State>
+				<State name="Zerg">
+					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
+				</State>
+			</StateGroup>
 			
 			<Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandButtonInvisible"/>
@@ -92,5 +108,13 @@
 			<Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandButtonInvisible"/>
 		</Frame>
+		
+		<Frame type="ArmyButton" name="ArmyButton">
+			<TooltipFrame val="RallyCommandTooltip"/>
+		</Frame>
+		<Frame type="IdleButton" name="IdleButton">
+			<TooltipFrame val="RallyCommandTooltip"/>
+		</Frame>
+		
 	</Frame>
 </Desc>

@@ -40,6 +40,11 @@
         <OperandArray value="CountUnitFactoryTechLabCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitFusionCoreCompleteOnly4211141650TechTreeCheat"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUnitOrbitalCommandCompleteOnlyTechTreeCheatCountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUnitOrbitalCommandCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="CountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheat">
         <OperandArray value="CountUnitStarportCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitStarportTechLabCompleteOnlyTechTreeCheat"/>
@@ -118,11 +123,14 @@
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndOr96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheatCountUnitGhostAcademyCompleteOnlyTechTreeCheatNot1833567690CountUnitNukeQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="Or96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheat"/>
         <OperandArray value="CountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Not1833567690CountUnitNukeQueuedOrBetterAtUnit"/>
     </CRequirementAnd>
+    <CRequirementCountBehavior id="CountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GameUCBOrbitalCommandEnergy50GE" State="CompleteOnly"/>
+    </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorIsNexusNearbyCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="IsNexusNearby" State="CompleteOnlyAtUnit"/>
