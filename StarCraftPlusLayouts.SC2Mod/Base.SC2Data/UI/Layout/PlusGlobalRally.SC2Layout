@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+	
+		<!-- <Frame type="CommandTooltip" name="RallyCommandTooltip" template="CommandButton/CommandTooltipTemplate"> -->
+		<Frame type="StandardTooltip" name="RallyCommandTooltip" template="StandardTooltip/StandardTooltip">
+			<PositionFixed val="false"/>
+			<MinWidth val="1"/>
+			
+			<!-- <Frame type="Label" name="Label"> -->
+				<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="15"/> -->
+				<!-- <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/> -->
+				<!-- <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/> -->
+				<!-- <AutoSizeClamps maxWidth="450"/> -->
+			<!-- </Frame> -->
+			
+			<Frame type="Label" name="TipLabel">
+				<Style val="@@StandardTooltip"/>
+				<Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+				<Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+				<Width val="450"/>
+			</Frame>
+			
+			<!-- <Frame type="Label" name="TipLabel"> -->
+				<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="15"/> -->
+				<!-- <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/> -->
+				<!-- <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/> -->
+				<!-- <AutoSizeClamps maxWidth="450"/> -->
+			<!-- </Frame> -->
+	
+			<!-- <Frame type="Frame" name="AnchorFrame"> -->
+				<!-- <Anchor side="Left" relative="$parent/TipLabel" pos="Min" offset="-15"/> -->
+				<!-- <Anchor side="Right" relative="$parent/TipLabel" pos="Max" offset="15"/> -->
+			<!-- </Frame> -->
+			
+			<!-- <Frame type="Image" name="BackgroundImage"> -->
+				<!-- <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="0"/> -->
+				<!-- <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/> -->
+				<!-- <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/> -->
+				<!-- <Anchor side="Bottom" relative="$parent/AnchorFrame" pos="Max" offset="0"/> -->
+			<!-- </Frame> -->
+        </Frame>
+		
+		
+		
+		<Frame type="CommandPanel" name="GlobalRallyPanel" template="CommandSidebar/CommandSidebarPanelTemplate">
+			<Anchor side="Top" relative="$parent/ArmyButton" pos="Min" offset="0"/>
+			<Anchor side="Left" relative="$parent/ArmyButton" pos="Max" offset="-6"/>
+			<Anchor side="Bottom" relative="$parent/ArmyButton" pos="Max" offset="0"/>
+			<Anchor side="Right" relative="CommandButton02" pos="Max" offset="0"/>
+			<RenderPriority val="500"/>
+		
+			<Frame type="CommandButton" name="CommandButton00" template="PlusTemplates/RallyButtonTemplate">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+				<TooltipFrame val="RallyCommandTooltip"/>
+				<Handle val="GlobalRally00"/>
+			</Frame>
+			
+			<Frame type="CommandButton" name="CommandButton01" template="PlusTemplates/RallyButtonTemplate">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/CommandButton00" pos="Max" offset="-6"/>
+				<TooltipFrame val="RallyCommandTooltip"/>
+				<Handle val="GlobalRally01"/>
+			</Frame>
+			
+			<Frame type="CommandButton" name="CommandButton02" template="PlusTemplates/RallyButtonTemplate">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="-6"/>
+				<TooltipFrame val="RallyCommandTooltip"/>
+				<Handle val="GlobalRally02"/>
+			</Frame>
+			
+			
+			<!-- I get errors for creating frames with existing names when I try to set these textures in the command buttons above, so I'm using a stategroup instead-->
+			<StateGroup name="Initialization">
+				<DefaultState val="Initialize"/>
+				<State name="Initialize">
+					<Action type="SetProperty" frame="CommandButton00/NormalImageActual" texture="@@UI/RallyButton00Normal"/>
+					<Action type="SetProperty" frame="CommandButton00/HoverImageActual" texture="@@UI/RallyButton00Hover"/>
+					<Action type="SetProperty" frame="CommandButton01/NormalImageActual" texture="@@UI/RallyButton01Normal"/>
+					<Action type="SetProperty" frame="CommandButton01/HoverImageActual" texture="@@UI/RallyButton01Hover"/>
+					<Action type="SetProperty" frame="CommandButton02/NormalImageActual" texture="@@UI/RallyButton02Normal"/>
+					<Action type="SetProperty" frame="CommandButton02/HoverImageActual" texture="@@UI/RallyButton02Hover"/>
+				</State>
+			</StateGroup>
+			
+			<StateGroup name="RaceState">
+				<DefaultState val="Terran"/>
+				<State name="Terran">
+					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
+					<Action type="SetProperty" frame="CommandButton00/NormalImageActual" texture="@@UI/RallyButton00Normal"/>
+					<Action type="SetProperty" frame="CommandButton00/HoverImageActual" texture="@@UI/RallyButton00Hover"/>
+					<Action type="SetProperty" frame="CommandButton01/NormalImageActual" texture="@@UI/RallyButton01Normal"/>
+					<Action type="SetProperty" frame="CommandButton01/HoverImageActual" texture="@@UI/RallyButton01Hover"/>
+					<Action type="SetProperty" frame="CommandButton02/NormalImageActual" texture="@@UI/RallyButton02Normal"/>
+					<Action type="SetProperty" frame="CommandButton02/HoverImageActual" texture="@@UI/RallyButton02Hover"/>
+					<Action type="SetProperty" frame="CommandButton00" tooltip="Global Rally Barracks (&lt;c val=&quot;FFFFFF&quot;&gt;F3&lt;/c&gt;)"/>
+					<Action type="SetProperty" frame="CommandButton01" tooltip="Global Rally Factory (&lt;c val=&quot;FFFFFF&quot;&gt;F4&lt;/c&gt;)"/>
+					<Action type="SetProperty" frame="CommandButton02" tooltip="Global Rally Starport (&lt;c val=&quot;FFFFFF&quot;&gt;F5&lt;/c&gt;)"/>
+				</State>
+				<State name="Protoss">
+					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+				</State>
+				<State name="Zerg">
+					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
+				</State>
+			</StateGroup>
+			
+			<Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton05" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton06" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton07" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton08" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandButtonInvisible"/>
+			<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandButtonInvisible"/>
+		</Frame>
+		
+		<Frame type="ArmyButton" name="ArmyButton">
+			<TooltipFrame val="RallyCommandTooltip"/>
+		</Frame>
+		<Frame type="IdleButton" name="IdleButton">
+			<TooltipFrame val="RallyCommandTooltip"/>
+		</Frame>
+		
+	</Frame>
+</Desc>

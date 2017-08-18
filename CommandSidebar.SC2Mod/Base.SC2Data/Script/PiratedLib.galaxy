@@ -1,0 +1,52 @@
+// These functions added by Daniel from modified GUI functions in StarCraftPlus.SC2Mod
+// Don't judge me
+
+unitgroup Pir_WorkerGroupNotHarvestingGas (unitgroup ug) {
+
+    unitgroup wg = UnitGroupCopy(ug);
+    unitgroup gg = UnitGroupEmpty();
+	int wgCount = UnitGroupCount(wg, c_unitCountAlive);
+    unit w;
+    int index;
+
+	for (index = 1; index <= wgCount ; index += 1){
+		w = UnitGroupUnit(wg, index);
+		
+        if ((UnitGetChargeUsed(w, "HarvestGas") == 1.0)) {
+			UnitGroupAdd(gg,w);
+        }
+    }
+	
+	UnitGroupRemoveUnitGroup(wg, gg);
+    return wg;
+}
+
+void Pir_UnitCancelQueue (unit u){
+	if ((UnitQueueGetProperty(u, c_unitQueuePropertyUsed) > 0)) {
+		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+	}
+}
+
+unitgroup Pir_GhostAcademyAvailable(unitgroup ug) {
+
+	unitgroup available = UnitGroupCopy(ug);
+	unitgroup unavailable = UnitGroupEmpty();
+	int count = UnitGroupCount(ug, c_unitCountAll);
+	int index;
+	unit u;
+	
+	for (index = 1; index <= count; index += 1){
+		u = UnitGroupUnit(ug, index);
+				
+		if ((UnitMagazineCount(u, "ArmSiloWithNuke") > 0) || (UnitCheckProgressState(u, 1, c_unitProgressStateEmpty) == false)) {
+            UnitGroupAdd(unavailable,u);
+        }
+	}
+	
+	UnitGroupRemoveUnitGroup(available, unavailable);
+	return available;
+}

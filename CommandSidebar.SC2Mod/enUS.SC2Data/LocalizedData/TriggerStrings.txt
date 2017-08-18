@@ -1,0 +1,2 @@
+﻿CustomScript/Name/lib_CMSB_607447FF=Script
+Library/Name/CMSB=CommandSidebar

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TriggerData>
+    <Library Id="CMSB">
+        <Root>
+            <Item Type="CustomScript" Library="CMSB" Id="607447FF"/>
+        </Root>
+        <Element Type="CustomScript" Id="607447FF">
+            <ScriptCode>
+                include &quot;Script/CMSDB&quot;
+            </ScriptCode>
+            <InitFunc>InitCommandSideBar</InitFunc>
+        </Element>
+    </Library>
+</TriggerData>

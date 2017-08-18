@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+	<Frame type="GameUI" name="GameUI" file="GameUI">
+		<ConsoleWorldBottomOffset val="0"/>
+	</Frame>
+
+    <Frame type="Frame" name="GameUI/UIContainer" file="GameUI">
+		
+		<Frame type="Frame" name="Initializer">
+			<Anchor relative="$parent"/>
+			
+			<Animation name="LayoutInitializer">
+				<Event event="OnShown" action="Reset,Play"/>
+				<Controller type="Visibility" end="Pause" frame="$StandardCommandPanel">
+					<Key type="Bool" time="0" value="false"/>
+				</Controller>
+				<Controller type="Visibility" end="Pause" frame="$GlobalRally00/GameButtonBorderImage">
+					<Key type="Bool" time="0" value="false"/>
+				</Controller>
+				<Controller type="Visibility" end="Pause" frame="$GlobalRally01/GameButtonBorderImage">
+					<Key type="Bool" time="0" value="false"/>
+				</Controller>
+				<Controller type="Visibility" end="Pause" frame="$GlobalRally02/GameButtonBorderImage">
+					<Key type="Bool" time="0" value="false"/>
+				</Controller>
+			</Animation>
+		</Frame>
+		
+		<Frame type="ConsolePanel" name="ConsolePanel">
+			
+			<!-- BACKGROUND FRAMES -->
+			<Frame type="Image" name="MinimapBackground" template="PlusTemplates/CommandBackgroundTemplate">
+				<Anchor side="Top" relative="$parent/MinimapStub" pos="Min" offset="24"/>
+				<Anchor side="Left" relative="$parent/MinimapStub" pos="Min" offset="0"/>
+				<Anchor side="Bottom" relative="$parent/MinimapStub" pos="Max" offset="0"/>
+				<!-- <Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="12"/> -->
+				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="50"/>
+			</Frame>
+			
+			<Frame type="Image" name="InfoPanelBackground" template="PlusTemplates/CommandBackgroundTemplate">
+				<Anchor side="Top" relative="$parent/InfoStub" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/MinimapBackground" pos="Max" offset="0"/>
+				<Anchor side="Bottom" relative="$parent/InfoStub" pos="Max" offset="0"/>
+				<Anchor side="Right" relative="$parent/InfoStub" pos="Max" offset="0"/>
+				<RenderType val="HDR"/>
+				<RenderPriority val="10"/>
+			</Frame>
+			
+			<!-- CONSOLE MODELS -->
+			<Frame type="Model" name="MinimapModel">
+            	<Visible val="false"/>
+			</Frame>
+			<Frame type="Model" name="InfopanelModel">
+				<Visible val="false"/>
+			</Frame>
+			<Frame type="Model" name="CommandPanelModel">
+				<Visible val="false"/>
+			</Frame>
+		
+			<!-- PORTRAIT FRAME -->
+			<Frame type="PortraitPanel" name="PortraitPanel">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+				<!-- <Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="180"/> -->
+				<Anchor side="Right" relative="$parent/MinimapStub" pos="Max" offset="212"/>
+				<Width val="152"/>
+				<Height val="232"/>
+				
+				<Handle val="PortraitPanel"/>
+			</Frame>
+			
+			<!-- CONSOLE FRAMES -->
+			<Frame type="Frame" name="MinimapStub">
+				<Width val="380"/>
+				<Height val="332"/>
+			</Frame>
+	
+			<Frame type="Frame" name="InfoStub">
+				<Height val="244"/>
+			</Frame>
+	
+			<Frame type="Frame" name="CommandStub">
+				<Width val="450"/>
+				<Height val="301"/>
+			</Frame>
+			
+		</Frame>
+		
+		<Frame type="Frame" name="ConsoleUIContainer">
+		
+			<!-- INFO PANEL -->
+			<Frame type="Frame" name="InfoPanelAnchor">
+				<!-- <Anchor side="Left" relative="$parent" pos="Mid" offset="-600"/> -->
+				<Anchor side="Left" relative="$parent" pos="Mid" offset="-562"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="300"/>
+				<Height val="208"/>
+				
+				<Handle val="InfoPanel"/>
+			</Frame>
+			
+			<Frame type="InfoPanel" name="InfoPanel">
+				<!-- <Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-236"/> -->
+				<Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-224"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
+                <Anchor side="Right" relative="$parent/InfoPanelAnchor" pos="Max" offset="500"/>
+				<Height val="208"/>
+				
+				<Frame type="Frame" name="UnitPanel">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Left" relative="$parent" pos="Min" offset="150"/>
+					<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+					<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				</Frame>
+				
+				<Frame type="Frame" name="InfoPaneGroup">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Left" relative="$parent" pos="Min" offset="150"/>
+					<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+					<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				</Frame>
+            </Frame>
+		
+			<Frame type="CommandPanel" name="CommandPanel">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-338"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="4"/>
+				<Width val="400"/>
+                <Height val="242"/>
+				<Visible val="false"/>
+				<Handle val="StandardCommandPanel"/>
+			</Frame>
+
+			<!-- MISSION TIME -->
+			<Frame type="MissionTimePanel" name="MissionTimePanel">
+                <Anchor side="Bottom" relative="$MenuBarConsoleAnchor" pos="Max" offset="42"/>
+                <Anchor side="Left" relative="$MenuBarConsoleAnchor" pos="Max" offset="-92"/>
+                <Width val="200"/>
+                <Height val="44"/>
+            </Frame>
+		</Frame>
+		
+		<Frame type="Frame" name="FullscreenUpperContainer">
+			<Frame type="Frame" name="MenuBarConsoleAnchor">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="-236"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+				<Handle val="MenuBarConsoleAnchor"/>
+			</Frame>
+		</Frame>
+    </Frame>
+</Desc>
