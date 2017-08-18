@@ -3,6 +3,7 @@
     <CBehaviorBuff id="AutoWallAutocastBehavior">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
         <BuffFlags index="RefreshStack" value="1"/>
         <Duration value="0.0625"/>
     </CBehaviorBuff>

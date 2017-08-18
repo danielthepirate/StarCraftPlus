@@ -563,6 +563,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="AutoLower" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <Footprint value="Footprint2x2Contour"/>
     </CUnit>
     <CUnit id="SupplyDepotLowered">
         <Food value="0"/>
