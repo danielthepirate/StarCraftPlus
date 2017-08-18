@@ -7,15 +7,11 @@
 <Behavior id="KineticFollow"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
-<Unit id="SupplyDepot"/>
-<Unit id="Barracks"/>
-<Unit id="EngineeringBay"/>
 <Unit id="SCV"/>
 <Unit id="Probe"/>
 <Unit id="Drone"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
-<Unit id="OrbitalCommand"/>
 <Unit id="WarpAdept"/>
 <Unit id="GameGlobalRallyTarget00"/>
 <Unit id="GameGlobalRallyTarget01"/>

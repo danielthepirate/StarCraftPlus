@@ -120,6 +120,7 @@
     <CBehaviorBuff id="GameDroneMorphMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="17"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBCommandCenterChargeLink">
         <InfoFlags index="Hidden" value="1"/>
@@ -155,14 +156,17 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="CasterEnergyGE50"/>
         <FinalEffect value="GameUCBOrbitalCommandEnergy50LT"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBOrbitalCommandEnergy50LT">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="CasterEnergyLT50"/>
         <FinalEffect value="GameUCBOrbitalCommandEnergy50GE"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameWorkerHarvestGasMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameIncreasedLifeAndShields">
         <InfoFlags index="Hidden" value="1"/>
@@ -207,6 +211,7 @@
     <CBehaviorBuff id="KineticFollow">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InitialEffect value="KineticFollow"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OverlordEnhancedCreepGrowthAura">
         <InfoFlags index="Hidden" value="1"/>
@@ -233,6 +238,7 @@
     <CBehaviorBuff id="CarrierAutocastOff">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="0.0625"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CarrierAutocastOn">
         <Cost>
@@ -247,6 +253,10 @@
                 <Cooldown Link="Behavior/CarrierAutocastOff"/>
             </Cost>
         </DamageResponse>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SidebarDummy">
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TimeWarpProduction">
         <Modification TimeScale="1.1428"/>

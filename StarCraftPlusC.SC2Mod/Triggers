@@ -5815,7 +5815,6 @@
         </Element>
         <Element Type="Trigger" Id="C32FA832">
             <Disabled/>
-            <InitOff/>
             <Variable Type="Variable" Library="SCPL" Id="8716326E"/>
             <Event Type="FunctionCall" Library="SCPL" Id="9883B8E3"/>
             <Action Type="FunctionCall" Library="SCPL" Id="898194D2"/>
@@ -5969,6 +5968,7 @@
             <Preset Type="PresetValue" Library="Ntve" Id="06588939"/>
         </Element>
         <Element Type="Trigger" Id="D5650250">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="F8600350"/>
             <Action Type="FunctionCall" Library="SCPL" Id="10E90203"/>
             <Action Type="FunctionCall" Library="SCPL" Id="22EF4EED"/>
@@ -6197,6 +6197,7 @@
             <ValueType Type="int"/>
         </Element>
         <Element Type="Trigger" Id="D5BEEADE">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="DD693CFE"/>
             <Action Type="FunctionCall" Library="SCPL" Id="943DBC33"/>
         </Element>
@@ -6256,6 +6257,7 @@
             <ValueType Type="fixed"/>
         </Element>
         <Element Type="Trigger" Id="74A050C8">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="46804931"/>
             <Action Type="FunctionCall" Library="SCPL" Id="6CFCBA70"/>
         </Element>
@@ -6405,6 +6407,7 @@
             <ValueType Type="fixed"/>
         </Element>
         <Element Type="Trigger" Id="E6E8B94A">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="AAEA6FDF"/>
             <Action Type="FunctionCall" Library="SCPL" Id="63ACC02F"/>
             <Action Type="FunctionCall" Library="SCPL" Id="DE7AC0E4"/>
@@ -6559,6 +6562,7 @@
             <ValueType Type="fixed"/>
         </Element>
         <Element Type="Trigger" Id="6320394D">
+            <Disabled/>
             <Event Type="FunctionCall" Library="SCPL" Id="01A1286A"/>
             <Action Type="FunctionCall" Library="SCPL" Id="4FA40E28"/>
         </Element>

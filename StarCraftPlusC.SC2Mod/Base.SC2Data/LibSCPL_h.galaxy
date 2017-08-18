@@ -279,11 +279,6 @@ void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
-trigger libSCPL_gt__1;
-trigger libSCPL_gt__2;
-trigger libSCPL_gt__3;
-trigger libSCPL_gt__0;
-trigger libSCPL_gt_Space;
 trigger libSCPL_gt_GlobalRally00TargetCreated;
 trigger libSCPL_gt_GlobalRally01TargetCreated;
 trigger libSCPL_gt_GlobalRally02TargetCreated;

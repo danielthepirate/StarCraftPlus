@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="us-ascii"?>
-<Catalog>
-    <CRequirementCountUnit id="CountUnitLarvaCompleteOnlyTechTreeCheat">
-        <Count Link="Larva" State="CompleteOnly"/>
-    </CRequirementCountUnit>
-</Catalog>

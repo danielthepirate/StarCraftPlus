@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="us-ascii"?>
-<Catalog>
-    <CButton id="PylonDummy">
-        <Icon value="Assets\Textures\btn-building-protoss-pylon.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-protoss-pylon.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-        <HotkeyAlias value="Pylon"/>
-    </CButton>
-</Catalog>
