@@ -417,7 +417,6 @@
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
         <CreateFlags index="NormalizeSpawnOffset" value="0"/>
-        <SpawnEffect value="KineticFollowApply"/>
         <SpawnUnit value="GameGlobalRallyTarget01"/>
     </CEffectCreateUnit>
     <CEffectDamage id="GlobalRallyTarget00KillRemove">
@@ -440,7 +439,6 @@
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
         <CreateFlags index="NormalizeSpawnOffset" value="0"/>
-        <SpawnEffect value="KineticFollowApply"/>
         <SpawnUnit value="GameGlobalRallyTarget02"/>
     </CEffectCreateUnit>
     <CEffectDamage id="GlobalRallyTarget01KillRemove">

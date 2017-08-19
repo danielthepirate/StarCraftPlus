@@ -13,6 +13,11 @@
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="CountUnitCommandCenterCompleteOnly1610623376TechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="ShowEngineeringBay">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Show" Link="CountUnitEngineeringBayCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
     <CRequirement id="HaveFactoryOnGround">
         <EditorCategories value="Race:Terran,TechType:Unit"/>
         <CanBeSuppressed index="Use" value="0"/>

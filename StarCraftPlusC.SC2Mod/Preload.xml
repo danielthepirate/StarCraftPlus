@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Preload>
+<Asset path="assets\textures\black.dds" Type="Image"/>
+<Asset path="assets\textures\blank.dds" Type="Image"/>
 <Actor id="SYSTEM_ActorConfig"/>
 <Behavior id="GameUCBCommandCenterChargeLink"/>
 <Behavior id="GameWorkerHarvestGasMarker"/>

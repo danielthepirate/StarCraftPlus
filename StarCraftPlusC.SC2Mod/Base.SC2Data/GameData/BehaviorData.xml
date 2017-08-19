@@ -176,6 +176,7 @@
             <VitalMaxFractionArray index="Life" value="1"/>
             <VitalMaxFractionArray index="Shields" value="1"/>
         </Modification>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameMineralsNearTownHall">
         <InfoFlags index="Hidden" value="1"/>

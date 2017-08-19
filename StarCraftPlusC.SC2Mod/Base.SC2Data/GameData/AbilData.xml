@@ -343,6 +343,19 @@
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Rally"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="GameProductionCharge">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Cost>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="1"/>
+                <Location value="Unit"/>
+            </Charge>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Repair"/>
+    </CAbilEffectInstant>
     <CAbilTrain id="GatewayTrain">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>

@@ -1,5 +1,83 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorUnit id="Armory">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,90"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="ArmoryPaused" parent="Armory">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/ArmoryPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Barracks">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,95"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BarracksPaused" parent="Barracks">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/BarracksPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="BarracksReactor">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BarracksReactorPaused" parent="BarracksReactor">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="BarracksTechLab">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BarracksTechLabPaused" parent="BarracksTechLab">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Bunker">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BunkerPaused" parent="Bunker">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/BunkerPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <!-- Decals and Clan flags -->
+    <!-- Terran -->
+    <CActorUnit id="CommandCenter">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,115"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="CommandCenterPaused" parent="CommandCenter">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/CommandCenterPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
     <CActorModel id="CreepTumorEnhancedCreepGrowthModel" parent="ModelAnimationStyleContinuous">
         <EditorCategories value=""/>
         <On Terms="Behavior.CreepTumorEnhancedCreepGrowth.On" Send="Create"/>
@@ -16,6 +94,221 @@
         <On Terms="Signal.*.MorphCancel; ModelVariation 2" Send="Create EggsplosionGeneric2"/>
         <On Terms="Signal.*.MorphCancel" Send="Destroy"/>
     </CActorUnit>
+    <CActorUnit id="EngineeringBay">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,80"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="EngineeringBayPaused" parent="EngineeringBay">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/EngineeringBayPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Factory">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,125"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="FactoryPaused" parent="Factory">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/FactoryPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="FactoryReactor">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="FactoryReactorPaused" parent="FactoryReactor">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="FactoryTechLab">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="FactoryTechLabPaused" parent="FactoryTechLab">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="FusionCore">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,80"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="FusionCorePaused" parent="FusionCore">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/FusionCorePaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="GhostAcademy">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,85"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="GhostAcademyPaused" parent="GhostAcademy">
+        <Remove Send="Create"/>
+        <CustomUnitStatusOffset value="0,0"/>
+        <HighlightTooltip value="Unit/Name/GhostAcademyPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorEventMacro id="MacroStatusBarProgressPaused">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimHookSet HookedBaseline ::Creator ::Baseline"/>
+        <On Terms="ActorCreation" Send="AnimHookClear HookedBaseline"/>
+        <On Terms="ActorCreation" Send="RefClear ::Host"/>
+        <On Terms="ActorCreation" Target="::Creator" Send="Destroy"/>
+    </CActorEventMacro>
+    <CActorUnit id="MissileTurret">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="MissileTurretPaused" parent="MissileTurret">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/MissileTurretPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="OrbitalCommand">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,115"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="OrbitalCommandPaused" parent="OrbitalCommand">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/OrbitalCommandPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="PlanetaryFortress">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,130"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="PlanetaryFortressPaused" parent="PlanetaryFortress">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/PlanetaryFortressPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Reactor">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="ReactorPaused" parent="Reactor">
+        <Remove Send="Create"/>
+        <AddonIndicator value="Actor/AddonIndicator/ReactorPaused"/>
+        <HighlightTooltip value="Unit/Name/ReactorPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Refinery">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="RefineryPaused" parent="Refinery">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/RefineryPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorEventMacroRunnable id="RunnableStatusBarPause">
+        <EditorCategories value=""/>
+        <Do Send="AnimHookSet HookedBaseline ::Creator ::Baseline"/>
+    </CActorEventMacroRunnable>
+    <CActorUnit id="SensorTower">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="SensorTowerPaused" parent="SensorTower">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SensorTowerPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Starport">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,95"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="StarportPaused" parent="Starport">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/StarportPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="StarportReactor">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="StarportReactorPaused" parent="StarportReactor">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="StarportTechLab">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="StarportTechLabPaused" parent="StarportTechLab">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorSite id="StatusBarStabilizer">
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpStatusBarStabilizer"/>
+        <SiteFlags index="RequiresManualKill" value="1"/>
+    </CActorSite>
+    <CActorSiteOpDeltaSum id="SOpStatusBarStabilizer">
+        <Deltas Subject="_Selectable">
+            <AttachQuerySource Methods="Origin"/>
+            <AttachQueryTarget Methods="StatusBar 0"/>
+        </Deltas>
+    </CActorSiteOpDeltaSum>
     <CActorUnit id="GameAutoCreepNodeTarget" parent="GenericUnitMinimal" unitName="GameAutoCreepNodeTarget">
         <EditorCategories value=""/>
         <Model value="Beacon_ZergSmall"/>
@@ -357,7 +650,16 @@
     <CActorSplat id="ScannerSweepCursorSplat">
         <On Terms="Abil.ScannerSweepUCB.Cursor" Send="Create"/>
     </CActorSplat>
+    <CActorUnit id="SupplyDepot">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <!--On Terms="StatusSet.*.CE; IsStatus CE 1" Send="ModelSwap SupplyDepotXPR"/>
+        <On Terms="UnitDeathCustomize; IsStatus CE 1" Send="DeathCustomize Variation10"/>
+        <DeathCustoms ModelLink="SupplyDepotXPRDeath" Name="Variation10"/>
+        <PlacementActorModel value="SupplyDepotPlacementModel"/>
+        <PlaceholderActorModel value="SupplyDepotPlacementModel"/-->
+    </CActorUnit>
     <CActorUnit id="SupplyDepotConstructor" parent="SupplyDepot" unitName="SupplyDepotConstructor">
+        <AcceptedTransfers index="Animator" value="1"/>
         <On index="0" Terms="UnitBirth.SupplyDepotConstructor"/>
         <On index="1" Terms="UnitBirth.SupplyDepotConstructor"/>
         <On index="2" Terms="UnitRevive.SupplyDepotConstructor"/>
@@ -373,10 +675,10 @@
         <On index="71" Terms="UnitBirth.SupplyDepotConstructor.Suppressed"/>
         <On index="72" Terms="UnitBirth.SupplyDepotConstructor.EditorPlaced"/>
         <On index="73" Terms="UnitDeath.SupplyDepotConstructor"/>
-        <On index="79" Terms="AbilMorph.*.Finish; MorphFrom SupplyDepotLowered" Send="AnimGroupRemove Burrow"/>
-        <On index="80" Terms="AbilMorph.*.Finish; MorphFrom SupplyDepotLowered" Send="AnimGroupApply Unburrow Stand,Unburrow Stand,Unburrow Instant"/>
+        <On index="79" Send="AnimGroupRemove Burrow"/>
+        <On index="80" Send="AnimGroupApply Unburrow Stand,Unburrow Stand,Unburrow Instant"/>
         <On index="81" Terms="AbilMorph.*.Finish; MorphFrom SupplyDepotDrop" Send="Create BuildingTerrainFlatten"/>
-        <On index="82" Terms="AbilMorph.*.Finish; MorphFrom SupplyDepotDrop" Send="QueryRadius 1.750000 BuildingCrushQueryResponse"/>
+        <On index="82" Send="QueryRadius 1.750000 BuildingCrushQueryResponse"/>
         <On index="83" Terms="Behavior.ColonyInfestation.On" Send="Create InfestationSupplyDepot"/>
         <On index="84" Terms="Signal.*.Incoming" Send="RefSetFromMsg ::actor.SupplyDropModel ::Sender"/>
         <On index="85" Terms="Signal.*.Incoming" Target="::actor.SupplyDropModel" Send="Signal Raised"/>
@@ -384,7 +686,30 @@
         <On index="87" Terms="ActorCreation; PlayerHasReward SupplyDepotSkin" Target="" Send="AnimBracketStop ::GL_BSD Instant"/>
         <On index="88" removed="1"/>
         <On index="89" removed="1"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
         <HighlightTooltip value="Unit/Name/SupplyDepotConstructor"/>
+    </CActorUnit>
+    <CActorUnit id="SupplyDepotConstructorPaused" parent="SupplyDepotConstructor">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SupplyDepotConstructorPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="TechLab">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="TechLabPaused" parent="TechLab">
+        <Remove Send="Create"/>
+        <AddonIndicator value="Actor/AddonIndicator/TechLabPaused"/>
+        <HighlightTooltip value="Unit/Name/TechLabPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
     </CActorUnit>
     <CActorRange id="UnpoweredVisualLowNearNexus">
         <Behavior value="PowerSourceFast2"/>

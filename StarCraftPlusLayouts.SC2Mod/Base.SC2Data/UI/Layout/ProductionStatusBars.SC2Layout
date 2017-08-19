@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    
+	<Constant name="ColorProtoss" val="110,170,255"/>
+    <Constant name="ColorTerran" val="155,255,190"/>
+    <Constant name="ColorZerg" val="245,140,70"/>
+	
+	<Frame type="Frame" name="AttentionEffectTemplate">
+		<Anchor relative="$parent/IconBG"/>
+		<Visible val="{$parent/IconBG/@Visible}"/>
+		
+		<StateGroup name="ProgressState">
+			<DefaultState val="Normal"/>
+			<State name="Normal">
+				<When type="AnimationState" frame="$parent" ProgressState="Normal"/>
+			</State>
+			<State name="Paused">
+				<When type="AnimationState" frame="$parent" ProgressState="Paused"/>
+				<Action type="SendEvent" event="EventAttention"/>
+				<Action type="SendEvent" event="EventAttentionStop" on="Exit"/>
+				<Action type="SetProperty" frame="$parent/Icon" enabled="false"/>
+				<Action type="SetProperty" frame="$parent/IconBG" enabled="false"/>
+			</State>
+		</StateGroup>
+
+		<Frame type="Image" name="AttentionImage01">
+			<Anchor relative="$parent"/>
+			<Texture val="@UI/StatusProductionBorder"/>
+			<Color val="255,200,0"/>
+			<BlendMode val="Add"/>
+			<Alpha val="0"/>
+			
+			<Animation name="AttentionEffect">
+				<Event event="EventAttention" frame="$parent" action="Reset,Play"/>
+				<Event event="EventAttentionStop" frame="$parent" action="Stop"/>
+                <Controller type="Fade" end="Loop">
+                    <Key type="Curve" time="0.0" value="0" out="Slow"/>
+                    <Key type="Curve" time="0.1" value="255" in="Slow"/>
+                    <Key type="Curve" time="0.6" value="0" in="Slow"/>
+                    <Key type="Curve" time="1.0" value="0" in="Slow"/>
+                </Controller>
+                <Controller type="Dimension" dimension="Width" relative="False" percentage="True" end="Loop" >
+                    <Key type="Curve" time="0.0" value="85"/>
+                    <Key type="Curve" time="0.6" value="135"/>
+                    <Key type="Curve" time="1.0" value="135"/>
+                </Controller>
+                <Controller type="Dimension" dimension="Height" relative="False" percentage="True" end="Loop" >
+                    <Key type="Curve" time="0.0" value="85"/>
+                    <Key type="Curve" time="0.6" value="135"/>
+                    <Key type="Curve" time="1.0" value="135"/>
+                </Controller>
+            </Animation>
+		</Frame>
+		
+		<Frame type="Image" name="AttentionImage02">
+			<Anchor relative="$parent"/>
+			<Texture val="@UI/StatusProductionBorder"/>
+			<Color val="255,200,0"/>
+			<BlendMode val="Add"/>
+			<Alpha val="0"/>
+			
+			<Animation name="AttentionEffect">
+				<Event event="EventAttention" frame="$parent" action="Reset,Play"/>
+				<Event event="EventAttentionStop" frame="$parent" action="Stop"/>
+                <Controller type="Fade" end="Loop">
+                    <Key type="Curve" time="0.0" value="0" out="Slow"/>
+                    <Key type="Curve" time="0.3" value="180" in="Slow"/>
+                    <Key type="Curve" time="1.0" value="0" in="Slow"/>
+                </Controller>
+                <Controller type="Dimension" dimension="Width" relative="False" percentage="True" end="Loop" >
+                    <Key type="Curve" time="0.0" value="90"/>
+                    <Key type="Curve" time="0.2" value="100"/>
+                    <Key type="Curve" time="1.0" value="145"/>
+                </Controller>
+                <Controller type="Dimension" dimension="Height" relative="False" percentage="True" end="Loop" >
+                    <Key type="Curve" time="0.0" value="90"/>
+                    <Key type="Curve" time="0.2" value="100"/>
+                    <Key type="Curve" time="1.0" value="145"/>
+                </Controller>
+            </Animation>
+		</Frame>
+    </Frame>
+	
+	
+	
+    <Frame type="Frame" name="UnitIconTemplate">
+        <Height val="60"/>
+        <Width val="60"/>
+		
+        <Frame type="Image" name="IconBG">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Height val="60"/>
+            <Width val="60"/>
+			<Texture val="@UI/StatusProductionBG"/>
+        </Frame>
+
+        <Frame type="Image" name="Icon">
+            <Anchor side="Top" relative="$parent/IconBG" pos="0%" offset="0"/>
+            <Anchor side="Left" relative="$parent/IconBG" pos="0%" offset="0"/>
+			<Anchor side="Bottom" relative="$parent/IconBG" pos="100%" offset="0"/>
+            <Anchor side="Right" relative="$parent/IconBG" pos="100%" offset="0"/>
+        </Frame>
+		
+		<Frame type="Frame" name="AttentionEffect" template="ProductionStatusBars/AttentionEffectTemplate"/>
+    </Frame>
+
+    <Frame type="UnitStatusFrame" name="ProductionStatus">
+        <Height val="60"/>
+        <Width val="130"/>
+        <RenderType val="HDR"/>
+        
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="30"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="65"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="StatusIcon1" template="ProductionStatusBars/UnitIconTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="StatusIcon2" template="ProductionStatusBars/UnitIconTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="StatusIcon3" template="ProductionStatusBars/UnitIconTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+		
+		<StateGroup name="RaceState">
+			<DefaultState val="Terran"/>
+			<State name="Terran">
+				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
+				<Action type="SetProperty" frame="StatusIcon1/IconBG" color="#ColorTerran"/>
+				<Action type="SetProperty" frame="StatusIcon2/IconBG" color="#ColorTerran"/>
+				<Action type="SetProperty" frame="StatusIcon3/IconBG" color="#ColorTerran"/>
+			</State>
+			<State name="Protoss">
+				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+				<Action type="SetProperty" frame="StatusIcon1/IconBG" color="#ColorProtoss"/>
+				<Action type="SetProperty" frame="StatusIcon2/IconBG" color="#ColorProtoss"/>
+				<Action type="SetProperty" frame="StatusIcon3/IconBG" color="#ColorProtoss"/>
+			</State>
+			<State name="Zerg">
+				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
+				<Action type="SetProperty" frame="StatusIcon1/IconBG" color="#ColorZerg"/>
+				<Action type="SetProperty" frame="StatusIcon2/IconBG" color="#ColorZerg"/>
+				<Action type="SetProperty" frame="StatusIcon3/IconBG" color="#ColorZerg"/>
+			</State>
+		</StateGroup>
+    </Frame>
+</Desc>

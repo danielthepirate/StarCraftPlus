@@ -9,6 +9,9 @@ UI/ResourceIconNoBackground3_Terr=Assets\Textures\icon-gas-terran-nobg.dds
 UI/ResourceIconNoBackground3_Zerg=Assets\Textures\icon-gas-zerg_nobg.dds
 
 
+UI/StatusProductionBG=Assets\Textures\ui_production_bg.dds
+UI/StatusProductionBorder=Assets\Textures\ui_production_border.dds
+
 
 UI/RallyButton00Normal=Assets\Textures\UI_SelectArmy_NormalPressed_Terran.dds
 UI/RallyButton00Normal_Prot=Assets\Textures\UI_SelectArmy_NormalPressed_Protoss.dds

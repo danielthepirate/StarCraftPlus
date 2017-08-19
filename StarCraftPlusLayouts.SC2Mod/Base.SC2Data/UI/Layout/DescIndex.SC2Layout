@@ -9,4 +9,7 @@
     <Include path="UI/Layout/PlusResourcePanel.SC2Layout"/>
     <Include path="UI/Layout/PlusControlGroups.SC2Layout"/>
     <Include path="UI/Layout/PlusRaceCheck.SC2Layout"/>
+    <Include path="UI/Layout/PlusUnitStatus.SC2Layout"/>
+    <Include path="UI/Layout/ProductionStatusBars.SC2Layout"/>
+    <Include path="UI/Layout/UpgradeNotifications.SC2Layout"/>
 </Desc>

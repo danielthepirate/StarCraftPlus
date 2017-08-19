@@ -59,6 +59,7 @@
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="2"/>
             <LayoutButtons index="12" Row="0" Column="2"/>
+            <LayoutButtons Face="Repair" Type="AbilCmd" AbilCmd="GameProductionCharge,Execute" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="CommandCenterFlying">
