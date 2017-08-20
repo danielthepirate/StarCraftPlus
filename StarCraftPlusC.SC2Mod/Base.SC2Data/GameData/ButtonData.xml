@@ -111,13 +111,14 @@
         <Hotkey value="Button/Hotkey/AutoWallLowerUCB"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
-    <CButton id="Baneling">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
+    <CButton id="BanelingUCB">
+        <Icon value="Assets\Textures\btn-unit-zerg-baneling.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-baneling.dds"/>
+        <Hotkey value="Button/Hotkey/BanelingUCB"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="Baneling"/>
     </CButton>
     <CButton id="BanelingBurrowMove">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="BanelingFromZerglingBurrowed">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BattlecruiserWeaponsIgnoreArmor">
@@ -141,8 +142,12 @@
     <CButton id="BridgeRetract">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="BroodLord">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
+    <CButton id="BroodLordUCB">
+        <Icon value="Assets\Textures\btn-unit-zerg-broodlord.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-broodlord.dds"/>
+        <Hotkey value="Button/Hotkey/BroodLordUCB"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="BroodLord"/>
     </CButton>
     <CButton id="BuildingShield">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -311,9 +316,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="CommanderTraitVorazunSOASummonShadowGuard">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="CommanderTraitZagaraBanelingBarrage">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="CommanderTraitZagaraMassFrenzy">
@@ -625,9 +627,6 @@
     <CButton id="LightofAiur">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Load">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="LoadDigester">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -649,8 +648,12 @@
     <CButton id="LurkerHoldFire">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="LurkerMP">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
+    <CButton id="LurkerMPUCB" parent="LurkerMP">
+        <Name value="Button/Name/LurkerMPUCB"/>
+        <Tooltip value="Button/Tooltip/LurkerMPUCB"/>
+        <AlertName value="Button/Name/LurkerMPUCB"/>
+        <AlertTooltip value="Button/Tooltip/LurkerMPUCB"/>
+        <Hotkey value="Button/Hotkey/LurkerMPUCB"/>
     </CButton>
     <CButton id="LurkerMPFromHydraliskBurrowed">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -698,12 +701,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="MorphBackToGateway">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="MorphToDevourerMP">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="MorphToGuardianMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="MorphToMothership">
@@ -792,12 +789,6 @@
     <CButton id="NydusCanal">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="NydusCanalLoad">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="NydusCanalUnloadAll">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="ObeliskMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -855,12 +846,26 @@
         <Hotkey value="Button/Hotkey/AutoWallToggleUCB"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
+    <CButton id="RavagerUCB">
+        <Icon value="Assets\Textures\btn-unit-zerg-ravager.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-ravager.dds"/>
+        <Hotkey value="Button/Hotkey/RavagerUCB"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="Ravager"/>
+    </CButton>
     <CButton id="ScanUCB">
         <Icon value="Assets\Textures\btn-ability-terran-scannersweep-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-terran-scannersweep-color.dds"/>
         <Hotkey value="Button/Hotkey/ScanUCB"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Scan"/>
+    </CButton>
+    <CButton id="SummonNydusWormUCB">
+        <Icon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
+        <Hotkey value="Button/Hotkey/SummonNydusWormUCB"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="SummonNydusWorm"/>
     </CButton>
     <CButton id="SupplyDropUCB">
         <Icon value="Assets\Textures\BTN-Ability-Terran-CalldownExtraSupplies-color.dds"/>
@@ -1049,9 +1054,7 @@
     <CButton id="RapidRegeneration">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Ravager">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
+    <CButton id="Ravager"/>
     <CButton id="RavagerCorrosiveBile">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -1235,16 +1238,10 @@
     <CButton id="StopRedirect">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="StopRoachBurrowed">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="StopSpecial">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SummonNydusCanalCreeper">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="SummonNydusWorm">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SupplyDepot"/>

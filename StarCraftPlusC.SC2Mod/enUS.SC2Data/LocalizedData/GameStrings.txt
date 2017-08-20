@@ -36,6 +36,8 @@ Button/Name/AutoRaise=Auto Raise
 Button/Name/AutoWallLowerUCB=Auto Wall Lower
 Button/Name/AutoWallRaiseUCB=Auto Wall Raise
 Button/Name/AutoWallToggleUCB=Auto Wall Toggle
+Button/Name/BanelingUCB=Morph to Baneling
+Button/Name/BroodLordUCB=Morph to Brood Lord
 Button/Name/CalldownMULEUCB=Calldown: MULE
 Button/Name/CloakOffBanshee=Decloak
 Button/Name/CreepTumorEnhancedCreepGrowthAura=Metastatic Aura
@@ -44,12 +46,15 @@ Button/Name/GlobalRallyBarracks=Global Rally Barracks
 Button/Name/GlobalRallyFactory=Global Rally Factory
 Button/Name/GlobalRallyHatchery=Global Rally Hatchery
 Button/Name/GlobalRallyStarport=Global Rally Starport
+Button/Name/LurkerMPUCB=Morph to Lurker
 Button/Name/MorphToOverseerUBC=Morph to Overseer
 Button/Name/MorphtoOverlordTransportUBC=Mutate Ventral Sacs
 Button/Name/NukeArmUCB=Arm Silo with Nuke
 Button/Name/OverlordEnhancedCreepGrowthAura=Metastatic Aura
+Button/Name/RavagerUCB=Morph to Ravager
 Button/Name/ResearchComplete=
 Button/Name/ScanUCB=Scanner Sweep
+Button/Name/SummonNydusWormUCB=Summon Nydus Worm
 Button/Name/SupplyDepot=Build Auto Wall
 Button/Name/SupplyDropUCB=Calldown: Extra Supplies
 Button/Name/UCBOrbitalCommand=Upgrade to Orbital Command
@@ -60,6 +65,8 @@ Button/Tooltip/AutoRaise=Automatically raise the structure when none of your uni
 Button/Tooltip/AutoWallLowerUCB=Lowers all auto walls, allowing ground units to move across them.
 Button/Tooltip/AutoWallRaiseUCB=Raises all auto walls, preventing ground units from moving across them.
 Button/Tooltip/AutoWallToggleUCB=Sets the toggle state for all auto walls.
+Button/Tooltip/BanelingUCB=Suicide unit. Does damage over a small area on death. <n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/BroodLordUCB=Flying heavy-assault unit. Shoots Broodlings at its target. A Broodling is a small creature that can attack ground units.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/CalldownMULEUCB=Drops an experimental robotic MULE miner onto the target Mineral Field. MULEs collect minerals more quickly than SCVs.  <n/><n/>MULEs last <d time="90"/> before their systems fail.
 Button/Tooltip/CloakOffBanshee=Decloaks the selected unit, making it visible to enemies.
 Button/Tooltip/CreepTumorEnhancedCreepGrowthAura=Spreading creep 50% faster.
@@ -67,11 +74,14 @@ Button/Tooltip/GlobalRallyBarracks=Global Rally Barracks (<c val="FFFFFF">F3</c>
 Button/Tooltip/GlobalRallyFactory=
 Button/Tooltip/GlobalRallyHatchery=Global Rally Barracks (<c val="FFFFFF">F3</c>)
 Button/Tooltip/GlobalRallyStarport=
+Button/Tooltip/LurkerMPUCB=Anti-ground ambusher. Has a spine attack that damages all enemy units in its line of fire.<n/><n/><c val="ffff8a">Can attack ground units.<n/>Must burrow to attack.</c>
 Button/Tooltip/MorphToOverseerUBC=Advanced aerial observer. Provides the same supply as an Overlord. Can use the Spawn Changeling and Contaminate abilities.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/MorphtoOverlordTransportUBC=Enables the Overlord to transport units.
 Button/Tooltip/NukeArmUCB=Arms the Silo with a Tactical Nuke.<n/><n/>Nukes take <d time="20"/> to land, but they deal up to 300 (+200 vs. structures) damage in a large radius.<n/><n/>Use a Ghost to designate the target.
 Button/Tooltip/OverlordEnhancedCreepGrowthAura=Nearby creep tumors spread 50% faster.
+Button/Tooltip/RavagerUCB=Ranged artillery. Can use Corrosive Bile.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/ScanUCB=Reveals an area of the map, detecting cloaked and burrowed units. Lasts <d time="12"/>.
+Button/Tooltip/SummonNydusWormUCB=Summons a Nydus Worm at the target location.<n/>Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/SupplyDepot=Fortified Walls.<n/><n/>Auto Walls automatically lower to allow your units to walk over them.
 Button/Tooltip/SupplyDepotConstructor=Provides supply.<n/>Supply allows you to create more units.<n/>Supply Depots can be lowered to allow units to walk over them.
 Button/Tooltip/SupplyDropUCB=Drops additional supplies, permanently increasing the supply output of the target Supply Depot by <d ref="Behavior,SupplyDrop,Modification.Food"/>.
