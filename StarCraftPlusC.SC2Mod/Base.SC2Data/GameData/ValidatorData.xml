@@ -65,6 +65,9 @@
     <CValidatorUnitCompareOrderCount id="CommandCenterNotMorphingOC">
         <AbilLink value="UpgradeToOrbital"/>
     </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="BarracksNotTraining">
+        <AbilLink value="BarracksTrain"/>
+    </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareBehaviorCount id="HasEnhancedCreepGrowth">
         <Value value="1"/>
         <Behavior value="CreepTumorEnhancedCreepGrowth"/>

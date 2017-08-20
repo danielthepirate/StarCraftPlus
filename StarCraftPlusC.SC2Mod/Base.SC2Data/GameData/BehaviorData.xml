@@ -123,17 +123,36 @@
         <Duration value="17"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameHookBarracksStatusUpdate">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="GameHookBarracksStatusUpdate"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBCommandCenterChargeLink">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InitialEffect value="GameUCBCommandCenterChargeAdd"/>
         <FinalEffect value="GameUCBCommandCenterChargeRemove"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBCommandCenterChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBCommandCenterChargeRemove"/>
+        <FinalEffect value="GameUCBCommandCenterChargeAdd"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBGhostAcademyChargeLink">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InitialEffect value="GameUCBGhostAcademyChargeAdd"/>
         <FinalEffect value="GameUCBGhostAcademyChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGhostAcademyChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBGhostAcademyChargeRemove"/>
+        <FinalEffect value="GameUCBGhostAcademyChargeAdd"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBGlobalRally00ChargeLink">
         <InfoFlags index="Hidden" value="1"/>

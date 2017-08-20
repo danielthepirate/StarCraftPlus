@@ -5,6 +5,59 @@
     <Constant name="ColorTerran" val="155,255,190"/>
     <Constant name="ColorZerg" val="245,140,70"/>
 	
+	
+	<Animation name="BoopTemplate">
+		<!-- <Event event="OnShown" frame="Icon" action="Reset,Play"/> -->
+		<Event event="OnShown" frame="Icon" action="Reset,DirectionForward,Play"/>
+		<Event event="EventShow" frame="Icon" action="Reset,DirectionForward,Play"/>
+		
+        <Controller type="Fade" end="Pause">
+            <Key type="Curve" time="0.00" value="0" out="Slow"/>
+            <Key type="Curve" time="0.20" value="255" in="Slow"/>
+        </Controller>
+        <Controller type="Dimension" frame="IconBG" dimension="Width" relative="False" percentage="True" end="Pause" >
+            <Key type="Curve" time="0.00" value="40"/>
+            <Key type="Curve" time="0.20" value="120"/>
+            <Key type="Curve" time="0.25" value="100"/>
+        </Controller>
+        <Controller type="Dimension" frame="IconBG" dimension="Height" relative="False" percentage="True" end="Pause" >
+            <Key type="Curve" time="0.00" value="40"/>
+            <Key type="Curve" time="0.20" value="120"/>
+            <Key type="Curve" time="0.25" value="100"/>
+        </Controller>
+    </Animation>
+	
+	<Animation name="BoopOutTemplate">
+		<Event event="EventHide" frame="Icon" action="Reset,Play"/>
+		
+        <Controller type="Fade" end="Pause">
+            <Key type="Curve" time="0.0" value="255" out="Slow"/>
+            <Key type="Curve" time="0.1" value="0" in="Slow"/>
+        </Controller>
+    </Animation>
+	
+	<!-- <Animation name="BoopTemplate"> -->
+		<!-- <Event event="OnShown" frame="Icon" action="Reset,Play"/> -->
+		<!-- <Event event="OnShown" frame="Icon" action="DirectionForward,Play"/> -->
+		<!-- <Event event="EventHide" frame="Icon" action="DirectionReverse,Play"/> -->
+		
+        <!-- <Controller type="Fade" frame="IconBG" end="Pause"> -->
+            <!-- <Key type="Curve" time="0.00" value="0" out="Slow"/> -->
+            <!-- <Key type="Curve" time="0.20" value="255" in="Slow"/> -->
+        <!-- </Controller> -->
+        <!-- <Controller type="Dimension" frame="IconBG" dimension="Width" relative="False" percentage="True" end="Pause" > -->
+            <!-- <Key type="Curve" time="0.00" value="40"/> -->
+            <!-- <Key type="Curve" time="0.20" value="120"/> -->
+            <!-- <Key type="Curve" time="0.25" value="100"/> -->
+        <!-- </Controller> -->
+        <!-- <Controller type="Dimension" frame="IconBG" dimension="Height" relative="False" percentage="True" end="Pause" > -->
+            <!-- <Key type="Curve" time="0.00" value="40"/> -->
+            <!-- <Key type="Curve" time="0.20" value="120"/> -->
+            <!-- <Key type="Curve" time="0.25" value="100"/> -->
+        <!-- </Controller> -->
+    <!-- </Animation> -->
+	
+	
 	<Frame type="Frame" name="AttentionEffectTemplate">
 		<Anchor relative="$parent/IconBG"/>
 		<Visible val="{$parent/IconBG/@Visible}"/>
@@ -81,18 +134,21 @@
 		</Frame>
     </Frame>
 	
-	
-	
     <Frame type="Frame" name="UnitIconTemplate">
         <Height val="60"/>
         <Width val="60"/>
+		<Visible val="true"/>
+		<Alpha val="0"/>
 		
         <Frame type="Image" name="IconBG">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-            <Height val="60"/>
-            <Width val="60"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+			<Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <!-- <Height val="60"/> -->
+            <!-- <Width val="60"/> -->
 			<Texture val="@UI/StatusProductionBG"/>
+			<Visible val="false"/>
         </Frame>
 
         <Frame type="Image" name="Icon">
@@ -100,7 +156,9 @@
             <Anchor side="Left" relative="$parent/IconBG" pos="0%" offset="0"/>
 			<Anchor side="Bottom" relative="$parent/IconBG" pos="100%" offset="0"/>
             <Anchor side="Right" relative="$parent/IconBG" pos="100%" offset="0"/>
+			<Visible val="false"/>
         </Frame>
+		
 		
 		<Frame type="Frame" name="AttentionEffect" template="ProductionStatusBars/AttentionEffectTemplate"/>
     </Frame>
@@ -121,16 +179,24 @@
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
             <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+			
+			<Animation name="Boop" template="ProductionStatusBars/BoopTemplate"/>
+			<Animation name="BoopOut" template="ProductionStatusBars/BoopOutTemplate"/>
         </Frame>
 
         <Frame type="Frame" name="StatusIcon2" template="ProductionStatusBars/UnitIconTemplate">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+			
+			<Animation name="BoopOut" template="ProductionStatusBars/BoopOutTemplate"/>
         </Frame>
 
         <Frame type="Frame" name="StatusIcon3" template="ProductionStatusBars/UnitIconTemplate">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+			
+			<Animation name="Boop" template="ProductionStatusBars/BoopTemplate"/>
+			<Animation name="BoopOut" template="ProductionStatusBars/BoopOutTemplate"/>
         </Frame>
 		
 		<StateGroup name="RaceState">

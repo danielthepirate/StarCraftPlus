@@ -56,6 +56,7 @@
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBCommandCenterChargeLink"/>
+        <BehaviorArray Link="GameUCBCommandCenterChargeLinkConstructing"/>
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="2"/>
             <LayoutButtons index="12" Row="0" Column="2"/>
@@ -230,6 +231,7 @@
             <LayoutButtons index="5" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="0" Column="2"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGhostAcademyChargeLink"/>
+        <BehaviorArray Link="GameUCBGhostAcademyChargeLinkConstructing"/>
     </CUnit>
     <CUnit id="GreaterSpire">
         <Food value="10"/>

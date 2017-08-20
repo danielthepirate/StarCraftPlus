@@ -160,12 +160,11 @@
     <CActorUnit id="GhostAcademy">
         <AcceptedTransfers index="Animator" value="1"/>
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
-        <CustomUnitStatusOffset value="0,85"/>
+        <CustomUnitStatusOffset value="0,125"/>
         <CustomUnitStatusAttachment value="Ref_Origin"/>
     </CActorUnit>
     <CActorUnit id="GhostAcademyPaused" parent="GhostAcademy">
         <Remove Send="Create"/>
-        <CustomUnitStatusOffset value="0,0"/>
         <HighlightTooltip value="Unit/Name/GhostAcademyPaused"/>
         <StatusColors index="Progress">
             <ColorArray index="0" value="255,255,200,0"/>
@@ -240,11 +239,14 @@
     </CActorUnit>
     <CActorUnit id="RefineryPaused" parent="Refinery">
         <Remove Send="Create"/>
-        <HighlightTooltip value="Unit/Name/RefineryPaused"/>
         <StatusColors index="Progress">
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
     </CActorUnit>
+    <CActorEventMacroRunnable id="RunnableClearAnimations">
+        <EditorCategories value=""/>
+        <Do Target="_Unit" Send="AnimClearAllBut Birth"/>
+    </CActorEventMacroRunnable>
     <CActorEventMacroRunnable id="RunnableStatusBarPause">
         <EditorCategories value=""/>
         <Do Send="AnimHookSet HookedBaseline ::Creator ::Baseline"/>
@@ -711,6 +713,18 @@
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
     </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Construction                                                                            -->
+    <!--                                                                                         -->
+    <CActorProgress id="TerranConstruction">
+        <StageArray AnimProps="Stand,00"/>
+    </CActorProgress>
+    <CActorProgress id="TerranConstructionAttached">
+        <StageArray/>
+    </CActorProgress>
+    <CActorProgress id="TerranConstructionAttachedSmall">
+        <StageArray/>
+    </CActorProgress>
     <CActorRange id="UnpoweredVisualLowNearNexus">
         <Behavior value="PowerSourceFast2"/>
         <Icon value="Assets\Textures\PylonLowRingSplatGrey.dds"/>

@@ -186,6 +186,9 @@
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="GameHookBarracksStatusUpdate">
+        <EditorCategories value=""/>
+    </CEffectDamage>
     <CEffectEnumArea id="GameMineralsNearTownHallSearch">
         <EditorCategories value=""/>
         <SearchFilters value="HarvestableResource;Player,Ally,Enemy,Missile,Dead,Hidden"/>
@@ -215,6 +218,11 @@
         <Resources index="Terrazine" value="7"/>
         <ResourcesCollected index="Terrazine" value="7"/>
     </CEffectModifyPlayer>
+    <CEffectSet id="GameUCBChargeLinkCommandCenterRemove">
+        <EditorCategories value=""/>
+        <EffectArray value="GameUCBCommandCenterChargeRemove"/>
+        <EffectArray value="GameUCBChargeLinkCommandCenterConstructing"/>
+    </CEffectSet>
     <CEffectModifyPlayer id="GameUCBCommandCenterChargeAdd">
         <EditorCategories value=""/>
         <Cost>
@@ -328,7 +336,13 @@
     <CEffectApplyBehavior id="GameUCBOrbitalCommandEnergy50GE">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBChargeLinkCommandCenter">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBOrbitalCommandEnergy50LT">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBChargeLinkCommandCenterConstructing">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
     <CEffectSet id="GlobalRallyTarget01Set">
