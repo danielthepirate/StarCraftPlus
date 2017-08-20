@@ -90,9 +90,37 @@
     </CUnit>
     <CUnit id="Drone">
         <CostResource index="Minerals" value="0"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Row="2"/>
+            <LayoutButtons index="6">
+                <Face value="ZergBuild"/>
+                <Type value="Submenu"/>
+                <AbilCmd value="255,255"/>
+                <SubmenuCardId value="ZBl1"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="7">
+                <Face value="ZergBuildAdvanced"/>
+                <Type value="Submenu"/>
+                <AbilCmd value="255,255"/>
+                <SubmenuCardId value="ZBl2"/>
+                <Row value="1"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="8" Column="2"/>
+            <LayoutButtons index="9" Row="2"/>
+        </CardLayouts>
+        <CardLayouts index="1" CardId="ZBl1">
+            <LayoutButtons index="7" Face="SpineCrawler" Type="AbilCmd" AbilCmd="ZergBuild,Build15" Row="0" Column="3"/>
+            <LayoutButtons index="8" Face="SporeCrawler" Type="AbilCmd" AbilCmd="ZergBuild,Build16" Row="0" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="DroneBurrowed">
         <CostResource index="Minerals" value="0"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="EngineeringBay">
         <CardLayouts index="0">
@@ -154,6 +182,31 @@
         <FlagArray index="CameraFollow" value="0"/>
         <PlacementFootprint value="CreepTumorQueen"/>
         <EditorCategories value=""/>
+    </CUnit>
+    <CUnit id="GameGlobalRallyCasterZerg" parent="SIDEBARCASTER_BASE">
+        <Race value="Zerg"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="NoDraw" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="ShowResources" value="0"/>
+        <FlagArray index="PlayerRevivable" value="0"/>
+        <FlagArray index="CameraFollow" value="0"/>
+        <AbilArray index="0" Link="GameGlobalRallyTarget00"/>
+        <AbilArray index="1" Link="GameGlobalRallyTarget01"/>
+        <AbilArray index="2" Link="GameGlobalRallyTarget02"/>
+        <AbilArray index="3" removed="1"/>
+        <WeaponArray index="0" Link=""/>
+        <CardLayouts>
+            <LayoutButtons Face="GlobalRallyBarracks" Type="AbilCmd" AbilCmd="GameGlobalRallyTarget00,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Cancel" Type="CancelTargetMode" Row="0" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="GameGlobalRallyTarget00" parent="SIDEBARCASTER_BASE">
         <Race value="Terr"/>
@@ -239,10 +292,12 @@
     <CUnit id="Hatchery">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
+        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
     </CUnit>
     <CUnit id="Hive">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
+        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
     </CUnit>
     <CUnit id="HydraliskDen">
         <Food value="10"/>
@@ -253,6 +308,37 @@
     <CUnit id="Lair">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
+        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+    </CUnit>
+    <CUnit id="Larva">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="Cancel" AbilCmd="que1,CancelLast" Row="2" Column="4"/>
+            <LayoutButtons index="1" removed="1"/>
+            <LayoutButtons index="2" removed="1"/>
+            <LayoutButtons index="3" removed="1"/>
+            <LayoutButtons index="4" removed="1"/>
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
+            <LayoutButtons index="9" removed="1"/>
+            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="11" removed="1"/>
+            <LayoutButtons index="12" removed="1"/>
+        </CardLayouts>
+        <CardLayouts CardId="0002">
+            <LayoutButtons Face="Drone" Type="AbilCmd" AbilCmd="LarvaTrain,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="Overlord" Type="AbilCmd" AbilCmd="LarvaTrain,Train3" Row="0" Column="1"/>
+            <LayoutButtons Face="Zergling" Type="AbilCmd" AbilCmd="LarvaTrain,Train2" Row="0" Column="2"/>
+            <LayoutButtons Face="Roach" Type="AbilCmd" AbilCmd="LarvaTrain,Train10" Row="0" Column="3"/>
+            <LayoutButtons Face="Hydralisk" Type="AbilCmd" AbilCmd="LarvaTrain,Train4" Row="0" Column="4"/>
+            <LayoutButtons Face="Mutalisk" Type="AbilCmd" AbilCmd="LarvaTrain,Train5" Row="1" Column="0"/>
+            <LayoutButtons Face="Corruptor" Type="AbilCmd" AbilCmd="LarvaTrain,Train12" Row="1" Column="1"/>
+            <LayoutButtons Face="Infestor" Type="AbilCmd" AbilCmd="LarvaTrain,Train11" Row="1" Column="2"/>
+            <LayoutButtons Face="Ultralisk" Type="AbilCmd" AbilCmd="LarvaTrain,Train7" Row="1" Column="3"/>
+            <LayoutButtons Face="Viper" Type="AbilCmd" AbilCmd="LarvaTrain,Train13" Row="1" Column="4"/>
+            <LayoutButtons Face="SwarmHostMP" Type="AbilCmd" AbilCmd="LarvaTrain,Train15" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Liberator">
         <CardLayouts index="0">
@@ -306,6 +392,9 @@
         <Sight value="13"/>
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
         <CardLayouts index="0">
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="8" Column="0"/>
+            <LayoutButtons index="9" Face="StopGenerateCreep" AbilCmd="GenerateCreep,Off" Column="0"/>
             <LayoutButtons>
                 <Face value="OverlordEnhancedCreepGrowthAura"/>
                 <Type value="Passive"/>
@@ -317,8 +406,8 @@
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="1"/>
-                <Column value="0"/>
+                <Row value="2"/>
+                <Column value="3"/>
             </LayoutButtons>
         </CardLayouts>
     </CUnit>
@@ -331,7 +420,8 @@
         <Sight value="13"/>
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="OverlordEnhancedCreepGrowthAura" Type="Passive" Behavior="OverlordEnhancedCreepGrowthAura" Row="1" Column="0"/>
+            <LayoutButtons index="7" Column="2"/>
+            <LayoutButtons Face="OverlordEnhancedCreepGrowthAura" Type="Passive" Behavior="OverlordEnhancedCreepGrowthAura" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="PlanetaryFortress">
@@ -359,6 +449,18 @@
         <BehaviorArray Link="IsWarpGateNearby"/>
         <Food value="0"/>
         <CostResource index="Minerals" value="50"/>
+    </CUnit>
+    <CUnit id="Queen">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="7" Column="1"/>
+            <LayoutButtons index="8" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="QueenBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="RoachWarren">
         <Food value="10"/>
@@ -489,6 +591,36 @@
             <LayoutButtons index="3" Face="NukeArmUCB" Type="AbilCmd" AbilCmd="MorphDummyTrainNukeUCB,Execute" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="SdbZTrain1">
+        <AbilArray index="10" Link="MorphToTransportOverlord"/>
+        <AbilArray index="11" removed="1"/>
+        <AbilArray index="12" removed="1"/>
+        <CardLayouts index="0">
+            <!-- <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="0" Column="0"/> -->
+            <LayoutButtons index="0" Face="Drone" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train1" Row="0" Column="0"/>
+            <LayoutButtons index="1" Face="Overlord" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train3" Row="0" Column="1"/>
+            <LayoutButtons index="2" Face="Queen" Type="AbilCmd" AbilCmd="TrainQueen,Train1" Row="0" Column="2"/>
+            <LayoutButtons index="3" Face="Mutalisk" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train5" Row="1" Column="1"/>
+            <LayoutButtons index="4" Face="Zergling" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train2" Row="0" Column="3"/>
+            <LayoutButtons index="5" Face="Infestor" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train11" Row="1" Column="3"/>
+            <LayoutButtons index="6" Face="Roach" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train10" Row="0" Column="4"/>
+            <LayoutButtons index="7" Face="SwarmHostMP" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train15" Row="2" Column="1"/>
+            <LayoutButtons index="8" Face="Hydralisk" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train4" Row="1" Column="0"/>
+            <LayoutButtons index="9" Face="Viper" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train13" Row="2" Column="0"/>
+            <LayoutButtons index="10" Face="Corruptor" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train12" Row="1" Column="2"/>
+            <LayoutButtons index="11" Face="Ultralisk" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train7" Row="1" Column="4"/>
+            <LayoutButtons index="12" Face="MorphtoOverlordTransport" Type="AbilCmd" AbilCmd="MorphToTransportOverlord,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SdbZTrain2">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="Ravager" Type="AbilCmd" AbilCmd="MorphToRavager,Execute" Row="0" Column="0"/>
+            <LayoutButtons index="1" Face="LurkerMP" Type="AbilCmd" AbilCmd="MorphToLurker,Execute" Row="0" Column="1"/>
+            <LayoutButtons index="2" Face="BroodLord" Type="AbilCmd" AbilCmd="MorphToBroodLord,Execute" Row="0" Column="2"/>
+            <LayoutButtons index="3" Face="SummonNydusWorm" Type="AbilCmd" AbilCmd="BuildNydusCanal,Build1" Row="0" Column="3"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SensorTower">
         <CardLayouts index="0">
             <LayoutButtons index="0" Row="2"/>
@@ -526,7 +658,10 @@
         <Sight value="13"/>
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="OverlordEnhancedCreepGrowthAura" Type="Passive" Behavior="OverlordEnhancedCreepGrowthAura" Row="1" Column="0"/>
+            <LayoutButtons index="6" Face="MorphToOverseer" Type="AbilCmd" AbilCmd="MorphToOverseer,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="8" Face="GenerateCreep" Type="AbilCmd" AbilCmd="GenerateCreep,On" Row="2" Column="0"/>
+            <LayoutButtons index="11" Face="StopGenerateCreep" Type="AbilCmd" AbilCmd="GenerateCreep,Off" Row="2" Column="0"/>
+            <LayoutButtons Face="OverlordEnhancedCreepGrowthAura" Type="Passive" Behavior="OverlordEnhancedCreepGrowthAura" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="StarportTechLab">

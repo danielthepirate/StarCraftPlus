@@ -64,7 +64,7 @@ bool libWCSP_gf_LabelsUnitUsesCustomStatusBar (unit lp_unit) {
     // Variable Initialization
 
     // Implementation
-    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor"))) {
+    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "Egg") || (UnitGetType(lp_unit) == "Larva"))) {
         lv_boolean = true;
     }
     else {
@@ -712,10 +712,6 @@ bool libWCSP_gt_LabelsUnitCreatedPIR_Func (bool testConds, bool runActions) {
     libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\blank.dds", PlayerGroupAll());
     DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
     libNtve_gf_SaveDataTableValueDialogItem(true, ("Icon1-" + IntToString(UnitGetTag(lv_unit))), DialogControlLastCreated());
-    if ((UnitGetType(lv_unit) == "Larva")) {
-        DialogControlSetPosition(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(UnitGetTag(lv_unit)))), PlayerGroupAll(), c_anchorTopLeft, FixedToInt((((libWCSP_gv_labels.lv_iconSizeEgg * 1.2) / 6.0) / 2.0)), FixedToInt((((libWCSP_gv_labels.lv_iconSizeEgg * 1.2) / 6.0) / 2.0)));
-    }
-
     DialogControlHookupUnitStatus(c_triggerControlTypeImage, "StatusIcon2\\Icon", lv_unit);
     libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\blank.dds", PlayerGroupAll());
     DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
@@ -758,6 +754,10 @@ bool libWCSP_gt_LabelsUnitTrainingStartedPIR_Func (bool testConds, bool runActio
 
     // Conditions
     if (testConds) {
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(lv_unit) == true))) {
+            return false;
+        }
+
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
             return false;
         }
@@ -844,6 +844,10 @@ bool libWCSP_gt_LabelsUnitTrainingStoppedPIR_Func (bool testConds, bool runActio
 
     // Conditions
     if (testConds) {
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(lv_unit) == true))) {
+            return false;
+        }
+
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
             return false;
         }
@@ -924,89 +928,9 @@ void libWCSP_gt_LabelsUnitTrainingStoppedPIR_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Labels - Research Started PIR
+// Trigger: Labels - Unit Training Reactor Destroyed PIR
 //--------------------------------------------------------------------------------------------------
-bool libWCSP_gt_LabelsResearchStartedPIR_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_player;
-    int lv_unitTag;
-    string lv_research;
-    playergroup lv_playerGroup;
-
-    // Variable Initialization
-    lv_player = EventPlayer();
-    lv_unitTag = UnitGetTag(EventUnit());
-    lv_research = libNtve_gf_TriggeringProgressUpgrade();
-    lv_playerGroup = PlayerGroupSingle(lv_player);
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
-    libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogUpgrade, lv_research, "Icon", c_playerAny)), PlayerGroupAll());
-    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libWCSP_gt_LabelsResearchStartedPIR_Init () {
-    libWCSP_gt_LabelsResearchStartedPIR = TriggerCreate("libWCSP_gt_LabelsResearchStartedPIR_Func");
-    TriggerAddEventUnitResearchProgress(libWCSP_gt_LabelsResearchStartedPIR, null, c_unitProgressStageStart);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Labels - Research Stopped PIR
-//--------------------------------------------------------------------------------------------------
-bool libWCSP_gt_LabelsResearchStoppedPIR_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_player;
-    unit lv_unit;
-    int lv_unitTag;
-    playergroup lv_playerGroup;
-
-    // Variable Initialization
-    lv_player = EventPlayer();
-    lv_unit = EventUnit();
-    lv_unitTag = UnitGetTag(lv_unit);
-    lv_playerGroup = PlayerGroupSingle(lv_player);
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
-    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libWCSP_gt_LabelsResearchStoppedPIR_Init () {
-    libWCSP_gt_LabelsResearchStoppedPIR = TriggerCreate("libWCSP_gt_LabelsResearchStoppedPIR_Func");
-    TriggerAddEventUnitResearchProgress(libWCSP_gt_LabelsResearchStoppedPIR, null, c_unitProgressStageCancel);
-    TriggerAddEventUnitResearchProgress(libWCSP_gt_LabelsResearchStoppedPIR, null, c_unitProgressStageComplete);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Labels - Reactor Destroyed PIR
-//--------------------------------------------------------------------------------------------------
-bool libWCSP_gt_LabelsReactorDestroyedPIR_Func (bool testConds, bool runActions) {
+bool libWCSP_gt_LabelsUnitTrainingReactorDestroyedPIR_Func (bool testConds, bool runActions) {
     unitgroup autoBA95298F_g;
     int autoBA95298F_u;
 
@@ -1061,9 +985,97 @@ bool libWCSP_gt_LabelsReactorDestroyedPIR_Func (bool testConds, bool runActions)
 }
 
 //--------------------------------------------------------------------------------------------------
-void libWCSP_gt_LabelsReactorDestroyedPIR_Init () {
-    libWCSP_gt_LabelsReactorDestroyedPIR = TriggerCreate("libWCSP_gt_LabelsReactorDestroyedPIR_Func");
-    TriggerAddEventUnitDied(libWCSP_gt_LabelsReactorDestroyedPIR, null);
+void libWCSP_gt_LabelsUnitTrainingReactorDestroyedPIR_Init () {
+    libWCSP_gt_LabelsUnitTrainingReactorDestroyedPIR = TriggerCreate("libWCSP_gt_LabelsUnitTrainingReactorDestroyedPIR_Func");
+    TriggerAddEventUnitDied(libWCSP_gt_LabelsUnitTrainingReactorDestroyedPIR, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Labels - Research Started PIR
+//--------------------------------------------------------------------------------------------------
+bool libWCSP_gt_LabelsResearchStartedPIR_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    int lv_unitTag;
+    string lv_research;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unitTag = UnitGetTag(EventUnit());
+    lv_research = libNtve_gf_TriggeringProgressUpgrade();
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnitProgressUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogUpgrade, lv_research, "Icon", c_playerAny)), PlayerGroupAll());
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCSP_gt_LabelsResearchStartedPIR_Init () {
+    libWCSP_gt_LabelsResearchStartedPIR = TriggerCreate("libWCSP_gt_LabelsResearchStartedPIR_Func");
+    TriggerAddEventUnitResearchProgress(libWCSP_gt_LabelsResearchStartedPIR, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Labels - Research Stopped PIR
+//--------------------------------------------------------------------------------------------------
+bool libWCSP_gt_LabelsResearchStoppedPIR_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_unit;
+    int lv_unitTag;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unit = EventUnit();
+    lv_unitTag = UnitGetTag(lv_unit);
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnitProgressUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCSP_gt_LabelsResearchStoppedPIR_Init () {
+    libWCSP_gt_LabelsResearchStoppedPIR = TriggerCreate("libWCSP_gt_LabelsResearchStoppedPIR_Func");
+    TriggerAddEventUnitResearchProgress(libWCSP_gt_LabelsResearchStoppedPIR, null, c_unitProgressStageCancel);
+    TriggerAddEventUnitResearchProgress(libWCSP_gt_LabelsResearchStoppedPIR, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1085,6 +1097,10 @@ bool libWCSP_gt_LabelsConstructionStartedPIR_Func (bool testConds, bool runActio
     // Conditions
     if (testConds) {
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnitProgressUnit()) == true))) {
             return false;
         }
     }
@@ -1125,6 +1141,10 @@ bool libWCSP_gt_LabelsConstructionStoppedPIR_Func (bool testConds, bool runActio
     // Conditions
     if (testConds) {
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnitProgressUnit()) == true))) {
             return false;
         }
     }
@@ -1168,6 +1188,10 @@ bool libWCSP_gt_LabelsMorphStartedPIR_Func (bool testConds, bool runActions) {
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
             return false;
         }
+
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnit()) == true))) {
+            return false;
+        }
     }
 
     // Actions
@@ -1209,6 +1233,10 @@ bool libWCSP_gt_LabelsMorphStoppedPIR_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnit()) == true))) {
             return false;
         }
     }
@@ -1497,9 +1525,9 @@ void libWCSP_InitTriggers () {
     libWCSP_gt_LabelsUnitCreatedPIR_Init();
     libWCSP_gt_LabelsUnitTrainingStartedPIR_Init();
     libWCSP_gt_LabelsUnitTrainingStoppedPIR_Init();
+    libWCSP_gt_LabelsUnitTrainingReactorDestroyedPIR_Init();
     libWCSP_gt_LabelsResearchStartedPIR_Init();
     libWCSP_gt_LabelsResearchStoppedPIR_Init();
-    libWCSP_gt_LabelsReactorDestroyedPIR_Init();
     libWCSP_gt_LabelsConstructionStartedPIR_Init();
     libWCSP_gt_LabelsConstructionStoppedPIR_Init();
     libWCSP_gt_LabelsMorphStartedPIR_Init();

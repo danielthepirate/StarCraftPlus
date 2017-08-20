@@ -42,7 +42,10 @@ Button/Name/CreepTumorEnhancedCreepGrowthAura=Metastatic Aura
 Button/Name/GlobalGridButton=GlobalGridButton
 Button/Name/GlobalRallyBarracks=Global Rally Barracks
 Button/Name/GlobalRallyFactory=Global Rally Factory
+Button/Name/GlobalRallyHatchery=Global Rally Hatchery
 Button/Name/GlobalRallyStarport=Global Rally Starport
+Button/Name/MorphToOverseerUBC=Morph to Overseer
+Button/Name/MorphtoOverlordTransportUBC=Mutate Ventral Sacs
 Button/Name/NukeArmUCB=Arm Silo with Nuke
 Button/Name/OverlordEnhancedCreepGrowthAura=Metastatic Aura
 Button/Name/ResearchComplete=
@@ -62,7 +65,10 @@ Button/Tooltip/CloakOffBanshee=Decloaks the selected unit, making it visible to 
 Button/Tooltip/CreepTumorEnhancedCreepGrowthAura=Spreading creep 50% faster.
 Button/Tooltip/GlobalRallyBarracks=Global Rally Barracks (<c val="FFFFFF">F3</c>)
 Button/Tooltip/GlobalRallyFactory=
+Button/Tooltip/GlobalRallyHatchery=Global Rally Barracks (<c val="FFFFFF">F3</c>)
 Button/Tooltip/GlobalRallyStarport=
+Button/Tooltip/MorphToOverseerUBC=Advanced aerial observer. Provides the same supply as an Overlord. Can use the Spawn Changeling and Contaminate abilities.<n/><n/><c val="FFE303">Detector</c>
+Button/Tooltip/MorphtoOverlordTransportUBC=Enables the Overlord to transport units.
 Button/Tooltip/NukeArmUCB=Arms the Silo with a Tactical Nuke.<n/><n/>Nukes take <d time="20"/> to land, but they deal up to 300 (+200 vs. structures) damage in a large radius.<n/><n/>Use a Ghost to designate the target.
 Button/Tooltip/OverlordEnhancedCreepGrowthAura=Nearby creep tumors spread 50% faster.
 Button/Tooltip/ScanUCB=Reveals an area of the map, detecting cloaked and burrowed units. Lasts <d time="12"/>.
@@ -278,6 +284,7 @@ Unit/Name/ArmoryPaused=Armory
 Unit/Name/BarracksPaused=Barracks
 Unit/Name/BunkerPaused=Bunker
 Unit/Name/CommandCenterPaused=Command Center
+Unit/Name/EggPaused=Zerg Cocoon
 Unit/Name/EngineeringBayPaused=Engineering Bay
 Unit/Name/FactoryPaused=Factory
 Unit/Name/FusionCorePaused=Fusion Core
@@ -286,6 +293,7 @@ Unit/Name/GameGlobalRallyTarget00=Game Global Rally Target 00
 Unit/Name/GameGlobalRallyTarget01=Game Global Rally Target 01
 Unit/Name/GameGlobalRallyTarget02=Game Global Rally Target 02
 Unit/Name/GhostAcademyPaused=Ghost Academy
+Unit/Name/LarvaPaused=Larva
 Unit/Name/MissileTurretPaused=Missile Turret
 Unit/Name/OrbitalCommandPaused=Orbital Command
 Unit/Name/PlanetaryFortressPaused=Planetary Fortress

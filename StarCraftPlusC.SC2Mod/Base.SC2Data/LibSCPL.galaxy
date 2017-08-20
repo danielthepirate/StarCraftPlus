@@ -230,7 +230,13 @@ void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType,
 
 void libSCPL_gf_InitializeGlobalRallyCaster (int lp_playerIndex) {
     // Implementation
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameGlobalRallyCaster", c_unitCreateIgnorePlacement, lp_playerIndex, Point(0.0, 0.0));
+    if ((PlayerRace(lp_playerIndex) == "Zerg")) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameGlobalRallyCasterZerg", c_unitCreateIgnorePlacement, lp_playerIndex, Point(0.0, 0.0));
+        PlayerAddChargeUsed(lp_playerIndex, "UCB/GlobalRally00", -1.0);
+    }
+    else if (true) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameGlobalRallyCaster", c_unitCreateIgnorePlacement, lp_playerIndex, Point(0.0, 0.0));
+    }
     libSCPL_gv_player[lp_playerIndex].lv_globalRallyCaster = UnitLastCreated();
     libNtve_gf_SetDialogItemUnitGroup(libSCPL_gv_uI.lv_consoleRallyCommandCard, libNtve_gf_ConvertUnitToUnitGroup(UnitLastCreated()), PlayerGroupSingle(lp_playerIndex));
 }
@@ -1611,7 +1617,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_PlayerResourcesReset(1);
+    PlayerAddChargeUsed(1, "UCB/GlobalRally00", 1.0);
     return true;
 }
 

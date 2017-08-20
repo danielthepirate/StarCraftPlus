@@ -133,7 +133,7 @@
         <EffectArray value="CreepTumorLaunchMissile"/>
     </CEffectSet>
     <CEffectCreatePersistent id="DebugEffectHook">
-        <ValidatorArray value="IsReturningResources"/>
+        <ValidatorArray value="IsReturningResourcesTerran"/>
         <ValidatorArray value="NotDead"/>
         <EditorCategories value=""/>
     </CEffectCreatePersistent>

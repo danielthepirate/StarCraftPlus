@@ -97,6 +97,7 @@
         <AlertIcon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="BuildCreepTumorPropagate"/>
+        <Hotkey value="Button/Hotkey/AutoCreepSpreadAutocastToggle"/>
     </CButton>
     <CButton id="AutoWallRaiseUCB">
         <Icon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
@@ -117,9 +118,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BanelingFromZerglingBurrowed">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="BanelingNest">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BattlecruiserWeaponsIgnoreArmor">
@@ -146,12 +144,6 @@
     <CButton id="BroodLord">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="BuildCreepTumor">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="BuildCreepTumorPropagate">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="BuildingShield">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -161,16 +153,10 @@
     <CButton id="BurrowChargeMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="BurrowDown">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="BurrowLurkerMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BurrowMove">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="BurrowUp">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BurrowedMove">
@@ -336,9 +322,6 @@
     <CButton id="CommanderTraitZagaraSpawnHunterKillers">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Contaminate">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="CorrosiveParasite">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -346,9 +329,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="CorruptionBomb">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Corruptor">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Corsair">
@@ -426,16 +406,10 @@
     <CButton id="DodgeDronePassive">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Drone">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="EnableBuildingAttack">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Ensnare">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="EvolutionChamber">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="EvolveAnabolicSynthesis2">
@@ -486,9 +460,6 @@
     <CButton id="ExplosiveShrapnelShells">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Extractor">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="EyeStalk">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -537,19 +508,21 @@
     <CButton id="GatherProt">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="GatherZerg">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="GenerateCreep">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="GlobalGridButton"/>
     <CButton id="GlobalRallyBarracks">
         <TooltipFlags index="ShowName" value="0"/>
         <TooltipFlags index="ShowHotkey" value="0"/>
-        <Icon value="Assets\Textures\ui_selectarmy_normalpressed_terran.dds"/>
+        <Icon value="Assets\Textures\btn-building-terran-barracks.dds"/>
         <Hotkey value="Button/Hotkey/GlobalRallyBarracks"/>
         <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="GlobalRallyHatchery">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowHotkey" value="0"/>
+        <Icon value="Assets\Textures\btn-building-zerg-hatchery.dds"/>
+        <Hotkey value="Button/Hotkey/GlobalRallyHatchery"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="GlobalRallyBarracks"/>
     </CButton>
     <CButton id="GlobalRallyFactory">
         <TooltipFlags index="ShowName" value="0"/>
@@ -589,9 +562,6 @@
     <CButton id="HardenedShield">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Hatchery">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="Herd">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -613,12 +583,6 @@
     <CButton id="HotSPreserverLineSplash">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Hydralisk">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="HydraliskDen">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="Immortal">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -634,13 +598,7 @@
     <CButton id="ImprovedEnergy">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="InfestationPit">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="InfestedTerrans">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Infestor">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Interceptor">
@@ -742,9 +700,6 @@
     <CButton id="MorphBackToGateway">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="MorphMorphalisk">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="MorphToDevourerMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -754,8 +709,11 @@
     <CButton id="MorphToMothership">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="MorphToOverseer">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
+    <CButton id="MorphToOverseerUBC">
+        <Icon value="Assets\Textures\btn-unit-zerg-overseer.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-overseer.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="MorphToOverseer"/>
     </CButton>
     <CButton id="MorphToSwarmHostBurrowedMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -766,8 +724,12 @@
     <CButton id="MorphtoLocustMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="MorphtoOverlordTransport">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
+    <CButton id="MorphtoOverlordTransport"/>
+    <CButton id="MorphtoOverlordTransportUBC">
+        <Icon value="Assets\Textures\btn-unit-zerg-overlordtransport.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-overlordtransport.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="MorphtoOverlordTransport"/>
     </CButton>
     <CButton id="Mothership">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -796,9 +758,6 @@
     <CButton id="MoveHoldPosition"/>
     <CButton id="MovePatrol"/>
     <CButton id="MuscularAugments">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Mutalisk">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="MutaliskRegeneration">
@@ -837,9 +796,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="NydusCanalUnloadAll">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="NydusNetwork">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ObeliskMP">
@@ -923,9 +879,6 @@
     <CButton id="Overcharge">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Overlord">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="OverlordEnhancedCreepGrowthAura">
         <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
     </CButton>
@@ -933,12 +886,6 @@
         <TooltipImage value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
-    </CButton>
-    <CButton id="OverlordTransportLoad">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="OverlordTransportUnload">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ParasiticBomb">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -1216,13 +1163,7 @@
     <CButton id="RipField">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Roach">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="RoachSupply">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="RoachWarren">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="RoboticsBay">
@@ -1261,31 +1202,16 @@
     <CButton id="SnipeDoT">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="SpawnChangeling">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="SpawningPool">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="SpectreMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SpectreShield">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="SpineCrawler">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="SpineCrawlerRoot">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SpineCrawlerUproot">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Spire">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="SporeCrawler">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SporeCrawlerRoot">
@@ -1301,9 +1227,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Stargate">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="StopGenerateCreep">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="StopPlanetaryFortress">
@@ -1332,9 +1255,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SwarmHostBurrowUp">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="SwarmHostMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="SwarmSeeds">
@@ -1385,9 +1305,6 @@
     <CButton id="TrainHERC">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="Transfusion">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="TransportMode">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -1395,12 +1312,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="TwilightCouncil">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Ultralisk">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="UltraliskCavern">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="UltraliskWeaponCooldown">
@@ -1414,9 +1325,6 @@
         <HotkeyAlias value="UpgradeToPlanetaryFortress"/>
     </CButton>
     <CButton id="UpgradeToWarpGate">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Viper">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ViperConsume">
@@ -1486,15 +1394,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ZealotHallucination">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ZergBuild">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="ZergBuildAdvanced">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="Zergling">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="hydraliskspeed">

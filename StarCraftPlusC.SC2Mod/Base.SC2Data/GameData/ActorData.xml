@@ -89,10 +89,21 @@
     <!--                                                                                         -->
     <CActorUnit id="Egg">
         <Aliases value="_Morph"/>
+        <AcceptedTransfers index="Animator" value="1"/>
         <On Terms="Signal.*.MorphCancel; ModelVariation 0" Send="Create EggsplosionGeneric0"/>
         <On Terms="Signal.*.MorphCancel; ModelVariation 1" Send="Create EggsplosionGeneric1"/>
         <On Terms="Signal.*.MorphCancel; ModelVariation 2" Send="Create EggsplosionGeneric2"/>
         <On Terms="Signal.*.MorphCancel" Send="Destroy"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="EggPaused" parent="Egg">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/EggPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
     </CActorUnit>
     <CActorUnit id="EngineeringBay">
         <AcceptedTransfers index="Animator" value="1"/>
@@ -157,6 +168,10 @@
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
     </CActorUnit>
+    <CActorUnit id="GameGlobalRallyCasterZerg" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyCasterZerg">
+        <BuildModel value="Invisible"/>
+        <PlacementModel value="Invisible"/>
+    </CActorUnit>
     <CActorUnit id="GhostAcademy">
         <AcceptedTransfers index="Animator" value="1"/>
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
@@ -169,6 +184,16 @@
         <StatusColors index="Progress">
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
+    </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Larva ................................................................................. -->
+    <!--                                                                                         -->
+    <CActorUnit id="Larva">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <On Terms="ActorCreation" Target="_Morph" Send="Signal MorphCancel"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
     </CActorUnit>
     <CActorEventMacro id="MacroStatusBarProgressPaused">
         <EditorCategories value=""/>
@@ -544,11 +569,12 @@
         <ModelFlags index="AllowHitTest" value="0"/>
         <ModelFlags index="UpdateVisibility" value="0"/>
     </CActorUnit>
-    <!--                                                                                         -->
-    <!-- Larva ................................................................................. -->
-    <!--                                                                                         -->
-    <CActorUnit id="Larva">
-        <On Terms="ActorCreation" Target="_Morph" Send="Signal MorphCancel"/>
+    <CActorUnit id="LarvaPaused" parent="Larva">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/LarvaPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
     </CActorUnit>
     <CActorPower id="PowerFast">
         <On index="0" removed="1"/>

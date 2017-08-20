@@ -88,6 +88,27 @@
     <CValidatorUnitType id="IsGlobalRallyTarget02">
         <Value value="GameGlobalRallyTarget02"/>
     </CValidatorUnitType>
+    <CValidatorCombine id="IsReturningResources">
+        <CombineArray value="IsReturningResourcesZerg"/>
+        <CombineArray value="IsReturningResourcesProtoss"/>
+        <CombineArray value="IsReturningResourcesTerran"/>
+        <CombineArray value="IsReturningResourcesTerranMULE"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrderQueue id="IsReturningResourcesTerranMULE">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="MULEGather"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitOrderQueue id="IsReturningResourcesZerg">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="DroneHarvest"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitOrderQueue id="IsReturningResourcesProtoss">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="ProbeHarvest"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitOrderQueue>
     <CValidatorUnitCompareBehaviorCount id="NoEnhancedCreepGrowth">
         <Behavior value="CreepTumorEnhancedCreepGrowth"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -139,7 +160,7 @@
         <Location value="Unit"/>
         <Ability value="CreepTumorBuild"/>
     </CValidatorUnitCompareChargeUsed>
-    <CValidatorUnitOrderQueue id="IsReturningResources">
+    <CValidatorUnitOrderQueue id="IsReturningResourcesTerran">
         <WhichUnit Value="Target"/>
         <AbilLink value="SCVHarvest"/>
         <AbilCmdIndex value="1"/>

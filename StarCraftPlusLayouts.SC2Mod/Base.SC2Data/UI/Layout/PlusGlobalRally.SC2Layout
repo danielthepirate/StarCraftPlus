@@ -47,8 +47,9 @@
 			<Anchor side="Top" relative="$parent/ArmyButton" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/ArmyButton" pos="Max" offset="-6"/>
 			<Anchor side="Bottom" relative="$parent/ArmyButton" pos="Max" offset="0"/>
-			<Anchor side="Right" relative="CommandButton02" pos="Max" offset="0"/>
+			<!-- <Anchor side="Right" relative="CommandButton02" pos="Max" offset="0"/> -->
 			<RenderPriority val="500"/>
+			<Width val="264"/>
 		
 			<Frame type="CommandButton" name="CommandButton00" template="PlusTemplates/RallyButtonTemplate">
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
@@ -104,6 +105,10 @@
 				</State>
 				<State name="Zerg">
 					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
+					<Action type="SetProperty" frame="CommandButton00" tooltip="Global Rally Hatchery (&lt;c val=&quot;FFFFFF&quot;&gt;F3&lt;/c&gt;)"/>
+					<Action type="SetAnchor" frame="$parent" side="Right" relative="CommandButton00" pos="Max" offset="0"/>
+					<Action type="ApplyTemplate" frame="CommandButton01" template="CommandSidebar/CommandButtonInvisible"/>
+					<Action type="ApplyTemplate" frame="CommandButton02" template="CommandSidebar/CommandButtonInvisible"/>
 				</State>
 			</StateGroup>
 			

@@ -20,4 +20,5 @@
 <Unit id="GameGlobalRallyTarget02"/>
 <Unit id="GameAutoCreepNodeTarget"/>
 <Unit id="GameGlobalRallyCaster"/>
+<Unit id="GameGlobalRallyCasterZerg"/>
 </Preload>
