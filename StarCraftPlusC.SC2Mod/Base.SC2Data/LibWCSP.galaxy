@@ -808,7 +808,6 @@ bool libWCSP_gt_LabelsUnitTrainingStartedPIR_Func (bool testConds, bool runActio
         DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon3-" + IntToString(lv_unitTag))), lv_playerGroup, true);
     }
     else {
-        DialogControlSendAnimationEvent(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, "EventShow");
         DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
         libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1"))), "UnitIcon", c_playerAny)), PlayerGroupAll());
         DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
@@ -871,9 +870,11 @@ bool libWCSP_gt_LabelsUnitTrainingStoppedPIR_Func (bool testConds, bool runActio
         return true;
     }
 
-    DialogControlSendAnimationEvent(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, "EventHide");
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
     if ((DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1")) == (lv_traineeType)) && (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2")) == "")) {
-        DialogControlSendAnimationEvent(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, "EventHide");
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
         DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
         DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
         DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
@@ -881,7 +882,8 @@ bool libWCSP_gt_LabelsUnitTrainingStoppedPIR_Func (bool testConds, bool runActio
         DataTableSetString(true, (IntToString(lv_unitTag) + "-slot1"), "");
     }
     else if ((DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2")) == (lv_traineeType)) && (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1")) == "")) {
-        DialogControlSendAnimationEvent(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, "EventHide");
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
         DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
         DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
         DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
