@@ -62,6 +62,7 @@ Actor/Name/GhostAcademyPaused=Ghost Academy Paused
 Actor/Name/LarvaPaused=Larva
 Actor/Name/MacroStatusBarProgressPaused=Macro Status Bar Progress Paused
 Actor/Name/MissileTurretPaused=Missile Turret Paused
+Actor/Name/NexusPaused=Nexus Paused
 Actor/Name/OrbitalCommandPaused=Orbital Command Paused
 Actor/Name/OverlordEnhancedCreepGrowthAuraRange=Overlord Enhanced Creep Growth Aura Range
 Actor/Name/PlanetaryFortressPaused=Planetary Fortress Paused

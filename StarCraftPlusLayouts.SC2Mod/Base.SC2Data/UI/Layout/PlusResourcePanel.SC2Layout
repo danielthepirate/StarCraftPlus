@@ -54,10 +54,10 @@
 			</Frame>
 				
 			<Frame type="Label" name="ResourceLabel3SpendAttention">
-				<Anchor side="Top" relative="$parent/ResourceLabel2Spend" pos="Min" offset="0"/>
-				<Anchor side="Left" relative="$parent/ResourceLabel2Spend" pos="Min" offset="0"/>
-				<Anchor side="Bottom" relative="$parent/ResourceLabel2Spend" pos="Max" offset="0"/>
-				<Anchor side="Right" relative="$parent/ResourceLabel2Spend" pos="Max" offset="0"/>
+				<Anchor side="Top" relative="$parent/ResourceLabel3Spend" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/ResourceLabel3Spend" pos="Min" offset="0"/>
+				<Anchor side="Bottom" relative="$parent/ResourceLabel3Spend" pos="Max" offset="0"/>
+				<Anchor side="Right" relative="$parent/ResourceLabel3Spend" pos="Max" offset="0"/>
 				
 				<ScaleText val="true"/>
 				<Text val="{$parent/ResourceLabel3Spend/@Text}"/>

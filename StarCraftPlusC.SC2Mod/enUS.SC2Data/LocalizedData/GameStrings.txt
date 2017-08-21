@@ -305,6 +305,7 @@ Unit/Name/GameGlobalRallyTarget02=Game Global Rally Target 02
 Unit/Name/GhostAcademyPaused=Ghost Academy
 Unit/Name/LarvaPaused=Larva
 Unit/Name/MissileTurretPaused=Missile Turret
+Unit/Name/NexusPaused=Nexus
 Unit/Name/OrbitalCommandPaused=Orbital Command
 Unit/Name/PlanetaryFortressPaused=Planetary Fortress
 Unit/Name/ReactorPaused=Reactor

@@ -498,6 +498,15 @@
             <LayoutButtons index="9" Row="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="SdbPAbils1">
+        <CardLayouts index="0" removed="1"/>
+    </CUnit>
+    <CUnit id="SdbPTrain2">
+        <CardLayouts index="0">
+            <LayoutButtons index="4" Face="AWrp" Type="AbilCmd" AbilCmd="ArchonWarp,SelectedUnits" Row="0" Column="3"/>
+            <LayoutButtons index="5" Face="MorphToMothership" Type="AbilCmd" AbilCmd="MorphToMothership,Execute" Row="0" Column="4"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SdbTAbils1">
         <AbilArray index="4" Link="CalldownMULEUCB"/>
         <AbilArray index="5" Link="SupplyDropUCB"/>
@@ -619,6 +628,9 @@
             <LayoutButtons index="3" Face="NukeArmUCB" Type="AbilCmd" AbilCmd="MorphDummyTrainNukeUCB,Execute" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="SdbZAbils1">
+        <CardLayouts index="0" removed="1"/>
+    </CUnit>
     <CUnit id="SdbZBuild1">
         <CardLayouts index="0">
             <LayoutButtons index="2" Face="GreaterSpire" Type="AbilCmd" AbilCmd="UpgradeToGreaterSpire,Execute" Row="0" Column="0"/>
@@ -634,8 +646,21 @@
             <LayoutButtons index="12" Face="InfestationPit" Type="AbilCmd" AbilCmd="ZergBuild,Build9" Row="2" Column="0"/>
             <LayoutButtons index="13" Face="UltraliskCavern" Type="AbilCmd" AbilCmd="ZergBuild,Build8" Row="2" Column="1"/>
             <LayoutButtons index="14" Face="NydusNetwork" Type="AbilCmd" AbilCmd="ZergBuild,Build10" Row="2" Column="2"/>
-            <LayoutButtons index="15" Face="Lair" Type="AbilCmd" AbilCmd="UpgradeToLair,Execute" Row="2" Column="3"/>
-            <LayoutButtons index="16" Face="Hive" Type="AbilCmd" AbilCmd="UpgradeToHive,Execute" Row="2" Column="4"/>
+            <LayoutButtons index="15" Face="Lair" Type="AbilCmd" AbilCmd="UpgradeToLair,Execute" Row="2" Column="4"/>
+            <LayoutButtons index="16" removed="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SdbZBuild2">
+        <AbilArray index="2" Link="MorphBackToGateway"/>
+        <AbilArray index="3" Link="ZergBuild"/>
+        <AbilArray index="4" Link="UpgradeToLair"/>
+        <AbilArray index="5" Link="UpgradeToHive"/>
+        <AbilArray index="6" Link="UpgradeToGreaterSpire"/>
+        <AbilArray index="7" Link="UpgradeToLurkerDenMP"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Hive" Type="AbilCmd" AbilCmd="UpgradeToHive,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="GreaterSpire" Type="AbilCmd" AbilCmd="UpgradeToGreaterSpire,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="MutateintoLurkerDen" Type="AbilCmd" AbilCmd="UpgradeToLurkerDenMP,Execute" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbZRsrch1">

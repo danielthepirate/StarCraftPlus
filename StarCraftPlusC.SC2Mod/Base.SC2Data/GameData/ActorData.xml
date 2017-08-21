@@ -216,6 +216,19 @@
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
     </CActorUnit>
+    <CActorUnit id="Nexus">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,150"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="NexusPaused" parent="Nexus">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/NexusPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
     <CActorUnit id="OrbitalCommand">
         <AcceptedTransfers index="Animator" value="1"/>
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
