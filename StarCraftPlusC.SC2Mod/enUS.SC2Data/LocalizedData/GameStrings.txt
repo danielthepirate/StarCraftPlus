@@ -30,6 +30,8 @@ Behavior/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
 Behavior/Name/GameHookBarracksStatusUpdate=Game Hook Barracks Status Update
 Behavior/Name/IsNexusNearby=IsNexusNearby
 Behavior/Name/IsWarpGateNearby=IsWarpGateNearby
+Behavior/Name/ZergBuildComplete=Zerg Build Complete
+Behavior/Name/ZergBuildConstruction=Zerg Build Construction
 Button/Name/AutoCreepSpreadAutocastToggle=Automatic Spread
 Button/Name/AutoLower=Auto Lower
 Button/Name/AutoRaise=Auto Raise
@@ -46,9 +48,13 @@ Button/Name/GlobalRallyBarracks=Global Rally Barracks
 Button/Name/GlobalRallyFactory=Global Rally Factory
 Button/Name/GlobalRallyHatchery=Global Rally Hatchery
 Button/Name/GlobalRallyStarport=Global Rally Starport
+Button/Name/GreaterSpireUCB=Mutate into Greater Spire
+Button/Name/HiveUCB=Mutate into Hive
+Button/Name/LairUCB=Mutate into Lair
 Button/Name/LurkerMPUCB=Morph to Lurker
 Button/Name/MorphToOverseerUBC=Morph to Overseer
 Button/Name/MorphtoOverlordTransportUBC=Mutate Ventral Sacs
+Button/Name/MutateintoLurkerDenUCB=Mutate into Lurker Den
 Button/Name/NukeArmUCB=Arm Silo with Nuke
 Button/Name/OverlordEnhancedCreepGrowthAura=Metastatic Aura
 Button/Name/RavagerUCB=Morph to Ravager
@@ -74,9 +80,13 @@ Button/Tooltip/GlobalRallyBarracks=Global Rally Barracks (<c val="FFFFFF">F3</c>
 Button/Tooltip/GlobalRallyFactory=
 Button/Tooltip/GlobalRallyHatchery=Global Rally Barracks (<c val="FFFFFF">F3</c>)
 Button/Tooltip/GlobalRallyStarport=
+Button/Tooltip/GreaterSpireUCB=Contains upgrades for Zerg air units.<n/><n/><c val="ffff8a">Enables:</c><n/>- Brood Lords from Corruptors
+Button/Tooltip/HiveUCB=Further evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Vipers from Larvae
+Button/Tooltip/LairUCB=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Overseers from Overlords
 Button/Tooltip/LurkerMPUCB=Anti-ground ambusher. Has a spine attack that damages all enemy units in its line of fire.<n/><n/><c val="ffff8a">Can attack ground units.<n/>Must burrow to attack.</c>
 Button/Tooltip/MorphToOverseerUBC=Advanced aerial observer. Provides the same supply as an Overlord. Can use the Spawn Changeling and Contaminate abilities.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/MorphtoOverlordTransportUBC=Enables the Overlord to transport units.
+Button/Tooltip/MutateintoLurkerDenUCB=Morph into a Lurker Den, allowing Hydralisks to morph into Lurkers.
 Button/Tooltip/NukeArmUCB=Arms the Silo with a Tactical Nuke.<n/><n/>Nukes take <d time="20"/> to land, but they deal up to 300 (+200 vs. structures) damage in a large radius.<n/><n/>Use a Ghost to designate the target.
 Button/Tooltip/OverlordEnhancedCreepGrowthAura=Nearby creep tumors spread 50% faster.
 Button/Tooltip/RavagerUCB=Ranged artillery. Can use Corrosive Bile.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
@@ -291,28 +301,46 @@ Test/Key=PAUSED
 UI/ResourceName2=Minerals
 UI/ResourceName3=Vespene
 Unit/Name/ArmoryPaused=Armory
+Unit/Name/BanelingNestPaused=Baneling Nest
 Unit/Name/BarracksPaused=Barracks
 Unit/Name/BunkerPaused=Bunker
 Unit/Name/CommandCenterPaused=Command Center
 Unit/Name/EggPaused=Zerg Cocoon
 Unit/Name/EngineeringBayPaused=Engineering Bay
+Unit/Name/EvolutionChamberPaused=Evolution Chamber
+Unit/Name/ExtractorPaused=Extractor
 Unit/Name/FactoryPaused=Factory
 Unit/Name/FusionCorePaused=Fusion Core
 Unit/Name/GameGlobalRallyCaster=Game Global Rally Caster
+Unit/Name/GameGlobalRallyCasterZerg=Game Global Rally Caster Zerg
 Unit/Name/GameGlobalRallyTarget00=Game Global Rally Target 00
 Unit/Name/GameGlobalRallyTarget01=Game Global Rally Target 01
 Unit/Name/GameGlobalRallyTarget02=Game Global Rally Target 02
 Unit/Name/GhostAcademyPaused=Ghost Academy
+Unit/Name/GreaterSpirePaused=Greater Spire
+Unit/Name/HatcheryPaused=Hatchery
+Unit/Name/HivePaused=Hive
+Unit/Name/HydraliskDenPaused=Hydralisk Den
+Unit/Name/InfestationPitPaused=Infestation Pit
+Unit/Name/LairPaused=Lair
 Unit/Name/LarvaPaused=Larva
+Unit/Name/LurkerDenMPPaused=Lurker Den
 Unit/Name/MissileTurretPaused=Missile Turret
 Unit/Name/NexusPaused=Nexus
+Unit/Name/NydusNetworkPaused=Nydus Network
 Unit/Name/OrbitalCommandPaused=Orbital Command
 Unit/Name/PlanetaryFortressPaused=Planetary Fortress
 Unit/Name/ReactorPaused=Reactor
+Unit/Name/RoachWarrenPaused=Roach Warren
 Unit/Name/SensorTowerPaused=Sensor Tower
+Unit/Name/SpawningPoolPaused=Spawning Pool
+Unit/Name/SpineCrawlerPaused=Spine Crawler
+Unit/Name/SpirePaused=Spire
+Unit/Name/SporeCrawlerPaused=Spore Crawler
 Unit/Name/StarportPaused=Starport
 Unit/Name/SupplyDepot=Auto Wall
 Unit/Name/SupplyDepotConstructor=Auto Wall
 Unit/Name/SupplyDepotConstructorPaused=Auto Wall Constructor
 Unit/Name/SupplyDepotLowered=Auto Wall
 Unit/Name/TechLabPaused=Tech Lab
+Unit/Name/UltraliskCavernPaused=Ultralisk Cavern

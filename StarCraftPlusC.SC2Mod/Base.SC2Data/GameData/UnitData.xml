@@ -19,6 +19,17 @@
             <LayoutButtons index="0" Column="2"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="Baneling">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Column="2"/>
+            <LayoutButtons index="9" Face="DisableBuildingAttack" Type="AbilCmd" AbilCmd="VolatileBurstBuilding,Off" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="BanelingBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="BanelingNest">
         <Food value="10"/>
     </CUnit>
@@ -131,6 +142,15 @@
             <LayoutButtons index="10" Column="0"/>
             <LayoutButtons index="11" Column="0"/>
             <LayoutButtons index="12" Row="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="EvolutionChamber">
+        <BehaviorArray Link="ZergBuildComplete"/>
+        <BehaviorArray Link="ZergBuildConstruction"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Column="3"/>
+            <LayoutButtons index="3" Column="3"/>
+            <LayoutButtons index="4" Column="3"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Factory">
@@ -293,11 +313,30 @@
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Row="2"/>
+            <LayoutButtons index="4" Column="1"/>
+            <LayoutButtons index="9" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Hive">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Row="2"/>
+            <LayoutButtons index="7" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Hydralisk">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HydraliskBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="HydraliskDen">
         <Food value="10"/>
@@ -305,10 +344,41 @@
     <CUnit id="InfestationPit">
         <Food value="10"/>
     </CUnit>
+    <CUnit id="Infestor">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Face="BurrowMove" AbilCmd="BurrowInfestorDown,Execute" Row="2" Column="2"/>
+            <LayoutButtons index="8" Face="Cancel" AbilCmd="NeuralParasite,Cancel" Row="2" Column="4"/>
+            <LayoutButtons index="10" Face="NeuralParasite" AbilCmd="NeuralParasite,Execute" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestorBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons index="4" Column="2"/>
+            <LayoutButtons index="8" Face="Cancel" Type="AbilCmd" AbilCmd="NeuralParasite,Cancel" Row="2" Column="4"/>
+            <LayoutButtons index="9" Face="BurrowedMove" Type="Passive" AbilCmd="" Row="1" Column="4"/>
+            <LayoutButtons index="10" Face="FungalGrowth" Type="AbilCmd" AbilCmd="FungalGrowth,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="11" Face="NeuralParasite" Type="AbilCmd" AbilCmd="NeuralParasite,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestorTerran">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestorTerranBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowInfestorTerranUp,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Lair">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Row="2"/>
+            <LayoutButtons index="4" Column="1"/>
+            <LayoutButtons index="9" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Larva">
         <CardLayouts index="0">
@@ -353,6 +423,19 @@
     </CUnit>
     <CUnit id="LurkerDenMP">
         <Food value="10"/>
+    </CUnit>
+    <CUnit id="LurkerMP">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="LurkerMPBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Column="2"/>
+            <LayoutButtons index="2" Column="2"/>
+            <LayoutButtons index="3" Face="LurkerHoldFire" Type="AbilCmd" AbilCmd="LurkerHoldFire,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="4" Face="LurkerCancelHoldFire" Type="AbilCmd" AbilCmd="LurkerRemoveHoldFire,Execute" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="MULE">
         <CardLayouts index="0">
@@ -470,6 +553,16 @@
     <CUnit id="QueenBurrowed">
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Ravager">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerDown,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RavagerBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowRavagerUp,Execute" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Roach">
@@ -646,7 +739,7 @@
             <LayoutButtons index="12" Face="InfestationPit" Type="AbilCmd" AbilCmd="ZergBuild,Build9" Row="2" Column="0"/>
             <LayoutButtons index="13" Face="UltraliskCavern" Type="AbilCmd" AbilCmd="ZergBuild,Build8" Row="2" Column="1"/>
             <LayoutButtons index="14" Face="NydusNetwork" Type="AbilCmd" AbilCmd="ZergBuild,Build10" Row="2" Column="2"/>
-            <LayoutButtons index="15" Face="Lair" Type="AbilCmd" AbilCmd="UpgradeToLair,Execute" Row="2" Column="4"/>
+            <LayoutButtons index="15" Face="LairUCB" Type="AbilCmd" AbilCmd="UpgradeToLair,Execute" Row="2" Column="4"/>
             <LayoutButtons index="16" removed="1"/>
         </CardLayouts>
     </CUnit>
@@ -658,9 +751,9 @@
         <AbilArray index="6" Link="UpgradeToGreaterSpire"/>
         <AbilArray index="7" Link="UpgradeToLurkerDenMP"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Hive" Type="AbilCmd" AbilCmd="UpgradeToHive,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="GreaterSpire" Type="AbilCmd" AbilCmd="UpgradeToGreaterSpire,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="MutateintoLurkerDen" Type="AbilCmd" AbilCmd="UpgradeToLurkerDenMP,Execute" Row="0" Column="2"/>
+            <LayoutButtons Face="HiveUCB" Type="AbilCmd" AbilCmd="UpgradeToHive,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="GreaterSpireUCB" Type="AbilCmd" AbilCmd="UpgradeToGreaterSpire,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="MutateintoLurkerDenUCB" Type="AbilCmd" AbilCmd="UpgradeToLurkerDenMP,Execute" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbZRsrch1">
@@ -728,11 +821,37 @@
             <LayoutButtons index="3" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="ShapeEgg">
+        <Collide index="Larva" value="1"/>
+        <Radius value="0.625"/>
+    </CUnit>
     <CUnit id="SpawningPool">
         <Food value="10"/>
     </CUnit>
+    <CUnit id="SpineCrawler">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="2"/>
+            <LayoutButtons index="3" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SpineCrawlerUprooted">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Spire">
         <Food value="10"/>
+    </CUnit>
+    <CUnit id="SporeCrawler">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="2"/>
+            <LayoutButtons index="3" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SporeCrawlerUprooted">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="SporeCrawlerRoot" Type="AbilCmd" AbilCmd="SporeCrawlerRoot,Execute" Row="2" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Stargate">
         <Food value="10"/>
@@ -817,6 +936,26 @@
         <CardLayouts index="0">
             <LayoutButtons index="0" AbilCmd="AutoWallRaiseManual,Execute"/>
             <LayoutButtons Face="AutoRaise" Type="AbilCmd" AbilCmd="AutoWallToggle,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SwarmHostBurrowedMP">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SwarmHostMP">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Ultralisk">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="UltraliskBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="UltraliskCavern">

@@ -308,6 +308,16 @@
         <Grown value="Footprint4x4CreepSourceGrown"/>
         <DisableValidatorArray value="HasEnhancedCreepGrowth"/>
     </CBehaviorCreepSource>
+    <CBehaviorBuff id="ZergBuildConstruction">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZergBuildComplete">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="ZergBuildConstruction"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorCreepSource id="makeCreep4x4">
         <DisableValidatorArray value="NoEnhancedCreepGrowth"/>
     </CBehaviorCreepSource>

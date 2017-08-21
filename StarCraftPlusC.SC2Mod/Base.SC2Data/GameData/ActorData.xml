@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorModel default="1" id="ZergBuildingBuild">
+        <Macros value="MacroZergBuildingBuildFix"/>
+        <Inherits index="Opacity" value="0"/>
+    </CActorModel>
     <CActorUnit id="Armory">
         <AcceptedTransfers index="Animator" value="1"/>
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
@@ -9,6 +13,23 @@
     <CActorUnit id="ArmoryPaused" parent="Armory">
         <Remove Send="Create"/>
         <HighlightTooltip value="Unit/Name/ArmoryPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="BanelingNest">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,175"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="BanelingNestBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="BanelingNestPaused" parent="BanelingNest">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/BanelingNestPaused"/>
         <StatusColors index="Progress">
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
@@ -118,6 +139,36 @@
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
     </CActorUnit>
+    <CActorUnit id="EvolutionChamber">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,65"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="EvolutionChamberBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="EvolutionChamberPaused" parent="EvolutionChamber">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/EvolutionChamberPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Extractor">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="ExtractorPaused" parent="Extractor">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/ExtractorPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
     <CActorUnit id="Factory">
         <AcceptedTransfers index="Animator" value="1"/>
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
@@ -185,6 +236,97 @@
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
     </CActorUnit>
+    <CActorUnit id="GreaterSpire">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="GreaterSpirePaused" parent="GreaterSpire">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/GreaterSpirePaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <!-- Zerg -->
+    <CActorUnit id="Hatchery">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="HatcheryBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="HatcheryPaused" parent="Hatchery">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/HatcheryPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Hive">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="HivePaused" parent="Hive">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/HivePaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="HydraliskDen">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="HydraliskDenBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="HydraliskDenPaused" parent="HydraliskDen">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/HydraliskDenPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="InfestationPit">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,65"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="InfestationPitBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="InfestationPitPaused" parent="InfestationPit">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/InfestationPitPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Lair">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="LairPaused" parent="Lair">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/LairPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
     <!--                                                                                         -->
     <!-- Larva ................................................................................. -->
     <!--                                                                                         -->
@@ -195,6 +337,30 @@
         <CustomUnitStatusOffset value="0,75"/>
         <CustomUnitStatusAttachment value="Ref_Origin"/>
     </CActorUnit>
+    <CActorUnit id="LurkerDenMP">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="LurkerDenMPPaused" parent="LurkerDenMP">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/LurkerDenMPPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorEventMacro id="MacroZergBuildingBuildFix">
+        <Macros value="MacroZergBuildingBuildFix"/>
+        <EditorCategories value=""/>
+        <On Terms="ActorCreation" Send="TimerSet 10.000000 AnimCheck"/>
+        <On Terms="TimerExpired; TimerName AnimCheck" Send="TimerSet 0.100000 AnimCheck"/>
+        <On Terms="TimerExpired; AnimPlayingProps Build,D,Start; TimerName AnimCheck" Send="Signal BuildEnding"/>
+        <On Terms="Signal.*.BuildEnding" Send="TimerKill AnimCheck"/>
+        <On Terms="Signal.*.BuildEnding" Send="TimerSet 0.625000 AnimShow"/>
+        <On Terms="TimerExpired; TimerName AnimShow" Target="_Selectable" Send="SetOpacity 1.000000 0.125000"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity"/>
+    </CActorEventMacro>
     <CActorEventMacro id="MacroStatusBarProgressPaused">
         <EditorCategories value=""/>
         <Remove Send="Create"/>
@@ -225,6 +391,23 @@
     <CActorUnit id="NexusPaused" parent="Nexus">
         <Remove Send="Create"/>
         <HighlightTooltip value="Unit/Name/NexusPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="NydusNetwork">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,90"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="NydusNetworkBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="NydusNetworkPaused" parent="NydusNetwork">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/NydusNetworkPaused"/>
         <StatusColors index="Progress">
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
@@ -281,6 +464,23 @@
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
     </CActorUnit>
+    <CActorUnit id="RoachWarren">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,65"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="RoachWarrenBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="RoachWarrenPaused" parent="RoachWarren">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/RoachWarrenPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
     <CActorEventMacroRunnable id="RunnableClearAnimations">
         <EditorCategories value=""/>
         <Do Target="_Unit" Send="AnimClearAllBut Birth"/>
@@ -298,6 +498,74 @@
     <CActorUnit id="SensorTowerPaused" parent="SensorTower">
         <Remove Send="Create"/>
         <HighlightTooltip value="Unit/Name/SensorTowerPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="SpawningPool">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,70"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="SpawningPoolBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="SpawningPoolPaused" parent="SpawningPool">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SpawningPoolPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="SpineCrawler">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="SpineCrawlerBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="SpineCrawlerPaused" parent="SpineCrawler">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SpineCrawlerPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="Spire">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="SpireBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="SpirePaused" parent="Spire">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SpirePaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="SporeCrawler">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="SporeCrawlerBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="SporeCrawlerPaused" parent="SporeCrawler">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SporeCrawlerPaused"/>
         <StatusColors index="Progress">
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
@@ -764,6 +1032,23 @@
     <CActorProgress id="TerranConstructionAttachedSmall">
         <StageArray/>
     </CActorProgress>
+    <CActorUnit id="UltraliskCavern">
+        <AcceptedTransfers index="Animator" value="1"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorModel id="UltraliskCavernBuild">
+        <Inherits index="Opacity" value="0"/>
+        <Macros value="MacroZergBuildingBuildFix"/>
+    </CActorModel>
+    <CActorUnit id="UltraliskCavernPaused" parent="UltraliskCavern">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/UltraliskCavernPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
     <CActorRange id="UnpoweredVisualLowNearNexus">
         <Behavior value="PowerSourceFast2"/>
         <Icon value="Assets\Textures\PylonLowRingSplatGrey.dds"/>
@@ -909,4 +1194,19 @@
         <On index="5" Terms="UnitConstruction.WarpZealot.Finish"/>
         <HighlightTooltip value="Unit/Name/WarpZealot"/>
     </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Construction                                                                            -->
+    <!--                                                                                         -->
+    <CActorProgress id="ZergConstruction">
+        <StageArray AnimProps="Stand,Burrow"/>
+    </CActorProgress>
+    <CActorProgress id="ZergConstructionAttached">
+        <StageArray/>
+    </CActorProgress>
+    <CActorProgress id="ZergHatcheryToLair">
+        <StageArray AnimProps="Stand,00"/>
+    </CActorProgress>
+    <CActorProgress id="ZergLairToHive">
+        <StageArray AnimProps="Stand,00"/>
+    </CActorProgress>
 </Catalog>

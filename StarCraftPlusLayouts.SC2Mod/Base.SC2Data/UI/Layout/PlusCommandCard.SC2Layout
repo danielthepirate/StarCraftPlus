@@ -56,6 +56,26 @@
 				<Frame type="CommandButton" name="CommandButton08" template="CommandSidebar/CommandButtonInvisible"/>
 				<Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandButtonInvisible"/>
 				<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandButtonInvisible"/>
+				
+				<StateGroup name="RaceState">
+					<DefaultState val="Terran"/>
+					<State name="Terran">
+						<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
+					</State>
+					<State name="Protoss">
+						<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+					</State>
+					<State name="Zerg">
+						<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
+						<Action type="ApplyTemplate" frame="CommandButton02" template="CommandSidebar/CommandActiveButtonZergTemplate"/>
+						<Action type="ApplyTemplate" frame="CommandButton04" template="CommandSidebar/CommandActiveButtonZergTemplate"/>
+						<Action type="ApplyTemplate" frame="CommandButton10" template="CommandSidebar/CommandActiveButtonZergTemplate"/>
+						<Action type="ApplyTemplate" frame="CommandButton11" template="CommandSidebar/CommandActiveButtonZergTemplate"/>
+						<Action type="ApplyTemplate" frame="CommandButton12" template="CommandSidebar/CommandActiveButtonZergTemplate"/>
+						<Action type="ApplyTemplate" frame="CommandButton13" template="CommandSidebar/CommandActiveButtonZergTemplate"/>
+					</State>
+				</StateGroup>
+				
 			</Frame>
 		</Frame>
 	</Frame>

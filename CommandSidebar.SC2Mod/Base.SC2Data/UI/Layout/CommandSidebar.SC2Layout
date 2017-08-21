@@ -102,6 +102,13 @@
 		</Frame>
 	</Frame>
 	
+	<Frame type="CommandButton" name="CommandActiveButtonZergTemplate" template="CommandSidebar/CommandSidebarButtonTemplate">
+		 <Frame type="Image" name="GameButtonBorderImage">
+			<ColorAdjustMode val="Colorize"/>
+			<AdjustmentColor val="108,48,148"/>
+		</Frame>
+	</Frame>
+	
 	<Frame type="CommandButton" name="CommandButtonInvisible" template="CommandSidebar/CommandSidebarButtonTemplate">
 		<Anchor side="Top" relative="$parent" pos="Max" offset="500"/>
 		<Anchor side="Left" relative="$parent" pos="Max" offset="0"/>

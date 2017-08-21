@@ -226,6 +226,60 @@ string libSCPL_ge_GenericParameter_Ident (int lp_val) {
 }
 
 // Functions
+void libSCPL_gf_DebugSpawnBuildingsZerg (int lp_playerIndex) {
+    // Variable Declarations
+    fixed lv_distance;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_distance = 12.0;
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Lair", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Hive", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SpawningPool", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "EvolutionChamber", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "CreepTumorBurrowed", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "RoachWarren", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "BanelingNest", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SporeCrawler", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SpineCrawler", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "CreepTumorBurrowed", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "HydraliskDen", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "LurkerDenMP", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Spire", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "GreaterSpire", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "CreepTumorBurrowed", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "InfestationPit", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "UltraliskCavern", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "NydusNetwork", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "CreepTumorBurrowed", lv_distance);
+}
+
+void libSCPL_gf_DebugSpawnBuildingsTerran (int lp_playerIndex) {
+    // Variable Declarations
+    fixed lv_distance;
+    fixed lv_distance2;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_distance = 12.0;
+    lv_distance = 16.0;
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SupplyDepot", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Barracks", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "EngineeringBay", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Factory", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SensorTower", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Bunker", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "MissileTurret", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Starport", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "FusionCore", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "GhostAcademy", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "OrbitalCommand", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "PlanetaryFortress", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "TechLab", lv_distance2);
+}
+
 unit libSCPL_gf_DebugPlayerUnit (int lp_playerIndex, string lp_unitType) {
     // Implementation
     return UnitGroupUnit(UnitGroup(lp_unitType, lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1);
@@ -1707,7 +1761,7 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "OrbitalCommand", 6.0);
+    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
     return true;
 }
 
@@ -1726,7 +1780,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    PlayerAddChargeUsed(1, "UCB/GlobalRally00", 1.0);
+    libSCPL_gf_DebugSpawnBuildingsZerg(1);
     return true;
 }
 

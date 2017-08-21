@@ -213,6 +213,8 @@ libSCPL_gs_UI libSCPL_gv_uI;
 libSCPL_gs_Hotkey libSCPL_gv_hotkey;
 
 // Function Declarations
+void libSCPL_gf_DebugSpawnBuildingsZerg (int lp_playerIndex);
+void libSCPL_gf_DebugSpawnBuildingsTerran (int lp_playerIndex);
 unit libSCPL_gf_DebugPlayerUnit (int lp_playerIndex, string lp_unitType);
 unit libSCPL_gf_DebugSelectedUnit (int lp_playerIndex);
 void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType, fixed lp_offset);
