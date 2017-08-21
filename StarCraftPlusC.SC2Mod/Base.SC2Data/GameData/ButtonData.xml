@@ -121,9 +121,6 @@
     <CButton id="BanelingBurrowMove">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="BattlecruiserWeaponsIgnoreArmor">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="BeaconMove">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>

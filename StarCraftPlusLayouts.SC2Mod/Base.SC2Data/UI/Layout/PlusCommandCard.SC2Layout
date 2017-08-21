@@ -7,9 +7,10 @@
 		<Frame type="Frame" name="ActiveUnitCommandContainer">
 			<Anchor relative="$parent/InfoPanelAnchor"/>
 			
-			<Frame type="CommandPanel" name="ActiveUnitCommandContainer" template="CommandSidebar/CommandSidebarPanelTemplate">
+			<Frame type="CommandPanel" name="CommandCard" template="CommandSidebar/CommandSidebarPanelTemplate">
 				<Anchor relative="$parent"/>
-			
+				<Handle val="ActiveCommandCard"/>
+				
 				<Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandActiveButtonTemplate">
 					<Anchor side="Left" relative="$parent" pos="Min" offset="120"/>
 					<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>

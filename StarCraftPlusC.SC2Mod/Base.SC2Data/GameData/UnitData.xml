@@ -518,11 +518,18 @@
     </CUnit>
     <CUnit id="SdbTBuild1">
         <CardLayouts index="0">
-            <LayoutButtons index="14" Face="UCBOrbitalCommand" Type="AbilCmd" AbilCmd="UpgradeToOrbitalUCB,Execute" Row="2" Column="4"/>
-            <LayoutButtons index="15" Face="UCBUpgradeToPlanetaryFortress" Type="AbilCmd" AbilCmd="UpgradeToPlanetaryFortressUCB,Execute" Row="2" Column="3"/>
+            <LayoutButtons index="14" Face="UCBUpgradeToPlanetaryFortress" Type="AbilCmd" AbilCmd="UpgradeToPlanetaryFortressUCB,Execute" Row="2" Column="4"/>
+            <LayoutButtons index="15" removed="1"/>
         </CardLayouts>
         <AbilArray index="5" Link="UpgradeToOrbitalUCB"/>
         <AbilArray index="6" Link="UpgradeToPlanetaryFortressUCB"/>
+    </CUnit>
+    <CUnit id="SdbTBuild2">
+        <AbilArray index="5" Link="UpgradeToOrbitalUCB"/>
+        <AbilArray index="6" Link="UpgradeToPlanetaryFortressUCB"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="UCBOrbitalCommand" Type="AbilCmd" AbilCmd="UpgradeToOrbitalUCB,Execute" Row="0" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SdbTRsrch1">
         <CardLayouts index="0">
@@ -543,10 +550,9 @@
             <LayoutButtons index="20" Face="TerranVehicleAndShipPlatingLevel3" Type="AbilCmd" AbilCmd="ArmoryResearch,Research17" Row="2" Column="0"/>
             <LayoutButtons index="21" Face="ResearchHighCapacityBarrels" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research2" Row="2" Column="1"/>
             <LayoutButtons index="22" Face="ResearchDrillClaws" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research5" Row="2" Column="2"/>
-            <LayoutButtons index="23" Face="ResearchHighCapacityFuelTanks" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research15" Row="2" Column="3"/>
-            <LayoutButtons index="24" Face="ResearchRavenRecalibratedExplosives" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research14" Row="2" Column="4"/>
-            <LayoutButtons index="25" Face="TerranInfantryArmorLevel3" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research9" Row="0" Column="1"/>
-            <LayoutButtons Face="TerranInfantryWeaponsLevel3" Type="Passive" Row="0" Column="0"/>
+            <LayoutButtons index="23" Face="ResearchHighCapacityFuelTanks" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research15" Row="2" Column="4"/>
+            <LayoutButtons index="24" Face="TerranInfantryArmorLevel3" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research9" Row="0" Column="1"/>
+            <LayoutButtons index="25" Face="TerranInfantryWeaponsLevel3" Type="Passive" AbilCmd="" Row="0" Column="0"/>
             <LayoutButtons Face="TerranInfantryArmorLevel3" Type="Passive" Row="0" Column="1"/>
             <LayoutButtons Face="ResearchShieldWall" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="Stimpack" Type="Passive" Row="1" Column="1"/>
@@ -559,23 +565,24 @@
             <LayoutButtons Face="TerranVehicleAndShipPlatingLevel3" Type="Passive" Row="2" Column="0"/>
             <LayoutButtons Face="ResearchHighCapacityBarrels" Type="Passive" Row="2" Column="1"/>
             <LayoutButtons Face="ResearchDrillClaws" Type="Passive" Row="2" Column="2"/>
-            <LayoutButtons Face="ResearchHighCapacityFuelTanks" Type="Passive" Row="2" Column="3"/>
-            <LayoutButtons Face="ResearchRavenRecalibratedExplosives" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="ResearchPersonalCloaking" Type="AbilCmd" AbilCmd="GhostAcademyResearch,Research1" Row="2" Column="3"/>
+            <LayoutButtons Face="ResearchPersonalCloaking" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="ResearchHighCapacityFuelTanks" Type="Passive" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbTRsrch2">
         <CardLayouts index="0">
-            <LayoutButtons index="1" Face="ResearchRavenEnergyUpgrade" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research4" Row="0" Column="0"/>
-            <LayoutButtons index="2" Face="ResearchBansheeCloak" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research1" Row="0" Column="1"/>
-            <LayoutButtons index="3" Face="BansheeSpeed" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research10" Row="0" Column="2"/>
-            <LayoutButtons index="4" Face="ResearchBallisticRange" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research16" Row="0" Column="3"/>
-            <LayoutButtons index="5" Face="ResearchPersonalCloaking" Type="AbilCmd" AbilCmd="GhostAcademyResearch,Research1" Row="0" Column="4"/>
-            <LayoutButtons index="6" Face="ResearchBattlecruiserSpecializations" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research1" Row="1" Column="0"/>
-            <LayoutButtons index="7" Face="ResearchRavenEnergyUpgrade" Type="Passive" AbilCmd="" Row="0" Column="0"/>
-            <LayoutButtons index="8" Face="ResearchBansheeCloak" Type="Passive" AbilCmd="" Row="0" Column="1"/>
-            <LayoutButtons Face="BansheeSpeed" Type="Passive" Row="0" Column="2"/>
-            <LayoutButtons Face="ResearchBallisticRange" Type="Passive" Row="0" Column="3"/>
-            <LayoutButtons Face="ResearchPersonalCloaking" Type="Passive" Row="0" Column="4"/>
+            <LayoutButtons index="1" Face="ResearchRavenEnergyUpgrade" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research4" Row="0" Column="1"/>
+            <LayoutButtons index="2" Face="ResearchBansheeCloak" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research1" Row="0" Column="2"/>
+            <LayoutButtons index="3" Face="BansheeSpeed" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research10" Row="0" Column="3"/>
+            <LayoutButtons index="4" Face="ResearchBallisticRange" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research16" Row="0" Column="4"/>
+            <LayoutButtons index="5" Face="ResearchBattlecruiserSpecializations" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research1" Row="1" Column="0"/>
+            <LayoutButtons index="6" Face="ResearchRavenEnergyUpgrade" Type="Passive" AbilCmd="" Row="0" Column="1"/>
+            <LayoutButtons index="7" Face="ResearchBansheeCloak" Type="Passive" AbilCmd="" Row="0" Column="2"/>
+            <LayoutButtons index="8" Face="ResearchRavenRecalibratedExplosives" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research14" Row="0" Column="0"/>
+            <LayoutButtons Face="ResearchRavenRecalibratedExplosives" Type="Passive" Row="0" Column="0"/>
+            <LayoutButtons Face="BansheeSpeed" Type="Passive" Row="0" Column="3"/>
+            <LayoutButtons Face="ResearchBallisticRange" Type="Passive" Row="0" Column="4"/>
             <LayoutButtons Face="ResearchBattlecruiserSpecializations" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
     </CUnit>
