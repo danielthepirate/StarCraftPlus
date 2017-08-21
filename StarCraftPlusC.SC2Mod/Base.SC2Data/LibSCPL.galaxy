@@ -1707,10 +1707,7 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "OrbitalCommand", 6.0);
     return true;
 }
 
@@ -5063,8 +5060,10 @@ void libSCPL_gt_BarracksTrainStartStop_Init () {
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_MuleHarvestNearestResoures_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_unitCreated;
+    unit lv_unit;
     unitgroup lv_resources;
+    fixed lv_resourceDistanceClosest;
+    fixed lv_resourceDistanceMaximum;
     fixed lv_muleExpireDelay;
 
     // Variable Initialization
@@ -5082,14 +5081,16 @@ bool libSCPL_gt_MuleHarvestNearestResoures_Func (bool testConds, bool runActions
         return true;
     }
 
-    lv_unitCreated = EventUnitCreatedUnit();
-    lv_resources = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupRemoveUnitGroup(lv_resources, UnitGroup("Refinery", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_resources, UnitGroup("Assimilator", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_resources, UnitGroup("Extractor", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    lv_resourceDistanceMaximum = 2.0;
+    lv_unit = EventUnitCreatedUnit();
+    lv_resources = libSCPL_gf_PlayerHarvestableMinerals(UnitGetOwner(lv_unit));
     lv_muleExpireDelay = StringToFixed(CatalogFieldValueGet(c_gameCatalogEffect, "CalldownMULECreatePersistent", "ExpireDelay", c_playerAny));
-    Wait((lv_muleExpireDelay + 0.0625), c_timeGame);
-    UnitIssueOrder(lv_unitCreated, OrderTargetingUnit(AbilityCommand("MULEGather", 0), UnitGroupClosestToPoint(lv_resources, UnitGetPosition(lv_unitCreated))), c_orderQueueAddToEnd);
+    lv_resourceDistanceClosest = DistanceBetweenPoints(UnitGetPosition(lv_unit), UnitGetPosition(UnitGroupClosestToPoint(lv_resources, UnitGetPosition(lv_unit))));
+    libPPRL_gf_DebugString(("dist " + FixedToString(lv_resourceDistanceClosest, c_fixedPrecisionAny)));
+    if ((lv_resourceDistanceClosest <= lv_resourceDistanceMaximum)) {
+        Wait((lv_muleExpireDelay + 0.0625), c_timeGame);
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("MULEGather", 0), UnitGroupClosestToPoint(lv_resources, UnitGetPosition(lv_unit))), c_orderQueueAddToEnd);
+    }
     return true;
 }
 

@@ -10,11 +10,11 @@
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
 <Unit id="SCV"/>
-<Unit id="Marine"/>
 <Unit id="Probe"/>
 <Unit id="Drone"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
+<Unit id="OrbitalCommand"/>
 <Unit id="WarpAdept"/>
 <Unit id="GameGlobalRallyTarget00"/>
 <Unit id="GameGlobalRallyTarget01"/>

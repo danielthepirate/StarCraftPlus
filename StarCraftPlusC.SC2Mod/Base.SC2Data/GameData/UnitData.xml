@@ -540,11 +540,11 @@
             <LayoutButtons index="10" Face="UpgradeBuildingArmorLevel1" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research2" Row="0" Column="3"/>
             <LayoutButtons index="11" Face="ResearchNeosteelFrame" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research6" Row="0" Column="4"/>
             <LayoutButtons index="12" Face="TerranVehicleWeaponsLevel1" Type="AbilCmd" AbilCmd="ArmoryResearch,Research6" Row="1" Column="3"/>
-            <LayoutButtons index="13" Face="TerranVehicleWeaponsLevel3" Type="AbilCmd" AbilCmd="ArmoryResearch,Research8" Row="1" Column="3"/>
-            <LayoutButtons index="14" Face="TerranVehicleWeaponsLevel3" Type="Passive" AbilCmd="" Row="1" Column="3"/>
+            <LayoutButtons index="13" Face="TerranVehicleWeaponsLevel2" Type="AbilCmd" AbilCmd="ArmoryResearch,Research7" Row="1" Column="3"/>
+            <LayoutButtons index="14" Face="TerranVehicleWeaponsLevel3" Type="AbilCmd" AbilCmd="ArmoryResearch,Research8" Row="1" Column="3"/>
             <LayoutButtons index="15" Face="TerranShipWeaponsLevel1" Type="AbilCmd" AbilCmd="ArmoryResearch,Research12" Row="1" Column="4"/>
-            <LayoutButtons index="16" Face="TerranShipWeaponsLevel3" Type="AbilCmd" AbilCmd="ArmoryResearch,Research14" Row="1" Column="4"/>
-            <LayoutButtons index="17" Face="TerranShipWeaponsLevel3" Type="Passive" AbilCmd="" Row="1" Column="4"/>
+            <LayoutButtons index="16" Face="TerranShipWeaponsLevel2" Type="AbilCmd" AbilCmd="ArmoryResearch,Research13" Row="1" Column="4"/>
+            <LayoutButtons index="17" Face="TerranShipWeaponsLevel3" Type="AbilCmd" AbilCmd="ArmoryResearch,Research14" Row="1" Column="4"/>
             <LayoutButtons index="18" Face="TerranVehicleAndShipPlatingLevel1" Type="AbilCmd" AbilCmd="ArmoryResearch,Research15" Row="2" Column="0"/>
             <LayoutButtons index="19" Face="TerranVehicleAndShipPlatingLevel2" Type="AbilCmd" AbilCmd="ArmoryResearch,Research16" Row="2" Column="0"/>
             <LayoutButtons index="20" Face="TerranVehicleAndShipPlatingLevel3" Type="AbilCmd" AbilCmd="ArmoryResearch,Research17" Row="2" Column="0"/>
@@ -560,14 +560,14 @@
             <LayoutButtons Face="ResearchHiSecAutoTracking" Type="Passive" Row="0" Column="2"/>
             <LayoutButtons Face="UpgradeBuildingArmorLevel1" Type="Passive" Row="0" Column="3"/>
             <LayoutButtons Face="ResearchNeosteelFrame" Type="Passive" Row="0" Column="4"/>
-            <LayoutButtons Face="TerranVehicleWeaponsLevel2" Type="AbilCmd" AbilCmd="ArmoryResearch,Research7" Row="1" Column="3"/>
-            <LayoutButtons Face="TerranShipWeaponsLevel2" Type="AbilCmd" AbilCmd="ArmoryResearch,Research13" Row="1" Column="4"/>
+            <LayoutButtons Face="TerranVehicleWeaponsLevel3" Type="Passive" Row="1" Column="3"/>
+            <LayoutButtons Face="TerranShipWeaponsLevel3" Type="Passive" Row="1" Column="4"/>
             <LayoutButtons Face="TerranVehicleAndShipPlatingLevel3" Type="Passive" Row="2" Column="0"/>
             <LayoutButtons Face="ResearchHighCapacityBarrels" Type="Passive" Row="2" Column="1"/>
             <LayoutButtons Face="ResearchDrillClaws" Type="Passive" Row="2" Column="2"/>
+            <LayoutButtons Face="ResearchHighCapacityFuelTanks" Type="Passive" Row="2" Column="4"/>
             <LayoutButtons Face="ResearchPersonalCloaking" Type="AbilCmd" AbilCmd="GhostAcademyResearch,Research1" Row="2" Column="3"/>
             <LayoutButtons Face="ResearchPersonalCloaking" Type="Passive" Row="2" Column="3"/>
-            <LayoutButtons Face="ResearchHighCapacityFuelTanks" Type="Passive" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbTRsrch2">
