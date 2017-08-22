@@ -71,7 +71,6 @@ Actor/Name/LairPaused=Lair Paused
 Actor/Name/LarvaPaused=Larva
 Actor/Name/LurkerDenMPPaused=Lurker Den Paused
 Actor/Name/MacroStatusBarProgressPaused=Macro Status Bar Progress Paused
-Actor/Name/MacroZergBuildingBuildFix=Macro Zerg Building Build Fix
 Actor/Name/MissileTurretPaused=Missile Turret Paused
 Actor/Name/NexusPaused=Nexus Paused
 Actor/Name/NydusNetworkPaused=Nydus Network Paused
