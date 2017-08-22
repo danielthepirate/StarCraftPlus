@@ -775,19 +775,6 @@ void libSCPL_gf_AutoWorkerProduction (unit lp_townHall, int lp_playerIndex) {
     string auto2FDD7FCA_val;
 
     // Implementation
-    libPPRL_gf_DebugString(("> Auto Worker Production"));
-    if ((UnitIsAlive(lp_townHall) != true)) {
-        libPPRL_gf_DebugString(("_Is Dead"));
-        return ;
-    }
-    if ((libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex) >= libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex))) {
-        libPPRL_gf_DebugString(("_Is Saturated"));
-        return ;
-    }
-    if ((libSCPL_gf_PlayerTownHallWorkerQueue(lp_townHall, lp_playerIndex, false) != 0)) {
-        libPPRL_gf_DebugString(("_Queue fucked" + " = " + IntToString(libSCPL_gf_PlayerTownHallWorkerQueue(lp_townHall, lp_playerIndex, false))));
-        return ;
-    }
     if ((UnitIsAlive(lp_townHall) == true) && (libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex) < libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex)) && (libSCPL_gf_PlayerTownHallWorkerQueue(lp_townHall, lp_playerIndex, false) == 0)) {
         auto2FDD7FCA_val = PlayerRace(lp_playerIndex);
         if (auto2FDD7FCA_val == "Terr") {
@@ -821,7 +808,6 @@ void libSCPL_gf_AutoWorkerProductionZerg (unit lp_townHall, int lp_playerIndex, 
     lv_larvaGroup = UnitGroupEmpty();
 
     // Implementation
-    libPPRL_gf_DebugString(("Go Go "));
     lv_larvaGroup = UnitGroup("Larva", c_playerAny, RegionCircle(UnitGetPosition(lp_townHall), 8.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     lv_larvaCount = UnitGroupCount(lv_larvaGroup, c_unitCountAlive);
     lv_dronesNeeded = (libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex) - libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex));
@@ -830,7 +816,6 @@ void libSCPL_gf_AutoWorkerProductionZerg (unit lp_townHall, int lp_playerIndex, 
     auto8CD8C38B_ai = 1;
     lv_larvaIndex = 1;
     for ( ; ( (auto8CD8C38B_ai >= 0 && lv_larvaIndex <= auto8CD8C38B_ae) || (auto8CD8C38B_ai <= 0 && lv_larvaIndex >= auto8CD8C38B_ae) ) ; lv_larvaIndex += auto8CD8C38B_ai ) {
-        libPPRL_gf_DebugString(("Count " + IntToString(lv_larvaIndex)));
         lv_larva = UnitGroupUnit(lv_larvaGroup, lv_larvaIndex);
         UnitIssueOrder(lv_larva, Order(AbilityCommand("LarvaTrain", 0)), c_orderQueueReplace);
     }
@@ -4566,7 +4551,6 @@ bool libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Func (bool testConds, bo
         return true;
     }
 
-    libPPRL_gf_DebugString(("B"));
     lv_playerIndex = UnitGetOwner(EventUnitCreatedUnit());
     lv_townHall = libSCPL_gf_PlayerTownHallClosest(UnitGetPosition(EventUnitCreatedUnit()), lv_playerIndex);
     libSCPL_gf_AutoWorkerProduction(lv_townHall, lv_playerIndex);
