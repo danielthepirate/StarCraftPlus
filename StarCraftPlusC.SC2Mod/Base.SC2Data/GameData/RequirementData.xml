@@ -13,6 +13,37 @@
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="CountUnitCommandCenterCompleteOnly1610623376TechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="LearnBurrow">
+        <NodeArray index="Use" Link="CountBehaviorGameUCBHatcheryHiveLairCompleteOnly3846943109"/>
+    </CRequirement>
+    <CRequirement id="LearnEvolveMuscularAugments">
+        <NodeArray index="Use" Link="CountBehaviorGameUCBHydraliskLurkerDenCompleteOnly4037297345"/>
+    </CRequirement>
+    <CRequirement id="LearnPneumatizedCarapace">
+        <NodeArray index="Use" Link="CountBehaviorGameUCBHatcheryHiveLairCompleteOnly3846943109"/>
+    </CRequirement>
+    <CRequirement id="LearnPunisherGrenades">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnZergFlyerArmor1">
+        <NodeArray index="Use" Link="CountBehaviorGameUCBSpireCompleteOnly836078744"/>
+    </CRequirement>
+    <CRequirement id="LearnZergFlyerArmor2">
+        <NodeArray index="Use" Link="AndEq539690215CountUpgradeZergFlyerArmorsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheatCountBehaviorGameUCBSpireCompleteOnly836078744"/>
+    </CRequirement>
+    <CRequirement id="LearnZergFlyerArmor3">
+        <NodeArray index="Use" Link="AndEq504020316CountUpgradeZergFlyerArmorsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheatCountBehaviorGameUCBSpireCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnZergFlyerAttack1">
+        <NodeArray index="Use" Link="CountBehaviorGameUCBSpireCompleteOnly836078744"/>
+    </CRequirement>
+    <CRequirement id="LearnZergFlyerAttack2">
+        <NodeArray index="Use" Link="AndEq3274469600CountUpgradeZergFlyerWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheatCountBehaviorGameUCBSpireCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnZergFlyerAttack3">
+        <NodeArray index="Use" Link="AndEq2419098971CountUpgradeZergFlyerWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheatCountBehaviorGameUCBSpireCompleteOnly"/>
+    </CRequirement>
     <CRequirement id="ShowEngineeringBay">
         <EditorCategories value="Race:Terran,TechType:Unit"/>
         <CanBeSuppressed index="Use" value="0"/>
@@ -108,9 +139,6 @@
     </CRequirement>
     <CRequirement id="LearnPersonnelCloaking">
         <NodeArray index="Use" Link="CountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
-    </CRequirement>
-    <CRequirement id="LearnPunisherGrenades">
-        <NodeArray index="Use" Link="AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="LearnRapidDeployment">
         <NodeArray index="Use" Link="AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheat"/>

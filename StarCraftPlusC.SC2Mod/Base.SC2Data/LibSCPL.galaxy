@@ -1774,7 +1774,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugSpawnBuildingsZerg(1);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "SpawningPool", 8.0);
     return true;
 }
 
@@ -1793,7 +1793,7 @@ bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_PlayerResourcesReset(1);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Hatchery", 8.0);
     return true;
 }
 
@@ -1857,6 +1857,25 @@ bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
 void libSCPL_gt__0_Init () {
     libSCPL_gt__0 = TriggerCreate("libSCPL_gt__0_Func");
     TriggerAddEventKeyPressed(libSCPL_gt__0, c_playerAny, c_keyNumPad0, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Space
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_Space_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_PlayerResourcesReset(1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_Space_Init () {
+    libSCPL_gt_Space = TriggerCreate("libSCPL_gt_Space_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt_Space, c_playerAny, c_keySpace, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5598,6 +5617,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt__4_Init();
     libSCPL_gt__5_Init();
     libSCPL_gt__0_Init();
+    libSCPL_gt_Space_Init();
     libSCPL_gt_GlobalRally00TargetCreated_Init();
     libSCPL_gt_GlobalRally01TargetCreated_Init();
     libSCPL_gt_GlobalRally02TargetCreated_Init();

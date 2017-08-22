@@ -126,6 +126,7 @@
             <LayoutButtons index="7" Face="SpineCrawler" Type="AbilCmd" AbilCmd="ZergBuild,Build15" Row="0" Column="3"/>
             <LayoutButtons index="8" Face="SporeCrawler" Type="AbilCmd" AbilCmd="ZergBuild,Build16" Row="0" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBDrone"/>
     </CUnit>
     <CUnit id="DroneBurrowed">
         <CostResource index="Minerals" value="0"/>
@@ -308,11 +309,14 @@
     </CUnit>
     <CUnit id="GreaterSpire">
         <Food value="10"/>
+        <BehaviorArray Link="GameUCBSpire"/>
     </CUnit>
     <CUnit id="Hatchery">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <BehaviorArray Link="GameUCBHatcheryHiveLair"/>
+        <BehaviorArray Link="GameUCBHatcheryHiveLairConstructing"/>
         <CardLayouts index="0">
             <LayoutButtons index="0" Row="2"/>
             <LayoutButtons index="4" Column="1"/>
@@ -323,6 +327,7 @@
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <BehaviorArray Link="GameUCBHatcheryHiveLair"/>
         <CardLayouts index="0">
             <LayoutButtons index="0" Row="2"/>
             <LayoutButtons index="7" Column="3"/>
@@ -340,6 +345,7 @@
     </CUnit>
     <CUnit id="HydraliskDen">
         <Food value="10"/>
+        <BehaviorArray Link="GameUCBHydraliskLurkerDen"/>
     </CUnit>
     <CUnit id="InfestationPit">
         <Food value="10"/>
@@ -374,6 +380,7 @@
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <BehaviorArray Link="GameUCBHatcheryHiveLair"/>
         <CardLayouts index="0">
             <LayoutButtons index="0" Row="2"/>
             <LayoutButtons index="4" Column="1"/>
@@ -423,6 +430,7 @@
     </CUnit>
     <CUnit id="LurkerDenMP">
         <Food value="10"/>
+        <BehaviorArray Link="GameUCBHydraliskLurkerDen"/>
     </CUnit>
     <CUnit id="LurkerMP">
         <CardLayouts index="0">
@@ -907,6 +915,7 @@
     </CUnit>
     <CUnit id="Spire">
         <Food value="10"/>
+        <BehaviorArray Link="GameUCBSpire"/>
     </CUnit>
     <CUnit id="SporeCrawler">
         <CardLayouts index="0">

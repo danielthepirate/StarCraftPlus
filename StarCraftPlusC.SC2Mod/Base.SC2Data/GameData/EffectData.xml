@@ -333,6 +333,20 @@
             </Charge>
         </Cost>
     </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBHatcheryHiveLair">
+        <ValidatorArray index="0" value="IsNotConstructing"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBHatcheryHiveLairMorphing">
+        <ValidatorArray index="0" value="IsNotConstructing"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBHydraliskLurkerDen">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBHydraliskLurkerDenMorphing">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBOrbitalCommandEnergy50GE">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
@@ -343,6 +357,12 @@
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBChargeLinkCommandCenterConstructing">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBSpire">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBSpireMorphing">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
     <CEffectSet id="GlobalRallyTarget01Set">

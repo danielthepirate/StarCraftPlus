@@ -301,6 +301,7 @@ trigger libSCPL_gt__3;
 trigger libSCPL_gt__4;
 trigger libSCPL_gt__5;
 trigger libSCPL_gt__0;
+trigger libSCPL_gt_Space;
 trigger libSCPL_gt_GlobalRally00TargetCreated;
 trigger libSCPL_gt_GlobalRally01TargetCreated;
 trigger libSCPL_gt_GlobalRally02TargetCreated;

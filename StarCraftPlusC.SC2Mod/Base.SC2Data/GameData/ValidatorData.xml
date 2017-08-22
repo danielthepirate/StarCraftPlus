@@ -62,6 +62,38 @@
         <CombineArray value="CommandCenterNotMorphingOC"/>
         <CombineArray value="CommandCenterNotMorphingPF"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="HatcheryIsMorphing">
+        <AbilLink value="UpgradeToLair"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="HatcheryNotCanceling">
+        <AbilLink value="UpgradeToLair"/>
+        <AbilCmdIndex value="2"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="HydraliskDenNotMorphing">
+        <AbilLink value="UpgradeToLurkerDenMP"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="HydraliskDenIsMorphing">
+        <AbilLink value="UpgradeToLurkerDenMP"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="LairIsMorphing">
+        <AbilLink value="UpgradeToHive"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="SpireNotMorphing">
+        <AbilLink value="UpgradeToGreaterSpire"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="SpireIsMorphing">
+        <AbilLink value="UpgradeToGreaterSpire"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorCombine id="ZergHallNotMorphing">
+        <Type value="And"/>
+        <CombineArray value="HatcheryNotMorphing"/>
+        <CombineArray value="LairNotMorphing"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareOrderCount id="CommandCenterNotMorphingOC">
         <AbilLink value="UpgradeToOrbital"/>
     </CValidatorUnitCompareOrderCount>
@@ -196,5 +228,9 @@
     <CValidatorCombine id="SupplyDepotRaiseOr">
         <CombineArray value="SupplyDepotRaiseEnemyEnumerate"/>
         <CombineArray value="SupplyDepotRaiseAllyEnumerate"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="ZergHallIsMorphing">
+        <CombineArray value="HatcheryIsMorphing"/>
+        <CombineArray value="LairIsMorphing"/>
     </CValidatorCombine>
 </Catalog>

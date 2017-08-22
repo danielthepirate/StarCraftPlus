@@ -141,6 +141,9 @@
         <InitialEffect value="GameUCBCommandCenterChargeRemove"/>
         <FinalEffect value="GameUCBCommandCenterChargeAdd"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBDrone">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBGhostAcademyChargeLink">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -172,6 +175,28 @@
         <InitialEffect value="GameUCBGlobalRally02ChargeAdd"/>
         <FinalEffect value="GameUCBGlobalRally02ChargeRemove"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHatcheryHiveLair">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="IsNotConstructing"/>
+        <RemoveValidatorArray value="ZergHallNotMorphing"/>
+        <FinalEffect value="GameUCBHatcheryHiveLairMorphing"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHatcheryHiveLairMorphing">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="IsNotConstructing"/>
+        <RemoveValidatorArray value="ZergHallIsMorphing"/>
+        <FinalEffect value="GameUCBHatcheryHiveLairMorphing"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHydraliskLurkerDen">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="HydraliskDenNotMorphing"/>
+        <FinalEffect value="GameUCBHydraliskLurkerDenMorphing"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHydraliskLurkerDenMorphing">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="HydraliskDenIsMorphing"/>
+        <FinalEffect value="GameUCBHydraliskLurkerDen"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBOrbitalCommandEnergy50GE">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="CasterEnergyGE50"/>
@@ -183,6 +208,16 @@
         <RemoveValidatorArray value="CasterEnergyLT50"/>
         <FinalEffect value="GameUCBOrbitalCommandEnergy50GE"/>
         <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBSpire">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="SpireNotMorphing"/>
+        <FinalEffect value="GameUCBSpireMorphing"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBSpireMorphing">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="SpireIsMorphing"/>
+        <FinalEffect value="GameUCBSpire"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameWorkerHarvestGasMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>

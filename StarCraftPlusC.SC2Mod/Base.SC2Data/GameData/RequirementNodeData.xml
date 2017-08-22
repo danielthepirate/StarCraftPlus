@@ -41,7 +41,6 @@
         <OperandArray value="CountUnitFusionCoreCompleteOnly4211141650TechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitOrbitalCommandCompleteOnlyTechTreeCheatCountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitOrbitalCommandCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704"/>
     </CRequirementAnd>
@@ -83,6 +82,12 @@
         <OperandArray value="Eq2326683880CountUpgradeTerranVehicleAndShipArmorsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndEq2419098971CountUpgradeZergFlyerWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheatCountBehaviorGameUCBSpireCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="Eq2419098971CountUpgradeZergFlyerWeaponsLevel2CompleteOnly1"/>
+        <OperandArray value="CountUnitHiveCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="CountBehaviorGameUCBSpireCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndEq2517918925CountUpgradeTerranVehicleArmorsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
         <OperandArray value="Eq2517918925CountUpgradeTerranVehicleArmorsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
@@ -94,6 +99,12 @@
     <CRequirementAnd id="AndEq3052852033CountUpgradeTerranShipArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
         <OperandArray value="Eq3052852033CountUpgradeTerranShipArmorsLevel1CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndEq3274469600CountUpgradeZergFlyerWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheatCountBehaviorGameUCBSpireCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="Eq3274469600CountUpgradeZergFlyerWeaponsLevel1CompleteOnly1"/>
+        <OperandArray value="CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat"/>
+        <OperandArray value="CountBehaviorGameUCBSpireCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq3342497887CountUpgradeTerranInfantryWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheatCountUnitEngineeringBayCompleteOnlyTechTreeCheat">
         <OperandArray value="Eq3342497887CountUpgradeTerranInfantryWeaponsLevel2CompleteOnly1"/>
@@ -110,9 +121,21 @@
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitEngineeringBayCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndEq504020316CountUpgradeZergFlyerArmorsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheatCountBehaviorGameUCBSpireCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="Eq504020316CountUpgradeZergFlyerArmorsLevel2CompleteOnly1"/>
+        <OperandArray value="CountUnitHiveCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="CountBehaviorGameUCBSpireCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndEq514164946CountUpgradeTerranVehicleAndShipWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
         <OperandArray value="Eq514164946CountUpgradeTerranVehicleAndShipWeaponsLevel2CompleteOnly1"/>
         <OperandArray value="CountUnitArmoryCompleteOnlyTechTreeCheat"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndEq539690215CountUpgradeZergFlyerArmorsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheatCountBehaviorGameUCBSpireCompleteOnly836078744">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="Eq539690215CountUpgradeZergFlyerArmorsLevel1CompleteOnly1"/>
+        <OperandArray value="CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat"/>
+        <OperandArray value="CountBehaviorGameUCBSpireCompleteOnly836078744"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndEq611800619CountUpgradeTerranVehicleAndShipArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat">
         <OperandArray value="Eq611800619CountUpgradeTerranVehicleAndShipArmorsLevel1CompleteOnly1"/>
@@ -127,9 +150,26 @@
         <OperandArray value="CountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Not1833567690CountUnitNukeQueuedOrBetterAtUnit"/>
     </CRequirementAnd>
+    <CRequirementCountBehavior id="CountBehaviorGameUCBHatcheryHiveLairCompleteOnly3846943109">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GameUCBHatcheryHiveLair" State="CompleteOnly"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorGameUCBHydraliskLurkerDenCompleteOnly4037297345">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GameUCBHydraliskLurkerDen" State="CompleteOnly"/>
+    </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="GameUCBOrbitalCommandEnergy50GE" State="CompleteOnly"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorGameUCBSpireCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="GameUCBSpire" State="CompleteOnly"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorGameUCBSpireCompleteOnly836078744">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GameUCBSpire" State="CompleteOnly"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorIsNexusNearbyCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
@@ -196,11 +236,23 @@
     <CRequirementCountUnit id="CountUnitStarportTechLabCompleteOnlyTechTreeCheat">
         <Count Link="StarportTechLab" State="CompleteOnly"/>
     </CRequirementCountUnit>
+    <CRequirementEq id="Eq2419098971CountUpgradeZergFlyerWeaponsLevel2CompleteOnly1">
+        <Tooltip value="RequirementNode/Tooltip/Eq2419098971CountUpgradeZergFlyerWeaponsLevel2CompleteOnly1"/>
+    </CRequirementEq>
+    <CRequirementEq id="Eq3274469600CountUpgradeZergFlyerWeaponsLevel1CompleteOnly1">
+        <Tooltip value="RequirementNode/Tooltip/Eq3274469600CountUpgradeZergFlyerWeaponsLevel1CompleteOnly1"/>
+    </CRequirementEq>
     <CRequirementEq id="Eq3446134918CountUpgradeTerranInfantryArmorsLevel1CompleteOnly1">
         <Tooltip value="RequirementNode/Tooltip/Eq3446134918CountUpgradeTerranInfantryArmorsLevel1CompleteOnly1"/>
     </CRequirementEq>
     <CRequirementEq id="Eq3722837715CountUpgradeTerranInfantryArmorsLevel2CompleteOnly1">
         <Tooltip value="RequirementNode/Tooltip/Eq3722837715CountUpgradeTerranInfantryArmorsLevel2CompleteOnly1"/>
+    </CRequirementEq>
+    <CRequirementEq id="Eq504020316CountUpgradeZergFlyerArmorsLevel2CompleteOnly1">
+        <Tooltip value="RequirementNode/Tooltip/Eq504020316CountUpgradeZergFlyerArmorsLevel2CompleteOnly1"/>
+    </CRequirementEq>
+    <CRequirementEq id="Eq539690215CountUpgradeZergFlyerArmorsLevel1CompleteOnly1">
+        <Tooltip value="RequirementNode/Tooltip/Eq539690215CountUpgradeZergFlyerArmorsLevel1CompleteOnly1"/>
     </CRequirementEq>
     <CRequirementNot id="Not1833567690CountUnitNukeQueuedOrBetterAtUnit">
         <OperandArray index="0" value="CountUnitNukeQueuedOrBetterAtUnit"/>

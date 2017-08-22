@@ -22,6 +22,7 @@
 <Unit id="FusionCore"/>
 <Unit id="SCV"/>
 <Unit id="Probe"/>
+<Unit id="Hatchery"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>
 <Unit id="HydraliskDen"/>

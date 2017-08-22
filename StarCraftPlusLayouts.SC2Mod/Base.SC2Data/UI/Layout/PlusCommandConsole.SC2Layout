@@ -124,6 +124,13 @@
 					<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
 				</Frame>
 				
+				<Frame type="InfoPaneUnit" name="InfoPaneUnit">
+					<Frame type="ProgressBar" name="ProgressBar">
+						<Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+						<Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+					</Frame>
+				</Frame>
+				
 				<Frame type="Frame" name="InfoPaneGroup">
 					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 					<Anchor side="Left" relative="$parent" pos="Min" offset="150"/>
