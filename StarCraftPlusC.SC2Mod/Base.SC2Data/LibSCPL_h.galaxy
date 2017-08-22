@@ -29,6 +29,8 @@ struct libSCPL_gs_Player {
     unit lv_globalRallyCaster;
     unit[4] lv_globalRallyTarget;
     unitgroup[4] lv_globalRallyGroup;
+    unitgroup lv_globalMicroSelection;
+    int lv_globalMacroTab;
 };
 
 struct libSCPL_gs_Map {
@@ -40,6 +42,9 @@ struct libSCPL_gs_UI {
     int lv_resourceVespeneSpend;
     int lv_consoleRallyCommandCard;
     int[11] lv_consoleControlGroupAnimListener;
+    int[5] lv_consoleGlobalTab;
+    int[5][3] lv_consoleGlobalTabCommandCard;
+    int lv_consoleActiveCommandCard;
 };
 
 struct libSCPL_gs_Hotkey {
@@ -200,6 +205,7 @@ struct libSCPL_gs_Hotkey {
 };
 
 // Variable Declarations
+playergroup libSCPL_gv_globalSelectionPlayers;
 libSCPL_gs_Constant libSCPL_gv_constants;
 libSCPL_gs_Player[17] libSCPL_gv_player;
 libSCPL_gs_Map libSCPL_gv_map;
@@ -207,9 +213,14 @@ libSCPL_gs_UI libSCPL_gv_uI;
 libSCPL_gs_Hotkey libSCPL_gv_hotkey;
 
 // Function Declarations
+void libSCPL_gf_DebugSpawnBuildingsZerg (int lp_playerIndex);
+void libSCPL_gf_DebugSpawnBuildingsTerran (int lp_playerIndex);
 unit libSCPL_gf_DebugPlayerUnit (int lp_playerIndex, string lp_unitType);
 unit libSCPL_gf_DebugSelectedUnit (int lp_playerIndex);
 void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType, fixed lp_offset);
+void libSCPL_gf_PlayerGlobalTabSelect (int lp_playerIndex, int lp_selectIndex);
+bool libSCPL_gf_UnitGroupContainsCombatUnits (unitgroup lp_unitGroup);
+bool libSCPL_gf_UnitIsCombatUnit (unit lp_unit);
 void libSCPL_gf_InitializeGlobalRallyCaster (int lp_playerIndex);
 void libSCPL_gf_InitializeSpendOverTime ();
 void libSCPL_gf_PlayerResourcesAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
@@ -265,6 +276,7 @@ void libSCPL_gf_InitializeUIHookups ();
 void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex);
+void libSCPL_gf_RegisterDialogItemClicked (int lp_dialogItem, trigger lp_trigger);
 unitgroup libSCPL_gf_WorkerGroupNotHarvestingGas (unitgroup lp_ug);
 void libSCPL_gf_DebugTextTag (point lp_point, string lp_string, fixed lp_duration);
 unitgroup libSCPL_gf_MapVespeneGeysers ();

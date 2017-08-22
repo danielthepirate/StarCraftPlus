@@ -64,7 +64,7 @@ bool libWCSP_gf_LabelsUnitUsesCustomStatusBar (unit lp_unit) {
     // Variable Initialization
 
     // Implementation
-    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "Egg") || (UnitGetType(lp_unit) == "Larva"))) {
+    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "Nexus") || (UnitGetType(lp_unit) == "BanelingNest") || (UnitGetType(lp_unit) == "EvolutionChamber") || (UnitGetType(lp_unit) == "Lair") || (UnitGetType(lp_unit) == "LurkerDenMP") || (UnitGetType(lp_unit) == "GreaterSpire") || (UnitGetType(lp_unit) == "Hatchery") || (UnitGetType(lp_unit) == "Hive") || (UnitGetType(lp_unit) == "HydraliskDen") || (UnitGetType(lp_unit) == "InfestationPit") || (UnitGetType(lp_unit) == "RoachWarren") || (UnitGetType(lp_unit) == "SpawningPool") || (UnitGetType(lp_unit) == "Spire") || (UnitGetType(lp_unit) == "UltraliskCavern") || (UnitGetType(lp_unit) == "Extractor") || (UnitGetType(lp_unit) == "NydusNetwork") || (UnitGetType(lp_unit) == "SpineCrawler") || (UnitGetType(lp_unit) == "SporeCrawler") || (UnitGetType(lp_unit) == "Larva") || (UnitGetType(lp_unit) == "Egg"))) {
         lv_boolean = true;
     }
     else {
@@ -1012,7 +1012,7 @@ bool libWCSP_gt_LabelsResearchStartedPIR_Func (bool testConds, bool runActions) 
             return false;
         }
 
-        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnitProgressUnit()) == true))) {
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnit()) == true))) {
             return false;
         }
     }
@@ -1056,7 +1056,7 @@ bool libWCSP_gt_LabelsResearchStoppedPIR_Func (bool testConds, bool runActions) 
             return false;
         }
 
-        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnitProgressUnit()) == true))) {
+        if (!((libWCSP_gf_LabelsUnitUsesCustomStatusBar(EventUnit()) == true))) {
             return false;
         }
     }

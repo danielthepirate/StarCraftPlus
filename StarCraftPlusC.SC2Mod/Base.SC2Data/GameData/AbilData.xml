@@ -403,7 +403,6 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
-        <Flags index="KillOnCancel" value="0"/>
         <InfoArray index="Train1" Effect="GameDroneMorphMarker"/>
     </CAbilTrain>
     <CAbilMorph id="LurkerAspectMP">
@@ -542,6 +541,9 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
     </CAbilBuild>
+    <CAbilEffectTarget id="Repair">
+        <CmdButtonArray index="Execute" State="Restricted"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="RoachWarrenResearch">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -680,13 +682,13 @@
         </RefundFraction>
     </CAbilResearch>
     <CAbilBuild id="TerranBuild">
+        <InfoArray index="Build2" Unit="SupplyDepotConstructor"/>
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
             <Resource index="Vespene" value="0"/>
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
-        <InfoArray index="Build2" Unit="SupplyDepotConstructor"/>
         <EffectArray index="Finish" value="AutoWallConstructionComplete"/>
     </CAbilBuild>
     <CAbilTrain id="TrainQueen">

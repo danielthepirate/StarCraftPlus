@@ -46,6 +46,18 @@
 				<RenderPriority val="10"/>
 			</Frame>
 			
+			<Frame type="BlurFrame" name="InfoPanelBlur">
+				<Anchor relative="$parent/InfoPanelBackground"/>
+				<BlurAmount val="0.15"/>
+				<RenderPriority val="1"/>
+			</Frame>
+			
+			<Frame type="BlurFrame" name="MinimapBlur">
+				<Anchor relative="$parent/MinimapBackground"/>
+				<BlurAmount val="0.15"/>
+				<RenderPriority val="1"/>
+			</Frame>
+			
 			<!-- CONSOLE MODELS -->
 			<Frame type="Model" name="MinimapModel">
             	<Visible val="false"/>
@@ -100,9 +112,9 @@
 			
 			<Frame type="InfoPanel" name="InfoPanel">
 				<!-- <Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-236"/> -->
-				<Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-224"/>
+				<Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-200"/>
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
-                <Anchor side="Right" relative="$parent/InfoPanelAnchor" pos="Max" offset="500"/>
+                <Anchor side="Right" relative="$parent/InfoPanelAnchor" pos="Max" offset="524"/>
 				<Height val="208"/>
 				
 				<Frame type="Frame" name="UnitPanel">

@@ -2,7 +2,7 @@
 <Desc>
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
 	
-		<Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainer">
+		<Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainerCombat">
 			<Anchor relative="$parent/InfoPanelAnchor"/>
 			
 			<Frame type="CommandPanel" name="CommandPanel1">
@@ -76,7 +76,7 @@
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Global (F6)"/>
+					<Text val="Abilities (F6)"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarGlobal"/>
 				
@@ -108,11 +108,17 @@
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
 			</Frame>
+			
+			<StateGroup name="TabState">
+				<DefaultState val="TabMacro"/>
+				<State name="TabMacro">
+					<When type="Property" frame="SidebarGlobal" Toggled="false"/>
+				</State>
+				<State name="TabMicro">
+					<When type="Property" frame="SidebarGlobal" Toggled="true"/>
+					<Action type="SetProperty" frame="$ActiveCommandCard" visible="false"/>
+				</State>
+			</StateGroup>
 		</Frame>
-		
 	</Frame>
-	
-	
-	
-	
 </Desc>

@@ -102,6 +102,13 @@
 		</Frame>
 	</Frame>
 	
+	<Frame type="CommandButton" name="CommandActiveButtonZergTemplate" template="CommandSidebar/CommandSidebarButtonTemplate">
+		 <Frame type="Image" name="GameButtonBorderImage">
+			<ColorAdjustMode val="Colorize"/>
+			<AdjustmentColor val="108,48,148"/>
+		</Frame>
+	</Frame>
+	
 	<Frame type="CommandButton" name="CommandButtonInvisible" template="CommandSidebar/CommandSidebarButtonTemplate">
 		<Anchor side="Top" relative="$parent" pos="Max" offset="500"/>
 		<Anchor side="Left" relative="$parent" pos="Max" offset="0"/>
@@ -281,7 +288,7 @@
 				<Anchor side="Top" relative="$CommandGrid11" pos="Min" offset="0"/>
 			</Frame>
 	
-			<Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandSidebarButtonTemplate">
+			<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandSidebarButtonTemplate">
 				<Anchor side="Left" relative="$CommandGrid10" pos="Min" offset="34"/>
 				<Anchor side="Top" relative="$CommandGrid10" pos="Max" offset="#HeightGap"/>
 			</Frame>
@@ -299,8 +306,6 @@
 				<Anchor side="Top" relative="$parent/$parent/CommandPanel1/CommandButton14" pos="Min" offset="0"/>
 			</Frame>
 			
-			<Frame type="CommandButton" name="CommandButton06" template="CommandSidebar/CommandButtonInvisible"/>
-			<Frame type="CommandButton" name="CommandButton07" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton08" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandButtonInvisible"/>
@@ -308,11 +313,41 @@
 			<Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandButtonInvisible"/>
 			<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandButtonInvisible"/>
+		</Frame>
+	</Frame>
+	
+	<Frame type="Frame" name="CommandContainerCombat">
+		<Frame type="CommandPanel" name="CommandPanel1" template="CommandSidebar/CommandSidebarPanelTemplate">
+			<Anchor relative="$parent"/>
 			
-			<!-- <Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/RallyButtonTemplate"> -->
-				<!-- <Anchor side="Left" relative="$parent" pos="Min" offset="0"/> -->
-				<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="0"/> -->
-			<!-- </Frame> -->
+			 <Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandSidebarButtonTemplate">
+				<Anchor side="Left" relative="$parent" pos="Min" offset="120"/>
+				<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+			</Frame>
+			
+			<Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandSidebarButtonTemplate">
+				<Anchor side="Left" relative="$parent/CommandButton00" pos="Min" offset="34"/>
+				<Anchor side="Top" relative="$parent/CommandButton00" pos="Max" offset="#HeightGap"/>
+			</Frame>
+		</Frame>
+		
+		<Frame type="CommandPanel" name="CommandPanel2" template="CommandSidebar/CommandSidebarPanelTemplate">
+			<Anchor side="Left" relative="$parent/CommandPanel1" pos="Min" offset="0"/>
+			<Anchor side="Right" relative="$parent/CommandPanel1" pos="Max" offset="0"/>
+			<Anchor side="Top" relative="$parent/CommandPanel1/CommandButton00" pos="Max" offset="0"/>
+			<Anchor side="Bottom" relative="$this" pos="Min" offset="128"/>
+			
+			<Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandSidebarButtonTemplate">
+				<Anchor side="Left" relative="$parent/$parent/CommandPanel1/CommandButton14" pos="Max" offset="#GridGap"/>
+				<Anchor side="Top" relative="$parent/$parent/CommandPanel1/CommandButton14" pos="Min" offset="0"/>
+			</Frame>
+			
+			<Frame type="CommandButton" name="CommandButton05" template="CommandSidebar/CommandSidebarButtonTemplate">
+				<Anchor side="Left" relative="$parent/$parent/CommandPanel1/CommandButton10" pos="Min" offset="34"/>
+				<Anchor side="Top" relative="$parent/$parent/CommandPanel1/CommandButton10" pos="Max" offset="#HeightGap"/>
+			</Frame>
+			
+			<Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandButtonInvisible"/>
 		</Frame>
 	</Frame>
 	

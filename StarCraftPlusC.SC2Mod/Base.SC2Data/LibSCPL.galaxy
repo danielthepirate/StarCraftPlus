@@ -18,6 +18,7 @@ bool libSCPL_InitVariables_completed = false;
 void libSCPL_InitVariables () {
     int init_i;
     int init_i1;
+    int init_j1;
 
     if (libSCPL_InitVariables_completed) {
         return;
@@ -25,6 +26,7 @@ void libSCPL_InitVariables () {
 
     libSCPL_InitVariables_completed = true;
 
+    libSCPL_gv_globalSelectionPlayers = PlayerGroupEmpty();
     libSCPL_gv_constants.lv_spendBufferMinerals = 1000;
     libSCPL_gv_constants.lv_spendBufferVespene = 1000;
     libSCPL_gv_constants.lv_spendTickIncrement = 0.5;
@@ -38,6 +40,8 @@ void libSCPL_InitVariables () {
         for (init_i1 = 0; init_i1 <= 3; init_i1 += 1) {
             libSCPL_gv_player[init_i].lv_globalRallyGroup[init_i1] = UnitGroupEmpty();
         }
+        libSCPL_gv_player[init_i].lv_globalMicroSelection = UnitGroupEmpty();
+        libSCPL_gv_player[init_i].lv_globalMacroTab = 2;
     }
     libSCPL_gv_uI.lv_resourceMineralSpend = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_resourceVespeneSpend = c_invalidDialogControlId;
@@ -45,6 +49,15 @@ void libSCPL_InitVariables () {
     for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
         libSCPL_gv_uI.lv_consoleControlGroupAnimListener[init_i1] = c_invalidDialogControlId;
     }
+    for (init_i1 = 0; init_i1 <= 4; init_i1 += 1) {
+        libSCPL_gv_uI.lv_consoleGlobalTab[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= 4; init_i1 += 1) {
+        for (init_j1 = 0; init_j1 <= 2; init_j1 += 1) {
+            libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[init_i1][init_j1] = c_invalidDialogControlId;
+        }
+    }
+    libSCPL_gv_uI.lv_consoleActiveCommandCard = c_invalidDialogControlId;
     libSCPL_gv_hotkey.lv_supplyDepot = "S";
     libSCPL_gv_hotkey.lv_commandCenter = "C";
     libSCPL_gv_hotkey.lv_barracks = "B";
@@ -213,6 +226,60 @@ string libSCPL_ge_GenericParameter_Ident (int lp_val) {
 }
 
 // Functions
+void libSCPL_gf_DebugSpawnBuildingsZerg (int lp_playerIndex) {
+    // Variable Declarations
+    fixed lv_distance;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_distance = 12.0;
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Lair", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Hive", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SpawningPool", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "EvolutionChamber", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "CreepTumorBurrowed", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "RoachWarren", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "BanelingNest", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SporeCrawler", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SpineCrawler", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "CreepTumorBurrowed", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "HydraliskDen", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "LurkerDenMP", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Spire", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "GreaterSpire", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "CreepTumorBurrowed", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "InfestationPit", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "UltraliskCavern", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "NydusNetwork", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "CreepTumorBurrowed", lv_distance);
+}
+
+void libSCPL_gf_DebugSpawnBuildingsTerran (int lp_playerIndex) {
+    // Variable Declarations
+    fixed lv_distance;
+    fixed lv_distance2;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_distance = 12.0;
+    lv_distance = 16.0;
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SupplyDepot", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Barracks", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "EngineeringBay", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Factory", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "SensorTower", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Bunker", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "MissileTurret", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "Starport", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "FusionCore", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "GhostAcademy", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "OrbitalCommand", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "PlanetaryFortress", lv_distance);
+    libSCPL_gf_DebugCreateUnitNearBase(lp_playerIndex, "TechLab", lv_distance2);
+}
+
 unit libSCPL_gf_DebugPlayerUnit (int lp_playerIndex, string lp_unitType) {
     // Implementation
     return UnitGroupUnit(UnitGroup(lp_unitType, lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1);
@@ -226,6 +293,66 @@ unit libSCPL_gf_DebugSelectedUnit (int lp_playerIndex) {
 void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType, fixed lp_offset) {
     // Implementation
     libNtve_gf_CreateUnitsWithDefaultFacing(1, lp_unitType, 0, lp_playerIndex, PointWithOffsetPolar(PlayerStartLocation(lp_playerIndex), lp_offset, AngleBetweenPoints(PlayerStartLocation(lp_playerIndex), RegionGetCenter(RegionEntireMap()))));
+}
+
+void libSCPL_gf_PlayerGlobalTabSelect (int lp_playerIndex, int lp_selectIndex) {
+    int autoC5C56EE4_ae;
+    int autoC5C56EE4_ai;
+
+    // Variable Declarations
+    int lv_tabIndex;
+
+    // Variable Initialization
+
+    // Implementation
+    autoC5C56EE4_ae = 4;
+    autoC5C56EE4_ai = 1;
+    lv_tabIndex = 1;
+    for ( ; ( (autoC5C56EE4_ai >= 0 && lv_tabIndex <= autoC5C56EE4_ae) || (autoC5C56EE4_ai <= 0 && lv_tabIndex >= autoC5C56EE4_ae) ) ; lv_tabIndex += autoC5C56EE4_ai ) {
+        libNtve_gf_SetDialogItemToggled(libSCPL_gv_uI.lv_consoleGlobalTab[lv_tabIndex], false, PlayerGroupSingle(lp_playerIndex));
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lv_tabIndex][1], PlayerGroupSingle(lp_playerIndex), false);
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lv_tabIndex][2], PlayerGroupSingle(lp_playerIndex), false);
+    }
+    libNtve_gf_SetDialogItemToggled(libSCPL_gv_uI.lv_consoleGlobalTab[lp_selectIndex], true, PlayerGroupSingle(lp_playerIndex));
+    DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lp_selectIndex][1], PlayerGroupSingle(lp_playerIndex), true);
+    DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lp_selectIndex][2], PlayerGroupSingle(lp_playerIndex), true);
+    if ((lp_selectIndex == 1)) {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleActiveCommandCard, PlayerGroupSingle(lp_playerIndex), false);
+    }
+    else {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleActiveCommandCard, PlayerGroupSingle(lp_playerIndex), true);
+    }
+}
+
+bool libSCPL_gf_UnitGroupContainsCombatUnits (unitgroup lp_unitGroup) {
+    unitgroup autoBDBBFCBD_g;
+    int autoBDBBFCBD_u;
+
+    // Variable Declarations
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Implementation
+    autoBDBBFCBD_g = lp_unitGroup;
+    autoBDBBFCBD_u = 1;
+    for ( ; autoBDBBFCBD_u <= UnitGroupCount(autoBDBBFCBD_g, c_unitCountAll) ; autoBDBBFCBD_u += BoolToInt(lv_unit == UnitGroupUnit(autoBDBBFCBD_g, autoBDBBFCBD_u)) ) {
+        lv_unit = UnitGroupUnit(autoBDBBFCBD_g, autoBDBBFCBD_u);
+        if ((libSCPL_gf_UnitIsCombatUnit(lv_unit) == true)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool libSCPL_gf_UnitIsCombatUnit (unit lp_unit) {
+    // Implementation
+    if (((UnitGetType(lp_unit) == "Marine") || (UnitGetType(lp_unit) == "Marauder") || (UnitGetType(lp_unit) == "Reaper") || (UnitGetType(lp_unit) == "Ghost") || (UnitGetType(lp_unit) == "Hellion") || (UnitGetType(lp_unit) == "HellionTank") || (UnitGetType(lp_unit) == "SiegeTankSieged") || (UnitGetType(lp_unit) == "SiegeTank") || (UnitGetType(lp_unit) == "WidowMine") || (UnitGetType(lp_unit) == "WidowMineBurrowed") || (UnitGetType(lp_unit) == "Cyclone") || (UnitGetType(lp_unit) == "Thor") || (UnitGetType(lp_unit) == "ThorAP") || (UnitGetType(lp_unit) == "VikingAssault") || (UnitGetType(lp_unit) == "VikingFighter") || (UnitGetType(lp_unit) == "Medivac") || (UnitGetType(lp_unit) == "Raven") || (UnitGetType(lp_unit) == "AutoTurret") || (UnitGetType(lp_unit) == "Banshee") || (UnitGetType(lp_unit) == "Battlecruiser") || (UnitGetType(lp_unit) == "Liberator") || (UnitGetType(lp_unit) == "LiberatorAG"))) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void libSCPL_gf_InitializeGlobalRallyCaster (int lp_playerIndex) {
@@ -316,16 +443,12 @@ void libSCPL_gf_UnitStatusPauseProgressBar (unit lp_statusUnit, unit lp_progress
         libSCPL_gf_GenericEventResourceSpendChanges(UnitGetOwner(lp_progressUnit));
         UnitSetProgressStage(lp_progressUnit, lp_progressIndex, c_unitProgressStagePause);
         DialogControlSetAnimationState(lv_unitStatusProgress, PlayerGroupSingle(UnitGetOwner(lp_statusUnit)), "ProgressState", "Paused");
-        libNtve_gf_SendActorMessageToUnit(lp_statusUnit, (("Create " + (UnitGetType(lp_statusUnit)) + "Paused")));
     }
     else {
         libSCPL_gf_GenericEventResourceSpendChanges(UnitGetOwner(lp_progressUnit));
         UnitSetProgressStage(lp_progressUnit, lp_progressIndex, c_unitProgressStageResume);
         DialogControlSetAnimationState(lv_unitStatusProgress, PlayerGroupSingle(UnitGetOwner(lp_statusUnit)), "ProgressState", "Normal");
-        libNtve_gf_SendActorMessageToUnit(lp_statusUnit, (("Create " + (UnitGetType(lp_statusUnit)))));
     }
-    ActorSend(libNtve_gf_ActorLastCreatedSend(), "EventMacroRun RunnableStatusBarPause");
-    ActorSend(lv_unitActorMain, "Destroy");
 }
 
 void libSCPL_gf_UnitStatusPauseProgressUnit (unit lp_statusUnit, unit lp_progressUnit, int lp_progressIndex, bool lp_pause) {
@@ -344,16 +467,12 @@ void libSCPL_gf_UnitStatusPauseProgressUnit (unit lp_statusUnit, unit lp_progres
         libSCPL_gf_GenericEventResourceSpendChanges(UnitGetOwner(lp_progressUnit));
         libNtve_gf_PauseUnit(lp_progressUnit, true);
         DialogControlSetAnimationState(lv_unitStatusProgress, PlayerGroupSingle(UnitGetOwner(lp_statusUnit)), "ProgressState", "Paused");
-        libNtve_gf_SendActorMessageToUnit(lp_statusUnit, (("Create " + (UnitGetType(lp_statusUnit)) + "Paused")));
     }
     else {
         libSCPL_gf_GenericEventResourceSpendChanges(UnitGetOwner(lp_progressUnit));
         libNtve_gf_PauseUnit(lp_progressUnit, false);
         DialogControlSetAnimationState(lv_unitStatusProgress, PlayerGroupSingle(UnitGetOwner(lp_statusUnit)), "ProgressState", "Normal");
-        libNtve_gf_SendActorMessageToUnit(lp_statusUnit, (("Create " + (UnitGetType(lp_statusUnit)))));
     }
-    ActorSend(libNtve_gf_ActorLastCreatedSend(), "EventMacroRun RunnableStatusBarPause");
-    ActorSend(lv_unitActorMain, "Destroy");
 }
 
 int libSCPL_gf_UsedTrainingSlotCount (unit lp_unit) {
@@ -642,18 +761,33 @@ void libSCPL_gf_InitializeAutomatedWorkerProduction () {
             UnitIssueOrder(lv_townHall, Order(AbilityCommand("NexusTrain", 0)), c_orderQueueAddToEnd);
         }
         else if (auto4F338708_val == "Zerg") {
-            libSCPL_gf_AutoWorkerProductionZerg(lv_townHall, lv_playerIndex, 0);
+            libSCPL_gf_AutoWorkerProductionZergInitial(lv_townHall, lv_playerIndex, 0);
             libSCPL_gf_AutoCreepTargetNodesGenerateInitial(lv_playerIndex);
         }
         else {
         }
     }
+    Wait(2.0, c_timeGame);
+    TriggerEnable(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, true);
 }
 
 void libSCPL_gf_AutoWorkerProduction (unit lp_townHall, int lp_playerIndex) {
     string auto2FDD7FCA_val;
 
     // Implementation
+    libPPRL_gf_DebugString(("> Auto Worker Production"));
+    if ((UnitIsAlive(lp_townHall) != true)) {
+        libPPRL_gf_DebugString(("_Is Dead"));
+        return ;
+    }
+    if ((libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex) >= libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex))) {
+        libPPRL_gf_DebugString(("_Is Saturated"));
+        return ;
+    }
+    if ((libSCPL_gf_PlayerTownHallWorkerQueue(lp_townHall, lp_playerIndex, false) != 0)) {
+        libPPRL_gf_DebugString(("_Queue fucked" + " = " + IntToString(libSCPL_gf_PlayerTownHallWorkerQueue(lp_townHall, lp_playerIndex, false))));
+        return ;
+    }
     if ((UnitIsAlive(lp_townHall) == true) && (libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex) < libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex)) && (libSCPL_gf_PlayerTownHallWorkerQueue(lp_townHall, lp_playerIndex, false) == 0)) {
         auto2FDD7FCA_val = PlayerRace(lp_playerIndex);
         if (auto2FDD7FCA_val == "Terr") {
@@ -687,6 +821,7 @@ void libSCPL_gf_AutoWorkerProductionZerg (unit lp_townHall, int lp_playerIndex, 
     lv_larvaGroup = UnitGroupEmpty();
 
     // Implementation
+    libPPRL_gf_DebugString(("Go Go "));
     lv_larvaGroup = UnitGroup("Larva", c_playerAny, RegionCircle(UnitGetPosition(lp_townHall), 8.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     lv_larvaCount = UnitGroupCount(lv_larvaGroup, c_unitCountAlive);
     lv_dronesNeeded = (libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex) - libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex));
@@ -695,6 +830,7 @@ void libSCPL_gf_AutoWorkerProductionZerg (unit lp_townHall, int lp_playerIndex, 
     auto8CD8C38B_ai = 1;
     lv_larvaIndex = 1;
     for ( ; ( (auto8CD8C38B_ai >= 0 && lv_larvaIndex <= auto8CD8C38B_ae) || (auto8CD8C38B_ai <= 0 && lv_larvaIndex >= auto8CD8C38B_ae) ) ; lv_larvaIndex += auto8CD8C38B_ai ) {
+        libPPRL_gf_DebugString(("Count " + IntToString(lv_larvaIndex)));
         lv_larva = UnitGroupUnit(lv_larvaGroup, lv_larvaIndex);
         UnitIssueOrder(lv_larva, Order(AbilityCommand("LarvaTrain", 0)), c_orderQueueReplace);
     }
@@ -1152,6 +1288,8 @@ void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex) {
 void libSCPL_gf_InitializeUIHookups () {
     int autoAAAC514B_ae;
     int autoAAAC514B_ai;
+    int auto4211EF39_ae;
+    int auto4211EF39_ai;
 
     // Variable Declarations
     int lv_frameIndex;
@@ -1163,6 +1301,8 @@ void libSCPL_gf_InitializeUIHookups () {
     libSCPL_gv_uI.lv_resourceMineralSpend = DialogControlLastCreated();
     DialogControlHookupStandard(c_triggerControlTypeLabel, "UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel3Spend");
     libSCPL_gv_uI.lv_resourceVespeneSpend = DialogControlLastCreated();
+    DialogControlHookupStandard(c_triggerControlTypeCommandPanel, "UIContainer/ConsoleUIContainer/ActiveUnitCommandContainer/CommandCard");
+    libSCPL_gv_uI.lv_consoleActiveCommandCard = DialogControlLastCreated();
     DialogControlHookupStandard(c_triggerControlTypeCommandPanel, "UIContainer/ConsoleUIContainer/GlobalRallyPanel");
     libSCPL_gv_uI.lv_consoleRallyCommandCard = DialogControlLastCreated();
     autoAAAC514B_ae = 9;
@@ -1171,6 +1311,27 @@ void libSCPL_gf_InitializeUIHookups () {
     for ( ; ( (autoAAAC514B_ai >= 0 && lv_frameIndex <= autoAAAC514B_ae) || (autoAAAC514B_ai <= 0 && lv_frameIndex >= autoAAAC514B_ae) ) ; lv_frameIndex += autoAAAC514B_ai ) {
         DialogControlHookupStandard(c_triggerControlTypeImage, ("UIContainer/ConsoleUIContainer/ControlGroupListener" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
         libSCPL_gv_uI.lv_consoleControlGroupAnimListener[(lv_frameIndex + 1)] = DialogControlLastCreated();
+    }
+    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarGlobal");
+    libSCPL_gv_uI.lv_consoleGlobalTab[1] = DialogControlLastCreated();
+    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarBuildings");
+    libSCPL_gv_uI.lv_consoleGlobalTab[2] = DialogControlLastCreated();
+    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarUnits");
+    libSCPL_gv_uI.lv_consoleGlobalTab[3] = DialogControlLastCreated();
+    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarResearch");
+    libSCPL_gv_uI.lv_consoleGlobalTab[4] = DialogControlLastCreated();
+    auto4211EF39_ae = 2;
+    auto4211EF39_ai = 1;
+    lv_frameIndex = 1;
+    for ( ; ( (auto4211EF39_ai >= 0 && lv_frameIndex <= auto4211EF39_ae) || (auto4211EF39_ai <= 0 && lv_frameIndex >= auto4211EF39_ae) ) ; lv_frameIndex += auto4211EF39_ai ) {
+        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/GlobalCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
+        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[1][lv_frameIndex] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
+        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[2][lv_frameIndex] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
+        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[3][lv_frameIndex] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
+        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[4][lv_frameIndex] = DialogControlLastCreated();
     }
 }
 
@@ -1208,6 +1369,11 @@ void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex) {
         lv_controlGroup = UnitSubgroupSelected(1);
         libNtve_gf_CopyUnitControlGroups(UnitLastCreated(), EventUnit());
     }
+}
+
+void libSCPL_gf_RegisterDialogItemClicked (int lp_dialogItem, trigger lp_trigger) {
+    // Implementation
+    TriggerAddEventDialogControl(lp_trigger, c_playerAny, lp_dialogItem, c_triggerControlEventTypeClick);
 }
 
 unitgroup libSCPL_gf_WorkerGroupNotHarvestingGas (unitgroup lp_ug) {
@@ -1599,6 +1765,12 @@ void libSCPL_gt_InitializationPlus_Init () {
 // Trigger: 1
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
     return true;
 }
 
@@ -1617,7 +1789,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    PlayerAddChargeUsed(1, "UCB/GlobalRally00", 1.0);
+    libSCPL_gf_DebugSpawnBuildingsZerg(1);
     return true;
 }
 
@@ -1636,7 +1808,7 @@ bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
+    libSCPL_gf_PlayerResourcesReset(1);
     return true;
 }
 
@@ -4394,6 +4566,7 @@ bool libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Func (bool testConds, bo
         return true;
     }
 
+    libPPRL_gf_DebugString(("B"));
     lv_playerIndex = UnitGetOwner(EventUnitCreatedUnit());
     lv_townHall = libSCPL_gf_PlayerTownHallClosest(UnitGetPosition(EventUnitCreatedUnit()), lv_playerIndex);
     libSCPL_gf_AutoWorkerProduction(lv_townHall, lv_playerIndex);
@@ -4403,6 +4576,7 @@ bool libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Func (bool testConds, bo
 //--------------------------------------------------------------------------------------------------
 void libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Init () {
     libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg = TriggerCreate("libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Func");
+    TriggerEnable(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, false);
     TriggerAddEventUnitCreated(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, null, null, "SpawnLarva");
 }
 
@@ -4493,9 +4667,8 @@ bool libSCPL_gt_AutoWorkerProductionCheckMorphConstructionZerg_Func (bool testCo
     if ((EventUnitAbility() == AbilityCommand("ZergBuild", 0))) {
         lv_townHall = libSCPL_gf_PlayerTownHallClosest(PlayerStartLocation(lv_playerIndex), lv_playerIndex);
     }
-    else {
-        lv_townHall = libSCPL_gf_PlayerTownHallClosest(UnitGetPosition(EventUnit()), lv_playerIndex);
-    }
+
+    lv_townHall = libSCPL_gf_PlayerTownHallClosest(UnitGetPosition(EventUnit()), lv_playerIndex);
     libSCPL_gf_AutoWorkerProduction(lv_townHall, lv_playerIndex);
     return true;
 }
@@ -4951,8 +5124,10 @@ void libSCPL_gt_BarracksTrainStartStop_Init () {
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_MuleHarvestNearestResoures_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_unitCreated;
+    unit lv_unit;
     unitgroup lv_resources;
+    fixed lv_resourceDistanceClosest;
+    fixed lv_resourceDistanceMaximum;
     fixed lv_muleExpireDelay;
 
     // Variable Initialization
@@ -4970,14 +5145,16 @@ bool libSCPL_gt_MuleHarvestNearestResoures_Func (bool testConds, bool runActions
         return true;
     }
 
-    lv_unitCreated = EventUnitCreatedUnit();
-    lv_resources = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupRemoveUnitGroup(lv_resources, UnitGroup("Refinery", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_resources, UnitGroup("Assimilator", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_resources, UnitGroup("Extractor", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    lv_resourceDistanceMaximum = 2.0;
+    lv_unit = EventUnitCreatedUnit();
+    lv_resources = libSCPL_gf_PlayerHarvestableMinerals(UnitGetOwner(lv_unit));
     lv_muleExpireDelay = StringToFixed(CatalogFieldValueGet(c_gameCatalogEffect, "CalldownMULECreatePersistent", "ExpireDelay", c_playerAny));
-    Wait((lv_muleExpireDelay + 0.0625), c_timeGame);
-    UnitIssueOrder(lv_unitCreated, OrderTargetingUnit(AbilityCommand("MULEGather", 0), UnitGroupClosestToPoint(lv_resources, UnitGetPosition(lv_unitCreated))), c_orderQueueAddToEnd);
+    lv_resourceDistanceClosest = DistanceBetweenPoints(UnitGetPosition(lv_unit), UnitGetPosition(UnitGroupClosestToPoint(lv_resources, UnitGetPosition(lv_unit))));
+    libPPRL_gf_DebugString(("dist " + FixedToString(lv_resourceDistanceClosest, c_fixedPrecisionAny)));
+    if ((lv_resourceDistanceClosest <= lv_resourceDistanceMaximum)) {
+        Wait((lv_muleExpireDelay + 0.0625), c_timeGame);
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("MULEGather", 0), UnitGroupClosestToPoint(lv_resources, UnitGetPosition(lv_unit))), c_orderQueueAddToEnd);
+    }
     return true;
 }
 

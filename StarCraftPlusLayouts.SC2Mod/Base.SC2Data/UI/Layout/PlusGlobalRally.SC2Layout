@@ -102,6 +102,9 @@
 				</State>
 				<State name="Protoss">
 					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+					<Action type="SetProperty" frame="CommandButton00" tooltip="Global Rally Gateway (&lt;c val=&quot;FFFFFF&quot;&gt;F3&lt;/c&gt;)"/>
+					<Action type="SetProperty" frame="CommandButton01" tooltip="Global Rally Robotics Facility (&lt;c val=&quot;FFFFFF&quot;&gt;F4&lt;/c&gt;)"/>
+					<Action type="SetProperty" frame="CommandButton02" tooltip="Global Rally Stargate (&lt;c val=&quot;FFFFFF&quot;&gt;F5&lt;/c&gt;)"/>
 				</State>
 				<State name="Zerg">
 					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
