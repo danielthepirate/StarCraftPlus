@@ -77,6 +77,9 @@
     <CUnit id="CommandCenterFlying">
         <Food value="25"/>
     </CUnit>
+    <CUnit id="Corruptor">
+        <BehaviorArray Link="GameUCBBroodlordChargeLink"/>
+    </CUnit>
     <CUnit id="CreepTumor">
         <BehaviorArray Link="CreepGrowthMediumEnhanced"/>
     </CUnit>
@@ -331,6 +334,7 @@
         <CardLayouts index="0">
             <LayoutButtons index="5" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBLurkerChargeLink"/>
     </CUnit>
     <CUnit id="HydraliskBurrowed">
         <CardLayouts index="0">
@@ -577,6 +581,7 @@
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBRavagerChargeLink"/>
     </CUnit>
     <CUnit id="RoachBurrowed">
         <CardLayouts index="0">
@@ -885,13 +890,16 @@
     </CUnit>
     <CUnit id="SdbZTrain2">
         <CardLayouts index="0">
-            <LayoutButtons index="0" Face="RavagerUCB" Type="AbilCmd" AbilCmd="MorphToRavager,Execute" Row="0" Column="0"/>
-            <LayoutButtons index="1" Face="LurkerMPUCB" Type="AbilCmd" AbilCmd="MorphToLurker,Execute" Row="0" Column="1"/>
-            <LayoutButtons index="2" Face="BroodLordUCB" Type="AbilCmd" AbilCmd="MorphToBroodLord,Execute" Row="0" Column="2"/>
-            <LayoutButtons index="3" Face="SummonNydusWormUCB" Type="AbilCmd" AbilCmd="BuildNydusCanal,Build1" Row="0" Column="3"/>
-            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="0"/>
+            <LayoutButtons index="0" Face="RavagerUCB" Type="AbilCmd" AbilCmd="MorphToRavagerUCB,Execute" Row="0" Column="0"/>
+            <LayoutButtons index="1" Face="LurkerMPUCB" Type="AbilCmd" AbilCmd="MorphToLurkerUCB,Execute" Row="0" Column="1"/>
+            <LayoutButtons index="2" Face="BroodLordUCB" Type="AbilCmd" AbilCmd="MorphToBroodLordUCB,Execute" Row="0" Column="2"/>
+            <LayoutButtons index="3" Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="0"/>
         </CardLayouts>
-        <AbilArray index="9" Link="MorphZerglingToBanelingUCB2"/>
+        <AbilArray index="8" Link="MorphToRavagerUCB"/>
+        <AbilArray index="9" Link="MorphToLurkerUCB"/>
+        <AbilArray index="10" Link="MorphToBroodLordUCB"/>
+        <AbilArray index="11" removed="1"/>
+        <AbilArray index="12" removed="1"/>
     </CUnit>
     <CUnit id="SensorTower">
         <CardLayouts index="0">

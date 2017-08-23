@@ -140,11 +140,23 @@
         <InitialEffect value="GameUCBLairChargeAdd"/>
         <FinalEffect value="GameUCBLairChargeRemove"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBBroodlordChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBBroodlordChargeAdd"/>
+        <FinalEffect value="GameUCBBroodlordChargeRemove"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBOverlordOrTransportChargeLink">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InitialEffect value="GameUCBOverlordOrTransportChargeAdd"/>
         <FinalEffect value="GameUCBOverlordOrTransportChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBLurkerChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBLurkerChargeAdd"/>
+        <FinalEffect value="GameUCBLurkerChargeRemove"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBZerglingChargeLink">
         <InfoFlags index="Hidden" value="1"/>
@@ -295,6 +307,12 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InitialEffect value="GameUCBOverlordChargeAdd"/>
         <FinalEffect value="GameUCBOverlordChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBRavagerChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBRavagerChargeAdd"/>
+        <FinalEffect value="GameUCBRavagerChargeRemove"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameWorkerHarvestGasMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>

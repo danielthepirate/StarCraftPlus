@@ -245,6 +245,28 @@
             </Charge>
         </Cost>
     </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBBroodlordChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Broodlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBBroodlordChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Broodlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectModifyPlayer id="GameUCBOverlordOrTransportChargeAdd">
         <EditorCategories value=""/>
         <Cost>
@@ -267,6 +289,28 @@
             </Charge>
         </Cost>
     </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBLurkerChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Lurker"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBLurkerChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Lurker"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectModifyPlayer id="GameUCBZerglingChargeAdd">
         <EditorCategories value=""/>
         <Cost>
@@ -285,6 +329,17 @@
                 <CountMax value="999"/>
                 <CountUse value="-1"/>
                 <Link value="UCB/Overlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBRavagerChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Ravager"/>
                 <Location value="Player"/>
             </Charge>
         </Cost>
@@ -556,6 +611,17 @@
                 <CountMax value="999"/>
                 <CountUse value="1"/>
                 <Link value="UCB/Overlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBRavagerChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Ravager"/>
                 <Location value="Player"/>
             </Charge>
         </Cost>

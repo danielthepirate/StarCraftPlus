@@ -538,6 +538,21 @@
                 <DurationArray index="Delay" value="34"/>
             </SectionArray>
         </InfoArray>
+        <AbilSetId value="UpgradeBroodlord"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToBroodLordUCB" parent="MorphToBroodLord">
+        <Name value="Abil/Name/MorphToBroodLordUCB"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Broodlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
     </CAbilMorph>
     <CAbilMorph id="MorphToLurker">
         <RefundFraction>
@@ -546,6 +561,21 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <AbilSetId value="UpgradeLurker"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToLurkerUCB" parent="MorphToLurker">
+        <Name value="Abil/Name/MorphToLurkerUCB2"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="100"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Lurker"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
     </CAbilMorph>
     <CAbilMorph id="MorphToMothership">
         <RefundFraction>
@@ -586,6 +616,21 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <AbilSetId value="UpgradeRavager"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToRavagerUCB" parent="MorphToRavager">
+        <Name value="Abil/Name/MorphToRavagerUCB"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="25"/>
+            <Resource index="Vespene" value="75"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Ravager"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
     </CAbilMorph>
     <CAbilMorph id="MorphToTransportOverlord">
         <AbilSetId value="UpgradeOverlord"/>

@@ -616,11 +616,36 @@ string libSCPL_gf_AbilityMorphUnit (string lp_ability, unit lp_unit) {
 
     // Implementation
     lv_parentUnit = UnitGetType(lp_unit);
-    if (((lv_parentUnit == "Hydralisk") || (lv_parentUnit == "Roach") || (lv_parentUnit == "Overlord") || (lv_parentUnit == "Corruptor") || (lv_parentUnit == "LurkerMPEgg") || (lv_parentUnit == "RavagerCocoon") || (lv_parentUnit == "BroodLordCocoon") || (lv_parentUnit == "TransportOverlordCocoon") || (lv_parentUnit == "OverlordCocoon"))) {
+    if (((lv_parentUnit == "Hydralisk") || (lv_parentUnit == "Roach") || (lv_parentUnit == "Corruptor") || (lv_parentUnit == "Overlord") || (lv_parentUnit == "LurkerMPEgg") || (lv_parentUnit == "RavagerCocoon") || (lv_parentUnit == "BroodLordCocoon") || (lv_parentUnit == "TransportOverlordCocoon") || (lv_parentUnit == "OverlordCocoon"))) {
         lv_morphIndex = 1;
     }
     lv_morphUnit = (CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, ("InfoArray[" + IntToString(lv_morphIndex) + "].Unit"), c_playerAny));
     return lv_morphUnit;
+}
+
+string libSCPL_gf_AbilityMorphParentUnit (unit lp_unit) {
+    // Variable Declarations
+    string lv_parentUnit;
+    string lv_morphUnit;
+    int lv_morphIndex;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_parentUnit = UnitGetType(lp_unit);
+    if (((lv_parentUnit == "TransportOverlordCocoon") || (lv_parentUnit == "OverlordCocoon"))) {
+        lv_parentUnit = "Overlord";
+    }
+    else if ((lv_parentUnit == "RavagerCocoon")) {
+        lv_parentUnit = "Roach";
+    }
+    else if ((lv_parentUnit == "LurkerMPEgg")) {
+        lv_parentUnit = "Hydralisk";
+    }
+    else if ((lv_parentUnit == "BroodLordCocoon")) {
+        lv_parentUnit = "Corruptor";
+    }
+    return lv_parentUnit;
 }
 
 void libSCPL_gf_UnitMorphProgressSet (unit lp_unit, fixed lp_progress) {
@@ -1766,10 +1791,15 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Factory", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "GhostAcademy", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Barracks", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "EngineeringBay", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "RoachWarren", 6.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "GreaterSpire", 6.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "LurkerDenMP", 6.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Roach", 13.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Roach", 13.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Hydralisk", 13.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Hydralisk", 13.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Corruptor", 13.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Corruptor", 13.0);
     return true;
 }
 
@@ -2381,7 +2411,6 @@ void libSCPL_gt_ProgressMorphStart01_Init () {
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressMorphRefund02_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    string lv_abilityString;
     int lv_playerIndex;
     string lv_progressUnitType;
     string lv_parentUnitType;
@@ -2393,7 +2422,6 @@ bool libSCPL_gt_ProgressMorphRefund02_Func (bool testConds, bool runActions) {
     fixed lv_costTime;
 
     // Variable Initialization
-    lv_abilityString = "";
     lv_registerName = "";
 
     // Actions
@@ -2406,14 +2434,28 @@ bool libSCPL_gt_ProgressMorphRefund02_Func (bool testConds, bool runActions) {
     lv_triggeringAbility = AbilityCommandGetAbility(OrderGetAbilityCommand(EventUnitOrder()));
     lv_registerName = CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, "InfoArray[" + IntToString(lv_progressIndex) + "].Unit", c_playerAny);
     lv_progressUnitType = (lv_registerName);
-    lv_parentUnitType = UnitGetType(EventUnit());
+    lv_parentUnitType = libSCPL_gf_AbilityMorphParentUnit(EventUnit());
+    libPPRL_gf_DebugString(("Unit = " + (lv_progressUnitType) + " R"));
+    libPPRL_gf_DebugString(("Parent = " + (lv_parentUnitType) + " R"));
     if (((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("MorphToOverseerUCB", 0)) || (OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("MorphToTransportOverlordUCB", 0)))) {
         lv_parentUnitType = "Overlord";
     }
-    lv_abilityString = ((AbilityCommandGetAbility(OrderGetAbilityCommand(EventUnitOrder()))) + "UCB");
+    else if ((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("MorphToRavagerUCB", 0))) {
+        lv_parentUnitType = "Roach";
+    }
+    else if ((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("MorphToLurkerUCB", 0))) {
+        lv_parentUnitType = "Hydralisk";
+    }
+    else if ((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("MorphToBroodLordUCB", 0))) {
+        lv_parentUnitType = "Corruptor";
+    }
+    libPPRL_gf_DebugString(("ParentC = " + (lv_parentUnitType) + " R"));
     lv_costMinerals = (UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals) - UnitTypeGetCost(lv_parentUnitType, c_unitCostMinerals));
     lv_costVespene = (UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene) - UnitTypeGetCost(lv_parentUnitType, c_unitCostVespene));
     lv_costTime = StringToFixed(CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, "InfoArray[" + IntToString(lv_progressIndex) + "].SectionArray[" + IntToString(0) + "].DurationArray[" + IntToString(0) + "]", c_playerAny));
+    libPPRL_gf_DebugString(("Mineral " + FixedToString(lv_costMinerals, c_fixedPrecisionAny) + " R"));
+    libPPRL_gf_DebugString(("Vespene" + FixedToString(lv_costVespene, c_fixedPrecisionAny) + " R"));
+    libPPRL_gf_DebugString(("________________________________"));
     if ((libSCPL_gf_RegisterExists(lv_registerName) == false)) {
         libSCPL_gf_RegisterBuildTime(lv_registerName, lv_costTime);
         libSCPL_gf_RegisterCostMinerals(lv_registerName, lv_costMinerals);
@@ -2429,11 +2471,14 @@ void libSCPL_gt_ProgressMorphRefund02_Init () {
     libSCPL_gt_ProgressMorphRefund02 = TriggerCreate("libSCPL_gt_ProgressMorphRefund02_Func");
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToTransportOverlord", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToOverseer", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToRavager", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToLurker", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToBroodLord", 0));
-    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToRavager", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToTransportOverlordUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToOverseerUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToRavagerUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToLurkerUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund02, null, AbilityCommand("MorphToBroodLordUCB", 0));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2492,6 +2537,9 @@ bool libSCPL_gt_ProgressMorphStart02_Func (bool testConds, bool runActions) {
     lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
     lv_totalCostMinerals = libSCPL_gf_GetCostMinerals((lv_progressUnitType));
     lv_totalCostVespene = libSCPL_gf_GetCostVespene((lv_progressUnitType));
+    libPPRL_gf_DebugString(("Unit = " + (lv_progressUnitType)));
+    libPPRL_gf_DebugString(("Mineral " + FixedToString(lv_totalCostMinerals, c_fixedPrecisionAny)));
+    libPPRL_gf_DebugString(("Vespene" + FixedToString(lv_tickTotalVespene, c_fixedPrecisionAny)));
     lv_tickCostBaseMinerals = (lv_totalCostMinerals / (lv_progressTime / lv_tickIncrement));
     lv_tickCostBaseVespene = (lv_totalCostVespene / (lv_progressTime / lv_tickIncrement));
     libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
@@ -2558,6 +2606,9 @@ void libSCPL_gt_ProgressMorphStart02_Init () {
     libSCPL_gt_ProgressMorphStart02 = TriggerCreate("libSCPL_gt_ProgressMorphStart02_Func");
     TriggerAddEventUnitAbility(libSCPL_gt_ProgressMorphStart02, null, AbilityCommand("MorphToOverseer", 0), c_unitAbilStageExecute, false);
     TriggerAddEventUnitAbility(libSCPL_gt_ProgressMorphStart02, null, AbilityCommand("MorphToTransportOverlord", 0), c_unitAbilStageExecute, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressMorphStart02, null, AbilityCommand("MorphToRavager", 0), c_unitAbilStageExecute, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressMorphStart02, null, AbilityCommand("MorphToLurker", 0), c_unitAbilStageExecute, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressMorphStart02, null, AbilityCommand("MorphToBroodLord", 0), c_unitAbilStageExecute, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5747,6 +5798,159 @@ void libSCPL_gt_UCBChargeLinkOverlordMorphCancel_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Ravager Morph Start
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkRavagerMorphStart_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = "UCB/Ravager";
+    UnitBehaviorRemove(EventUnit(), "GameUCBRavagerChargeLink", 1);
+    if ((TechTreeBehaviorCount(lv_playerIndex, "GameUCBRavagerChargeLink", c_techCountCompleteOnly) == 0) && (PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink) != 0.0)) {
+        libNtve_gf_PlayerRemoveChargeUsed(lv_playerIndex, lv_chargeLink);
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, 999.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkRavagerMorphStart_Init () {
+    libSCPL_gt_UCBChargeLinkRavagerMorphStart = TriggerCreate("libSCPL_gt_UCBChargeLinkRavagerMorphStart_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_UCBChargeLinkRavagerMorphStart, null, AbilityCommand("MorphToRavager", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Ravager Morph Cancel
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkRavagerMorphCancel_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "GameUCBRavagerChargeLink", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkRavagerMorphCancel_Init () {
+    libSCPL_gt_UCBChargeLinkRavagerMorphCancel = TriggerCreate("libSCPL_gt_UCBChargeLinkRavagerMorphCancel_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_UCBChargeLinkRavagerMorphCancel, null, AbilityCommand("MorphToRavager", 0), c_unitAbilStageCancel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Lurker Morph Start
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkLurkerMorphStart_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = "UCB/Lurker";
+    UnitBehaviorRemove(EventUnit(), "GameUCBLurkerChargeLink", 1);
+    if ((TechTreeBehaviorCount(lv_playerIndex, "GameUCBLurkerChargeLink", c_techCountCompleteOnly) == 0) && (PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink) != 0.0)) {
+        libNtve_gf_PlayerRemoveChargeUsed(lv_playerIndex, lv_chargeLink);
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, 999.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkLurkerMorphStart_Init () {
+    libSCPL_gt_UCBChargeLinkLurkerMorphStart = TriggerCreate("libSCPL_gt_UCBChargeLinkLurkerMorphStart_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_UCBChargeLinkLurkerMorphStart, null, AbilityCommand("MorphToLurker", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Lurker Morph Cancel
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkLurkerMorphCancel_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "GameUCBLurkerChargeLink", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkLurkerMorphCancel_Init () {
+    libSCPL_gt_UCBChargeLinkLurkerMorphCancel = TriggerCreate("libSCPL_gt_UCBChargeLinkLurkerMorphCancel_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_UCBChargeLinkLurkerMorphCancel, null, AbilityCommand("MorphToLurker", 0), c_unitAbilStageCancel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Broodlord Morph Start
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkBroodlordMorphStart_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = "UCB/Broodlord";
+    UnitBehaviorRemove(EventUnit(), "GameUCBBroodlordChargeLink", 1);
+    if ((TechTreeBehaviorCount(lv_playerIndex, "GameUCBBroodlordChargeLink", c_techCountCompleteOnly) == 0) && (PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink) != 0.0)) {
+        libNtve_gf_PlayerRemoveChargeUsed(lv_playerIndex, lv_chargeLink);
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, 999.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkBroodlordMorphStart_Init () {
+    libSCPL_gt_UCBChargeLinkBroodlordMorphStart = TriggerCreate("libSCPL_gt_UCBChargeLinkBroodlordMorphStart_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_UCBChargeLinkBroodlordMorphStart, null, AbilityCommand("MorphToBroodLord", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Broodlord Morph Cancel
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkBroodlordMorphCancel_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "GameUCBBroodlordChargeLink", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkBroodlordMorphCancel_Init () {
+    libSCPL_gt_UCBChargeLinkBroodlordMorphCancel = TriggerCreate("libSCPL_gt_UCBChargeLinkBroodlordMorphCancel_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_UCBChargeLinkBroodlordMorphCancel, null, AbilityCommand("MorphToBroodLord", 0), c_unitAbilStageCancel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Auto Creep Tumor Node Create Parent
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_AutoCreepTumorNodeCreateParent_Func (bool testConds, bool runActions) {
@@ -6076,6 +6280,12 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBChargeLinkZerglingMorphCancel_Init();
     libSCPL_gt_UCBChargeLinkOverlordMorphStart_Init();
     libSCPL_gt_UCBChargeLinkOverlordMorphCancel_Init();
+    libSCPL_gt_UCBChargeLinkRavagerMorphStart_Init();
+    libSCPL_gt_UCBChargeLinkRavagerMorphCancel_Init();
+    libSCPL_gt_UCBChargeLinkLurkerMorphStart_Init();
+    libSCPL_gt_UCBChargeLinkLurkerMorphCancel_Init();
+    libSCPL_gt_UCBChargeLinkBroodlordMorphStart_Init();
+    libSCPL_gt_UCBChargeLinkBroodlordMorphCancel_Init();
     libSCPL_gt_AutoCreepTumorNodeCreateParent_Init();
     libSCPL_gt_AutoCreepTumorNodeCreateChild_Init();
     libSCPL_gt_AutoCreepTumorNodeTargetReached_Init();

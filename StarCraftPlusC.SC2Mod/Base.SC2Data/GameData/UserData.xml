@@ -88,15 +88,15 @@
             <Int index="0" removed="1"/>
             <Unit index="1" Unit="Zergling"/>
         </Instances>
-        <Instances index="31" Id="MorphToRavager">
+        <Instances index="31" Id="MorphToRavagerUCB">
             <Unit index="1" Unit="Roach"/>
         </Instances>
-        <Instances index="32" Id="MorphToLurker">
+        <Instances index="32" Id="MorphToLurkerUCB">
             <Unit index="1" Unit="Hydralisk"/>
             <Unit index="2" removed="1"/>
             <Unit index="3" removed="1"/>
         </Instances>
-        <Instances index="33" Id="MorphToBroodLord">
+        <Instances index="33" Id="MorphToBroodLordUCB">
             <Unit index="1" Unit="Corruptor"/>
         </Instances>
         <Instances index="34" Id="LairResearch">
