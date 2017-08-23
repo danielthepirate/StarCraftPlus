@@ -23,12 +23,38 @@ unitgroup Pir_WorkerGroupNotHarvestingGas (unitgroup ug) {
 
 void Pir_UnitCancelQueue (unit u){
 	if ((UnitQueueGetProperty(u, c_unitQueuePropertyUsed) > 0)) {
+	
+		// Cancel Unit Train
 		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
 		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
 		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
 		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
 		UnitIssueOrder(u, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+		
+		// Cancel Research
+		UnitIssueOrder(u, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
 	}
+}
+
+unitgroup Pir_UnitsNotMorphing(unitgroup ug) {
+
+	int cMorphProgress = 8;
+	unitgroup available = UnitGroupCopy(ug);
+	unitgroup unavailable = UnitGroupEmpty();
+	int count = UnitGroupCount(ug, c_unitCountAll);
+	int index;
+	unit u;
+	
+	for (index = 1; index <= count; index += 1){
+		u = UnitGroupUnit(ug, index);
+		
+		if (UnitGetCustomValue(u,cMorphProgress) > 0) {
+            UnitGroupAdd(unavailable,u);
+        }
+	}
+	
+	UnitGroupRemoveUnitGroup(available, unavailable);
+	return available;
 }
 
 unitgroup Pir_GhostAcademyAvailable(unitgroup ug) {

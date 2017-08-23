@@ -223,6 +223,127 @@
         <EffectArray value="GameUCBCommandCenterChargeRemove"/>
         <EffectArray value="GameUCBChargeLinkCommandCenterConstructing"/>
     </CEffectSet>
+    <CEffectModifyPlayer id="GameUCBLairChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Lair"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBLairChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Lair"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBOverlordOrTransportChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/OverlordT"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBOverlordOrTransportChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/OverlordT"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBZerglingChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Zergling"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBOverlordChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Overlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBZerglingChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Zergling"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBSpireChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Spire"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBHydraliskDenChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/HydraliskDen"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBHatcheryChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Hatchery"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBSpireChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Spire"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectModifyPlayer id="GameUCBCommandCenterChargeAdd">
         <EditorCategories value=""/>
         <Cost>
@@ -230,6 +351,31 @@
                 <CountMax value="99"/>
                 <CountUse value="-1"/>
                 <Link value="UCB/CommandCenter"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBLarvaChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBLarvaChargeLink">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameUCBLarvaChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
                 <Location value="Player"/>
             </Charge>
         </Cost>
@@ -335,36 +481,85 @@
     </CEffectModifyPlayer>
     <CEffectApplyBehavior id="GameUCBHatcheryHiveLair">
         <ValidatorArray index="0" value="IsNotConstructing"/>
+        <ValidatorArray value="TargetNotDead"/>
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBHatcheryHiveLairMorphing">
         <ValidatorArray index="0" value="IsNotConstructing"/>
+        <ValidatorArray value="TargetNotDead"/>
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBHydraliskLurkerDen">
         <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBHydraliskLurkerDenMorphing">
         <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBOrbitalCommandEnergy50GE">
         <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBChargeLinkCommandCenter">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBOrbitalCommandEnergy50LT">
         <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBChargeLinkCommandCenterConstructing">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBSpire">
         <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Behavior value="GameUCBSpireGreaterSpire"/>
     </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameUCBHydraliskDenChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/HydraliskDen"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBHatcheryChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Hatchery"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectApplyBehavior id="GameUCBSpireMorphing">
         <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
     </CEffectApplyBehavior>
+    <CEffectSwitch id="GameUCBZergBuildingMarker">
+        <EditorCategories value=""/>
+        <CaseArray Effect="RemoveCaster" FallThrough="1"/>
+        <CaseArray Validator="IsHatcheryLairOrHive" Effect="GameUCBHatcheryHiveLair"/>
+        <CaseArray Validator="IsHydraliskDen" Effect="GameUCBHydraliskLurkerDen"/>
+        <CaseArray Validator="IsSpire" Effect="GameUCBSpire"/>
+    </CEffectSwitch>
+    <CEffectModifyPlayer id="GameUCBOverlordChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Overlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectSet id="GlobalRallyTarget01Set">
         <EditorCategories value=""/>
         <EffectArray value="GlobalRallyTarget01Create"/>
@@ -489,6 +684,12 @@
         <Visibility value="Hidden"/>
         <Flags index="Kill" value="1"/>
         <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectDamage id="RemoveCaster">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <Flags index="Kill" value="1"/>
         <Death value="Remove"/>
     </CEffectDamage>
     <CEffectApplyKinetic id="KineticFollow">

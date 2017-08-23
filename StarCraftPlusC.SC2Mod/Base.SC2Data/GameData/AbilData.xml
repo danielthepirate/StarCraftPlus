@@ -405,6 +405,97 @@
         </RefundFraction>
         <InfoArray index="Train1" Effect="GameDroneMorphMarker"/>
     </CAbilTrain>
+    <CAbilTrain id="LarvaTrainDummyRedirect">
+        <InfoArray index="Train1">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train11">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train12">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train13">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train15">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilMorph id="LurkerAspectMP">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -471,17 +562,22 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
-        <InfoArray index="1">
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="16.5"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Delay" value="16.5"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="16.5"/>
-            </SectionArray>
-        </InfoArray>
+        <AbilSetId value="UpgradeOverseer"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToOverseerUCB" parent="MorphToOverseer">
+        <Name value="Abil/Name/MorphToOverseerUCB"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="50"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/OverlordT"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/MorphToTransportOverlord"/>
+        </Cost>
     </CAbilMorph>
     <CAbilMorph id="MorphToRavager">
         <RefundFraction>
@@ -492,6 +588,7 @@
         </RefundFraction>
     </CAbilMorph>
     <CAbilMorph id="MorphToTransportOverlord">
+        <AbilSetId value="UpgradeOverlord"/>
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
             <Resource index="Vespene" value="0"/>
@@ -502,19 +599,24 @@
             <Resource index="Minerals" value="0"/>
             <Resource index="Vespene" value="0"/>
         </Cost>
-        <InfoArray index="1" Score="1" Unit="OverlordTransport">
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="16.5"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Delay" value="16.5"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="16.5"/>
-            </SectionArray>
-        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToTransportOverlordUCB" parent="MorphToTransportOverlord">
+        <Name value="Abil/Name/MorphToTransportOverlordUCB"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="25"/>
+            <Resource index="Vespene" value="25"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Overlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoOverlordTransportUBC"/>
     </CAbilMorph>
     <CAbilTrain id="MorphZerglingToBaneling">
+        <AbilSetId value="MorphBaneling"/>
         <RefundFraction>
             <Vital index="Life" value="0"/>
             <Vital index="Shields" value="0"/>
@@ -722,6 +824,22 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <AbilSetId value="GreaterSpire"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToGreaterSpireUCB" parent="UpgradeToGreaterSpire">
+        <Name value="Abil/Name/UpgradeToGreaterSpireUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UpgradeGreaterSpire"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="150"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Spire"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToHive">
         <RefundFraction>
@@ -730,6 +848,22 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <AbilSetId value="UpgradeHive"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHiveUCB" parent="UpgradeToHive">
+        <Name value="Abil/Name/UpgradeToHiveUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UpgradeHive"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="150"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Lair"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToLair">
         <RefundFraction>
@@ -738,6 +872,22 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <AbilSetId value="UpgradeLair"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToLairUCB" parent="UpgradeToLair">
+        <Name value="Abil/Name/UpgradeToLairUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UpgradeLair"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="100"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Hatchery"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToLurkerDenMP">
         <RefundFraction>
@@ -746,6 +896,22 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <AbilSetId value="LurkerDen"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToLurkerDenMPUCB" parent="UpgradeToLurkerDenMP">
+        <Name value="Abil/Name/UpgradeToLurkerDenMPUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UpgradeLurkerDen"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/HydraliskDen"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToOrbital">
         <AbilSetId value="OrbitalCommand"/>
@@ -781,6 +947,24 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
         <AbilSetId value="PlanetaryFortress"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphZerglingToBanelingUCB" parent="UpgradeToPlanetaryFortress">
+        <Name value="Abil/Name/MorphZerglingToBanelingUCB"/>
+        <AbilSetId value="MorphBaneling"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BanelingUCB" Requirements="HaveBanelingNest"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="25"/>
+            <Resource index="Vespene" value="25"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Zergling"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <InfoArray index="0" Unit="Baneling"/>
+        <ValidatorArray index="0" removed="1"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToPlanetaryFortressUCB" parent="UpgradeToPlanetaryFortress">
         <Name value="Abil/Name/UpgradeToPlanetaryFortressUCB"/>
@@ -840,6 +1024,54 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <FlagArray index="IgnoreUnitCost" value="1"/>
+        <FlagArray index="PeonKillFinish" value="0"/>
+        <InfoArray index="Build1">
+            <Resource index="Minerals" value="350"/>
+        </InfoArray>
+        <InfoArray index="Build3">
+            <Resource index="Minerals" value="75"/>
+        </InfoArray>
+        <InfoArray index="Build4">
+            <Resource index="Minerals" value="250"/>
+        </InfoArray>
+        <InfoArray index="Build5">
+            <Resource index="Minerals" value="125"/>
+        </InfoArray>
+        <InfoArray index="Build6">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="100"/>
+        </InfoArray>
+        <InfoArray index="Build7">
+            <Resource index="Minerals" value="250"/>
+            <Resource index="Vespene" value="200"/>
+        </InfoArray>
+        <InfoArray index="Build8">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
+        </InfoArray>
+        <InfoArray index="Build9">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="100"/>
+        </InfoArray>
+        <InfoArray index="Build10">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
+        </InfoArray>
+        <InfoArray index="Build11">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="50"/>
+        </InfoArray>
+        <InfoArray index="Build14">
+            <Resource index="Minerals" value="200"/>
+        </InfoArray>
+        <InfoArray index="Build15">
+            <Resource index="Minerals" value="150"/>
+        </InfoArray>
+        <InfoArray index="Build16">
+            <Resource index="Minerals" value="125"/>
+        </InfoArray>
+        <EffectArray index="Finish" value="GameUCBZergBuildingMarker"/>
     </CAbilBuild>
     <CAbilResearch id="evolutionchamberresearch">
         <RefundFraction>

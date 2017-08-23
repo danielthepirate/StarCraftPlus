@@ -13,11 +13,47 @@
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="CountUnitCommandCenterCompleteOnly1610623376TechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="UpgradeHive">
+        <EditorCategories value="Race:Zerg,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitLairCompleteOnlyCountUnitInfestationPitCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UpgradeLair">
+        <EditorCategories value="Race:Zerg,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitHatcheryCompleteOnlyCountUnitSpawningPoolCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UpgradeLurkerDen">
+        <EditorCategories value="Race:Zerg,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitHydraliskDenCompleteOnlyCountUnitAlias_LairCompleteOnly1515591279TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnAdrenalGlands">
+        <NodeArray index="Use" Link="AndCountUnitSpawningPoolCompleteOnlyCountUnitHiveCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
     <CRequirement id="LearnBurrow">
         <NodeArray index="Use" Link="CountBehaviorGameUCBHatcheryHiveLairCompleteOnly3846943109"/>
     </CRequirement>
+    <CRequirement id="LearnCentrificalHooks">
+        <NodeArray index="Use" Link="AndCountUnitBanelingNestCompleteOnlyOr1515591279CountUnitLairCompleteOnlyTechTreeCheatCountUnitHiveCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnChitinousPlating">
+        <NodeArray index="Use" Link="CountUnitUltraliskCavernCompleteOnly"/>
+    </CRequirement>
     <CRequirement id="LearnEvolveMuscularAugments">
         <NodeArray index="Use" Link="CountBehaviorGameUCBHydraliskLurkerDenCompleteOnly4037297345"/>
+    </CRequirement>
+    <CRequirement id="LearnGlialReconstitution">
+        <NodeArray index="Use" Link="AndCountUnitRoachWarrenCompleteOnlyOr1515591279CountUnitLairCompleteOnlyTechTreeCheatCountUnitHiveCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnInfestorEnergyUpgrade">
+        <NodeArray index="Use" Link="CountUnitInfestationPitCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnMetabolicBoost">
+        <NodeArray index="Use" Link="CountUnitSpawningPoolCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnNeuralParasite">
+        <NodeArray index="Use" Link="CountUnitInfestationPitCompleteOnly"/>
     </CRequirement>
     <CRequirement id="LearnPneumatizedCarapace">
         <NodeArray index="Use" Link="CountBehaviorGameUCBHatcheryHiveLairCompleteOnly3846943109"/>
@@ -26,23 +62,53 @@
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Use" Link="AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="LearnTunnelingClaws">
+        <NodeArray index="Use" Link="AndCountUnitRoachWarrenCompleteOnlyOr1515591279CountUnitLairCompleteOnlyTechTreeCheatCountUnitHiveCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
     <CRequirement id="LearnZergFlyerArmor1">
-        <NodeArray index="Use" Link="CountBehaviorGameUCBSpireCompleteOnly836078744"/>
+        <NodeArray index="Use" Link="CountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744"/>
     </CRequirement>
     <CRequirement id="LearnZergFlyerArmor2">
-        <NodeArray index="Use" Link="AndEq539690215CountUpgradeZergFlyerArmorsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheatCountBehaviorGameUCBSpireCompleteOnly836078744"/>
+        <NodeArray index="Use" Link="AndCountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744Eq539690215CountUpgradeZergFlyerArmorsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="LearnZergFlyerArmor3">
-        <NodeArray index="Use" Link="AndEq504020316CountUpgradeZergFlyerArmorsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheatCountBehaviorGameUCBSpireCompleteOnly"/>
+        <NodeArray index="Use" Link="AndCountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744Eq504020316CountUpgradeZergFlyerArmorsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="LearnZergFlyerAttack1">
-        <NodeArray index="Use" Link="CountBehaviorGameUCBSpireCompleteOnly836078744"/>
+        <NodeArray index="Use" Link="CountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744"/>
     </CRequirement>
     <CRequirement id="LearnZergFlyerAttack2">
-        <NodeArray index="Use" Link="AndEq3274469600CountUpgradeZergFlyerWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheatCountBehaviorGameUCBSpireCompleteOnly"/>
+        <NodeArray index="Use" Link="AndCountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744Eq3274469600CountUpgradeZergFlyerWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="LearnZergFlyerAttack3">
-        <NodeArray index="Use" Link="AndEq2419098971CountUpgradeZergFlyerWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheatCountBehaviorGameUCBSpireCompleteOnly"/>
+        <NodeArray index="Use" Link="AndCountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744Eq2419098971CountUpgradeZergFlyerWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnZergGroundArmor1">
+        <NodeArray index="Use" Link="CountUnitEvolutionChamberCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnZergGroundArmor2">
+        <NodeArray index="Use" Link="AndCountUnitEvolutionChamberCompleteOnlyEq1695466224CountUpgradeZergGroundArmorsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnZergGroundArmor3">
+        <NodeArray index="Use" Link="AndCountUnitEvolutionChamberCompleteOnlyEq4090499265CountUpgradeZergGroundArmorsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnZergMeleeWeapon1">
+        <NodeArray index="Use" Link="CountUnitEvolutionChamberCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnZergMeleeWeapon2">
+        <NodeArray index="Use" Link="AndCountUnitEvolutionChamberCompleteOnlyEq1542947369CountUpgradeZergMeleeWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnZergMeleeWeapon3">
+        <NodeArray index="Use" Link="AndCountUnitEvolutionChamberCompleteOnlyEq2480428841CountUpgradeZergMeleeWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnZergMissileWeapon1">
+        <NodeArray index="Use" Link="CountUnitEvolutionChamberCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnZergMissileWeapon2">
+        <NodeArray index="Use" Link="AndCountUnitEvolutionChamberCompleteOnlyEq2966286162CountUpgradeZergMissileWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnZergMissileWeapon3">
+        <NodeArray index="Use" Link="AndCountUnitEvolutionChamberCompleteOnlyEq2358983352CountUpgradeZergMissileWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="ShowEngineeringBay">
         <EditorCategories value="Race:Terran,TechType:Unit"/>
@@ -250,5 +316,10 @@
     </CRequirement>
     <CRequirement id="UCBOrbitalCommandEnergy50">
         <NodeArray index="Use" Link="AndCountUnitOrbitalCommandCompleteOnlyTechTreeCheatCountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704"/>
+    </CRequirement>
+    <CRequirement id="UpgradeGreaterSpire">
+        <EditorCategories value="Race:Zerg,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitSpireCompleteOnlyCountUnitHiveCompleteOnlyTechTreeCheat"/>
     </CRequirement>
 </Catalog>

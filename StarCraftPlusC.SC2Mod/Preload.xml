@@ -4,9 +4,17 @@
 <Asset path="assets\textures\blank.dds" Type="Image"/>
 <Actor id="SYSTEM_ActorConfig"/>
 <Behavior id="GameUCBCommandCenterChargeLink"/>
+<Behavior id="GameUCBHatcheryHiveLair"/>
 <Behavior id="GameWorkerHarvestGasMarker"/>
 <Behavior id="GameIncreasedLifeAndShields"/>
 <Behavior id="KineticFollow"/>
+<Behavior id="GameUCBSpireChargeLink"/>
+<Behavior id="GameUCBHydraliskDenChargeLink"/>
+<Behavior id="GameUCBHatcheryChargeLink"/>
+<Behavior id="GameUCBLairChargeLink"/>
+<Behavior id="GameUCBZerglingChargeLink"/>
+<Behavior id="GameUCBOverlordChargeLink"/>
+<Behavior id="GameUCBOverlordOrTransportChargeLink"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
 <Unit id="TechLab"/>
@@ -22,7 +30,6 @@
 <Unit id="FusionCore"/>
 <Unit id="SCV"/>
 <Unit id="Probe"/>
-<Unit id="Hatchery"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>
 <Unit id="HydraliskDen"/>

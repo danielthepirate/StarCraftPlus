@@ -1,9 +1,17 @@
 ﻿Abil/EditorPrefix/CalldownMULEUCB=Orbital Command -
+Abil/EditorPrefix/MorphBuildingHatcheryLairUCB=Hatchery -
+Abil/EditorPrefix/MorphBuildingLairHiveUCB=Lair -
+Abil/EditorPrefix/MorphBuildingSpireGreaterSpireUCB=Spire -
 Abil/EditorPrefix/MorphDummyTrainNukeUCB=Ghost Academy -
+Abil/EditorPrefix/MorphToTransportOverlordUCB=Overlord -
+Abil/EditorPrefix/MorphZerglingToBanelingUCB=Zergling -
 Abil/EditorPrefix/ScannerSweepUCB=Orbital Command -
 Abil/EditorPrefix/SupplyDepotLower=Auto Wall
 Abil/EditorPrefix/SupplyDepotRaise=Auto Wall
 Abil/EditorPrefix/SupplyDropUCB=Orbital Command -
+Abil/EditorPrefix/UpgradeToGreaterSpireUCB=Spire -
+Abil/EditorPrefix/UpgradeToHiveUCB=Lair -
+Abil/EditorPrefix/UpgradeToLairUCB=Hatchery -
 Abil/EditorPrefix/UpgradeToOrbitalUCB=Command Center -
 Abil/EditorPrefix/UpgradeToPlanetaryFortressUCB=Command Center -
 Abil/EditorSuffix/UpgradeToOrbitalUCB=UCB
@@ -136,8 +144,25 @@ Behavior/Name/GameUCBGhostAcademyChargeLinkConstructing=Game UCB Ghost Academy C
 Behavior/Name/GameUCBGlobalRally00ChargeLink=Game UCB Global Rally 00 Charge Link
 Behavior/Name/GameUCBGlobalRally01ChargeLink=Game UCB Global Rally 01 Charge Link
 Behavior/Name/GameUCBGlobalRally02ChargeLink=Game UCB Global Rally 02 Charge Link
+Behavior/Name/GameUCBHatcheryChargeLink=Game UCB Hatchery Charge Link
+Behavior/Name/GameUCBHatcheryChargeLinkConstructing=Game UCB Hatchery Charge Link Constructing
+Behavior/Name/GameUCBHatcheryHiveLair=Game UCB Hatchery Hive Lair
+Behavior/Name/GameUCBHatcheryHiveLairMorphing=Game UCB Hatchery Hive Lair Morphing
+Behavior/Name/GameUCBHydraliskDenChargeLink=Game UCB Hydralisk Den Charge Link
+Behavior/Name/GameUCBHydraliskDenChargeLinkConstructing=Game UCB Hydralisk Den Charge Link Constructing
+Behavior/Name/GameUCBHydraliskLurkerDen=Game UCB Hydralisk Lurker Den 
+Behavior/Name/GameUCBHydraliskLurkerDenMorphing=Game UCB Hydralisk Lurker Den Morphing
+Behavior/Name/GameUCBLairChargeLink=Game UCB Lair Charge Link
+Behavior/Name/GameUCBLarvaChargeLink=Game UCB Larva Charge Link
+Behavior/Name/GameUCBLarvaChargeLinkPre=Game UCB Larva Charge Link Pre
 Behavior/Name/GameUCBOrbitalCommandEnergy50GE=Game UCB Orbital Command Energy 50 GE
 Behavior/Name/GameUCBOrbitalCommandEnergy50LT=Game UCB Orbital Command Energy 50 LT
+Behavior/Name/GameUCBOverlordChargeLink=Game UCB Overlord Charge Link
+Behavior/Name/GameUCBOverlordOrTransportChargeLink=Game UCB Overlord Or Transport Charge Link
+Behavior/Name/GameUCBSpireChargeLinkConstructing=Game UCB Spire Charge Link Constructing
+Behavior/Name/GameUCBSpireGreaterSpire=Game UCB Spire Greater Spire
+Behavior/Name/GameUCBSpireMorphing=Game UCB Spire Morphing
+Behavior/Name/GameUCBZerglingChargeLink=Game UCB Zergling Charge Link
 Behavior/Name/GameWorkerHarvestGasMarker=Game Worker Harvest Gas Marker
 Behavior/Name/KineticFollow=Kinetic Follow
 Behavior/Name/OverlordEnhancedCreepGrowthAura=Overlord Enhanced Creep Growth Aura
@@ -210,16 +235,37 @@ Requirement/Name/ShowEngineeringBay=Show Engineering Bay
 Requirement/Name/UCBOrbitalCommand=UCB Orbital Command
 Requirement/Name/UCBOrbitalCommandEnergy50=UCB Orbital Command Energy 50
 Requirement/Name/UCBPlanetaryFortress=UCB Planetary Fortress
+Requirement/Name/UpgradeGreaterSpire=Upgrade Greater Spire
+Requirement/Name/UpgradeHive=Upgrade Hive
+Requirement/Name/UpgradeLair=Upgrade Lair
+Requirement/Name/UpgradeLurkerDen=Upgrade Lurker Den
+RequirementNode/Name/AndCountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744Eq2419098971CountUpgradeZergFlyerWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat=CountBehavior(GameUCBSpireGreaterSpire,CompleteOnly){Spire} && CountUpgrade(ZergFlyerWeaponsLevel2,CompleteOnly) == {Zerg Flyer Attacks Level 2}1 && CountUnit(Hive,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/AndCountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744Eq3274469600CountUpgradeZergFlyerWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat=CountBehavior(GameUCBSpireGreaterSpire,CompleteOnly){Spire} && CountUpgrade(ZergFlyerWeaponsLevel1,CompleteOnly) == {Zerg Flyer Attacks Level 1}1 && CountUnit(Alias_Lair,CompleteOnly){Lair}[TechTreeCheat]
+RequirementNode/Name/AndCountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744Eq504020316CountUpgradeZergFlyerArmorsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat=CountBehavior(GameUCBSpireGreaterSpire,CompleteOnly){Spire} && CountUpgrade(ZergFlyerArmorsLevel2,CompleteOnly) == {Zerg Flyer Carapace Level 2}1 && CountUnit(Hive,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/AndCountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744Eq539690215CountUpgradeZergFlyerArmorsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat=CountBehavior(GameUCBSpireGreaterSpire,CompleteOnly){Spire} && CountUpgrade(ZergFlyerArmorsLevel1,CompleteOnly) == {Zerg Flyer Carapace Level 1}1 && CountUnit(Alias_Lair,CompleteOnly){Lair}[TechTreeCheat]
+RequirementNode/Name/AndCountUnitBanelingNestCompleteOnlyOr1515591279CountUnitLairCompleteOnlyTechTreeCheatCountUnitHiveCompleteOnlyTechTreeCheat=CountUnit(BanelingNest,CompleteOnly) && (CountUnit(Lair,CompleteOnly)[TechTreeCheat] || {Lair}CountUnit(Hive,CompleteOnly)[TechTreeCheat])
 RequirementNode/Name/AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheat=CountUnit(Barracks,CompleteOnly)[TechTreeCheat] && CountUnit(BarracksTechLab,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheatCountUnitGhostAcademyCompleteOnly=CountUnit(Barracks,CompleteOnly)[TechTreeCheat] && CountUnit(BarracksTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(GhostAcademy,CompleteOnly)
 RequirementNode/Name/AndCountUnitCommandCenterCompleteOnlyCountUnitBarracksCompleteOnly=CountUnit(CommandCenter,CompleteOnly) && CountUnit(Barracks,CompleteOnly)
 RequirementNode/Name/AndCountUnitCommandCenterCompleteOnlyCountUnitEngineeringBayCompleteOnly=CountUnit(CommandCenter,CompleteOnly) && CountUnit(EngineeringBay,CompleteOnly)
+RequirementNode/Name/AndCountUnitEvolutionChamberCompleteOnlyEq1542947369CountUpgradeZergMeleeWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat=CountUnit(EvolutionChamber,CompleteOnly) && CountUpgrade(ZergMeleeWeaponsLevel1,CompleteOnly) == {Zerg Melee Attacks Level 1}1 && CountUnit(Alias_Lair,CompleteOnly){Lair}[TechTreeCheat]
+RequirementNode/Name/AndCountUnitEvolutionChamberCompleteOnlyEq1695466224CountUpgradeZergGroundArmorsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat=CountUnit(EvolutionChamber,CompleteOnly) && CountUpgrade(ZergGroundArmorsLevel1,CompleteOnly) == {Zerg Ground Carapace Level 1}1 && CountUnit(Alias_Lair,CompleteOnly){Lair}[TechTreeCheat]
+RequirementNode/Name/AndCountUnitEvolutionChamberCompleteOnlyEq2358983352CountUpgradeZergMissileWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat=CountUnit(EvolutionChamber,CompleteOnly) && CountUpgrade(ZergMissileWeaponsLevel2,CompleteOnly) == {Zerg Missile Attacks Level 2}1 && CountUnit(Hive,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/AndCountUnitEvolutionChamberCompleteOnlyEq2480428841CountUpgradeZergMeleeWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat=CountUnit(EvolutionChamber,CompleteOnly) && CountUpgrade(ZergMeleeWeaponsLevel2,CompleteOnly) == {Zerg Melee Attacks Level 2}1 && CountUnit(Hive,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/AndCountUnitEvolutionChamberCompleteOnlyEq2966286162CountUpgradeZergMissileWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheat=CountUnit(EvolutionChamber,CompleteOnly) && CountUpgrade(ZergMissileWeaponsLevel1,CompleteOnly) == {Zerg Missile Attacks Level 1}1 && CountUnit(Alias_Lair,CompleteOnly){Lair}[TechTreeCheat]
+RequirementNode/Name/AndCountUnitEvolutionChamberCompleteOnlyEq4090499265CountUpgradeZergGroundArmorsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheat=CountUnit(EvolutionChamber,CompleteOnly) && CountUpgrade(ZergGroundArmorsLevel2,CompleteOnly) == {Zerg Ground Carapace Level 2}1 && CountUnit(Hive,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat=CountUnit(Factory,CompleteOnly)[TechTreeCheat] && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheat=CountUnit(Factory,CompleteOnly)[TechTreeCheat] && CountUnit(FactoryTechLab,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnly609241497TechTreeCheat=CountUnit(Factory,CompleteOnly)[TechTreeCheat] && CountUnit(FactoryTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(Armory,CompleteOnly){Armory}[TechTreeCheat]
 RequirementNode/Name/AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat=CountUnit(Factory,CompleteOnly)[TechTreeCheat] && CountUnit(FactoryTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitFusionCoreCompleteOnly4211141650TechTreeCheat=CountUnit(Factory,CompleteOnly)[TechTreeCheat] && CountUnit(FactoryTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(FusionCore,CompleteOnly){FusionCore}[TechTreeCheat]
+RequirementNode/Name/AndCountUnitHatcheryCompleteOnlyCountUnitSpawningPoolCompleteOnlyTechTreeCheat=CountUnit(Hatchery,CompleteOnly) && CountUnit(SpawningPool,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/AndCountUnitHydraliskDenCompleteOnlyCountUnitAlias_LairCompleteOnly1515591279TechTreeCheat=CountUnit(HydraliskDen,CompleteOnly) && CountUnit(Alias_Lair,CompleteOnly){Lair}[TechTreeCheat]
+RequirementNode/Name/AndCountUnitLairCompleteOnlyCountUnitInfestationPitCompleteOnlyTechTreeCheat=CountUnit(Lair,CompleteOnly) && CountUnit(InfestationPit,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitOrbitalCommandCompleteOnlyTechTreeCheatCountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704=CountUnit(OrbitalCommand,CompleteOnly)[TechTreeCheat] && CountBehavior(GameUCBOrbitalCommandEnergy50GE,CompleteOnly){Orbital Command Has 50 Energy}
+RequirementNode/Name/AndCountUnitRoachWarrenCompleteOnlyOr1515591279CountUnitLairCompleteOnlyTechTreeCheatCountUnitHiveCompleteOnlyTechTreeCheat=CountUnit(RoachWarren,CompleteOnly) && (CountUnit(Lair,CompleteOnly)[TechTreeCheat] || {Lair}CountUnit(Hive,CompleteOnly)[TechTreeCheat])
+RequirementNode/Name/AndCountUnitSpawningPoolCompleteOnlyCountUnitHiveCompleteOnlyTechTreeCheat=CountUnit(SpawningPool,CompleteOnly) && CountUnit(Hive,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/AndCountUnitSpireCompleteOnlyCountUnitHiveCompleteOnlyTechTreeCheat=CountUnit(Spire,CompleteOnly) && CountUnit(Hive,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheat=CountUnit(Starport,CompleteOnly)[TechTreeCheat] && CountUnit(StarportTechLab,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheatCountUnitFusionCoreCompleteOnlyTechTreeCheat=CountUnit(Starport,CompleteOnly)[TechTreeCheat] && CountUnit(StarportTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(FusionCore,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq1004646809CountUpgradeTerranShipWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranShipWeaponsLevel2,CompleteOnly) == {Terran Ship Weapons Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
@@ -229,29 +275,25 @@ RequirementNode/Name/AndEq1429793488CountUpgradeTerranInfantryWeaponsLevel1Compl
 RequirementNode/Name/AndEq1834932227CountUpgradeTerranVehicleWeaponsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranVehicleWeaponsLevel1,CompleteOnly) == {Terran Vehicle Weapons Level 1}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq1864353859CountUpgradeTerranShipArmorsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranShipArmorsLevel2,CompleteOnly) == {Terran Ship Plating Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq2326683880CountUpgradeTerranVehicleAndShipArmorsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranVehicleAndShipArmorsLevel2,CompleteOnly) == {Terran Vehicle And Ship Plating Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
-RequirementNode/Name/AndEq2419098971CountUpgradeZergFlyerWeaponsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheatCountBehaviorGameUCBSpireCompleteOnly=CountUpgrade(ZergFlyerWeaponsLevel2,CompleteOnly) == {Zerg Flyer Attacks Level 2}1 && CountUnit(Hive,CompleteOnly)[TechTreeCheat] && CountBehavior(GameUCBSpire,CompleteOnly)
 RequirementNode/Name/AndEq2517918925CountUpgradeTerranVehicleArmorsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranVehicleArmorsLevel2,CompleteOnly) == {Terran Vehicle Plating Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq285961020CountUpgradeTerranShipWeaponsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranShipWeaponsLevel1,CompleteOnly) == {Terran Ship Weapons Level 1}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq3052852033CountUpgradeTerranShipArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranShipArmorsLevel1,CompleteOnly) == {Terran Ship Plating Level 1}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
-RequirementNode/Name/AndEq3274469600CountUpgradeZergFlyerWeaponsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheatCountBehaviorGameUCBSpireCompleteOnly=CountUpgrade(ZergFlyerWeaponsLevel1,CompleteOnly) == {Zerg Flyer Attacks Level 1}1 && CountUnit(Alias_Lair,CompleteOnly){Lair}[TechTreeCheat] && CountBehavior(GameUCBSpire,CompleteOnly)
 RequirementNode/Name/AndEq3342497887CountUpgradeTerranInfantryWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheatCountUnitEngineeringBayCompleteOnlyTechTreeCheat=CountUpgrade(TerranInfantryWeaponsLevel2,CompleteOnly) == {Terran Infantry Weapons Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat] && CountUnit(EngineeringBay,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq3446134918CountUpgradeTerranInfantryArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheatCountUnitEngineeringBayCompleteOnlyTechTreeCheat=CountUpgrade(TerranInfantryArmorsLevel1,CompleteOnly) == {Terran Infantry Armor Level 1}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat] && CountUnit(EngineeringBay,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq3722837715CountUpgradeTerranInfantryArmorsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheatCountUnitEngineeringBayCompleteOnlyTechTreeCheat=CountUpgrade(TerranInfantryArmorsLevel2,CompleteOnly) == {Terran Infantry Armor Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat] && CountUnit(EngineeringBay,CompleteOnly)[TechTreeCheat]
-RequirementNode/Name/AndEq504020316CountUpgradeZergFlyerArmorsLevel2CompleteOnly1CountUnitHiveCompleteOnlyTechTreeCheatCountBehaviorGameUCBSpireCompleteOnly=CountUpgrade(ZergFlyerArmorsLevel2,CompleteOnly) == {Zerg Flyer Carapace Level 2}1 && CountUnit(Hive,CompleteOnly)[TechTreeCheat] && CountBehavior(GameUCBSpire,CompleteOnly)
 RequirementNode/Name/AndEq514164946CountUpgradeTerranVehicleAndShipWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranVehicleAndShipWeaponsLevel2,CompleteOnly) == {Terran Vehicle And Ship Weapons Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
-RequirementNode/Name/AndEq539690215CountUpgradeZergFlyerArmorsLevel1CompleteOnly1CountUnitAlias_LairCompleteOnly1515591279TechTreeCheatCountBehaviorGameUCBSpireCompleteOnly836078744=CountUpgrade(ZergFlyerArmorsLevel1,CompleteOnly) == {Zerg Flyer Carapace Level 1}1 && CountUnit(Alias_Lair,CompleteOnly){Lair}[TechTreeCheat] && CountBehavior(GameUCBSpire,CompleteOnly){Spire}
 RequirementNode/Name/AndEq611800619CountUpgradeTerranVehicleAndShipArmorsLevel1CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranVehicleAndShipArmorsLevel1,CompleteOnly) == {Terran Vehicle And Ship Plating Level 1}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndEq894233239CountUpgradeTerranVehicleWeaponsLevel2CompleteOnly1CountUnitArmoryCompleteOnlyTechTreeCheat=CountUpgrade(TerranVehicleWeaponsLevel2,CompleteOnly) == {Terran Vehicle Weapons Level 2}1 && CountUnit(Armory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndOr96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheatCountUnitGhostAcademyCompleteOnlyTechTreeCheatNot1833567690CountUnitNukeQueuedOrBetterAtUnit=(CountUnit(Factory,CompleteOnly){Factory}[TechTreeCheat] || {Factory}CountUnit(FactoryFlying,CompleteOnly){Flying Factory}[TechTreeCheat]) && CountUnit(GhostAcademy,CompleteOnly)[TechTreeCheat] && !{Unarmed Ghost Academy}CountUnit(Nuke,QueuedOrBetterAtUnit)
 RequirementNode/Name/CountBehaviorGameUCBHatcheryHiveLairCompleteOnly3846943109=CountBehavior(GameUCBHatcheryHiveLair,CompleteOnly){Hatchery}
 RequirementNode/Name/CountBehaviorGameUCBHydraliskLurkerDenCompleteOnly4037297345=CountBehavior(GameUCBHydraliskLurkerDen,CompleteOnly){Hydralisk Den}
 RequirementNode/Name/CountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704=CountBehavior(GameUCBOrbitalCommandEnergy50GE,CompleteOnly){Orbital Command Has 50 Energy}
-RequirementNode/Name/CountBehaviorGameUCBSpireCompleteOnly=CountBehavior(GameUCBSpire,CompleteOnly)
-RequirementNode/Name/CountBehaviorGameUCBSpireCompleteOnly836078744=CountBehavior(GameUCBSpire,CompleteOnly){Spire}
+RequirementNode/Name/CountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744=CountBehavior(GameUCBSpireGreaterSpire,CompleteOnly){Spire}
 RequirementNode/Name/CountBehaviorIsNexusNearbyCompleteOnlyAtUnit=CountBehavior(IsNexusNearby,CompleteOnlyAtUnit)
 RequirementNode/Name/CountBehaviorIsWarpGateNearbyCompleteOnlyAtUnit=CountBehavior(IsWarpGateNearby,CompleteOnlyAtUnit)
 RequirementNode/Name/CountBehaviorPowerSourceFastCompleteOnlyAtUnit22563247=CountBehavior(PowerSourceFast,CompleteOnlyAtUnit){Near Warp Gate}
 RequirementNode/Name/CountBehaviorPowerSourceFastCompleteOnlyAtUnitNearWarpGateorNexus=CountBehavior(PowerSourceFast,CompleteOnlyAtUnit){Near or Nexus}
+RequirementNode/Name/CountUnitBanelingNestCompleteOnly=CountUnit(BanelingNest,CompleteOnly)
 RequirementNode/Name/CountUnitBarracksCompleteOnly=CountUnit(Barracks,CompleteOnly)
 RequirementNode/Name/CountUnitBarracksCompleteOnly789532539TechTreeCheat=CountUnit(Barracks,CompleteOnly){Barracks}[TechTreeCheat]
 RequirementNode/Name/CountUnitBarracksCompleteOnlyTechTreeCheat=CountUnit(Barracks,CompleteOnly)[TechTreeCheat]
@@ -259,11 +301,16 @@ RequirementNode/Name/CountUnitBarracksTechLabCompleteOnlyTechTreeCheat=CountUnit
 RequirementNode/Name/CountUnitCommandCenterCompleteOnly=CountUnit(CommandCenter,CompleteOnly)
 RequirementNode/Name/CountUnitCommandCenterCompleteOnly1610623376TechTreeCheat=CountUnit(CommandCenter,CompleteOnly){Command Center}[TechTreeCheat]
 RequirementNode/Name/CountUnitEngineeringBayCompleteOnly=CountUnit(EngineeringBay,CompleteOnly)
+RequirementNode/Name/CountUnitEvolutionChamberCompleteOnly=CountUnit(EvolutionChamber,CompleteOnly)
 RequirementNode/Name/CountUnitFactoryCompleteOnlyTechTreeCheat=CountUnit(Factory,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/CountUnitFactoryTechLabCompleteOnlyTechTreeCheat=CountUnit(FactoryTechLab,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/CountUnitFusionCoreCompleteOnly4211141650TechTreeCheat=CountUnit(FusionCore,CompleteOnly){FusionCore}[TechTreeCheat]
 RequirementNode/Name/CountUnitGhostAcademyCompleteOnly=CountUnit(GhostAcademy,CompleteOnly)
+RequirementNode/Name/CountUnitHatcheryCompleteOnly=CountUnit(Hatchery,CompleteOnly)
+RequirementNode/Name/CountUnitHydraliskDenCompleteOnly=CountUnit(HydraliskDen,CompleteOnly)
+RequirementNode/Name/CountUnitInfestationPitCompleteOnly=CountUnit(InfestationPit,CompleteOnly)
 RequirementNode/Name/CountUnitOrbitalCommandCompleteOnlyTechTreeCheat=CountUnit(OrbitalCommand,CompleteOnly)[TechTreeCheat]
+RequirementNode/Name/CountUnitSpireCompleteOnly=CountUnit(Spire,CompleteOnly)
 RequirementNode/Name/CountUnitStarportCompleteOnly4195804750TechTreeCheat=CountUnit(Starport,CompleteOnly){Starport}[TechTreeCheat]
 RequirementNode/Name/CountUnitStarportCompleteOnlyTechTreeCheat=CountUnit(Starport,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/CountUnitStarportTechLabCompleteOnlyTechTreeCheat=CountUnit(StarportTechLab,CompleteOnly)[TechTreeCheat]

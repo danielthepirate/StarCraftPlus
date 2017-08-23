@@ -134,15 +134,62 @@
         <InitialEffect value="GameUCBCommandCenterChargeAdd"/>
         <FinalEffect value="GameUCBCommandCenterChargeRemove"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBLairChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBLairChargeAdd"/>
+        <FinalEffect value="GameUCBLairChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBOverlordOrTransportChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBOverlordOrTransportChargeAdd"/>
+        <FinalEffect value="GameUCBOverlordOrTransportChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBZerglingChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBZerglingChargeAdd"/>
+        <FinalEffect value="GameUCBZerglingChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBSpireChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBSpireChargeAdd"/>
+        <FinalEffect value="GameUCBSpireChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHydraliskDenChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBHydraliskDenChargeAdd"/>
+        <FinalEffect value="GameUCBHydraliskDenChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHatcheryChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBHatcheryChargeAdd"/>
+        <FinalEffect value="GameUCBHatcheryChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBSpireChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBSpireChargeRemove"/>
+        <FinalEffect value="GameUCBSpireChargeAdd"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBLarvaChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="NoOrdersAndNoMove"/>
+        <InitialEffect value="GameUCBLarvaChargeAdd"/>
+        <FinalEffect value="GameUCBLarvaChargeRemove"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBCommandCenterChargeLinkConstructing">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="IsConstructing"/>
         <InitialEffect value="GameUCBCommandCenterChargeRemove"/>
         <FinalEffect value="GameUCBCommandCenterChargeAdd"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="GameUCBDrone">
-        <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBGhostAcademyChargeLink">
         <InfoFlags index="Hidden" value="1"/>
@@ -177,17 +224,18 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBHatcheryHiveLair">
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="IsNotConstructing"/>
         <RemoveValidatorArray value="ZergHallNotMorphing"/>
         <FinalEffect value="GameUCBHatcheryHiveLairMorphing"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBHatcheryHiveLairMorphing">
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="IsNotConstructing"/>
         <RemoveValidatorArray value="ZergHallIsMorphing"/>
-        <FinalEffect value="GameUCBHatcheryHiveLairMorphing"/>
+        <FinalEffect value="GameUCBHatcheryHiveLair"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBHydraliskLurkerDen">
+        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="HydraliskDenNotMorphing"/>
         <FinalEffect value="GameUCBHydraliskLurkerDenMorphing"/>
@@ -196,6 +244,13 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="HydraliskDenIsMorphing"/>
         <FinalEffect value="GameUCBHydraliskLurkerDen"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBLarvaChargeLinkPre">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <FinalEffect value="GameUCBLarvaChargeLink"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBOrbitalCommandEnergy50GE">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -209,15 +264,37 @@
         <FinalEffect value="GameUCBOrbitalCommandEnergy50GE"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="GameUCBSpire">
+    <CBehaviorBuff id="GameUCBHatcheryChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBHatcheryChargeRemove"/>
+        <FinalEffect value="GameUCBHatcheryChargeAdd"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBSpireGreaterSpire">
+        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="SpireNotMorphing"/>
         <FinalEffect value="GameUCBSpireMorphing"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHydraliskDenChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBHydraliskDenChargeRemove"/>
+        <FinalEffect value="GameUCBHydraliskDenChargeAdd"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBSpireMorphing">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="SpireIsMorphing"/>
         <FinalEffect value="GameUCBSpire"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBOverlordChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBOverlordChargeAdd"/>
+        <FinalEffect value="GameUCBOverlordChargeRemove"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameWorkerHarvestGasMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -343,16 +420,6 @@
         <Grown value="Footprint4x4CreepSourceGrown"/>
         <DisableValidatorArray value="HasEnhancedCreepGrowth"/>
     </CBehaviorCreepSource>
-    <CBehaviorBuff id="ZergBuildConstruction">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="ZergBuildComplete">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
-        <Modification>
-            <BehaviorLinkDisableArray value="ZergBuildConstruction"/>
-        </Modification>
-    </CBehaviorBuff>
     <CBehaviorCreepSource id="makeCreep4x4">
         <DisableValidatorArray value="NoEnhancedCreepGrowth"/>
     </CBehaviorCreepSource>

@@ -139,7 +139,10 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		
 		UnitIssueOrder(dummy, Order(AbilityCommand(abil, c_abilMorphCmdCancel)), c_orderQueueReplace);
 		
+		// ug = Pir_UnitsNotMorphing(ug);
+		// u = UnitGroupUnit(ug, 1);
 		Pir_UnitCancelQueue(u);
+		
 		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
 		// UnitIssueOrder(u, o, c_orderQueueReplace);
 	}

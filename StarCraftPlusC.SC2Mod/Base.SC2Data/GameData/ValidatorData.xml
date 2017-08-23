@@ -65,29 +65,41 @@
     <CValidatorUnitCompareOrderCount id="HatcheryIsMorphing">
         <AbilLink value="UpgradeToLair"/>
         <Value value="1"/>
+        <WhichUnit Value="Target"/>
     </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareOrderCount id="HatcheryNotCanceling">
         <AbilLink value="UpgradeToLair"/>
         <AbilCmdIndex value="2"/>
         <Value value="1"/>
     </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="HatcheryNotMorphing">
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareOrderCount id="HydraliskDenNotMorphing">
         <AbilLink value="UpgradeToLurkerDenMP"/>
+        <WhichUnit Value="Target"/>
     </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareOrderCount id="HydraliskDenIsMorphing">
         <AbilLink value="UpgradeToLurkerDenMP"/>
         <Value value="1"/>
+        <WhichUnit Value="Target"/>
     </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareOrderCount id="LairIsMorphing">
         <AbilLink value="UpgradeToHive"/>
         <Value value="1"/>
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="LairNotMorphing">
+        <WhichUnit Value="Target"/>
     </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareOrderCount id="SpireNotMorphing">
         <AbilLink value="UpgradeToGreaterSpire"/>
+        <WhichUnit Value="Target"/>
     </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareOrderCount id="SpireIsMorphing">
         <AbilLink value="UpgradeToGreaterSpire"/>
         <Value value="1"/>
+        <WhichUnit Value="Target"/>
     </CValidatorUnitCompareOrderCount>
     <CValidatorCombine id="ZergHallNotMorphing">
         <Type value="And"/>
