@@ -37,6 +37,7 @@ void libSCPL_InitVariables () {
         libSCPL_gv_player[init_i].lv_autoCreepNodes = UnitGroupEmpty();
         libSCPL_gv_player[init_i].lv_globalTerran_AutoWallToggle = true;
         libSCPL_gv_player[init_i].lv_globalZerg_CreepSpreadToggle = true;
+        libSCPL_gv_player[init_i].lv_globalZerg_LarvaSpawnToggle = true;
         for (init_i1 = 0; init_i1 <= 3; init_i1 += 1) {
             libSCPL_gv_player[init_i].lv_globalRallyGroup[init_i1] = UnitGroupEmpty();
         }
@@ -1257,36 +1258,6 @@ bool libSCPL_gf_AutoCreepPointValidActive (unit lp_node, point lp_point) {
     return true;
 }
 
-void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOn (int lp_playerIndex) {
-    // Variable Declarations
-    unitgroup lv_unitGroup;
-
-    // Variable Initialization
-    lv_unitGroup = UnitGroupEmpty();
-
-    // Implementation
-    libSCPL_gv_player[lp_playerIndex].lv_globalZerg_CreepSpreadToggle = true;
-    lv_unitGroup = UnitGroup("CreepTumorQueen", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOnHidden", 0)), c_orderQueueReplace);
-    lv_unitGroup = UnitGroup("CreepTumorBurrowed", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOnHidden", 0)), c_orderQueueReplace);
-}
-
-void libSCPL_gf_PlayerAutoCreepSpreadGlobalToggleOff (int lp_playerIndex) {
-    // Variable Declarations
-    unitgroup lv_unitGroup;
-
-    // Variable Initialization
-    lv_unitGroup = UnitGroupEmpty();
-
-    // Implementation
-    libSCPL_gv_player[lp_playerIndex].lv_globalZerg_CreepSpreadToggle = false;
-    lv_unitGroup = UnitGroup("CreepTumorQueen", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOffHidden", 0)), c_orderQueueReplace);
-    lv_unitGroup = UnitGroup("CreepTumorBurrowed", lp_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOffHidden", 0)), c_orderQueueReplace);
-}
-
 void libSCPL_gf_InitializeUIHookups () {
     int autoAAAC514B_ae;
     int autoAAAC514B_ai;
@@ -1791,15 +1762,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "RoachWarren", 6.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "GreaterSpire", 6.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "LurkerDenMP", 6.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Roach", 13.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Roach", 13.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Hydralisk", 13.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Hydralisk", 13.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Corruptor", 13.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Corruptor", 13.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "NydusNetwork", 8.0);
     return true;
 }
 
@@ -3260,10 +3223,6 @@ bool libSCPL_gt_ProgressBuildingStart_Func (bool testConds, bool runActions) {
         if (!((UnitGetType(EventUnit()) != "NydusNetwork"))) {
             return false;
         }
-
-        if (!((UnitGetType(EventUnit()) != "NydusNetwork"))) {
-            return false;
-        }
     }
 
     // Actions
@@ -4005,46 +3964,6 @@ bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
 void libSCPL_gt_ProgressUnitStart_Init () {
     libSCPL_gt_ProgressUnitStart = TriggerCreate("libSCPL_gt_ProgressUnitStart_Func");
     TriggerAddEventUnitTrainProgress(libSCPL_gt_ProgressUnitStart, null, c_unitProgressStageStart);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Progress Nydus Worm Upfront Cost Adjustment
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ProgressNydusWormUpfrontCostAdjustment_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    fixed lv_progressCostMinerals;
-    fixed lv_progressCostVespene;
-
-    // Variable Initialization
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
-            return false;
-        }
-
-        if (!((libNtve_gf_TriggeringProgressUnitType() == "NydusCanal"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = EventPlayer();
-    lv_progressCostMinerals = UnitTypeGetCost(libNtve_gf_TriggeringProgressUnitType(), c_unitCostTerrazine);
-    lv_progressCostVespene = UnitTypeGetCost(libNtve_gf_TriggeringProgressUnitType(), c_unitCostCustomResource);
-    libSCPL_gf_PlayerResourcesSubtract(lv_playerIndex, lv_progressCostMinerals, lv_progressCostVespene);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ProgressNydusWormUpfrontCostAdjustment_Init () {
-    libSCPL_gt_ProgressNydusWormUpfrontCostAdjustment = TriggerCreate("libSCPL_gt_ProgressNydusWormUpfrontCostAdjustment_Func");
-    TriggerAddEventUnitConstructProgress(libSCPL_gt_ProgressNydusWormUpfrontCostAdjustment, null, c_unitProgressStageStart);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5541,6 +5460,147 @@ void libSCPL_gt_PlayerAutoWallUnitCreated_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Player Zerg Nydus Worm Placement Redirect
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_PlayerZergNydusWormPlacementRedirect_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "NydusNetwork"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("BuildNydusCanal", 0), OrderGetTargetPoint(EventUnitOrder())), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_PlayerZergNydusWormPlacementRedirect_Init () {
+    libSCPL_gt_PlayerZergNydusWormPlacementRedirect = TriggerCreate("libSCPL_gt_PlayerZergNydusWormPlacementRedirect_Func");
+    TriggerAddEventUnitOrder(libSCPL_gt_PlayerZergNydusWormPlacementRedirect, null, AbilityCommand("BuildNydusCanalUCB", 0));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Auto Creep Tumor Node Create Parent
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_AutoCreepTumorNodeCreateParent_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_node;
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_node = EventUnitCreatedUnit();
+    libSCPL_gf_AutoCreepTumorNodeParentAdd(lv_node);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_AutoCreepTumorNodeCreateParent_Init () {
+    libSCPL_gt_AutoCreepTumorNodeCreateParent = TriggerCreate("libSCPL_gt_AutoCreepTumorNodeCreateParent_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_AutoCreepTumorNodeCreateParent, null, "QueenBuild", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Auto Creep Tumor Node Create Child
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_AutoCreepTumorNodeCreateChild_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_parent;
+    unit lv_node;
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_node = EventUnitCreatedUnit();
+    lv_parent = EventUnit();
+    libSCPL_gf_AutoCreepTumorNodeChildAdd(lv_parent, lv_node);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_AutoCreepTumorNodeCreateChild_Init () {
+    libSCPL_gt_AutoCreepTumorNodeCreateChild = TriggerCreate("libSCPL_gt_AutoCreepTumorNodeCreateChild_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_AutoCreepTumorNodeCreateChild, null, "CreepTumorBuild", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Auto Creep Tumor Node Target Reached
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_AutoCreepTumorNodeTargetReached_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_nodeIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "GameAutoCreepNodeTarget"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_nodeIndex = FixedToInt(libSCPL_gf_UnitChargeLink(EventUnit(), "CreepNodeIndex"));
+    libSCPL_gf_AutoCreepTumorNodeLineageShift(lv_playerIndex, lv_nodeIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_AutoCreepTumorNodeTargetReached_Init () {
+    libSCPL_gt_AutoCreepTumorNodeTargetReached = TriggerCreate("libSCPL_gt_AutoCreepTumorNodeTargetReached_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_AutoCreepTumorNodeTargetReached, null, "GameAutoCreepNodeTargetCapped", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Auto Creep Tumor Ready
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_AutoCreepTumorReady_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_creepNode;
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_creepNode = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_creepNode);
+    libSCPL_gf_AutoCreepSpreadTowardsTargetNode(lv_playerIndex, lv_creepNode);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_AutoCreepTumorReady_Init () {
+    libSCPL_gt_AutoCreepTumorReady = TriggerCreate("libSCPL_gt_AutoCreepTumorReady_Func");
+    TriggerAddEventUnitDamaged(libSCPL_gt_AutoCreepTumorReady, null, c_unitDamageTypeAny, c_unitDamageEither, "GameAutoCreepSpreadHook");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: UCB Charge Link Hydralisk Den Morph Start
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_UCBChargeLinkHydraliskDenMorphStart_Func (bool testConds, bool runActions) {
@@ -5951,118 +6011,65 @@ void libSCPL_gt_UCBChargeLinkBroodlordMorphCancel_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Auto Creep Tumor Node Create Parent
+// Trigger: UCB Auto Creep Spread Toggle On
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutoCreepTumorNodeCreateParent_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_UCBAutoCreepSpreadToggleOn_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_node;
     int lv_playerIndex;
+    unitgroup lv_unitGroup;
 
     // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    lv_node = EventUnitCreatedUnit();
-    libSCPL_gf_AutoCreepTumorNodeParentAdd(lv_node);
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    libSCPL_gv_player[lv_playerIndex].lv_globalZerg_CreepSpreadToggle = true;
+    lv_unitGroup = UnitGroup("CreepTumorQueen", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOnHidden", 0)), c_orderQueueReplace);
+    lv_unitGroup = UnitGroup("CreepTumorBurrowed", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOnHidden", 0)), c_orderQueueReplace);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutoCreepTumorNodeCreateParent_Init () {
-    libSCPL_gt_AutoCreepTumorNodeCreateParent = TriggerCreate("libSCPL_gt_AutoCreepTumorNodeCreateParent_Func");
-    TriggerAddEventUnitCreated(libSCPL_gt_AutoCreepTumorNodeCreateParent, null, "QueenBuild", null);
+void libSCPL_gt_UCBAutoCreepSpreadToggleOn_Init () {
+    libSCPL_gt_UCBAutoCreepSpreadToggleOn = TriggerCreate("libSCPL_gt_UCBAutoCreepSpreadToggleOn_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(libSCPL_gt_UCBAutoCreepSpreadToggleOn, null, AbilityCommand("AutoCreepSpreadToggleUCB", 0), c_unitAbilAutoCastChangeOn, false);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Auto Creep Tumor Node Create Child
+// Trigger: UCB Auto Creep Spread Toggle Off
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutoCreepTumorNodeCreateChild_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_UCBAutoCreepSpreadToggleOff_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_parent;
-    unit lv_node;
     int lv_playerIndex;
+    unitgroup lv_unitGroup;
 
     // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    lv_node = EventUnitCreatedUnit();
-    lv_parent = EventUnit();
-    libSCPL_gf_AutoCreepTumorNodeChildAdd(lv_parent, lv_node);
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    libSCPL_gv_player[lv_playerIndex].lv_globalZerg_CreepSpreadToggle = false;
+    lv_unitGroup = UnitGroup("CreepTumorQueen", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOffHidden", 0)), c_orderQueueReplace);
+    lv_unitGroup = UnitGroup("CreepTumorBurrowed", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoCreepSpreadOffHidden", 0)), c_orderQueueReplace);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutoCreepTumorNodeCreateChild_Init () {
-    libSCPL_gt_AutoCreepTumorNodeCreateChild = TriggerCreate("libSCPL_gt_AutoCreepTumorNodeCreateChild_Func");
-    TriggerAddEventUnitCreated(libSCPL_gt_AutoCreepTumorNodeCreateChild, null, "CreepTumorBuild", null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Auto Creep Tumor Node Target Reached
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutoCreepTumorNodeTargetReached_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    int lv_nodeIndex;
-
-    // Variable Initialization
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnit()) == "GameAutoCreepNodeTarget"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = EventPlayer();
-    lv_nodeIndex = FixedToInt(libSCPL_gf_UnitChargeLink(EventUnit(), "CreepNodeIndex"));
-    libSCPL_gf_AutoCreepTumorNodeLineageShift(lv_playerIndex, lv_nodeIndex);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutoCreepTumorNodeTargetReached_Init () {
-    libSCPL_gt_AutoCreepTumorNodeTargetReached = TriggerCreate("libSCPL_gt_AutoCreepTumorNodeTargetReached_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_AutoCreepTumorNodeTargetReached, null, "GameAutoCreepNodeTargetCapped", c_unitBehaviorChangeCreate);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Auto Creep Tumor Ready
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutoCreepTumorReady_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_creepNode;
-    int lv_playerIndex;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_creepNode = EventUnit();
-    lv_playerIndex = UnitGetOwner(lv_creepNode);
-    libSCPL_gf_AutoCreepSpreadTowardsTargetNode(lv_playerIndex, lv_creepNode);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutoCreepTumorReady_Init () {
-    libSCPL_gt_AutoCreepTumorReady = TriggerCreate("libSCPL_gt_AutoCreepTumorReady_Func");
-    TriggerAddEventUnitDamaged(libSCPL_gt_AutoCreepTumorReady, null, c_unitDamageTypeAny, c_unitDamageEither, "GameAutoCreepSpreadHook");
+void libSCPL_gt_UCBAutoCreepSpreadToggleOff_Init () {
+    libSCPL_gt_UCBAutoCreepSpreadToggleOff = TriggerCreate("libSCPL_gt_UCBAutoCreepSpreadToggleOff_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(libSCPL_gt_UCBAutoCreepSpreadToggleOff, null, AbilityCommand("AutoCreepSpreadToggleUCB", 0), c_unitAbilAutoCastChangeOff, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6092,6 +6099,94 @@ bool libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Func (bool testConds, bool runA
 void libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Init () {
     libSCPL_gt_PlayerAutoCreepSpreadUnitCreated = TriggerCreate("libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Func");
     TriggerAddEventUnitAbility(libSCPL_gt_PlayerAutoCreepSpreadUnitCreated, null, AbilityCommand("BurrowCreepTumorDown", 0), c_abilMorphStageUnitEnd, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Auto Larva Spawn Toggle On
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBAutoLarvaSpawnToggleOn_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unitgroup lv_unitGroup;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    libSCPL_gv_player[lv_playerIndex].lv_globalZerg_LarvaSpawnToggle = true;
+    lv_unitGroup = UnitGroup("Queen", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoSpawnLarvaOnHidden", 0)), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBAutoLarvaSpawnToggleOn_Init () {
+    libSCPL_gt_UCBAutoLarvaSpawnToggleOn = TriggerCreate("libSCPL_gt_UCBAutoLarvaSpawnToggleOn_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(libSCPL_gt_UCBAutoLarvaSpawnToggleOn, null, AbilityCommand("AutoSpawnLarvaToggleUCB", 0), c_unitAbilAutoCastChangeOn, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Auto Larva Spawn Toggle Off
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBAutoLarvaSpawnToggleOff_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unitgroup lv_unitGroup;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    libSCPL_gv_player[lv_playerIndex].lv_globalZerg_LarvaSpawnToggle = false;
+    lv_unitGroup = UnitGroup("Queen", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupIssueOrder(lv_unitGroup, Order(AbilityCommand("AutoSpawnLarvaOffHidden", 0)), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBAutoLarvaSpawnToggleOff_Init () {
+    libSCPL_gt_UCBAutoLarvaSpawnToggleOff = TriggerCreate("libSCPL_gt_UCBAutoLarvaSpawnToggleOff_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(libSCPL_gt_UCBAutoLarvaSpawnToggleOff, null, AbilityCommand("AutoSpawnLarvaToggleUCB", 0), c_unitAbilAutoCastChangeOff, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Player Auto Larva Spawn Unit Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnitCreatedUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    if ((libSCPL_gv_player[lv_playerIndex].lv_globalZerg_LarvaSpawnToggle == false)) {
+        UnitIssueOrder(lv_unit, Order(AbilityCommand("AutoSpawnLarvaOffHidden", 0)), c_orderQueueReplace);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init () {
+    libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated = TriggerCreate("libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated, null, "BurrowQueenUp", null);
+    TriggerAddEventUnitCreated(libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated, null, "TrainQueen", null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6239,7 +6334,6 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ProgressBuildingCancel_Init();
     libSCPL_gt_ProgressUnitStartRefund_Init();
     libSCPL_gt_ProgressUnitStart_Init();
-    libSCPL_gt_ProgressNydusWormUpfrontCostAdjustment_Init();
     libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment_Init();
     libSCPL_gt_ProgressWarpgateUnitSwap_Init();
     libSCPL_gt_ProgressUnitStartCommented_Init();
@@ -6268,6 +6362,11 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBAutoWallToggleOn_Init();
     libSCPL_gt_UCBAutoWallToggleOff_Init();
     libSCPL_gt_PlayerAutoWallUnitCreated_Init();
+    libSCPL_gt_PlayerZergNydusWormPlacementRedirect_Init();
+    libSCPL_gt_AutoCreepTumorNodeCreateParent_Init();
+    libSCPL_gt_AutoCreepTumorNodeCreateChild_Init();
+    libSCPL_gt_AutoCreepTumorNodeTargetReached_Init();
+    libSCPL_gt_AutoCreepTumorReady_Init();
     libSCPL_gt_UCBChargeLinkHydraliskDenMorphStart_Init();
     libSCPL_gt_UCBChargeLinkHydraliskDenMorphCancel_Init();
     libSCPL_gt_UCBChargeLinkSpireMorphStart_Init();
@@ -6286,11 +6385,12 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBChargeLinkLurkerMorphCancel_Init();
     libSCPL_gt_UCBChargeLinkBroodlordMorphStart_Init();
     libSCPL_gt_UCBChargeLinkBroodlordMorphCancel_Init();
-    libSCPL_gt_AutoCreepTumorNodeCreateParent_Init();
-    libSCPL_gt_AutoCreepTumorNodeCreateChild_Init();
-    libSCPL_gt_AutoCreepTumorNodeTargetReached_Init();
-    libSCPL_gt_AutoCreepTumorReady_Init();
+    libSCPL_gt_UCBAutoCreepSpreadToggleOn_Init();
+    libSCPL_gt_UCBAutoCreepSpreadToggleOff_Init();
     libSCPL_gt_PlayerAutoCreepSpreadUnitCreated_Init();
+    libSCPL_gt_UCBAutoLarvaSpawnToggleOn_Init();
+    libSCPL_gt_UCBAutoLarvaSpawnToggleOff_Init();
+    libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init();
     libSCPL_gt_ResourceDisplaySpend_Init();
     libSCPL_gt_ControlGroupUpdateTrigger_Init();
     libSCPL_gt_ControlGroupUpdate_Init();

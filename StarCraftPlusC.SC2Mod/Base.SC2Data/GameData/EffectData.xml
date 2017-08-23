@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CEffectIssueOrder id="AutoSpawnLarvaOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="SpawnLarva"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoSpawnLarvaOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="SpawnLarva"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
     <CEffectApplyBehavior id="AutoWallAutocastBehavior">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
@@ -752,6 +765,21 @@
         <Flags index="NoKillCredit" value="1"/>
         <Death value="Remove"/>
     </CEffectDamage>
+    <CEffectModifyPlayer id="NydusBuildUCBRefund">
+        <EditorCategories value=""/>
+        <Resources index="Terrazine" value="100"/>
+        <Resources index="Custom" value="100"/>
+    </CEffectModifyPlayer>
+    <CEffectDamage id="NydusBuildUCBRemoveDummy">
+        <EditorCategories value=""/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectSet id="NydusBuildUCBSet">
+        <EditorCategories value=""/>
+        <EffectArray value="NydusBuildUCBRefund"/>
+        <EffectArray value="NydusBuildUCBRemoveDummy"/>
+    </CEffectSet>
     <CEffectDamage id="RemoveCaster">
         <EditorCategories value="Race:Zerg"/>
         <ImpactLocation Value="CasterUnit"/>

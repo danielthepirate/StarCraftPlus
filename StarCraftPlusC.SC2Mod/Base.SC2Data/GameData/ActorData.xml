@@ -355,6 +355,15 @@
             <ColorArray index="0" value="255,255,200,0"/>
         </StatusColors>
     </CActorUnit>
+    <CActorUnit id="NydusCanalPlacementDummy" parent="NydusCanal" unitName="NydusCanalPlacementDummy">
+        <On index="0" Terms="UnitBirth.NydusCanalPlacementDummy"/>
+        <On index="1" Terms="UnitBirth.NydusCanalPlacementDummy"/>
+        <On index="2" Terms="UnitRevive.NydusCanalPlacementDummy"/>
+        <On index="3" Terms="UnitRevive.NydusCanalPlacementDummy"/>
+        <On index="4" Terms="UnitConstruction.NydusCanalPlacementDummy.Start"/>
+        <On index="5" Terms="UnitConstruction.NydusCanalPlacementDummy.Finish"/>
+        <HighlightTooltip value="Unit/Name/NydusCanalPlacementDummy"/>
+    </CActorUnit>
     <CActorUnit id="NydusNetwork">
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
         <CustomUnitStatusOffset value="0,90"/>

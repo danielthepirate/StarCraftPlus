@@ -27,6 +27,12 @@
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
     </CModel>
+    <CModel id="GameGlobalRallyTargetPersistent2">
+        <Model value="Assets\UI\Feedback\WayPointMove_TeamColor\WayPointMove_TeamColor.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
     <CModel id="GameGlobalRallyTargetProtossStargate">
         <Model value="Assets\Buildings\Protoss\StargatePlacement\StargatePlacement.m3"/>
         <Flags index="FOW" value="0"/>

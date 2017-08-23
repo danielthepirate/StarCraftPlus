@@ -64,7 +64,13 @@
             <Int index="0" removed="1"/>
             <Unit index="1" Unit="Larva"/>
         </Instances>
-        <Instances index="27" Id="BuildNydusCanal">
+        <Instances index="27" Id="BuildNydusCanalUCB">
+            <AbilCmd Abil="BuildNydusCanal">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="BuildNydusCanalUCB">
+                <Field Id="RealAbil"/>
+            </GameLink>
             <Unit index="1" Unit="NydusNetwork"/>
         </Instances>
         <Instances index="28" Id="MorphToOverseerUCB">

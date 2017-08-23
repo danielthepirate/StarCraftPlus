@@ -69,6 +69,48 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
     </CAbilResearch>
+    <CAbilEffectInstant id="AutoSpawnLarvaOffHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoSpawnLarvaOff"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoSpawnLarvaOnHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoSpawnLarvaOn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoCreepSpreadToggleUCB">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoCreepSpreadToggleUCB">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoSpawnLarvaToggleUCB">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SpawnLarvaUCB">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="AutoWallLowerManual">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="AutoWallManualLowerAbility"/>
@@ -216,6 +258,25 @@
             <Button Requirements="HaveBarracksWithTechLab"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilBuild id="BuildNydusCanal">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilBuild>
+    <CAbilBuild id="BuildNydusCanalUCB" parent="BuildNydusCanal">
+        <Name value="Abil/Name/BuildNydusCanalUCB"/>
+        <InfoArray index="Build1" Unit="NydusCanalPlacementDummy"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <EffectArray index="Start" value="NydusBuildUCBSet"/>
+    </CAbilBuild>
     <CAbilEffectTarget id="CalldownMULEUCB" parent="CalldownMULE">
         <Name value="Abil/Name/CalldownMULEUCB"/>
         <Effect index="0" value="CalldownMULECreateUnitDummy"/>

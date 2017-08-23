@@ -60,6 +60,13 @@
     <CButton id="AssaultMode">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
+    <CButton id="AutoCreepSpreadToggleUCB">
+        <Icon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
+        <Hotkey value="Button/Hotkey/AutoCreepSpreadToggleUCB"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="BuildCreepTumorPropagate"/>
+    </CButton>
     <CButton id="AutoLower">
         <Icon value="Assets\Textures\btn-building-terran-supplydepotlowered.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-terran-supplydepotlowered.dds"/>
@@ -587,6 +594,12 @@
     <CButton id="MorphBackToGateway">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
+    <CButton id="SpawnLarvaUCB">
+        <Icon value="Assets\Textures\BTN-Unit-Zerg-Larva.dds"/>
+        <Hotkey value="Button/Hotkey/SpawnLarvaUCB"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="MorphMorphalisk"/>
+    </CButton>
     <CButton id="MorphToOverseerUBC">
         <Icon value="Assets\Textures\btn-unit-zerg-overseer.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-zerg-overseer.dds"/>
@@ -648,9 +661,6 @@
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="NukeArm"/>
         <Universal value="1"/>
-    </CButton>
-    <CButton id="NydusCanal">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="ObeliskMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -717,6 +727,7 @@
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Scan"/>
     </CButton>
+    <CButton id="SummonNydusWorm"/>
     <CButton id="SummonNydusWormUCB">
         <Icon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>

@@ -97,6 +97,7 @@
         <BuffFlags index="RefreshStack" value="1"/>
         <Duration value="0.375"/>
         <Modification TimeScale="1.5"/>
+        <MaxStackCount value="2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameAutoCreepNodeSearch">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -367,7 +368,7 @@
     <CBehaviorBuff id="OverlordEnhancedCreepGrowthAura">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Period value="0.25"/>
+        <Period value="0.125"/>
         <PeriodicEffect value="OverlordCreepGrowthAuraSearch"/>
     </CBehaviorBuff>
     <CBehaviorPowerSource id="PowerSource">
@@ -409,6 +410,10 @@
     <CBehaviorBuff id="SidebarDummy">
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SidebarDummy2">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TimeWarpProduction">
         <Modification TimeScale="1.1428"/>
     </CBehaviorBuff>
@@ -437,8 +442,5 @@
         <Birth value="Footprint4x4CreepSourceStart"/>
         <Grown value="Footprint4x4CreepSourceGrown"/>
         <DisableValidatorArray value="HasEnhancedCreepGrowth"/>
-    </CBehaviorCreepSource>
-    <CBehaviorCreepSource id="makeCreep4x4">
-        <DisableValidatorArray value="NoEnhancedCreepGrowth"/>
     </CBehaviorCreepSource>
 </Catalog>
