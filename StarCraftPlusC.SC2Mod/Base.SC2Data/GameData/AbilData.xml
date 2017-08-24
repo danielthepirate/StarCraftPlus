@@ -269,12 +269,6 @@
     <CAbilBuild id="BuildNydusCanalUCB" parent="BuildNydusCanal">
         <Name value="Abil/Name/BuildNydusCanalUCB"/>
         <InfoArray index="Build1" Unit="NydusCanalPlacementDummy"/>
-        <RefundFraction>
-            <Resource index="Minerals" value="0"/>
-            <Resource index="Vespene" value="0"/>
-            <Resource index="Terrazine" value="0"/>
-            <Resource index="Custom" value="0"/>
-        </RefundFraction>
         <EffectArray index="Start" value="NydusBuildUCBSet"/>
     </CAbilBuild>
     <CAbilEffectTarget id="CalldownMULEUCB" parent="CalldownMULE">

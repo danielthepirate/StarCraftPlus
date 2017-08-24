@@ -32,6 +32,9 @@
 <Unit id="Starport"/>
 <Unit id="FusionCore"/>
 <Unit id="SCV"/>
+<Unit id="Pylon"/>
+<Unit id="Gateway"/>
+<Unit id="Forge"/>
 <Unit id="Probe"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>
@@ -50,7 +53,6 @@
 <Unit id="Drone"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
-<Unit id="Queen"/>
 <Unit id="PlanetaryFortress"/>
 <Unit id="OrbitalCommand"/>
 <Unit id="CreepTumorBurrowed"/>

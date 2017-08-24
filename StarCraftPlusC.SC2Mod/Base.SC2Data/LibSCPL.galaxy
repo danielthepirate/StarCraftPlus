@@ -29,7 +29,7 @@ void libSCPL_InitVariables () {
     libSCPL_gv_globalSelectionPlayers = PlayerGroupEmpty();
     libSCPL_gv_constants.lv_spendBufferMinerals = 1000;
     libSCPL_gv_constants.lv_spendBufferVespene = 1000;
-    libSCPL_gv_constants.lv_spendTickIncrement = 0.5;
+    libSCPL_gv_constants.lv_spendTickIncrement = 0.4375;
     libSCPL_gv_constants.lv_spendTickIncrementBoosted = 0.4375;
     libSCPL_gv_constants.lv_townHallResourceRadius = 15.0;
     for (init_i = 0; init_i <= 16; init_i += 1) {
@@ -299,66 +299,6 @@ void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType,
     libNtve_gf_CreateUnitsWithDefaultFacing(1, lp_unitType, 0, lp_playerIndex, PointWithOffsetPolar(PlayerStartLocation(lp_playerIndex), lp_offset, AngleBetweenPoints(PlayerStartLocation(lp_playerIndex), RegionGetCenter(RegionEntireMap()))));
 }
 
-void libSCPL_gf_PlayerGlobalTabSelect (int lp_playerIndex, int lp_selectIndex) {
-    int autoC5C56EE4_ae;
-    int autoC5C56EE4_ai;
-
-    // Variable Declarations
-    int lv_tabIndex;
-
-    // Variable Initialization
-
-    // Implementation
-    autoC5C56EE4_ae = 4;
-    autoC5C56EE4_ai = 1;
-    lv_tabIndex = 1;
-    for ( ; ( (autoC5C56EE4_ai >= 0 && lv_tabIndex <= autoC5C56EE4_ae) || (autoC5C56EE4_ai <= 0 && lv_tabIndex >= autoC5C56EE4_ae) ) ; lv_tabIndex += autoC5C56EE4_ai ) {
-        libNtve_gf_SetDialogItemToggled(libSCPL_gv_uI.lv_consoleGlobalTab[lv_tabIndex], false, PlayerGroupSingle(lp_playerIndex));
-        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lv_tabIndex][1], PlayerGroupSingle(lp_playerIndex), false);
-        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lv_tabIndex][2], PlayerGroupSingle(lp_playerIndex), false);
-    }
-    libNtve_gf_SetDialogItemToggled(libSCPL_gv_uI.lv_consoleGlobalTab[lp_selectIndex], true, PlayerGroupSingle(lp_playerIndex));
-    DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lp_selectIndex][1], PlayerGroupSingle(lp_playerIndex), true);
-    DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lp_selectIndex][2], PlayerGroupSingle(lp_playerIndex), true);
-    if ((lp_selectIndex == 1)) {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleActiveCommandCard, PlayerGroupSingle(lp_playerIndex), false);
-    }
-    else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleActiveCommandCard, PlayerGroupSingle(lp_playerIndex), true);
-    }
-}
-
-bool libSCPL_gf_UnitGroupContainsCombatUnits (unitgroup lp_unitGroup) {
-    unitgroup autoBDBBFCBD_g;
-    int autoBDBBFCBD_u;
-
-    // Variable Declarations
-    unit lv_unit;
-
-    // Variable Initialization
-
-    // Implementation
-    autoBDBBFCBD_g = lp_unitGroup;
-    autoBDBBFCBD_u = 1;
-    for ( ; autoBDBBFCBD_u <= UnitGroupCount(autoBDBBFCBD_g, c_unitCountAll) ; autoBDBBFCBD_u += BoolToInt(lv_unit == UnitGroupUnit(autoBDBBFCBD_g, autoBDBBFCBD_u)) ) {
-        lv_unit = UnitGroupUnit(autoBDBBFCBD_g, autoBDBBFCBD_u);
-        if ((libSCPL_gf_UnitIsCombatUnit(lv_unit) == true)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool libSCPL_gf_UnitIsCombatUnit (unit lp_unit) {
-    // Implementation
-    if (((UnitGetType(lp_unit) == "Marine") || (UnitGetType(lp_unit) == "Marauder") || (UnitGetType(lp_unit) == "Reaper") || (UnitGetType(lp_unit) == "Ghost") || (UnitGetType(lp_unit) == "Hellion") || (UnitGetType(lp_unit) == "HellionTank") || (UnitGetType(lp_unit) == "SiegeTankSieged") || (UnitGetType(lp_unit) == "SiegeTank") || (UnitGetType(lp_unit) == "WidowMine") || (UnitGetType(lp_unit) == "WidowMineBurrowed") || (UnitGetType(lp_unit) == "Cyclone") || (UnitGetType(lp_unit) == "Thor") || (UnitGetType(lp_unit) == "ThorAP") || (UnitGetType(lp_unit) == "VikingAssault") || (UnitGetType(lp_unit) == "VikingFighter") || (UnitGetType(lp_unit) == "Medivac") || (UnitGetType(lp_unit) == "Raven") || (UnitGetType(lp_unit) == "AutoTurret") || (UnitGetType(lp_unit) == "Banshee") || (UnitGetType(lp_unit) == "Battlecruiser") || (UnitGetType(lp_unit) == "Liberator") || (UnitGetType(lp_unit) == "LiberatorAG"))) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
 void libSCPL_gf_InitializeGlobalRallyCaster (int lp_playerIndex) {
     // Implementation
     if ((PlayerRace(lp_playerIndex) == "Zerg")) {
@@ -385,8 +325,6 @@ void libSCPL_gf_InitializeSpendOverTime () {
 
     // Implementation
     lv_gamePlayers = PlayerGroupActive();
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 
@@ -517,6 +455,54 @@ bool libSCPL_gf_UnitProgressStateIsProgressing (unit lp_unit, int lp_slot) {
     // Implementation
     lv_value = UnitGetCustomValue(lp_unit, (lp_slot));
     return (lv_value == 1.0);
+}
+
+void libSCPL_gf_UnitProtossProgressSet (unit lp_unit, fixed lp_progress) {
+    // Implementation
+    UnitSetCustomValue(lp_unit, (9), lp_progress);
+}
+
+fixed libSCPL_gf_UnitProtossProgress (unit lp_unit) {
+    // Variable Declarations
+    fixed lv_progress;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_progress = UnitGetCustomValue(lp_unit, (9));
+    return lv_progress;
+}
+
+void libSCPL_gf_UnitProtossProgressMineralsSet (unit lp_unit, fixed lp_progress) {
+    // Implementation
+    UnitSetCustomValue(lp_unit, (10), lp_progress);
+}
+
+fixed libSCPL_gf_UnitProtossProgressMinerals (unit lp_unit) {
+    // Variable Declarations
+    fixed lv_progress;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_progress = UnitGetCustomValue(lp_unit, (10));
+    return lv_progress;
+}
+
+void libSCPL_gf_UnitProtossProgressVespeneSet (unit lp_unit, fixed lp_progress) {
+    // Implementation
+    UnitSetCustomValue(lp_unit, (11), lp_progress);
+}
+
+fixed libSCPL_gf_UnitProtossProgressVespene (unit lp_unit) {
+    // Variable Declarations
+    fixed lv_progress;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_progress = UnitGetCustomValue(lp_unit, (11));
+    return lv_progress;
 }
 
 fixed libSCPL_gf_TickIncrementActual (unit lp_parentUnit) {
@@ -889,6 +875,66 @@ bool auto_libSCPL_gf_AutoWorkerProductionZergInitial_TriggerFunc (bool testConds
     Wait(0.125, c_timeGame);
     libSCPL_gf_AutoWorkerProductionZerg(lp_townHall, lp_playerIndex, lp_larvaLeftover);
     return true;
+}
+
+void libSCPL_gf_PlayerGlobalTabSelect (int lp_playerIndex, int lp_selectIndex) {
+    int autoC5C56EE4_ae;
+    int autoC5C56EE4_ai;
+
+    // Variable Declarations
+    int lv_tabIndex;
+
+    // Variable Initialization
+
+    // Implementation
+    autoC5C56EE4_ae = 4;
+    autoC5C56EE4_ai = 1;
+    lv_tabIndex = 1;
+    for ( ; ( (autoC5C56EE4_ai >= 0 && lv_tabIndex <= autoC5C56EE4_ae) || (autoC5C56EE4_ai <= 0 && lv_tabIndex >= autoC5C56EE4_ae) ) ; lv_tabIndex += autoC5C56EE4_ai ) {
+        libNtve_gf_SetDialogItemToggled(libSCPL_gv_uI.lv_consoleGlobalTab[lv_tabIndex], false, PlayerGroupSingle(lp_playerIndex));
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lv_tabIndex][1], PlayerGroupSingle(lp_playerIndex), false);
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lv_tabIndex][2], PlayerGroupSingle(lp_playerIndex), false);
+    }
+    libNtve_gf_SetDialogItemToggled(libSCPL_gv_uI.lv_consoleGlobalTab[lp_selectIndex], true, PlayerGroupSingle(lp_playerIndex));
+    DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lp_selectIndex][1], PlayerGroupSingle(lp_playerIndex), true);
+    DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lp_selectIndex][2], PlayerGroupSingle(lp_playerIndex), true);
+    if ((lp_selectIndex == 1)) {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleActiveCommandCard, PlayerGroupSingle(lp_playerIndex), false);
+    }
+    else {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleActiveCommandCard, PlayerGroupSingle(lp_playerIndex), true);
+    }
+}
+
+bool libSCPL_gf_UnitGroupContainsCombatUnits (unitgroup lp_unitGroup) {
+    unitgroup autoBDBBFCBD_g;
+    int autoBDBBFCBD_u;
+
+    // Variable Declarations
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Implementation
+    autoBDBBFCBD_g = lp_unitGroup;
+    autoBDBBFCBD_u = 1;
+    for ( ; autoBDBBFCBD_u <= UnitGroupCount(autoBDBBFCBD_g, c_unitCountAll) ; autoBDBBFCBD_u += BoolToInt(lv_unit == UnitGroupUnit(autoBDBBFCBD_g, autoBDBBFCBD_u)) ) {
+        lv_unit = UnitGroupUnit(autoBDBBFCBD_g, autoBDBBFCBD_u);
+        if ((libSCPL_gf_UnitIsCombatUnit(lv_unit) == true)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool libSCPL_gf_UnitIsCombatUnit (unit lp_unit) {
+    // Implementation
+    if (((UnitGetType(lp_unit) == "Marine") || (UnitGetType(lp_unit) == "Marauder") || (UnitGetType(lp_unit) == "Reaper") || (UnitGetType(lp_unit) == "Ghost") || (UnitGetType(lp_unit) == "Hellion") || (UnitGetType(lp_unit) == "HellionTank") || (UnitGetType(lp_unit) == "SiegeTankSieged") || (UnitGetType(lp_unit) == "SiegeTank") || (UnitGetType(lp_unit) == "WidowMine") || (UnitGetType(lp_unit) == "WidowMineBurrowed") || (UnitGetType(lp_unit) == "Cyclone") || (UnitGetType(lp_unit) == "Thor") || (UnitGetType(lp_unit) == "ThorAP") || (UnitGetType(lp_unit) == "VikingAssault") || (UnitGetType(lp_unit) == "VikingFighter") || (UnitGetType(lp_unit) == "Medivac") || (UnitGetType(lp_unit) == "Raven") || (UnitGetType(lp_unit) == "AutoTurret") || (UnitGetType(lp_unit) == "Banshee") || (UnitGetType(lp_unit) == "Battlecruiser") || (UnitGetType(lp_unit) == "Liberator") || (UnitGetType(lp_unit) == "LiberatorAG"))) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void libSCPL_gf_UnitStatusEvaluateProgressBar (unit lp_statusUnit) {
@@ -1478,6 +1524,38 @@ void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_miner
     libSCPL_gf_GenericEventResourceSpendChanges(lp_playerIndex);
 }
 
+void libSCPL_gf_ResourceDisplaySpendUpdate (unit lp_unit, fixed lp_costTime, fixed lp_costMinerals, fixed lp_costVespene) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_timeActual;
+    fixed lv_currentMinerals;
+    fixed lv_currentVespene;
+    fixed lv_tickMinerals;
+    fixed lv_tickVespene;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_playerIndex = UnitGetOwner(lp_unit);
+    lv_currentMinerals = libSCPL_gf_UnitProtossProgressMinerals(lp_unit);
+    lv_currentVespene = libSCPL_gf_UnitProtossProgressVespene(lp_unit);
+    lv_timeActual = lp_costTime;
+    if ((UnitHasBehavior2(lp_unit, "TimeWarpProduction") == true)) {
+        lv_timeActual = (lv_timeActual / 1.15);
+    }
+    lv_tickVespene = (lp_costVespene / lv_timeActual);
+    lv_tickMinerals = (lp_costMinerals / lv_timeActual);
+    if (((lv_currentMinerals != lv_tickMinerals) || (lv_currentVespene != lv_tickVespene))) {
+        libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals -= libSCPL_gf_UnitProtossProgressMinerals(lp_unit);
+        libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene -= libSCPL_gf_UnitProtossProgressVespene(lp_unit);
+        libSCPL_gf_UnitProtossProgressMineralsSet(lp_unit, lv_tickMinerals);
+        libSCPL_gf_UnitProtossProgressVespeneSet(lp_unit, lv_tickVespene);
+        libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals += lv_tickMinerals;
+        libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene += lv_tickVespene;
+        libSCPL_gf_GenericEventResourceSpendChanges(lv_playerIndex);
+    }
+}
+
 void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex) {
     int autoD8374162_ae;
     int autoD8374162_ai;
@@ -1900,7 +1978,7 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
+    libSCPL_gf_PlayerResourcesAdd(1, 99.0, 99.0);
     return true;
 }
 
@@ -1919,7 +1997,9 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Queen", 5.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Pylon", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Gateway", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Forge", 8.0);
     return true;
 }
 
@@ -1938,7 +2018,7 @@ bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "BanelingNest", 6.0);
+    libSCPL_gf_PlayerResourcesReset(1);
     return true;
 }
 
@@ -2555,8 +2635,6 @@ bool libSCPL_gt_ProgressMorphRefund02_Func (bool testConds, bool runActions) {
     lv_registerName = CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, "InfoArray[" + IntToString(lv_progressIndex) + "].Unit", c_playerAny);
     lv_progressUnitType = (lv_registerName);
     lv_parentUnitType = libSCPL_gf_AbilityMorphParentUnit(EventUnit());
-    libPPRL_gf_DebugString(("Unit = " + (lv_progressUnitType) + " R"));
-    libPPRL_gf_DebugString(("Parent = " + (lv_parentUnitType) + " R"));
     if (((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("MorphToOverseerUCB", 0)) || (OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("MorphToTransportOverlordUCB", 0)))) {
         lv_parentUnitType = "Overlord";
     }
@@ -2569,13 +2647,9 @@ bool libSCPL_gt_ProgressMorphRefund02_Func (bool testConds, bool runActions) {
     else if ((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("MorphToBroodLordUCB", 0))) {
         lv_parentUnitType = "Corruptor";
     }
-    libPPRL_gf_DebugString(("ParentC = " + (lv_parentUnitType) + " R"));
     lv_costMinerals = (UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals) - UnitTypeGetCost(lv_parentUnitType, c_unitCostMinerals));
     lv_costVespene = (UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene) - UnitTypeGetCost(lv_parentUnitType, c_unitCostVespene));
     lv_costTime = StringToFixed(CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, "InfoArray[" + IntToString(lv_progressIndex) + "].SectionArray[" + IntToString(0) + "].DurationArray[" + IntToString(0) + "]", c_playerAny));
-    libPPRL_gf_DebugString(("Mineral " + FixedToString(lv_costMinerals, c_fixedPrecisionAny) + " R"));
-    libPPRL_gf_DebugString(("Vespene" + FixedToString(lv_costVespene, c_fixedPrecisionAny) + " R"));
-    libPPRL_gf_DebugString(("________________________________"));
     if ((libSCPL_gf_RegisterExists(lv_registerName) == false)) {
         libSCPL_gf_RegisterBuildTime(lv_registerName, lv_costTime);
         libSCPL_gf_RegisterCostMinerals(lv_registerName, lv_costMinerals);
@@ -2657,9 +2731,6 @@ bool libSCPL_gt_ProgressMorphStart02_Func (bool testConds, bool runActions) {
     lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
     lv_totalCostMinerals = libSCPL_gf_GetCostMinerals((lv_progressUnitType));
     lv_totalCostVespene = libSCPL_gf_GetCostVespene((lv_progressUnitType));
-    libPPRL_gf_DebugString(("Unit = " + (lv_progressUnitType)));
-    libPPRL_gf_DebugString(("Mineral " + FixedToString(lv_totalCostMinerals, c_fixedPrecisionAny)));
-    libPPRL_gf_DebugString(("Vespene" + FixedToString(lv_tickTotalVespene, c_fixedPrecisionAny)));
     lv_tickCostBaseMinerals = (lv_totalCostMinerals / (lv_progressTime / lv_tickIncrement));
     lv_tickCostBaseVespene = (lv_totalCostVespene / (lv_progressTime / lv_tickIncrement));
     libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
@@ -2922,7 +2993,6 @@ bool libSCPL_gt_ProgressUpgradeStart_Func (bool testConds, bool runActions) {
     int lv_playerIndex;
     unit lv_parentUnit;
     unit lv_progressUnit;
-    string lv_progressUnitType;
     string lv_progressType;
     fixed lv_totalCostMinerals;
     fixed lv_totalCostVespene;
@@ -2948,6 +3018,10 @@ bool libSCPL_gt_ProgressUpgradeStart_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
+        if (!((PlayerRace(EventPlayer()) != "Prot"))) {
+            return false;
+        }
+
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
             return false;
         }
@@ -2998,7 +3072,7 @@ bool libSCPL_gt_ProgressUpgradeStart_Func (bool testConds, bool runActions) {
             libSCPL_gf_UnitStatusPauseProgressBar(lv_parentUnit, lv_parentUnit, lv_progressIndex, true);
             while ((lv_tick == lv_expectedTime) && (UnitIsAlive(lv_parentUnit) == true) && ((libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex) < lv_progressCostMinerals) || (libSCPL_gf_PlayerAvailableVespene(lv_playerIndex) < lv_progressCostVespene))) {
                 lv_expectedTime = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeElapsed, lv_progressIndex);
-                Wait(libSCPL_gf_TickIncrementActual(lv_parentUnit), c_timeGame);
+                Wait(lv_tickIncrement, c_timeGame);
             }
             if ((UnitIsAlive(lv_parentUnit) == false)) {
                 break;
@@ -3013,7 +3087,7 @@ bool libSCPL_gt_ProgressUpgradeStart_Func (bool testConds, bool runActions) {
         lv_tickTotalVespene += lv_progressCostVespene;
         libSCPL_gf_PlayerResourcesSubtract(lv_playerIndex, lv_progressCostMinerals, lv_progressCostVespene);
         if ((lv_progressIsComplete == true)) {
-            Wait((libSCPL_gf_TickIncrementActual(lv_parentUnit) - 0.0625), c_timeGame);
+            Wait((lv_tickIncrement - 0.0625), c_timeGame);
             lv_tick += (lv_tickIncrement - 0.0625);
             lv_expectedTime = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeElapsed, lv_progressIndex);
             if ((lv_tick != lv_expectedTime)) {
@@ -3026,10 +3100,10 @@ bool libSCPL_gt_ProgressUpgradeStart_Func (bool testConds, bool runActions) {
             libSCPL_gf_UnitStatusPauseProgressBar(lv_parentUnit, lv_parentUnit, lv_progressIndex, true);
             Wait(0.0625, c_timeGame);
             libSCPL_gf_UnitStatusPauseProgressBar(lv_parentUnit, lv_parentUnit, lv_progressIndex, false);
-            Wait((libSCPL_gf_TickIncrementActual(lv_parentUnit) - 0.0625), c_timeGame);
+            Wait((lv_tickIncrement - 0.0625), c_timeGame);
             continue;
         }
-        Wait(libSCPL_gf_TickIncrementActual(lv_parentUnit), c_timeGame);
+        Wait(lv_tickIncrement, c_timeGame);
     }
     libSCPL_gf_ResourceDisplaySpendSubtract(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
     if ((lv_progressIsCancelled == true)) {
@@ -3042,6 +3116,144 @@ bool libSCPL_gt_ProgressUpgradeStart_Func (bool testConds, bool runActions) {
 void libSCPL_gt_ProgressUpgradeStart_Init () {
     libSCPL_gt_ProgressUpgradeStart = TriggerCreate("libSCPL_gt_ProgressUpgradeStart_Func");
     TriggerAddEventUnitResearchProgress(libSCPL_gt_ProgressUpgradeStart, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Progress Protoss Upgrade Start
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ProgressProtossUpgradeStart_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_parentUnit;
+    int lv_progressIndex;
+    bool lv_progressIsComplete;
+    string lv_progressType;
+    fixed lv_progressTime;
+    fixed lv_progressTimeActual;
+    fixed lv_progressTimeElapsed;
+    fixed lv_progressTimeRemaining;
+    fixed lv_progressPercentCurrent;
+    fixed lv_progressPercentPrevious;
+    fixed lv_progressPercentIncrement;
+    fixed lv_progressCostMinerals;
+    fixed lv_progressCostVespene;
+    fixed lv_totalCostMinerals;
+    fixed lv_totalCostVespene;
+    fixed lv_tickIncrement;
+    fixed lv_tickCostMinerals;
+    fixed lv_tickCostVespene;
+    fixed lv_tickTotalMinerals;
+    fixed lv_tickTotalVespene;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerRace(EventPlayer()) == "Prot"))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.0, c_timeGame);
+    lv_playerIndex = EventPlayer();
+    lv_parentUnit = EventUnit();
+    lv_progressIndex = 1;
+    lv_tickIncrement = libSCPL_gv_constants.lv_spendTickIncrement;
+    lv_progressType = libNtve_gf_TriggeringProgressUpgrade();
+    lv_totalCostMinerals = libSCPL_gf_GetCostMinerals((lv_progressType));
+    lv_totalCostVespene = libSCPL_gf_GetCostVespene((lv_progressType));
+    lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressType));
+    lv_progressTimeActual = (lv_progressTime - 1.0);
+    libSCPL_gf_UnitProtossProgressSet(lv_parentUnit, 0.0);
+    while ((UnitIsAlive(lv_parentUnit) == true) && (lv_progressIsComplete == false) && (libSCPL_gf_UnitProtossProgress(lv_parentUnit) != -1.0)) {
+        lv_progressTimeElapsed = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeElapsed, lv_progressIndex);
+        lv_progressTimeRemaining = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeRemaining, lv_progressIndex);
+        lv_progressPercentCurrent = (lv_progressTimeElapsed / lv_progressTimeActual);
+        lv_progressPercentPrevious = libSCPL_gf_UnitProtossProgress(lv_parentUnit);
+        lv_progressPercentIncrement = (lv_progressPercentCurrent - lv_progressPercentPrevious);
+        libSCPL_gf_UnitProtossProgressSet(lv_parentUnit, lv_progressPercentCurrent);
+        libSCPL_gf_ResourceDisplaySpendUpdate(lv_parentUnit, lv_progressTimeActual, lv_totalCostMinerals, lv_totalCostVespene);
+        lv_tickCostMinerals = ((lv_progressPercentCurrent * lv_totalCostMinerals) - lv_tickTotalMinerals);
+        lv_tickCostVespene = ((lv_progressPercentCurrent * lv_totalCostVespene) - lv_tickTotalVespene);
+        if (((lv_tickTotalMinerals + lv_tickCostMinerals) >= lv_totalCostMinerals) && ((lv_tickTotalVespene + lv_tickCostVespene) >= lv_totalCostVespene)) {
+            lv_tickCostMinerals = (lv_totalCostMinerals - lv_tickTotalMinerals);
+            lv_tickCostVespene = (lv_totalCostVespene - lv_tickTotalVespene);
+            lv_progressIsComplete = true;
+        }
+        lv_progressCostMinerals = Trunc(lv_tickCostMinerals);
+        lv_progressCostVespene = Trunc(lv_tickCostVespene);
+        if (((libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex) < lv_progressCostMinerals) || (libSCPL_gf_PlayerAvailableVespene(lv_playerIndex) < lv_progressCostVespene))) {
+            libSCPL_gf_UnitStatusPauseProgressBar(lv_parentUnit, lv_parentUnit, lv_progressIndex, true);
+            while ((UnitIsAlive(lv_parentUnit) == true) && (libSCPL_gf_UnitProtossProgress(lv_parentUnit) != -1.0) && ((libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex) < lv_progressCostMinerals) || (libSCPL_gf_PlayerAvailableVespene(lv_playerIndex) < lv_progressCostVespene))) {
+                Wait(lv_tickIncrement, c_timeGame);
+            }
+            if (((UnitIsAlive(lv_parentUnit) == false) || (libSCPL_gf_UnitProtossProgress(lv_parentUnit) == -1.0))) {
+                break;
+            }
+            libSCPL_gf_UnitStatusPauseProgressBar(lv_parentUnit, lv_parentUnit, lv_progressIndex, false);
+        }
+        lv_tickTotalMinerals += lv_progressCostMinerals;
+        lv_tickTotalVespene += lv_progressCostVespene;
+        libSCPL_gf_PlayerResourcesSubtract(lv_playerIndex, lv_progressCostMinerals, lv_progressCostVespene);
+        Wait(lv_tickIncrement, c_timeGame);
+    }
+    libSCPL_gf_ResourceDisplaySpendUpdate(lv_parentUnit, 1.0, 0.0, 0.0);
+    if ((libSCPL_gf_UnitProtossProgress(lv_parentUnit) == -1.0) && (UnitIsAlive(lv_parentUnit) == true)) {
+        libSCPL_gf_PlayerResourcesAdd(lv_playerIndex, lv_tickTotalMinerals, lv_tickTotalVespene);
+        return true;
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ProgressProtossUpgradeStart_Init () {
+    libSCPL_gt_ProgressProtossUpgradeStart = TriggerCreate("libSCPL_gt_ProgressProtossUpgradeStart_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_ProgressProtossUpgradeStart, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Progress Protoss Upgrade Cancel
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ProgressProtossUpgradeCancel_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_progressUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerRace(EventPlayer()) == "Prot"))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_progressUnit = EventUnit();
+    libSCPL_gf_UnitProtossProgressSet(lv_progressUnit, -1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ProgressProtossUpgradeCancel_Init () {
+    libSCPL_gt_ProgressProtossUpgradeCancel = TriggerCreate("libSCPL_gt_ProgressProtossUpgradeCancel_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_ProgressProtossUpgradeCancel, null, c_unitProgressStageCancel);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3855,7 +4067,7 @@ bool libSCPL_gt_ProgressUnitStartRefund_Func (bool testConds, bool runActions) {
     if ((EventUnitOrder() == Order(AbilityCommand("LarvaTrain", 1)))) {
         lv_costMinerals = (lv_costMinerals * 2);
     }
-    if ((lv_progressUnitType == "Baneling")) {
+    else if ((EventUnitOrder() == Order(AbilityCommand("MorphZerglingToBaneling", 0)))) {
         lv_costMinerals = (lv_costMinerals - UnitTypeGetCost("Zergling", c_unitCostMinerals));
     }
     PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropMinerals, c_playerPropOperAdd, lv_costMinerals);
@@ -3954,6 +4166,10 @@ bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((PlayerRace(EventPlayer()) != "Prot"))) {
             return false;
         }
     }
@@ -4121,6 +4337,146 @@ bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
 void libSCPL_gt_ProgressUnitStart_Init () {
     libSCPL_gt_ProgressUnitStart = TriggerCreate("libSCPL_gt_ProgressUnitStart_Func");
     TriggerAddEventUnitTrainProgress(libSCPL_gt_ProgressUnitStart, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Progress Protoss Unit Start
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ProgressProtossUnitStart_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_parentUnit;
+    int lv_progressIndex;
+    bool lv_progressIsComplete;
+    string lv_progressType;
+    fixed lv_progressTime;
+    fixed lv_progressTimeActual;
+    fixed lv_progressTimeElapsed;
+    fixed lv_progressTimeRemaining;
+    fixed lv_progressPercentCurrent;
+    fixed lv_progressPercentPrevious;
+    fixed lv_progressPercentIncrement;
+    fixed lv_progressCostMinerals;
+    fixed lv_progressCostVespene;
+    fixed lv_tickIncrement;
+    fixed lv_totalCostMinerals;
+    fixed lv_totalCostVespene;
+    fixed lv_tickCostMinerals;
+    fixed lv_tickCostVespene;
+    fixed lv_tickTotalMinerals;
+    fixed lv_tickTotalVespene;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((PlayerRace(EventPlayer()) == "Prot"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.0, c_timeGame);
+    lv_playerIndex = EventPlayer();
+    lv_parentUnit = EventUnit();
+    lv_progressIndex = 1;
+    lv_tickIncrement = libSCPL_gv_constants.lv_spendTickIncrement;
+    lv_progressType = libNtve_gf_TriggeringProgressUnitType();
+    lv_totalCostMinerals = UnitTypeGetCost(lv_progressType, c_unitCostMinerals);
+    lv_totalCostVespene = UnitTypeGetCost(lv_progressType, c_unitCostVespene);
+    lv_progressTime = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeTotal, lv_progressIndex);
+    lv_progressTimeActual = (lv_progressTime - 1.0);
+    libSCPL_gf_UnitProtossProgressSet(lv_parentUnit, 0.0);
+    while ((UnitIsAlive(lv_parentUnit) == true) && (lv_progressIsComplete == false) && (libSCPL_gf_UnitProtossProgress(lv_parentUnit) != -1.0)) {
+        lv_progressTimeElapsed = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeElapsed, lv_progressIndex);
+        lv_progressTimeRemaining = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeRemaining, lv_progressIndex);
+        lv_progressPercentCurrent = (lv_progressTimeElapsed / lv_progressTimeActual);
+        lv_progressPercentPrevious = libSCPL_gf_UnitProtossProgress(lv_parentUnit);
+        lv_progressPercentIncrement = (lv_progressPercentCurrent - lv_progressPercentPrevious);
+        libSCPL_gf_UnitProtossProgressSet(lv_parentUnit, lv_progressPercentCurrent);
+        libSCPL_gf_ResourceDisplaySpendUpdate(lv_parentUnit, lv_progressTimeActual, lv_totalCostMinerals, lv_totalCostVespene);
+        lv_tickCostMinerals = ((lv_progressPercentCurrent * lv_totalCostMinerals) - lv_tickTotalMinerals);
+        lv_tickCostVespene = ((lv_progressPercentCurrent * lv_totalCostVespene) - lv_tickTotalVespene);
+        if (((lv_tickTotalMinerals + lv_tickCostMinerals) >= lv_totalCostMinerals) && ((lv_tickTotalVespene + lv_tickCostVespene) >= lv_totalCostVespene)) {
+            lv_tickCostMinerals = (lv_totalCostMinerals - lv_tickTotalMinerals);
+            lv_tickCostVespene = (lv_totalCostVespene - lv_tickTotalVespene);
+            lv_progressIsComplete = true;
+        }
+        lv_progressCostMinerals = Trunc(lv_tickCostMinerals);
+        lv_progressCostVespene = Trunc(lv_tickCostVespene);
+        if (((libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex) < lv_progressCostMinerals) || (libSCPL_gf_PlayerAvailableVespene(lv_playerIndex) < lv_progressCostVespene))) {
+            libSCPL_gf_UnitStatusPauseProgressBar(lv_parentUnit, lv_parentUnit, lv_progressIndex, true);
+            while ((UnitIsAlive(lv_parentUnit) == true) && (libSCPL_gf_UnitProtossProgress(lv_parentUnit) != -1.0) && ((libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex) < lv_progressCostMinerals) || (libSCPL_gf_PlayerAvailableVespene(lv_playerIndex) < lv_progressCostVespene))) {
+                Wait(lv_tickIncrement, c_timeGame);
+            }
+            if (((UnitIsAlive(lv_parentUnit) == false) || (libSCPL_gf_UnitProtossProgress(lv_parentUnit) == -1.0))) {
+                break;
+            }
+            libSCPL_gf_UnitStatusPauseProgressBar(lv_parentUnit, lv_parentUnit, lv_progressIndex, false);
+        }
+        lv_tickTotalMinerals += lv_progressCostMinerals;
+        lv_tickTotalVespene += lv_progressCostVespene;
+        libSCPL_gf_PlayerResourcesSubtract(lv_playerIndex, lv_progressCostMinerals, lv_progressCostVespene);
+        Wait(lv_tickIncrement, c_timeGame);
+    }
+    libSCPL_gf_ResourceDisplaySpendUpdate(lv_parentUnit, 1.0, 0.0, 0.0);
+    if ((libSCPL_gf_UnitProtossProgress(lv_parentUnit) == -1.0) && (UnitIsAlive(lv_parentUnit) == true)) {
+        lv_tickTotalMinerals *= 0.75;
+        lv_tickTotalVespene *= 0.75;
+        libSCPL_gf_PlayerResourcesAdd(lv_playerIndex, lv_tickTotalMinerals, lv_tickTotalVespene);
+        return true;
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ProgressProtossUnitStart_Init () {
+    libSCPL_gt_ProgressProtossUnitStart = TriggerCreate("libSCPL_gt_ProgressProtossUnitStart_Func");
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_ProgressProtossUnitStart, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Progress Protoss Unit Cancel
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ProgressProtossUnitCancel_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_progressUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((PlayerRace(EventPlayer()) == "Prot"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_progressUnit = EventUnit();
+    libSCPL_gf_UnitProtossProgressSet(lv_progressUnit, -1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ProgressProtossUnitCancel_Init () {
+    libSCPL_gt_ProgressProtossUnitCancel = TriggerCreate("libSCPL_gt_ProgressProtossUnitCancel_Func");
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_ProgressProtossUnitCancel, null, c_unitProgressStageCancel);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6538,6 +6894,8 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ProgressMorphCancel_Init();
     libSCPL_gt_ProgressUpgradeRefund_Init();
     libSCPL_gt_ProgressUpgradeStart_Init();
+    libSCPL_gt_ProgressProtossUpgradeStart_Init();
+    libSCPL_gt_ProgressProtossUpgradeCancel_Init();
     libSCPL_gt_ProgressArmamentStartRefund_Init();
     libSCPL_gt_ProgressArmamentStart_Init();
     libSCPL_gt_ProgressBuildingStartRefund_Init();
@@ -6548,6 +6906,8 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ProgressBuildingCancel_Init();
     libSCPL_gt_ProgressUnitStartRefund_Init();
     libSCPL_gt_ProgressUnitStart_Init();
+    libSCPL_gt_ProgressProtossUnitStart_Init();
+    libSCPL_gt_ProgressProtossUnitCancel_Init();
     libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment_Init();
     libSCPL_gt_ProgressWarpgateUnitSwap_Init();
     libSCPL_gt_ProgressUnitStartCommented_Init();

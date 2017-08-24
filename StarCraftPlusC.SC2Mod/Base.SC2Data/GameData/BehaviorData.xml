@@ -414,9 +414,6 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="TimeWarpProduction">
-        <Modification TimeScale="1.1428"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AutoWallLower">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Period value="0.0625"/>

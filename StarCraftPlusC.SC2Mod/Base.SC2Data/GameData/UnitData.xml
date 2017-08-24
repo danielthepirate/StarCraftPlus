@@ -97,6 +97,12 @@
             <LayoutButtons Face="AutoCreepSpreadAutocastToggle" Type="AbilCmd" AbilCmd="AutoCreepSpread,Execute" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="CyberneticsCore">
+        <DeathTime value="0.5"/>
+    </CUnit>
+    <CUnit id="DarkShrine">
+        <DeathTime value="0.5"/>
+    </CUnit>
     <CUnit id="Drone">
         <CostResource index="Minerals" value="0"/>
         <CardLayouts index="0">
@@ -168,6 +174,12 @@
         <CardLayouts index="0">
             <LayoutButtons index="3" Face="ResearchDrillClaws" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research5" Row="0" Column="0"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="FleetBeacon">
+        <DeathTime value="0.5"/>
+    </CUnit>
+    <CUnit id="Forge">
+        <DeathTime value="0.5"/>
     </CUnit>
     <CUnit id="FusionCore">
         <CardLayouts index="0">
@@ -293,6 +305,7 @@
     </CUnit>
     <CUnit id="Gateway">
         <Food value="10"/>
+        <DeathTime value="0.5"/>
     </CUnit>
     <CUnit id="GhostAcademy">
         <CardLayouts index="0">
@@ -457,6 +470,7 @@
     <CUnit id="Nexus">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
+        <DeathTime value="0.5"/>
     </CUnit>
     <CUnit id="NydusCanal">
         <CostResource index="Terrazine" value="100"/>
@@ -594,8 +608,12 @@
     <CUnit id="RoachWarren">
         <Food value="10"/>
     </CUnit>
+    <CUnit id="RoboticsBay">
+        <DeathTime value="0.5"/>
+    </CUnit>
     <CUnit id="RoboticsFacility">
         <Food value="10"/>
+        <DeathTime value="0.5"/>
     </CUnit>
     <CUnit id="SCV">
         <CostResource index="Minerals" value="0"/>
@@ -963,6 +981,7 @@
     </CUnit>
     <CUnit id="Stargate">
         <Food value="10"/>
+        <DeathTime value="0.5"/>
     </CUnit>
     <CUnit id="Starport">
         <Food value="10"/>
@@ -1057,9 +1076,15 @@
             <LayoutButtons index="6" Column="2"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="TemplarArchive">
+        <DeathTime value="0.5"/>
+    </CUnit>
     <CUnit id="TransportOverlordCocoon">
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="0"/>
+    </CUnit>
+    <CUnit id="TwilightCouncil">
+        <DeathTime value="0.5"/>
     </CUnit>
     <CUnit id="Ultralisk">
         <CardLayouts index="0">
@@ -1084,6 +1109,7 @@
     </CUnit>
     <CUnit id="WarpGate">
         <Food value="10"/>
+        <DeathTime value="0.5"/>
     </CUnit>
     <CUnit id="WarpHighTemplar" parent="HighTemplar">
         <Name value="Unit/Name/WarpHighTemplar"/>
