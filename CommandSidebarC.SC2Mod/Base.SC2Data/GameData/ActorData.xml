@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+	<CActorUnit default="1" id="GenericSidebarCasterBase" parent="GenericUnitStandardNoAutoSoundLinks">
+		<EditorModel value="Sphere"/>
+		<Model value="Invisible"/>
+		<StatusBarFlags index="Shields" value="0"/>
+		<StatusBarFlags index="Life" value="0"/>
+		<StatusBarFlags index="Energy" value="0"/>
+		<StatusBarFlags index="Cargo" value="0"/>
+		<StatusBarFlags index="Progress" value="0"/>
+		<StatusBarFlags index="Duration" value="0"/>
+		<UnitFlags index="ShowBlobShadow" value="0"/>
+		<Macros value="RemoveFlyerHelperMacro"/>
+	</CActorUnit>
+	<CActorUnit id="SIDEBARCASTER_BASE" parent="GenericSidebarCasterBase" unitName="SIDEBARCASTER_BASE"/>
+	<CActorUnit id="SdbBlank" parent="GenericSidebarCasterBase" unitName="SdbBlank"/>
+	
+	<CActorUnit id="SdbPBuild1" parent="GenericSidebarCasterBase" unitName="SdbPBuild1"/>
+	<CActorUnit id="SdbPBuild2" parent="GenericSidebarCasterBase" unitName="SdbPBuild2"/>
+	<CActorUnit id="SdbPRsrch1" parent="GenericSidebarCasterBase" unitName="SdbPRsrch1"/>
+	<CActorUnit id="SdbPRsrch2" parent="GenericSidebarCasterBase" unitName="SdbPRsrch2"/>
+	<CActorUnit id="SdbPTrain1" parent="GenericSidebarCasterBase" unitName="SdbPTrain1"/>
+	<CActorUnit id="SdbPTrain2" parent="GenericSidebarCasterBase" unitName="SdbPTrain2"/>
+	<CActorUnit id="SdbPWarp1" parent="GenericSidebarCasterBase" unitName="SdbPWarp1"/>
+	<CActorUnit id="SdbPAbils1" parent="GenericSidebarCasterBase" unitName="SdbPAbils1"/>
+	
+	<CActorUnit id="SdbTBuild1" parent="GenericSidebarCasterBase" unitName="SdbTBuild1"/>
+	<CActorUnit id="SdbTBuild2" parent="GenericSidebarCasterBase" unitName="SdbTBuild2"/>
+	<CActorUnit id="SdbTRsrch1" parent="GenericSidebarCasterBase" unitName="SdbTRsrch1"/>
+	<CActorUnit id="SdbTRsrch2" parent="GenericSidebarCasterBase" unitName="SdbTRsrch2"/>
+	<CActorUnit id="SdbTTrain1" parent="GenericSidebarCasterBase" unitName="SdbTTrain1"/>
+	<CActorUnit id="SdbTTrain2" parent="GenericSidebarCasterBase" unitName="SdbTTrain2"/>
+	<CActorUnit id="SdbTWarp1" parent="GenericSidebarCasterBase" unitName="SdbTWarp1"/>
+	<CActorUnit id="SdbTAbils1" parent="GenericSidebarCasterBase" unitName="SdbTAbils1"/>
+	
+	<CActorUnit id="SdbZBuild1" parent="GenericSidebarCasterBase" unitName="SdbZBuild1"/>
+	<CActorUnit id="SdbZBuild2" parent="GenericSidebarCasterBase" unitName="SdbZBuild2"/>
+	<CActorUnit id="SdbZRsrch1" parent="GenericSidebarCasterBase" unitName="SdbZRsrch1"/>
+	<CActorUnit id="SdbZRsrch2" parent="GenericSidebarCasterBase" unitName="SdbZRsrch2"/>
+	<CActorUnit id="SdbZTrain1" parent="GenericSidebarCasterBase" unitName="SdbZTrain1"/>
+	<CActorUnit id="SdbZTrain2" parent="GenericSidebarCasterBase" unitName="SdbZTrain2"/>
+	<CActorUnit id="SdbZWarp1" parent="GenericSidebarCasterBase" unitName="SdbZWarp1"/>
+	<CActorUnit id="SdbZAbils1" parent="GenericSidebarCasterBase" unitName="SdbZAbils1"/>
+
+	
+</Catalog>

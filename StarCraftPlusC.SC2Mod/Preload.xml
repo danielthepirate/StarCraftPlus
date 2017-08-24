@@ -50,6 +50,7 @@
 <Unit id="Drone"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
+<Unit id="Queen"/>
 <Unit id="PlanetaryFortress"/>
 <Unit id="OrbitalCommand"/>
 <Unit id="CreepTumorBurrowed"/>

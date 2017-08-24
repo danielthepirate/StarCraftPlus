@@ -249,6 +249,7 @@ Param/Value/lib_WCSP_2809EF0D=Stimpack
 Param/Value/lib_WCSP_2922DEEF=Durable Materials
 Param/Value/lib_WCSP_2B1E2B57=Yamato Cannon
 Param/Value/lib_WCSP_2BB686A0=Pathogen Glands
+Param/Value/lib_WCSP_31685A5C=2
 Param/Value/lib_WCSP_32748ABC=Flyer Carapace Level 1
 Param/Value/lib_WCSP_34E569F4=Behemoth Reactor
 Param/Value/lib_WCSP_382FD91D=Burrow

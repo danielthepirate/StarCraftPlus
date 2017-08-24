@@ -10,6 +10,13 @@ const int libSCPL_ge_GenericParameter_TriggeringPlayer = 0;
 string libSCPL_ge_GenericParameter_Ident (int lp_val);
 
 // Structures
+struct libSCPL_gs_AutoCreepLineage {
+    unit lv_zzParent;
+    unit lv_head;
+    unit lv_target;
+    unitgroup lv_zzUnitGroup;
+};
+
 struct libSCPL_gs_Constant {
     int lv_spendBufferMinerals;
     int lv_spendBufferVespene;
@@ -21,9 +28,11 @@ struct libSCPL_gs_Constant {
 struct libSCPL_gs_Player {
     fixed lv_resourceSpendMinerals;
     fixed lv_resourceSpendVespene;
-    unitgroup lv_autoCreepNodeTargets;
-    unitgroup lv_autoCreepNodes;
-    int lv_autoCreepNodeCount;
+    unitgroup lv_globalZerg_AutoCreepNodeTargets;
+    libSCPL_gs_AutoCreepLineage[257] lv_globalZerg_AutoCreepLineage;
+    int lv_globalZerg_AutoCreepLineageCount;
+    unitgroup lv_zzAutoCreepLineageParents;
+    int lv_zzAutoCreepLineageCount;
     bool lv_globalTerran_AutoWallToggle;
     bool lv_globalZerg_CreepSpreadToggle;
     bool lv_globalZerg_LarvaSpawnToggle;
@@ -261,17 +270,18 @@ void libSCPL_gf_AutoWorkerProduction (unit lp_townHall, int lp_playerIndex);
 void libSCPL_gf_AutoWorkerProductionZerg (unit lp_townHall, int lp_playerIndex, int lp_larvaLeftover);
 void libSCPL_gf_AutoWorkerProductionZergInitial (unit lp_townHall, int lp_playerIndex, int lp_larvaLeftover);
 void libSCPL_gf_UnitStatusEvaluateProgressBar (unit lp_statusUnit);
-void libSCPL_gf_AutoCreepTargetNodesGenerateInitial (int lp_playerIndex);
-void libSCPL_gf_AutoCreepTargetNodesSortInitial (int lp_playerIndex);
+void libSCPL_gf_AutoCreepTargetNodesInitialize ();
+void libSCPL_gf_AutoCreepTargetNodesGenerateBase (int lp_playerIndex);
+void libSCPL_gf_AutoCreepTargetNodesGenerateGrid (playergroup lp_zergPlayers);
 void libSCPL_gf_AutoCreepTargetNodeCreate (int lp_playerIndex, point lp_point);
-void libSCPL_gf_AutoCreepTumorNodeLineageShift (int lp_playerIndex, int lp_shiftIndex);
-void libSCPL_gf_AutoCreepTumorNodeLineageCull (int lp_playerIndex, int lp_cullIndex);
-void libSCPL_gf_AutoCreepTumorNodeParentAdd (unit lp_node);
-void libSCPL_gf_AutoCreepTumorNodeChildAdd (unit lp_parent, unit lp_node);
-void libSCPL_gf_AutoCreepSpreadTowardsTargetNode (int lp_playerIndex, unit lp_node);
+void libSCPL_gf_AutoCreepEvaluateLineageTargets (int lp_playerIndex);
+void libSCPL_gf_AutoCreepLineageSpread (int lp_playerIndex, unit lp_node);
 bool libSCPL_gf_PointsHaveHeightDifference (point lp_pointA, point lp_pointB);
 point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target);
-bool libSCPL_gf_AutoCreepPointValidActive (unit lp_node, point lp_point);
+int libSCPL_gf_AutoCreepPointValid (unit lp_node, point lp_point);
+void libSCPL_gf_AutoCreepTargetNodesSort (int lp_playerIndex);
+void libSCPL_gf_AutoCreepDebugAll (int lp_playerIndex);
+void libSCPL_gf_AutoCreepDebug (unit lp_unit);
 void libSCPL_gf_InitializeUIHookups ();
 void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
@@ -357,10 +367,11 @@ trigger libSCPL_gt_UCBAutoWallToggleOn;
 trigger libSCPL_gt_UCBAutoWallToggleOff;
 trigger libSCPL_gt_PlayerAutoWallUnitCreated;
 trigger libSCPL_gt_PlayerZergNydusWormPlacementRedirect;
-trigger libSCPL_gt_AutoCreepTumorNodeCreateParent;
-trigger libSCPL_gt_AutoCreepTumorNodeCreateChild;
+trigger libSCPL_gt_AutoCreepTumorLineageParent;
+trigger libSCPL_gt_AutoCreepTumorLineageSpread;
+trigger libSCPL_gt_AutoCreepTumorLineageChild;
 trigger libSCPL_gt_AutoCreepTumorNodeTargetReached;
-trigger libSCPL_gt_AutoCreepTumorReady;
+trigger libSCPL_gt_AutoCreepDebugDestroy;
 trigger libSCPL_gt_UCBChargeLinkHydraliskDenMorphStart;
 trigger libSCPL_gt_UCBChargeLinkHydraliskDenMorphCancel;
 trigger libSCPL_gt_UCBChargeLinkSpireMorphStart;

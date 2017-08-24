@@ -33,8 +33,11 @@ void libSCPL_InitVariables () {
     libSCPL_gv_constants.lv_spendTickIncrementBoosted = 0.4375;
     libSCPL_gv_constants.lv_townHallResourceRadius = 15.0;
     for (init_i = 0; init_i <= 16; init_i += 1) {
-        libSCPL_gv_player[init_i].lv_autoCreepNodeTargets = UnitGroupEmpty();
-        libSCPL_gv_player[init_i].lv_autoCreepNodes = UnitGroupEmpty();
+        libSCPL_gv_player[init_i].lv_globalZerg_AutoCreepNodeTargets = UnitGroupEmpty();
+        for (init_i1 = 0; init_i1 <= 256; init_i1 += 1) {
+            libSCPL_gv_player[init_i].lv_globalZerg_AutoCreepLineage[init_i1].lv_zzUnitGroup = UnitGroupEmpty();
+        }
+        libSCPL_gv_player[init_i].lv_zzAutoCreepLineageParents = UnitGroupEmpty();
         libSCPL_gv_player[init_i].lv_globalTerran_AutoWallToggle = true;
         libSCPL_gv_player[init_i].lv_globalZerg_CreepSpreadToggle = true;
         libSCPL_gv_player[init_i].lv_globalZerg_LarvaSpawnToggle = true;
@@ -382,6 +385,8 @@ void libSCPL_gf_InitializeSpendOverTime () {
 
     // Implementation
     lv_gamePlayers = PlayerGroupActive();
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 
@@ -762,7 +767,17 @@ void libSCPL_gf_DebugPanelUpdateSpendOverTime () {
     libPPRL_gf_DebugPanelSetFieldValue(6, FixedToString(lv_value, 2));
 }
 
+trigger auto_libSCPL_gf_InitializeAutomatedWorkerProduction_Trigger = null;
+
 void libSCPL_gf_InitializeAutomatedWorkerProduction () {
+    if (auto_libSCPL_gf_InitializeAutomatedWorkerProduction_Trigger == null) {
+        auto_libSCPL_gf_InitializeAutomatedWorkerProduction_Trigger = TriggerCreate("auto_libSCPL_gf_InitializeAutomatedWorkerProduction_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libSCPL_gf_InitializeAutomatedWorkerProduction_Trigger, false, false);
+}
+
+bool auto_libSCPL_gf_InitializeAutomatedWorkerProduction_TriggerFunc (bool testConds, bool runActions) {
     playergroup autoA6110864_g;
     int autoA6110864_p;
     string auto4F338708_val;
@@ -788,13 +803,13 @@ void libSCPL_gf_InitializeAutomatedWorkerProduction () {
         }
         else if (auto4F338708_val == "Zerg") {
             libSCPL_gf_AutoWorkerProductionZergInitial(lv_townHall, lv_playerIndex, 0);
-            libSCPL_gf_AutoCreepTargetNodesGenerateInitial(lv_playerIndex);
         }
         else {
         }
     }
     Wait(2.0, c_timeGame);
     TriggerEnable(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, true);
+    return true;
 }
 
 void libSCPL_gf_AutoWorkerProduction (unit lp_townHall, int lp_playerIndex) {
@@ -933,7 +948,38 @@ void libSCPL_gf_UnitStatusEvaluateProgressBar (unit lp_statusUnit) {
     ActorSend(lv_unitActorMain, "Destroy");
 }
 
-void libSCPL_gf_AutoCreepTargetNodesGenerateInitial (int lp_playerIndex) {
+void libSCPL_gf_AutoCreepTargetNodesInitialize () {
+    playergroup autoFE5C722C_g;
+    int autoFE5C722C_p;
+    playergroup autoD54CD30E_g;
+    int autoD54CD30E_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+    playergroup lv_zergPlayers;
+
+    // Variable Initialization
+    lv_zergPlayers = PlayerGroupEmpty();
+
+    // Implementation
+    autoFE5C722C_g = PlayerGroupActive(); 
+    autoFE5C722C_p = 1;
+    for ( ; autoFE5C722C_p <= PlayerGroupCount(autoFE5C722C_g) ; autoFE5C722C_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(autoFE5C722C_g, autoFE5C722C_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(autoFE5C722C_g, autoFE5C722C_p);
+        if ((PlayerRace(lv_playerIndex) == "Zerg")) {
+            PlayerGroupAdd(lv_zergPlayers, lv_playerIndex);
+        }
+    }
+    libSCPL_gf_AutoCreepTargetNodesGenerateGrid(lv_zergPlayers);
+    autoD54CD30E_g = lv_zergPlayers; 
+    autoD54CD30E_p = 1;
+    for ( ; autoD54CD30E_p <= PlayerGroupCount(autoD54CD30E_g) ; autoD54CD30E_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(autoD54CD30E_g, autoD54CD30E_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(autoD54CD30E_g, autoD54CD30E_p);
+        libSCPL_gf_AutoCreepTargetNodesGenerateBase(lv_playerIndex);
+    }
+}
+
+void libSCPL_gf_AutoCreepTargetNodesGenerateBase (int lp_playerIndex) {
     unitgroup autoE3DCD47F_g;
     int autoE3DCD47F_u;
 
@@ -961,8 +1007,8 @@ void libSCPL_gf_AutoCreepTargetNodesGenerateInitial (int lp_playerIndex) {
         UnitGroupAdd(lv_vespeneGeyserBase, lv_vespeneGeyserBuddy);
         lv_basePoint = UnitGroupCenterOfGroup(lv_vespeneGeyserBase);
         lv_vespeneGeyserBase = UnitGroupEmpty();
-        RegionAddRegion(libSCPL_gv_map.lv_baseRegion, RegionCircle(lv_basePoint, 4.0));
-        if ((PointPathingCost(PlayerStartLocation(lp_playerIndex), lv_basePoint) == 65536)) {
+        RegionAddRegion(libSCPL_gv_map.lv_baseRegion, RegionCircle(lv_basePoint, 6.0));
+        if ((PointPathingCost(PlayerStartLocation(lp_playerIndex), lv_basePoint) >= 65536)) {
             continue;
         }
         if ((RegionContainsPoint(RegionCircle(PlayerStartLocation(lp_playerIndex), 4.0), lv_basePoint) == true)) {
@@ -970,153 +1016,147 @@ void libSCPL_gf_AutoCreepTargetNodesGenerateInitial (int lp_playerIndex) {
         }
         libSCPL_gf_AutoCreepTargetNodeCreate(lp_playerIndex, lv_basePoint);
     }
-    libSCPL_gf_AutoCreepTargetNodesSortInitial(lp_playerIndex);
 }
 
-void libSCPL_gf_AutoCreepTargetNodesSortInitial (int lp_playerIndex) {
-    unitgroup auto26F85414_g;
-    int auto26F85414_u;
-    int auto9BA6175A_ae;
-    int auto9BA6175A_ai;
+void libSCPL_gf_AutoCreepTargetNodesGenerateGrid (playergroup lp_zergPlayers) {
+    fixed autoB044ED37_ae;
+    fixed autoB044ED37_ai;
+    fixed auto6382413E_ae;
+    fixed auto6382413E_ai;
+    playergroup auto16C9C74F_g;
+    int auto16C9C74F_p;
 
     // Variable Declarations
-    point lv_playerPathingOrigin;
-    unitgroup lv_nodesUnsorted;
-    unit lv_node;
-    int lv_nodeScore;
-    unit lv_nodeClosest;
-    int lv_lowestScore;
-    int lv_n;
+    int lv_zergPlayer;
+    fixed lv_mapWidth;
+    fixed lv_mapHeight;
+    fixed lv_incrementX;
+    fixed lv_incrementY;
+    fixed lv_startX;
+    fixed lv_startY;
+    fixed lv_pointX;
+    fixed lv_pointY;
+    point lv_gridPoint;
 
     // Variable Initialization
-    lv_nodesUnsorted = UnitGroupEmpty();
 
     // Implementation
-    lv_nodesUnsorted = UnitGroupCopy(libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodeTargets);
-    libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodeTargets = UnitGroupEmpty();
-    lv_playerPathingOrigin = UnitGetPosition(UnitGroupUnit(UnitGroup(null, lp_playerIndex, RegionEntireMap(), UnitFilter((1 << c_targetFilterWorker), 0, (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1));
-    while ((UnitGroupCount(lv_nodesUnsorted, c_unitCountAlive) > 0)) {
-        lv_lowestScore = 9999;
-        auto26F85414_g = lv_nodesUnsorted;
-        auto26F85414_u = 1;
-        for ( ; auto26F85414_u <= UnitGroupCount(auto26F85414_g, c_unitCountAll) ; auto26F85414_u += BoolToInt(lv_node == UnitGroupUnit(auto26F85414_g, auto26F85414_u)) ) {
-            lv_node = UnitGroupUnit(auto26F85414_g, auto26F85414_u);
-            lv_nodeScore = PointPathingCost(UnitGetPosition(lv_node), lv_playerPathingOrigin);
-            if ((lv_nodeScore < lv_lowestScore)) {
-                lv_nodeClosest = lv_node;
-                lv_lowestScore = lv_nodeScore;
+    lv_mapWidth = libNtve_gf_WidthOfRegion(RegionPlayableMap());
+    lv_mapHeight = libNtve_gf_HeightOfRegion(RegionPlayableMap());
+    lv_incrementX = (lv_mapWidth * 0.25);
+    lv_incrementY = (lv_mapHeight * 0.25);
+    lv_startX = (PointGetX(RegionGetBoundsMin(RegionPlayableMap())) + (lv_incrementX * 0.5));
+    lv_startY = (PointGetY(RegionGetBoundsMin(RegionPlayableMap())) + (lv_incrementY * 0.5));
+    autoB044ED37_ae = lv_mapWidth;
+    autoB044ED37_ai = lv_incrementX;
+    lv_pointX = lv_startX;
+    for ( ; ( (autoB044ED37_ai >= 0 && lv_pointX <= autoB044ED37_ae) || (autoB044ED37_ai <= 0 && lv_pointX >= autoB044ED37_ae) ) ; lv_pointX += autoB044ED37_ai ) {
+        auto6382413E_ae = lv_mapHeight;
+        auto6382413E_ai = lv_incrementY;
+        lv_pointY = lv_startY;
+        for ( ; ( (auto6382413E_ai >= 0 && lv_pointY <= auto6382413E_ae) || (auto6382413E_ai <= 0 && lv_pointY >= auto6382413E_ae) ) ; lv_pointY += auto6382413E_ai ) {
+            lv_gridPoint = Point(lv_pointX, lv_pointY);
+            auto16C9C74F_g = lp_zergPlayers; 
+            auto16C9C74F_p = 1;
+            for ( ; auto16C9C74F_p <= PlayerGroupCount(auto16C9C74F_g) ; auto16C9C74F_p += BoolToInt(lv_zergPlayer == PlayerGroupPlayer(auto16C9C74F_g, auto16C9C74F_p)) ) {
+                lv_zergPlayer = PlayerGroupPlayer(auto16C9C74F_g, auto16C9C74F_p);
+                if ((PointPathingCost(PlayerStartLocation(lv_zergPlayer), lv_gridPoint) >= 65536)) {
+                    continue;
+                }
+                if ((RegionContainsPoint(RegionCircle(PlayerStartLocation(lv_zergPlayer), 12.0), lv_gridPoint) == true)) {
+                    continue;
+                }
+                libSCPL_gf_AutoCreepTargetNodeCreate(lv_zergPlayer, lv_gridPoint);
             }
         }
-        UnitGroupAdd(libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodeTargets, lv_nodeClosest);
-        UnitGroupRemove(lv_nodesUnsorted, lv_nodeClosest);
-    }
-    auto9BA6175A_ae = UnitGroupCount(libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodeTargets, c_unitCountAlive);
-    auto9BA6175A_ai = 1;
-    lv_n = 1;
-    for ( ; ( (auto9BA6175A_ai >= 0 && lv_n <= auto9BA6175A_ae) || (auto9BA6175A_ai <= 0 && lv_n >= auto9BA6175A_ae) ) ; lv_n += auto9BA6175A_ai ) {
-        libSCPL_gf_UnitChargeLinkSet(UnitGroupUnit(libSCPL_gv_player[lv_n].lv_autoCreepNodeTargets, lv_n), "CreepNodeIndex", lv_n);
     }
 }
 
 void libSCPL_gf_AutoCreepTargetNodeCreate (int lp_playerIndex, point lp_point) {
     // Implementation
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameAutoCreepNodeTarget", 0, lp_playerIndex, lp_point);
-    UnitGroupAdd(libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodeTargets, UnitLastCreated());
+    UnitGroupAdd(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets, UnitLastCreated());
 }
 
-void libSCPL_gf_AutoCreepTumorNodeLineageShift (int lp_playerIndex, int lp_shiftIndex) {
-    unitgroup autoFA258F09_g;
-    int autoFA258F09_u;
+void libSCPL_gf_AutoCreepEvaluateLineageTargets (int lp_playerIndex) {
+    int autoB37BDBCD_ae;
+    int autoB37BDBCD_ai;
+    unitgroup auto17EF132B_g;
+    int auto17EF132B_u;
+    unitgroup autoB56D4986_g;
+    int autoB56D4986_u;
 
     // Variable Declarations
-    unitgroup lv_creepSpreaders;
-    unit lv_tumor;
-    int lv_tumorNodeIndex;
+    int lv_lineageCount;
+    int lv_targetIndex;
+    int lv_lineageIndex;
+    unit lv_head;
+    unit lv_target;
+    unitgroup lv_headsUnsorted;
+    unitgroup lv_targetsUnclaimed;
+    int lv_pathingScore;
+    int lv_pathingScoreLowest;
+    point lv_lineageHeadPosition;
+    point lv_creepTargetPosition;
+    unit lv_bestHead;
+    unit lv_bestTarget;
 
     // Variable Initialization
-    lv_creepSpreaders = UnitGroupEmpty();
+    lv_headsUnsorted = UnitGroupEmpty();
+    lv_targetsUnclaimed = UnitGroupEmpty();
 
     // Implementation
-    if ((UnitGroupCount(libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodeTargets, c_unitCountAlive) == 0)) {
-        libSCPL_gf_AutoCreepTumorNodeLineageCull(lp_playerIndex, lp_shiftIndex);
-    }
-    UnitGroupAddUnitGroup(lv_creepSpreaders, UnitGroup("CreepTumor", lp_shiftIndex, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupAddUnitGroup(lv_creepSpreaders, UnitGroup("CreepTumorBurrowed", lp_shiftIndex, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupAddUnitGroup(lv_creepSpreaders, UnitGroup("CreepTumorQueen", lp_shiftIndex, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    autoFA258F09_g = lv_creepSpreaders;
-    autoFA258F09_u = 1;
-    for ( ; autoFA258F09_u <= UnitGroupCount(autoFA258F09_g, c_unitCountAll) ; autoFA258F09_u += BoolToInt(lv_tumor == UnitGroupUnit(autoFA258F09_g, autoFA258F09_u)) ) {
-        lv_tumor = UnitGroupUnit(autoFA258F09_g, autoFA258F09_u);
-        lv_tumorNodeIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lv_tumor, "CreepNodeIndex"));
-        if ((UnitGroupHasUnit(libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodes, lv_tumor) == true)) {
-            UnitGroupRemove(libSCPL_gv_player[lp_shiftIndex].lv_autoCreepNodes, lv_tumor);
-            libSCPL_gv_player[lp_shiftIndex].lv_autoCreepNodeCount -= 1;
-        }
-        if ((lv_tumorNodeIndex >= lp_shiftIndex)) {
-            libSCPL_gf_UnitChargeLinkSet(lv_tumor, "CreepNodeIndex", 1.0);
-        }
-    }
-}
-
-void libSCPL_gf_AutoCreepTumorNodeLineageCull (int lp_playerIndex, int lp_cullIndex) {
-    unitgroup autoEF0FD4B9_g;
-    int autoEF0FD4B9_u;
-
-    // Variable Declarations
-    unitgroup lv_creepSpreaders;
-    unit lv_tumor;
-    int lv_tumorNodeIndex;
-
-    // Variable Initialization
-    lv_creepSpreaders = UnitGroupEmpty();
-
-    // Implementation
-    UnitGroupAddUnitGroup(lv_creepSpreaders, UnitGroup("CreepTumor", lp_cullIndex, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupAddUnitGroup(lv_creepSpreaders, UnitGroup("CreepTumorBurrowed", lp_cullIndex, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupAddUnitGroup(lv_creepSpreaders, UnitGroup("CreepTumorQueen", lp_cullIndex, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    autoEF0FD4B9_g = lv_creepSpreaders;
-    autoEF0FD4B9_u = 1;
-    for ( ; autoEF0FD4B9_u <= UnitGroupCount(autoEF0FD4B9_g, c_unitCountAll) ; autoEF0FD4B9_u += BoolToInt(lv_tumor == UnitGroupUnit(autoEF0FD4B9_g, autoEF0FD4B9_u)) ) {
-        lv_tumor = UnitGroupUnit(autoEF0FD4B9_g, autoEF0FD4B9_u);
-        lv_tumorNodeIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lv_tumor, "CreepNodeIndex"));
-        if ((lv_tumorNodeIndex == lp_cullIndex) && (UnitGroupHasUnit(libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodes, lv_tumor) == true)) {
-            UnitGroupRemove(libSCPL_gv_player[lp_cullIndex].lv_autoCreepNodes, lv_tumor);
-            libSCPL_gv_player[lp_cullIndex].lv_autoCreepNodeCount -= 1;
-        }
-        if ((lv_tumorNodeIndex >= lp_cullIndex)) {
-            libSCPL_gf_UnitChargeLinkAdd(lv_tumor, "CreepNodeIndex", -1.0);
+    lv_lineageCount = libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepLineageCount;
+    autoB37BDBCD_ae = lv_lineageCount;
+    autoB37BDBCD_ai = 1;
+    lv_lineageIndex = 1;
+    for ( ; ( (autoB37BDBCD_ai >= 0 && lv_lineageIndex <= autoB37BDBCD_ae) || (autoB37BDBCD_ai <= 0 && lv_lineageIndex >= autoB37BDBCD_ae) ) ; lv_lineageIndex += autoB37BDBCD_ai ) {
+        lv_head = libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_head;
+        if ((UnitIsAlive(lv_head) == true)) {
+            UnitGroupAdd(lv_headsUnsorted, lv_head);
         }
     }
+    lv_targetsUnclaimed = UnitGroupCopy(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets);
+    if ((UnitGroupCount(lv_headsUnsorted, c_unitCountAlive) == 0)) {
+        return ;
+    }
+    while ((UnitGroupCount(lv_headsUnsorted, c_unitCountAlive) > 0)) {
+        lv_pathingScoreLowest = 9999;
+        lv_bestHead = null;
+        lv_bestTarget = null;
+        auto17EF132B_g = lv_headsUnsorted;
+        auto17EF132B_u = 1;
+        for ( ; auto17EF132B_u <= UnitGroupCount(auto17EF132B_g, c_unitCountAll) ; auto17EF132B_u += BoolToInt(lv_head == UnitGroupUnit(auto17EF132B_g, auto17EF132B_u)) ) {
+            lv_head = UnitGroupUnit(auto17EF132B_g, auto17EF132B_u);
+            lv_lineageHeadPosition = UnitGetPosition(lv_head);
+            autoB56D4986_g = lv_targetsUnclaimed;
+            autoB56D4986_u = 1;
+            for ( ; autoB56D4986_u <= UnitGroupCount(autoB56D4986_g, c_unitCountAll) ; autoB56D4986_u += BoolToInt(lv_target == UnitGroupUnit(autoB56D4986_g, autoB56D4986_u)) ) {
+                lv_target = UnitGroupUnit(autoB56D4986_g, autoB56D4986_u);
+                lv_creepTargetPosition = UnitGetPosition(lv_target);
+                lv_pathingScore = PointPathingCost(lv_lineageHeadPosition, lv_creepTargetPosition);
+                if ((lv_pathingScore < lv_pathingScoreLowest)) {
+                    lv_pathingScoreLowest = lv_pathingScore;
+                    lv_bestHead = lv_head;
+                    lv_bestTarget = lv_target;
+                }
+            }
+        }
+        if ((lv_bestHead != null) && (lv_bestTarget != null)) {
+            lv_lineageIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lv_bestHead, "CreepParentIndex"));
+            libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_target = lv_bestTarget;
+            UnitGroupRemove(lv_headsUnsorted, lv_bestHead);
+            UnitGroupRemove(lv_targetsUnclaimed, lv_bestTarget);
+        }
+        else {
+            break;
+        }
+    }
 }
 
-void libSCPL_gf_AutoCreepTumorNodeParentAdd (unit lp_node) {
+void libSCPL_gf_AutoCreepLineageSpread (int lp_playerIndex, unit lp_node) {
     // Variable Declarations
-    int lv_playerIndex;
-
-    // Variable Initialization
-
-    // Implementation
-    lv_playerIndex = UnitGetOwner(lp_node);
-    libSCPL_gv_player[lv_playerIndex].lv_autoCreepNodeCount += 1;
-    UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_autoCreepNodes, lp_node);
-    libSCPL_gf_UnitChargeLinkSet(lp_node, "CreepNodeIndex", libSCPL_gv_player[lv_playerIndex].lv_autoCreepNodeCount);
-}
-
-void libSCPL_gf_AutoCreepTumorNodeChildAdd (unit lp_parent, unit lp_node) {
-    // Variable Declarations
-    int lv_playerIndex;
-    fixed lv_parentLink;
-
-    // Variable Initialization
-
-    // Implementation
-    lv_playerIndex = UnitGetOwner(lp_node);
-    lv_parentLink = libSCPL_gf_UnitChargeLink(lp_parent, "CreepNodeIndex");
-    libSCPL_gf_UnitChargeLinkSet(lp_node, "CreepNodeIndex", lv_parentLink);
-}
-
-void libSCPL_gf_AutoCreepSpreadTowardsTargetNode (int lp_playerIndex, unit lp_node) {
-    // Variable Declarations
+    int lv_lineageIndex;
     int lv_targetNodeIndex;
     int lv_targetNodeCount;
     unit lv_targetNode;
@@ -1125,21 +1165,22 @@ void libSCPL_gf_AutoCreepSpreadTowardsTargetNode (int lp_playerIndex, unit lp_no
     // Variable Initialization
 
     // Implementation
-    lv_targetNodeIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lp_node, "CreepNodeIndex"));
-    lv_targetNodeCount = UnitGroupCount(libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodeTargets, c_unitCountAlive);
-    if ((lv_targetNodeIndex > 0) && (lv_targetNodeIndex <= lv_targetNodeCount)) {
-        lv_targetNode = UnitGroupUnit(libSCPL_gv_player[lp_playerIndex].lv_autoCreepNodeTargets, lv_targetNodeIndex);
+    lv_lineageIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lp_node, "CreepParentIndex"));
+    lv_targetNode = libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_target;
+    if ((UnitGroupCount(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets, c_unitCountAlive) == 0)) {
+        UnitBehaviorRemove(lp_node, "GameAutoCreepSpreadReady", 1);
+    }
+    else if ((UnitIsAlive(lv_targetNode) == true)) {
         lv_bestPoint = libSCPL_gf_AutoCreepPointBest(lp_node, lv_targetNode);
         if ((lv_bestPoint != null)) {
             UnitIssueOrder(lp_node, OrderTargetingPoint(AbilityCommand("CreepTumorBuild", 0), lv_bestPoint), c_orderQueueReplace);
         }
-        else {
-            libSCPL_gf_AutoCreepTumorNodeLineageShift(lp_playerIndex, lv_targetNodeIndex);
+        else if ((libSCPL_gf_UnitChargeLink(lp_node, "CreepNodeAttempts") < 3.0)) {
+            libSCPL_gf_UnitChargeLinkAdd(lp_node, "CreepNodeAttempts", 1.0);
         }
-    }
-    else {
-        libSCPL_gf_AutoCreepTumorNodeLineageCull(lp_playerIndex, lv_targetNodeIndex);
-        return ;
+        else if (true) {
+            UnitBehaviorRemove(lp_node, "GameAutoCreepSpreadReady", 1);
+        }
     }
 }
 
@@ -1162,14 +1203,18 @@ point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target) {
     point lv_nodePoint;
     point lv_bestPoint;
     fixed lv_targetAngle;
-    fixed lv_radius;
     int lv_playerIndex;
     fixed lv_testAngle;
-    point[41] lv_testPoint;
-    fixed[41] lv_testPointCost;
+    point[65] lv_testPoint;
+    fixed[65] lv_testPointCost;
     fixed lv_lowestCost;
     int lv_lowestCostIndex;
     int lv_testIndex;
+    int lv_validPointTest;
+    fixed lv_cRadiusA;
+    fixed lv_cRadiusB;
+    int lv_cPointValid;
+    int lv_cPointRamp;
 
     // Variable Initialization
 
@@ -1177,9 +1222,12 @@ point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target) {
     if (((UnitIsAlive(lp_target) == false) || (UnitIsAlive(lp_node) == false))) {
         return null;
     }
+    lv_cPointValid = 0;
+    lv_cPointRamp = 2;
+    lv_cRadiusA = 8.5;
+    lv_cRadiusB = 7.0;
     lv_lowestCostIndex = -1;
     lv_playerIndex = UnitGetOwner(lp_node);
-    lv_radius = 8.5;
     lv_nodePoint = UnitGetPosition(lp_node);
     lv_targetPoint = UnitGetPosition(lp_target);
     lv_targetAngle = AngleBetweenPoints(lv_nodePoint, lv_targetPoint);
@@ -1188,8 +1236,13 @@ point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target) {
     auto82ACEA5A_ai = 15.0;
     lv_testAngle = (lv_targetAngle - 150.0);
     for ( ; ( (auto82ACEA5A_ai >= 0 && lv_testAngle <= auto82ACEA5A_ae) || (auto82ACEA5A_ai <= 0 && lv_testAngle >= auto82ACEA5A_ae) ) ; lv_testAngle += auto82ACEA5A_ai ) {
-        lv_testPoint[lv_testIndex] = PointWithOffsetPolar(lv_nodePoint, lv_radius, lv_testAngle);
-        if ((libSCPL_gf_AutoCreepPointValidActive(lp_node, lv_testPoint[lv_testIndex]) == true)) {
+        lv_testPoint[lv_testIndex] = PointWithOffsetPolar(lv_nodePoint, lv_cRadiusA, lv_testAngle);
+        lv_validPointTest = libSCPL_gf_AutoCreepPointValid(lp_node, lv_testPoint[lv_testIndex]);
+        if ((lv_validPointTest == lv_cPointRamp)) {
+            lv_testPoint[lv_testIndex] = PointWithOffsetPolar(lv_nodePoint, (lv_cRadiusB - 6.5), lv_testAngle);
+            lv_validPointTest = libSCPL_gf_AutoCreepPointValid(lp_node, lv_testPoint[lv_testIndex]);
+        }
+        if ((lv_validPointTest == lv_cPointValid)) {
             lv_testPointCost[lv_testIndex] = PointPathingCost(lv_testPoint[lv_testIndex], lv_targetPoint);
             if ((libSCPL_gf_PointsHaveHeightDifference(lv_nodePoint, lv_testPoint[lv_testIndex]) == true)) {
                 lv_testPointCost[lv_testIndex] -= 0.5;
@@ -1200,8 +1253,13 @@ point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target) {
             }
             lv_testIndex += 1;
         }
-        lv_testPoint[lv_testIndex] = PointWithOffsetPolar(lv_nodePoint, 7.0, lv_testAngle);
-        if ((libSCPL_gf_AutoCreepPointValidActive(lp_node, lv_testPoint[lv_testIndex]) == true)) {
+        lv_testPoint[lv_testIndex] = PointWithOffsetPolar(lv_nodePoint, lv_cRadiusB, lv_testAngle);
+        lv_validPointTest = libSCPL_gf_AutoCreepPointValid(lp_node, lv_testPoint[lv_testIndex]);
+        if ((lv_validPointTest == lv_cPointRamp)) {
+            lv_testPoint[lv_testIndex] = PointWithOffsetPolar(lv_nodePoint, (lv_cRadiusB - 6.0), lv_testAngle);
+            lv_validPointTest = libSCPL_gf_AutoCreepPointValid(lp_node, lv_testPoint[lv_testIndex]);
+        }
+        if ((lv_validPointTest == lv_cPointValid)) {
             lv_testPointCost[lv_testIndex] = PointPathingCost(lv_testPoint[lv_testIndex], lv_targetPoint);
             if ((libSCPL_gf_PointsHaveHeightDifference(lv_nodePoint, lv_testPoint[lv_testIndex]) == true)) {
                 lv_testPointCost[lv_testIndex] -= 0.5;
@@ -1220,7 +1278,7 @@ point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target) {
     return lv_bestPoint;
 }
 
-bool libSCPL_gf_AutoCreepPointValidActive (unit lp_node, point lp_point) {
+int libSCPL_gf_AutoCreepPointValid (unit lp_node, point lp_point) {
     // Variable Declarations
     point lv_nodePoint;
     fixed lv_nodeDistance;
@@ -1238,24 +1296,122 @@ bool libSCPL_gf_AutoCreepPointValidActive (unit lp_node, point lp_point) {
     lv_nodePathingCost = PointPathingCost(lp_point, lv_nodePoint);
     lv_crowdRadius = 5.0;
     if ((RegionContainsPoint(libSCPL_gv_map.lv_baseRegion, lp_point) == true)) {
-        return false;
-    }
-    if ((UnitOrderIsValid(lp_node, OrderTargetingPoint(AbilityCommand("CreepTumorBuild", 0), lp_point)) == false)) {
-        return false;
-    }
-    if ((CreepAdjacent(lp_point) < 5)) {
-        return false;
+        return 1;
     }
     if ((lv_nodePathingCost > 10.0)) {
-        return false;
+        return 1;
     }
-    lv_crowdCount += UnitGroupCount(UnitGroup("CreepTumorBurrowed", lv_playerIndex, RegionCircle(lp_point, lv_crowdRadius), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
-    lv_crowdCount += UnitGroupCount(UnitGroup("CreepTumorQueen", lv_playerIndex, RegionCircle(lp_point, lv_crowdRadius), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
-    lv_crowdCount += UnitGroupCount(UnitGroup("CreepTumor", lv_playerIndex, RegionCircle(lp_point, lv_crowdRadius), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
-    if ((lv_crowdCount > 0)) {
-        return false;
+    if (((WorldHeight(c_heightMapGround, lp_point) - WorldHeight(c_heightMapGround, lv_nodePoint)) > 1.0) && (VisIsVisibleForPlayer(lv_playerIndex, lp_point) == false)) {
+        return 2;
     }
-    return true;
+    if ((UnitOrderIsValid(lp_node, OrderTargetingPoint(AbilityCommand("CreepTumorBuild", 0), lp_point)) == false)) {
+        return 1;
+    }
+    if ((CreepAdjacent(lp_point) < 5)) {
+        return 1;
+    }
+    return 0;
+}
+
+void libSCPL_gf_AutoCreepTargetNodesSort (int lp_playerIndex) {
+    unitgroup auto26F85414_g;
+    int auto26F85414_u;
+    int auto9BA6175A_ae;
+    int auto9BA6175A_ai;
+
+    // Variable Declarations
+    point lv_playerPathingOrigin;
+    unitgroup lv_nodesUnsorted;
+    unit lv_node;
+    int lv_nodeScore;
+    unit lv_nodeClosest;
+    int lv_lowestScore;
+    int lv_n;
+
+    // Variable Initialization
+    lv_nodesUnsorted = UnitGroupEmpty();
+
+    // Implementation
+    lv_nodesUnsorted = UnitGroupCopy(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets);
+    libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets = UnitGroupEmpty();
+    lv_playerPathingOrigin = UnitGetPosition(UnitGroupUnit(UnitGroup(null, lp_playerIndex, RegionEntireMap(), UnitFilter((1 << c_targetFilterWorker), 0, (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1));
+    while ((UnitGroupCount(lv_nodesUnsorted, c_unitCountAlive) > 0)) {
+        lv_lowestScore = 9999;
+        auto26F85414_g = lv_nodesUnsorted;
+        auto26F85414_u = 1;
+        for ( ; auto26F85414_u <= UnitGroupCount(auto26F85414_g, c_unitCountAll) ; auto26F85414_u += BoolToInt(lv_node == UnitGroupUnit(auto26F85414_g, auto26F85414_u)) ) {
+            lv_node = UnitGroupUnit(auto26F85414_g, auto26F85414_u);
+            lv_nodeScore = PointPathingCost(UnitGetPosition(lv_node), lv_playerPathingOrigin);
+            if ((lv_nodeScore < lv_lowestScore)) {
+                lv_nodeClosest = lv_node;
+                lv_lowestScore = lv_nodeScore;
+            }
+        }
+        UnitGroupAdd(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets, lv_nodeClosest);
+        UnitGroupRemove(lv_nodesUnsorted, lv_nodeClosest);
+    }
+    auto9BA6175A_ae = UnitGroupCount(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets, c_unitCountAlive);
+    auto9BA6175A_ai = 1;
+    lv_n = 1;
+    for ( ; ( (auto9BA6175A_ai >= 0 && lv_n <= auto9BA6175A_ae) || (auto9BA6175A_ai <= 0 && lv_n >= auto9BA6175A_ae) ) ; lv_n += auto9BA6175A_ai ) {
+        libSCPL_gf_UnitChargeLinkSet(UnitGroupUnit(libSCPL_gv_player[lv_n].lv_globalZerg_AutoCreepNodeTargets, lv_n), "CreepTargetIndex", lv_n);
+    }
+}
+
+void libSCPL_gf_AutoCreepDebugAll (int lp_playerIndex) {
+    int autoAD2C4540_ae;
+    int autoAD2C4540_ai;
+
+    // Variable Declarations
+    int lv_lineageIndex;
+
+    // Variable Initialization
+
+    // Implementation
+    autoAD2C4540_ae = libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepLineageCount;
+    autoAD2C4540_ai = 1;
+    lv_lineageIndex = 1;
+    for ( ; ( (autoAD2C4540_ai >= 0 && lv_lineageIndex <= autoAD2C4540_ae) || (autoAD2C4540_ai <= 0 && lv_lineageIndex >= autoAD2C4540_ae) ) ; lv_lineageIndex += autoAD2C4540_ai ) {
+        UnitGroupLoopBegin(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_zzUnitGroup);
+        for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+            libSCPL_gf_AutoCreepDebug(UnitGroupLoopCurrent());
+        }
+        UnitGroupLoopEnd();
+    }
+}
+
+void libSCPL_gf_AutoCreepDebug (unit lp_unit) {
+    // Variable Declarations
+    int lv_unitTag;
+    unit lv_target;
+    int lv_lineageIndex;
+    int lv_targetIndex;
+    int lv_playerIndex;
+    string lv_key;
+    string lv_textTagDisplay;
+    int lv_textTag;
+
+    // Variable Initialization
+    lv_key = "";
+    lv_textTagDisplay = "";
+    lv_textTag = c_textTagNone;
+
+    // Implementation
+    lv_unitTag = UnitGetTag(lp_unit);
+    lv_key = ("ACS-" + IntToString(lv_unitTag));
+    lv_textTag = libNtve_gf_ValueFromDataTableTextTag(true, lv_key);
+    lv_playerIndex = UnitGetOwner(lp_unit);
+    lv_lineageIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lp_unit, "CreepParentIndex"));
+    lv_target = libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_target;
+    lv_targetIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lp_unit, "CreepTargetIndex"));
+    lv_textTagDisplay = ("[" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_lineageIndex) + "]" + " >> " + "[" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_targetIndex) + "]");
+    if ((lv_textTag == c_textTagNone)) {
+        TextTagCreate(StringToText(lv_textTagDisplay), 24, UnitGetPosition(lp_unit), 1.0, true, false, PlayerGroupAll());
+        libNtve_gf_SaveDataTableValueTextTag(true, lv_key, TextTagLastCreated());
+    }
+    else {
+        TextTagSetText(lv_textTag, StringToText(lv_textTagDisplay));
+    }
 }
 
 void libSCPL_gf_InitializeUIHookups () {
@@ -1718,6 +1874,7 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
     libSCPL_gv_map.lv_baseRegion = RegionCircle(Point(0.0, 0.0), 0.125);
     libSCPL_gf_InitializeUIHookups();
     libSCPL_gf_InitializeSpendOverTime();
+    libSCPL_gf_AutoCreepTargetNodesInitialize();
     libSCPL_gf_InitializeAutomatedWorkerProduction();
     autoE8E742EE_g = PlayerGroupActive(); 
     autoE8E742EE_p = 1;
@@ -1762,7 +1919,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "NydusNetwork", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Queen", 5.0);
     return true;
 }
 
@@ -5486,11 +5643,49 @@ void libSCPL_gt_PlayerZergNydusWormPlacementRedirect_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Auto Creep Tumor Node Create Parent
+// Trigger: Auto Creep Tumor Lineage Parent
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutoCreepTumorNodeCreateParent_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_AutoCreepTumorLineageParent_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_node;
+    unit lv_lineageParent;
+    int lv_playerIndex;
+    int lv_lineageIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_lineageParent = EventUnitCreatedUnit();
+    lv_playerIndex = UnitGetOwner(lv_lineageParent);
+    libSCPL_gv_player[lv_playerIndex].lv_zzAutoCreepLineageCount += 1;
+    UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_zzAutoCreepLineageParents, lv_lineageParent);
+    libSCPL_gf_UnitChargeLinkSet(lv_lineageParent, "CreepTargetIndex", libSCPL_gv_player[lv_playerIndex].lv_zzAutoCreepLineageCount);
+    libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineageCount += 1;
+    lv_lineageIndex = libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineageCount;
+    if ((lv_lineageIndex < 256)) {
+        libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_zzParent = lv_lineageParent;
+        libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_head = lv_lineageParent;
+        UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_zzUnitGroup, lv_lineageParent);
+        libSCPL_gf_UnitChargeLinkSet(lv_lineageParent, "CreepParentIndex", lv_lineageIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_AutoCreepTumorLineageParent_Init () {
+    libSCPL_gt_AutoCreepTumorLineageParent = TriggerCreate("libSCPL_gt_AutoCreepTumorLineageParent_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_AutoCreepTumorLineageParent, null, "QueenBuild", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Auto Creep Tumor Lineage Spread
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_AutoCreepTumorLineageSpread_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_creepNode;
     int lv_playerIndex;
 
     // Variable Initialization
@@ -5500,25 +5695,28 @@ bool libSCPL_gt_AutoCreepTumorNodeCreateParent_Func (bool testConds, bool runAct
         return true;
     }
 
-    lv_node = EventUnitCreatedUnit();
-    libSCPL_gf_AutoCreepTumorNodeParentAdd(lv_node);
+    lv_creepNode = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_creepNode);
+    libSCPL_gf_AutoCreepEvaluateLineageTargets(lv_playerIndex);
+    libSCPL_gf_AutoCreepLineageSpread(lv_playerIndex, lv_creepNode);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutoCreepTumorNodeCreateParent_Init () {
-    libSCPL_gt_AutoCreepTumorNodeCreateParent = TriggerCreate("libSCPL_gt_AutoCreepTumorNodeCreateParent_Func");
-    TriggerAddEventUnitCreated(libSCPL_gt_AutoCreepTumorNodeCreateParent, null, "QueenBuild", null);
+void libSCPL_gt_AutoCreepTumorLineageSpread_Init () {
+    libSCPL_gt_AutoCreepTumorLineageSpread = TriggerCreate("libSCPL_gt_AutoCreepTumorLineageSpread_Func");
+    TriggerAddEventUnitDamaged(libSCPL_gt_AutoCreepTumorLineageSpread, null, c_unitDamageTypeAny, c_unitDamageEither, "GameAutoCreepSpreadHook");
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Auto Creep Tumor Node Create Child
+// Trigger: Auto Creep Tumor Lineage Child
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutoCreepTumorNodeCreateChild_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_AutoCreepTumorLineageChild_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_parent;
+    unit lv_nodeParent;
     unit lv_node;
     int lv_playerIndex;
+    int lv_lineageIndex;
 
     // Variable Initialization
 
@@ -5528,15 +5726,21 @@ bool libSCPL_gt_AutoCreepTumorNodeCreateChild_Func (bool testConds, bool runActi
     }
 
     lv_node = EventUnitCreatedUnit();
-    lv_parent = EventUnit();
-    libSCPL_gf_AutoCreepTumorNodeChildAdd(lv_parent, lv_node);
+    lv_nodeParent = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_nodeParent);
+    lv_lineageIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lv_nodeParent, "CreepParentIndex"));
+    libSCPL_gf_UnitChargeLinkSet(lv_node, "CreepTargetIndex", lv_lineageIndex);
+    lv_lineageIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lv_nodeParent, "CreepParentIndex"));
+    libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_head = lv_node;
+    UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_zzUnitGroup, lv_node);
+    libSCPL_gf_UnitChargeLinkSet(lv_node, "CreepParentIndex", lv_lineageIndex);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutoCreepTumorNodeCreateChild_Init () {
-    libSCPL_gt_AutoCreepTumorNodeCreateChild = TriggerCreate("libSCPL_gt_AutoCreepTumorNodeCreateChild_Func");
-    TriggerAddEventUnitCreated(libSCPL_gt_AutoCreepTumorNodeCreateChild, null, "CreepTumorBuild", null);
+void libSCPL_gt_AutoCreepTumorLineageChild_Init () {
+    libSCPL_gt_AutoCreepTumorLineageChild = TriggerCreate("libSCPL_gt_AutoCreepTumorLineageChild_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_AutoCreepTumorLineageChild, null, "CreepTumorBuild", null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5561,9 +5765,8 @@ bool libSCPL_gt_AutoCreepTumorNodeTargetReached_Func (bool testConds, bool runAc
         return true;
     }
 
-    lv_playerIndex = EventPlayer();
-    lv_nodeIndex = FixedToInt(libSCPL_gf_UnitChargeLink(EventUnit(), "CreepNodeIndex"));
-    libSCPL_gf_AutoCreepTumorNodeLineageShift(lv_playerIndex, lv_nodeIndex);
+    lv_playerIndex = UnitGetOwner(UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0));
+    UnitGroupRemove(libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepNodeTargets, EventUnit());
     return true;
 }
 
@@ -5574,30 +5777,41 @@ void libSCPL_gt_AutoCreepTumorNodeTargetReached_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Auto Creep Tumor Ready
+// Trigger: AutoCreepDebug Destroy
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_AutoCreepTumorReady_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_AutoCreepDebugDestroy_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_creepNode;
-    int lv_playerIndex;
+    int lv_unitTag;
+    string lv_key;
+    int lv_textTag;
 
     // Variable Initialization
+    lv_key = "";
+    lv_textTag = c_textTagNone;
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "CreepTumorBurrowed"))) {
+            return false;
+        }
+    }
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    lv_creepNode = EventUnit();
-    lv_playerIndex = UnitGetOwner(lv_creepNode);
-    libSCPL_gf_AutoCreepSpreadTowardsTargetNode(lv_playerIndex, lv_creepNode);
+    lv_unitTag = UnitGetTag(EventUnit());
+    lv_key = ("ACS-" + IntToString(lv_unitTag));
+    lv_textTag = libNtve_gf_ValueFromDataTableTextTag(true, lv_key);
+    TextTagDestroy(lv_textTag);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_AutoCreepTumorReady_Init () {
-    libSCPL_gt_AutoCreepTumorReady = TriggerCreate("libSCPL_gt_AutoCreepTumorReady_Func");
-    TriggerAddEventUnitDamaged(libSCPL_gt_AutoCreepTumorReady, null, c_unitDamageTypeAny, c_unitDamageEither, "GameAutoCreepSpreadHook");
+void libSCPL_gt_AutoCreepDebugDestroy_Init () {
+    libSCPL_gt_AutoCreepDebugDestroy = TriggerCreate("libSCPL_gt_AutoCreepDebugDestroy_Func");
+    TriggerAddEventUnitDied(libSCPL_gt_AutoCreepDebugDestroy, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6363,10 +6577,11 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBAutoWallToggleOff_Init();
     libSCPL_gt_PlayerAutoWallUnitCreated_Init();
     libSCPL_gt_PlayerZergNydusWormPlacementRedirect_Init();
-    libSCPL_gt_AutoCreepTumorNodeCreateParent_Init();
-    libSCPL_gt_AutoCreepTumorNodeCreateChild_Init();
+    libSCPL_gt_AutoCreepTumorLineageParent_Init();
+    libSCPL_gt_AutoCreepTumorLineageSpread_Init();
+    libSCPL_gt_AutoCreepTumorLineageChild_Init();
     libSCPL_gt_AutoCreepTumorNodeTargetReached_Init();
-    libSCPL_gt_AutoCreepTumorReady_Init();
+    libSCPL_gt_AutoCreepDebugDestroy_Init();
     libSCPL_gt_UCBChargeLinkHydraliskDenMorphStart_Init();
     libSCPL_gt_UCBChargeLinkHydraliskDenMorphCancel_Init();
     libSCPL_gt_UCBChargeLinkSpireMorphStart_Init();

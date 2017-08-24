@@ -1,9 +1,0 @@
-﻿Abil/EditorPrefix/LarvaTrainDummyRedirect=Dummy  -
-Abil/EditorSuffix/LarvaTrainDummyRedirect=(Command Sidebar)
-Actor/Name/ProbeDummy=ProbeDummy
-Requirement/Name/HaveLarva=Have Larva
-RequirementNode/Name/CountUnitLarvaCompleteOnlyTechTreeCheat=CountUnit(Larva,CompleteOnly)[TechTreeCheat]
-Unit/Name/SIDEBARCASTER_BASE=Sidebar Caster Base
-User/Name/ComandSidebarAbilLinks=ComandSidebarAbilLinks
-User/Name/ComandSidebarDummyUnits=ComandSidebarDummyUnits
-User/Name/ComandSidebarOrderRedirect=ComandSidebarOrderRedirect

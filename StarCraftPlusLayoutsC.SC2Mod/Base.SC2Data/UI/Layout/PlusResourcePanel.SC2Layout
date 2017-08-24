@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer" file="GameUI">
+		<Frame type="ResourceFrame" name="ResourcePanel/ResourceFrame">
+			
+			<Frame type="Label" name="ResourceLabel2Spend">
+				<Anchor side="Top" relative="$parent/ResourceLabel2" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/ResourceLabel2" pos="Min" offset="-26"/>
+				<!-- <Anchor side="Right" relative="$parent/ResourceLabel2" pos="Mid" offset="0"/> -->
+				<Width val="95"/>
+				<Height val="32"/>
+				<Style val="ResourcePanelSpend"/>
+				<Text val="(+ 50)"/>
+			</Frame>
+			
+			<Frame type="Label" name="ResourceLabel3Spend">
+				<Anchor side="Top" relative="$parent/ResourceLabel3" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/ResourceLabel3" pos="Min" offset="-26"/>
+				<!-- <Anchor side="Right" relative="$parent/ResourceLabel3" pos="Mid" offset="0"/> -->
+				<Width val="95"/>
+				<Height val="32"/>
+				<Style val="ResourcePanelSpend"/>
+				<Text val="(+ 50)"/>
+			</Frame>
+
+			
+			<Frame type="Label" name="ResourceLabel2SpendAttention">
+				<Anchor side="Top" relative="$parent/ResourceLabel2Spend" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/ResourceLabel2Spend" pos="Min" offset="0"/>
+				<Anchor side="Bottom" relative="$parent/ResourceLabel2Spend" pos="Max" offset="0"/>
+				<Anchor side="Right" relative="$parent/ResourceLabel2Spend" pos="Max" offset="0"/>
+				
+				<ScaleText val="true"/>
+				<Text val="{$parent/ResourceLabel2Spend/@Text}"/>
+				<Color val="255,200,0"/>
+				<Alpha val="0"/>
+				<UseAlternateTime val="true"/>
+				<Visible val="false"/>
+				
+				<Animation name="AttentionEffect">
+					<Event event="OnShown" action="Reset,Play"/>
+					<Controller type="Fade" end="Loop">
+						<Key type="Curve" time="0.00" value="0" out="Slow"/>
+						<Key type="Curve" time="0.14" value="255" in="Slow"/>
+						<Key type="Curve" time="0.42" value="128" in="Slow"/>
+						<Key type="Curve" time="1.40" value="0" in="Slow"/>
+					</Controller>
+					<Controller type="Style" style1="ResourcePanelAttentionSmall" style2="ResourcePanelAttention" end="Loop">
+						<Key type="Curve" time="0.00" value="0" out="Slow"/>
+						<Key type="Curve" time="0.84" value="1" in="Slow"/>
+						<Key type="Curve" time="1.40" value="1" in="Slow"/>
+					</Controller>
+				</Animation>
+			</Frame>
+				
+			<Frame type="Label" name="ResourceLabel3SpendAttention">
+				<Anchor side="Top" relative="$parent/ResourceLabel3Spend" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/ResourceLabel3Spend" pos="Min" offset="0"/>
+				<Anchor side="Bottom" relative="$parent/ResourceLabel3Spend" pos="Max" offset="0"/>
+				<Anchor side="Right" relative="$parent/ResourceLabel3Spend" pos="Max" offset="0"/>
+				
+				<ScaleText val="true"/>
+				<Text val="{$parent/ResourceLabel3Spend/@Text}"/>
+				<Color val="255,200,0"/>
+				<Alpha val="0"/>
+				<UseAlternateTime val="true"/>
+				<Visible val="false"/>
+				
+				<Animation name="AttentionEffect">
+					<Event event="OnShown" action="Reset,Play"/>
+					<Controller type="Fade" end="Loop">
+						<Key type="Curve" time="0.00" value="0" out="Slow"/>
+						<Key type="Curve" time="0.14" value="255" in="Slow"/>
+						<Key type="Curve" time="0.42" value="128" in="Slow"/>
+						<Key type="Curve" time="1.40" value="0" in="Slow"/>
+					</Controller>
+					<Controller type="Style" style1="ResourcePanelAttentionSmall" style2="ResourcePanelAttention" end="Loop">
+						<Key type="Curve" time="0.00" value="0" out="Slow"/>
+						<Key type="Curve" time="0.84" value="1" in="Slow"/>
+						<Key type="Curve" time="1.40" value="1" in="Slow"/>
+					</Controller>
+				</Animation>
+			</Frame>
+			
+			<StateGroup name="MineralState">
+				<DefaultState val="MineralNormal"/>
+				<State name="MineralNormal"/>
+				<State name="MineralCritical">	
+					<When type="Property" frame="ResourceLabel2Spend" color="255,0,0"/>
+					<Action type="SetProperty" frame="ResourceLabel2SpendAttention" visible="true"/>
+				</State>
+			</StateGroup>
+			
+			<StateGroup name="VespeneState">
+				<DefaultState val="VespeneNormal"/>
+				<State name="VespeneNormal"/>
+				<State name="VespeneCritical">
+					<When type="Property" frame="ResourceLabel3Spend" color="255,0,0"/>
+					<Action type="SetProperty" frame="ResourceLabel3SpendAttention" visible="true"/>
+				</State>
+			</StateGroup>
+			
+		</Frame>
+    </Frame>
+</Desc>

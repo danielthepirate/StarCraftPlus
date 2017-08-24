@@ -1,0 +1,3 @@
+﻿DocInfo/DescLong=Layouts for shibusa.
+DocInfo/DescShort=Any
+DocInfo/Name=SCPLayouts
