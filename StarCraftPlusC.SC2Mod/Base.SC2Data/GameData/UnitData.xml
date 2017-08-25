@@ -140,6 +140,7 @@
             <LayoutButtons index="7" Face="SpineCrawler" Type="AbilCmd" AbilCmd="ZergBuild,Build15" Row="0" Column="3"/>
             <LayoutButtons index="8" Face="SporeCrawler" Type="AbilCmd" AbilCmd="ZergBuild,Build16" Row="0" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameWorkerIdle"/>
     </CUnit>
     <CUnit id="DroneBurrowed">
         <CostResource index="Minerals" value="0"/>
@@ -478,6 +479,7 @@
             <LayoutButtons index="8" Row="2"/>
             <LayoutButtons index="9" Row="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameWorkerIdle"/>
     </CUnit>
     <CUnit id="Medivac"/>
     <CUnit id="MissileTurret">
@@ -589,6 +591,7 @@
             <LayoutButtons index="7" AbilCmd="255,255" Row="1"/>
             <LayoutButtons index="8" AbilCmd="255,255" Row="1"/>
         </CardLayouts>
+        <BehaviorArray Link="GameWorkerIdle"/>
     </CUnit>
     <CUnit id="Pylon">
         <BehaviorArray Link="PowerSourceFast2"/>
@@ -666,6 +669,7 @@
             <LayoutButtons index="8" Row="1"/>
             <LayoutButtons index="9" Row="1"/>
         </CardLayouts>
+        <BehaviorArray Link="GameWorkerIdle"/>
     </CUnit>
     <CUnit id="SdbPAbils1">
         <CardLayouts index="0" removed="1"/>

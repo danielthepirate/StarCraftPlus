@@ -315,10 +315,6 @@
         <InitialEffect value="GameUCBRavagerChargeAdd"/>
         <FinalEffect value="GameUCBRavagerChargeRemove"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="GameWorkerHarvestGasMarker">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="GameIncreasedLifeAndShields">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -341,6 +337,11 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Period value="0.5"/>
         <PeriodicEffect value="GameMineralsNearTownHallSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameWorkerIdle">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="SourceHasNoOrders"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="IsNexusNearby">
         <EditorCategories value="AbilityorEffectType:Units"/>

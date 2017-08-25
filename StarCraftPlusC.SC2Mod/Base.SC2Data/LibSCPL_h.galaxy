@@ -365,6 +365,7 @@ trigger libSCPL_gt_AutoWorkerProductionCheckExpansion;
 trigger libSCPL_gt_AutoWorkerGatherVespene;
 trigger libSCPL_gt_AutoWorkerSetHarvestState;
 trigger libSCPL_gt_AutoWorkerSetHarvestStateNone;
+trigger libSCPL_gt_AutoWorkerSetConstructionState;
 trigger libSCPL_gt_AutoWorkerIdleHarvestResume;
 trigger libSCPL_gt_UnitLifeAndShieldScalingOnCreation;
 trigger libSCPL_gt_WarpGateResearchGatewayBuilt;

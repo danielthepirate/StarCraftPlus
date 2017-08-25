@@ -102,21 +102,14 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		return true;
 	}
 	
-	// if((abil == "BuildNydusCanalUCB") && (abilCmdIndex != 30)){
-		
-		// UnitIssueOrder(dummy, Order(AbilityCommand("stop", c_abilStopCmdStop)), c_orderQueueReplace);
-		// UnitIssueOrder(dummy, Order(AbilityCommand(abil,30)), c_orderQueueReplace);
-		
-		// TriggerDebugOutput(1, StringToText("Global Nydus"), true);
-	// }
-	
 	if(AbilityClass(abil) == c_classIdCAbilBuild){
 		UnitIssueOrder(dummy, Order(AbilityCommand("stop", c_abilStopCmdStop)), c_orderQueueReplace);
 		
 		// Build orders ignore workers harvesting gas
 		ug = Pir_WorkerGroupNotHarvestingGas(ug);
 		
-		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
+		Pir_WorkerGroupSmarter(ug, o);
+		// UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
 		//UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
 	else if(AbilityClass(abil) == c_classIdCAbilResearch){

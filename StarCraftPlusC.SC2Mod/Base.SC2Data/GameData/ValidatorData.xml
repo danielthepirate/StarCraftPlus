@@ -53,6 +53,7 @@
         <CombineArray value="CarryNoVespeneTerran"/>
         <CombineArray value="CarryNoVespeneZerg"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="SourceHasNoOrders"/>
     <CValidatorLocationCompareCliffLevel id="CliffLevelEqualSource">
         <WhichLocation Value="TargetUnit"/>
         <OtherLocation Value="SourceUnit"/>

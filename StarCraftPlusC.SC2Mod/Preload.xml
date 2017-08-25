@@ -15,7 +15,6 @@
 <Behavior id="GameUCBHatcheryHiveLair"/>
 <Behavior id="GameUCBOverlordChargeLink"/>
 <Behavior id="GameUCBRavagerChargeLink"/>
-<Behavior id="GameWorkerHarvestGasMarker"/>
 <Behavior id="GameIncreasedLifeAndShields"/>
 <Behavior id="KineticFollow"/>
 <Effect id="DebugPoint"/>

@@ -21,6 +21,58 @@ unitgroup Pir_WorkerGroupNotHarvestingGas (unitgroup ug) {
     return wg;
 }
 
+unitgroup Pir_WorkerGroupConstructing (unitgroup ug) {
+
+    unitgroup wg = UnitGroupCopy(ug);
+    unitgroup gg = UnitGroupEmpty();
+	int wgCount = UnitGroupCount(wg, c_unitCountAlive);
+    unit w;
+    int index;
+
+	for (index = 1; index <= wgCount ; index += 1){
+		w = UnitGroupUnit(wg, index);
+		
+        if ((UnitGetChargeUsed(w, "Constructing") == 1.0)) {
+			UnitGroupAdd(gg,w);
+        }
+    }
+	
+    return gg;
+}
+
+void Pir_WorkerGroupSmarter (unitgroup workers, order o){
+	
+	int playerIndex = UnitGetOwner(UnitGroupUnit(workers,1));
+	unitgroup workersConstructing;
+	int cCount;
+	fixed wDistance;
+	fixed cDistance;
+	fixed harvestRadius = 8;
+	point p;
+	
+	if(PlayerRace(playerIndex) != "Prot"){
+		UnitGroupIssueOrder(workers, o, c_orderQueueReplace);
+		return;
+	}
+	
+	p = OrderGetTargetPosition(o);
+	workersConstructing = Pir_WorkerGroupConstructing (workers);
+	cCount = UnitGroupCount(workersConstructing, c_unitCountAlive);
+	
+	if(cCount > 0){
+		cDistance =  DistanceBetweenPoints(UnitGetPosition(UnitGroupClosestToPoint(workersConstructing, p)), p);
+		wDistance =  DistanceBetweenPoints(UnitGetPosition(UnitGroupClosestToPoint(workers, p)), p);
+		
+		if(cDistance - wDistance < harvestRadius){
+			//sends queued-construction probe if no harvesting probes are much closer
+			UnitGroupIssueOrder(workersConstructing, o, c_orderQueueAddToEnd);
+			return;
+		}
+	}
+	
+	UnitGroupIssueOrder(workers, o, c_orderQueueReplace);
+}
+
 void Pir_UnitCancelQueue (unit u){
 	if ((UnitQueueGetProperty(u, c_unitQueuePropertyUsed) > 0)) {
 	

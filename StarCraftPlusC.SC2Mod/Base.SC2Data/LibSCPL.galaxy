@@ -5386,22 +5386,22 @@ bool libSCPL_gt_AutoWorkerProductionCheckExpansion_Func (bool testConds, bool ru
     lv_expansionWorkerPoint = PointWithOffsetPolar(UnitGetPosition(lv_townHall), 2.5, AngleBetweenPoints(UnitGetPosition(lv_townHall), UnitGetPosition(lv_resourceClosest)));
     auto9E44F9EA_val = UnitGetType(EventUnitProgressUnit());
     if (auto9E44F9EA_val == "CommandCenter") {
+        UnitIssueOrder(lv_townHall, Order(AbilityCommand("CommandCenterTrain", 0)), c_orderQueueAddToEnd);
         UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyCommand", 0), lv_resourceClosest), c_orderQueueReplace);
         libNtve_gf_CreateUnitsWithDefaultFacing(lv_expansionWorkerCount, "SCV", 0, lv_playerIndex, lv_expansionWorkerPoint);
         lv_expansionWorkers = UnitLastCreatedGroup();
-        UnitIssueOrder(lv_townHall, Order(AbilityCommand("CommandCenterTrain", 0)), c_orderQueueAddToEnd);
     }
     else if (auto9E44F9EA_val == "Nexus") {
-        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyNexus", 0), lv_resourceClosest), c_orderQueueReplace);
         UnitIssueOrder(lv_townHall, Order(AbilityCommand("NexusTrain", 0)), c_orderQueueAddToEnd);
-        lv_expansionWorkers = UnitLastCreatedGroup();
+        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyNexus", 0), lv_resourceClosest), c_orderQueueReplace);
         libNtve_gf_CreateUnitsWithDefaultFacing(lv_expansionWorkerCount, "Probe", 0, lv_playerIndex, lv_expansionWorkerPoint);
+        lv_expansionWorkers = UnitLastCreatedGroup();
     }
     else if (auto9E44F9EA_val == "Hatchery") {
+        libSCPL_gf_AutoWorkerProductionZerg(lv_townHall, lv_playerIndex, 0);
         UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyHatchery", 1), lv_resourceClosest), c_orderQueueReplace);
         libNtve_gf_CreateUnitsWithDefaultFacing(lv_expansionWorkerCount, "Drone", 0, lv_playerIndex, lv_expansionWorkerPoint);
         lv_expansionWorkers = UnitLastCreatedGroup();
-        libSCPL_gf_AutoWorkerProductionZerg(lv_townHall, lv_playerIndex, 0);
     }
     else {
     }
@@ -5492,15 +5492,17 @@ bool libSCPL_gt_AutoWorkerSetHarvestState_Func (bool testConds, bool runActions)
 
     lv_unit = EventUnit();
     lv_targetUnit = OrderGetTargetUnit(EventUnitOrder());
-    if (((UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGas") == true) || (UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGasProtoss") == true) || (UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGasZerg") == true))) {
-        libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestMinerals", 0.0);
-        libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestGas", 1.0);
-        UnitBehaviorAdd(lv_unit, "GameWorkerHarvestGasMarker", lv_unit, 1);
-    }
+    libSCPL_gf_UnitChargeLinkSet(lv_unit, "Constructing", 0.0);
     if (((UnitHasBehavior2(lv_targetUnit, "MineralFieldMinerals") == true) || (UnitHasBehavior2(lv_targetUnit, "MineralFieldMinerals750") == true) || (UnitHasBehavior2(lv_targetUnit, "HighYieldMineralFieldMinerals") == true) || (UnitHasBehavior2(lv_targetUnit, "HighYieldMineralFieldMinerals750") == true) || (UnitHasBehavior2(lv_targetUnit, "MineralFieldMineralsNoRemove") == true))) {
         libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestMinerals", 1.0);
         libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestGas", 0.0);
-        UnitBehaviorRemove(lv_unit, "GameWorkerHarvestGasMarker", 1);
+    }
+    else if ((libNtve_gf_UnitIsUnderConstruction(lv_targetUnit) == true)) {
+        UnitIssueOrder(lv_unit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    }
+    else if (((UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGas") == true) || (UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGasProtoss") == true) || (UnitHasBehavior2(lv_targetUnit, "HarvestableVespeneGeyserGasZerg") == true))) {
+        libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestMinerals", 0.0);
+        libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestGas", 1.0);
     }
     return true;
 }
@@ -5539,7 +5541,7 @@ bool libSCPL_gt_AutoWorkerSetHarvestStateNone_Func (bool testConds, bool runActi
     lv_unit = EventUnit();
     libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestMinerals", 0.0);
     libSCPL_gf_UnitChargeLinkSet(lv_unit, "HarvestGas", 0.0);
-    UnitBehaviorRemove(lv_unit, "GameWorkerHarvestGasMarker", 1);
+    libSCPL_gf_UnitChargeLinkSet(lv_unit, "Constructing", 0.0);
     return true;
 }
 
@@ -5547,6 +5549,52 @@ bool libSCPL_gt_AutoWorkerSetHarvestStateNone_Func (bool testConds, bool runActi
 void libSCPL_gt_AutoWorkerSetHarvestStateNone_Init () {
     libSCPL_gt_AutoWorkerSetHarvestStateNone = TriggerCreate("libSCPL_gt_AutoWorkerSetHarvestStateNone_Func");
     TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetHarvestStateNone, null, AbilityCommand("move", 0));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Auto Worker Set Construction State
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_AutoWorkerSetConstructionState_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+    unit lv_targetUnit;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "Probe"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    libSCPL_gf_UnitChargeLinkSet(lv_unit, "Constructing", 1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_AutoWorkerSetConstructionState_Init () {
+    libSCPL_gt_AutoWorkerSetConstructionState = TriggerCreate("libSCPL_gt_AutoWorkerSetConstructionState_Func");
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 2));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 14));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 11));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 5));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 4));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 3));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 7));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 1));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 12));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 13));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 9));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 10));
+    TriggerAddEventUnitOrder(libSCPL_gt_AutoWorkerSetConstructionState, null, AbilityCommand("ProtossBuild", 6));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5573,6 +5621,7 @@ bool libSCPL_gt_AutoWorkerIdleHarvestResume_Func (bool testConds, bool runAction
 
     lv_unit = EventUnit();
     lv_playerIndex = UnitGetOwner(lv_unit);
+    libSCPL_gf_UnitChargeLinkSet(lv_unit, "Constructing", 0.0);
     if ((libSCPL_gf_UnitChargeLink(lv_unit, "HarvestMinerals") == 0.0) && (libSCPL_gf_UnitChargeLink(lv_unit, "HarvestGas") == 0.0)) {
     }
     else if (((UnitHasBehavior2(lv_unit, "CarryHarvestableVespeneGeyserGas") == true) || (UnitHasBehavior2(lv_unit, "CarryHarvestableVespeneGeyserGasProtoss") == true) || (UnitHasBehavior2(lv_unit, "CarryHarvestableVespeneGeyserGasZerg") == true) || (UnitHasBehavior2(lv_unit, "CarryHighYieldMineralFieldMinerals") == true) || (UnitHasBehavior2(lv_unit, "CarryMineralFieldMinerals") == true) || (UnitHasBehavior2(lv_unit, "CarryMineralFieldMineralsNoRemove") == true))) {
@@ -5590,7 +5639,7 @@ bool libSCPL_gt_AutoWorkerIdleHarvestResume_Func (bool testConds, bool runAction
 //--------------------------------------------------------------------------------------------------
 void libSCPL_gt_AutoWorkerIdleHarvestResume_Init () {
     libSCPL_gt_AutoWorkerIdleHarvestResume = TriggerCreate("libSCPL_gt_AutoWorkerIdleHarvestResume_Func");
-    TriggerAddEventUnitBecomesIdle(libSCPL_gt_AutoWorkerIdleHarvestResume, null, true);
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_AutoWorkerIdleHarvestResume, null, "GameWorkerIdle", c_unitBehaviorChangeActivate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6919,6 +6968,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_AutoWorkerGatherVespene_Init();
     libSCPL_gt_AutoWorkerSetHarvestState_Init();
     libSCPL_gt_AutoWorkerSetHarvestStateNone_Init();
+    libSCPL_gt_AutoWorkerSetConstructionState_Init();
     libSCPL_gt_AutoWorkerIdleHarvestResume_Init();
     libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Init();
     libSCPL_gt_WarpGateResearchGatewayBuilt_Init();
