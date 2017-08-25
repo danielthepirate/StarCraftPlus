@@ -47,6 +47,7 @@ Behavior/Name/GameHookBarracksStatusUpdate=Game Hook Barracks Status Update
 Behavior/Name/GameUCBSpireChargeLink=Game UCB Spire Charge Link
 Behavior/Name/IsNexusNearby=IsNexusNearby
 Behavior/Name/IsWarpGateNearby=IsWarpGateNearby
+Button/Name/AWrpUCB=Archon Merge
 Button/Name/AutoCreepSpreadAutocastToggle=Automatic Spread
 Button/Name/AutoCreepSpreadToggleUCB=Auto Creep Spread Toggle
 Button/Name/AutoLower=Auto Lower
@@ -68,6 +69,7 @@ Button/Name/GreaterSpireUCB=Mutate into Greater Spire
 Button/Name/HiveUCB=Mutate into Hive
 Button/Name/LairUCB=Mutate into Lair
 Button/Name/LurkerMPUCB=Morph to Lurker
+Button/Name/MorphToMothershipUCB=Upgrade to Mothership
 Button/Name/MorphToOverseerUBC=Morph to Overseer
 Button/Name/MorphtoOverlordTransportUBC=Mutate Ventral Sacs
 Button/Name/MutateintoLurkerDenUCB=Mutate into Lurker Den
@@ -82,6 +84,7 @@ Button/Name/SupplyDepot=Build Auto Wall
 Button/Name/SupplyDropUCB=Calldown: Extra Supplies
 Button/Name/UCBOrbitalCommand=Upgrade to Orbital Command
 Button/Name/UCBUpgradeToPlanetaryFortress=Upgrade to Planetary Fortress
+Button/Tooltip/AWrpUCB=Sacrifices 2 Templar to create an Archon.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/AutoCreepSpreadAutocastToggle=Automatically spread creep across the map.
 Button/Tooltip/AutoCreepSpreadToggleUCB=Sets toggle state for automatic creep spread of all creep tumors.
 Button/Tooltip/AutoLower=Automatically lower the structure when your units are nearby.
@@ -102,6 +105,7 @@ Button/Tooltip/GreaterSpireUCB=Contains upgrades for Zerg air units.<n/><n/><c v
 Button/Tooltip/HiveUCB=Further evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Vipers from Larvae
 Button/Tooltip/LairUCB=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Overseers from Overlords
 Button/Tooltip/LurkerMPUCB=Anti-ground ambusher. Has a spine attack that damages all enemy units in its line of fire.<n/><n/><c val="ffff8a">Can attack ground units.<n/>Must burrow to attack.</c>
+Button/Tooltip/MorphToMothershipUCB=Upgrades into the Mothership. Can use Photon Overcharge, Mass Recall and Time Warp. Cloaks nearby units and structures.
 Button/Tooltip/MorphToOverseerUBC=Advanced aerial observer. Provides the same supply as an Overlord. Can use the Spawn Changeling and Contaminate abilities.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/MorphtoOverlordTransportUBC=Enables the Overlord to transport units.
 Button/Tooltip/MutateintoLurkerDenUCB=Morph into a Lurker Den, allowing Hydralisks to morph into Lurkers.

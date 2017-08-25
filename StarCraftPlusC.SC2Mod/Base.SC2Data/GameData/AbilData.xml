@@ -418,6 +418,24 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveGatewayActual"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveGatewayAndCyberneticsCore"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="HaveGatewayAndTemplarArchives"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="HaveGatewayAndDarkShrine"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Button Requirements="HaveGatewayAndCyberneticsCore"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button Requirements="HaveGatewayAndCyberneticsCore"/>
+        </InfoArray>
     </CAbilTrain>
     <CAbilResearch id="GhostAcademyResearch">
         <RefundFraction>
@@ -769,6 +787,21 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveRoboticsFa"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveRoboticsFa"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="HaveRoboticsFaAndRoboticsBay"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="HaveRoboticsFa"/>
+        </InfoArray>
+        <InfoArray index="Train19">
+            <Button Requirements="HaveRoboticsFaAndRoboticsBay"/>
+        </InfoArray>
     </CAbilTrain>
     <CAbilEffectTarget id="GameGlobalRallyTarget00">
         <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
@@ -810,6 +843,21 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveStargate"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="HaveStargateAndFleetBeacon"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="HaveStargate"/>
+        </InfoArray>
+        <InfoArray index="Train9">
+            <Button Requirements="HaveStargate"/>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Button Requirements="HaveStargateAndFleetBeacon"/>
+        </InfoArray>
     </CAbilTrain>
     <CAbilBuild id="StarportAddOns">
         <RefundFraction>
@@ -1110,12 +1158,24 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
-        <InfoArray index="Train1" Unit="WarpZealot"/>
-        <InfoArray index="Train2" Unit="WarpStalker"/>
-        <InfoArray index="Train4" Unit="WarpHighTemplar"/>
-        <InfoArray index="Train5" Unit="WarpDarkTemplar"/>
-        <InfoArray index="Train6" Unit="WarpSentry"/>
-        <InfoArray index="Train7" Unit="WarpAdept"/>
+        <InfoArray index="Train1" Unit="WarpZealot">
+            <Button Requirements="HaveWarpgateActual"/>
+        </InfoArray>
+        <InfoArray index="Train2" Unit="WarpStalker">
+            <Button Requirements="HaveWarpgateAndCyberneticsCore"/>
+        </InfoArray>
+        <InfoArray index="Train4" Unit="WarpHighTemplar">
+            <Button Requirements="HaveWarpgateAndTemplarArchives"/>
+        </InfoArray>
+        <InfoArray index="Train5" Unit="WarpDarkTemplar">
+            <Button Requirements="HaveWarpgateAndDarkShrine"/>
+        </InfoArray>
+        <InfoArray index="Train6" Unit="WarpSentry">
+            <Button Requirements="HaveWarpgateAndCyberneticsCore"/>
+        </InfoArray>
+        <InfoArray index="Train7" Unit="WarpAdept">
+            <Button Requirements="HaveWarpgateAndCyberneticsCore"/>
+        </InfoArray>
     </CAbilWarpTrain>
     <CAbilBuild id="ZergBuild">
         <RefundFraction>

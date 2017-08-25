@@ -13,6 +13,139 @@
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="CountUnitCommandCenterCompleteOnly1610623376TechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="HaveGatewayActual">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="CountUnitGatewayCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveWarpgateActual">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="CountUnitWarpGateCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUnitWarpGateCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveGatewayAndCyberneticsCore">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitGatewayCompleteOnlyCountUnitCyberneticsCoreCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HaveWarpgateAndCyberneticsCore">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitWarpGateCompleteOnlyCountUnitCyberneticsCoreCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="CountUnitWarpGateCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveWarpgateAndDarkShrine">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitWarpGateCompleteOnlyCountUnitDarkShrineCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="CountUnitWarpGateCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveGatewayAndTemplarArchives">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitGatewayCompleteOnlyCountUnitTemplarArchiveCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HaveGatewayAndDarkShrine">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitGatewayCompleteOnlyCountUnitDarkShrineCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HaveWarpgateAndTemplarArchives">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitWarpGateCompleteOnlyCountUnitTemplarArchiveCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="CountUnitWarpGateCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveRoboticsFaAndRoboticsBay">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitRoboticsFacilityCompleteOnlyTechTreeCheatCountUnitRoboticsBayCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HaveStargateAndFleetBeacon">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="AndCountUnitStargateCompleteOnlyTechTreeCheatCountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnAdeptPiercingAttack">
+        <NodeArray index="Use" Link="CountUnitTwilightCouncilCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnBlink">
+        <NodeArray index="Use" Link="CountUnitTwilightCouncilCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnCharge">
+        <NodeArray index="Use" Link="CountUnitTwilightCouncilCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnDarkTemplarBlink">
+        <NodeArray index="Use" Link="CountUnitDarkShrineCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnExtendedThermalLance">
+        <NodeArray index="Use" Link="CountUnitRoboticsBayCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnGraviticBooster">
+        <NodeArray index="Use" Link="CountUnitRoboticsBayCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnGraviticDrive">
+        <NodeArray index="Use" Link="CountUnitRoboticsBayCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnInterceptorLaunchSpeedUpgrade">
+        <NodeArray index="Use" Link="CountUnitFleetBeaconCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnPhoenixRangeUpgrade">
+        <NodeArray index="Use" Link="CountUnitFleetBeaconCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradePhoenixRangeUpgradeQueuedOrBetterTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirArmor1">
+        <NodeArray index="Use" Link="CountUnitCyberneticsCoreCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirArmor2">
+        <NodeArray index="Use" Link="AndCountUnitCyberneticsCoreCompleteOnlyEq4283478838CountUpgradeProtossAirArmorsLevel1CompleteOnly1CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirArmor3">
+        <NodeArray index="Use" Link="AndCountUnitCyberneticsCoreCompleteOnlyEq2731442398CountUpgradeProtossAirArmorsLevel2CompleteOnly1CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirWeapon1">
+        <NodeArray index="Use" Link="CountUnitCyberneticsCoreCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirWeapon2">
+        <NodeArray index="Use" Link="AndCountUnitCyberneticsCoreCompleteOnlyEq1491800815CountUpgradeProtossAirWeaponsLevel1CompleteOnly1CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirWeapon3">
+        <NodeArray index="Use" Link="AndCountUnitCyberneticsCoreCompleteOnlyEq524089035CountUpgradeProtossAirWeaponsLevel2CompleteOnly1CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossGroundArmor1">
+        <NodeArray index="Use" Link="CountUnitForgeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossGroundArmor2">
+        <NodeArray index="Use" Link="AndCountUnitForgeCompleteOnlyEq3569156689CountUpgradeProtossGroundArmorsLevel1CompleteOnly1CountUnitTwilightCouncilCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossGroundArmor3">
+        <NodeArray index="Use" Link="AndCountUnitForgeCompleteOnlyEq419273267CountUpgradeProtossGroundArmorsLevel2CompleteOnly1CountUnitTwilightCouncilCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossGroundWeapon1">
+        <NodeArray index="Use" Link="CountUnitForgeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossGroundWeapon2">
+        <NodeArray index="Use" Link="AndCountUnitForgeCompleteOnlyEq1740904084CountUpgradeProtossGroundWeaponsLevel1CompleteOnly1CountUnitTwilightCouncilCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossGroundWeapon3">
+        <NodeArray index="Use" Link="AndCountUnitForgeCompleteOnlyEq629999927CountUpgradeProtossGroundWeaponsLevel2CompleteOnly1CountUnitTwilightCouncilCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossShield1">
+        <NodeArray index="Use" Link="CountUnitForgeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossShield2">
+        <NodeArray index="Use" Link="AndCountUnitForgeCompleteOnlyEq3354561256CountUpgradeProtossShieldsLevel1CompleteOnly1CountUnitTwilightCouncilCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossShield3">
+        <NodeArray index="Use" Link="AndCountUnitForgeCompleteOnlyEq3751249461CountUpgradeProtossShieldsLevel2CompleteOnly1CountUnitTwilightCouncilCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnPsiStorm">
+        <NodeArray index="Use" Link="CountUnitTemplarArchiveCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnWarpGate">
+        <NodeArray index="Use" Link="CountUnitCyberneticsCoreCompleteOnly"/>
+    </CRequirement>
     <CRequirement id="UpgradeHive">
         <EditorCategories value="Race:Zerg,TechType:Unit"/>
         <CanBeSuppressed index="Use" value="0"/>

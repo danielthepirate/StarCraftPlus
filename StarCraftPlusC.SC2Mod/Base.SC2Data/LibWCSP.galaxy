@@ -66,7 +66,23 @@ bool libWCSP_gf_LabelsUnitUsesCustomStatusBar (unit lp_unit) {
     // Variable Initialization
 
     // Implementation
-    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "Nexus") || (UnitGetType(lp_unit) == "BanelingNest") || (UnitGetType(lp_unit) == "EvolutionChamber") || (UnitGetType(lp_unit) == "Lair") || (UnitGetType(lp_unit) == "LurkerDenMP") || (UnitGetType(lp_unit) == "GreaterSpire") || (UnitGetType(lp_unit) == "Hatchery") || (UnitGetType(lp_unit) == "Hive") || (UnitGetType(lp_unit) == "HydraliskDen") || (UnitGetType(lp_unit) == "InfestationPit") || (UnitGetType(lp_unit) == "RoachWarren") || (UnitGetType(lp_unit) == "SpawningPool") || (UnitGetType(lp_unit) == "Spire") || (UnitGetType(lp_unit) == "UltraliskCavern") || (UnitGetType(lp_unit) == "Extractor") || (UnitGetType(lp_unit) == "NydusNetwork") || (UnitGetType(lp_unit) == "SpineCrawler") || (UnitGetType(lp_unit) == "SporeCrawler") || (UnitGetType(lp_unit) == "Larva") || (UnitGetType(lp_unit) == "Egg"))) {
+    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "CyberneticsCore") || (UnitGetType(lp_unit) == "DarkShrine") || (UnitGetType(lp_unit) == "FleetBeacon") || (UnitGetType(lp_unit) == "Forge") || (UnitGetType(lp_unit) == "Gateway") || (UnitGetType(lp_unit) == "Nexus") || (UnitGetType(lp_unit) == "RoboticsBay") || (UnitGetType(lp_unit) == "RoboticsFacility") || (UnitGetType(lp_unit) == "Stargate") || (UnitGetType(lp_unit) == "TemplarArchive") || (UnitGetType(lp_unit) == "TwilightCouncil") || (UnitGetType(lp_unit) == "WarpGate") || (UnitGetType(lp_unit) == "Assimilator") || (UnitGetType(lp_unit) == "PhotonCannon") || (UnitGetType(lp_unit) == "Pylon") || (UnitGetType(lp_unit) == "MothershipCore") || (UnitGetType(lp_unit) == "BanelingNest") || (UnitGetType(lp_unit) == "EvolutionChamber") || (UnitGetType(lp_unit) == "Lair") || (UnitGetType(lp_unit) == "LurkerDenMP") || (UnitGetType(lp_unit) == "GreaterSpire") || (UnitGetType(lp_unit) == "Hatchery") || (UnitGetType(lp_unit) == "Hive") || (UnitGetType(lp_unit) == "HydraliskDen") || (UnitGetType(lp_unit) == "InfestationPit") || (UnitGetType(lp_unit) == "RoachWarren") || (UnitGetType(lp_unit) == "SpawningPool") || (UnitGetType(lp_unit) == "Spire") || (UnitGetType(lp_unit) == "UltraliskCavern") || (UnitGetType(lp_unit) == "Extractor") || (UnitGetType(lp_unit) == "NydusNetwork") || (UnitGetType(lp_unit) == "SpineCrawler") || (UnitGetType(lp_unit) == "SporeCrawler") || (UnitGetType(lp_unit) == "Larva") || (UnitGetType(lp_unit) == "Egg") || (UnitGetType(lp_unit) == "Zergling") || (UnitGetType(lp_unit) == "BanelingCocoon") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor") || (UnitGetType(lp_unit) == "Overlord"))) {
+        lv_boolean = true;
+    }
+    else {
+        lv_boolean = false;
+    }
+    return lv_boolean;
+}
+
+bool libWCSP_gf_LabelsUnitMorphTwoStage (unit lp_unit) {
+    // Variable Declarations
+    bool lv_boolean;
+
+    // Variable Initialization
+
+    // Implementation
+    if (((UnitGetType(lp_unit) == "Overlord") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor"))) {
         lv_boolean = true;
     }
     else {
@@ -83,10 +99,10 @@ int libWCSP_gf_LabelsUnitIconSize (unit lp_productionUnit) {
 
     // Implementation
     lv_iconSize = libWCSP_gv_labels.lv_iconSize;
-    if (((UnitGetType(lp_productionUnit) == "Egg") || (UnitGetType(lp_productionUnit) == "Larva"))) {
+    if (((UnitGetType(lp_productionUnit) == "Egg") || (UnitGetType(lp_productionUnit) == "BanelingCocoon") || (UnitGetType(lp_productionUnit) == "RavagerCocoon") || (UnitGetType(lp_productionUnit) == "LurkerMPEgg") || (UnitGetType(lp_productionUnit) == "BroodLordCocoon") || (UnitGetType(lp_productionUnit) == "TransportOverlordCocoon") || (UnitGetType(lp_productionUnit) == "OverlordCocoon") || (UnitGetType(lp_productionUnit) == "Larva") || (UnitGetType(lp_productionUnit) == "Zergling") || (UnitGetType(lp_productionUnit) == "Roach") || (UnitGetType(lp_productionUnit) == "Hydralisk") || (UnitGetType(lp_productionUnit) == "Corruptor") || (UnitGetType(lp_productionUnit) == "Overlord"))) {
         lv_iconSize = libWCSP_gv_labels.lv_iconSizeEgg;
     }
-    else if (((UnitGetType(lp_productionUnit) == "TechLab") || (UnitGetType(lp_productionUnit) == "BarracksTechLab") || (UnitGetType(lp_productionUnit) == "FactoryTechLab") || (UnitGetType(lp_productionUnit) == "StarportTechLab"))) {
+    else if (((UnitGetType(lp_productionUnit) == "TechLab") || (UnitGetType(lp_productionUnit) == "BarracksTechLab") || (UnitGetType(lp_productionUnit) == "FactoryTechLab") || (UnitGetType(lp_productionUnit) == "StarportTechLab") || (UnitGetType(lp_productionUnit) == "MothershipCore"))) {
         lv_iconSize = libWCSP_gv_labels.lv_iconSizeTechLab;
     }
     return lv_iconSize;
@@ -764,10 +780,6 @@ bool libWCSP_gt_LabelsUnitTrainingStartedPIR_Func (bool testConds, bool runActio
             return false;
         }
 
-        if (!((lv_traineeType != "Baneling"))) {
-            return false;
-        }
-
         if (!((lv_traineeType != "Interceptor"))) {
             return false;
         }
@@ -855,10 +867,6 @@ bool libWCSP_gt_LabelsUnitTrainingStoppedPIR_Func (bool testConds, bool runActio
         }
 
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
-            return false;
-        }
-
-        if (!((lv_traineeType != "Baneling"))) {
             return false;
         }
 
@@ -1133,15 +1141,15 @@ void libWCSP_gt_LabelsConstructionStartedPIR_Init () {
 //--------------------------------------------------------------------------------------------------
 bool libWCSP_gt_LabelsConstructionStoppedPIR_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    int lv_player;
     unit lv_unit;
     int lv_unitTag;
+    int lv_player;
     playergroup lv_playerGroup;
 
     // Variable Initialization
-    lv_player = EventPlayer();
     lv_unit = EventUnitProgressUnit();
     lv_unitTag = UnitGetTag(lv_unit);
+    lv_player = UnitGetOwner(lv_unit);
     lv_playerGroup = PlayerGroupSingle(lv_player);
 
     // Conditions
@@ -1206,7 +1214,12 @@ bool libWCSP_gt_LabelsMorphStartedPIR_Func (bool testConds, bool runActions) {
     }
 
     lv_triggeringAbility = AbilityCommandGetAbility(EventUnitAbility());
-    lv_morphUnit = (CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, ("InfoArray[" + IntToString(0) + "].Unit"), c_playerAny));
+    if ((libWCSP_gf_LabelsUnitMorphTwoStage(EventUnit()) == true)) {
+        lv_morphUnit = (CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, ("InfoArray[" + IntToString(1) + "].Unit"), c_playerAny));
+    }
+    else {
+        lv_morphUnit = (CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, ("InfoArray[" + IntToString(0) + "].Unit"), c_playerAny));
+    }
     DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
     libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, lv_morphUnit, "UnitIcon", c_playerAny)), PlayerGroupAll());
     DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
@@ -1218,6 +1231,14 @@ void libWCSP_gt_LabelsMorphStartedPIR_Init () {
     libWCSP_gt_LabelsMorphStartedPIR = TriggerCreate("libWCSP_gt_LabelsMorphStartedPIR_Func");
     TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("UpgradeToOrbital", 0), c_abilMorphStageUnitStart, false);
     TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("UpgradeToPlanetaryFortress", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("UpgradeToLair", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("UpgradeToHive", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("MorphToTransportOverlord", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("MorphToOverseer", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("MorphToRavager", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("MorphToLurker", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("MorphToBroodLord", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStartedPIR, null, AbilityCommand("MorphToMothership", 0), c_abilMorphStageUnitStart, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1264,6 +1285,22 @@ void libWCSP_gt_LabelsMorphStoppedPIR_Init () {
     TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("UpgradeToPlanetaryFortress", 0), c_abilMorphStageUnitEnd, false);
     TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("UpgradeToOrbital", 0), c_unitAbilStageCancel, false);
     TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("UpgradeToPlanetaryFortress", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("UpgradeToLair", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("UpgradeToHive", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("UpgradeToLair", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("UpgradeToHive", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToTransportOverlord", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToOverseer", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToRavager", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToLurker", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToBroodLord", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToTransportOverlord", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToOverseer", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToRavager", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToLurker", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToBroodLord", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToMothership", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libWCSP_gt_LabelsMorphStoppedPIR, null, AbilityCommand("MorphToMothership", 0), c_unitAbilStageCancel, false);
 }
 
 //--------------------------------------------------------------------------------------------------

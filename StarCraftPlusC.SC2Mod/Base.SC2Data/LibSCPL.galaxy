@@ -1980,7 +1980,7 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_PlayerResourcesAdd(1, 99.0, 99.0);
+    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
     return true;
 }
 
@@ -1999,9 +1999,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Pylon", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Gateway", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Forge", 8.0);
+    libSCPL_gf_DebugSpawnBuildingsZerg(1);
     return true;
 }
 

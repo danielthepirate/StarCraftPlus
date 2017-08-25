@@ -45,6 +45,7 @@ int libWCSP_gv_upgradeNotificationsObsID;
 
 // Function Declarations
 bool libWCSP_gf_LabelsUnitUsesCustomStatusBar (unit lp_unit);
+bool libWCSP_gf_LabelsUnitMorphTwoStage (unit lp_unit);
 int libWCSP_gf_LabelsUnitIconSize (unit lp_productionUnit);
 void libWCSP_gf_UpgradeNotificationsRemoveRunningUpgrade (int lp_slot);
 int libWCSP_gf_UpgradeNotificationsFacilitySlot (unit lp_facility);
