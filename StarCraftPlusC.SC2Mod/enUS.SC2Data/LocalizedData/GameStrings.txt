@@ -32,8 +32,10 @@ Abil/Name/MorphToOverseerUCB=Overlord Morph to Overseer UCB
 Abil/Name/MorphToRavagerUCB=Morph To Ravager UCB
 Abil/Name/MorphToTransportOverlordUCB=Morph To Transport Overlord UCB
 Abil/Name/MorphZerglingToBanelingUCB=MorphZerglingToBaneling UCB
+Abil/Name/NexusTrainMothershipUCB=Train Mothership
 Abil/Name/ScannerSweepUCB=Scanner Sweep UCB
 Abil/Name/SupplyDropUCB=Supply Drop UCB
+Abil/Name/TimeWarpUCB=Chrono Boost
 Abil/Name/UpgradeToGreaterSpireUCB=Morph Building (Spire -> Greater Spire) UCB
 Abil/Name/UpgradeToHiveUCB=Morph Building (Lair -> Hive) UCB
 Abil/Name/UpgradeToLairUCB=Morph Building (Hatchery -> Lair) UCB
@@ -82,6 +84,7 @@ Button/Name/SpawnLarvaUCB=Auto Spawn Larvae Toggle
 Button/Name/SummonNydusWormUCB=Summon Nydus Worm
 Button/Name/SupplyDepot=Build Auto Wall
 Button/Name/SupplyDropUCB=Calldown: Extra Supplies
+Button/Name/TimeWarpUCB=Chrono Boost
 Button/Name/UCBOrbitalCommand=Upgrade to Orbital Command
 Button/Name/UCBUpgradeToPlanetaryFortress=Upgrade to Planetary Fortress
 Button/Tooltip/AWrpUCB=Sacrifices 2 Templar to create an Archon.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
@@ -108,6 +111,7 @@ Button/Tooltip/LurkerMPUCB=Anti-ground ambusher. Has a spine attack that damages
 Button/Tooltip/MorphToMothershipUCB=Upgrades into the Mothership. Can use Photon Overcharge, Mass Recall and Time Warp. Cloaks nearby units and structures.
 Button/Tooltip/MorphToOverseerUBC=Advanced aerial observer. Provides the same supply as an Overlord. Can use the Spawn Changeling and Contaminate abilities.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/MorphtoOverlordTransportUBC=Enables the Overlord to transport units.
+Button/Tooltip/MothershipUCB=Ultimate Protoss vessel. Can use Photon Overcharge, Mass Recall, and Time Warp abilities. Cloaks nearby friendly units and structures.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/MutateintoLurkerDenUCB=Morph into a Lurker Den, allowing Hydralisks to morph into Lurkers.
 Button/Tooltip/NukeArmUCB=Arms the Silo with a Tactical Nuke.<n/><n/>Nukes take <d time="20"/> to land, but they deal up to 300 (+200 vs. structures) damage in a large radius.<n/><n/>Use a Ghost to designate the target.
 Button/Tooltip/NydusCanalPlacementDummy=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
@@ -119,6 +123,7 @@ Button/Tooltip/SummonNydusWormUCB=Summons a Nydus Worm at the target location.<n
 Button/Tooltip/SupplyDepot=Fortified Walls.<n/><n/>Auto Walls automatically lower to allow your units to walk over them.
 Button/Tooltip/SupplyDepotConstructor=Provides supply.<n/>Supply allows you to create more units.<n/>Supply Depots can be lowered to allow units to walk over them.
 Button/Tooltip/SupplyDropUCB=Drops additional supplies, permanently increasing the supply output of the target Supply Depot by <d ref="Behavior,SupplyDrop,Modification.Food"/>.
+Button/Tooltip/TimeWarpUCB=Places target structure in a Chrono Boost, causing it to operate <d ref="(((Behavior,TimeWarpProduction,Modification.TimeScale)-1)*100)" precision="1"/>% faster.
 Button/Tooltip/UCBOrbitalCommand=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep, Calldown: MULE, and Calldown: Extra Supplies. Cannot load SCVs.
 Button/Tooltip/UCBUpgradeToPlanetaryFortress=Upgrades Command Center to a Planetary Fortress, greatly increasing its armor and arming it with a powerful defensive turret. Cannot lift off.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 DocInfo/DescLong=A StarCraft II mod aimed at creating more accessable gameplay for players of all skill levels.
@@ -238,6 +243,7 @@ Effect/Name/NydusBuildUCBSet=Nydus Build UCB Set
 Effect/Name/OverlordCreepGrowthAuraSearch=Overlord Creep Growth Aura Search
 Effect/Name/RemoveCaster=Remove Caster
 Effect/Name/SupplyDropApplyTempBehaviorDummy=Supply Drop (Apply Temp Behavior) Dummy
+Effect/Name/TimeWarpUCBDummy=TimeWarpUCB Dummy
 Kinetic/Name/KineticFollow=KineticFollow
 Param/Value/lib_WCSP_006B0928=Chitinous Plating
 Param/Value/lib_WCSP_01F9779C=Vehicle Plating Level 2
@@ -400,6 +406,7 @@ Unit/Name/LairPaused=Lair
 Unit/Name/LarvaPaused=Larva
 Unit/Name/LurkerDenMPPaused=Lurker Den
 Unit/Name/MissileTurretPaused=Missile Turret
+Unit/Name/MothershipUCB=MothershipUCB
 Unit/Name/NexusPaused=Nexus
 Unit/Name/NydusCanalPlacementDummy=Nydus Worm
 Unit/Name/NydusNetworkPaused=Nydus Network

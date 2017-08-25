@@ -165,7 +165,14 @@
             <Unit index="1" Unit="RoboticsFacility"/>
             <Unit index="2" removed="1"/>
         </Instances>
-        <Instances index="49" Id="MorphToMothership">
+        <Instances index="49" Id="NexusTrainMothershipUCB">
+            <AbilCmd Abil="MorphToMothership">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="MorphToMothership">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Int index="0" removed="1"/>
             <Unit index="1" Unit="MothershipCore"/>
         </Instances>
         <Instances index="50" Id="ArchonWarp">
@@ -216,6 +223,17 @@
                 <Field Id="RealAbil"/>
             </GameLink>
             <Unit Unit="GhostAcademy">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TimeWarpUCB">
+            <AbilCmd Abil="TimeWarp">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="TimeWarp">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="Nexus">
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>

@@ -146,6 +146,9 @@
     <CRequirement id="LearnWarpGate">
         <NodeArray index="Use" Link="CountUnitCyberneticsCoreCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="MothershipRequirements">
+        <NodeArray index="Use" Link="AndCountUnitMothershipCoreCompleteOnlyCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipQueuedOrBetter0"/>
+    </CRequirement>
     <CRequirement id="UpgradeHive">
         <EditorCategories value="Race:Zerg,TechType:Unit"/>
         <CanBeSuppressed index="Use" value="0"/>

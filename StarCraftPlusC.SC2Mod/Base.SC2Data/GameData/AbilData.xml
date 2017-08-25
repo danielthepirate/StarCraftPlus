@@ -568,6 +568,20 @@
                 <Location value="Player"/>
             </Charge>
         </InfoArray>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="LocustTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
     </CAbilTrain>
     <CAbilMorph id="LurkerAspectMP">
         <RefundFraction>
@@ -753,6 +767,28 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
     </CAbilTrain>
+    <CAbilTrain id="NexusTrainMothership">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="NexusTrainMothershipUCB" parent="NexusTrainMothership">
+        <Name value="Abil/Name/NexusTrainMothershipUCB"/>
+        <InfoArray index="Train1">
+            <Unit index="0" value="MothershipUCB"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="NexusTrainMothershipCore">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
     <CAbilBuild id="ProtossBuild">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -820,6 +856,14 @@
         <Effect index="0" value="DoNothing"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="ScanUCB" Requirements="UCBOrbitalCommandEnergy50"/>
     </CAbilEffectTarget>
+    <CAbilTrain id="SpawnInfestedTerran">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
     <CAbilResearch id="SpawningPoolResearch">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -941,6 +985,14 @@
         </RefundFraction>
         <EffectArray index="Finish" value="AutoWallConstructionComplete"/>
     </CAbilBuild>
+    <CAbilEffectTarget id="TimeWarpUCB" parent="TimeWarp">
+        <Name value="Abil/Name/TimeWarpUCB"/>
+        <Effect index="0" value="TimeWarpUCBDummy"/>
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="0"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilTrain id="TrainQueen">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>

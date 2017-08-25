@@ -322,6 +322,7 @@ Button/Hotkey/TerranVehicleWeaponsLevel2=F
 Button/Hotkey/TerranVehicleWeaponsLevel3=F
 Button/Hotkey/Thor=J
 Button/Hotkey/TimeWarp=Q
+Button/Hotkey/TimeWarpUCB=T
 Button/Hotkey/Transfusion=W
 Button/Hotkey/TransportMode=Q
 Button/Hotkey/TwilightCouncil=H

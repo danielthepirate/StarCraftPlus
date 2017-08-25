@@ -672,6 +672,12 @@
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="SupplyDrop"/>
     </CButton>
+    <CButton id="TimeWarpUCB">
+        <Icon value="Assets\Textures\btn-ability-protoss-protoncharge-color.dds"/>
+        <Hotkey value="Button/Hotkey/TimeWarpUCB"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="TimeWarp"/>
+    </CButton>
     <CButton id="UCBOrbitalCommand">
         <Icon value="Assets\Textures\BTN-Building-Terran-SurveillanceStation.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Building-Terran-SurveillanceStation.dds"/>

@@ -801,4 +801,14 @@
         <ValidatorArray value="IsSupplyDepotMorphing"/>
         <EditorCategories value="Race:Terran"/>
     </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="TimeWarpUCBDummy">
+        <ValidatorArray value="TimeWarpTargetFilters"/>
+        <ValidatorArray value="TimeWarpViableTargets"/>
+        <ValidatorArray value="IsNotChronoBoosted"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
 </Catalog>

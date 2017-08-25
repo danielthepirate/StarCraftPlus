@@ -31,6 +31,12 @@
 <Unit id="Starport"/>
 <Unit id="FusionCore"/>
 <Unit id="SCV"/>
+<Unit id="Pylon"/>
+<Unit id="Gateway"/>
+<Unit id="Forge"/>
+<Unit id="FleetBeacon"/>
+<Unit id="TwilightCouncil"/>
+<Unit id="CyberneticsCore"/>
 <Unit id="Probe"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>

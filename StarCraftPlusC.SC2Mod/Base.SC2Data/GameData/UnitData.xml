@@ -488,6 +488,13 @@
             <LayoutButtons index="5" Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="MothershipUCB" parent="Mothership">
+        <Name value="Unit/Name/MothershipUCB"/>
+        <Description value="Button/Tooltip/MothershipUCB"/>
+        <Food value="-6"/>
+        <CostResource index="Minerals" value="300"/>
+        <CostResource index="Vespene" value="300"/>
+    </CUnit>
     <CUnit id="MothershipCore">
         <CardLayouts index="0">
             <LayoutButtons index="9" Row="2" Column="3"/>
@@ -672,7 +679,23 @@
         <BehaviorArray Link="GameWorkerIdle"/>
     </CUnit>
     <CUnit id="SdbPAbils1">
-        <CardLayouts index="0" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="TimeWarpUCB" Type="AbilCmd" AbilCmd="TimeWarpUCB,Execute" Row="0" Column="0"/>
+            <LayoutButtons index="1" removed="1"/>
+            <LayoutButtons index="2" removed="1"/>
+            <LayoutButtons index="3" removed="1"/>
+            <LayoutButtons index="4" removed="1"/>
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
+            <LayoutButtons index="9" removed="1"/>
+            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="11" removed="1"/>
+            <LayoutButtons index="12" removed="1"/>
+            <LayoutButtons index="13" removed="1"/>
+        </CardLayouts>
+        <AbilArray Link="TimeWarpUCB"/>
     </CUnit>
     <CUnit id="SdbPBuild1">
         <CardLayouts index="0">
@@ -744,8 +767,9 @@
             <LayoutButtons index="2" Face="Tempest" Type="AbilCmd" AbilCmd="StargateTrain,Train10" Row="0" Column="1"/>
             <LayoutButtons index="3" Face="Carrier" Type="AbilCmd" AbilCmd="StargateTrain,Train3" Row="0" Column="2"/>
             <LayoutButtons index="4" Face="AWrpUCB" Type="AbilCmd" AbilCmd="ArchonWarp,SelectedUnits" Row="0" Column="3"/>
-            <LayoutButtons index="5" Face="MorphToMothershipUCB" Type="AbilCmd" AbilCmd="MorphToMothership,Execute" Row="0" Column="4"/>
+            <LayoutButtons index="5" Face="MorphToMothershipUCB" Type="AbilCmd" AbilCmd="NexusTrainMothershipUCB,Train1" Row="0" Column="4"/>
         </CardLayouts>
+        <AbilArray index="9" Link="NexusTrainMothershipUCB"/>
     </CUnit>
     <CUnit id="SdbTAbils1">
         <AbilArray index="4" Link="CalldownMULEUCB"/>

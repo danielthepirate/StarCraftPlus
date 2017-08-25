@@ -397,6 +397,37 @@
         </StatusColors>
         <AcceptedTransfers index="Animator" value="1"/>
     </CActorUnit>
+    <CActorUnit id="MothershipUCB" parent="Mothership" unitName="MothershipUCB">
+        <On index="0" Terms="UnitBirth.MothershipUCB"/>
+        <On index="1" Terms="UnitBirth.MothershipUCB"/>
+        <On index="2" Terms="UnitRevive.MothershipUCB"/>
+        <On index="3" Terms="UnitRevive.MothershipUCB"/>
+        <On index="4" Terms="UnitConstruction.MothershipUCB.Start"/>
+        <On index="5" Terms="UnitConstruction.MothershipUCB.Finish"/>
+        <On index="60" removed="1"/>
+        <On index="61" removed="1"/>
+        <On index="62" removed="1"/>
+        <On index="63" removed="1"/>
+        <On index="64" removed="1"/>
+        <On index="65" removed="1"/>
+        <On index="66" removed="1"/>
+        <On index="67" removed="1"/>
+        <On index="68" removed="1"/>
+        <On index="69" removed="1"/>
+        <On index="70" removed="1"/>
+        <On index="71" removed="1"/>
+        <On index="72" removed="1"/>
+        <On index="73" removed="1"/>
+        <On index="74" removed="1"/>
+        <On index="75" removed="1"/>
+        <On index="76" removed="1"/>
+        <On index="77" removed="1"/>
+        <On index="78" removed="1"/>
+        <On index="79" removed="1"/>
+        <On index="80" removed="1"/>
+        <On index="81" removed="1"/>
+        <HighlightTooltip value="Unit/Name/MothershipUCB"/>
+    </CActorUnit>
     <CActorUnit id="MothershipCore">
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
         <CustomUnitStatusOffset value="0,60"/>

@@ -1547,8 +1547,8 @@ void libSCPL_gf_ResourceDisplaySpendUpdate (unit lp_unit, fixed lp_costTime, fix
     lv_tickVespene = (lp_costVespene / lv_timeActual);
     lv_tickMinerals = (lp_costMinerals / lv_timeActual);
     if (((lv_currentMinerals != lv_tickMinerals) || (lv_currentVespene != lv_tickVespene))) {
-        libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals -= libSCPL_gf_UnitProtossProgressMinerals(lp_unit);
-        libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene -= libSCPL_gf_UnitProtossProgressVespene(lp_unit);
+        libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals -= lv_currentMinerals;
+        libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene -= lv_currentVespene;
         libSCPL_gf_UnitProtossProgressMineralsSet(lp_unit, lv_tickMinerals);
         libSCPL_gf_UnitProtossProgressVespeneSet(lp_unit, lv_tickVespene);
         libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals += lv_tickMinerals;
@@ -1999,7 +1999,12 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugSpawnBuildingsZerg(1);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Pylon", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "FleetBeacon", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Gateway", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Forge", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "CyberneticsCore", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "TwilightCouncil", 8.0);
     return true;
 }
 
@@ -3198,6 +3203,9 @@ bool libSCPL_gt_ProgressProtossUpgradeStart_Func (bool testConds, bool runAction
         lv_tickTotalMinerals += lv_progressCostMinerals;
         lv_tickTotalVespene += lv_progressCostVespene;
         libSCPL_gf_PlayerResourcesSubtract(lv_playerIndex, lv_progressCostMinerals, lv_progressCostVespene);
+        if ((lv_progressIsComplete == true)) {
+            break;
+        }
         Wait(lv_tickIncrement, c_timeGame);
     }
     libSCPL_gf_ResourceDisplaySpendUpdate(lv_parentUnit, 1.0, 0.0, 0.0);
@@ -3219,7 +3227,7 @@ void libSCPL_gt_ProgressProtossUpgradeStart_Init () {
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressProtossUpgradeCancel_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_progressUnit;
+    unit lv_parentUnit;
 
     // Variable Initialization
 
@@ -3239,8 +3247,8 @@ bool libSCPL_gt_ProgressProtossUpgradeCancel_Func (bool testConds, bool runActio
         return true;
     }
 
-    lv_progressUnit = EventUnit();
-    libSCPL_gf_UnitProtossProgressSet(lv_progressUnit, -1.0);
+    lv_parentUnit = EventUnit();
+    libSCPL_gf_UnitProtossProgressSet(lv_parentUnit, -1.0);
     return true;
 }
 
@@ -4101,6 +4109,7 @@ void libSCPL_gt_ProgressUnitStartRefund_Init () {
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("StargateTrain", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("StargateTrain", 4));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("StargateTrain", 2));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("NexusTrainMothershipUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("NexusTrainMothershipCore", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("StargateTrain", 9));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("StargateTrain", 8));
@@ -4419,6 +4428,9 @@ bool libSCPL_gt_ProgressProtossUnitStart_Func (bool testConds, bool runActions) 
         lv_tickTotalMinerals += lv_progressCostMinerals;
         lv_tickTotalVespene += lv_progressCostVespene;
         libSCPL_gf_PlayerResourcesSubtract(lv_playerIndex, lv_progressCostMinerals, lv_progressCostVespene);
+        if ((lv_progressIsComplete == true)) {
+            break;
+        }
         Wait(lv_tickIncrement, c_timeGame);
     }
     libSCPL_gf_ResourceDisplaySpendUpdate(lv_parentUnit, 1.0, 0.0, 0.0);
@@ -4442,7 +4454,7 @@ void libSCPL_gt_ProgressProtossUnitStart_Init () {
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressProtossUnitCancel_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_progressUnit;
+    unit lv_parentUnit;
 
     // Variable Initialization
 
@@ -4462,8 +4474,8 @@ bool libSCPL_gt_ProgressProtossUnitCancel_Func (bool testConds, bool runActions)
         return true;
     }
 
-    lv_progressUnit = EventUnit();
-    libSCPL_gf_UnitProtossProgressSet(lv_progressUnit, -1.0);
+    lv_parentUnit = EventUnit();
+    libSCPL_gf_UnitProtossProgressSet(lv_parentUnit, -1.0);
     return true;
 }
 
