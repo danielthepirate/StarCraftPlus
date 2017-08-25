@@ -23,6 +23,7 @@ struct libSCPL_gs_Constant {
     fixed lv_spendTickIncrement;
     fixed lv_spendTickIncrementBoosted;
     fixed lv_townHallResourceRadius;
+    fixed lv_gameSpeedFactor;
 };
 
 struct libSCPL_gs_Player {

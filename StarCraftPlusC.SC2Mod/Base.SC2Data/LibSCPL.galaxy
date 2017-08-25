@@ -32,6 +32,7 @@ void libSCPL_InitVariables () {
     libSCPL_gv_constants.lv_spendTickIncrement = 0.4375;
     libSCPL_gv_constants.lv_spendTickIncrementBoosted = 0.4375;
     libSCPL_gv_constants.lv_townHallResourceRadius = 15.0;
+    libSCPL_gv_constants.lv_gameSpeedFactor = 1.0;
     for (init_i = 0; init_i <= 16; init_i += 1) {
         libSCPL_gv_player[init_i].lv_globalZerg_AutoCreepNodeTargets = UnitGroupEmpty();
         for (init_i1 = 0; init_i1 <= 256; init_i1 += 1) {
@@ -1950,6 +1951,7 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
     }
 
     libSCPL_gv_map.lv_baseRegion = RegionCircle(Point(0.0, 0.0), 0.125);
+    libSCPL_gv_constants.lv_gameSpeedFactor = GameGetSpeed();
     libSCPL_gf_InitializeUIHookups();
     libSCPL_gf_InitializeSpendOverTime();
     libSCPL_gf_AutoCreepTargetNodesInitialize();
@@ -2094,12 +2096,6 @@ void libSCPL_gt__0_Init () {
 // Trigger: Space
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_Space_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libSCPL_gf_PlayerResourcesReset(1);
     return true;
 }
 
@@ -6765,14 +6761,15 @@ void libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init () {
 bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
     // Variable Declarations
     string lv_event;
-    string lv_param;
+    string lv_parameter;
     int lv_playerIndex;
+    fixed lv_gameSpeedFactor;
     fixed lv_spend;
     string lv_spendDisplay;
 
     // Variable Initialization
     lv_event = "";
-    lv_param = "";
+    lv_parameter = "";
     lv_spendDisplay = "";
 
     // Actions
@@ -6781,9 +6778,10 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
     }
 
     lv_event = libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend);
-    lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
-    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName(lv_event, lv_param));
-    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals * (1.0 / libSCPL_gv_constants.lv_spendTickIncrement));
+    lv_parameter = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
+    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName(lv_event, lv_parameter));
+    lv_gameSpeedFactor = libSCPL_gv_constants.lv_gameSpeedFactor;
+    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
     if ((lv_spend > 0.0)) {
         lv_spendDisplay = ("( - " + FixedToString(lv_spend, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
@@ -6798,7 +6796,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
     else {
         libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourceMineralSpend, Color(100,100,100), PlayerGroupSingle(lv_playerIndex));
     }
-    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene * (1.0 / libSCPL_gv_constants.lv_spendTickIncrement));
+    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
     if ((lv_spend > 0.0)) {
         lv_spendDisplay = ("( - " + FixedToString(lv_spend, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
