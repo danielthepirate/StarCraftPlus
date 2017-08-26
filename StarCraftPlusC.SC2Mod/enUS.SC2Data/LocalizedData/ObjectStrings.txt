@@ -152,6 +152,7 @@ Behavior/Name/GameDroneMorphMarker=Game Drone Morph Marker
 Behavior/Name/GameIncreasedLifeAndShields=Game Increased Life And Shields
 Behavior/Name/GameMineralsNearTownHall=Game Minerals Near Town Hall
 Behavior/Name/GameMineralsNearTownHallSearch=Game Minerals Near Town Hall Search
+Behavior/Name/GameUCBArchonChargeLink=Game UCB Archon Charge Link
 Behavior/Name/GameUCBBroodlordChargeLink=Game UCB Broodlord Charge Link
 Behavior/Name/GameUCBCommandCenterChargeLink=Game UCB Command Center Charge Link
 Behavior/Name/GameUCBCommandCenterChargeLinkConstructing=Game UCB Command Center Charge Link Constructing

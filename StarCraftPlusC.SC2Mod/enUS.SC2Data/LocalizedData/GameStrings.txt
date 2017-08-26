@@ -1,4 +1,5 @@
-﻿Abil/Name/AutoCreepSpread=Auto Creep Spread
+﻿Abil/Name/ArchonMergeUCB=Archon Merge UCB
+Abil/Name/AutoCreepSpread=Auto Creep Spread
 Abil/Name/AutoCreepSpreadOffHidden=Auto Creep Spread Off Hidden
 Abil/Name/AutoCreepSpreadOnHidden=Auto Creep Spread On Hidden
 Abil/Name/AutoCreepSpreadToggleUCB=Auto Creep Spread Toggle
@@ -173,6 +174,8 @@ Effect/Name/GameMineralsNearTownHallSearch=Game Minerals Near Town Hall Search
 Effect/Name/GameResources4DummyVespene=Game Resources 4 Dummy Vespene
 Effect/Name/GameResources5DummyMinerals=Game Resources 5 Dummy Minerals
 Effect/Name/GameResources7DummyMinerals=Game Resources 7 Dummy Minerals
+Effect/Name/GameUCBArchonChargeAdd=Game UCB Archon Charge Add
+Effect/Name/GameUCBArchonChargeRemove=Game UCB Archon Charge Remove
 Effect/Name/GameUCBBroodlordChargeAdd=Game UCB Broodlord Charge Add
 Effect/Name/GameUCBBroodlordChargeRemove=Game UCB Broodlord Charge Remove
 Effect/Name/GameUCBChargeLinkCommandCenter=Game UCB Charge Link Command Center

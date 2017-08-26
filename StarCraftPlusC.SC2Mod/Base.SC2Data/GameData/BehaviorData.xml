@@ -147,6 +147,12 @@
         <InitialEffect value="GameUCBBroodlordChargeAdd"/>
         <FinalEffect value="GameUCBBroodlordChargeRemove"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBArchonChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBArchonChargeAdd"/>
+        <FinalEffect value="GameUCBArchonChargeRemove"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBOverlordOrTransportChargeLink">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>

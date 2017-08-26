@@ -1999,12 +1999,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Pylon", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "FleetBeacon", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Gateway", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Forge", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "CyberneticsCore", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "TwilightCouncil", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "HighTemplar", 8.0);
     return true;
 }
 
@@ -3580,6 +3575,10 @@ bool libSCPL_gt_ProgressBuildingStart_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_TriggeringProgressUnitType() != "Archon"))) {
             return false;
         }
 
@@ -5752,6 +5751,25 @@ void libSCPL_gt_WarpGateResearchUpgradeAllGates_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Archon Morph
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkArchonMorph_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemove(EventUnit(), "GameUCBArchonChargeLink", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkArchonMorph_Init () {
+    libSCPL_gt_UCBChargeLinkArchonMorph = TriggerCreate("libSCPL_gt_UCBChargeLinkArchonMorph_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_UCBChargeLinkArchonMorph, null, AbilityCommand("ArchonWarp", 1), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Barracks Train StartStop
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_BarracksTrainStartStop_Func (bool testConds, bool runActions) {
@@ -6985,6 +7003,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Init();
     libSCPL_gt_WarpGateResearchGatewayBuilt_Init();
     libSCPL_gt_WarpGateResearchUpgradeAllGates_Init();
+    libSCPL_gt_UCBChargeLinkArchonMorph_Init();
     libSCPL_gt_BarracksTrainStartStop_Init();
     libSCPL_gt_MuleHarvestNearestResoures_Init();
     libSCPL_gt_UCBChargeLinkCommandCenterMorphStart_Init();

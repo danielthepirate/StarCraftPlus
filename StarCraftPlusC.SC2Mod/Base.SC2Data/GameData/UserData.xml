@@ -237,5 +237,19 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
+        <Instances Id="ArchonMergeUCB">
+            <AbilCmd Abil="ArchonWarp" Cmd="1">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="ArchonWarp">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="HighTemplar">
+                <Field Id="RealCaster"/>
+            </Unit>
+            <Unit Unit="DarkTemplar">
+                <Field Id="RealCaster" Index="1"/>
+            </Unit>
+        </Instances>
     </CUser>
 </Catalog>

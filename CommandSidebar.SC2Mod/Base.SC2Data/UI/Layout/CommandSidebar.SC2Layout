@@ -3,44 +3,6 @@
 	<Constant name="HeightGap" val="1"/>
 	<Constant name="GridGap" val="2"/>
 	
-	<!-- <Frame type="Frame" name="GridHotkeyFrame"> -->
-		<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="6"/> -->
-        <!-- <Anchor side="Left" relative="$parent" pos="Min" offset="6"/> -->
-        <!-- <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/> -->
-        <!-- <Anchor side="Right" relative="$parent" pos="Max" offset="0"/> -->
-		<!-- <RenderPriority val="520"/> -->
-			
-		<!-- <Frame type="Image" name="HotkeyLabelBackground"> -->
-			<!-- <Anchor side="Top" relative="$parent/HotkeyLabel" pos="Min" offset="2"/> -->
-			<!-- <Anchor side="Left" relative="$parent/HotkeyLabel" pos="Min" offset="0"/> -->
-			<!-- <Anchor side="Bottom" relative="$parent/HotkeyLabel" pos="Max" offset="-4"/> -->
-			<!-- <Anchor side="Right" relative="$parent/HotkeyLabel" pos="Max" offset="0"/> -->
-			<!-- <Alpha val="120"/> -->
-			<!-- <Color val="0,0,0"/> -->
-			<!-- <RenderPriority val="520"/> -->
-		<!-- </Frame> -->
-		<!-- <Frame type="Label" name="HotkeyLabel"> -->
-			<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="1"/> -->
-			<!-- <Anchor side="Left" relative="$parent" pos="Min" offset="2"/> -->
-			<!-- <Style val="GameButtonCharge"/> -->
-			<!-- <AutoSizeClamps maxWidth="70"/> -->
-			<!-- <Text val="{$parent/$parent/@Text}"/> -->
-			<!-- <RenderPriority val="520"/> -->
-		<!-- </Frame> -->
-		
-		<!-- <StateGroup name="VisibleState"> -->
-			<!-- <DefaultState val="NotVisible"/> -->
-			<!-- <State name="Visible"> -->
-				<!-- <When type="Property" frame="HotkeyLabel" Text="" operator="NotEqual"/> -->
-				<!-- <Action type="SetProperty" Visible="true"/> -->
-			<!-- </State> -->
-			<!-- <State name="NotVisible"> -->
-				<!-- <When type="Property" frame="HotkeyLabel" Text=""/> -->
-				<!-- <Action type="SetProperty" Visible="false"/> -->
-			<!-- </State> -->
-		<!-- </StateGroup> -->
-	<!-- </Frame> -->
-	
 	<Frame type="Button" name="SideBarTabButtonTemplate">
         <!-- <Width val="74"/> -->
         <Width val="128"/>

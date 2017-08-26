@@ -1148,6 +1148,32 @@
         </RefundFraction>
         <AbilSetId value="PlanetaryFortress"/>
     </CAbilMorph>
+    <CAbilMorph id="ArchonMergeUCB" parent="UpgradeToPlanetaryFortress">
+        <Name value="Abil/Name/ArchonMergeUCB"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ArchonWarpTarget" State="Available" Requirements=""/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Archon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <InfoArray index="0" Unit="Archon">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="12"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="12"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="12"/>
+            </SectionArray>
+        </InfoArray>
+        <ValidatorArray index="0" removed="1"/>
+    </CAbilMorph>
     <CAbilMorph id="MorphZerglingToBanelingUCB" parent="UpgradeToPlanetaryFortress">
         <Name value="Abil/Name/MorphZerglingToBanelingUCB"/>
         <AbilSetId value="MorphBaneling"/>

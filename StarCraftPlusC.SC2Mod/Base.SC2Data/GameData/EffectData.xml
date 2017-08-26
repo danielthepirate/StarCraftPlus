@@ -280,6 +280,28 @@
             </Charge>
         </Cost>
     </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBArchonChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-0.5"/>
+                <Link value="UCB/Archon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBArchonChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="0.5"/>
+                <Link value="UCB/Archon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectModifyPlayer id="GameUCBOverlordOrTransportChargeAdd">
         <EditorCategories value=""/>
         <Cost>

@@ -370,6 +370,7 @@ trigger libSCPL_gt_AutoWorkerIdleHarvestResume;
 trigger libSCPL_gt_UnitLifeAndShieldScalingOnCreation;
 trigger libSCPL_gt_WarpGateResearchGatewayBuilt;
 trigger libSCPL_gt_WarpGateResearchUpgradeAllGates;
+trigger libSCPL_gt_UCBChargeLinkArchonMorph;
 trigger libSCPL_gt_BarracksTrainStartStop;
 trigger libSCPL_gt_MuleHarvestNearestResoures;
 trigger libSCPL_gt_UCBChargeLinkCommandCenterMorphStart;
