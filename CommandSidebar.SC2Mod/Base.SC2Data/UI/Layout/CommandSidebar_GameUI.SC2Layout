@@ -79,7 +79,7 @@
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Abilities (F6)"/>
+					<Text val="@UI/UCBTabButtons/Global"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarGlobal"/>
 				
@@ -89,7 +89,7 @@
 				<Anchor side="Left" relative="$parent/SidebarGlobal" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarGlobal" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Construct (F7)"/>
+					<Text val="@UI/UCBTabButtons/Build"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarBuildings"/>
 			</Frame>
@@ -98,7 +98,7 @@
 				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Train (F8)"/>
+					<Text val="@UI/UCBTabButtons/Train"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarUnits"/>
 			</Frame>
@@ -107,7 +107,7 @@
 				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
-					<Text val="Research (F9)"/>
+					<Text val="@UI/UCBTabButtons/Research"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
 			</Frame>
