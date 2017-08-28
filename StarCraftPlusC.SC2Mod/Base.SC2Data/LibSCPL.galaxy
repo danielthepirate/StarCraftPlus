@@ -2005,10 +2005,8 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Nexus", 8.0);
     libNtve_gf_SetUpgradeLevelForPlayer(1, "WarpGateResearch", 1);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Pylon", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "WarpGate", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "WarpGate", 10.0);
     return true;
 }
 

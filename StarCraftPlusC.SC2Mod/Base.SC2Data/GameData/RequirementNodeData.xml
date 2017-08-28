@@ -169,7 +169,6 @@
         <OperandArray value="CountUnitInfestationPitCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitMothershipCoreCompleteOnlyCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipQueuedOrBetter0">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitMothershipCoreCompleteOnly"/>
         <OperandArray value="CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Eq1228785331CountUnitMothershipQueuedOrBetter0"/>
@@ -292,6 +291,14 @@
         <OperandArray value="CountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Not1833567690CountUnitNukeQueuedOrBetterAtUnit"/>
     </CRequirementAnd>
+    <CRequirementCountBehavior id="CountBehaviorGameNearNexusCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GameNearNexus" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorGameNearWarpGateCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GameNearWarpGate" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorGameUCBHatcheryHiveLairCompleteOnly3846943109">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="GameUCBHatcheryHiveLair" State="CompleteOnly"/>
@@ -307,14 +314,6 @@
     <CRequirementCountBehavior id="CountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="GameUCBSpireGreaterSpire" State="CompleteOnly"/>
-    </CRequirementCountBehavior>
-    <CRequirementCountBehavior id="CountBehaviorIsNexusNearbyCompleteOnlyAtUnit">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="IsNexusNearby" State="CompleteOnlyAtUnit"/>
-    </CRequirementCountBehavior>
-    <CRequirementCountBehavior id="CountBehaviorIsWarpGateNearbyCompleteOnlyAtUnit">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="IsWarpGateNearby" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorPowerSourceFastCompleteOnlyAtUnit22563247">
         <Flags index="TechTreeCheat" value="0"/>
@@ -406,7 +405,6 @@
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitMothershipCoreCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="MothershipCore" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitOrbitalCommandCompleteOnlyTechTreeCheat">
@@ -459,13 +457,18 @@
     <CRequirementNot id="Not866976074CountUnitNukeQueuedOrBetterAtUnit">
         <Tooltip value="RequirementNode/Tooltip/Not866976074CountUnitNukeQueuedOrBetterAtUnit"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountBehaviorIsNexusNearbyCompleteOnlyAtUnit">
-        <OperandArray index="0" value="CountBehaviorIsNexusNearbyCompleteOnlyAtUnit"/>
+    <CRequirementNot id="NotCountBehaviorGameNearNexusCompleteOnlyAtUnit">
+        <OperandArray index="0" value="CountBehaviorGameNearNexusCompleteOnlyAtUnit"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountBehaviorIsWarpGateNearbyCompleteOnlyAtUnit">
-        <OperandArray index="0" value="CountBehaviorIsWarpGateNearbyCompleteOnlyAtUnit"/>
+    <CRequirementNot id="NotCountBehaviorGameNearWarpGateCompleteOnlyAtUnit">
+        <OperandArray index="0" value="CountBehaviorGameNearWarpGateCompleteOnlyAtUnit"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradePhoenixRangeUpgradeQueuedOrBetterTechTreeCheat">
         <OperandArray index="0" value="CountUpgradePhoenixRangeUpgradeQueuedOrBetterTechTreeCheat"/>
     </CRequirementNot>
+    <CRequirementOr id="OrCountBehaviorGameNearWarpGateCompleteOnlyAtUnitCountBehaviorGameNearNexusCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountBehaviorGameNearWarpGateCompleteOnlyAtUnit"/>
+        <OperandArray value="CountBehaviorGameNearNexusCompleteOnlyAtUnit"/>
+    </CRequirementOr>
 </Catalog>

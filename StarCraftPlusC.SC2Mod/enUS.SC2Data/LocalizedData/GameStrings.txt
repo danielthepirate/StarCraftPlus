@@ -49,8 +49,7 @@ Actor/AddonIndicator/TechLabPaused=T
 Behavior/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
 Behavior/Name/GameHookBarracksStatusUpdate=Game Hook Barracks Status Update
 Behavior/Name/GameUCBSpireChargeLink=Game UCB Spire Charge Link
-Behavior/Name/IsNexusNearby=IsNexusNearby
-Behavior/Name/IsWarpGateNearby=IsWarpGateNearby
+Behavior/Name/PowerSourceAtNexus=Power Source At Nexus
 Button/Name/AWrpUCB=Archon Merge
 Button/Name/AutoCreepSpreadAutocastToggle=Automatic Spread
 Button/Name/AutoCreepSpreadToggleUCB=Auto Creep Spread Toggle
@@ -89,6 +88,7 @@ Button/Name/SupplyDropUCB=Calldown: Extra Supplies
 Button/Name/TimeWarpUCB=Chrono Boost
 Button/Name/UCBOrbitalCommand=Upgrade to Orbital Command
 Button/Name/UCBUpgradeToPlanetaryFortress=Upgrade to Planetary Fortress
+Button/Name/WarpResonance=Warp Resonance
 Button/Tooltip/AWrpUCB=Sacrifices 2 Templar to create an Archon.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/AutoCreepSpreadAutocastToggle=Automatically spread creep across the map.
 Button/Tooltip/AutoCreepSpreadToggleUCB=Sets toggle state for automatic creep spread of all creep tumors.
@@ -129,6 +129,7 @@ Button/Tooltip/SupplyDropUCB=Drops additional supplies, permanently increasing t
 Button/Tooltip/TimeWarpUCB=Places target structure in a Chrono Boost, causing it to operate <d ref="(((Behavior,TimeWarpProduction,Modification.TimeScale)-1)*100)" precision="1"/>% faster.
 Button/Tooltip/UCBOrbitalCommand=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep, Calldown: MULE, and Calldown: Extra Supplies. Cannot load SCVs.
 Button/Tooltip/UCBUpgradeToPlanetaryFortress=Upgrades Command Center to a Planetary Fortress, greatly increasing its armor and arming it with a powerful defensive turret. Cannot lift off.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/WarpResonance=Power Source radius doubled.
 DocInfo/DescLong=A StarCraft II mod aimed at creating more accessable gameplay for players of all skill levels.
 DocInfo/Name=Shibusa
 Effect/Name/AutoCreepSpreadAutocastBehavior=Auto Creep Spread Autocast Behavior

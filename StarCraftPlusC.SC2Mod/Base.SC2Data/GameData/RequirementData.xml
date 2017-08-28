@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CRequirement id="HasNexusOrWarpGateNearby">
+        <NodeArray index="Use" Link="OrCountBehaviorGameNearWarpGateCompleteOnlyAtUnitCountBehaviorGameNearNexusCompleteOnlyAtUnit"/>
+    </CRequirement>
     <CRequirement id="HaveBarracksOnGround">
         <EditorCategories value="Race:Terran,TechType:Unit"/>
         <CanBeSuppressed index="Use" value="0"/>
@@ -282,17 +285,17 @@
     <CRequirement id="HaveStarportWithTechLabAndFusionCore" parent="HaveAttachedBarrTechLabAndShadowOps">
         <NodeArray index="Use" Link="AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheatCountUnitFusionCoreCompleteOnlyTechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="IsNexusNearbyBehav">
-        <NodeArray index="Use" Link="CountBehaviorIsNexusNearbyCompleteOnlyAtUnit"/>
+    <CRequirement id="HasNexusNearby">
+        <NodeArray index="Use" Link="CountBehaviorGameNearNexusCompleteOnlyAtUnit"/>
     </CRequirement>
-    <CRequirement id="IsWarpGateNotNearbyBehav">
-        <NodeArray index="Use" Link="NotCountBehaviorIsWarpGateNearbyCompleteOnlyAtUnit"/>
+    <CRequirement id="DoesNotHaveNearWarpGateBehavior">
+        <NodeArray index="Use" Link="NotCountBehaviorGameNearWarpGateCompleteOnlyAtUnit"/>
     </CRequirement>
-    <CRequirement id="IsWarpGateNearbyBehav">
-        <NodeArray index="Use" Link="CountBehaviorIsWarpGateNearbyCompleteOnlyAtUnit"/>
+    <CRequirement id="HasNearWarpGateBehavior">
+        <NodeArray index="Use" Link="CountBehaviorGameNearWarpGateCompleteOnlyAtUnit"/>
     </CRequirement>
-    <CRequirement id="IsNexusNotNearbyBehav">
-        <NodeArray index="Use" Link="NotCountBehaviorIsNexusNearbyCompleteOnlyAtUnit"/>
+    <CRequirement id="DoesNotHaveNexusNearby">
+        <NodeArray index="Use" Link="NotCountBehaviorGameNearNexusCompleteOnlyAtUnit"/>
     </CRequirement>
     <CRequirement id="LearnBansheeSpeed">
         <NodeArray index="Use" Link="AndCountUnitStarportCompleteOnlyTechTreeCheatCountUnitStarportTechLabCompleteOnlyTechTreeCheat"/>

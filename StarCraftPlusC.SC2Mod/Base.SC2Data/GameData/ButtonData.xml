@@ -452,6 +452,15 @@
     <CButton id="Impale">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
+    <CButton id="ImprovedEnergy">
+        <Icon value="Assets\Textures\btn-upgrade-karax-pylonwarpininstantly.dds"/>
+    </CButton>
+    <CButton id="WarpResonance">
+        <Icon value="Assets\Textures\btn-upgrade-artanis-pylonpower.dds"/>
+        <Hotkey value="Button/Hotkey/WarpResonance"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="ImprovedEnergy"/>
+    </CButton>
     <CButton id="InvulnerabilityShield">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>

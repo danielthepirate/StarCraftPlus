@@ -53,6 +53,20 @@
         <CombineArray value="CarryNoVespeneTerran"/>
         <CombineArray value="CarryNoVespeneZerg"/>
     </CValidatorCombine>
+    <CValidatorCombine id="NearWarpGateActual">
+        <Type value="And"/>
+        <CombineArray value="NearWarpGate"/>
+        <CombineArray value="SpecialPylonRange"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="NearNexusActual">
+        <Type value="And"/>
+        <CombineArray value="NearNexus"/>
+        <CombineArray value="SpecialPylonRange"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="UnitIsNexus">
+        <ResultFailed value="Error,Error/IsNexus"/>
+        <Value value="Nexus"/>
+    </CValidatorUnitType>
     <CValidatorUnitCompareOrderCount id="SourceHasNoOrders"/>
     <CValidatorLocationCompareCliffLevel id="CliffLevelEqualSource">
         <WhichLocation Value="TargetUnit"/>
@@ -170,33 +184,51 @@
         <ResultFailed value="CantTargetThatUnit"/>
         <Value value="CreepTumorQueen"/>
     </CValidatorUnitType>
-    <CValidatorLocationEnumArea id="IsNexusNearby">
-        <AreaArray Radius="6.5" Validator="IsNexus"/>
+    <CValidatorLocationEnumArea id="NearNexus">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="4.5"/>
+            <Validator value="UnitIsNexus"/>
+        </AreaArray>
+        <Compare value="GE"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <Count value="1"/>
     </CValidatorLocationEnumArea>
-    <CValidatorUnitCompareBehaviorCount id="IsNexusNearbyBehav">
+    <CValidatorUnitCompareBehaviorCount id="HasNexusNearbyBehavior">
         <Value value="1"/>
-        <Behavior value="IsNexusNearby"/>
+        <Behavior value="GameNearNexus"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="IsNexusNotNearbyBehav">
-        <Behavior value="IsNexusNearby"/>
+    <CValidatorUnitCompareBehaviorCount id="HasNexusNotNearbyBehavior">
+        <Behavior value="GameNearNexus"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="IsWarpgateNearbyBehav">
+    <CValidatorUnitCompareBehaviorCount id="HasWarpGateNearbyBehavior">
         <Value value="1"/>
-        <Behavior value="IsWarpGateNearby"/>
+        <Behavior value="GameNearWarpGate"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorLocationEnumArea id="IsWarpGateNearby">
-        <AreaArray Radius="4.75" Validator="IsWarpgate"/>
+    <CValidatorLocationEnumArea id="NearWarpGate">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="4.625"/>
+            <Validator value="IsWarpgate"/>
+        </AreaArray>
+        <Compare value="GE"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <Count value="1"/>
     </CValidatorLocationEnumArea>
-    <CValidatorCombine id="NexusWarpGateNotNearby">
+    <CValidatorCombine id="NearNeitherNexusNorWarpGate">
         <Type value="And"/>
-        <CombineArray value="IsNexusNearbyBehav"/>
-        <CombineArray value="IsWarpgateNearbyBehav"/>
+        <CombineArray value="HasNexusNearbyBehavior"/>
+        <CombineArray value="HasWarpGateNearbyBehavior"/>
         <Negate value="1"/>
     </CValidatorCombine>
-    <CValidatorCombine id="NexusNotNearbyWarpGateNearby">
+    <CValidatorCombine id="NearWarpGateNotNexus">
         <Type value="And"/>
-        <CombineArray value="IsNexusNotNearbyBehav"/>
-        <CombineArray value="IsWarpgateNearbyBehav"/>
+        <CombineArray value="HasNexusNotNearbyBehavior"/>
+        <CombineArray value="HasWarpGateNearbyBehavior"/>
     </CValidatorCombine>
     <CValidatorUnitOrderQueue id="IsReturningResourcesTerran">
         <WhichUnit Value="Target"/>

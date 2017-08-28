@@ -366,23 +366,15 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DisableValidatorArray value="SourceHasNoOrders"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="IsNexusNearby">
+    <CBehaviorBuff id="GameNearNexus">
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="IsNexusNearby"/>
+        <DisableValidatorArray value="NearNexus"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="IsWarpGateNearby">
-        <Cost>
-            <Charge Link="Behavior/IsNexusNearby"/>
-            <Cooldown Link="Behavior/IsNexusNearby"/>
-        </Cost>
+    <CBehaviorBuff id="GameNearWarpGate">
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="IsWarpGateNearby"/>
-        <DamageResponse>
-            <Cost>
-                <Charge Link="Behavior/IsNexusNearby"/>
-                <Cooldown Link="Behavior/IsNexusNearby"/>
-            </Cost>
-        </DamageResponse>
+        <DisableValidatorArray value="NearWarpGate"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="KineticFollow">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -396,18 +388,24 @@
         <PeriodicEffect value="OverlordCreepGrowthAuraSearch"/>
     </CBehaviorBuff>
     <CBehaviorPowerSource id="PowerSource">
-        <Requirements value="IsNexusNotNearbyBehav"/>
+        <Requirements value="DoesNotHaveNexusNearby"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="PowerSourceAtNexus" parent="PowerSource">
+        <Name value="Behavior/Name/PowerSourceAtNexus"/>
+        <InfoFlags index="Hidden" value="0"/>
+        <Requirements value="HasNexusNearby"/>
+        <Radius value="13"/>
     </CBehaviorPowerSource>
     <CBehaviorPowerSource id="PowerSourceFast">
-        <Requirements value="IsNexusNotNearbyBehav"/>
+        <Requirements value="DoesNotHaveNexusNearby"/>
     </CBehaviorPowerSource>
-    <CBehaviorPowerSource id="PowerSourceFast2">
+    <CBehaviorPowerSource id="PowerSourceFastAtNexus">
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-building-protoss-pylon.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
-        <Requirements value="IsNexusNearbyBehav"/>
+        <Requirements value="HasNexusNearby"/>
         <PowerLevel value="2"/>
-        <Radius value="12"/>
+        <Radius value="13"/>
         <PowerLink value="PowerSource"/>
         <CliffLevelFlags index="Higher" value="0"/>
     </CBehaviorPowerSource>

@@ -607,18 +607,27 @@
         <BehaviorArray Link="GameWorkerIdle"/>
     </CUnit>
     <CUnit id="Pylon">
-        <BehaviorArray Link="PowerSourceFast2"/>
-        <BehaviorArray Link="IsNexusNearby"/>
-        <BehaviorArray Link="IsWarpGateNearby"/>
+        <BehaviorArray Link="PowerSourceFastAtNexus"/>
+        <BehaviorArray Link="GameNearWarpGate"/>
+        <BehaviorArray Link="GameNearNexus"/>
         <Food value="0"/>
         <CostResource index="Minerals" value="50"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="ImprovedEnergy" Type="Passive" Requirements="HasNexusOrWarpGateNearby" Row="2" Column="0"/>
+            <LayoutButtons Face="WarpResonance" Type="Passive" Requirements="HasNexusNearby" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="PylonOvercharged">
-        <BehaviorArray Link="PowerSourceFast2"/>
-        <BehaviorArray Link="IsNexusNearby"/>
-        <BehaviorArray Link="IsWarpGateNearby"/>
+        <BehaviorArray Link="PowerSourceFastAtNexus"/>
+        <BehaviorArray Link="GameNearNexus"/>
+        <BehaviorArray Link="GameNearWarpGate"/>
         <Food value="0"/>
         <CostResource index="Minerals" value="50"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="ImprovedEnergy" Type="Passive" Requirements="HasNexusOrWarpGateNearby" Row="2" Column="0"/>
+            <LayoutButtons index="3" Face="Stop" Type="AbilCmd" AbilCmd="stopProtossBuilding,Stop" Row="0" Column="2"/>
+            <LayoutButtons Face="WarpResonance" Type="Passive" Requirements="HasNexusNearby" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Queen">
         <CardLayouts index="0">
@@ -1269,7 +1278,6 @@
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
         <BehaviorArray Link="GameWarpGateCount"/>
         <CardLayouts index="0">
-            <LayoutButtons index="0" Row="2"/>
             <LayoutButtons index="1" Row="1" Column="3"/>
             <LayoutButtons index="5" Face="Sentry" AbilCmd="WarpGateTrain,Train6" Row="0"/>
             <LayoutButtons index="6" Face="WarpInAdept" AbilCmd="WarpGateTrain,Train7" Column="3"/>
