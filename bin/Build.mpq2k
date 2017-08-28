@@ -1,0 +1,2 @@
+add "../bin/CommandSidebar.SC2Mod" "../CommandSidebar.SC2Mod/*" /r /c
+f "../bin/CommandSidebar.SC2Mod"
