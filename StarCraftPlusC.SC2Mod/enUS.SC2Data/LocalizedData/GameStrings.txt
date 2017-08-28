@@ -43,6 +43,7 @@ Abil/Name/UpgradeToLairUCB=Morph Building (Hatchery -> Lair) UCB
 Abil/Name/UpgradeToLurkerDenMPUCB=Upgrade To Lurker Den MP UCB
 Abil/Name/UpgradeToOrbitalUCB=Morph Building (COCE -> Orbital Command)
 Abil/Name/UpgradeToPlanetaryFortressUCB=Morph Building (COCE -> Planetary Fortress)
+Abil/Name/WarpGateTrainUCB=Train (Warp Gate) UCB
 Actor/AddonIndicator/ReactorPaused=R
 Actor/AddonIndicator/TechLabPaused=T
 Behavior/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
@@ -118,6 +119,7 @@ Button/Tooltip/NukeArmUCB=Arms the Silo with a Tactical Nuke.<n/><n/>Nukes take 
 Button/Tooltip/NydusCanalPlacementDummy=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/OverlordEnhancedCreepGrowthAura=Nearby creep tumors spread 50% faster.
 Button/Tooltip/RavagerUCB=Ranged artillery. Can use Corrosive Bile.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/ResearchWarpGate=Upgrades all <c val="ffff8a">Gateways</c> to Warp Gates.
 Button/Tooltip/ScanUCB=Reveals an area of the map, detecting cloaked and burrowed units. Lasts <d time="12"/>.
 Button/Tooltip/SpawnLarvaUCB=Sets the toggle state of automatic larva spawning for all queens.
 Button/Tooltip/SummonNydusWormUCB=Summons a Nydus Worm at the target location.<n/>Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
@@ -171,6 +173,7 @@ Effect/Name/GameDroneMorphMarker=Game Drone Morph Marker
 Effect/Name/GameHookBarracksStatusUpdate=Game Hook Barracks Status Update
 Effect/Name/GameMineralsNearTownHall=Game Minerals Near Town Hall
 Effect/Name/GameMineralsNearTownHallSearch=Game Minerals Near Town Hall Search
+Effect/Name/GameNexusCount=Game Nexus Count
 Effect/Name/GameResources4DummyVespene=Game Resources 4 Dummy Vespene
 Effect/Name/GameResources5DummyMinerals=Game Resources 5 Dummy Minerals
 Effect/Name/GameResources7DummyMinerals=Game Resources 7 Dummy Minerals
@@ -239,6 +242,7 @@ Effect/Name/GlobalRallyTarget02Create=Global Rally Target 02 Create
 Effect/Name/GlobalRallyTarget02KillRemove=Global Rally Target 02 Kill Remove
 Effect/Name/GlobalRallyTarget02Set=Global Rally Target 02 Set
 Effect/Name/GlobalRallyTarget02UnitImpact=Global Rally Target 02 Unit Impact
+Effect/Name/IssueOrderUpgradeWarpGate=Issue Order Upgrade Warp Gate
 Effect/Name/KineticFollow=Kinetic Follow
 Effect/Name/NydusBuildUCBRefund=Nydus Build UCB Refund
 Effect/Name/NydusBuildUCBRemoveDummy=Nydus Build UCB Remove Dummy
@@ -429,3 +433,5 @@ Unit/Name/SupplyDepotConstructorPaused=Auto Wall Constructor
 Unit/Name/SupplyDepotLowered=Auto Wall
 Unit/Name/TechLabPaused=Tech Lab
 Unit/Name/UltraliskCavernPaused=Ultralisk Cavern
+Upgrade/Name/GameProtossNexusCount=Game Protoss Nexus Count
+Upgrade/Name/GameProtossWarpGateCount=Game Protoss Warp Gate Count

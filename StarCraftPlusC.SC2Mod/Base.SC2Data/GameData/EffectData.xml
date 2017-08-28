@@ -210,6 +210,9 @@
     <CEffectApplyBehavior id="GameMineralsNearTownHall">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameNexusCount">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectModifyPlayer id="GameResources5DummyMinerals">
         <ValidatorArray value="NotDead"/>
         <ValidatorArray value="IsReturningResources"/>
@@ -833,4 +836,8 @@
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.0625"/>
     </CEffectCreatePersistent>
+    <CEffectIssueOrder id="IssueOrderUpgradeWarpGate">
+        <EditorCategories value=""/>
+        <Abil value="UpgradeToWarpGate"/>
+    </CEffectIssueOrder>
 </Catalog>

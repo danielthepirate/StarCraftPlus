@@ -1473,6 +1473,7 @@ void libSCPL_gf_InitializeUIHookups () {
     // Variable Initialization
 
     // Implementation
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypePylonButton, false);
     DialogControlHookupStandard(c_triggerControlTypeLabel, "UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel2Spend");
     libSCPL_gv_uI.lv_resourceMineralSpend = DialogControlLastCreated();
     DialogControlHookupStandard(c_triggerControlTypeLabel, "UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel3Spend");
@@ -1579,7 +1580,12 @@ void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex) {
     }
 }
 
-void libSCPL_gf_RegisterDialogItemClicked (int lp_dialogItem, trigger lp_trigger) {
+void libSCPL_gf_TriggerEventRegisterUnitDies (trigger lp_trigger, unit lp_unit) {
+    // Implementation
+    TriggerAddEventUnitDied(lp_trigger, UnitRefFromUnit(lp_unit));
+}
+
+void libSCPL_gf_TriggerEventRegisterDialogItemClicked (trigger lp_trigger, int lp_dialogItem) {
     // Implementation
     TriggerAddEventDialogControl(lp_trigger, c_playerAny, lp_dialogItem, c_triggerControlEventTypeClick);
 }
@@ -1999,7 +2005,10 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "HighTemplar", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Nexus", 8.0);
+    libNtve_gf_SetUpgradeLevelForPlayer(1, "WarpGateResearch", 1);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Pylon", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "WarpGate", 8.0);
     return true;
 }
 
@@ -2056,7 +2065,7 @@ bool libSCPL_gt__5_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    GameSetGlobalTimeScale(1.0);
+    TechTreeUpgradeAddLevel(1, "GameProtossWarpGateCount", -1);
     return true;
 }
 
@@ -2064,6 +2073,25 @@ bool libSCPL_gt__5_Func (bool testConds, bool runActions) {
 void libSCPL_gt__5_Init () {
     libSCPL_gt__5 = TriggerCreate("libSCPL_gt__5_Func");
     TriggerAddEventKeyPressed(libSCPL_gt__5, c_playerAny, c_keyNumPad5, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 6
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__6_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerAddChargeUsed(1, "WarpGateTrain", 1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__6_Init () {
+    libSCPL_gt__6 = TriggerCreate("libSCPL_gt__6_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__6, c_playerAny, c_keyNumPad6, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4485,9 +4513,9 @@ void libSCPL_gt_ProgressProtossUnitCancel_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Progress Warpgate Unit Upfront Cost Adjustment
+// Trigger: Progress Train Warp Gate Refund
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_ProgressTrainWarpGateRefund_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_playerIndex;
     fixed lv_progressCostMinerals;
@@ -4497,11 +4525,7 @@ bool libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment_Func (bool testConds, 
 
     // Conditions
     if (testConds) {
-        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
-            return false;
-        }
-
-        if (!(((libNtve_gf_TriggeringProgressUnitType() == "WarpAdept") || (libNtve_gf_TriggeringProgressUnitType() == "WarpDarkTemplar") || (libNtve_gf_TriggeringProgressUnitType() == "WarpHighTemplar") || (libNtve_gf_TriggeringProgressUnitType() == "WarpSentry") || (libNtve_gf_TriggeringProgressUnitType() == "WarpStalker") || (libNtve_gf_TriggeringProgressUnitType() == "WarpZealot")))) {
+        if (!(((UnitGetType(EventUnit()) == "WarpGate") || ((UnitGetType(EventUnit()) == "SdbPTrain1") && (TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "WarpGateResearch", c_techCountCompleteOnly) == 1))))) {
             return false;
         }
     }
@@ -4512,84 +4536,17 @@ bool libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment_Func (bool testConds, 
     }
 
     lv_playerIndex = EventPlayer();
-    lv_progressCostMinerals = UnitTypeGetCost(libNtve_gf_TriggeringProgressUnitType(), c_unitCostTerrazine);
-    lv_progressCostVespene = UnitTypeGetCost(libNtve_gf_TriggeringProgressUnitType(), c_unitCostCustomResource);
-    libSCPL_gf_PlayerResourcesSubtract(lv_playerIndex, lv_progressCostMinerals, lv_progressCostVespene);
+    lv_progressCostMinerals = UnitTypeGetCost(libNtve_gf_TriggeringProgressUnitType(), c_unitCostMinerals);
+    lv_progressCostVespene = UnitTypeGetCost(libNtve_gf_TriggeringProgressUnitType(), c_unitCostVespene);
+    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropCustom, c_playerPropOperSubtract, lv_progressCostVespene);
+    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropTerrazine, c_playerPropOperSubtract, lv_progressCostMinerals);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment_Init () {
-    libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment = TriggerCreate("libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment_Func");
-    TriggerAddEventUnitConstructProgress(libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment, null, c_unitProgressStageStart);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Progress Warpgate Unit Swap
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ProgressWarpgateUnitSwap_Func (bool testConds, bool runActions) {
-    string auto3231D83E_val;
-
-    // Variable Declarations
-    string lv_unitActual;
-    bool lv_unitSelected;
-    unitgroup lv_playerSelectedUnits;
-
-    // Variable Initialization
-    lv_playerSelectedUnits = UnitGroupEmpty();
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    auto3231D83E_val = UnitGetType(EventUnitProgressUnit());
-    if (auto3231D83E_val == "WarpZealot") {
-        lv_unitActual = "Zealot";
-    }
-    else if (auto3231D83E_val == "WarpStalker") {
-        lv_unitActual = "Stalker";
-    }
-    else if (auto3231D83E_val == "WarpSentry") {
-        lv_unitActual = "Sentry";
-    }
-    else if (auto3231D83E_val == "WarpHighTemplar") {
-        lv_unitActual = "HighTemplar";
-    }
-    else if (auto3231D83E_val == "WarpDarkTemplar") {
-        lv_unitActual = "DarkTemplar";
-    }
-    else if (auto3231D83E_val == "WarpAdept") {
-        lv_unitActual = "Adept";
-    }
-    else {
-    }
-    if ((lv_unitActual != null)) {
-        lv_playerSelectedUnits = UnitGroupSelected(EventPlayer());
-        if ((UnitGroupHasUnit(lv_playerSelectedUnits, EventUnitProgressUnit()) == true)) {
-            lv_unitSelected = true;
-        }
-        UnitSelect(EventUnitProgressUnit(), EventPlayer(), true);
-        libNtve_gf_ReplaceUnit(EventUnitProgressUnit(), lv_unitActual, libNtve_ge_ReplaceUnitOptions_OldUnitsRelative);
-        if ((lv_unitSelected == true)) {
-            UnitGroupAdd(lv_playerSelectedUnits, libNtve_gf_LastReplacedUnit());
-            UnitGroupSelect(lv_playerSelectedUnits, EventPlayer(), true);
-        }
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ProgressWarpgateUnitSwap_Init () {
-    libSCPL_gt_ProgressWarpgateUnitSwap = TriggerCreate("libSCPL_gt_ProgressWarpgateUnitSwap_Func");
-    TriggerAddEventUnitConstructProgress(libSCPL_gt_ProgressWarpgateUnitSwap, null, c_unitProgressStageComplete);
+void libSCPL_gt_ProgressTrainWarpGateRefund_Init () {
+    libSCPL_gt_ProgressTrainWarpGateRefund = TriggerCreate("libSCPL_gt_ProgressTrainWarpGateRefund_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_ProgressTrainWarpGateRefund, null, c_unitProgressStageStart);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5673,48 +5630,9 @@ void libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Warp Gate Research Gateway Built
+// Trigger: Warp Gate Research Upgrade All Gateways
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_WarpGateResearchGatewayBuilt_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_unitConstructed;
-    int lv_playerIndex;
-
-    // Variable Initialization
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnitProgressUnit()) == "Gateway"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_unitConstructed = EventUnitProgressUnit();
-    while ((PowerLevel(lv_playerIndex, UnitGetPosition(lv_unitConstructed), "PowerSource") < 1) && (UnitIsAlive(lv_unitConstructed) == true)) {
-        Wait(0.0625, c_timeGame);
-        lv_playerIndex = UnitGetOwner(lv_unitConstructed);
-        if ((TechTreeUpgradeCount(lv_playerIndex, "WarpGateResearch", c_techCountCompleteOnly) == 1)) {
-            UnitIssueOrder(lv_unitConstructed, Order(AbilityCommand("UpgradeToWarpGate", 0)), c_orderQueueReplace);
-        }
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_WarpGateResearchGatewayBuilt_Init () {
-    libSCPL_gt_WarpGateResearchGatewayBuilt = TriggerCreate("libSCPL_gt_WarpGateResearchGatewayBuilt_Func");
-    TriggerAddEventUnitConstructProgress(libSCPL_gt_WarpGateResearchGatewayBuilt, null, c_unitProgressStageComplete);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Warp Gate Research Upgrade All Gates
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_WarpGateResearchUpgradeAllGates_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_WarpGateResearchUpgradeAllGateways_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unitgroup lv_playerGateways;
     int lv_playerIndex;
@@ -5739,15 +5657,171 @@ bool libSCPL_gt_WarpGateResearchUpgradeAllGates_Func (bool testConds, bool runAc
     UnitGroupLoopBegin(lv_playerGateways);
     for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
         UnitGroupIssueOrder(lv_playerGateways, Order(AbilityCommand("UpgradeToWarpGate", 0)), c_orderQueueReplace);
+        UnitBehaviorAdd(UnitGroupLoopCurrent(), "GameWarpGateUpgradeBehavior", UnitGroupLoopCurrent(), 1);
     }
     UnitGroupLoopEnd();
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_WarpGateResearchUpgradeAllGates_Init () {
-    libSCPL_gt_WarpGateResearchUpgradeAllGates = TriggerCreate("libSCPL_gt_WarpGateResearchUpgradeAllGates_Func");
-    TriggerAddEventUnitResearchProgress(libSCPL_gt_WarpGateResearchUpgradeAllGates, null, c_unitProgressStageComplete);
+void libSCPL_gt_WarpGateResearchUpgradeAllGateways_Init () {
+    libSCPL_gt_WarpGateResearchUpgradeAllGateways = TriggerCreate("libSCPL_gt_WarpGateResearchUpgradeAllGateways_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_WarpGateResearchUpgradeAllGateways, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Warp Gate Research Gateway Built
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_WarpGateResearchGatewayBuilt_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unitConstructed;
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "Gateway"))) {
+            return false;
+        }
+
+        if (!((TechTreeUpgradeCount(UnitGetOwner(EventUnitProgressUnit()), "WarpGateResearch", c_techCountCompleteOnly) == 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unitConstructed = EventUnitProgressUnit();
+    UnitBehaviorAdd(lv_unitConstructed, "GameWarpGateUpgradeBehavior", lv_unitConstructed, 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_WarpGateResearchGatewayBuilt_Init () {
+    libSCPL_gt_WarpGateResearchGatewayBuilt = TriggerCreate("libSCPL_gt_WarpGateResearchGatewayBuilt_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_WarpGateResearchGatewayBuilt, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Warp Gate Charge Count Add
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_WarpGateChargeCountAdd_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    TechTreeUpgradeAddLevel(lv_playerIndex, "GameProtossWarpGateCount", 1);
+    libSCPL_gf_TriggerEventRegisterUnitDies(libSCPL_gt_WarpGateChargeCountRemove, lv_unit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_WarpGateChargeCountAdd_Init () {
+    libSCPL_gt_WarpGateChargeCountAdd = TriggerCreate("libSCPL_gt_WarpGateChargeCountAdd_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_WarpGateChargeCountAdd, null, "GameWarpGateCount", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Warp Gate Charge Count Remove
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_WarpGateChargeCountRemove_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "GameWarpGateCount") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    TechTreeUpgradeAddLevel(lv_playerIndex, "GameProtossWarpGateCount", -1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_WarpGateChargeCountRemove_Init () {
+    libSCPL_gt_WarpGateChargeCountRemove = TriggerCreate("libSCPL_gt_WarpGateChargeCountRemove_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Nexus Charge Count Add
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_NexusChargeCountAdd_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    TechTreeUpgradeAddLevel(lv_playerIndex, "GameProtossNexusCount", 1);
+    libSCPL_gf_TriggerEventRegisterUnitDies(libSCPL_gt_NexusChargeCountRemove, lv_unit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_NexusChargeCountAdd_Init () {
+    libSCPL_gt_NexusChargeCountAdd = TriggerCreate("libSCPL_gt_NexusChargeCountAdd_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_NexusChargeCountAdd, null, "GameNexusCount", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Nexus Charge Count Remove
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_NexusChargeCountRemove_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "GameWarpGateCount") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    TechTreeUpgradeAddLevel(lv_playerIndex, "GameProtossNexusCount", -1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_NexusChargeCountRemove_Init () {
+    libSCPL_gt_NexusChargeCountRemove = TriggerCreate("libSCPL_gt_NexusChargeCountRemove_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6951,6 +7025,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt__3_Init();
     libSCPL_gt__4_Init();
     libSCPL_gt__5_Init();
+    libSCPL_gt__6_Init();
     libSCPL_gt__0_Init();
     libSCPL_gt_Space_Init();
     libSCPL_gt_GlobalRally00TargetCreated_Init();
@@ -6983,8 +7058,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ProgressUnitStart_Init();
     libSCPL_gt_ProgressProtossUnitStart_Init();
     libSCPL_gt_ProgressProtossUnitCancel_Init();
-    libSCPL_gt_ProgressWarpgateUnitUpfrontCostAdjustment_Init();
-    libSCPL_gt_ProgressWarpgateUnitSwap_Init();
+    libSCPL_gt_ProgressTrainWarpGateRefund_Init();
     libSCPL_gt_ProgressUnitStartCommented_Init();
     libSCPL_gt_ProgressUnitStartCommentedTest_Init();
     libSCPL_gt_ProgressUnitCancelCommented_Init();
@@ -7001,8 +7075,12 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_AutoWorkerSetConstructionState_Init();
     libSCPL_gt_AutoWorkerIdleHarvestResume_Init();
     libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Init();
+    libSCPL_gt_WarpGateResearchUpgradeAllGateways_Init();
     libSCPL_gt_WarpGateResearchGatewayBuilt_Init();
-    libSCPL_gt_WarpGateResearchUpgradeAllGates_Init();
+    libSCPL_gt_WarpGateChargeCountAdd_Init();
+    libSCPL_gt_WarpGateChargeCountRemove_Init();
+    libSCPL_gt_NexusChargeCountAdd_Init();
+    libSCPL_gt_NexusChargeCountRemove_Init();
     libSCPL_gt_UCBChargeLinkArchonMorph_Init();
     libSCPL_gt_BarracksTrainStartStop_Init();
     libSCPL_gt_MuleHarvestNearestResoures_Init();

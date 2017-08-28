@@ -101,7 +101,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		}
 		return true;
 	}
-	
+
 	if(AbilityClass(abil) == c_classIdCAbilBuild){
 		UnitIssueOrder(dummy, Order(AbilityCommand("stop", c_abilStopCmdStop)), c_orderQueueReplace);
 		

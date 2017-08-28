@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CUpgrade id="GameProtossNexusCount" parent="Research">
+        <EffectArray Reference="Abil,TimeWarpUCB,Cost[0].Charge.CountMax" Value="1"/>
+        <MaxLevel value="99"/>
+        <LeaderAlias value="GameProtossWarpGateCount"/>
+    </CUpgrade>
     <CUpgrade id="ProtossGroundArmorsLevel1">
         <EffectArray Reference="Unit,Nexus,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,Pylon,LifeArmorLevel" Value="1"/>
@@ -275,6 +280,15 @@
         <EffectArray Reference="Unit,BarracksFlying,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,Armory,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,GhostAcademy,LifeArmor" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="GameProtossWarpGateCount" parent="Research">
+        <EffectArray Reference="Abil,WarpGateTrainUCB,InfoArray[Train1].Charge.CountMax" Value="1"/>
+        <EffectArray Reference="Abil,WarpGateTrainUCB,InfoArray[Train2].Charge.CountMax" Value="1"/>
+        <EffectArray Reference="Abil,WarpGateTrainUCB,InfoArray[Train4].Charge.CountMax" Value="1"/>
+        <EffectArray Reference="Abil,WarpGateTrainUCB,InfoArray[Train5].Charge.CountMax" Value="1"/>
+        <EffectArray Reference="Abil,WarpGateTrainUCB,InfoArray[Train6].Charge.CountMax" Value="1"/>
+        <EffectArray Reference="Abil,WarpGateTrainUCB,InfoArray[Train7].Charge.CountMax" Value="1"/>
+        <MaxLevel value="99"/>
     </CUpgrade>
     <CUpgrade id="ZergGroundArmorsLevel1">
         <EffectArray Reference="Unit,Hatchery,LifeArmor" Value="1"/>

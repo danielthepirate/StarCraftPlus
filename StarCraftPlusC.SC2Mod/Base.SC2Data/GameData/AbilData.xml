@@ -990,6 +990,12 @@
         <Effect index="0" value="TimeWarpUCBDummy"/>
         <Cost index="0">
             <Vital index="Energy" value="0"/>
+            <Charge>
+                <CountUse value="1"/>
+                <Link value="UCB/TimeWarp"/>
+                <Location value="Player"/>
+                <TimeUse value="5"/>
+            </Charge>
             <Cooldown TimeUse="0"/>
         </Cost>
     </CAbilEffectTarget>
@@ -1236,23 +1242,50 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
-        <InfoArray index="Train1" Unit="WarpZealot">
+        <InfoArray index="Train1">
+            <Charge CountStart="0" Location="Player"/>
             <Button Requirements="HaveWarpgateActual"/>
         </InfoArray>
-        <InfoArray index="Train2" Unit="WarpStalker">
+        <InfoArray index="Train2">
+            <Charge CountStart="0" Location="Player"/>
             <Button Requirements="HaveWarpgateAndCyberneticsCore"/>
         </InfoArray>
-        <InfoArray index="Train4" Unit="WarpHighTemplar">
+        <InfoArray index="Train4">
+            <Charge CountStart="0" Location="Player"/>
             <Button Requirements="HaveWarpgateAndTemplarArchives"/>
         </InfoArray>
-        <InfoArray index="Train5" Unit="WarpDarkTemplar">
+        <InfoArray index="Train5">
+            <Charge CountStart="0" Location="Player"/>
             <Button Requirements="HaveWarpgateAndDarkShrine"/>
         </InfoArray>
-        <InfoArray index="Train6" Unit="WarpSentry">
+        <InfoArray index="Train6">
+            <Charge CountStart="0" Location="Player"/>
             <Button Requirements="HaveWarpgateAndCyberneticsCore"/>
         </InfoArray>
-        <InfoArray index="Train7" Unit="WarpAdept">
+        <InfoArray index="Train7">
+            <Charge CountStart="0" Location="Player"/>
             <Button Requirements="HaveWarpgateAndCyberneticsCore"/>
+        </InfoArray>
+    </CAbilWarpTrain>
+    <CAbilWarpTrain id="WarpGateTrainUCB" parent="WarpGateTrain">
+        <Name value="Abil/Name/WarpGateTrainUCB"/>
+        <InfoArray index="Train1">
+            <Charge CountMax="0"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge CountMax="0"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Charge CountMax="0"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Charge CountMax="0"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Charge CountMax="0"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge CountMax="0"/>
         </InfoArray>
     </CAbilWarpTrain>
     <CAbilBuild id="ZergBuild">

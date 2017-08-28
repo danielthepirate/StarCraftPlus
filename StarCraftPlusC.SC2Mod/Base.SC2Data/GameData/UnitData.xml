@@ -326,6 +326,7 @@
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
         <CardLayouts index="0">
             <LayoutButtons index="4" Row="1"/>
+            <LayoutButtons index="8" Row="1" Column="3"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="GhostAcademy">
@@ -507,6 +508,7 @@
     <CUnit id="Nexus">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
+        <BehaviorArray Link="GameNexusCountConstructing"/>
         <DeathTime value="0.5"/>
     </CUnit>
     <CUnit id="NydusCanal">
@@ -755,6 +757,12 @@
     </CUnit>
     <CUnit id="SdbPTrain1">
         <CardLayouts index="0">
+            <LayoutButtons index="3" Face="Zealot" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train1" Row="0" Column="2"/>
+            <LayoutButtons index="4" Face="Sentry" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train6" Row="0" Column="3"/>
+            <LayoutButtons index="5" Face="Stalker" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train2" Row="0" Column="4"/>
+            <LayoutButtons index="6" Face="HighTemplar" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train4" Row="1" Column="0"/>
+            <LayoutButtons index="7" Face="DarkTemplar" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train5" Row="1" Column="1"/>
+            <LayoutButtons index="8" Face="WarpInAdept" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train7" Row="1" Column="2"/>
             <LayoutButtons index="9" Face="Observer" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train2" Row="1" Column="3"/>
             <LayoutButtons index="10" Face="WarpPrism" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train1" Row="1" Column="4"/>
             <LayoutButtons index="11" Face="Immortal" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train4" Row="2" Column="0"/>
@@ -762,7 +770,22 @@
             <LayoutButtons index="13" Face="WarpinDisruptor" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train19" Row="2" Column="2"/>
             <LayoutButtons index="14" Face="Phoenix" Type="AbilCmd" AbilCmd="StargateTrain,Train1" Row="2" Column="3"/>
             <LayoutButtons index="15" Face="Oracle" Type="AbilCmd" AbilCmd="StargateTrain,Train9" Row="2" Column="4"/>
+            <LayoutButtons Face="Zealot" Type="AbilCmd" AbilCmd="GatewayTrain,Train1" Row="0" Column="2"/>
+            <LayoutButtons Face="Sentry" Type="AbilCmd" AbilCmd="GatewayTrain,Train6" Row="0" Column="3"/>
+            <LayoutButtons Face="Stalker" Type="AbilCmd" AbilCmd="GatewayTrain,Train2" Row="0" Column="4"/>
+            <LayoutButtons Face="HighTemplar" Type="AbilCmd" AbilCmd="GatewayTrain,Train4" Row="1" Column="0"/>
+            <LayoutButtons Face="DarkTemplar" Type="AbilCmd" AbilCmd="GatewayTrain,Train5" Row="1" Column="1"/>
+            <LayoutButtons Face="WarpInAdept" Type="AbilCmd" AbilCmd="GatewayTrain,Train7" Row="1" Column="2"/>
         </CardLayouts>
+        <AbilArray index="2" Link="NexusTrain"/>
+        <AbilArray index="3" Link="NexusTrainMothershipCore"/>
+        <AbilArray index="4" Link="GatewayTrain"/>
+        <AbilArray index="5" Link="StargateTrain"/>
+        <AbilArray index="6" Link="RoboticsFacilityTrain"/>
+        <AbilArray index="7" Link="MorphToMothership"/>
+        <AbilArray index="8" Link="ArchonWarp"/>
+        <AbilArray index="9" Link="WarpGateTrainUCB"/>
+        <AbilArray index="10" removed="1"/>
     </CUnit>
     <CUnit id="SdbPTrain2">
         <CardLayouts index="0">
@@ -1244,6 +1267,14 @@
         <Food value="10"/>
         <DeathTime value="0.5"/>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <BehaviorArray Link="GameWarpGateCount"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Row="2"/>
+            <LayoutButtons index="1" Row="1" Column="3"/>
+            <LayoutButtons index="5" Face="Sentry" AbilCmd="WarpGateTrain,Train6" Row="0"/>
+            <LayoutButtons index="6" Face="WarpInAdept" AbilCmd="WarpGateTrain,Train7" Column="3"/>
+            <LayoutButtons index="7" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="WarpHighTemplar" parent="HighTemplar">
         <Name value="Unit/Name/WarpHighTemplar"/>

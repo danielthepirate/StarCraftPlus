@@ -511,6 +511,9 @@
         </StatusColors>
         <AcceptedTransfers index="Animator" value="1"/>
     </CActorUnit>
+    <CActorProgress id="ProtossWarpIn">
+        <On Terms="Abil.WarpGateTrainUCB.TargetStart" Send="Create"/>
+    </CActorProgress>
     <CActorUnit id="RavagerCocoon">
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
         <CustomUnitStatusOffset value="0,50"/>
@@ -1295,6 +1298,10 @@
             <Image value="Assets\Textures\wireframe-protoss-adept-shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorModel id="WarpInVoid">
+        <On Terms="Abil.WarpGateTrainUCB.TargetStart" Send="Create"/>
+        <On Terms="Abil.WarpGateTrainUCB.TargetStop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
     <CActorUnit id="WarpStalker" parent="Stalker" unitName="WarpStalker">
         <On index="0" Terms="UnitBirth.WarpStalker"/>
         <On index="1" Terms="UnitBirth.WarpStalker"/>

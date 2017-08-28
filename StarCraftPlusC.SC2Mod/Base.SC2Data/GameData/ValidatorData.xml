@@ -198,13 +198,6 @@
         <CombineArray value="IsNexusNotNearbyBehav"/>
         <CombineArray value="IsWarpgateNearbyBehav"/>
     </CValidatorCombine>
-    <CValidatorUnitCompareChargeUsed id="OverlordDontRemoveCooldownifNoCharges">
-        <WhichUnit Value="Source"/>
-        <OtherUnit Value="Source"/>
-        <ChargeLink value="Abil/CreepTumorBuild"/>
-        <Location value="Unit"/>
-        <Ability value="CreepTumorBuild"/>
-    </CValidatorUnitCompareChargeUsed>
     <CValidatorUnitOrderQueue id="IsReturningResourcesTerran">
         <WhichUnit Value="Target"/>
         <AbilLink value="SCVHarvest"/>

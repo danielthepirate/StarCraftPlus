@@ -129,6 +129,12 @@
         <Period value="0.25"/>
         <PeriodicEffect value="GameHookBarracksStatusUpdate"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameNexusCountConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <FinalEffect value="GameNexusCount"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBCommandCenterChargeLink">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -344,6 +350,17 @@
         <Period value="0.5"/>
         <PeriodicEffect value="GameMineralsNearTownHallSearch"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameNexusCount">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameWarpGateUpgradeBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="IsGateway"/>
+        <Period value="0.125"/>
+        <PeriodicEffect value="IssueOrderUpgradeWarpGate"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameWorkerIdle">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -429,15 +446,6 @@
         <DisableValidatorArray value="AutoWallAutocastEnabled"/>
         <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="OverlordCooldownReducer">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Period value="0.25"/>
-        <PeriodicEffect value="OverlordAutoCreepCooldownReductSearch"/>
-        <Modification>
-            <RateMultiplierArray index="Creep" value="2"/>
-        </Modification>
-    </CBehaviorBuff>
     <CBehaviorCreepSource id="CreepGrowthMediumEnhanced">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
@@ -447,4 +455,8 @@
         <Grown value="Footprint4x4CreepSourceGrown"/>
         <DisableValidatorArray value="HasEnhancedCreepGrowth"/>
     </CBehaviorCreepSource>
+    <CBehaviorBuff id="GameWarpGateCount">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
 </Catalog>
