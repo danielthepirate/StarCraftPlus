@@ -1,0 +1,1 @@
+.\MPQEditor.exe /console "Build.mpq2k"
