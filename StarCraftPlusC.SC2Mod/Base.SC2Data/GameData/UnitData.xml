@@ -923,9 +923,35 @@
             <LayoutButtons Face="Cancel" Type="CancelTargetMode" Row="0" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="SdbTTrain1">
+        <AbilArray index="5" Link="BarracksTrainUCB"/>
+        <AbilArray index="6" Link="FactoryTrainUCB"/>
+        <AbilArray index="7" Link="StarportTrainUCB"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Face="Marine" Type="AbilCmd" AbilCmd="BarracksTrainUCB,Train1" Row="0" Column="1"/>
+            <LayoutButtons index="3" Face="Marauder" Type="AbilCmd" AbilCmd="BarracksTrainUCB,Train4" Row="0" Column="2"/>
+            <LayoutButtons index="4" Face="Reaper" Type="AbilCmd" AbilCmd="BarracksTrainUCB,Train2" Row="0" Column="3"/>
+            <LayoutButtons index="5" Face="Ghost" Type="AbilCmd" AbilCmd="BarracksTrainUCB,Train3" Row="0" Column="4"/>
+            <LayoutButtons index="6" Face="Hellion" Type="AbilCmd" AbilCmd="FactoryTrainUCB,Train6" Row="1" Column="0"/>
+            <LayoutButtons index="7" Face="SiegeTank" Type="AbilCmd" AbilCmd="FactoryTrainUCB,Train2" Row="1" Column="1"/>
+            <LayoutButtons index="8" Face="WidowMine" Type="AbilCmd" AbilCmd="FactoryTrainUCB,Train25" Row="1" Column="2"/>
+            <LayoutButtons index="9" Face="BuildCyclone" Type="AbilCmd" AbilCmd="FactoryTrainUCB,Train8" Row="1" Column="3"/>
+            <LayoutButtons index="10" Face="HellionTank" Type="AbilCmd" AbilCmd="FactoryTrainUCB,Train7" Row="1" Column="4"/>
+            <LayoutButtons index="11" Face="Thor" Type="AbilCmd" AbilCmd="FactoryTrainUCB,Train5" Row="2" Column="0"/>
+            <LayoutButtons index="12" Face="VikingFighter" Type="AbilCmd" AbilCmd="StarportTrainUCB,Train5" Row="2" Column="1"/>
+            <LayoutButtons index="13" Face="Medivac" Type="AbilCmd" AbilCmd="StarportTrainUCB,Train1" Row="2" Column="2"/>
+            <LayoutButtons index="14" Face="Raven" Type="AbilCmd" AbilCmd="StarportTrainUCB,Train3" Row="2" Column="3"/>
+            <LayoutButtons index="15" Face="Banshee" Type="AbilCmd" AbilCmd="StarportTrainUCB,Train2" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SdbTTrain2">
+        <AbilArray index="5" Link="BarracksTrainUCB"/>
+        <AbilArray index="6" Link="FactoryTrainUCB"/>
+        <AbilArray index="7" Link="StarportTrainUCB"/>
         <AbilArray index="8" Link="MorphDummyTrainNukeUCB"/>
         <CardLayouts index="0">
+            <LayoutButtons index="1" Face="Battlecruiser" Type="AbilCmd" AbilCmd="StarportTrainUCB,Train4" Row="0" Column="0"/>
+            <LayoutButtons index="2" Face="Liberator" Type="AbilCmd" AbilCmd="StarportTrainUCB,Train7" Row="0" Column="1"/>
             <LayoutButtons index="3" Face="NukeArmUCB" Type="AbilCmd" AbilCmd="MorphDummyTrainNukeUCB,Execute" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>

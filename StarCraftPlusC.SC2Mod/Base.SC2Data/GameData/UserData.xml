@@ -10,6 +10,21 @@
         <Instances index="3" Id="UpgradeToPlanetaryFortressUCB">
             <Int index="0" removed="1"/>
         </Instances>
+        <Instances index="5" Id="BarracksTrainUCB">
+            <GameLink GameLink="BarracksTrain">
+                <Field Id="RealAbil"/>
+            </GameLink>
+        </Instances>
+        <Instances index="6" Id="FactoryTrainUCB">
+            <GameLink GameLink="FactoryTrain">
+                <Field Id="RealAbil"/>
+            </GameLink>
+        </Instances>
+        <Instances index="7" Id="StarportTrainUCB">
+            <GameLink GameLink="StarportTrain">
+                <Field Id="RealAbil"/>
+            </GameLink>
+        </Instances>
         <Instances index="16" Id="ScannerSweepUCB">
             <GameLink GameLink="ScannerSweep">
                 <Field Id="RealAbil"/>

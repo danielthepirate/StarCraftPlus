@@ -376,6 +376,12 @@
         <CustomUnitStatusOffset value="0,50"/>
         <CustomUnitStatusAttachment value="Ref_Origin"/>
     </CActorUnit>
+    <CActorEventMacro id="MacroGlobalRallyTeamColor">
+        <EditorCategories value=""/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="SetTeamColor 0,208,64 0,208,64"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="SetTeamColor 128,0,208 128,0,208"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="SetTeamColor 0,128,255 0,128,255"/>
+    </CActorEventMacro>
     <CActorEventMacro id="MacroStatusBarProgressPaused">
         <EditorCategories value=""/>
         <Remove Send="Create"/>
@@ -780,6 +786,7 @@
         <HostSiteOps Ops="SOpBasicScopeFollow SOpLowerByDot2"/>
         <Model value="GameGlobalRallyCursorTarget"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
     </CActorModel>
     <CActorModel id="GameGlobalRallyCursorTarget02" parent="CursorModel" abil="GameGlobalRallyTarget00">
         <Aliases value="_Scalable"/>
@@ -795,6 +802,7 @@
         <HostSiteOps Ops="SOpBasicScopeFollow SOpLowerByDot2"/>
         <Model value="GameGlobalRallyCursorTarget"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
     </CActorModel>
     <CActorUnit id="GameGlobalRallyTarget00" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyTarget00"/>
     <CActorModel id="GameGlobalRallyCursorTarget00" parent="CursorModel" abil="GameGlobalRallyTarget00">
@@ -811,6 +819,7 @@
         <HostSiteOps Ops="SOpBasicScopeFollow SOpHigherOfTerrainAndWater SOpLowerByDot2"/>
         <Model value="GameGlobalRallyCursorTarget"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
     </CActorModel>
     <CActorModel id="GameGlobalRallyTarget01Persistent" parent="ModelAddition">
         <Aliases index="0" removed="1"/>
@@ -840,6 +849,7 @@
         <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
         <Model value="GameGlobalRallyTargetPersistent"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
     </CActorModel>
     <CActorUnit id="GameGlobalRallyTarget01" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyTarget01"/>
     <CActorModel id="GameGlobalRallyTarget00Persistent" parent="ModelAddition">
@@ -871,6 +881,7 @@
         <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
         <Model value="GameGlobalRallyTargetPersistent"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
     </CActorModel>
     <CActorModel id="GameGlobalRallyTarget02Persistent" parent="ModelAddition">
         <Aliases index="0" removed="1"/>
@@ -900,6 +911,7 @@
         <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
         <Model value="GameGlobalRallyTargetPersistent"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
     </CActorModel>
     <CActorModel id="GameGlobalRallyTargetProtossStargate" parent="ModelAnimationStyleContinuous">
         <Filter index="Neutral" value="1"/>

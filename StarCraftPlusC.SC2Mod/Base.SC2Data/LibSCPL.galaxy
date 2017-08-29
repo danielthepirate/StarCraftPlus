@@ -2005,8 +2005,8 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libNtve_gf_SetUpgradeLevelForPlayer(1, "WarpGateResearch", 1);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "WarpGate", 10.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Factory", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Factory", 8.0);
     return true;
 }
 
@@ -4159,6 +4159,57 @@ void libSCPL_gt_ProgressUnitStartRefund_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Progress Unit Start Refund Terran Dummy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ProgressUnitStartRefundTerranDummy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_parentUnit;
+    string lv_progressUnitType;
+    int lv_progressIndex;
+    int lv_costMinerals;
+    int lv_costVespene;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_parentUnit = EventUnit();
+    lv_progressIndex = AbilityCommandGetCommand(OrderGetAbilityCommand(EventUnitOrder()));
+    lv_progressUnitType = (CatalogFieldValueGet(c_gameCatalogAbil, AbilityCommandGetAbility(OrderGetAbilityCommand(EventUnitOrder())), ("InfoArray[" + IntToString(lv_progressIndex) + "].Unit[0]"), c_playerAny));
+    lv_costMinerals = UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals);
+    lv_costVespene = UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene);
+    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropMinerals, c_playerPropOperAdd, lv_costMinerals);
+    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropVespene, c_playerPropOperAdd, lv_costVespene);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ProgressUnitStartRefundTerranDummy_Init () {
+    libSCPL_gt_ProgressUnitStartRefundTerranDummy = TriggerCreate("libSCPL_gt_ProgressUnitStartRefundTerranDummy_Func");
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("BarracksTrainUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("BarracksTrainUCB", 1));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("BarracksTrainUCB", 3));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("BarracksTrainUCB", 2));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("FactoryTrainUCB", 5));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("FactoryTrainUCB", 1));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("FactoryTrainUCB", 4));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("StarportTrainUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("StarportTrainUCB", 4));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("StarportTrainUCB", 1));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("StarportTrainUCB", 2));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("StarportTrainUCB", 3));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("FactoryTrainUCB", 24));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("FactoryTrainUCB", 6));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("FactoryTrainUCB", 7));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefundTerranDummy, null, AbilityCommand("StarportTrainUCB", 6));
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Progress Unit Start
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
@@ -4210,6 +4261,9 @@ bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
     lv_progressUnitType = libNtve_gf_TriggeringProgressUnitType();
     lv_progressCostMinerals = UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals);
     lv_progressCostVespene = UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene);
+    if ((lv_progressCostMinerals == 0.0) && (lv_progressCostVespene == 0.0)) {
+        return true;
+    }
     if ((lv_progressUnitType == "Baneling")) {
         lv_progressCostMinerals = (lv_progressCostMinerals - UnitTypeGetCost("Zergling", c_unitCostMinerals));
     }
@@ -4421,6 +4475,9 @@ bool libSCPL_gt_ProgressProtossUnitStart_Func (bool testConds, bool runActions) 
     lv_totalCostMinerals = UnitTypeGetCost(lv_progressType, c_unitCostMinerals);
     lv_totalCostVespene = UnitTypeGetCost(lv_progressType, c_unitCostVespene);
     lv_progressTime = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeTotal, lv_progressIndex);
+    if ((lv_totalCostMinerals == 0.0) && (lv_totalCostVespene == 0.0)) {
+        return true;
+    }
     lv_progressTimeActual = (lv_progressTime - 1.0);
     libSCPL_gf_UnitProtossProgressSet(lv_parentUnit, 0.0);
     while ((UnitIsAlive(lv_parentUnit) == true) && (lv_progressIsComplete == false) && (libSCPL_gf_UnitProtossProgress(lv_parentUnit) != -1.0)) {
@@ -7053,6 +7110,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ProgressBuildingSCVRefundUndo_Init();
     libSCPL_gt_ProgressBuildingCancel_Init();
     libSCPL_gt_ProgressUnitStartRefund_Init();
+    libSCPL_gt_ProgressUnitStartRefundTerranDummy_Init();
     libSCPL_gt_ProgressUnitStart_Init();
     libSCPL_gt_ProgressProtossUnitStart_Init();
     libSCPL_gt_ProgressProtossUnitCancel_Init();

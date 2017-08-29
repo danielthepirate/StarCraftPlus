@@ -245,6 +245,9 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="BarracksTrainUCB" parent="BarracksTrain">
+        <Name value="Abil/Name/BarracksTrainUCB"/>
         <InfoArray index="Train1">
             <Button Requirements="HaveBarracksOnGround"/>
         </InfoArray>
@@ -331,6 +334,9 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="FactoryTrainUCB" parent="FactoryTrain">
+        <Name value="Abil/Name/FactoryTrainUCB"/>
         <InfoArray index="Train2">
             <Button Requirements="HaveFactoryWithTechLab"/>
         </InfoArray>
@@ -926,6 +932,26 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
+    </CAbilTrain>
+    <CAbilMorph id="AutoWallConstructionComplete" parent="SupplyDepotRaise">
+        <Name value="Abil/Name/AutoWallConstructionComplete"/>
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <EffectArray index="Start" value=""/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilTrain id="StarportTrainUCB" parent="StarportTrain">
+        <Name value="Abil/Name/StarportTrainUCB"/>
         <InfoArray index="Train1">
             <Button Requirements="HaveStarportOnGround"/>
         </InfoArray>
@@ -945,23 +971,6 @@
             <Button Requirements="HaveStarportOnGround"/>
         </InfoArray>
     </CAbilTrain>
-    <CAbilMorph id="AutoWallConstructionComplete" parent="SupplyDepotRaise">
-        <Name value="Abil/Name/AutoWallConstructionComplete"/>
-        <InfoArray index="0">
-            <SectionArray index="Abils">
-                <EffectArray index="Start" value=""/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="0"/>
-            </SectionArray>
-            <SectionArray index="Mover">
-                <DurationArray index="Duration" value="0"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0"/>
-            </SectionArray>
-        </InfoArray>
-    </CAbilMorph>
     <CAbilEffectTarget id="SupplyDropUCB" parent="SupplyDrop">
         <Name value="Abil/Name/SupplyDropUCB"/>
         <Effect index="0" value="SupplyDropApplyTempBehaviorDummy"/>
