@@ -1587,7 +1587,7 @@ bool libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar (unit lp_unit) {
     // Variable Initialization
 
     // Implementation
-    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "CyberneticsCore") || (UnitGetType(lp_unit) == "DarkShrine") || (UnitGetType(lp_unit) == "FleetBeacon") || (UnitGetType(lp_unit) == "Forge") || (UnitGetType(lp_unit) == "Gateway") || (UnitGetType(lp_unit) == "Nexus") || (UnitGetType(lp_unit) == "RoboticsBay") || (UnitGetType(lp_unit) == "RoboticsFacility") || (UnitGetType(lp_unit) == "Stargate") || (UnitGetType(lp_unit) == "TemplarArchive") || (UnitGetType(lp_unit) == "TwilightCouncil") || (UnitGetType(lp_unit) == "WarpGate") || (UnitGetType(lp_unit) == "Assimilator") || (UnitGetType(lp_unit) == "PhotonCannon") || (UnitGetType(lp_unit) == "Pylon") || (UnitGetType(lp_unit) == "MothershipCore") || (UnitGetType(lp_unit) == "BanelingNest") || (UnitGetType(lp_unit) == "EvolutionChamber") || (UnitGetType(lp_unit) == "Lair") || (UnitGetType(lp_unit) == "LurkerDenMP") || (UnitGetType(lp_unit) == "GreaterSpire") || (UnitGetType(lp_unit) == "Hatchery") || (UnitGetType(lp_unit) == "Hive") || (UnitGetType(lp_unit) == "HydraliskDen") || (UnitGetType(lp_unit) == "InfestationPit") || (UnitGetType(lp_unit) == "RoachWarren") || (UnitGetType(lp_unit) == "SpawningPool") || (UnitGetType(lp_unit) == "Spire") || (UnitGetType(lp_unit) == "UltraliskCavern") || (UnitGetType(lp_unit) == "Extractor") || (UnitGetType(lp_unit) == "NydusNetwork") || (UnitGetType(lp_unit) == "SpineCrawler") || (UnitGetType(lp_unit) == "SporeCrawler") || (UnitGetType(lp_unit) == "Larva") || (UnitGetType(lp_unit) == "Egg") || (UnitGetType(lp_unit) == "Zergling") || (UnitGetType(lp_unit) == "BanelingCocoon") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor") || (UnitGetType(lp_unit) == "Overlord"))) {
+    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "SupplyDepot") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "CyberneticsCore") || (UnitGetType(lp_unit) == "DarkShrine") || (UnitGetType(lp_unit) == "FleetBeacon") || (UnitGetType(lp_unit) == "Forge") || (UnitGetType(lp_unit) == "Gateway") || (UnitGetType(lp_unit) == "Nexus") || (UnitGetType(lp_unit) == "RoboticsBay") || (UnitGetType(lp_unit) == "RoboticsFacility") || (UnitGetType(lp_unit) == "Stargate") || (UnitGetType(lp_unit) == "TemplarArchive") || (UnitGetType(lp_unit) == "TwilightCouncil") || (UnitGetType(lp_unit) == "WarpGate") || (UnitGetType(lp_unit) == "Assimilator") || (UnitGetType(lp_unit) == "PhotonCannon") || (UnitGetType(lp_unit) == "Pylon") || (UnitGetType(lp_unit) == "MothershipCore") || (UnitGetType(lp_unit) == "BanelingNest") || (UnitGetType(lp_unit) == "EvolutionChamber") || (UnitGetType(lp_unit) == "Lair") || (UnitGetType(lp_unit) == "LurkerDenMP") || (UnitGetType(lp_unit) == "GreaterSpire") || (UnitGetType(lp_unit) == "Hatchery") || (UnitGetType(lp_unit) == "Hive") || (UnitGetType(lp_unit) == "HydraliskDen") || (UnitGetType(lp_unit) == "InfestationPit") || (UnitGetType(lp_unit) == "RoachWarren") || (UnitGetType(lp_unit) == "SpawningPool") || (UnitGetType(lp_unit) == "Spire") || (UnitGetType(lp_unit) == "UltraliskCavern") || (UnitGetType(lp_unit) == "Extractor") || (UnitGetType(lp_unit) == "NydusNetwork") || (UnitGetType(lp_unit) == "SpineCrawler") || (UnitGetType(lp_unit) == "SporeCrawler") || (UnitGetType(lp_unit) == "Larva") || (UnitGetType(lp_unit) == "Egg") || (UnitGetType(lp_unit) == "Zergling") || (UnitGetType(lp_unit) == "BanelingCocoon") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor") || (UnitGetType(lp_unit) == "Overlord"))) {
         lv_boolean = true;
     }
     else {
@@ -2088,12 +2088,9 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "OrbitalCommand", 6.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "SiegeTank", 12.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "SpawningPool", 6.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "RoachWarren", 6.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "BanelingNest", 6.0);
     return true;
 }
 
@@ -2112,7 +2109,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_PlayerResourcesReset(1);
+    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
     return true;
 }
 
@@ -2131,12 +2128,7 @@ bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
-        GameSetGlobalTimeScale(20.0);
-    }
-    else {
-        GameSetGlobalTimeScale(1.0);
-    }
+    libSCPL_gf_PlayerResourcesReset(1);
     return true;
 }
 
@@ -2174,7 +2166,12 @@ bool libSCPL_gt__5_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TechTreeUpgradeAddLevel(1, "GameProtossWarpGateCount", -1);
+    if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
+        GameSetGlobalTimeScale(0.001);
+    }
+    else {
+        GameSetGlobalTimeScale(1.0);
+    }
     return true;
 }
 
@@ -2188,12 +2185,6 @@ void libSCPL_gt__5_Init () {
 // Trigger: 6
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt__6_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    PlayerAddChargeUsed(1, "WarpGateTrain", 1.0);
     return true;
 }
 
@@ -2213,7 +2204,7 @@ bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
     }
 
     if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
-        GameSetGlobalTimeScale(0.01);
+        GameSetGlobalTimeScale(20.0);
     }
     else {
         GameSetGlobalTimeScale(1.0);
@@ -2661,9 +2652,10 @@ bool libSCPL_gt_ProgressMorphStart01_Func (bool testConds, bool runActions) {
     lv_tickIncrement = libSCPL_gv_constants.lv_spendTickIncrement;
     lv_progressAbility = AbilityCommandGetAbility(OrderGetAbilityCommand(UnitOrder(EventUnit(), 0)));
     lv_progressUnitType = libSCPL_gf_AbilityMorphUnit(AbilityCommandGetAbility(EventUnitAbility()), lv_progressUnit);
-    lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
     lv_totalCostMinerals = libSCPL_gf_GetCostMinerals((lv_progressUnitType));
     lv_totalCostVespene = libSCPL_gf_GetCostVespene((lv_progressUnitType));
+    lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
+    lv_progressTime = (Trunc((lv_progressTime / lv_tickIncrement)) * lv_tickIncrement);
     lv_tickCostBaseMinerals = (lv_totalCostMinerals / (lv_progressTime / lv_tickIncrement));
     lv_tickCostBaseVespene = (lv_totalCostVespene / (lv_progressTime / lv_tickIncrement));
     libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
@@ -2859,9 +2851,10 @@ bool libSCPL_gt_ProgressMorphStart02_Func (bool testConds, bool runActions) {
     lv_tickIncrement = libSCPL_gv_constants.lv_spendTickIncrement;
     lv_progressAbility = AbilityCommandGetAbility(OrderGetAbilityCommand(UnitOrder(EventUnit(), 0)));
     lv_progressUnitType = libSCPL_gf_AbilityMorphUnit(AbilityCommandGetAbility(EventUnitAbility()), lv_progressUnit);
-    lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
     lv_totalCostMinerals = libSCPL_gf_GetCostMinerals((lv_progressUnitType));
     lv_totalCostVespene = libSCPL_gf_GetCostVespene((lv_progressUnitType));
+    lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
+    lv_progressTime = (Trunc((lv_progressTime / lv_tickIncrement)) * lv_tickIncrement);
     lv_tickCostBaseMinerals = (lv_totalCostMinerals / (lv_progressTime / lv_tickIncrement));
     lv_tickCostBaseVespene = (lv_totalCostVespene / (lv_progressTime / lv_tickIncrement));
     libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
@@ -3164,15 +3157,16 @@ bool libSCPL_gt_ProgressUpgradeStart_Func (bool testConds, bool runActions) {
     }
 
     Wait(0.0, c_timeGame);
-    lv_progressType = libNtve_gf_TriggeringProgressUpgrade();
-    lv_totalCostMinerals = libSCPL_gf_GetCostMinerals((lv_progressType));
-    lv_totalCostVespene = libSCPL_gf_GetCostVespene((lv_progressType));
-    lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressType));
     lv_playerIndex = EventPlayer();
     lv_parentUnit = EventUnit();
     lv_progressUnit = EventUnitProgressUnit();
     lv_progressIndex = 1;
     lv_tickIncrement = libSCPL_gv_constants.lv_spendTickIncrement;
+    lv_progressType = libNtve_gf_TriggeringProgressUpgrade();
+    lv_totalCostMinerals = libSCPL_gf_GetCostMinerals((lv_progressType));
+    lv_totalCostVespene = libSCPL_gf_GetCostVespene((lv_progressType));
+    lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressType));
+    lv_progressTime = (Trunc((lv_progressTime / lv_tickIncrement)) * lv_tickIncrement);
     lv_tickCostBaseMinerals = (lv_totalCostMinerals / (lv_progressTime / lv_tickIncrement));
     lv_tickCostBaseVespene = (lv_totalCostVespene / (lv_progressTime / lv_tickIncrement));
     libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
@@ -3487,15 +3481,16 @@ bool libSCPL_gt_ProgressArmamentStart_Func (bool testConds, bool runActions) {
     }
 
     Wait(0.0, c_timeGame);
-    lv_progressUnitType = libNtve_gf_TriggeringProgressUnitType();
-    lv_totalCostMinerals = UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals);
-    lv_totalCostVespene = UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene);
-    lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
     lv_playerIndex = EventPlayer();
     lv_parentUnit = EventUnit();
     lv_progressUnit = EventUnitProgressUnit();
     lv_progressIndex = 1;
     lv_tickIncrement = libSCPL_gv_constants.lv_spendTickIncrement;
+    lv_progressUnitType = libNtve_gf_TriggeringProgressUnitType();
+    lv_totalCostMinerals = UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals);
+    lv_totalCostVespene = UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene);
+    lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
+    lv_progressTime = (Trunc((lv_progressTime / lv_tickIncrement)) * lv_tickIncrement);
     lv_tickCostBaseMinerals = (lv_totalCostMinerals / (lv_progressTime / lv_tickIncrement));
     lv_tickCostBaseVespene = (lv_totalCostVespene / (lv_progressTime / lv_tickIncrement));
     libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
@@ -3750,6 +3745,7 @@ bool libSCPL_gt_ProgressBuildingStart_Func (bool testConds, bool runActions) {
         return true;
     }
     lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
+    lv_progressTime = (Trunc((lv_progressTime / lv_tickIncrement)) * lv_tickIncrement);
     lv_tickCostBaseMinerals = (lv_totalCostMinerals / (lv_progressTime / lv_tickIncrement));
     lv_tickCostBaseVespene = (lv_totalCostVespene / (lv_progressTime / lv_tickIncrement));
     libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
@@ -3867,6 +3863,7 @@ bool libSCPL_gt_ProgressBuildingSCVStart_Func (bool testConds, bool runActions) 
     lv_totalCostMinerals = UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals);
     lv_totalCostVespene = UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene);
     lv_progressTime = libSCPL_gf_GetBuildTime((lv_progressUnitType));
+    lv_progressTime = (Trunc((lv_progressTime / lv_tickIncrement)) * lv_tickIncrement);
     lv_tickCostBaseMinerals = (lv_totalCostMinerals / (lv_progressTime / lv_tickIncrement));
     lv_tickCostBaseVespene = (lv_totalCostVespene / (lv_progressTime / lv_tickIncrement));
     libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
@@ -4202,12 +4199,13 @@ bool libSCPL_gt_ProgressUnitStartRefund_Func (bool testConds, bool runActions) {
     lv_progressUnitType = (CatalogFieldValueGet(c_gameCatalogAbil, AbilityCommandGetAbility(OrderGetAbilityCommand(EventUnitOrder())), ("InfoArray[" + IntToString(lv_progressIndex) + "].Unit[0]"), c_playerAny));
     lv_costMinerals = UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals);
     lv_costVespene = UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene);
-    if ((EventUnitOrder() == Order(AbilityCommand("LarvaTrain", 1)))) {
+    if ((lv_progressUnitType == "Zergling")) {
         lv_costMinerals = (lv_costMinerals * 2);
     }
-    else if ((EventUnitOrder() == Order(AbilityCommand("MorphZerglingToBaneling", 0)))) {
+    else if ((lv_progressUnitType == "Baneling")) {
         lv_costMinerals = (lv_costMinerals - UnitTypeGetCost("Zergling", c_unitCostMinerals));
     }
+    libPPRL_gf_DebugString(("cost minerals " + FixedToString(lv_costMinerals, c_fixedPrecisionAny) + " for " + (lv_progressUnitType)));
     PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropMinerals, c_playerPropOperAdd, lv_costMinerals);
     PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropVespene, c_playerPropOperAdd, lv_costVespene);
     return true;
@@ -4266,7 +4264,16 @@ void libSCPL_gt_ProgressUnitStartRefund_Init () {
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrain", 12));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("MorphToRavager", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("MorphToLurker", 0));
-    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("MorphToLurker", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 1));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 12));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 6));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 14));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 9));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 2));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 4));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 10));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 3));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUnitStartRefund, null, AbilityCommand("LarvaTrainDummyRedirect", 11));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4429,7 +4436,7 @@ bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
         lv_tickCostVespene = (lv_tickCostBaseVespene + lv_tickCostCarryOverVespene);
         lv_tickCostCarryOverMinerals = ModF(lv_tickCostMinerals, 1.0);
         lv_tickCostCarryOverVespene = ModF(lv_tickCostVespene, 1.0);
-        if ((lv_tick == (lv_progressTime - lv_tickIncrement))) {
+        if (((lv_tick + lv_tickIncrement) >= (lv_progressTime - lv_tickIncrement))) {
             lv_tickCostMinerals = (lv_progressCostMinerals - lv_tickTotalMinerals);
             lv_tickCostVespene = (lv_progressCostVespene - lv_tickTotalVespene);
         }
@@ -4491,7 +4498,7 @@ bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
             Wait((libSCPL_gf_TickIncrementActual(lv_parentUnit) - 0.0625), c_timeGame);
             continue;
         }
-        if ((lv_tick == (lv_progressTime - lv_tickIncrement))) {
+        if (((lv_tick + lv_tickIncrement) >= (lv_progressTime - lv_tickIncrement))) {
             Wait((libSCPL_gf_TickIncrementActual(lv_parentUnit) - 0.0625), c_timeGame);
             lv_tick += (lv_tickIncrement - 0.0625);
             lv_expectedTime = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeElapsed, lv_progressIndex);
@@ -7404,6 +7411,7 @@ bool libSCPL_gt_LabelsPlusUnitCreated_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libPPRL_gf_DebugString(("unit created"));
     DataTableSetString(true, (IntToString(UnitGetTag(lv_unit)) + "-slot1"), "");
     DataTableSetString(true, (IntToString(UnitGetTag(lv_unit)) + "-slot2"), "");
     DialogControlHookupUnitStatus(c_triggerControlTypeImage, "StatusIcon1\\IconBG", lv_unit);
@@ -7634,7 +7642,7 @@ void libSCPL_gt_LabelsPlusUnitTrainingStopped_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: LabelsPlus- Unit Training Reactor Destroyed
+// Trigger: LabelsPlus - Unit Training Reactor Destroyed
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_LabelsPlusUnitTrainingReactorDestroyed_Func (bool testConds, bool runActions) {
     unitgroup autoD0B609A6_g;
@@ -7819,6 +7827,7 @@ bool libSCPL_gt_LabelsPlusConstructionStarted_Func (bool testConds, bool runActi
     DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
     libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, lv_construction, "UnitIcon", c_playerAny)), PlayerGroupAll());
     DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    libPPRL_gf_DebugString(("construction start"));
     return true;
 }
 
@@ -7862,6 +7871,7 @@ bool libSCPL_gt_LabelsPlusConstructionStopped_Func (bool testConds, bool runActi
 
     DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
     DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    libPPRL_gf_DebugString(("construction stop"));
     return true;
 }
 

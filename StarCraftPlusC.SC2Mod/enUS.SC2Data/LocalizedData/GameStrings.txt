@@ -120,7 +120,12 @@ Button/Tooltip/MothershipUCB=Ultimate Protoss vessel. Can use Photon Overcharge,
 Button/Tooltip/MutateintoLurkerDenUCB=Morph into a Lurker Den, allowing Hydralisks to morph into Lurkers.
 Button/Tooltip/NukeArmUCB=Arms the Silo with a Tactical Nuke.<n/><n/>Nukes take <d time="20"/> to land, but they deal up to 300 (+200 vs. structures) damage in a large radius.<n/><n/>Use a Ghost to designate the target.
 Button/Tooltip/NydusCanalPlacementDummy=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
+Button/Tooltip/Overlord=Aerial Watcher.<n/>Provides an aura increases speed of creep spread.
 Button/Tooltip/OverlordEnhancedCreepGrowthAura=Nearby creep tumors spread 50% faster.
+Button/Tooltip/ProtossGroundArmorLevel1=Upgrades the armor of Protoss ground units and structures.
+Button/Tooltip/ProtossGroundArmorLevel2=Further upgrades the armor of Protoss ground units and structures.
+Button/Tooltip/ProtossGroundArmorLevel3=Maximizes the armor of Protoss ground units and structures.
+Button/Tooltip/Pylon=Creates power for nearby structures.<n/>Size of power field doubled when placed near a Nexus.
 Button/Tooltip/RavagerUCB=Ranged artillery. Can use Corrosive Bile.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/ResearchWarpGate=Upgrades all <c val="ffff8a">Gateways</c> to Warp Gates.
 Button/Tooltip/ScanUCB=Reveals an area of the map, detecting cloaked and burrowed units. Lasts <d time="12"/>.
@@ -129,10 +134,16 @@ Button/Tooltip/SummonNydusWormUCB=Summons a Nydus Worm at the target location.<n
 Button/Tooltip/SupplyDepot=Fortified Walls.<n/><n/>Auto Walls automatically lower to allow your units to walk over them.
 Button/Tooltip/SupplyDepotConstructor=Provides supply.<n/>Supply allows you to create more units.<n/>Supply Depots can be lowered to allow units to walk over them.
 Button/Tooltip/SupplyDropUCB=Drops additional supplies, permanently increasing the supply output of the target Supply Depot by <d ref="Behavior,SupplyDrop,Modification.Food"/>.
+Button/Tooltip/TerranInfantryArmorLevel1=Upgrades the armor of infantry units and structures.
+Button/Tooltip/TerranInfantryArmorLevel2=Further upgrades the armor of infantry units and structures.
+Button/Tooltip/TerranInfantryArmorLevel3=Maximizes the armor of infantry units and structures.
 Button/Tooltip/TimeWarpUCB=Places target structure in a Chrono Boost, causing it to operate <d ref="(((Behavior,TimeWarpProduction,Modification.TimeScale)-1)*100)" precision="1"/>% faster.
 Button/Tooltip/UCBOrbitalCommand=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep, Calldown: MULE, and Calldown: Extra Supplies. Cannot load SCVs.
 Button/Tooltip/UCBUpgradeToPlanetaryFortress=Upgrades Command Center to a Planetary Fortress, greatly increasing its armor and arming it with a powerful defensive turret. Cannot lift off.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/WarpResonance=Power Source radius doubled.
+Button/Tooltip/zerggroundarmor1=Upgrades the armor of all Zerg ground units and structures.
+Button/Tooltip/zerggroundarmor2=Further upgrades the armor of all Zerg ground units and structures.
+Button/Tooltip/zerggroundarmor3=Maximizes the armor of all Zerg ground units and structures.
 DocInfo/DescLong=A StarCraft II mod aimed at creating more accessable gameplay for players of all skill levels.
 DocInfo/Name=Shibusa
 Effect/Name/AutoCreepSpreadAutocastBehavior=Auto Creep Spread Autocast Behavior

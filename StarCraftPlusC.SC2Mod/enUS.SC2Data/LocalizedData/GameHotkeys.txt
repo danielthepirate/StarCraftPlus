@@ -216,6 +216,7 @@ Button/Hotkey/ProtossShieldsLevel3=U
 Button/Hotkey/PsiStorm=W
 Button/Hotkey/PurificationNovaTargeted=Q
 Button/Hotkey/Pylon=Y
+Button/Hotkey/PylonDummy=
 Button/Hotkey/Queen=U
 Button/Hotkey/Raise=Q
 Button/Hotkey/Rally=

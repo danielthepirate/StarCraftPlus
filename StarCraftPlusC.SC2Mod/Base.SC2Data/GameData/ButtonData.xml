@@ -744,9 +744,6 @@
     <CButton id="PulsarCannon">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="PylonDummy">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="QueenFly">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
