@@ -213,6 +213,53 @@
     <CEffectApplyBehavior id="GameNexusCount">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameResourceMarkerMinerals">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameResourceMarkerMineralsMULE">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="GameResourceMarkerRemoveMinerals">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GameResourceMarkerMinerals"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="GameResourceMarkerMineralsRich">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="GameResourceMarkerRemoveVespene">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GameResourceMarkerVespene"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="GameResourceMarkerRemoveMineralsRich">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GameResourceMarkerMineralsRich"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="GameResourceMarkerRemoveMineralsMULE">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GameResourceMarkerMineralsMULE"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="GameResourceMarkerSetMinerals">
+        <EditorCategories value=""/>
+        <EffectArray value="GameResourceMarkerRemoveVespene"/>
+        <EffectArray value="GameResourceMarkerRemoveMineralsRich"/>
+    </CEffectSet>
+    <CEffectSet id="GameResourceMarkerSetVespene">
+        <EditorCategories value=""/>
+        <EffectArray value="GameResourceMarkerRemoveMinerals"/>
+        <EffectArray value="GameResourceMarkerRemoveMineralsRich"/>
+    </CEffectSet>
+    <CEffectSet id="GameResourceMarkerSetMineralsRich">
+        <EditorCategories value=""/>
+        <EffectArray value="GameResourceMarkerRemoveVespene"/>
+        <EffectArray value="GameResourceMarkerRemoveMinerals"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GameResourceMarkerVespene">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectModifyPlayer id="GameResources5DummyMinerals">
         <ValidatorArray value="NotDead"/>
         <ValidatorArray value="IsReturningResources"/>
@@ -227,6 +274,13 @@
         <Resources index="Custom" value="4"/>
         <ResourcesCollected index="Custom" value="4"/>
     </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameResources25DummyMinerals">
+        <ValidatorArray value="NotDead"/>
+        <ValidatorArray value="IsReturningResources"/>
+        <EditorCategories value=""/>
+        <Resources index="Terrazine" value="25"/>
+        <ResourcesCollected index="Terrazine" value="25"/>
+    </CEffectModifyPlayer>
     <CEffectModifyPlayer id="GameResources7DummyMinerals">
         <ValidatorArray value="NotDead"/>
         <ValidatorArray value="IsReturningResources"/>
@@ -234,6 +288,26 @@
         <Resources index="Terrazine" value="7"/>
         <ResourcesCollected index="Terrazine" value="7"/>
     </CEffectModifyPlayer>
+    <CEffectSwitch id="GameResourceMarkerMineralsRichSet">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsMULE" Effect="GameResourceMarkerMineralsMULE"/>
+        <CaseDefault value="GameResourceMarkerMineralsRich"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="GameResourcesMineralSet">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsMULE" Effect="GameResources25DummyMinerals"/>
+        <CaseDefault value="GameResources5DummyMinerals"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="GameResourcesMineralRichSet">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsMULE" Effect="GameResources25DummyMinerals"/>
+        <CaseDefault value="GameResources7DummyMinerals"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="GameResourceMarkerMineralsSet">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsMULE" Effect="GameResourceMarkerMineralsMULE"/>
+        <CaseDefault value="GameResourceMarkerMinerals"/>
+    </CEffectSwitch>
     <CEffectSet id="GameUCBChargeLinkCommandCenterRemove">
         <EditorCategories value=""/>
         <EffectArray value="GameUCBCommandCenterChargeRemove"/>

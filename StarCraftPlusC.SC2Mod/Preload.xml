@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Preload>
-<Asset path="assets\textures\black.dds" Type="Image"/>
 <Asset path="assets\textures\blank.dds" Type="Image"/>
 <Actor id="SYSTEM_ActorConfig"/>
 <Behavior id="GameUCBCommandCenterChargeLink"/>
@@ -31,7 +30,9 @@
 <Unit id="Factory"/>
 <Unit id="Starport"/>
 <Unit id="FusionCore"/>
+<Unit id="SiegeTank"/>
 <Unit id="SCV"/>
+<Unit id="Marine"/>
 <Unit id="Probe"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>

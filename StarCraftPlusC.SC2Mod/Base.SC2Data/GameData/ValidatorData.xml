@@ -53,6 +53,54 @@
         <CombineArray value="CarryNoVespeneTerran"/>
         <CombineArray value="CarryNoVespeneZerg"/>
     </CValidatorCombine>
+    <CValidatorUnitOrderQueue id="IsGatheringResourcesTerranMULE">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="MULEGather"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorCombine id="OrderIsGatherOrReturnMULE">
+        <CombineArray value="IsGatheringResourcesTerranMULE"/>
+        <CombineArray value="IsReturningResourcesTerranMULE"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="OrderIsGatherDrone">
+        <AbilLink value="DroneHarvest"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderIsGatherSCV">
+        <AbilLink value="SCVHarvest"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorCombine id="OrderIsGatherOrReturn">
+        <CombineArray value="OrderIsGatherDrone"/>
+        <CombineArray value="OrderIsGatherProbe"/>
+        <CombineArray value="OrderIsGatherSCV"/>
+        <CombineArray value="OrderIsReturnDrone"/>
+        <CombineArray value="OrderIsReturnProbe"/>
+        <CombineArray value="OrderIsReturnSCV"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="OrderIsReturnDrone">
+        <AbilLink value="DroneHarvest"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderIsReturnSCV">
+        <AbilLink value="SCVHarvest"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderIsGatherProbe">
+        <AbilLink value="ProbeHarvest"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderIsReturnProbe">
+        <AbilLink value="ProbeHarvest"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitOrderQueue id="SourceNoMoveOrder">
+        <WhichUnit Value="Source"/>
+        <AbilLink value="move"/>
+        <Find value="0"/>
+    </CValidatorUnitOrderQueue>
     <CValidatorCombine id="NearWarpGateActual">
         <Type value="And"/>
         <CombineArray value="NearWarpGate"/>

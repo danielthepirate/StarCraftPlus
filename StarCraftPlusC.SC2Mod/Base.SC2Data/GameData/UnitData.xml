@@ -479,12 +479,13 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="MULE">
+        <BehaviorArray Link="GameWorkerIdle"/>
+        <BehaviorArray Link="GameResourceMarkerMineralsMULE"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Row="2"/>
             <LayoutButtons index="8" Row="2"/>
             <LayoutButtons index="9" Row="2"/>
         </CardLayouts>
-        <BehaviorArray Link="GameWorkerIdle"/>
     </CUnit>
     <CUnit id="Medivac"/>
     <CUnit id="MissileTurret">
@@ -527,8 +528,6 @@
     <CUnit id="NydusNetwork">
         <AbilArray Link="BuildNydusCanalUCB"/>
         <CardLayouts index="0">
-            <LayoutButtons index="1" Column="0"/>
-            <LayoutButtons index="2" Column="1"/>
             <LayoutButtons index="4" AbilCmd="BuildNydusCanalUCB,Build1" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>

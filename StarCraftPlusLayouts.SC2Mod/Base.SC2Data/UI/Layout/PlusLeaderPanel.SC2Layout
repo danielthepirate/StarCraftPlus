@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+	<Constant name="ColorProtoss" val="110,170,255"/>
+    <Constant name="ColorTerran" val="155,255,190"/>
+    <Constant name="ColorZerg" val="245,140,70"/>
+	<Constant name="ProductionOffset" val="2"/>
+	<Constant name="ProductionPadding" val="4"/>
+	
+    <Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer" file="GameUI">
+		<Frame type="Frame" name="LeaderPlus">
+			<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+			<Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+			<Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+			<Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+			
+			<Frame name="PlayerProduction01" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="1"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction02" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="2"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction03" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="3"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction04" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="4"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction05" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="5"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction06" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="6"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction07" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="7"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction08" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="8"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction09" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="9"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction10" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="10"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction11" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="11"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction12" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="12"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction13" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="13"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction14" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="14"/>
+				</Frame>
+			</Frame>
+			<Frame name="PlayerProduction15" type="Control" template="PlusTemplates/ProductionContainerTemplate">
+				<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+					<PlayerId val="15"/>
+				</Frame>
+			</Frame>
+			
+			
+		</Frame>
+    </Frame>
+</Desc>

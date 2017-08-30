@@ -5,11 +5,19 @@ include "TriggerLibs/natives"
 //--------------------------------------------------------------------------------------------------
 // Preset Declarations
 const int libSCPL_ge_GenericEvent_ResourceSpend = 0;
+const int libSCPL_ge_GenericEvent_HarvesterUpdate = 1;
 string libSCPL_ge_GenericEvent_Ident (int lp_val);
 const int libSCPL_ge_GenericParameter_TriggeringPlayer = 0;
 string libSCPL_ge_GenericParameter_Ident (int lp_val);
 
 // Structures
+struct libSCPL_gs_Labels {
+    int lv_iconSize;
+    int lv_iconSizeEgg;
+    int lv_iconSizeTechLab;
+    string[17] lv_colorStrings;
+};
+
 struct libSCPL_gs_AutoCreepLineage {
     unit lv_zzParent;
     unit lv_head;
@@ -24,6 +32,10 @@ struct libSCPL_gs_Constant {
     fixed lv_spendTickIncrementBoosted;
     fixed lv_townHallResourceRadius;
     fixed lv_gameSpeedFactor;
+    fixed lv_harvesterIncomeMinerals;
+    fixed lv_harvesterIncomeMineralsRich;
+    fixed lv_harvesterIncomeMineralsMULE;
+    fixed lv_harvesterIncomeVespene;
 };
 
 struct libSCPL_gs_Player {
@@ -217,6 +229,8 @@ struct libSCPL_gs_Hotkey {
 
 // Variable Declarations
 playergroup libSCPL_gv_globalSelectionPlayers;
+libSCPL_gs_Labels libSCPL_gv_labels;
+playergroup libSCPL_gv_labelsObs;
 libSCPL_gs_Constant libSCPL_gv_constants;
 libSCPL_gs_Player[17] libSCPL_gv_player;
 libSCPL_gs_Map libSCPL_gv_map;
@@ -293,6 +307,9 @@ void libSCPL_gf_InitializeUIHookups ();
 void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendUpdate (unit lp_unit, fixed lp_costTime, fixed lp_costMinerals, fixed lp_costVespene);
+bool libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar (unit lp_unit);
+bool libSCPL_gf_LabelsPlusUnitMorphTwoStage (unit lp_unit);
+int libSCPL_gf_LabelsPlusUnitIconSize (unit lp_productionUnit);
 void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex);
 void libSCPL_gf_TriggerEventRegisterUnitDies (trigger lp_trigger, unit lp_unit);
 void libSCPL_gf_TriggerEventRegisterDialogItemClicked (trigger lp_trigger, int lp_dialogItem);
@@ -310,7 +327,11 @@ unitgroup libSCPL_gf_UnitsInUnitGroupMatchingChargeLink (unitgroup lp_unitGroup,
 void libSCPL_gf_UnitChargeLinkSet (unit lp_unit, string lp_chargeLink, fixed lp_chargeValue);
 void libSCPL_gf_UnitChargeLinkAdd (unit lp_unit, string lp_chargeLink, fixed lp_chargeValue);
 fixed libSCPL_gf_UnitChargeLink (unit lp_unit, string lp_chargeLink);
+void libSCPL_gf_ResourceSpendChanges (trigger t);
 void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer);
+void libSCPL_gf_ResourceHarvesterUpdate01 (trigger t);
+void libSCPL_gf_ResourceHarvesterUpdate02 (trigger t);
+void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
@@ -416,7 +437,25 @@ trigger libSCPL_gt_PlayerAutoCreepSpreadUnitCreated;
 trigger libSCPL_gt_UCBAutoLarvaSpawnToggleOn;
 trigger libSCPL_gt_UCBAutoLarvaSpawnToggleOff;
 trigger libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated;
+trigger libSCPL_gt_ResourceDisplayMineralCreate;
+trigger libSCPL_gt_ResourceDisplayMineralRichCreate;
+trigger libSCPL_gt_ResourceDisplayMineralMULECreate;
+trigger libSCPL_gt_ResourceDisplayVespeneCreate;
+trigger libSCPL_gt_ResourceDisplayMineralDestroy;
+trigger libSCPL_gt_ResourceDisplayMineralRichDestroy;
+trigger libSCPL_gt_ResourceDisplayMineralMULEDestroy;
+trigger libSCPL_gt_ResourceDisplayVespeneDestroy;
 trigger libSCPL_gt_ResourceDisplaySpend;
+trigger libSCPL_gt_LabelsPlusUnitCreated;
+trigger libSCPL_gt_LabelsPlusUnitTrainingStarted;
+trigger libSCPL_gt_LabelsPlusUnitTrainingStopped;
+trigger libSCPL_gt_LabelsPlusUnitTrainingReactorDestroyed;
+trigger libSCPL_gt_LabelsPlusResearchStarted;
+trigger libSCPL_gt_LabelsPlusResearchStopped;
+trigger libSCPL_gt_LabelsPlusConstructionStarted;
+trigger libSCPL_gt_LabelsPlusConstructionStopped;
+trigger libSCPL_gt_LabelsPlusMorphStarted;
+trigger libSCPL_gt_LabelsPlusMorphStopped;
 trigger libSCPL_gt_ControlGroupUpdateTrigger;
 trigger libSCPL_gt_ControlGroupUpdate;
 

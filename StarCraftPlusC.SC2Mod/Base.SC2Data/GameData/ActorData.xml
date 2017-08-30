@@ -610,6 +610,38 @@
         </StatusColors>
         <AcceptedTransfers index="Animator" value="1"/>
     </CActorUnit>
+    <CActorSimple id="ResourceMarkerDebugMineral">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMinerals.Create" Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMinerals.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 0,128,255 0.000000 OneShot Mineral"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 0.000000 Mineral"/>
+    </CActorSimple>
+    <CActorSimple id="ResourceMarkerDebugVespene">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerVespene.Create" Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerVespene.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 0,255,64 0.000000 OneShot Gas"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 0.000000 Gas"/>
+    </CActorSimple>
+    <CActorSimple id="ResourceMarkerDebugMineralRich">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMineralsRich.Create" Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMineralsRich.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 255,255,0 0.000000 OneShot Rich"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 0.000000 Rich"/>
+    </CActorSimple>
+    <CActorSimple id="ResourceMarkerDebugMULE">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMineralsMULE.Create" Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMineralsMULE.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 255,128,0 0.000000 OneShot MULE"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 0.000000 MULE"/>
+    </CActorSimple>
     <CActorUnit id="RoachWarren">
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
         <CustomUnitStatusOffset value="0,65"/>

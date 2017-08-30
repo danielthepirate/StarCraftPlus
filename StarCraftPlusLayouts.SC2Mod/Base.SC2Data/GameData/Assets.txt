@@ -39,3 +39,10 @@ UI/RallyButton02Hover=Assets\Textures\UI_SelectArmy_NormalOverPressedOver_Terran
 UI/RallyButton02Hover_Prot=Assets\Textures\UI_SelectArmy_NormalOverPressedOver_Protoss.dds
 UI/RallyButton02Hover_Terr=Assets\Textures\ui_rally_hover_terran02.dds
 UI/RallyButton02Hover_Zerg=Assets\Textures\UI_SelectArmy_NormalOverPressedOver_Zerg.dds
+
+WCS/RoundedRectangle_Small=Assets\Textures\RoundedRectangle_Small.dds
+
+UI/LeaderPanelRaceImage=Assets\Textures\icon-1v1-terran.dds
+UI/LeaderPanelRaceImage_Prot=Assets\Textures\icon-1v1-protoss.dds
+UI/LeaderPanelRaceImage_Terr=Assets\Textures\icon-1v1-terran.dds
+UI/LeaderPanelRaceImage_Zerg=Assets\Textures\icon-1v1-zerg.dds

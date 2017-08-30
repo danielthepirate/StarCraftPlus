@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
-    
 	<Constant name="ColorProtoss" val="110,170,255"/>
     <Constant name="ColorTerran" val="155,255,190"/>
     <Constant name="ColorZerg" val="245,140,70"/>
-	
 	
 	<Animation name="BoopTemplate">
 		<Event event="OnShown" frame="Icon" action="Reset,Play"/>

@@ -27,12 +27,23 @@ void libSCPL_InitVariables () {
     libSCPL_InitVariables_completed = true;
 
     libSCPL_gv_globalSelectionPlayers = PlayerGroupEmpty();
+    libSCPL_gv_labels.lv_iconSize = 50;
+    libSCPL_gv_labels.lv_iconSizeEgg = 35;
+    libSCPL_gv_labels.lv_iconSizeTechLab = 45;
+    for (init_i1 = 0; init_i1 <= 16; init_i1 += 1) {
+        libSCPL_gv_labels.lv_colorStrings[init_i1] = "";
+    }
+    libSCPL_gv_labelsObs = PlayerGroupSingle(CatalogFieldValueGetAsInt(c_gameCatalogGameUI, "Dflt", "DefaultObservedPlayerId", c_playerAny));
     libSCPL_gv_constants.lv_spendBufferMinerals = 1000;
     libSCPL_gv_constants.lv_spendBufferVespene = 1000;
     libSCPL_gv_constants.lv_spendTickIncrement = 0.4375;
     libSCPL_gv_constants.lv_spendTickIncrementBoosted = 0.4375;
     libSCPL_gv_constants.lv_townHallResourceRadius = 15.0;
     libSCPL_gv_constants.lv_gameSpeedFactor = 1.0;
+    libSCPL_gv_constants.lv_harvesterIncomeMinerals = 0.9375;
+    libSCPL_gv_constants.lv_harvesterIncomeMineralsRich = 1.3125;
+    libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE = 3.5;
+    libSCPL_gv_constants.lv_harvesterIncomeVespene = 0.9375;
     for (init_i = 0; init_i <= 16; init_i += 1) {
         libSCPL_gv_player[init_i].lv_globalZerg_AutoCreepNodeTargets = UnitGroupEmpty();
         for (init_i1 = 0; init_i1 <= 256; init_i1 += 1) {
@@ -222,6 +233,7 @@ void libSCPL_InitVariables () {
 // Presets
 string libSCPL_ge_GenericEvent_Ident (int lp_val) {
          if (lp_val == libSCPL_ge_GenericEvent_ResourceSpend) { return "ResourceSpend"; }
+    else if (lp_val == libSCPL_ge_GenericEvent_HarvesterUpdate) { return "HarvesterUpdate"; }
     return null;
 }
 
@@ -1462,6 +1474,8 @@ void libSCPL_gf_AutoCreepDebug (unit lp_unit) {
 }
 
 void libSCPL_gf_InitializeUIHookups () {
+    playergroup auto1771840D_g;
+    int auto1771840D_p;
     int autoAAAC514B_ae;
     int autoAAAC514B_ai;
     int auto4211EF39_ae;
@@ -1469,11 +1483,18 @@ void libSCPL_gf_InitializeUIHookups () {
 
     // Variable Declarations
     int lv_frameIndex;
+    int lv_playerIndex;
 
     // Variable Initialization
 
     // Implementation
-    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypePylonButton, false);
+    auto1771840D_g = PlayerGroupActive(); 
+    auto1771840D_p = 1;
+    for ( ; auto1771840D_p <= PlayerGroupCount(auto1771840D_g) ; auto1771840D_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto1771840D_g, auto1771840D_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto1771840D_g, auto1771840D_p);
+        DialogControlHookupStandard(c_triggerControlTypePanel, ("UIContainer/FullscreenUpperContainer/LeaderPlus/PlayerProduction" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_playerIndex)));
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupSingle(lv_playerIndex), true);
+    }
     DialogControlHookupStandard(c_triggerControlTypeLabel, "UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel2Spend");
     libSCPL_gv_uI.lv_resourceMineralSpend = DialogControlLastCreated();
     DialogControlHookupStandard(c_triggerControlTypeLabel, "UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel3Spend");
@@ -1510,6 +1531,7 @@ void libSCPL_gf_InitializeUIHookups () {
         DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
         libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[4][lv_frameIndex] = DialogControlLastCreated();
     }
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypePylonButton, false);
 }
 
 void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene) {
@@ -1556,6 +1578,55 @@ void libSCPL_gf_ResourceDisplaySpendUpdate (unit lp_unit, fixed lp_costTime, fix
         libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene += lv_tickVespene;
         libSCPL_gf_GenericEventResourceSpendChanges(lv_playerIndex);
     }
+}
+
+bool libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar (unit lp_unit) {
+    // Variable Declarations
+    bool lv_boolean;
+
+    // Variable Initialization
+
+    // Implementation
+    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "CyberneticsCore") || (UnitGetType(lp_unit) == "DarkShrine") || (UnitGetType(lp_unit) == "FleetBeacon") || (UnitGetType(lp_unit) == "Forge") || (UnitGetType(lp_unit) == "Gateway") || (UnitGetType(lp_unit) == "Nexus") || (UnitGetType(lp_unit) == "RoboticsBay") || (UnitGetType(lp_unit) == "RoboticsFacility") || (UnitGetType(lp_unit) == "Stargate") || (UnitGetType(lp_unit) == "TemplarArchive") || (UnitGetType(lp_unit) == "TwilightCouncil") || (UnitGetType(lp_unit) == "WarpGate") || (UnitGetType(lp_unit) == "Assimilator") || (UnitGetType(lp_unit) == "PhotonCannon") || (UnitGetType(lp_unit) == "Pylon") || (UnitGetType(lp_unit) == "MothershipCore") || (UnitGetType(lp_unit) == "BanelingNest") || (UnitGetType(lp_unit) == "EvolutionChamber") || (UnitGetType(lp_unit) == "Lair") || (UnitGetType(lp_unit) == "LurkerDenMP") || (UnitGetType(lp_unit) == "GreaterSpire") || (UnitGetType(lp_unit) == "Hatchery") || (UnitGetType(lp_unit) == "Hive") || (UnitGetType(lp_unit) == "HydraliskDen") || (UnitGetType(lp_unit) == "InfestationPit") || (UnitGetType(lp_unit) == "RoachWarren") || (UnitGetType(lp_unit) == "SpawningPool") || (UnitGetType(lp_unit) == "Spire") || (UnitGetType(lp_unit) == "UltraliskCavern") || (UnitGetType(lp_unit) == "Extractor") || (UnitGetType(lp_unit) == "NydusNetwork") || (UnitGetType(lp_unit) == "SpineCrawler") || (UnitGetType(lp_unit) == "SporeCrawler") || (UnitGetType(lp_unit) == "Larva") || (UnitGetType(lp_unit) == "Egg") || (UnitGetType(lp_unit) == "Zergling") || (UnitGetType(lp_unit) == "BanelingCocoon") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor") || (UnitGetType(lp_unit) == "Overlord"))) {
+        lv_boolean = true;
+    }
+    else {
+        lv_boolean = false;
+    }
+    return lv_boolean;
+}
+
+bool libSCPL_gf_LabelsPlusUnitMorphTwoStage (unit lp_unit) {
+    // Variable Declarations
+    bool lv_boolean;
+
+    // Variable Initialization
+
+    // Implementation
+    if (((UnitGetType(lp_unit) == "Overlord") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor"))) {
+        lv_boolean = true;
+    }
+    else {
+        lv_boolean = false;
+    }
+    return lv_boolean;
+}
+
+int libSCPL_gf_LabelsPlusUnitIconSize (unit lp_productionUnit) {
+    // Variable Declarations
+    int lv_iconSize;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_iconSize = libSCPL_gv_labels.lv_iconSize;
+    if (((UnitGetType(lp_productionUnit) == "Egg") || (UnitGetType(lp_productionUnit) == "BanelingCocoon") || (UnitGetType(lp_productionUnit) == "RavagerCocoon") || (UnitGetType(lp_productionUnit) == "LurkerMPEgg") || (UnitGetType(lp_productionUnit) == "BroodLordCocoon") || (UnitGetType(lp_productionUnit) == "TransportOverlordCocoon") || (UnitGetType(lp_productionUnit) == "OverlordCocoon") || (UnitGetType(lp_productionUnit) == "Larva") || (UnitGetType(lp_productionUnit) == "Zergling") || (UnitGetType(lp_productionUnit) == "Roach") || (UnitGetType(lp_productionUnit) == "Hydralisk") || (UnitGetType(lp_productionUnit) == "Corruptor") || (UnitGetType(lp_productionUnit) == "Overlord"))) {
+        lv_iconSize = libSCPL_gv_labels.lv_iconSizeEgg;
+    }
+    else if (((UnitGetType(lp_productionUnit) == "TechLab") || (UnitGetType(lp_productionUnit) == "BarracksTechLab") || (UnitGetType(lp_productionUnit) == "FactoryTechLab") || (UnitGetType(lp_productionUnit) == "StarportTechLab") || (UnitGetType(lp_productionUnit) == "MothershipCore"))) {
+        lv_iconSize = libSCPL_gv_labels.lv_iconSizeTechLab;
+    }
+    return lv_iconSize;
 }
 
 void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex) {
@@ -1922,6 +1993,11 @@ fixed libSCPL_gf_UnitChargeLink (unit lp_unit, string lp_chargeLink) {
     return UnitGetChargeUsed(lp_unit, (lp_chargeLink));
 }
 
+void libSCPL_gf_ResourceSpendChanges (trigger t) {
+    // Implementation
+    TriggerAddEventGeneric(t, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend));
+}
+
 void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer) {
     // Variable Declarations
     string lv_event;
@@ -1933,6 +2009,32 @@ void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer) {
 
     // Implementation
     lv_event = libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend);
+    lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
+    DataTableSetInt(false, TriggerEventParamName(lv_event, lv_param), lp_triggeringPlayer);
+    TriggerSendEvent(lv_event);
+}
+
+void libSCPL_gf_ResourceHarvesterUpdate01 (trigger t) {
+    // Implementation
+    TriggerAddEventGeneric(t, (libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_HarvesterUpdate) + "01"));
+}
+
+void libSCPL_gf_ResourceHarvesterUpdate02 (trigger t) {
+    // Implementation
+    TriggerAddEventGeneric(t, (libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_HarvesterUpdate) + "02"));
+}
+
+void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer) {
+    // Variable Declarations
+    string lv_event;
+    string lv_param;
+
+    // Variable Initialization
+    lv_event = "";
+    lv_param = "";
+
+    // Implementation
+    lv_event = (libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_HarvesterUpdate) + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lp_triggeringPlayer));
     lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
     DataTableSetInt(false, TriggerEventParamName(lv_event, lv_param), lp_triggeringPlayer);
     TriggerSendEvent(lv_event);
@@ -1987,6 +2089,11 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
     }
 
     libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "OrbitalCommand", 6.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Marine", 12.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "SiegeTank", 12.0);
     return true;
 }
 
@@ -2005,8 +2112,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Factory", 8.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Factory", 8.0);
+    libSCPL_gf_PlayerResourcesReset(1);
     return true;
 }
 
@@ -2025,7 +2131,12 @@ bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_PlayerResourcesReset(1);
+    if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
+        GameSetGlobalTimeScale(20.0);
+    }
+    else {
+        GameSetGlobalTimeScale(1.0);
+    }
     return true;
 }
 
@@ -2102,7 +2213,7 @@ bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
     }
 
     if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
-        GameSetGlobalTimeScale(20.0);
+        GameSetGlobalTimeScale(0.01);
     }
     else {
         GameSetGlobalTimeScale(1.0);
@@ -5972,7 +6083,6 @@ bool libSCPL_gt_MuleHarvestNearestResoures_Func (bool testConds, bool runActions
     lv_resources = libSCPL_gf_PlayerHarvestableMinerals(UnitGetOwner(lv_unit));
     lv_muleExpireDelay = StringToFixed(CatalogFieldValueGet(c_gameCatalogEffect, "CalldownMULECreatePersistent", "ExpireDelay", c_playerAny));
     lv_resourceDistanceClosest = DistanceBetweenPoints(UnitGetPosition(lv_unit), UnitGetPosition(UnitGroupClosestToPoint(lv_resources, UnitGetPosition(lv_unit))));
-    libPPRL_gf_DebugString(("dist " + FixedToString(lv_resourceDistanceClosest, c_fixedPrecisionAny)));
     if ((lv_resourceDistanceClosest <= lv_resourceDistanceMaximum)) {
         Wait((lv_muleExpireDelay + 0.0625), c_timeGame);
         UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("MULEGather", 0), UnitGroupClosestToPoint(lv_resources, UnitGetPosition(lv_unit))), c_orderQueueAddToEnd);
@@ -6962,6 +7072,238 @@ void libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = -0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMinerals);
+    libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralCreate_Init () {
+    libSCPL_gt_ResourceDisplayMineralCreate = TriggerCreate("libSCPL_gt_ResourceDisplayMineralCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralCreate, null, "GameResourceMarkerMinerals", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral Rich Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralRichCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = -0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsRich);
+    libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralRichCreate_Init () {
+    libSCPL_gt_ResourceDisplayMineralRichCreate = TriggerCreate("libSCPL_gt_ResourceDisplayMineralRichCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralRichCreate, null, "GameResourceMarkerMineralsRich", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral MULE Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralMULECreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = -0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE);
+    libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralMULECreate_Init () {
+    libSCPL_gt_ResourceDisplayMineralMULECreate = TriggerCreate("libSCPL_gt_ResourceDisplayMineralMULECreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralMULECreate, null, "GameResourceMarkerMineralsMULE", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Vespene Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayVespeneCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = -0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeVespene);
+    libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, 0.0, lv_resourceIncome);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayVespeneCreate_Init () {
+    libSCPL_gt_ResourceDisplayVespeneCreate = TriggerCreate("libSCPL_gt_ResourceDisplayVespeneCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayVespeneCreate, null, "GameResourceMarkerVespene", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = 0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMinerals);
+    libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralDestroy_Init () {
+    libSCPL_gt_ResourceDisplayMineralDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralDestroy, null, "GameResourceMarkerMinerals", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral Rich Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralRichDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = 0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsRich);
+    libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralRichDestroy_Init () {
+    libSCPL_gt_ResourceDisplayMineralRichDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralRichDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralRichDestroy, null, "GameResourceMarkerMineralsRich", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral MULE Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralMULEDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = 0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE);
+    libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralMULEDestroy_Init () {
+    libSCPL_gt_ResourceDisplayMineralMULEDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralMULEDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralMULEDestroy, null, "GameResourceMarkerMineralsMULE", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Vespene Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayVespeneDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = 0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeVespene);
+    libSCPL_gf_ResourceDisplaySpendAdd(lv_playerIndex, 0.0, lv_resourceIncome);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayVespeneDestroy_Init () {
+    libSCPL_gt_ResourceDisplayVespeneDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayVespeneDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayVespeneDestroy, null, "GameResourceMarkerVespene", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Resource Display Spend
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
@@ -6994,7 +7336,10 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
         DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), true);
     }
     else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), false);
+        lv_spend = (-1.0 * lv_spend);
+        lv_spendDisplay = ("( + " + FixedToString(lv_spend, 0) + ")");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), true);
     }
     if ((lv_spend > libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex))) {
         libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourceMineralSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
@@ -7009,7 +7354,10 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
         DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), true);
     }
     else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), false);
+        lv_spend = (-1.0 * lv_spend);
+        lv_spendDisplay = ("( + " + FixedToString(lv_spend, 0) + ")");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), true);
     }
     if ((lv_spend > libSCPL_gf_PlayerAvailableVespene(lv_playerIndex))) {
         libNtve_gf_SetDialogItemColor(libSCPL_gv_uI.lv_resourceVespeneSpend, Color(100.00, 0.00, 0.00), PlayerGroupSingle(lv_playerIndex));
@@ -7023,7 +7371,628 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void libSCPL_gt_ResourceDisplaySpend_Init () {
     libSCPL_gt_ResourceDisplaySpend = TriggerCreate("libSCPL_gt_ResourceDisplaySpend_Func");
-    TriggerAddEventGeneric(libSCPL_gt_ResourceDisplaySpend, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend));
+    libSCPL_gf_ResourceSpendChanges(libSCPL_gt_ResourceDisplaySpend);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus - Unit Created
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusUnitCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+    int lv_size;
+    int lv_bGSize;
+
+    // Variable Initialization
+    lv_unit = EventUnitCreatedUnit();
+    lv_size = libSCPL_gf_LabelsPlusUnitIconSize(lv_unit);
+    lv_bGSize = FixedToInt((lv_size * 1.2));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar(EventUnitCreatedUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DataTableSetString(true, (IntToString(UnitGetTag(lv_unit)) + "-slot1"), "");
+    DataTableSetString(true, (IntToString(UnitGetTag(lv_unit)) + "-slot2"), "");
+    DialogControlHookupUnitStatus(c_triggerControlTypeImage, "StatusIcon1\\IconBG", lv_unit);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_bGSize, lv_bGSize);
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_SaveDataTableValueDialogItem(true, ("IconBG1-" + IntToString(UnitGetTag(lv_unit))), DialogControlLastCreated());
+    DialogControlHookupUnitStatus(c_triggerControlTypeImage, "StatusIcon2\\IconBG", lv_unit);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_bGSize, lv_bGSize);
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_SaveDataTableValueDialogItem(true, ("IconBG2-" + IntToString(UnitGetTag(lv_unit))), DialogControlLastCreated());
+    DialogControlHookupUnitStatus(c_triggerControlTypeImage, "StatusIcon3\\IconBG", lv_unit);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_bGSize, lv_bGSize);
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_SaveDataTableValueDialogItem(true, ("IconBG3-" + IntToString(UnitGetTag(lv_unit))), DialogControlLastCreated());
+    DialogControlHookupUnitStatus(c_triggerControlTypeImage, "StatusIcon1\\Icon", lv_unit);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\blank.dds", PlayerGroupAll());
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_SaveDataTableValueDialogItem(true, ("Icon1-" + IntToString(UnitGetTag(lv_unit))), DialogControlLastCreated());
+    DialogControlHookupUnitStatus(c_triggerControlTypeImage, "StatusIcon2\\Icon", lv_unit);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\blank.dds", PlayerGroupAll());
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_SaveDataTableValueDialogItem(true, ("Icon2-" + IntToString(UnitGetTag(lv_unit))), DialogControlLastCreated());
+    DialogControlHookupUnitStatus(c_triggerControlTypeImage, "StatusIcon3\\Icon", lv_unit);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\blank.dds", PlayerGroupAll());
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_SaveDataTableValueDialogItem(true, ("Icon3-" + IntToString(UnitGetTag(lv_unit))), DialogControlLastCreated());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusUnitCreated_Init () {
+    libSCPL_gt_LabelsPlusUnitCreated = TriggerCreate("libSCPL_gt_LabelsPlusUnitCreated_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_LabelsPlusUnitCreated, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus - Unit Training Started
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusUnitTrainingStarted_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_unit;
+    int lv_unitTag;
+    unit lv_trainee;
+    string lv_traineeType;
+    int lv_iconSize;
+    int lv_activeTags;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unit = EventUnit();
+    lv_unitTag = UnitGetTag(lv_unit);
+    lv_trainee = EventUnitProgressUnit();
+    lv_traineeType = libNtve_gf_TriggeringProgressUnitType();
+    lv_iconSize = libSCPL_gf_LabelsPlusUnitIconSize(lv_unit);
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar(lv_unit) == true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((lv_traineeType != "Interceptor"))) {
+            return false;
+        }
+
+        if (!((lv_traineeType != "BroodlingEscort"))) {
+            return false;
+        }
+
+        if (!((lv_traineeType != "Broodling"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1")) == "")) {
+        DataTableSetString(true, (IntToString(lv_unitTag) + "-slot1"), (lv_traineeType));
+        if ((DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2")) == "")) {
+            lv_activeTags = 1;
+        }
+        else {
+            lv_activeTags = 2;
+        }
+    }
+    else {
+        DataTableSetString(true, (IntToString(lv_unitTag) + "-slot2"), (lv_traineeType));
+        lv_activeTags = 2;
+    }
+    if ((lv_traineeType != "Zergling") && (lv_activeTags == 2)) {
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG2-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon2-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1"))), "UnitIcon", c_playerAny)), PlayerGroupAll());
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon2-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG3-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon3-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2"))), "UnitIcon", c_playerAny)), PlayerGroupAll());
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon3-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    }
+    else {
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1"))), "UnitIcon", c_playerAny)), PlayerGroupAll());
+    }
+    if ((lv_traineeType == "Zergling")) {
+        DialogControlHookupUnitStatus(c_triggerControlTypeLabel, "StatusIcon1/ProductionCount", lv_unit);
+        libNtve_gf_SetDialogItemText(DialogControlLastCreated(), StringExternal("Param/Value/lib_SCPL_2E463DF9"), lv_playerGroup);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusUnitTrainingStarted_Init () {
+    libSCPL_gt_LabelsPlusUnitTrainingStarted = TriggerCreate("libSCPL_gt_LabelsPlusUnitTrainingStarted_Func");
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_LabelsPlusUnitTrainingStarted, null, c_unitProgressStageStart);
+    TriggerAddEventUnitArmMagazineProgress(libSCPL_gt_LabelsPlusUnitTrainingStarted, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus - Unit Training Stopped
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusUnitTrainingStopped_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_unit;
+    int lv_unitTag;
+    unit lv_trainee;
+    string lv_traineeType;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unit = EventUnit();
+    lv_unitTag = UnitGetTag(lv_unit);
+    lv_trainee = EventUnitProgressUnit();
+    lv_traineeType = libNtve_gf_TriggeringProgressUnitType();
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar(lv_unit) == true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((lv_traineeType != "Interceptor"))) {
+            return false;
+        }
+
+        if (!((lv_traineeType != "BroodlingEscort"))) {
+            return false;
+        }
+
+        if (!((lv_traineeType != "Broodling"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    if ((DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1")) == (lv_traineeType)) && (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2")) == "")) {
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DataTableSetString(true, (IntToString(lv_unitTag) + "-slot1"), "");
+    }
+    else if ((DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2")) == (lv_traineeType)) && (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1")) == "")) {
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DataTableSetString(true, (IntToString(lv_unitTag) + "-slot2"), "");
+    }
+    else if ((DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1")) == (lv_traineeType)) && (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2")) != "")) {
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2"))), "UnitIcon", c_playerAny)), PlayerGroupAll());
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        DataTableSetString(true, (IntToString(lv_unitTag) + "-slot1"), DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2")));
+        DataTableSetString(true, (IntToString(lv_unitTag) + "-slot2"), "");
+    }
+    else if ((DataTableGetString(true, (IntToString(lv_unitTag) + "-slot2")) == (lv_traineeType)) && (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1")) != "")) {
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+        libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1"))), "UnitIcon", c_playerAny)), PlayerGroupAll());
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        DataTableSetString(true, (IntToString(lv_unitTag) + "-slot2"), "");
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusUnitTrainingStopped_Init () {
+    libSCPL_gt_LabelsPlusUnitTrainingStopped = TriggerCreate("libSCPL_gt_LabelsPlusUnitTrainingStopped_Func");
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_LabelsPlusUnitTrainingStopped, null, c_unitProgressStageComplete);
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_LabelsPlusUnitTrainingStopped, null, c_unitProgressStageCancel);
+    TriggerAddEventUnitArmMagazineProgress(libSCPL_gt_LabelsPlusUnitTrainingStopped, null, c_unitProgressStageComplete);
+    TriggerAddEventUnitArmMagazineProgress(libSCPL_gt_LabelsPlusUnitTrainingStopped, null, c_unitProgressStageCancel);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus- Unit Training Reactor Destroyed
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusUnitTrainingReactorDestroyed_Func (bool testConds, bool runActions) {
+    unitgroup autoD0B609A6_g;
+    int autoD0B609A6_u;
+
+    // Variable Declarations
+    unit lv_unit;
+    string lv_unitType;
+    int lv_unitTag;
+    int lv_player;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_unit = EventUnit();
+    lv_unitType = UnitGetType(lv_unit);
+    lv_unitTag = UnitGetTag(lv_unit);
+    lv_player = UnitGetOwner(lv_unit);
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!(((lv_unitType == "BarracksReactor") || (lv_unitType == "FactoryReactor") || (lv_unitType == "StarportReactor")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoD0B609A6_g = UnitGroup(null, EventPlayer(), RegionCircle(PointWithOffset(UnitGetPosition(EventUnit()), -2.5, 0.5), 0.1), UnitFilter((1 << c_targetFilterGround) | (1 << c_targetFilterStructure), 0, 0, (1 << (c_targetFilterDead - 32))), 0);
+    autoD0B609A6_u = 1;
+    for ( ; autoD0B609A6_u <= UnitGroupCount(autoD0B609A6_g, c_unitCountAll) ; autoD0B609A6_u += BoolToInt(lv_unit == UnitGroupUnit(autoD0B609A6_g, autoD0B609A6_u)) ) {
+        lv_unit = UnitGroupUnit(autoD0B609A6_g, autoD0B609A6_u);
+        lv_unitType = UnitGetType(lv_unit);
+        if (((lv_unitType == "Barracks") || (lv_unitType == "Factory") || (lv_unitType == "Starport")) && (libNtve_gf_QueuedUnitTypeInTrainingQueueSlot(lv_unit, 1, 1) != "")) {
+            lv_unitTag = UnitGetTag(lv_unit);
+            DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+            DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon2-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+            DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+            DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon3-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+            libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, (DataTableGetString(true, (IntToString(lv_unitTag) + "-slot1"))), "UnitIcon", c_playerAny)), PlayerGroupAll());
+            DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+            DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusUnitTrainingReactorDestroyed_Init () {
+    libSCPL_gt_LabelsPlusUnitTrainingReactorDestroyed = TriggerCreate("libSCPL_gt_LabelsPlusUnitTrainingReactorDestroyed_Func");
+    TriggerAddEventUnitDied(libSCPL_gt_LabelsPlusUnitTrainingReactorDestroyed, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus - Research Started
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusResearchStarted_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    int lv_unitTag;
+    string lv_research;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unitTag = UnitGetTag(EventUnit());
+    lv_research = libNtve_gf_TriggeringProgressUpgrade();
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar(EventUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogUpgrade, lv_research, "Icon", c_playerAny)), PlayerGroupAll());
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusResearchStarted_Init () {
+    libSCPL_gt_LabelsPlusResearchStarted = TriggerCreate("libSCPL_gt_LabelsPlusResearchStarted_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_LabelsPlusResearchStarted, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus - Research Stopped
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusResearchStopped_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_unit;
+    int lv_unitTag;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unit = EventUnit();
+    lv_unitTag = UnitGetTag(lv_unit);
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar(EventUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusResearchStopped_Init () {
+    libSCPL_gt_LabelsPlusResearchStopped = TriggerCreate("libSCPL_gt_LabelsPlusResearchStopped_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_LabelsPlusResearchStopped, null, c_unitProgressStageCancel);
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_LabelsPlusResearchStopped, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus - Construction Started
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusConstructionStarted_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    int lv_unitTag;
+    string lv_construction;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unitTag = UnitGetTag(EventUnitProgressUnit());
+    lv_construction = libNtve_gf_TriggeringProgressUnitType();
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar(EventUnitProgressUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, lv_construction, "UnitIcon", c_playerAny)), PlayerGroupAll());
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusConstructionStarted_Init () {
+    libSCPL_gt_LabelsPlusConstructionStarted = TriggerCreate("libSCPL_gt_LabelsPlusConstructionStarted_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_LabelsPlusConstructionStarted, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus - Construction Stopped
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusConstructionStopped_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+    int lv_unitTag;
+    int lv_player;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_unit = EventUnitProgressUnit();
+    lv_unitTag = UnitGetTag(lv_unit);
+    lv_player = UnitGetOwner(lv_unit);
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar(EventUnitProgressUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusConstructionStopped_Init () {
+    libSCPL_gt_LabelsPlusConstructionStopped = TriggerCreate("libSCPL_gt_LabelsPlusConstructionStopped_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_LabelsPlusConstructionStopped, null, c_unitProgressStageComplete);
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_LabelsPlusConstructionStopped, null, c_unitProgressStageCancel);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus - Morph Started
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusMorphStarted_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    int lv_unitTag;
+    playergroup lv_playerGroup;
+    string lv_triggeringAbility;
+    string lv_morphUnit;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unitTag = UnitGetTag(EventUnit());
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+    lv_morphUnit = UnitGetType(EventUnit());
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar(EventUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_triggeringAbility = AbilityCommandGetAbility(EventUnitAbility());
+    if ((libSCPL_gf_LabelsPlusUnitMorphTwoStage(EventUnit()) == true)) {
+        lv_morphUnit = (CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, ("InfoArray[" + IntToString(1) + "].Unit"), c_playerAny));
+    }
+    else {
+        lv_morphUnit = (CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, ("InfoArray[" + IntToString(0) + "].Unit"), c_playerAny));
+    }
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    libNtve_gf_SetDialogItemImage(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), (CatalogFieldValueGet(c_gameCatalogActor, lv_morphUnit, "UnitIcon", c_playerAny)), PlayerGroupAll());
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusMorphStarted_Init () {
+    libSCPL_gt_LabelsPlusMorphStarted = TriggerCreate("libSCPL_gt_LabelsPlusMorphStarted_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("UpgradeToOrbital", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("UpgradeToPlanetaryFortress", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("UpgradeToLair", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("UpgradeToHive", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("MorphToTransportOverlord", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("MorphToOverseer", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("MorphToRavager", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("MorphToLurker", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("MorphToBroodLord", 0), c_abilMorphStageUnitStart, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStarted, null, AbilityCommand("MorphToMothership", 0), c_abilMorphStageUnitStart, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LabelsPlus - Morph Stopped
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_LabelsPlusMorphStopped_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_unit;
+    int lv_unitTag;
+    playergroup lv_playerGroup;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unit = EventUnit();
+    lv_unitTag = UnitGetTag(lv_unit);
+    lv_playerGroup = PlayerGroupSingle(lv_player);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+
+        if (!((libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar(EventUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("IconBG1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    DialogControlSetVisible(libNtve_gf_ValueFromDataTableDialogItem(true, ("Icon1-" + IntToString(lv_unitTag))), lv_playerGroup, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_LabelsPlusMorphStopped_Init () {
+    libSCPL_gt_LabelsPlusMorphStopped = TriggerCreate("libSCPL_gt_LabelsPlusMorphStopped_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("UpgradeToOrbital", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("UpgradeToPlanetaryFortress", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("UpgradeToOrbital", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("UpgradeToPlanetaryFortress", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("UpgradeToLair", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("UpgradeToHive", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("UpgradeToLair", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("UpgradeToHive", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToTransportOverlord", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToOverseer", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToRavager", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToLurker", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToBroodLord", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToTransportOverlord", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToOverseer", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToRavager", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToLurker", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToBroodLord", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToMothership", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_LabelsPlusMorphStopped, null, AbilityCommand("MorphToMothership", 0), c_unitAbilStageCancel, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7177,7 +8146,25 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBAutoLarvaSpawnToggleOn_Init();
     libSCPL_gt_UCBAutoLarvaSpawnToggleOff_Init();
     libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init();
+    libSCPL_gt_ResourceDisplayMineralCreate_Init();
+    libSCPL_gt_ResourceDisplayMineralRichCreate_Init();
+    libSCPL_gt_ResourceDisplayMineralMULECreate_Init();
+    libSCPL_gt_ResourceDisplayVespeneCreate_Init();
+    libSCPL_gt_ResourceDisplayMineralDestroy_Init();
+    libSCPL_gt_ResourceDisplayMineralRichDestroy_Init();
+    libSCPL_gt_ResourceDisplayMineralMULEDestroy_Init();
+    libSCPL_gt_ResourceDisplayVespeneDestroy_Init();
     libSCPL_gt_ResourceDisplaySpend_Init();
+    libSCPL_gt_LabelsPlusUnitCreated_Init();
+    libSCPL_gt_LabelsPlusUnitTrainingStarted_Init();
+    libSCPL_gt_LabelsPlusUnitTrainingStopped_Init();
+    libSCPL_gt_LabelsPlusUnitTrainingReactorDestroyed_Init();
+    libSCPL_gt_LabelsPlusResearchStarted_Init();
+    libSCPL_gt_LabelsPlusResearchStopped_Init();
+    libSCPL_gt_LabelsPlusConstructionStarted_Init();
+    libSCPL_gt_LabelsPlusConstructionStopped_Init();
+    libSCPL_gt_LabelsPlusMorphStarted_Init();
+    libSCPL_gt_LabelsPlusMorphStopped_Init();
     libSCPL_gt_ControlGroupUpdateTrigger_Init();
     libSCPL_gt_ControlGroupUpdate_Init();
 }

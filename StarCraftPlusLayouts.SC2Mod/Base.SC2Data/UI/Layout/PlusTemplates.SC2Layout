@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
+	<Constant name="ProductionOffset" val="2"/>
+	<Constant name="ProductionPadding" val="4"/>
 
+	<Constant name="ColorProtoss" val="110,170,255"/>
+    <Constant name="ColorTerran" val="155,255,190"/>
+    <Constant name="ColorZerg" val="245,140,70"/>
+	
 	<Animation name="ShortcutKill">
 		<Event event="OnShown" action="Reset,Play"/>
 		<Controller type="Property" property="BlocksShortcuts" end="Pause">
@@ -169,5 +175,245 @@
 	<Frame type="Image" name="CommandBackgroundTemplate">
 		<Color val="0,0,0"/>
 		<Alpha val="200"/>
+	</Frame>
+	
+	<Frame name="ProductionCountFrameTemplate" type="ProductionCountFrame">
+		<Height val="68" />
+		<Width val="60" />
+		<AcceptsMouse val="True" />
+		<Visible val="False" />
+		<CollapseLayout val="True" />
+		<PreserveAnchorOffset val="true"/>
+		
+		<Frame name="BackgroundButton" type="Button">
+			<Anchor offset="0" pos="Min" relative="$parent" side="Top" />
+			<Anchor offset="0" pos="Min" relative="$parent" side="Left" />
+			<Anchor offset="-8" pos="Max" relative="$parent" side="Bottom" />
+			<Anchor offset="0" pos="Max" relative="$parent" side="Right" />
+			
+			<Tooltip val="{$parent/@Tooltip}"/>
+			
+			<Frame name="NormalImage" type="Image">
+				<Anchor offset="3" pos="Min" relative="$parent" side="Top" />
+				<Anchor offset="-3" pos="Max" relative="$parent" side="Bottom" />
+				<Anchor offset="3" pos="Min" relative="$parent" side="Left" />
+				<Anchor offset="-3" pos="Max" relative="$parent" side="Right" />
+			
+				<Texture val="@UI/StatusProductionBorder"/>
+				<TextureType val="NineSlice" />
+				<IgnoreParentColor val="True" />
+				<!-- <Color val="{$ancestor[@name=LeaderPlus]/PlayerData/@Color}" /> -->
+				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
+				<Alpha val="200" />
+			</Frame>
+			
+			<Frame name="HoverImage" type="Image">
+				<Anchor relative="$parent/NormalImage"/>
+			
+				<Texture val="@UI/StatusProductionBorder"/>
+				<TextureType val="NineSlice" />
+				<IgnoreParentColor val="True" />
+				<!-- <Color val="{$ancestor[@name=LeaderPlus]/PlayerData/@Color}" /> -->
+				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
+				<ColorAdjustMode val="AddSelf"/>
+				<AdjustmentColor val="32,32,32"/>
+				<Alpha val="200" />
+			</Frame>
+		</Frame>
+		
+		<Frame name="IconImage" type="Image">
+			<Anchor offset="0" pos="8%" relative="$parent/BackgroundButton" side="Top" />
+			<Anchor offset="0" pos="8%" relative="$parent/BackgroundButton" side="Left" />
+			<Anchor offset="0" pos="92%" relative="$parent/BackgroundButton" side="Bottom" />
+			<Anchor offset="0" pos="92%" relative="$parent/BackgroundButton" side="Right" />
+		
+			<Texture val="@@UI/LeaderPanelUnitBackground" />
+			<IgnoreParentColor val="true" />
+		</Frame>
+		
+		<Frame name="NumberLabel" type="Label">
+			<Anchor offset="-2" pos="Max" relative="$parent/BackgroundButton" side="Bottom" />
+			<Anchor offset="-6" pos="Max" relative="$parent/BackgroundButton" side="Right" />
+			
+			<Style val="ProductionFrameCount" />
+			<IgnoreParentColor val="true" />
+			<Visible val="true"/>
+			
+			<StateGroup name="LabelVisibility">
+				<DefaultState val="Other" />
+				<State name="OneInNonUpgradesTab">
+				<When frame="$this" text="1" type="Property" />
+				<Action frame="$this" type="SetProperty" visible="false" />
+				</State>
+				<State name="Other">
+				<Action frame="$this" type="SetProperty" visible="true" />
+				</State>
+			</StateGroup>
+		</Frame>
+		
+		<Frame name="ProgressBar" type="ProgressBar">
+			<Anchor offset="-7" pos="Max" relative="$parent" side="Top" />
+			<Anchor offset="5" pos="Min" relative="$parent" side="Left" />
+			<Anchor offset="-2" pos="Max" relative="$parent" side="Bottom" />
+			<Anchor offset="-5" pos="Max" relative="$parent" side="Right" />
+			
+			<IgnoreParentColor val="true" />
+			<Vertical val="False" />
+			<UseFillContainer val="true" />
+			<AcceptsMouse val="False" />
+			
+			<Frame name="BorderImage" type="Image">
+				<Anchor relative="$parent" />
+				<Color val="70,70,70" />
+			</Frame>
+			
+			<Frame name="FillImageContainer" type="Frame">
+				<Anchor offset="0" pos="Min" relative="$parent" side="Top" />
+				<Anchor offset="0" pos="Min" relative="$parent" side="Left" />
+				<Anchor offset="0" pos="Max" relative="$parent" side="Bottom" />
+				<Anchor offset="0" pos="Min" relative="$this" side="Right" />
+				
+				<Frame name="FillImage" type="Image">
+				<Anchor relative="$parent/$parent" />
+				<Texture val="Assets/Textures/White.dds" />
+				<!-- <Texture val="Assets/Textures/ui_ingame_lotv_bossbarframe_fill.dds" /> -->
+				<!-- <Color val="{$ancestor[@name=LeaderPlus]/PlayerData/@Color}" /> -->
+				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
+				</Frame>
+			</Frame>
+		</Frame>
+		
+		<Frame name="CursorInterceptor" type="Control">
+			<Anchor relative="$parent/ProgressBar"/>
+			<AcceptsMouse val="true"/>
+		</Frame>
+   </Frame>
+   
+	<Frame name="ProductionContainerTemplate" type="Control">
+		<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+		<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+		<Anchor side="Right" relative="PlayerProductionFrame/ProductionCountFrame12" pos="Max" offset="6"/>
+		<CollapseLayout val="true"/>
+		<PreserveAnchorOffset val="true"/>
+		<Visible val="false"/>
+		<Height val="76"/>
+		
+		<Animation name="AnchorReset">
+			<Event event="OnDoubleClick" action="Reset,Play"/>
+			
+			<Controller name="AnchorTop" type="Anchor" end="Pause" side="Top" relative="false">
+				<Key type="Curve" time="0.00" value="0"/>
+			</Controller>
+			<Controller name="AnchorLeft" type="Anchor" end="Pause" side="Left" relative="false">
+				<Key type="Curve" time="0.00" value="0"/>
+			</Controller>
+		</Animation>
+		
+		<Draggable val="true"/>
+		<DragConstraintFrame val="$ancestor[@name=LeaderPlus]"/>
+		<DragCursor val="GripClosed"/>
+		<DragHoverCursor val="GripOpen"/>
+		
+		<Frame name="PlayerProductionFrame" type="PlayerProductionFrame">
+			<Anchor relative="$parent"/>
+			<CollapseLayout val="true"/>
+			<PreserveAnchorOffset val="true"/>
+			
+			<Frame type="Frame" name="RaceColor">
+				<Anchor relative="$parent"/>
+				<StateGroup name="RaceState">
+					<DefaultState val="Terran"/>
+					<State name="Terran">
+						<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
+						<Action type="SetProperty" color="#ColorTerran"/>
+					</State>
+					<State name="Protoss">
+						<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+						<Action type="SetProperty" color="#ColorProtoss"/>
+					</State>
+					<State name="Zerg">
+						<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
+						<Action type="SetProperty" color="#ColorZerg"/>
+					</State>
+				</StateGroup>
+			</Frame>
+			
+			<Frame type="Image" name="BackGroundImage"  template="LeaderPanel/LeaderPanelBackgroundImageTemplate">
+				<Anchor relative="$parent"/>
+			</Frame>
+		
+			<Frame type="Image" name="PlayerImage" template="LeaderPanel/LeaderPanelPlayerImageTemplate">
+				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
+				<CollapseLayout val="true"/>
+				<PreserveAnchorOffset val="true"/>
+				<AcceptsMouse val="false"/>
+			</Frame>
+		
+			<Frame type="Image" name="RaceImage" template="LeaderPanel/LeaderPanelRaceImageTemplate">
+				<Texture val="@@UI/LeaderPanelRaceImage"/>
+				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
+			</Frame>
+			
+			<Frame name="CursorInterceptor" type="Control">
+				<Anchor side="Top" relative="$parent/$parent" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/PlayerImage" pos="Max" offset="6"/>
+				<Anchor side="Bottom" relative="$parent/$parent" pos="Max" offset="0"/>
+				<Anchor side="Right" relative="$parent/$parent" pos="Max" offset="0"/>
+				<AcceptsMouse val="true"/>
+			</Frame>
+			
+			<Frame name="ProductionCountFrame0" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionPadding" pos="Max" relative="$parent/PlayerImage" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame1" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame0" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame2" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame1" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame3" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame2" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame4" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame3" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame5" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame4" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame6" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame5" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame7" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame6" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame8" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame7" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame9" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame8" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame10" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame9" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame11" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame10" side="Left"/>
+			</Frame>
+			<Frame name="ProductionCountFrame12" type="ProductionCountFrame" template="PlusTemplates/ProductionCountFrameTemplate">
+				<Anchor offset="#ProductionPadding" pos="Min" relative="$parent" side="Top"/>
+				<Anchor offset="#ProductionOffset" pos="Max" relative="$parent/ProductionCountFrame11" side="Left"/>
+			</Frame>
+		</Frame>
 	</Frame>
 </Desc>

@@ -77,18 +77,23 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="CarryHarvestableVespeneGeyserGas">
         <FinalEffect value="GameResources4DummyVespene"/>
+        <InitialEffect value="GameResourceMarkerVespene"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CarryHarvestableVespeneGeyserGasProtoss">
         <FinalEffect value="GameResources4DummyVespene"/>
+        <InitialEffect value="GameResourceMarkerVespene"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CarryHarvestableVespeneGeyserGasZerg">
         <FinalEffect value="GameResources4DummyVespene"/>
+        <InitialEffect value="GameResourceMarkerVespene"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CarryHighYieldMineralFieldMinerals">
-        <FinalEffect value="GameResources7DummyMinerals"/>
+        <FinalEffect value="GameResourcesMineralRichSet"/>
+        <InitialEffect value="GameResourceMarkerMineralsRichSet"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CarryMineralFieldMinerals">
-        <FinalEffect value="GameResources5DummyMinerals"/>
+        <FinalEffect value="GameResourcesMineralSet"/>
+        <InitialEffect value="GameResourceMarkerMineralsSet"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CreepTumorEnhancedCreepGrowth">
         <Face value="CreepTumorEnhancedCreepGrowthAura"/>
@@ -134,6 +139,29 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="IsConstructing"/>
         <FinalEffect value="GameNexusCount"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameResourceMarkerMinerals">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="OrderIsGatherOrReturn"/>
+        <InitialEffect value="GameResourceMarkerSetMinerals"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameResourceMarkerVespene">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="OrderIsGatherOrReturn"/>
+        <InitialEffect value="GameResourceMarkerSetVespene"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameResourceMarkerMineralsRich">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="OrderIsGatherOrReturn"/>
+        <InitialEffect value="GameResourceMarkerSetMineralsRich"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameResourceMarkerMineralsMULE">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="OrderIsGatherOrReturnMULE"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBCommandCenterChargeLink">
         <InfoFlags index="Hidden" value="1"/>

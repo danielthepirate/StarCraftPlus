@@ -28,6 +28,11 @@
 		
 		<Frame type="ConsolePanel" name="ConsolePanel">
 			
+			<Frame type="Frame" name="ConstraintFrame">
+				<Anchor relative="$parent"/>
+				<Handle val="ConsoleConstraintFrame"/>
+			</Frame>
+			
 			<!-- BACKGROUND FRAMES -->
 			<Frame type="Image" name="MinimapBackground" template="PlusTemplates/CommandBackgroundTemplate">
 				<Anchor side="Top" relative="$parent/MinimapStub" pos="Min" offset="24"/>
