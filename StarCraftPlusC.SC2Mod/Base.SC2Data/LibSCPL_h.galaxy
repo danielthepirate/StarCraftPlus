@@ -41,6 +41,8 @@ struct libSCPL_gs_Constant {
 struct libSCPL_gs_Player {
     fixed lv_resourceSpendMinerals;
     fixed lv_resourceSpendVespene;
+    fixed lv_resourceGainMinerals;
+    fixed lv_resourceGainVespene;
     unitgroup lv_globalZerg_AutoCreepNodeTargets;
     libSCPL_gs_AutoCreepLineage[257] lv_globalZerg_AutoCreepLineage;
     int lv_globalZerg_AutoCreepLineageCount;
@@ -63,6 +65,8 @@ struct libSCPL_gs_Map {
 struct libSCPL_gs_UI {
     int lv_resourceMineralSpend;
     int lv_resourceVespeneSpend;
+    int lv_resourceMineralSpendAttention;
+    int lv_resourceVespeneSpendAttention;
     int lv_consoleRallyCommandCard;
     int[11] lv_consoleControlGroupAnimListener;
     int[5] lv_consoleGlobalTab;
@@ -304,6 +308,7 @@ void libSCPL_gf_AutoCreepTargetNodesSort (int lp_playerIndex);
 void libSCPL_gf_AutoCreepDebugAll (int lp_playerIndex);
 void libSCPL_gf_AutoCreepDebug (unit lp_unit);
 void libSCPL_gf_InitializeUIHookups ();
+void libSCPL_gf_ResourceDisplayGainAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendUpdate (unit lp_unit, fixed lp_costTime, fixed lp_costMinerals, fixed lp_costVespene);
