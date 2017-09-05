@@ -46,8 +46,6 @@ struct libSCPL_gs_Player {
     unitgroup lv_globalZerg_AutoCreepNodeTargets;
     libSCPL_gs_AutoCreepLineage[257] lv_globalZerg_AutoCreepLineage;
     int lv_globalZerg_AutoCreepLineageCount;
-    unitgroup lv_zzAutoCreepLineageParents;
-    int lv_zzAutoCreepLineageCount;
     bool lv_globalTerran_AutoWallToggle;
     bool lv_globalZerg_CreepSpreadToggle;
     bool lv_globalZerg_LarvaSpawnToggle;
@@ -294,6 +292,7 @@ void libSCPL_gf_AutoWorkerProductionZergInitial (unit lp_townHall, int lp_player
 void libSCPL_gf_PlayerGlobalTabSelect (int lp_playerIndex, int lp_selectIndex);
 bool libSCPL_gf_UnitGroupContainsCombatUnits (unitgroup lp_unitGroup);
 bool libSCPL_gf_UnitIsCombatUnit (unit lp_unit);
+void libSCPL_gf_WarpGateUpdateUI (int lp_playerIndex);
 void libSCPL_gf_UnitStatusEvaluateProgressBar (unit lp_statusUnit);
 void libSCPL_gf_AutoCreepTargetNodesInitialize ();
 void libSCPL_gf_AutoCreepTargetNodesGenerateBase (int lp_playerIndex);
@@ -328,6 +327,7 @@ int libSCPL_gf_PlayerTownHallWorkerQueue (unit lp_townHall, int lp_playerIndex, 
 unitgroup libSCPL_gf_PlayerHarvestableMinerals (int lp_playerIndex);
 unitgroup libSCPL_gf_PlayerHarvestableGas (int lp_playerIndex);
 unitgroup libSCPL_gf_PlayerTownHalls (int lp_playerIndex);
+unitgroup libSCPL_gf_MapHarvestableMinerals ();
 unitgroup libSCPL_gf_UnitsInUnitGroupMatchingChargeLink (unitgroup lp_unitGroup, string lp_chargeLink, fixed lp_chargeValue);
 void libSCPL_gf_UnitChargeLinkSet (unit lp_unit, string lp_chargeLink, fixed lp_chargeValue);
 void libSCPL_gf_UnitChargeLinkAdd (unit lp_unit, string lp_chargeLink, fixed lp_chargeValue);
@@ -340,6 +340,7 @@ void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
+trigger libSCPL_gt__0;
 trigger libSCPL_gt_ProgressMorphRefund01;
 trigger libSCPL_gt_ProgressMorphStart01;
 trigger libSCPL_gt_ProgressMorphRefund02;
@@ -382,6 +383,7 @@ trigger libSCPL_gt_AutoWorkerProductionCheckVespeneHarvester;
 trigger libSCPL_gt_AutoWorkerProductionCheckVespeneHarvesterZerg;
 trigger libSCPL_gt_AutoWorkerProductionCheckMorphConstructionZerg;
 trigger libSCPL_gt_AutoWorkerProductionCheckTownHallUpgrade;
+trigger libSCPL_gt_AutoWorkerProductionCheckTownHallLand;
 trigger libSCPL_gt_AutoWorkerProductionCheckExpansion;
 trigger libSCPL_gt_AutoWorkerGatherVespene;
 trigger libSCPL_gt_AutoWorkerSetHarvestState;

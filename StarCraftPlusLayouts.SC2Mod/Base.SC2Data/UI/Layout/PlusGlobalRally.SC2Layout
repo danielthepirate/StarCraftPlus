@@ -76,6 +76,15 @@
 			<!-- I get errors for creating frames with existing names when I try to set these textures in the command buttons above, so I'm using a stategroup instead-->
 			<StateGroup name="Initialization">
 				<DefaultState val="Initialize"/>
+				<State name="WarpGate">
+					<When type="AnimationState" WarpState="WarpGate"/>
+					<Action type="SetProperty" frame="CommandButton00/NormalImageActual" texture="@UI/RallyButton00Normal_ProtWarp"/>
+					<Action type="SetProperty" frame="CommandButton00/HoverImageActual" texture="@UI/RallyButton00Hover_ProtWarp"/>
+					<Action type="SetProperty" frame="CommandButton01/NormalImageActual" texture="@@UI/RallyButton01Normal"/>
+					<Action type="SetProperty" frame="CommandButton01/HoverImageActual" texture="@@UI/RallyButton01Hover"/>
+					<Action type="SetProperty" frame="CommandButton02/NormalImageActual" texture="@@UI/RallyButton02Normal"/>
+					<Action type="SetProperty" frame="CommandButton02/HoverImageActual" texture="@@UI/RallyButton02Hover"/>
+				</State>
 				<State name="Initialize">
 					<Action type="SetProperty" frame="CommandButton00/NormalImageActual" texture="@@UI/RallyButton00Normal"/>
 					<Action type="SetProperty" frame="CommandButton00/HoverImageActual" texture="@@UI/RallyButton00Hover"/>
@@ -90,12 +99,6 @@
 				<DefaultState val="Terran"/>
 				<State name="Terran">
 					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
-					<Action type="SetProperty" frame="CommandButton00/NormalImageActual" texture="@@UI/RallyButton00Normal"/>
-					<Action type="SetProperty" frame="CommandButton00/HoverImageActual" texture="@@UI/RallyButton00Hover"/>
-					<Action type="SetProperty" frame="CommandButton01/NormalImageActual" texture="@@UI/RallyButton01Normal"/>
-					<Action type="SetProperty" frame="CommandButton01/HoverImageActual" texture="@@UI/RallyButton01Hover"/>
-					<Action type="SetProperty" frame="CommandButton02/NormalImageActual" texture="@@UI/RallyButton02Normal"/>
-					<Action type="SetProperty" frame="CommandButton02/HoverImageActual" texture="@@UI/RallyButton02Hover"/>
 					<Action type="SetProperty" frame="CommandButton00" tooltip="Global Rally Barracks (&lt;c val=&quot;FFFFFF&quot;&gt;F3&lt;/c&gt;)"/>
 					<Action type="SetProperty" frame="CommandButton01" tooltip="Global Rally Factory (&lt;c val=&quot;FFFFFF&quot;&gt;F4&lt;/c&gt;)"/>
 					<Action type="SetProperty" frame="CommandButton02" tooltip="Global Rally Starport (&lt;c val=&quot;FFFFFF&quot;&gt;F5&lt;/c&gt;)"/>
