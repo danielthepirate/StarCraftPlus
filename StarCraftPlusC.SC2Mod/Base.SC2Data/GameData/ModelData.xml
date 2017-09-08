@@ -76,12 +76,12 @@
         <ScaleMin value="0.300000,0.300000,0.300000"/>
     </CModel>
     <CModel id="PowerVisualFastNexus" parent="UI">
-        <Model value="Assets/UI/Feedback/Pylon_WarpIn_Radius/Pylon_WarpIn_Radius.m3"/>
+        <Model value="Assets\UI\Feedback\Pylon_WarpIn_Radius\Pylon_WarpIn_RadiusLarge.m3"/>
         <ScaleMax value="1.800000,1.800000,1.800000"/>
         <ScaleMin value="1.800000,1.800000,1.800000"/>
     </CModel>
     <CModel id="UnpoweredVisualNearNexus" parent="UI">
-        <Model value="Assets/UI/Feedback/PylonRadiusUnpowered_X1/PylonRadiusUnpowered_X1.m3"/>
+        <Model value="Assets\UI\Feedback\PylonRadiusUnpowered_X1\PylonRadiusUnpowered_X1large.m3"/>
         <ScaleMax value="1.800000,1.800000,1.800000"/>
         <ScaleMin value="1.800000,1.800000,1.800000"/>
     </CModel>
