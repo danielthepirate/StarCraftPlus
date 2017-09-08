@@ -1,0 +1,32 @@
+include "TriggerLibs/natives"
+
+include "LibFDF11DA8_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: ControlGroups
+//--------------------------------------------------------------------------------------------------
+// Custom Script
+//--------------------------------------------------------------------------------------------------
+// Custom Script: InitScript
+//--------------------------------------------------------------------------------------------------
+include "Script/ControlGroups"
+
+void libFDF11DA8_InitCustomScript () {
+    InitACG();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libFDF11DA8_InitLib_completed = false;
+
+void libFDF11DA8_InitLib () {
+    if (libFDF11DA8_InitLib_completed) {
+        return;
+    }
+
+    libFDF11DA8_InitLib_completed = true;
+
+    libFDF11DA8_InitCustomScript();
+}
+

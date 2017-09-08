@@ -1,0 +1,12 @@
+﻿DocInfo/DescShort=Any
+DocInfo/Name=Just Another StarCraft II Mod
+Button/Label/ControlGroupAssign01=1
+Button/Label/ControlGroupAssign02=2
+Button/Label/ControlGroupAssign03=3
+Button/Label/ControlGroupAssign04=4
+Button/Label/ControlGroupAssign05=5
+Button/Label/ControlGroupAssign06=6
+Button/Label/ControlGroupAssign07=7
+Button/Label/ControlGroupAssign08=8
+Button/Label/ControlGroupAssign09=9
+Button/Label/ControlGroupAssign00=0

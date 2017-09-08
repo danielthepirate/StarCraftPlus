@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+		<Frame type="Frame" name="AxiomACGContainer" template="ControlGroups/ControlGroupContainer">
+			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+			<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+			<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+			<Anchor side="Bottom" relative="Group01" pos="Max" offset="0"/>
+			
+		</Frame>
+		<Frame type="Frame" name="AxiomACGCommandPanel" template="ControlGroups/ControlCommandPanel">
+			<Anchor side="Left" relative="$parent/AxiomACGContainer" pos="Min" offset="0"/>
+			<Anchor side="Right" relative="$parent/AxiomACGContainer" pos="Max" offset="0"/>
+			<Anchor side="Top" relative="$parent/AxiomACGContainer" pos="Max" offset="0"/>
+			<Anchor side="Bottom" relative="CommandPanel06" pos="Max" offset="0"/>
+			
+		</Frame>
+	</Frame>
+</Desc>

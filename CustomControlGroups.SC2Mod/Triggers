@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TriggerData>
+    <Library Id="FDF11DA8">
+        <Root>
+            <Item Type="CustomScript" Library="FDF11DA8" Id="21587F48"/>
+        </Root>
+        <Element Type="CustomScript" Id="21587F48">
+            <ScriptCode>
+                include &quot;Script/ControlGroups&quot;
+            </ScriptCode>
+            <InitFunc>InitACG</InitFunc>
+        </Element>
+    </Library>
+</TriggerData>

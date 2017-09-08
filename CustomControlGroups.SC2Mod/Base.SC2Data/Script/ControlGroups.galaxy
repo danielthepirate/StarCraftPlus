@@ -1,0 +1,73 @@
+//DialogControlGetPropertyAsText (int control, int property, int player);
+//DialogControlHookupStandard (int type, string inTemplate);
+//c_triggerControlEventTypeHotkeyPressed
+//c_triggerControlEventTypeClick
+//c_triggerControlTypeButton
+//riggerAddEventDialogControl (trigger t, int player, int control, int eventType);
+
+const int c_maxACG_ControlGroups = 10;
+
+int ACG_Group01_Dlg;
+string ACG_Group01_DlgPath = "UIContainer/ConsoleUIContainer/AxiomACGContainer/Group01";
+int ACG_Group01_CmdDlg1;
+int ACG_Group01_CmdIcon1;
+int ACG_Group01_CmdDlg2;
+int ACG_Group01_CmdIcon2;
+string ACG_Group01_CmdIconPath1 = "UIContainer/ConsoleUIContainer/AxiomACGCommandPanel/CommandPanel01Icon/Icon";
+string ACG_Group01_CmdIconPath2 = "UIContainer/ConsoleUIContainer/AxiomACGCommandPanel/CommandPanel02Icon/Icon";
+string ACG_Group01_CmdDlgPath1 = "UIContainer/ConsoleUIContainer/AxiomACGCommandPanel/CommandPanel01";
+string ACG_Group01_CmdDlgPath2 = "UIContainer/ConsoleUIContainer/AxiomACGCommandPanel/CommandPanel02";
+unitgroup[c_maxPlayers][c_maxACG_ControlGroups] ACG_ControlGroups;
+unitgroup SelectionP1;
+unitgroup SelectionP1_1;
+unitgroup SelectionP1_2;
+
+bool ACG_ButtonClickResponse_Func (bool testConds, bool runActions) {
+	int player = EventPlayer();
+	string unittype;
+	string icon;
+	unitgroup ug = UnitGroupSelected(player);
+	playergroup pg = PlayerGroupSingle(player);
+	unit u;
+	
+	SelectionP1 = UnitGroupCopy(ug);
+	
+	//EventDialogControl
+	
+	u = UnitGroupUnit(ug, 1);
+	unittype = UnitGetType(u);
+	icon = CatalogFieldValueGet(c_gameCatalogActor, unittype, "UnitIcon", c_playerAny);
+	SelectionP1_1 = UnitGroupFilter (unittype, player, ug, null, 0);
+	UnitGroupRemoveUnitGroup (ug, SelectionP1_1);
+	TriggerDebugOutput(1, StringToText(icon), true);
+	DialogControlSetPropertyAsString (ACG_Group01_CmdIcon1, c_triggerControlPropertyImage, pg, icon);
+	
+	u = UnitGroupUnit(ug, 1);
+	unittype = UnitGetType(u);
+	icon = CatalogFieldValueGet(c_gameCatalogActor, unittype, "UnitIcon", c_playerAny);
+	SelectionP1_2 = UnitGroupFilter (unittype, player, ug, null, 0);
+	UnitGroupRemoveUnitGroup (ug, SelectionP1_2);
+	TriggerDebugOutput(1, StringToText(icon), true);
+	DialogControlSetPropertyAsString (ACG_Group01_CmdIcon2, c_triggerControlPropertyImage, pg, icon);
+	
+	
+	DialogControlSetPropertyAsUnitGroup(ACG_Group01_CmdDlg1, c_triggerControlPropertyUnitGroup, pg, SelectionP1_1);
+	DialogControlSetPropertyAsUnitGroup(ACG_Group01_CmdDlg2, c_triggerControlPropertyUnitGroup, pg, SelectionP1_2);
+	return true;
+}
+
+void InitACG() {
+    //test
+	int player = 1;
+	trigger t = TriggerCreate("ACG_ButtonClickResponse_Func");
+	ACG_Group01_Dlg = DialogControlHookupStandard (c_triggerControlTypeButton, ACG_Group01_DlgPath);
+	ACG_Group01_CmdDlg1 = DialogControlHookupStandard (c_triggerControlTypeCommandPanel, ACG_Group01_CmdDlgPath1);
+	ACG_Group01_CmdDlg2 = DialogControlHookupStandard (c_triggerControlTypeCommandPanel, ACG_Group01_CmdDlgPath2);
+	
+	ACG_Group01_CmdIcon1 = DialogControlHookupStandard (c_triggerControlTypeImage, ACG_Group01_CmdIconPath1);
+	ACG_Group01_CmdIcon2 = DialogControlHookupStandard (c_triggerControlTypeImage, ACG_Group01_CmdIconPath2);
+	
+	TriggerAddEventDialogControl (t, player, ACG_Group01_Dlg, c_triggerControlEventTypeClick);
+	TriggerAddEventDialogControl (t, player, ACG_Group01_Dlg, c_triggerControlEventTypeHotkeyPressed);
+	
+}

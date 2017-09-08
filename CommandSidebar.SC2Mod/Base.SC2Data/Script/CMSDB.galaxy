@@ -2,6 +2,7 @@ include "Script/PiratedLib"
 include "Script/ActiveUserLib"
 include "Script/CMSDB_h"
 
+
 //--------------------------------------------------------------------------------------------------
 // Struct Declaration
 //--------------------------------------------------------------------------------------------------
@@ -265,6 +266,8 @@ void CMSDB_Init(){
 			TriggerAddEventUnitOrder(CMSDB_InterceptOrder, null, AbilityCommand(abil, j));
 		}
 	}
+
+	
 }
 
 void InitCommandSideBar(){
