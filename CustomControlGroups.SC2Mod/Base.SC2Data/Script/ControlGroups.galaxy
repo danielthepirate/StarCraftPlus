@@ -5,22 +5,43 @@
 //c_triggerControlTypeButton
 //riggerAddEventDialogControl (trigger t, int player, int control, int eventType);
 
-const int c_maxACG_ControlGroups = 10;
+const int c_ACG_MaxControlGroups = 10;
+const int c_ACG_MaxSubGroups = 6;
+const string c_ACG_UIBasePath ="UIContainer/ConsoleUIContainer/AxiomACGTab/";
+
+string [c_ACG_MaxControlGroups] ACG_GroupButton_DlgPath;
 
 int ACG_Group01_Dlg;
-string ACG_Group01_DlgPath = "UIContainer/ConsoleUIContainer/AxiomACGContainer/Group01";
+
 int ACG_Group01_CmdDlg1;
 int ACG_Group01_CmdIcon1;
 int ACG_Group01_CmdDlg2;
 int ACG_Group01_CmdIcon2;
+
 string ACG_Group01_CmdIconPath1 = "UIContainer/ConsoleUIContainer/AxiomACGCommandPanel/CommandPanel01Icon/Icon";
 string ACG_Group01_CmdIconPath2 = "UIContainer/ConsoleUIContainer/AxiomACGCommandPanel/CommandPanel02Icon/Icon";
 string ACG_Group01_CmdDlgPath1 = "UIContainer/ConsoleUIContainer/AxiomACGCommandPanel/CommandPanel01";
 string ACG_Group01_CmdDlgPath2 = "UIContainer/ConsoleUIContainer/AxiomACGCommandPanel/CommandPanel02";
-unitgroup[c_maxPlayers][c_maxACG_ControlGroups] ACG_ControlGroups;
+unitgroup[c_maxPlayers][c_ACG_MaxControlGroups] ACG_ControlGroups;
 unitgroup SelectionP1;
 unitgroup SelectionP1_1;
 unitgroup SelectionP1_2;
+
+void InitACGUIPaths(){
+	int i;
+	int j;
+	string s;
+	for(i = 1;i<=c_ACG_MaxControlGroups;i+=1) {
+		ACG_GroupButton_DlgPath[i] = c_ACG_UIBasePath + "AxiomACGContainer/Group0"+IntToString(i);
+		s = ACG_GroupButton_DlgPath[i];
+		TriggerDebugOutput(1, StringToText(s), true);
+		for(j = 1;j<=c_ACG_MaxSubGroups;j+=1) {
+			s = c_ACG_UIBasePath + "AxiomACGCommandPanel/Group0"+IntToString(i)+"/CommandPanel0"+IntToString(j)+"Icon/Icon";
+			TriggerDebugOutput(1, StringToText(s), true);
+		}
+	}
+}
+
 
 bool ACG_ButtonClickResponse_Func (bool testConds, bool runActions) {
 	int player = EventPlayer();
@@ -60,6 +81,9 @@ void InitACG() {
     //test
 	int player = 1;
 	trigger t = TriggerCreate("ACG_ButtonClickResponse_Func");
+
+	InitACGUIPaths();
+
 	ACG_Group01_Dlg = DialogControlHookupStandard (c_triggerControlTypeButton, ACG_Group01_DlgPath);
 	ACG_Group01_CmdDlg1 = DialogControlHookupStandard (c_triggerControlTypeCommandPanel, ACG_Group01_CmdDlgPath1);
 	ACG_Group01_CmdDlg2 = DialogControlHookupStandard (c_triggerControlTypeCommandPanel, ACG_Group01_CmdDlgPath2);

@@ -1,19 +1,64 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
-		<Frame type="Frame" name="AxiomACGContainer" template="ControlGroups/ControlGroupContainer">
-			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-			<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-			<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-			<Anchor side="Bottom" relative="Group01" pos="Max" offset="0"/>
-			
-		</Frame>
-		<Frame type="Frame" name="AxiomACGCommandPanel" template="ControlGroups/ControlCommandPanel">
-			<Anchor side="Left" relative="$parent/AxiomACGContainer" pos="Min" offset="0"/>
-			<Anchor side="Right" relative="$parent/AxiomACGContainer" pos="Max" offset="0"/>
-			<Anchor side="Top" relative="$parent/AxiomACGContainer" pos="Max" offset="0"/>
-			<Anchor side="Bottom" relative="CommandPanel06" pos="Max" offset="0"/>
-			
+		<Frame type="TabControl" name="AxiomACGTab">
+					<!-- <Anchor side="Left" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/> -->
+					<!-- <Anchor side="Right" relative="$parent/SideBarTabAnchor" pos="Mid" offset="0"/> -->
+			<Anchor relative="$parent" />
+			<TabListItem val="AxiomACGContainer/Group01"/>
+			<TabListItem val="AxiomACGContainer/Group02"/>
+			<TabListItem val="AxiomACGContainer/Group03"/>
+			<TabListItem val="AxiomACGContainer/Group04"/>
+			<TabListItem val="AxiomACGContainer/Group05"/>
+			<TabListItem val="AxiomACGContainer/Group06"/>
+			<TabListItem val="AxiomACGContainer/Group07"/>
+			<TabListItem val="AxiomACGContainer/Group08"/>
+			<TabListItem val="AxiomACGContainer/Group09"/>
+			<TabListItem val="AxiomACGContainer/Group00"/>
+			<PanelListItem val="AxiomACGCommandPanel"/>
+			<PanelListItem val="$parent/BuilderCommandContainer"/>
+			<PanelListItem val="$parent/TrainerCommandContainer"/>
+			<PanelListItem val="$parent/ResearcherCommandContainer"/>
+			<SelectedIndex val="1"/>
+
+			<Frame type="Frame" name="AxiomACGContainer" template="ControlGroups/ControlGroupContainer">
+				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Bottom" relative="Group01" pos="Max" offset="0"/>
+				
+			</Frame>
+			<Frame type="Frame" name="AxiomACGCommandPanel" template="ControlGroups/ControlCommandPanel">
+				<Anchor side="Left" relative="$parent/AxiomACGContainer" pos="Min" offset="0"/>
+				<Anchor side="Right" relative="$parent/AxiomACGContainer" pos="Max" offset="0"/>
+				<Anchor side="Top" relative="$parent/AxiomACGContainer" pos="Max" offset="0"/>
+				<Anchor side="Bottom" relative="Group01/CommandPanel06" pos="Max" offset="0"/>
+				<Frame type="Frame" name="Group01" template="ControlGroups/ControlCommandPanel">
+					<Anchor relative="$parent" />
+				</Frame>
+				<Frame type="Frame" name="Group02" template="ControlGroups/ControlCommandPanel">
+					<Anchor relative="$parent" />
+				</Frame>
+				<Frame type="Frame" name="Group03" template="ControlGroups/ControlCommandPanel">
+					<Anchor relative="$parent" />
+				</Frame>
+				<Frame type="Frame" name="Group04" template="ControlGroups/ControlCommandPanel">
+					<Anchor relative="$parent" />
+				</Frame>
+				<Frame type="Frame" name="Group05" template="ControlGroups/ControlCommandPanel">
+					<Anchor relative="$parent" />
+				</Frame>
+				<Frame type="Frame" name="Group06" template="ControlGroups/ControlCommandPanel">
+					<Anchor relative="$parent" />
+				</Frame>
+				<Frame type="Frame" name="Group07" template="ControlGroups/ControlCommandPanel">
+					<Anchor relative="$parent" />
+				</Frame>
+				<Frame type="Frame" name="Group08" template="ControlGroups/ControlCommandPanel">
+					<Anchor relative="$parent" />
+				</Frame>
+			</Frame>
+
 		</Frame>
 	</Frame>
 </Desc>
