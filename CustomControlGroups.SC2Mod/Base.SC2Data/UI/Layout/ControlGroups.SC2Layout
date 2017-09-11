@@ -23,8 +23,9 @@
         <NormalImage val="NormalImage"/>
         <HoverImage val="HoverImage"/>
         <Label val="MenuLabel"/>
-        <ClickSound val="@UI_ActionButtonSelect"/>
-		<Toggleable val="false"/>
+		<ClickSound val="@UI_ActionButtonSelect"/>
+		<Toggleable val="true"/>
+		<AllowedButtons val="Left|Right"/>
 
         <Frame type="Image" name="NormalImage">
             <Texture val="@@UI/MenuBarMenuButtonNormal" layer="0"/>
@@ -46,6 +47,15 @@
             <Style val="@@MenuBarButton"/>
         </Frame>
     </Frame>
+	<Frame type="Button" name="ACGButtonShortcutHandler">
+		<Anchor side="Top" relative="$parent" pos="Max" offset="500"/>
+		<Anchor side="Left" relative="$parent" pos="Max" offset="0"/>
+		<Anchor side="Bottom" relative="$this" pos="Min" offset="0"/>
+		<Anchor side="Right" relative="$this" pos="Min" offset="0"/>
+		<Width val="0"/>
+		<Height val="0"/>
+		<ClickSound val="@UI_ActionButtonSelect"/>
+	</Frame>
 	<Frame type="CommandButton" name="CommandButtonTemplate" template="CommandButton/CommandButtonTemplate">
 		<TooltipFrame val="TestCommandTooltip"/>
 		<Width val="64"/>
@@ -78,7 +88,7 @@
 	
 	<Frame type="CommandPanel" name="CommandPanelTemplate" template="CommandPanel/CommandPanelTemplate">
 	
-		<HideUnusedButtons val="true"/>
+		<HideUnusedButtons val="false"/>
 		<DisplayCancelCommandCard val="false"/>
 		<UseGridHotkeys val="false"/>
 
@@ -178,6 +188,11 @@
 	
 	
 	<Frame type="Frame" name="ControlCommandPanel">
+		<Frame type="Image" name="BackgroundMaskImage">
+            <Anchor relative="$parent" offset="0"/>
+            <Texture val="@@UI/PauseScreenDimImage"/>
+            <RenderType val="LDR"/>
+        </Frame>
 		<Frame type="Frame" name="CommandPanel01Icon" template="ControlGroups/UnitIconTemplate">
 			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>			
 			<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
@@ -253,7 +268,7 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign01"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign01"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall01"/>
 		</Frame>
 		<Frame type="Button" name="Group02" template="ControlGroups/ControlGroupButtonTemplate">
 			<Anchor side="Left" relative="$parent/Group01" pos="Max" offset="0"/>
@@ -261,7 +276,7 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign02"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign02"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall02"/>
 		</Frame>
 		<Frame type="Button" name="Group03" template="ControlGroups/ControlGroupButtonTemplate">
 			<Anchor side="Left" relative="$parent/Group02" pos="Max" offset="0"/>
@@ -269,7 +284,7 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign03"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign03"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall03"/>
 		</Frame>
 		<Frame type="Button" name="Group04" template="ControlGroups/ControlGroupButtonTemplate">
 			<Anchor side="Left" relative="$parent/Group03" pos="Max" offset="0"/>
@@ -277,7 +292,7 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign04"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign04"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall04"/>
 		</Frame>
 		<Frame type="Button" name="Group05" template="ControlGroups/ControlGroupButtonTemplate">
 			<Anchor side="Left" relative="$parent/Group04" pos="Max" offset="0"/>
@@ -285,7 +300,7 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign05"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign05"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall05"/>
 		</Frame>
 		<Frame type="Button" name="Group06" template="ControlGroups/ControlGroupButtonTemplate">
 			<Anchor side="Left" relative="$parent/Group05" pos="Max" offset="0"/>
@@ -293,7 +308,7 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign06"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign06"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall06"/>
 		</Frame>
 		<Frame type="Button" name="Group07" template="ControlGroups/ControlGroupButtonTemplate">
 			<Anchor side="Left" relative="$parent/Group06" pos="Max" offset="0"/>
@@ -301,7 +316,7 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign07"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign07"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall07"/>
 		</Frame>
 		<Frame type="Button" name="Group08" template="ControlGroups/ControlGroupButtonTemplate">
 			<Anchor side="Left" relative="$parent/Group07" pos="Max" offset="0"/>
@@ -309,7 +324,7 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign08"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign08"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall08"/>
 		</Frame>
 		<Frame type="Button" name="Group09" template="ControlGroups/ControlGroupButtonTemplate">
 			<Anchor side="Left" relative="$parent/Group08" pos="Max" offset="0"/>
@@ -317,7 +332,7 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign09"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign09"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall09"/>
 		</Frame>
 		<Frame type="Button" name="Group00" template="ControlGroups/ControlGroupButtonTemplate">
 			<Anchor side="Left" relative="$parent/Group09" pos="Max" offset="0"/>
@@ -325,8 +340,39 @@
 			<Frame type="Label" name="MenuLabel">
 				<Text val="@Button/Label/ControlGroupAssign00"/>
 			</Frame>
-			<Shortcut val="@Button/Hotkey/ControlGroupAssign00"/>
+			<Shortcut val="@Button/Hotkey/ACGRecall00"/>
 		</Frame>
+		<Frame type="Button" name="Assign01" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign01"/>
+		</Frame>
+		<Frame type="Button" name="Assign02" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign02"/>
+		</Frame>
+		<Frame type="Button" name="Assign03" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign03"/>
+		</Frame>
+		<Frame type="Button" name="Assign04" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign04"/>
+		</Frame>
+		<Frame type="Button" name="Assign05" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign05"/>
+		</Frame>
+		<Frame type="Button" name="Assign06" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign06"/>
+		</Frame>
+		<Frame type="Button" name="Assign07" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign07"/>
+		</Frame>
+		<Frame type="Button" name="Assign08" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign08"/>
+		</Frame>
+		<Frame type="Button" name="Assign09" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign09"/>
+		</Frame>
+		<Frame type="Button" name="Assign00" template="ControlGroups/ACGButtonShortcutHandler">
+			<Shortcut val="@Button/Hotkey/ACGAssign00"/>
+		</Frame>
+		
 	</Frame>
 	<Frame type="Frame" name="ControlGroupCommandContainer">
 		

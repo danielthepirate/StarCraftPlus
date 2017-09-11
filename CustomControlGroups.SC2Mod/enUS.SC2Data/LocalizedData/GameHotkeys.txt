@@ -1,13 +1,24 @@
-﻿Button/Hotkey/ControlGroupAssign01=Control+1
-Button/Hotkey/ControlGroupAssign02=Control+2
-Button/Hotkey/ControlGroupAssign03=Control+3
-Button/Hotkey/ControlGroupAssign04=Control+4
-Button/Hotkey/ControlGroupAssign05=Control+5
-Button/Hotkey/ControlGroupAssign06=Control+6
-Button/Hotkey/ControlGroupAssign07=Control+7
-Button/Hotkey/ControlGroupAssign08=Control+8
-Button/Hotkey/ControlGroupAssign09=Control+9
-Button/Hotkey/ControlGroupAssign00=Control+0
+﻿Button/Hotkey/ACGAssign01=Control+1
+Button/Hotkey/ACGAssign02=Control+2
+Button/Hotkey/ACGAssign03=Control+3
+Button/Hotkey/ACGAssign04=Control+4
+Button/Hotkey/ACGAssign05=Control+5
+Button/Hotkey/ACGAssign06=Control+6
+Button/Hotkey/ACGAssign07=Control+7
+Button/Hotkey/ACGAssign08=Control+8
+Button/Hotkey/ACGAssign09=Control+9
+Button/Hotkey/ACGAssign00=Control+0
+
+Button/Hotkey/ACGRecall01=1
+Button/Hotkey/ACGRecall02=2
+Button/Hotkey/ACGRecall03=3
+Button/Hotkey/ACGRecall04=4
+Button/Hotkey/ACGRecall05=5
+Button/Hotkey/ACGRecall06=6
+Button/Hotkey/ACGRecall07=7
+Button/Hotkey/ACGRecall08=8
+Button/Hotkey/ACGRecall09=9
+Button/Hotkey/ACGRecall00=0
 
 
 UI/Hotkey/ControlGroupAppend0=Shift+0

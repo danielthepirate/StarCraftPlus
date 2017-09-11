@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CUnit id="ACG_DUMMY">
+        <Race value="Prot"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+		<Mover value="Fly"/>
+        <Speed value="0.0078"/>
+        <Acceleration value="1"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+</Catalog>

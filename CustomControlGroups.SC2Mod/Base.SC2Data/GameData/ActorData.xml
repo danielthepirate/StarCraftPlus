@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+	<CActorUnit id="ACG_DUMMY" parent="GenericUnitStandardNoAutoSoundLinks"  unitName="ACG_DUMMY">
+	
+		<EditorModel value="Sphere"/>
+		<Model value="Invisible"/>
+		<StatusBarFlags index="Shields" value="0"/>
+		<StatusBarFlags index="Life" value="0"/>
+		<StatusBarFlags index="Energy" value="0"/>
+		<StatusBarFlags index="Cargo" value="0"/>
+		<StatusBarFlags index="Progress" value="0"/>
+		<StatusBarFlags index="Duration" value="0"/>
+		<UnitFlags index="ShowBlobShadow" value="0"/>
+		<Macros value="RemoveFlyerHelperMacro"/>
+	</CActorUnit>
+	
+</Catalog>
