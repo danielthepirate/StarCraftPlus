@@ -4,13 +4,35 @@ include "TriggerLibs/natives"
 // Library: StarCraftPlus Lib
 //--------------------------------------------------------------------------------------------------
 // Preset Declarations
+const int libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade = 0;
+const int libSCPL_ge_UpgradeNotificationsSlotStatus_VisibleOccupiedwithrunningUpgrade = 1;
+const int libSCPL_ge_UpgradeNotificationsSlotStatus_OccupiedwithdestroyedcompletedUpgrade = 2;
+const int libSCPL_ge_UpgradeNotificationsSlotStatus_NoUpgrade = 3;
 const int libSCPL_ge_GenericEvent_ResourceSpend = 0;
 const int libSCPL_ge_GenericEvent_HarvesterUpdate = 1;
 string libSCPL_ge_GenericEvent_Ident (int lp_val);
 const int libSCPL_ge_GenericParameter_TriggeringPlayer = 0;
 string libSCPL_ge_GenericParameter_Ident (int lp_val);
 
+// Constants
+const int libSCPL_gv_upgradeNotificationsMaxUISlots = 50;
+const fixed libSCPL_gv_upgradeNotificationsVisibleTime = 15.0;
+
 // Structures
+struct libSCPL_gs_UpgradeNotifications {
+    bool[17] lv_updateThreadRunning;
+    int[libSCPL_gv_upgradeNotificationsMaxUISlots + 1] lv_itemIcon;
+    int[libSCPL_gv_upgradeNotificationsMaxUISlots + 1] lv_itemName;
+    int[libSCPL_gv_upgradeNotificationsMaxUISlots + 1] lv_itemPanel;
+    int[libSCPL_gv_upgradeNotificationsMaxUISlots + 1] lv_itemProgressBar;
+    int[libSCPL_gv_upgradeNotificationsMaxUISlots + 1] lv_itemTimerStatus;
+    int[libSCPL_gv_upgradeNotificationsMaxUISlots + 1] lv_itemTimerLabel;
+    timer[libSCPL_gv_upgradeNotificationsMaxUISlots + 1][17] lv_timerDestruction;
+    int[libSCPL_gv_upgradeNotificationsMaxUISlots + 1][17] lv_slotStatus;
+    unit[101][17] lv_slotFacility;
+    int[17] lv_slotLastUsed;
+};
+
 struct libSCPL_gs_Labels {
     int lv_iconSize;
     int lv_iconSizeEgg;
@@ -231,6 +253,7 @@ struct libSCPL_gs_Hotkey {
 
 // Variable Declarations
 playergroup libSCPL_gv_globalSelectionPlayers;
+libSCPL_gs_UpgradeNotifications libSCPL_gv_upgradeNotifications;
 libSCPL_gs_Labels libSCPL_gv_labels;
 playergroup libSCPL_gv_labelsObs;
 libSCPL_gs_Constant libSCPL_gv_constants;
@@ -307,6 +330,18 @@ void libSCPL_gf_AutoCreepTargetNodesSort (int lp_playerIndex);
 void libSCPL_gf_AutoCreepDebugAll (int lp_playerIndex);
 void libSCPL_gf_AutoCreepDebug (unit lp_unit);
 void libSCPL_gf_InitializeUIHookups ();
+void libSCPL_gf_UpgradeNotificationsRemoveRunningUpgrade (int lp_slot, int lp_playerIndex);
+void libSCPL_gf_UpgradeNotificationsRemoveRunningUpgradeImmediate (int lp_slot, int lp_playerIndex);
+int libSCPL_gf_UpgradeNotificationsFacilitySlot (unit lp_facility, int lp_playerIndex);
+string libSCPL_gf_UpgradeNotificationsUpgradeImage (string lp_upgrade, int lp_playerIndex);
+text libSCPL_gf_UpgradeNotificationsUpgradeName (string lp_upgrade, int lp_playerIndex);
+bool libSCPL_gf_UpgradeNotificationsUpgradeNeedsToBeVisible (fixed lp_remainingTime);
+void libSCPL_gf_UpgradeNotificationsUpdateThread (int lp_playerIndex);
+void libSCPL_gf_UpgradeNotificationsSetStatusLabel (int lp_slot, text lp_status, int lp_playerIndex);
+void libSCPL_gf_UpgradeNotificationsSetSlotData (int lp_slot, text lp_name, string lp_icon, bool lp_visible, int lp_playerIndex);
+void libSCPL_gf_UpgradeNotificationsSwapSlotWithLowestInvisibleOne (int lp_slot, int lp_playerIndex);
+void libSCPL_gf_UpgradeNotificationsSwapSlotInformation (int lp_slotA, int lp_slotB, int lp_playerIndex);
+void libSCPL_gf_UpgradeNotificationsUpdateProgressData (int lp_slot, int lp_playerIndex);
 void libSCPL_gf_ResourceDisplayGainAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
@@ -437,6 +472,11 @@ trigger libSCPL_gt_PlayerAutoCreepSpreadUnitCreated;
 trigger libSCPL_gt_UCBAutoLarvaSpawnToggleOn;
 trigger libSCPL_gt_UCBAutoLarvaSpawnToggleOff;
 trigger libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated;
+trigger libSCPL_gt_UpgradeNotificationsInitialization;
+trigger libSCPL_gt_UpgradeNotificationsResearchStarted;
+trigger libSCPL_gt_UpgradeNotificationsResearchCancelled;
+trigger libSCPL_gt_UpgradeNotificationsResearchCompleted;
+trigger libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut;
 trigger libSCPL_gt_ResourceDisplayMineralCreate;
 trigger libSCPL_gt_ResourceDisplayMineralRichCreate;
 trigger libSCPL_gt_ResourceDisplayMineralMULECreate;

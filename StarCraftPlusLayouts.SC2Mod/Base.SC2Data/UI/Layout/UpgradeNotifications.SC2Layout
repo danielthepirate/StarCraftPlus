@@ -10,8 +10,11 @@
     <Constant name="IconSize" val="64"/>
     <Constant name="ProgressWidth" val="150"/>
     <Constant name="ProgressHeight" val="15"/>
+	
+	<Constant name="ColorProtoss" val="110,170,255"/>
+    <Constant name="ColorTerran" val="155,255,190"/>
+    <Constant name="ColorZerg" val="245,140,70"/>
 
-    <!-- Toggle WholePanelVisible to "FALSE" before publishing! -->
     <Frame type="Frame" name="TimerFrameTemplate">
         <Height val="#Height"/>
         <Width val="#Width"/>
@@ -19,14 +22,59 @@
         <CollapseLayout val="true"/>
         <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
         <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-
-        <!-- Toggle Visible to "FALSE" before publishing! -->
+		
+		
+		<Animation name="ExpandIn">
+			<Event event="OnShown" action="Reset,Play"/>
+			<Controller type="Fade" end="Pause">
+				<Key type="Curve" time="0.00" value="0" out="Slow"/>
+				<Key type="Curve" time="0.20" value="255" in="Slow"/>
+			</Controller>
+			<Controller type="Dimension" dimension="Width" relative="False" percentage="True" end="Pause" >
+				<Key type="Curve" time="0.00" value="40"/>
+				<Key type="Curve" time="0.20" value="120"/>
+				<Key type="Curve" time="0.25" value="100"/>
+			</Controller>
+			<Controller type="Dimension" dimension="Height" relative="False" percentage="True" end="Pause" >
+				<Key type="Curve" time="0.00" value="40"/>
+				<Key type="Curve" time="0.20" value="120"/>
+				<Key type="Curve" time="0.25" value="100"/>
+			</Controller>
+        </Animation>
+		
+		<Animation name="FadeOut">
+			<Event event="EventHide" action="Reset,Play"/>
+			<Controller type="Fade" end="Pause">
+				<Key type="Curve" time="0.00" value="255" in="Slow"/>
+				<Key type="Curve" time="0.75" value="0" out="Fast"/>
+			</Controller>
+        </Animation>
+		
         <Frame type="Image" name="TimerWindow">
             <Texture val="MIT/ghbackground.dds"/>
             <TextureType val="Normal"/>
             <Alpha val="#Alpha"/>
             <RenderPriority val="500"/>
-            <Anchor relative="$parent"/>
+			<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+			
+			<StateGroup name="RaceState">
+				<DefaultState val="Terran"/>
+				<State name="Terran">
+					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
+					<Action type="SetProperty" color="#ColorTerran"/>
+				</State>
+				<State name="Protoss">
+					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+					<Action type="SetProperty" color="#ColorProtoss"/>
+				</State>
+				<State name="Zerg">
+					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
+					<Action type="SetProperty" color="#ColorZerg"/>
+				</State>
+			</StateGroup>
 
             <Frame type="Image" name="TimerIcon">
                 <Texture val="Assets/Textures/White32.dds"/>

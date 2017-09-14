@@ -202,7 +202,6 @@
 				<Texture val="@UI/StatusProductionBorder"/>
 				<TextureType val="NineSlice" />
 				<IgnoreParentColor val="True" />
-				<!-- <Color val="{$ancestor[@name=LeaderPlus]/PlayerData/@Color}" /> -->
 				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
 				<Alpha val="200" />
 			</Frame>
@@ -213,7 +212,6 @@
 				<Texture val="@UI/StatusProductionBorder"/>
 				<TextureType val="NineSlice" />
 				<IgnoreParentColor val="True" />
-				<!-- <Color val="{$ancestor[@name=LeaderPlus]/PlayerData/@Color}" /> -->
 				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
 				<ColorAdjustMode val="AddSelf"/>
 				<AdjustmentColor val="32,32,32"/>

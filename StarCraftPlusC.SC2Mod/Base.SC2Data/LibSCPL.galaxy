@@ -27,6 +27,32 @@ void libSCPL_InitVariables () {
     libSCPL_InitVariables_completed = true;
 
     libSCPL_gv_globalSelectionPlayers = PlayerGroupEmpty();
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemIcon[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemName[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemPanel[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemProgressBar[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        for (init_j1 = 0; init_j1 <= 16; init_j1 += 1) {
+            libSCPL_gv_upgradeNotifications.lv_timerDestruction[init_i1][init_j1] = TimerCreate();
+        }
+    }
+    for (init_i1 = 0; init_i1 <= 16; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_slotLastUsed[init_i1] = -1;
+    }
     libSCPL_gv_labels.lv_iconSize = 50;
     libSCPL_gv_labels.lv_iconSizeEgg = 35;
     libSCPL_gv_labels.lv_iconSizeTechLab = 45;
@@ -1545,6 +1571,638 @@ void libSCPL_gf_InitializeUIHookups () {
         libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[4][lv_frameIndex] = DialogControlLastCreated();
     }
     UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypePylonButton, false);
+}
+
+void libSCPL_gf_UpgradeNotificationsRemoveRunningUpgrade (int lp_slot, int lp_playerIndex) {
+    int auto8614652F_ae;
+    int auto8614652F_ai;
+
+    // Variable Declarations
+    int lv_count;
+    string lv_upgrade;
+    int lv_sLOT_MAX_INDEX1;
+    playergroup lv_pLAYER;
+
+    // Variable Initialization
+    lv_sLOT_MAX_INDEX1 = (libSCPL_gv_upgradeNotificationsMaxUISlots + 1);
+    lv_pLAYER = PlayerGroupEmpty();
+
+    // Implementation
+    lv_pLAYER = PlayerGroupSingle(lp_playerIndex);
+    auto8614652F_ae = libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex];
+    auto8614652F_ai = 1;
+    lv_count = (lp_slot + 1);
+    for ( ; ( (auto8614652F_ai >= 0 && lv_count <= auto8614652F_ae) || (auto8614652F_ai <= 0 && lv_count >= auto8614652F_ae) ) ; lv_count += auto8614652F_ai ) {
+        if ((lv_count <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+            libSCPL_gf_UpgradeNotificationsSetSlotData((lv_count - 1), libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lv_count], lp_playerIndex), (libNtve_gf_DialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lv_count], lp_playerIndex)), DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_count], lp_playerIndex), lp_playerIndex);
+            libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_count][lp_playerIndex];
+            libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[(lv_count - 1)], libNtve_gf_DialogItemValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_count], lp_playerIndex), lv_pLAYER);
+            libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_count], lp_playerIndex), lv_pLAYER);
+            libSCPL_gv_upgradeNotifications.lv_slotStatus[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex];
+            if ((TimerGetElapsed(libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex]) <= 0.0)) {
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], StringToText(""), lv_pLAYER);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], lv_pLAYER, true);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], lv_pLAYER, false);
+            }
+            else {
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_count], lp_playerIndex), lv_pLAYER);
+            }
+        }
+        else {
+            libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_count], lp_playerIndex), lv_pLAYER);
+            if ((lv_count == lv_sLOT_MAX_INDEX1)) {
+                lv_upgrade = libNtve_gf_QueuedUpgradeTypeInTrainingQueueSlot(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], 1, 1);
+                libSCPL_gf_UpgradeNotificationsSetSlotData((lv_count - 1), libSCPL_gf_UpgradeNotificationsUpgradeName(lv_upgrade, lp_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeImage(lv_upgrade, lp_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeNeedsToBeVisible(UnitQueueItemTime(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], c_unitQueueTimeRemaining, 1)), lp_playerIndex);
+                libSCPL_gv_upgradeNotifications.lv_slotStatus[(lv_count - 1)][lp_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade;
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], StringToText(""), lv_pLAYER);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], lv_pLAYER, true);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], lv_pLAYER, false);
+                libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex] = TimerCreate();
+            }
+
+        }
+        libSCPL_gv_upgradeNotifications.lv_slotFacility[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex];
+    }
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]][lp_playerIndex] = null;
+    if ((libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        DialogControlSendAnimationEvent(libSCPL_gv_upgradeNotifications.lv_itemPanel[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]], lv_pLAYER, "EventHide");
+    }
+    libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] -= 1;
+}
+
+void libSCPL_gf_UpgradeNotificationsRemoveRunningUpgradeImmediate (int lp_slot, int lp_playerIndex) {
+    int auto30D7FA82_ae;
+    int auto30D7FA82_ai;
+
+    // Variable Declarations
+    int lv_count;
+    string lv_upgrade;
+    int lv_sLOT_MAX_INDEX1;
+    playergroup lv_pLAYER;
+
+    // Variable Initialization
+    lv_sLOT_MAX_INDEX1 = (libSCPL_gv_upgradeNotificationsMaxUISlots + 1);
+    lv_pLAYER = PlayerGroupEmpty();
+
+    // Implementation
+    lv_pLAYER = PlayerGroupSingle(lp_playerIndex);
+    auto30D7FA82_ae = libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex];
+    auto30D7FA82_ai = 1;
+    lv_count = (lp_slot + 1);
+    for ( ; ( (auto30D7FA82_ai >= 0 && lv_count <= auto30D7FA82_ae) || (auto30D7FA82_ai <= 0 && lv_count >= auto30D7FA82_ae) ) ; lv_count += auto30D7FA82_ai ) {
+        if ((lv_count <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+            libSCPL_gf_UpgradeNotificationsSetSlotData((lv_count - 1), libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lv_count], lp_playerIndex), (libNtve_gf_DialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lv_count], lp_playerIndex)), DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_count], lp_playerIndex), lp_playerIndex);
+            libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_count][lp_playerIndex];
+            libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[(lv_count - 1)], libNtve_gf_DialogItemValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_count], lp_playerIndex), lv_pLAYER);
+            libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_count], lp_playerIndex), lv_pLAYER);
+            libSCPL_gv_upgradeNotifications.lv_slotStatus[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex];
+            if ((TimerGetElapsed(libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex]) <= 0.0)) {
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], StringToText(""), lv_pLAYER);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], lv_pLAYER, true);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], lv_pLAYER, false);
+            }
+            else {
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_count], lp_playerIndex), lv_pLAYER);
+            }
+        }
+        else {
+            libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_count], lp_playerIndex), lv_pLAYER);
+            if ((lv_count == lv_sLOT_MAX_INDEX1)) {
+                lv_upgrade = libNtve_gf_QueuedUpgradeTypeInTrainingQueueSlot(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], 1, 1);
+                libSCPL_gf_UpgradeNotificationsSetSlotData((lv_count - 1), libSCPL_gf_UpgradeNotificationsUpgradeName(lv_upgrade, lp_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeImage(lv_upgrade, lp_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeNeedsToBeVisible(UnitQueueItemTime(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], c_unitQueueTimeRemaining, 1)), lp_playerIndex);
+                libSCPL_gv_upgradeNotifications.lv_slotStatus[(lv_count - 1)][lp_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade;
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], StringToText(""), lv_pLAYER);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], lv_pLAYER, true);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], lv_pLAYER, false);
+                libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex] = TimerCreate();
+            }
+
+        }
+        libSCPL_gv_upgradeNotifications.lv_slotFacility[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex];
+    }
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]][lp_playerIndex] = null;
+    if ((libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gf_UpgradeNotificationsSetSlotData(libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex], StringToText(""), "Assets\\Textures\\black.dds", false, lp_playerIndex);
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]][lp_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_NoUpgrade;
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]], StringToText(""), lv_pLAYER);
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]], 0.0, lv_pLAYER);
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]], StringToText(""), lv_pLAYER);
+        libSCPL_gv_upgradeNotifications.lv_timerDestruction[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]][lp_playerIndex] = TimerCreate();
+    }
+    libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] -= 1;
+}
+
+int libSCPL_gf_UpgradeNotificationsFacilitySlot (unit lp_facility, int lp_playerIndex) {
+    int autoDF4E1DBE_ae;
+    int autoDF4E1DBE_ai;
+
+    // Variable Declarations
+    int lv_count;
+
+    // Variable Initialization
+
+    // Implementation
+    autoDF4E1DBE_ae = libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex];
+    autoDF4E1DBE_ai = 1;
+    lv_count = 0;
+    for ( ; ( (autoDF4E1DBE_ai >= 0 && lv_count <= autoDF4E1DBE_ae) || (autoDF4E1DBE_ai <= 0 && lv_count >= autoDF4E1DBE_ae) ) ; lv_count += autoDF4E1DBE_ai ) {
+        if ((libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex] == lp_facility) && ((libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade) || (libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_VisibleOccupiedwithrunningUpgrade))) {
+            return lv_count;
+        }
+    }
+    return -1;
+}
+
+string libSCPL_gf_UpgradeNotificationsUpgradeImage (string lp_upgrade, int lp_playerIndex) {
+    // Implementation
+    return (CatalogFieldValueGet(c_gameCatalogUpgrade, lp_upgrade, "Icon", lp_playerIndex));
+}
+
+text libSCPL_gf_UpgradeNotificationsUpgradeName (string lp_upgrade, int lp_playerIndex) {
+    string autoF5081664_val;
+    string autoD17A1825_val;
+
+    // Variable Declarations
+    string lv_unittype;
+
+    // Variable Initialization
+
+    // Implementation
+    autoF5081664_val = lp_upgrade;
+    if (autoF5081664_val == "ProtossGroundWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_DCAE8CF0");
+    }
+    else if (autoF5081664_val == "ProtossGroundWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_FFCF9FAD");
+    }
+    else if (autoF5081664_val == "ProtossGroundWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_42975F88");
+    }
+    else if (autoF5081664_val == "ProtossGroundArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_F140373A");
+    }
+    else if (autoF5081664_val == "ProtossGroundArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_28359667");
+    }
+    else if (autoF5081664_val == "ProtossGroundArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_58EE146C");
+    }
+    else if (autoF5081664_val == "ProtossShieldsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_283F79C7");
+    }
+    else if (autoF5081664_val == "ProtossShieldsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_260F9D44");
+    }
+    else if (autoF5081664_val == "ProtossShieldsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_87C323B4");
+    }
+    else if (autoF5081664_val == "ProtossAirWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_B03CC18D");
+    }
+    else if (autoF5081664_val == "ProtossAirWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_1D2AE741");
+    }
+    else if (autoF5081664_val == "ProtossAirWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_971E6079");
+    }
+    else if (autoF5081664_val == "ProtossAirArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_DCF677EB");
+    }
+    else if (autoF5081664_val == "ProtossAirArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_297BE571");
+    }
+    else if (autoF5081664_val == "ProtossAirArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_FD49BB3C");
+    }
+    else if (autoF5081664_val == "PsiStormTech") {
+        return StringExternal("Param/Value/lib_SCPL_B7138B79");
+    }
+    else if (autoF5081664_val == "haltech") {
+        return StringExternal("Param/Value/lib_SCPL_A4C6AA07");
+    }
+    else if (autoF5081664_val == "BlinkTech") {
+        return StringExternal("Param/Value/lib_SCPL_D7BFAED5");
+    }
+    else if (autoF5081664_val == "WarpGateResearch") {
+        return StringExternal("Param/Value/lib_SCPL_53655C25");
+    }
+    else if (autoF5081664_val == "CarrierLaunchSpeedUpgrade") {
+        return StringExternal("Param/Value/lib_SCPL_37AE81D3");
+    }
+    else if (autoF5081664_val == "ExtendedThermalLance") {
+        return StringExternal("Param/Value/lib_SCPL_49EACCC1");
+    }
+    else if (autoF5081664_val == "ObserverGraviticBooster") {
+        return StringExternal("Param/Value/lib_SCPL_8BBDE51E");
+    }
+    else if (autoF5081664_val == "GraviticDrive") {
+        return StringExternal("Param/Value/lib_SCPL_E41DC998");
+    }
+    else if (autoF5081664_val == "Charge") {
+        return StringExternal("Param/Value/lib_SCPL_A223E8B9");
+    }
+    else if (autoF5081664_val == "TerranInfantryWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_A2E66935");
+    }
+    else if (autoF5081664_val == "TerranInfantryWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_C22343DA");
+    }
+    else if (autoF5081664_val == "TerranInfantryWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_A84B8F63");
+    }
+    else if (autoF5081664_val == "TerranInfantryArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_6A6CE349");
+    }
+    else if (autoF5081664_val == "TerranInfantryArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_777F6039");
+    }
+    else if (autoF5081664_val == "TerranInfantryArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_E112C887");
+    }
+    else if (autoF5081664_val == "TerranShipWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_1D239EED");
+    }
+    else if (autoF5081664_val == "TerranShipWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_22DDD9F8");
+    }
+    else if (autoF5081664_val == "TerranShipWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_454A5087");
+    }
+    else if (autoF5081664_val == "TerranShipArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_29D6BF90");
+    }
+    else if (autoF5081664_val == "TerranShipArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_E08A5638");
+    }
+    else if (autoF5081664_val == "TerranShipArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_F6E71BB9");
+    }
+    else if (autoF5081664_val == "TerranVehicleWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_82F18745");
+    }
+    else if (autoF5081664_val == "TerranVehicleWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_31B36035");
+    }
+    else if (autoF5081664_val == "TerranVehicleWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_3FF09317");
+    }
+    else if (autoF5081664_val == "TerranVehicleArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_025CBB60");
+    }
+    else if (autoF5081664_val == "TerranVehicleArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_3E394597");
+    }
+    else if (autoF5081664_val == "TerranVehicleArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_CC951DDB");
+    }
+    else if (autoF5081664_val == "BansheeCloak") {
+        return StringExternal("Param/Value/lib_SCPL_446A6674");
+    }
+    else if (autoF5081664_val == "PersonalCloaking") {
+        return StringExternal("Param/Value/lib_SCPL_23D2DD6B");
+    }
+    else if (autoF5081664_val == "HighCapacityBarrels") {
+        return StringExternal("Param/Value/lib_SCPL_86DBD6A1");
+    }
+    else if (autoF5081664_val == "PunisherGrenades") {
+        return StringExternal("Param/Value/lib_SCPL_8796D3E7");
+    }
+    else if (autoF5081664_val == "HunterSeeker") {
+        return StringExternal("Param/Value/lib_SCPL_3BDC6E5E");
+    }
+    else if (autoF5081664_val == "SiegeTech") {
+        return StringExternal("Param/Value/lib_SCPL_546AA758");
+    }
+    else if (autoF5081664_val == "Stimpack") {
+        return StringExternal("Param/Value/lib_SCPL_1D4ACF86");
+    }
+    else if (autoF5081664_val == "BattlecruiserEnableSpecializations") {
+        return StringExternal("Param/Value/lib_SCPL_C2EDAB79");
+    }
+    else if (autoF5081664_val == "BattlecruiserBehemothReactor") {
+        return StringExternal("Param/Value/lib_SCPL_3095848B");
+    }
+    else if (autoF5081664_val == "NeosteelFrame") {
+        return StringExternal("Param/Value/lib_SCPL_B3EFA97B");
+    }
+    else if (autoF5081664_val == "GhostMoebiusReactor") {
+        return StringExternal("Param/Value/lib_SCPL_40FE5D53");
+    }
+    else if (autoF5081664_val == "HiSecAutoTracking") {
+        return StringExternal("Param/Value/lib_SCPL_00AFF88E");
+    }
+    else if (autoF5081664_val == "ShieldWall") {
+        return StringExternal("Param/Value/lib_SCPL_B932CA0A");
+    }
+    else if (autoF5081664_val == "MedivacCaduceusReactor") {
+        return StringExternal("Param/Value/lib_SCPL_F2EA3576");
+    }
+    else if (autoF5081664_val == "RavenCorvidReactor") {
+        return StringExternal("Param/Value/lib_SCPL_95E125EC");
+    }
+    else if (autoF5081664_val == "DurableMaterials") {
+        return StringExternal("Param/Value/lib_SCPL_E584E573");
+    }
+    else if (autoF5081664_val == "ReaperSpeed") {
+        return StringExternal("Param/Value/lib_SCPL_BCDE05EB");
+    }
+    else if (autoF5081664_val == "TerranBuildingArmor") {
+        return StringExternal("Param/Value/lib_SCPL_95A64B80");
+    }
+    else if (autoF5081664_val == "ZergMeleeWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_861050BC");
+    }
+    else if (autoF5081664_val == "ZergMeleeWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_DB9930FA");
+    }
+    else if (autoF5081664_val == "ZergMeleeWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_452D0D6A");
+    }
+    else if (autoF5081664_val == "ZergMissileWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_6FEB266F");
+    }
+    else if (autoF5081664_val == "ZergMissileWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_DAD60B23");
+    }
+    else if (autoF5081664_val == "ZergMissileWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_E920244D");
+    }
+    else if (autoF5081664_val == "ZergGroundArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_CF8D2A5F");
+    }
+    else if (autoF5081664_val == "ZergGroundArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_EA9F8E17");
+    }
+    else if (autoF5081664_val == "ZergGroundArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_27F66D5E");
+    }
+    else if (autoF5081664_val == "ZergFlyerWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_B57B0D01");
+    }
+    else if (autoF5081664_val == "ZergFlyerWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_1333D60B");
+    }
+    else if (autoF5081664_val == "ZergFlyerWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_11275019");
+    }
+    else if (autoF5081664_val == "ZergFlyerArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_18A272CF");
+    }
+    else if (autoF5081664_val == "ZergFlyerArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_CDD560F4");
+    }
+    else if (autoF5081664_val == "ZergFlyerArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_95DE8464");
+    }
+    else if (autoF5081664_val == "CentrificalHooks") {
+        return StringExternal("Param/Value/lib_SCPL_87A1E312");
+    }
+    else if (autoF5081664_val == "Burrow") {
+        return StringExternal("Param/Value/lib_SCPL_B2B3371E");
+    }
+    else if (autoF5081664_val == "hydraliskspeed") {
+        return StringExternal("Param/Value/lib_SCPL_E658D072");
+    }
+    else if (autoF5081664_val == "InfestorEnergyUpgrade") {
+        return StringExternal("Param/Value/lib_SCPL_8A9925E6");
+    }
+    else if (autoF5081664_val == "overlordspeed") {
+        return StringExternal("Param/Value/lib_SCPL_FA23BFC2");
+    }
+    else if (autoF5081664_val == "overlordtransport") {
+        return StringExternal("Param/Value/lib_SCPL_2615D62C");
+    }
+    else if (autoF5081664_val == "GlialReconstitution") {
+        return StringExternal("Param/Value/lib_SCPL_A7B376FC");
+    }
+    else if (autoF5081664_val == "TunnelingClaws") {
+        return StringExternal("Param/Value/lib_SCPL_E04671DF");
+    }
+    else if (autoF5081664_val == "ChitinousPlating") {
+        return StringExternal("Param/Value/lib_SCPL_5C1A1F49");
+    }
+    else if (autoF5081664_val == "zerglingattackspeed") {
+        return StringExternal("Param/Value/lib_SCPL_49834BAA");
+    }
+    else if (autoF5081664_val == "zerglingmovementspeed") {
+        return StringExternal("Param/Value/lib_SCPL_4DFF6AE6");
+    }
+    else {
+    }
+    autoD17A1825_val = (lp_upgrade);
+    if (autoD17A1825_val == "PhoenixRangeUpgrade") {
+        return StringExternal("Param/Value/lib_SCPL_9E8FF45B");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_435CB8F5");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_DA61236E");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_2339C1F2");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_28277442");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_B1B45ECA");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_48F54F47");
+    }
+    else if (autoD17A1825_val == "DrillClaws") {
+        return StringExternal("Param/Value/lib_SCPL_B248EA6C");
+    }
+    else if (autoD17A1825_val == "TransformationServos") {
+        return StringExternal("Param/Value/lib_SCPL_B32111D2");
+    }
+    else if (autoD17A1825_val == "LocustLifetimeIncrease") {
+        return StringExternal("Param/Value/lib_SCPL_39EA1A3F");
+    }
+    else if (autoD17A1825_val == "NeuralParasite") {
+        return StringExternal("Param/Value/lib_SCPL_9FA30676");
+    }
+    else {
+    }
+    return StringExternal(CatalogFieldValueGet(c_gameCatalogUpgrade, lp_upgrade, "Name", lp_playerIndex));
+}
+
+bool libSCPL_gf_UpgradeNotificationsUpgradeNeedsToBeVisible (fixed lp_remainingTime) {
+    // Implementation
+    if ((lp_remainingTime <= libSCPL_gv_upgradeNotificationsVisibleTime)) {
+        return true;
+    }
+    return false;
+}
+
+trigger auto_libSCPL_gf_UpgradeNotificationsUpdateThread_Trigger = null;
+int auto_libSCPL_gf_UpgradeNotificationsUpdateThread_lp_playerIndex;
+
+void libSCPL_gf_UpgradeNotificationsUpdateThread (int lp_playerIndex) {
+    auto_libSCPL_gf_UpgradeNotificationsUpdateThread_lp_playerIndex = lp_playerIndex;
+
+    if (auto_libSCPL_gf_UpgradeNotificationsUpdateThread_Trigger == null) {
+        auto_libSCPL_gf_UpgradeNotificationsUpdateThread_Trigger = TriggerCreate("auto_libSCPL_gf_UpgradeNotificationsUpdateThread_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libSCPL_gf_UpgradeNotificationsUpdateThread_Trigger, false, false);
+}
+
+bool auto_libSCPL_gf_UpgradeNotificationsUpdateThread_TriggerFunc (bool testConds, bool runActions) {
+    int lp_playerIndex = auto_libSCPL_gf_UpgradeNotificationsUpdateThread_lp_playerIndex;
+
+    int auto5F488D10_ae;
+    int auto5F488D10_ai;
+
+    // Variable Declarations
+    int lv_count;
+
+    // Variable Initialization
+
+    // Implementation
+    while ((libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] >= 0)) {
+        auto5F488D10_ae = MinI(libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex], 5);
+        auto5F488D10_ai = 1;
+        lv_count = 0;
+        for ( ; ( (auto5F488D10_ai >= 0 && lv_count <= auto5F488D10_ae) || (auto5F488D10_ai <= 0 && lv_count >= auto5F488D10_ae) ) ; lv_count += auto5F488D10_ai ) {
+            if (((lv_count > libSCPL_gv_upgradeNotificationsMaxUISlots) || (libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade)) && (libSCPL_gf_UpgradeNotificationsUpgradeNeedsToBeVisible(UnitQueueItemTime(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], c_unitQueueTimeRemaining, 1)) == true)) {
+                if ((lv_count <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+                    DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_count], PlayerGroupSingle(lp_playerIndex), true);
+                    libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_VisibleOccupiedwithrunningUpgrade;
+                }
+                libSCPL_gf_UpgradeNotificationsSwapSlotWithLowestInvisibleOne(lv_count, lp_playerIndex);
+            }
+            if ((libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_VisibleOccupiedwithrunningUpgrade)) {
+                libSCPL_gf_UpgradeNotificationsUpdateProgressData(lv_count, lp_playerIndex);
+            }
+        }
+        Wait(0.0625, c_timeGame);
+        Wait(0.0, c_timeGame);
+    }
+    libSCPL_gv_upgradeNotifications.lv_updateThreadRunning[lp_playerIndex] = false;
+    return true;
+}
+
+void libSCPL_gf_UpgradeNotificationsSetStatusLabel (int lp_slot, text lp_status, int lp_playerIndex) {
+    // Implementation
+    DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lp_slot], PlayerGroupSingle(lp_playerIndex), false);
+    DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lp_slot], PlayerGroupSingle(lp_playerIndex), true);
+    libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lp_slot], lp_status, PlayerGroupSingle(lp_playerIndex));
+}
+
+void libSCPL_gf_UpgradeNotificationsSetSlotData (int lp_slot, text lp_name, string lp_icon, bool lp_visible, int lp_playerIndex) {
+    // Variable Declarations
+    color lv_color;
+
+    // Variable Initialization
+    lv_color = Color(0,0,0);
+
+    // Implementation
+    libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lp_slot], lp_name, PlayerGroupSingle(lp_playerIndex));
+    libNtve_gf_SetDialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lp_slot], lp_icon, PlayerGroupSingle(lp_playerIndex));
+    DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slot], PlayerGroupSingle(lp_playerIndex), lp_visible);
+}
+
+void libSCPL_gf_UpgradeNotificationsSwapSlotWithLowestInvisibleOne (int lp_slot, int lp_playerIndex) {
+    int auto0C1145F3_ae;
+    int auto0C1145F3_ai;
+
+    // Variable Declarations
+    int lv_count;
+
+    // Variable Initialization
+
+    // Implementation
+    auto0C1145F3_ae = (lp_slot - 1);
+    auto0C1145F3_ai = 1;
+    lv_count = 0;
+    for ( ; ( (auto0C1145F3_ai >= 0 && lv_count <= auto0C1145F3_ae) || (auto0C1145F3_ai <= 0 && lv_count >= auto0C1145F3_ae) ) ; lv_count += auto0C1145F3_ai ) {
+        if ((libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade)) {
+            libSCPL_gf_UpgradeNotificationsSwapSlotInformation(lv_count, lp_slot, lp_playerIndex);
+            return ;
+        }
+    }
+}
+
+void libSCPL_gf_UpgradeNotificationsSwapSlotInformation (int lp_slotA, int lp_slotB, int lp_playerIndex) {
+    int init_i;
+
+    // Variable Declarations
+    int[2] lv_status;
+    bool[2] lv_visibility;
+    text[2] lv_name;
+    string[2] lv_icon;
+    color[2] lv_color;
+    fixed[2] lv_value;
+    timer[2] lv_timer;
+    unit lv_facility;
+
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_status[init_i] = libSCPL_ge_UpgradeNotificationsSlotStatus_NoUpgrade;
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_icon[init_i] = "Assets\\Textures\\blank.dds";
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_color[init_i] = Color(100,100,100);
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_timer[init_i] = TimerCreate();
+    }
+
+    // Implementation
+    if ((lp_slotA <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        lv_status[0] = libSCPL_gv_upgradeNotifications.lv_slotStatus[lp_slotA][lp_playerIndex];
+        lv_visibility[0] = DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slotA], lp_playerIndex);
+        lv_name[0] = libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lp_slotA], lp_playerIndex);
+        lv_icon[0] = (libNtve_gf_DialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lp_slotA], lp_playerIndex));
+        lv_color[0] = libNtve_gf_DialogItemColor(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slotA], lp_playerIndex);
+        lv_value[0] = libNtve_gf_DialogItemValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slotA], lp_playerIndex);
+        lv_timer[0] = libSCPL_gv_upgradeNotifications.lv_timerDestruction[lp_slotA][lp_playerIndex];
+    }
+    if ((lp_slotB <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        lv_status[1] = libSCPL_gv_upgradeNotifications.lv_slotStatus[lp_slotB][lp_playerIndex];
+        lv_visibility[1] = DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slotB], lp_playerIndex);
+        lv_name[1] = libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lp_slotB], lp_playerIndex);
+        lv_icon[1] = (libNtve_gf_DialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lp_slotB], lp_playerIndex));
+        lv_color[1] = libNtve_gf_DialogItemColor(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slotB], lp_playerIndex);
+        lv_value[1] = libNtve_gf_DialogItemValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slotB], lp_playerIndex);
+        lv_timer[1] = libSCPL_gv_upgradeNotifications.lv_timerDestruction[lp_slotB][lp_playerIndex];
+    }
+    if ((lp_slotA <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lp_slotA][lp_playerIndex] = lv_status[1];
+        libSCPL_gf_UpgradeNotificationsSetSlotData(lp_slotA, lv_name[1], lv_icon[1], lv_visibility[1], lp_playerIndex);
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slotA], lv_value[1], PlayerGroupSingle(lp_playerIndex));
+        libSCPL_gv_upgradeNotifications.lv_timerDestruction[lp_slotA][lp_playerIndex] = lv_timer[1];
+    }
+    if ((lp_slotB <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lp_slotB][lp_playerIndex] = lv_status[0];
+        libSCPL_gf_UpgradeNotificationsSetSlotData(lp_slotB, lv_name[0], lv_icon[0], lv_visibility[0], lp_playerIndex);
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slotB], lv_value[0], PlayerGroupSingle(lp_playerIndex));
+        libSCPL_gv_upgradeNotifications.lv_timerDestruction[lp_slotB][lp_playerIndex] = lv_timer[0];
+    }
+    lv_facility = libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slotA][lp_playerIndex];
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slotA][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slotB][lp_playerIndex];
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slotB][lp_playerIndex] = lv_facility;
+}
+
+void libSCPL_gf_UpgradeNotificationsUpdateProgressData (int lp_slot, int lp_playerIndex) {
+    // Variable Declarations
+    fixed lv_remainingTime;
+    int lv_remainingSeconds;
+    int lv_remainingMilliseconds;
+    text lv_extraZero;
+
+    // Variable Initialization
+    lv_remainingTime = UnitQueueItemTime(libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slot][lp_playerIndex], c_unitQueueTimeRemaining, 1);
+    lv_remainingSeconds = TruncI(lv_remainingTime);
+    lv_remainingMilliseconds = TruncI(((lv_remainingTime - lv_remainingSeconds) * 10.0));
+
+    // Implementation
+    libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slot], (libSCPL_gv_upgradeNotificationsVisibleTime - lv_remainingTime), PlayerGroupSingle(lp_playerIndex));
+    libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lp_slot], (StringExternal("Param/Value/lib_SCPL_16CF1B5C") + (IntToText(lv_remainingSeconds) + ((StringExternal("Param/Value/lib_SCPL_4E70CEBA") + StringExternal("Param/Value/lib_SCPL_8B856A4B")) + ((StringExternal("Param/Value/lib_SCPL_16BEFEF4") + lv_extraZero) + IntToText(lv_remainingMilliseconds))))), PlayerGroupSingle(lp_playerIndex));
 }
 
 void libSCPL_gf_ResourceDisplayGainAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene) {
@@ -7055,6 +7713,251 @@ void libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Notifications - Initialization
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UpgradeNotificationsInitialization_Func (bool testConds, bool runActions) {
+    int autoF61FB29D_ae;
+    int autoF61FB29D_ai;
+
+    // Variable Declarations
+    int lv_slot;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoF61FB29D_ae = libSCPL_gv_upgradeNotificationsMaxUISlots;
+    autoF61FB29D_ai = 1;
+    lv_slot = 0;
+    for ( ; ( (autoF61FB29D_ai >= 0 && lv_slot <= autoF61FB29D_ae) || (autoF61FB29D_ai <= 0 && lv_slot >= autoF61FB29D_ae) ) ; lv_slot += autoF61FB29D_ai ) {
+        DialogControlHookupStandard(c_triggerControlTypePanel, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + IntToString(lv_slot)));
+        libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_slot] = DialogControlLastCreated();
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        DialogControlHookupStandard(c_triggerControlTypeLabel, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerStatus")));
+        libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_slot] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeProgressBar, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerBar")));
+        libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_slot] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeLabel, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerCountdown")));
+        libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_slot] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeImage, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerIcon")));
+        libSCPL_gv_upgradeNotifications.lv_itemIcon[lv_slot] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeLabel, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerType")));
+        libSCPL_gv_upgradeNotifications.lv_itemName[lv_slot] = DialogControlLastCreated();
+        libNtve_gf_SetDialogItemMaximumValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_slot], libSCPL_gv_upgradeNotificationsVisibleTime, PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_slot], StringToText(""), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lv_slot], StringToText(""), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_slot], Color(100,100,100), PlayerGroupAll());
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UpgradeNotificationsInitialization_Init () {
+    libSCPL_gt_UpgradeNotificationsInitialization = TriggerCreate("libSCPL_gt_UpgradeNotificationsInitialization_Func");
+    TriggerAddEventMapInit(libSCPL_gt_UpgradeNotificationsInitialization);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Notifications - Research Started
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UpgradeNotificationsResearchStarted_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_slot;
+    unit lv_facility;
+    string lv_upgrade;
+    int lv_playerIndex;
+    playergroup lv_pLAYER;
+
+    // Variable Initialization
+    lv_facility = EventUnit();
+    lv_upgrade = libNtve_gf_TriggeringProgressUpgrade();
+    lv_pLAYER = PlayerGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsAlive(EventUnit()) == true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_pLAYER = PlayerGroupSingle(lv_playerIndex);
+    libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lv_playerIndex] += 1;
+    lv_slot = libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lv_playerIndex];
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_slot][lv_playerIndex] = lv_facility;
+    if ((lv_slot <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gf_UpgradeNotificationsSetSlotData(lv_slot, libSCPL_gf_UpgradeNotificationsUpgradeName(lv_upgrade, lv_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeImage(lv_upgrade, lv_playerIndex), false, lv_playerIndex);
+        if ((libSCPL_gv_upgradeNotifications.lv_updateThreadRunning[lv_playerIndex] == false)) {
+            libSCPL_gv_upgradeNotifications.lv_updateThreadRunning[lv_playerIndex] = true;
+            libSCPL_gf_UpgradeNotificationsUpdateThread(lv_playerIndex);
+        }
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_slot], StringToText(""), lv_pLAYER);
+        DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_slot], lv_pLAYER, true);
+        DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_slot], lv_pLAYER, false);
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_slot][lv_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade;
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_slot], 0.0, lv_pLAYER);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UpgradeNotificationsResearchStarted_Init () {
+    libSCPL_gt_UpgradeNotificationsResearchStarted = TriggerCreate("libSCPL_gt_UpgradeNotificationsResearchStarted_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_UpgradeNotificationsResearchStarted, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Notifications - Research Cancelled
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UpgradeNotificationsResearchCancelled_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_facility;
+    int lv_slot;
+    int lv_playerIndex;
+
+    // Variable Initialization
+    lv_facility = EventUnit();
+    lv_slot = libSCPL_gf_UpgradeNotificationsFacilitySlot(lv_facility, UnitGetOwner(lv_facility));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    if ((lv_slot <= libSCPL_gv_upgradeNotificationsMaxUISlots) && (DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_slot], lv_playerIndex) == true)) {
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_slot][lv_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_OccupiedwithdestroyedcompletedUpgrade;
+        TimerStart(libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_slot][lv_playerIndex], 5.0, false, c_timeGame);
+        if ((UnitIsAlive(lv_facility) == false)) {
+            libSCPL_gf_UpgradeNotificationsSetStatusLabel(lv_slot, StringExternal("Param/Value/lib_SCPL_FE8FB489"), lv_playerIndex);
+        }
+        else {
+            libSCPL_gf_UpgradeNotificationsSetStatusLabel(lv_slot, StringExternal("Param/Value/lib_SCPL_F9A0DB61"), lv_playerIndex);
+        }
+    }
+    else {
+        libSCPL_gf_UpgradeNotificationsRemoveRunningUpgradeImmediate(libSCPL_gf_UpgradeNotificationsFacilitySlot(lv_facility, lv_playerIndex), lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UpgradeNotificationsResearchCancelled_Init () {
+    libSCPL_gt_UpgradeNotificationsResearchCancelled = TriggerCreate("libSCPL_gt_UpgradeNotificationsResearchCancelled_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_UpgradeNotificationsResearchCancelled, null, c_unitProgressStageCancel);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Notifications - Research Completed
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UpgradeNotificationsResearchCompleted_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_facility;
+    int lv_slot;
+    int lv_playerIndex;
+    playergroup lv_pLAYER;
+
+    // Variable Initialization
+    lv_facility = EventUnit();
+    lv_slot = libSCPL_gf_UpgradeNotificationsFacilitySlot(lv_facility, UnitGetOwner(lv_facility));
+    lv_pLAYER = PlayerGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_pLAYER = PlayerGroupSingle(lv_playerIndex);
+    if ((lv_slot <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_slot][lv_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_OccupiedwithdestroyedcompletedUpgrade;
+        libSCPL_gf_UpgradeNotificationsSetStatusLabel(lv_slot, StringExternal("Param/Value/lib_SCPL_3228FF8F"), lv_playerIndex);
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_slot], libSCPL_gv_upgradeNotificationsVisibleTime, lv_pLAYER);
+        TimerStart(libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_slot][lv_playerIndex], 5.0, false, c_timeGame);
+    }
+    else {
+        libSCPL_gf_UpgradeNotificationsRemoveRunningUpgradeImmediate(libSCPL_gf_UpgradeNotificationsFacilitySlot(lv_facility, lv_playerIndex), lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UpgradeNotificationsResearchCompleted_Init () {
+    libSCPL_gt_UpgradeNotificationsResearchCompleted = TriggerCreate("libSCPL_gt_UpgradeNotificationsResearchCompleted_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_UpgradeNotificationsResearchCompleted, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Notifications - Destruction Timer Runs Out
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut_Func (bool testConds, bool runActions) {
+    playergroup auto7984D9A2_g;
+    int auto7984D9A2_p;
+    int auto75229D90_ae;
+    int auto75229D90_ai;
+
+    // Variable Declarations
+    int lv_slot;
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7984D9A2_g = PlayerGroupActive(); 
+    auto7984D9A2_p = 1;
+    for ( ; auto7984D9A2_p <= PlayerGroupCount(auto7984D9A2_g) ; auto7984D9A2_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto7984D9A2_g, auto7984D9A2_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto7984D9A2_g, auto7984D9A2_p);
+        auto75229D90_ae = libSCPL_gv_upgradeNotificationsMaxUISlots;
+        auto75229D90_ai = 1;
+        lv_slot = 0;
+        for ( ; ( (auto75229D90_ai >= 0 && lv_slot <= auto75229D90_ae) || (auto75229D90_ai <= 0 && lv_slot >= auto75229D90_ae) ) ; lv_slot += auto75229D90_ai ) {
+            if ((EventTimer() == libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_slot][lv_playerIndex])) {
+                libSCPL_gf_UpgradeNotificationsRemoveRunningUpgrade(lv_slot, lv_playerIndex);
+                return true;
+            }
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut_Init () {
+    libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut = TriggerCreate("libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut_Func");
+    TriggerAddEventTimer(libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Resource Display Mineral Create
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ResourceDisplayMineralCreate_Func (bool testConds, bool runActions) {
@@ -8131,6 +9034,11 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBAutoLarvaSpawnToggleOn_Init();
     libSCPL_gt_UCBAutoLarvaSpawnToggleOff_Init();
     libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init();
+    libSCPL_gt_UpgradeNotificationsInitialization_Init();
+    libSCPL_gt_UpgradeNotificationsResearchStarted_Init();
+    libSCPL_gt_UpgradeNotificationsResearchCancelled_Init();
+    libSCPL_gt_UpgradeNotificationsResearchCompleted_Init();
+    libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut_Init();
     libSCPL_gt_ResourceDisplayMineralCreate_Init();
     libSCPL_gt_ResourceDisplayMineralRichCreate_Init();
     libSCPL_gt_ResourceDisplayMineralMULECreate_Init();
