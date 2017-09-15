@@ -2,8 +2,6 @@
 <Desc>
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
 		
-		<!-- SWAP THESE COMMENTED LINES TO HAVE THE ABILITIES TAB START AT Q -->
-		
 		<!-- <Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainerCombat"> -->
 		<Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainer">
 			<Anchor relative="$parent/InfoPanelAnchor"/>
@@ -92,6 +90,7 @@
 					<Text val="@UI/UCBTabButtons/Build"/>
 				</Frame>
 				<Shortcut val="@Button/Hotkey/SidebarBuildings"/>
+				<Handle val="SidebarBuildings"/>
 			</Frame>
 			
 			<Frame type="Button" name="SidebarUnits" template="CommandSidebar/SideBarTabButtonTemplate">
