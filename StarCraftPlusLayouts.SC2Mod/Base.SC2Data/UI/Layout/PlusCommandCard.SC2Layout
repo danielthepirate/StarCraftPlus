@@ -75,7 +75,6 @@
 						<Action type="ApplyTemplate" frame="CommandButton13" template="CommandSidebar/CommandActiveButtonZergTemplate"/>
 					</State>
 				</StateGroup>
-				
 			</Frame>
 		</Frame>
 	</Frame>

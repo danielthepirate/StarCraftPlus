@@ -150,7 +150,7 @@
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
         <AutoCastAcquireLevel value="Defensive"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallLowerUCB">
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallLowerUCB" Requirements="HaveSupplyDepot">
             <Flags index="AllowSelfCast" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
@@ -171,7 +171,7 @@
         <Flags index="Smart" value="1"/>
         <AutoCastAcquireLevel value="Defensive"/>
         <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallToggleUCB">
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallToggleUCB" Requirements="HaveSupplyDepot">
             <Flags index="AllowSelfCast" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
@@ -205,7 +205,7 @@
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
         <AutoCastAcquireLevel value="Defensive"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallRaiseUCB">
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallRaiseUCB" Requirements="HaveSupplyDepot">
             <Flags index="AllowSelfCast" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
@@ -233,7 +233,7 @@
     <CAbilMorph id="BarracksTechLabMorphUCB">
         <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="TechLabBarracksUCB" State="Restricted" Requirements="HaveBarracksOnGround"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BuildTechLabBarracks" State="Restricted" Requirements="HaveBarracksOnGround"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
         <Flags index="BestUnit" value="1"/>
         <Flags index="Birth" value="1"/>

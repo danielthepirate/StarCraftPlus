@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+		<Handle val="ConsoleUIContainer"/>
 		
-		<!-- <Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainerCombat"> -->
-		<Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainer">
-			<Anchor relative="$parent/InfoPanelAnchor"/>
+		<Frame type="Image" name="TopBarBackground">
+			<Anchor side="Top" relative="$parent/GlobalCommandContainer" pos="Min" offset="-24"/>
+			<Anchor side="Left" relative="$parent/GlobalCommandContainer" pos="Min" offset="-8"/>
+			<Anchor side="Bottom" relative="$parent/GlobalCommandContainer" pos="Max" offset="12"/>
+			<Anchor side="Right" relative="$parent/GlobalCommandContainer" pos="Max" offset="8"/>
+			<RenderType val="HDR"/>
+			<RenderPriority val="10"/>
+			<Color val="0,0,0"/>
+			<Alpha val="128"/>
 			
+			<Frame type="BlurFrame" name="Blur">
+				<Anchor relative="$parent"/>
+				<BlurAmount val="0.15"/>
+				<RenderPriority val="1"/>
+			</Frame>
+		</Frame>
+		
+		<Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainerGlobal">
+
 			<Frame type="CommandPanel" name="CommandPanel1">
 				<Handle val="GlobalCommandPanel1"/>
 			</Frame>
@@ -63,29 +79,31 @@
 			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="-16"/>
 			<Height val="38"/>
         
-			<TabListItem val="SidebarGlobal"/>
+			<!-- <TabListItem val="SidebarGlobal"/> -->
 			<TabListItem val="SidebarBuildings"/>
 			<TabListItem val="SidebarUnits"/>
 			<TabListItem val="SidebarResearch"/>
-			<PanelListItem val="$parent/GlobalCommandContainer"/>
+			<!-- <PanelListItem val="$parent/GlobalCommandContainer"/> -->
 			<PanelListItem val="$parent/BuilderCommandContainer"/>
 			<PanelListItem val="$parent/TrainerCommandContainer"/>
 			<PanelListItem val="$parent/ResearcherCommandContainer"/>
-			<SelectedIndex val="1"/>
+			<SelectedIndex val="0"/>
 
-			<Frame type="Button" name="SidebarGlobal" template="CommandSidebar/SideBarTabButtonTemplate">
+			<!-- <Frame type="Button" name="SidebarGlobal" template="CommandSidebar/SideBarTabButtonTemplate"> -->
+				<!-- <Anchor side="Left" relative="$parent" pos="Min" offset="0"/> -->
+				<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="0"/> -->
+				<!-- <Frame type="Label" name="MenuLabel"> -->
+					<!-- <Text val="@UI/UCBTabButtons/Global"/> -->
+				<!-- </Frame> -->
+				<!-- <Shortcut val="@Button/Hotkey/SidebarGlobal"/> -->
+				
+				<!-- <Visible val="true"/> -->
+			<!-- </Frame> -->
+			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
+				<!-- <Anchor side="Left" relative="$parent/SidebarGlobal" pos="Max" offset="-2"/> -->
+				<!-- <Anchor side="Top" relative="$parent/SidebarGlobal" pos="Min" offset="0"/> -->
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-				<Frame type="Label" name="MenuLabel">
-					<Text val="@UI/UCBTabButtons/Global"/>
-				</Frame>
-				<Shortcut val="@Button/Hotkey/SidebarGlobal"/>
-				
-				<Visible val="true"/>
-			</Frame>
-			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Left" relative="$parent/SidebarGlobal" pos="Max" offset="-2"/>
-				<Anchor side="Top" relative="$parent/SidebarGlobal" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Build"/>
 				</Frame>

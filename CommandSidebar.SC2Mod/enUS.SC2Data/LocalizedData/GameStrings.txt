@@ -14,7 +14,6 @@ Unit/Name/SdbPRsrch2=Sidebar Protoss Research 2
 Unit/Name/SdbPTrain1=Sidebar Protoss Train 1
 Unit/Name/SdbPTrain2=Sidebar Protoss Train 2
 Unit/Name/SdbPWarp1=Sidebar Protoss Warp 1
-UI/UCBTabButtons/Global=Abilities (<c val="ffffff">F6</c>)
-UI/UCBTabButtons/Train=Train (<c val="ffffff">F8</c>)
-UI/UCBTabButtons/Research=Research (<c val="ffffff">F9</c>)
-UI/UCBTabButtons/Build=Construct (<c val="ffffff">F7</c>)
+UI/UCBTabButtons/Build=Build (<c val="ffffff">F6</c>)
+UI/UCBTabButtons/Train=Train (<c val="ffffff">F7</c>)
+UI/UCBTabButtons/Research=Upgrade (<c val="ffffff">F8</c>)

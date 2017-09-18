@@ -87,13 +87,13 @@
     <CButton id="AutoWallRaiseUCB">
         <Icon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
-        <Hotkey value="Button/Hotkey/AutoWallRaiseUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalAutoWallRaise"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="AutoWallLowerUCB">
         <Icon value="Assets\Textures\btn-building-terran-supplydepotlowered.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
-        <Hotkey value="Button/Hotkey/AutoWallLowerUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalAutoWallLower"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="BanelingUCB">
@@ -137,7 +137,7 @@
     <CButton id="CalldownMULEUCB">
         <Icon value="Assets\Textures\BTN-Unit-Terran-mule.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Unit-Terran-mule.dds"/>
-        <Hotkey value="Button/Hotkey/CalldownMULEUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalMULE"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="CalldownMULE"/>
     </CButton>
@@ -704,7 +704,7 @@
     <CButton id="ScanUCB">
         <Icon value="Assets\Textures\btn-ability-terran-scannersweep-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-terran-scannersweep-color.dds"/>
-        <Hotkey value="Button/Hotkey/ScanUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalScan"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Scan"/>
     </CButton>
@@ -712,20 +712,20 @@
     <CButton id="SummonNydusWormUCB">
         <Icon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
-        <Hotkey value="Button/Hotkey/SummonNydusWormUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalSummonNydusWorm"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="SummonNydusWorm"/>
     </CButton>
     <CButton id="SupplyDropUCB">
         <Icon value="Assets\Textures\BTN-Ability-Terran-CalldownExtraSupplies-color.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Ability-Terran-CalldownExtraSupplies-color.dds"/>
-        <Hotkey value="Button/Hotkey/SupplyDropUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalSupplyDrop"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="SupplyDrop"/>
     </CButton>
     <CButton id="TimeWarpUCB">
         <Icon value="Assets\Textures\btn-ability-protoss-protoncharge-color.dds"/>
-        <Hotkey value="Button/Hotkey/TimeWarpUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalTimeWarp"/>
         <EditorCategories value="Race:Protoss"/>
         <HotkeyAlias value="TimeWarp"/>
     </CButton>

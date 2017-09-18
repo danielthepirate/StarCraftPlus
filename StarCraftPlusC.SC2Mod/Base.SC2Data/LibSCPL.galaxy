@@ -1357,8 +1357,6 @@ void libSCPL_gf_InitializeUIHookups () {
     int auto1771840D_p;
     int autoAAAC514B_ae;
     int autoAAAC514B_ai;
-    int auto4211EF39_ae;
-    int auto4211EF39_ai;
 
     // Variable Declarations
     int lv_frameIndex;
@@ -1392,27 +1390,6 @@ void libSCPL_gf_InitializeUIHookups () {
     for ( ; ( (autoAAAC514B_ai >= 0 && lv_frameIndex <= autoAAAC514B_ae) || (autoAAAC514B_ai <= 0 && lv_frameIndex >= autoAAAC514B_ae) ) ; lv_frameIndex += autoAAAC514B_ai ) {
         DialogControlHookupStandard(c_triggerControlTypeImage, ("UIContainer/ConsoleUIContainer/ControlGroupListener" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
         libSCPL_gv_uI.lv_consoleControlGroupAnimListener[(lv_frameIndex + 1)] = DialogControlLastCreated();
-    }
-    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarGlobal");
-    libSCPL_gv_uI.lv_consoleGlobalTab[1] = DialogControlLastCreated();
-    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarBuildings");
-    libSCPL_gv_uI.lv_consoleGlobalTab[2] = DialogControlLastCreated();
-    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarUnits");
-    libSCPL_gv_uI.lv_consoleGlobalTab[3] = DialogControlLastCreated();
-    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarResearch");
-    libSCPL_gv_uI.lv_consoleGlobalTab[4] = DialogControlLastCreated();
-    auto4211EF39_ae = 2;
-    auto4211EF39_ai = 1;
-    lv_frameIndex = 1;
-    for ( ; ( (auto4211EF39_ai >= 0 && lv_frameIndex <= auto4211EF39_ae) || (auto4211EF39_ai <= 0 && lv_frameIndex >= auto4211EF39_ae) ) ; lv_frameIndex += auto4211EF39_ai ) {
-        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/GlobalCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[1][lv_frameIndex] = DialogControlLastCreated();
-        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[2][lv_frameIndex] = DialogControlLastCreated();
-        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[3][lv_frameIndex] = DialogControlLastCreated();
-        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[4][lv_frameIndex] = DialogControlLastCreated();
     }
     UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypePylonButton, false);
 }
@@ -2633,8 +2610,7 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Barracks", 6.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Factory", 8.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "OrbitalCommand", 6.0);
     return true;
 }
 
@@ -2781,6 +2757,11 @@ void libSCPL_gt_ProgressMorphRefund01_Init () {
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToPlanetaryFortressUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("MorphDummyTrainNukeUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("BarracksReactorMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("FactoryReactorMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("StarportReactorMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("BarracksTechLabMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("FactoryTechLabMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("StarportTechLabMorphUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("MorphToMothership", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToLair", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToHive", 0));

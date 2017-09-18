@@ -174,7 +174,7 @@
 	
 	<Frame type="Image" name="CommandBackgroundTemplate">
 		<Color val="0,0,0"/>
-		<Alpha val="200"/>
+		<Alpha val="172"/>
 	</Frame>
 	
 	<Frame name="ProductionCountFrameTemplate" type="ProductionCountFrame">

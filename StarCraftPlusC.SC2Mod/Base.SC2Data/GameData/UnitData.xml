@@ -824,9 +824,9 @@
             <LayoutButtons index="0" Face="ScanUCB" Type="AbilCmd" AbilCmd="ScannerSweepUCB,Execute" Row="0" Column="2"/>
             <LayoutButtons index="1" Face="CalldownMULEUCB" Type="AbilCmd" AbilCmd="CalldownMULEUCB,Execute" Row="0" Column="0"/>
             <LayoutButtons index="2" Face="SupplyDropUCB" Type="AbilCmd" AbilCmd="SupplyDropUCB,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="AutoWallRaiseUCB" Type="AbilCmd" AbilCmd="AutoWallRaiseUCB,Execute" Row="1" Column="1"/>
-            <LayoutButtons Face="AutoWallLowerUCB" Type="AbilCmd" AbilCmd="AutoWallLowerUCB,Execute" Row="1" Column="2"/>
-            <LayoutButtons Face="AutoWallToggleUCB" Type="AbilCmd" AbilCmd="AutoWallToggleUCB,Execute" Row="1" Column="3"/>
+            <LayoutButtons Face="AutoWallRaiseUCB" Type="AbilCmd" AbilCmd="AutoWallRaiseUCB,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="AutoWallLowerUCB" Type="AbilCmd" AbilCmd="AutoWallLowerUCB,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="AutoWallToggleUCB" Type="AbilCmd" AbilCmd="AutoWallToggleUCB,Execute" Row="1" Column="0"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbTBuild1">
@@ -973,7 +973,7 @@
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="SpawnLarvaUCB" Type="AbilCmd" AbilCmd="AutoSpawnLarvaToggleUCB,Execute" Row="0" Column="0"/>
             <LayoutButtons index="1" Face="AutoCreepSpreadToggleUCB" Type="AbilCmd" AbilCmd="AutoCreepSpreadToggleUCB,Execute" Row="0" Column="1"/>
-            <LayoutButtons index="2" Face="SummonNydusWormUCB" Type="AbilCmd" AbilCmd="BuildNydusCanalUCB,Build1" Row="0" Column="3"/>
+            <LayoutButtons index="2" Face="SummonNydusWormUCB" Type="AbilCmd" AbilCmd="BuildNydusCanalUCB,Build1" Row="0" Column="2"/>
             <LayoutButtons index="3" Face="Cancel" Type="AbilCmd" AbilCmd="BuildNydusCanal,Halt" Row="2" Column="4"/>
             <LayoutButtons index="4" removed="1"/>
             <LayoutButtons index="5" removed="1"/>
