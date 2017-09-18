@@ -163,11 +163,43 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="OrderIsGatherOrReturnMULE"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBFactoryAddon">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBFactoryAvailable"/>
+        <InitialEffect value="GameUCBFactoryAddonAdd"/>
+        <FinalEffect value="GameUCBFactoryAddonFinal"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBBarracksBusy">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBBarracksBusy"/>
+        <FinalEffect value="GameUCBBarracksAddon"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBStarportAddon">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBStarportAvailable"/>
+        <InitialEffect value="GameUCBStarportAddonAdd"/>
+        <FinalEffect value="GameUCBStarportAddonFinal"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBFactoryBusy">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBFactoryBusy"/>
+        <FinalEffect value="GameUCBFactoryAddon"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBCommandCenterChargeLink">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InitialEffect value="GameUCBCommandCenterChargeAdd"/>
         <FinalEffect value="GameUCBCommandCenterChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBStarportBusy">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBStarportBusy"/>
+        <FinalEffect value="GameUCBStarportAddon"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBLairChargeLink">
         <InfoFlags index="Hidden" value="1"/>
@@ -186,6 +218,13 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InitialEffect value="GameUCBArchonChargeAdd"/>
         <FinalEffect value="GameUCBArchonChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBBarracksAddon">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBBarracksAvailable"/>
+        <InitialEffect value="GameUCBBarracksAddonAdd"/>
+        <FinalEffect value="GameUCBBarracksAddonFinal"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBOverlordOrTransportChargeLink">
         <InfoFlags index="Hidden" value="1"/>
@@ -459,10 +498,6 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="SidebarDummy">
         <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="SidebarDummy2">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AutoWallLower">
         <EditorCategories value="AbilityorEffectType:Units"/>

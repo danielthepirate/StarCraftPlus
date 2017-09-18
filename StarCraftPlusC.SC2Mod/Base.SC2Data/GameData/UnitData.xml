@@ -47,6 +47,7 @@
             <LayoutButtons index="12" Face="Reaper" Type="AbilCmd" AbilCmd="BarracksTrain,Train2" Row="0" Column="0"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <BehaviorArray Link="GameUCBBarracksBusy"/>
     </CUnit>
     <CUnit id="BarracksFlying">
         <Food value="10"/>
@@ -179,6 +180,7 @@
             <LayoutButtons index="15" Face="HellionTank" Type="AbilCmd" AbilCmd="FactoryTrain,Train7" Row="0" Column="0"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGlobalRally01ChargeLink"/>
+        <BehaviorArray Link="GameUCBFactoryBusy"/>
     </CUnit>
     <CUnit id="FactoryFlying">
         <Food value="10"/>
@@ -836,10 +838,21 @@
         <AbilArray index="6" Link="UpgradeToPlanetaryFortressUCB"/>
     </CUnit>
     <CUnit id="SdbTBuild2">
-        <AbilArray index="5" Link="UpgradeToOrbitalUCB"/>
-        <AbilArray index="6" Link="UpgradeToPlanetaryFortressUCB"/>
+        <AbilArray index="2" Link="UpgradeToOrbitalUCB"/>
+        <AbilArray index="3" Link="BarracksReactorMorphUCB"/>
+        <AbilArray index="4" Link="FactoryReactorMorphUCB"/>
+        <AbilArray index="5" Link="StarportReactorMorphUCB"/>
+        <AbilArray index="6" Link="BarracksTechLabMorphUCB"/>
+        <AbilArray Link="FactoryTechLabMorphUCB"/>
+        <AbilArray Link="StarportTechLabMorphUCB"/>
         <CardLayouts index="0">
             <LayoutButtons Face="UCBOrbitalCommand" Type="AbilCmd" AbilCmd="UpgradeToOrbitalUCB,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="TechLabBarracksUCB" Type="AbilCmd" AbilCmd="BarracksTechLabMorphUCB,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="ReactorBarracks" Type="AbilCmd" AbilCmd="BarracksReactorMorphUCB,Execute" Row="0" Column="2"/>
+            <LayoutButtons Face="TechLabFactoryUCB" Type="AbilCmd" AbilCmd="FactoryTechLabMorphUCB,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="ReactorFactory" Type="AbilCmd" AbilCmd="FactoryReactorMorphUCB,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="TechLabStarportUCB" Type="AbilCmd" AbilCmd="StarportTechLabMorphUCB,Execute" Row="1" Column="0"/>
+            <LayoutButtons Face="ReactoStarport" Type="AbilCmd" AbilCmd="StarportReactorMorphUCB,Execute" Row="1" Column="1"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbTRsrch1">
@@ -1182,6 +1195,7 @@
             <LayoutButtons index="14" Face="Liberator" Type="AbilCmd" AbilCmd="StarportTrain,Train7" Row="0" Column="0"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGlobalRally02ChargeLink"/>
+        <BehaviorArray Link="GameUCBStarportBusy"/>
     </CUnit>
     <CUnit id="StarportFlying">
         <Food value="10"/>

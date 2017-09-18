@@ -101,160 +101,6 @@ void libSCPL_InitVariables () {
         }
     }
     libSCPL_gv_uI.lv_consoleActiveCommandCard = c_invalidDialogControlId;
-    libSCPL_gv_hotkey.lv_supplyDepot = "S";
-    libSCPL_gv_hotkey.lv_commandCenter = "C";
-    libSCPL_gv_hotkey.lv_barracks = "B";
-    libSCPL_gv_hotkey.lv_engineeringBay = "E";
-    libSCPL_gv_hotkey.lv_refinery = "R";
-    libSCPL_gv_hotkey.lv_missileTurret = "T";
-    libSCPL_gv_hotkey.lv_sensorTower = "N";
-    libSCPL_gv_hotkey.lv_factory = "F";
-    libSCPL_gv_hotkey.lv_ghostAcademy = "G";
-    libSCPL_gv_hotkey.lv_bunker = "U";
-    libSCPL_gv_hotkey.lv_starport = "S";
-    libSCPL_gv_hotkey.lv_armory = "A";
-    libSCPL_gv_hotkey.lv_fusionCore = "C";
-    libSCPL_gv_hotkey.lv_sCV = "S";
-    libSCPL_gv_hotkey.lv_marine = "A";
-    libSCPL_gv_hotkey.lv_marauder = "D";
-    libSCPL_gv_hotkey.lv_reaper = "R";
-    libSCPL_gv_hotkey.lv_ghost = "G";
-    libSCPL_gv_hotkey.lv_hellion = "E";
-    libSCPL_gv_hotkey.lv_siegeTank = "S";
-    libSCPL_gv_hotkey.lv_widowMine = "D";
-    libSCPL_gv_hotkey.lv_cyclone = "N";
-    libSCPL_gv_hotkey.lv_hellbat = "R";
-    libSCPL_gv_hotkey.lv_thor = "T";
-    libSCPL_gv_hotkey.lv_viking = "V";
-    libSCPL_gv_hotkey.lv_medivac = "D";
-    libSCPL_gv_hotkey.lv_raven = "R";
-    libSCPL_gv_hotkey.lv_banshee = "E";
-    libSCPL_gv_hotkey.lv_battleCruiser = "B";
-    libSCPL_gv_hotkey.lv_liberator = "N";
-    libSCPL_gv_hotkey.lv_nuke = "N";
-    libSCPL_gv_hotkey.lv_infantryWeapons = "E";
-    libSCPL_gv_hotkey.lv_infantryArmor = "A";
-    libSCPL_gv_hotkey.lv_combatShield = "C";
-    libSCPL_gv_hotkey.lv_stimpack = "T";
-    libSCPL_gv_hotkey.lv_concussiveShells = "G";
-    libSCPL_gv_hotkey.lv_autoTracking = "H";
-    libSCPL_gv_hotkey.lv_structureArmor = "B";
-    libSCPL_gv_hotkey.lv_neosteelFrame = "N";
-    libSCPL_gv_hotkey.lv_vehicleWeapons = "E";
-    libSCPL_gv_hotkey.lv_shipWeapons = "S";
-    libSCPL_gv_hotkey.lv_vehicleShipArmor = "V";
-    libSCPL_gv_hotkey.lv_infernalPreIgniters = "I";
-    libSCPL_gv_hotkey.lv_drillingClaws = "C";
-    libSCPL_gv_hotkey.lv_magFieldAccellerators = "R";
-    libSCPL_gv_hotkey.lv_highCapacityFuelTanks = "R";
-    libSCPL_gv_hotkey.lv_explosiveShrapnelShells = "E";
-    libSCPL_gv_hotkey.lv_corvidReactor = "T";
-    libSCPL_gv_hotkey.lv_cloakingField = "C";
-    libSCPL_gv_hotkey.lv_hyperflightRotors = "B";
-    libSCPL_gv_hotkey.lv_advancedBallistics = "N";
-    libSCPL_gv_hotkey.lv_personalCloaking = "C";
-    libSCPL_gv_hotkey.lv_behemothReactor = "B";
-    libSCPL_gv_hotkey.lv_weaponRefit = "R";
-    libSCPL_gv_hotkey.lv_hatchery = "H";
-    libSCPL_gv_hotkey.lv_spawningPool = "S";
-    libSCPL_gv_hotkey.lv_evolutionChamber = "V";
-    libSCPL_gv_hotkey.lv_extractor = "E";
-    libSCPL_gv_hotkey.lv_roachWarren = "R";
-    libSCPL_gv_hotkey.lv_banelingNest = "B";
-    libSCPL_gv_hotkey.lv_spineCrawler = "C";
-    libSCPL_gv_hotkey.lv_sporeCrawler = "A";
-    libSCPL_gv_hotkey.lv_infestationPit = "I";
-    libSCPL_gv_hotkey.lv_hydraliskDen = "H";
-    libSCPL_gv_hotkey.lv_spire = "S";
-    libSCPL_gv_hotkey.lv_nydusNetwork = "N";
-    libSCPL_gv_hotkey.lv_ultraliskCavern = "U";
-    libSCPL_gv_hotkey.lv_lair = "L";
-    libSCPL_gv_hotkey.lv_hive = "H";
-    libSCPL_gv_hotkey.lv_greaterSpire = "G";
-    libSCPL_gv_hotkey.lv_queen = "Q";
-    libSCPL_gv_hotkey.lv_drone = "D";
-    libSCPL_gv_hotkey.lv_overlord = "V";
-    libSCPL_gv_hotkey.lv_mutalisk = "T";
-    libSCPL_gv_hotkey.lv_zergling = "Z";
-    libSCPL_gv_hotkey.lv_infestor = "F";
-    libSCPL_gv_hotkey.lv_roach = "R";
-    libSCPL_gv_hotkey.lv_swarmHost = "A";
-    libSCPL_gv_hotkey.lv_hydralisk = "H";
-    libSCPL_gv_hotkey.lv_viper = "E";
-    libSCPL_gv_hotkey.lv_corruptor = "C";
-    libSCPL_gv_hotkey.lv_ultralisk = "U";
-    libSCPL_gv_hotkey.lv_nydusWorm = "N";
-    libSCPL_gv_hotkey.lv_overseer = "V";
-    libSCPL_gv_hotkey.lv_baneling = "E";
-    libSCPL_gv_hotkey.lv_ravager = "V";
-    libSCPL_gv_hotkey.lv_lurker = "E";
-    libSCPL_gv_hotkey.lv_broodlord = "B";
-    libSCPL_gv_hotkey.lv_burrow = "B";
-    libSCPL_gv_hotkey.lv_pneumatizedCarapace = "P";
-    libSCPL_gv_hotkey.lv_adrenalGlands = "A";
-    libSCPL_gv_hotkey.lv_metabolicBoost = "M";
-    libSCPL_gv_hotkey.lv_meleeAttacks = "M";
-    libSCPL_gv_hotkey.lv_missileAttacks = "A";
-    libSCPL_gv_hotkey.lv_groundCarapace = "C";
-    libSCPL_gv_hotkey.lv_muscularAugmentation = "A";
-    libSCPL_gv_hotkey.lv_groovedSpines = "G";
-    libSCPL_gv_hotkey.lv_tunnelingClaws = "T";
-    libSCPL_gv_hotkey.lv_glialReconstitution = "G";
-    libSCPL_gv_hotkey.lv_centrifugalHooks = "C";
-    libSCPL_gv_hotkey.lv_pathogenGlands = "G";
-    libSCPL_gv_hotkey.lv_neuralParasite = "E";
-    libSCPL_gv_hotkey.lv_flyerAttacks = "A";
-    libSCPL_gv_hotkey.lv_flyerCarapace = "C";
-    libSCPL_gv_hotkey.lv_chitinousPlating = "C";
-    libSCPL_gv_hotkey.lv_nexus = "N";
-    libSCPL_gv_hotkey.lv_pylon = "E";
-    libSCPL_gv_hotkey.lv_assimilator = "A";
-    libSCPL_gv_hotkey.lv_gateway = "G";
-    libSCPL_gv_hotkey.lv_forge = "F";
-    libSCPL_gv_hotkey.lv_cyberneticsCore = "Y";
-    libSCPL_gv_hotkey.lv_photonCannon = "C";
-    libSCPL_gv_hotkey.lv_stargate = "S";
-    libSCPL_gv_hotkey.lv_roboticsFacility = "R";
-    libSCPL_gv_hotkey.lv_twilightCouncil = "C";
-    libSCPL_gv_hotkey.lv_fleetBeacon = "F";
-    libSCPL_gv_hotkey.lv_roboticsBay = "B";
-    libSCPL_gv_hotkey.lv_templarArchives = "T";
-    libSCPL_gv_hotkey.lv_darkShrine = "D";
-    libSCPL_gv_hotkey.lv_probe = "E";
-    libSCPL_gv_hotkey.lv_mothershipCore = "M";
-    libSCPL_gv_hotkey.lv_zealot = "Z";
-    libSCPL_gv_hotkey.lv_sentry = "E";
-    libSCPL_gv_hotkey.lv_stalker = "S";
-    libSCPL_gv_hotkey.lv_highTemplar = "T";
-    libSCPL_gv_hotkey.lv_darkTemplar = "D";
-    libSCPL_gv_hotkey.lv_adept = "H";
-    libSCPL_gv_hotkey.lv_phoenix = "X";
-    libSCPL_gv_hotkey.lv_oracle = "T";
-    libSCPL_gv_hotkey.lv_voidRay = "V";
-    libSCPL_gv_hotkey.lv_tempest = "E";
-    libSCPL_gv_hotkey.lv_carrier = "C";
-    libSCPL_gv_hotkey.lv_observer = "B";
-    libSCPL_gv_hotkey.lv_warpPrism = "A";
-    libSCPL_gv_hotkey.lv_immortal = "I";
-    libSCPL_gv_hotkey.lv_colossus = "C";
-    libSCPL_gv_hotkey.lv_disruptor = "D";
-    libSCPL_gv_hotkey.lv_mothership = "M";
-    libSCPL_gv_hotkey.lv_archon = "C";
-    libSCPL_gv_hotkey.lv_groundWeapons = "G";
-    libSCPL_gv_hotkey.lv_groundArmor = "A";
-    libSCPL_gv_hotkey.lv_shields = "S";
-    libSCPL_gv_hotkey.lv_airWeapons = "E";
-    libSCPL_gv_hotkey.lv_airArmor = "A";
-    libSCPL_gv_hotkey.lv_warpGate = "G";
-    libSCPL_gv_hotkey.lv_charge = "C";
-    libSCPL_gv_hotkey.lv_blink = "B";
-    libSCPL_gv_hotkey.lv_resonatingGlaives = "A";
-    libSCPL_gv_hotkey.lv_graviticBoost = "B";
-    libSCPL_gv_hotkey.lv_graviticDrive = "G";
-    libSCPL_gv_hotkey.lv_extendedThermalLance = "E";
-    libSCPL_gv_hotkey.lv_anionPulseCrystals = "R";
-    libSCPL_gv_hotkey.lv_gravitonCatapult = "G";
-    libSCPL_gv_hotkey.lv_psionicStorm = "T";
 }
 
 // Presets
@@ -352,8 +198,6 @@ void libSCPL_gf_InitializeSpendOverTime () {
 
     // Implementation
     lv_gamePlayers = PlayerGroupActive();
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 
@@ -2781,6 +2625,94 @@ void libSCPL_gt_InitializationPlus_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: 1
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Barracks", 6.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Factory", 8.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__1_Init () {
+    libSCPL_gt__1 = TriggerCreate("libSCPL_gt__1_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__1, c_playerAny, c_keyNumPad1, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 2
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_subgroup;
+    int lv_playerindex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__2_Init () {
+    libSCPL_gt__2 = TriggerCreate("libSCPL_gt__2_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__2, c_playerAny, c_keyNumPad2, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 3
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitKill(libSCPL_gf_DebugSelectedUnit(1));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__3_Init () {
+    libSCPL_gt__3 = TriggerCreate("libSCPL_gt__3_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__3, c_playerAny, c_keyNumPad3, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 0
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
+        GameSetGlobalTimeScale(20.0);
+    }
+    else {
+        GameSetGlobalTimeScale(1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__0_Init () {
+    libSCPL_gt__0 = TriggerCreate("libSCPL_gt__0_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__0, c_playerAny, c_keyNumPad0, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Progress Morph Refund 01
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressMorphRefund01_Func (bool testConds, bool runActions) {
@@ -2848,6 +2780,7 @@ void libSCPL_gt_ProgressMorphRefund01_Init () {
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToOrbitalUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToPlanetaryFortressUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("MorphDummyTrainNukeUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("BarracksReactorMorphUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("MorphToMothership", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToLair", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToHive", 0));
@@ -6717,6 +6650,198 @@ void libSCPL_gt_MuleHarvestNearestResoures_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Barracks Addon Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkBarracksAddonCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Barracks" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == libSCPL_gv_cHARGEMAX) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 1)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, -1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkBarracksAddonCreate_Init () {
+    libSCPL_gt_UCBChargeLinkBarracksAddonCreate = TriggerCreate("libSCPL_gt_UCBChargeLinkBarracksAddonCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkBarracksAddonCreate, null, "GameUCBBarracksAddon", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Barracks Addon Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkBarracksAddonDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Barracks" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == (libSCPL_gv_cHARGEMAX - 1.0)) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 0)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, 1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkBarracksAddonDestroy_Init () {
+    libSCPL_gt_UCBChargeLinkBarracksAddonDestroy = TriggerCreate("libSCPL_gt_UCBChargeLinkBarracksAddonDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkBarracksAddonDestroy, null, "GameUCBBarracksAddon", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Factory Addon Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkFactoryAddonCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Factory" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == libSCPL_gv_cHARGEMAX) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 1)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, -1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkFactoryAddonCreate_Init () {
+    libSCPL_gt_UCBChargeLinkFactoryAddonCreate = TriggerCreate("libSCPL_gt_UCBChargeLinkFactoryAddonCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkFactoryAddonCreate, null, "GameUCBFactoryAddon", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Factory Addon Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkFactoryAddonDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Factory" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == (libSCPL_gv_cHARGEMAX - 1.0)) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 0)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, 1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkFactoryAddonDestroy_Init () {
+    libSCPL_gt_UCBChargeLinkFactoryAddonDestroy = TriggerCreate("libSCPL_gt_UCBChargeLinkFactoryAddonDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkFactoryAddonDestroy, null, "GameUCBFactoryAddon", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Starport Addon Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkStarportAddonCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Starport" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == libSCPL_gv_cHARGEMAX) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 1)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, -1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkStarportAddonCreate_Init () {
+    libSCPL_gt_UCBChargeLinkStarportAddonCreate = TriggerCreate("libSCPL_gt_UCBChargeLinkStarportAddonCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkStarportAddonCreate, null, "GameUCBStarportAddon", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Starport Addon Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkStarportAddonDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Starport" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == (libSCPL_gv_cHARGEMAX - 1.0)) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 0)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, 1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkStarportAddonDestroy_Init () {
+    libSCPL_gt_UCBChargeLinkStarportAddonDestroy = TriggerCreate("libSCPL_gt_UCBChargeLinkStarportAddonDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkStarportAddonDestroy, null, "GameUCBStarportAddon", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: UCB Charge Link Command Center Morph Start
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_UCBChargeLinkCommandCenterMorphStart_Func (bool testConds, bool runActions) {
@@ -8913,6 +9038,10 @@ void libSCPL_gt_ControlGroupUpdate_Init () {
 
 void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
+    libSCPL_gt__1_Init();
+    libSCPL_gt__2_Init();
+    libSCPL_gt__3_Init();
+    libSCPL_gt__0_Init();
     libSCPL_gt_ProgressMorphRefund01_Init();
     libSCPL_gt_ProgressMorphStart01_Init();
     libSCPL_gt_ProgressMorphRefund02_Init();
@@ -8972,6 +9101,12 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBChargeLinkArchonMorph_Init();
     libSCPL_gt_BarracksTrainStartStop_Init();
     libSCPL_gt_MuleHarvestNearestResoures_Init();
+    libSCPL_gt_UCBChargeLinkBarracksAddonCreate_Init();
+    libSCPL_gt_UCBChargeLinkBarracksAddonDestroy_Init();
+    libSCPL_gt_UCBChargeLinkFactoryAddonCreate_Init();
+    libSCPL_gt_UCBChargeLinkFactoryAddonDestroy_Init();
+    libSCPL_gt_UCBChargeLinkStarportAddonCreate_Init();
+    libSCPL_gt_UCBChargeLinkStarportAddonDestroy_Init();
     libSCPL_gt_UCBChargeLinkCommandCenterMorphStart_Init();
     libSCPL_gt_UCBChargeLinkCommandCenterMorphCancel_Init();
     libSCPL_gt_UCBAutoWallRaise_Init();

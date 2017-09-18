@@ -266,5 +266,71 @@
                 <Field Id="RealCaster" Index="1"/>
             </Unit>
         </Instances>
+        <Instances Id="BarracksReactorMorphUCB">
+            <AbilCmd Abil="BarracksAddOns" Cmd="1">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="BarracksAddOns">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="Barracks">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+        <Instances Id="BarracksTechLabMorphUCB">
+            <AbilCmd Abil="BarracksAddOns">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="BarracksAddOns">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="Barracks">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+        <Instances Id="FactoryReactorMorphUCB">
+            <AbilCmd Abil="FactoryAddOns" Cmd="1">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="FactoryAddOns">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="Factory">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+        <Instances Id="FactoryTechLabMorphUCB">
+            <AbilCmd Abil="FactoryAddOns">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="FactoryAddOns">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="Factory">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+        <Instances Id="StarportReactorMorphUCB">
+            <AbilCmd Abil="StarportAddOns" Cmd="1">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="StarportAddOns">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="Starport">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+        <Instances Id="StarportTechLabMorphUCB">
+            <AbilCmd Abil="StarportAddOns">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="StarportAddOns">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="Starport">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
     </CUser>
 </Catalog>

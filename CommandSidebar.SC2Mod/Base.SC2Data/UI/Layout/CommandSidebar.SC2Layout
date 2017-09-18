@@ -143,6 +143,21 @@
 		<Width val="64"/>
         <Height val="64"/>
 		
+		<Frame type="Image" name="NormalImage">
+			<RenderPriority val="512"/>
+		</Frame>
+		<Frame type="Image" name="HoverImage">
+			<RenderPriority val="512"/>
+		</Frame>
+		<Frame type="Image" name="AutoCastImage">
+			<RenderPriority val="514"/>
+		</Frame>
+		
+		<!-- <Frame type="Frame" name="GridHotkeyFrame" template="CommandSidebar/GridHotkeyFrame"/> -->
+	</Frame>
+	
+	<Frame type="CommandButton" name="CommandSidebarButtonFlashingTemplate" template="CommandSidebar/CommandSidebarButtonTemplate">
+	
 		<StateGroup name="CommandEnabled">
 			<DefaultState val="Enabled"/>
 			<State name="Disabled">
@@ -151,6 +166,7 @@
 			</State>
 			<State name="Enabled">
 				<When type="Property" frame="GameButtonBorderImage" Enabled="true"/>
+				<Action type="SetProperty" frame="GameButtonBorderImage" ColorAdjustMode="None" on="Exit"/>
 			</State>
 		</StateGroup>
 		
@@ -227,18 +243,6 @@
 				</Controller>
 			</Animation>
 		</Frame>
-		
-		<Frame type="Image" name="NormalImage">
-			<RenderPriority val="512"/>
-		</Frame>
-		<Frame type="Image" name="HoverImage">
-			<RenderPriority val="512"/>
-		</Frame>
-		<Frame type="Image" name="AutoCastImage">
-			<RenderPriority val="514"/>
-		</Frame>
-		
-		<!-- <Frame type="Frame" name="GridHotkeyFrame" template="CommandSidebar/GridHotkeyFrame"/> -->
 	</Frame>
 	
 	<Frame type="CommandButton" name="CommandActiveButtonTemplate" template="CommandSidebar/CommandSidebarButtonTemplate">
@@ -264,115 +268,14 @@
 		<Height val="0"/>
 	</Frame>
 	
-	<Frame type="CommandPanel" name="CommandSidebarPanelTemplate" template="CommandPanel/CommandPanelTemplate">
-	
+
+	<Frame type="CommandPanel" name="CommandCorePanelTemplate" template="CommandPanel/CommandPanelTemplate">
 		<HideUnusedButtons val="false"/>
 		<DisplayCancelCommandCard val="false"/>
 		<UseGridHotkeys val="false"/>
 
         <Frame type="CommandTooltip" name="TestCommandTooltip" template="CommandButton/CommandTooltipTemplate">
-           <!--  <Anchor side="Bottom" relative="$parent" pos="Max" offset="-220"/>
-            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
-            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/> -->
 			<PositionFixed  val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandSidebarButtonTemplate">
-            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-            <TooltipFrame val="TestCommandTooltip"/>
-            <HotkeyUse val="CommanderAbility0"/>
-        </Frame>
-		
-		<Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandSidebarButtonTemplate">
-            <Anchor side="Left" relative="$parent/CommandButton00" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton00" pos="Min" offset="0"/>
-            <TooltipFrame val="TestCommandTooltip"/>
-            <HotkeyUse val="CommanderAbility1"/>
-        </Frame>
-		
-        <Frame type="CommandButton" name="CommandButton02" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton01" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>      
-
-        <Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton02" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton02" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton03" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton03" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-        
-        <Frame type="CommandButton" name="CommandButton05" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton04" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton04" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-        
-        <Frame type="CommandButton" name="CommandButton06" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton05" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton05" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton07" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton06" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton06" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton08" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton07" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton07" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton08" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton08" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton09" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton09" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton10" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton10" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton11" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton11" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton12" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton12" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-
-        <Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton13" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton13" pos="Min" offset="0"/>
-            <Visible val="false"/>
-        </Frame>
-		
-		<Frame type="CommandButton" name="CommandButton15" template="CommandSidebar/CommandSidebarButtonTemplate">
-			<Anchor side="Left" relative="$parent/CommandButton14" pos="Max" offset="#GridGap"/>
-            <Anchor side="Top" relative="$parent/CommandButton14" pos="Min" offset="0"/>
-            <Visible val="false"/>
         </Frame>
 
         <Frame type="Label" name="RowText0">
@@ -419,6 +322,170 @@
             </Frame>
         </Frame>
     </Frame>
+	
+	<Frame type="CommandPanel" name="CommandSidebarPanelTemplate" template="CommandSidebar/CommandCorePanelTemplate">
+		<Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        </Frame>
+		
+		<Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+            <Anchor side="Left" relative="$parent/CommandButton00" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton00" pos="Min" offset="0"/>
+        </Frame>
+		
+        <Frame type="CommandButton" name="CommandButton02" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton01" pos="Min" offset="0"/>
+        </Frame>      
+
+        <Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton02" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton02" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton03" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton03" pos="Min" offset="0"/>
+        </Frame>
+        
+        <Frame type="CommandButton" name="CommandButton05" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton04" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton04" pos="Min" offset="0"/>
+        </Frame>
+        
+        <Frame type="CommandButton" name="CommandButton06" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton05" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton05" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton07" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton06" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton06" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton08" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton07" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton07" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton08" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton08" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton09" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton09" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton10" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton10" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton11" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton11" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton12" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton12" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton13" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton13" pos="Min" offset="0"/>
+        </Frame>
+		
+		<Frame type="CommandButton" name="CommandButton15" template="CommandSidebar/CommandSidebarButtonFlashingTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton14" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton14" pos="Min" offset="0"/>
+        </Frame>
+	</Frame>
+	
+	<Frame type="CommandPanel" name="CommandActivePanelTemplate" template="CommandSidebar/CommandCorePanelTemplate">
+		<Frame type="CommandButton" name="CommandButton00" template="CommandSidebar/CommandActiveButtonTemplate">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        </Frame>
+		
+		<Frame type="CommandButton" name="CommandButton01" template="CommandSidebar/CommandActiveButtonTemplate">
+            <Anchor side="Left" relative="$parent/CommandButton00" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton00" pos="Min" offset="0"/>
+        </Frame>
+		
+        <Frame type="CommandButton" name="CommandButton02" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton01" pos="Min" offset="0"/>
+        </Frame>      
+
+        <Frame type="CommandButton" name="CommandButton03" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton02" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton02" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton03" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton03" pos="Min" offset="0"/>
+        </Frame>
+        
+        <Frame type="CommandButton" name="CommandButton05" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton04" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton04" pos="Min" offset="0"/>
+        </Frame>
+        
+        <Frame type="CommandButton" name="CommandButton06" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton05" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton05" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton07" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton06" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton06" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton08" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton07" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton07" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton09" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton08" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton08" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton09" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton09" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton10" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton10" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton11" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton11" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton12" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton12" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="CommandButton" name="CommandButton14" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton13" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton13" pos="Min" offset="0"/>
+        </Frame>
+		
+		<Frame type="CommandButton" name="CommandButton15" template="CommandSidebar/CommandActiveButtonTemplate">
+			<Anchor side="Left" relative="$parent/CommandButton14" pos="Max" offset="#GridGap"/>
+            <Anchor side="Top" relative="$parent/CommandButton14" pos="Min" offset="0"/>
+        </Frame>
+	</Frame>
 	
 	<Frame type="Frame" name="CommandContainer">
 		<Frame type="CommandPanel" name="CommandPanel1" template="CommandSidebar/CommandSidebarPanelTemplate">

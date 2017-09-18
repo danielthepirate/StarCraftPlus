@@ -30,6 +30,7 @@ struct CMSDB_PlayerData{
 
 struct CMSDB_OrderRedirectData{
 	int useIdle;
+	abilcmd realAbilIndex;
 	string abil;
 	string dummyCaster;
 	string[3] realCaster;

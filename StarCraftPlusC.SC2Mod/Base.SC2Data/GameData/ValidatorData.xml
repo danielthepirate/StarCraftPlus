@@ -19,6 +19,9 @@
         <Value value="1"/>
         <Behavior value="AutoWallAutocastBehavior"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareOrderCount id="FactoryNotTraining">
+        <AbilLink value="FactoryTrain"/>
+    </CValidatorUnitCompareOrderCount>
     <CValidatorUnitCompareBehaviorCount id="CarryNoMinerals">
         <Behavior value="CarryMineralFieldMinerals"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -53,10 +56,148 @@
         <CombineArray value="CarryNoVespeneTerran"/>
         <CombineArray value="CarryNoVespeneZerg"/>
     </CValidatorCombine>
+    <CValidatorCombine id="GameUCBStarportBusy">
+        <CombineArray value="TechLabStarport"/>
+        <CombineArray value="ReactorStarport"/>
+        <CombineArray value="OrderBuildStarportReactor"/>
+        <CombineArray value="OrderBuildStarportTechLab"/>
+        <CombineArray value="OrderBuildStarportLiftOff"/>
+        <CombineArray value="IsConstructing"/>
+        <CombineArray value="FlyingStarport"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GameUCBStarportAvailable">
+        <Type value="And"/>
+        <CombineArray value="TechLabNotStarport"/>
+        <CombineArray value="ReactorNotStarport"/>
+        <CombineArray value="OrderNotBuildStarportReactor"/>
+        <CombineArray value="OrderNotBuildStarportTechLab"/>
+        <CombineArray value="OrderNotBuildStarportLiftOff"/>
+        <CombineArray value="IsNotConstructing"/>
+        <CombineArray value="NotFlyingStarport"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GameUCBFactoryBusy">
+        <CombineArray value="TechLabFactory"/>
+        <CombineArray value="ReactorFactory"/>
+        <CombineArray value="OrderBuildFactoryReactor"/>
+        <CombineArray value="OrderBuildFactoryTechLab"/>
+        <CombineArray value="OrderBuildFactoryLiftOff"/>
+        <CombineArray value="IsConstructing"/>
+        <CombineArray value="FlyingFactory"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GameUCBFactoryAvailable">
+        <Type value="And"/>
+        <CombineArray value="TechLabNotFactory"/>
+        <CombineArray value="ReactorNotFactory"/>
+        <CombineArray value="OrderNotBuildFactoryReactor"/>
+        <CombineArray value="OrderNotBuildFactoryTechLab"/>
+        <CombineArray value="OrderNotBuildFactoryLiftOff"/>
+        <CombineArray value="IsNotConstructing"/>
+        <CombineArray value="NotFlyingFactory"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="OrderBuildFactoryLiftOff">
+        <AbilLink value="FactoryLiftOff"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildStarportLiftOff">
+        <AbilLink value="StarportLiftOff"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildFactoryReactor">
+        <AbilLink value="FactoryAddOns"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildStarportReactor">
+        <AbilLink value="StarportAddOns"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildFactoryTechLab">
+        <AbilLink value="FactoryAddOns"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildStarportTechLab">
+        <AbilLink value="StarportAddOns"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildFactoryLiftOff">
+        <AbilLink value="FactoryLiftOff"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildStarportLiftOff">
+        <AbilLink value="StarportLiftOff"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildFactoryReactor">
+        <AbilLink value="FactoryAddOns"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildStarportReactor">
+        <AbilLink value="StarportAddOns"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildFactoryTechLab">
+        <AbilLink value="FactoryAddOns"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildStarportTechLab">
+        <AbilLink value="StarportAddOns"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareBehaviorCount id="ReactorFactory">
+        <Value value="1"/>
+        <Behavior value="FactoryReactor"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ReactorStarport">
+        <Value value="1"/>
+        <Behavior value="StarportReactor"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareOrderCount id="StarportNotTraining">
+        <AbilLink value="StarportTrain"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitType id="FlyingFactory">
+        <ResultNoUnit value="CantTargetThatUnit"/>
+        <Value value="FactoryFlying"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="FlyingStarport">
+        <ResultNoUnit value="CantTargetThatUnit"/>
+        <Value value="StarportFlying"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="GameUCBBarracksAvailable">
+        <Type value="And"/>
+        <CombineArray value="TechLabNotBarracks"/>
+        <CombineArray value="ReactorNotBarracks"/>
+        <CombineArray value="OrderNotBuildBarracksReactor"/>
+        <CombineArray value="OrderNotBuildBarracksTechLab"/>
+        <CombineArray value="OrderNotBuildBarracksLiftOff"/>
+        <CombineArray value="IsNotConstructing"/>
+        <CombineArray value="NotFlyingBarracks"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GameUCBBarracksBusy">
+        <CombineArray value="TechLabBarracks"/>
+        <CombineArray value="ReactorBarracks"/>
+        <CombineArray value="OrderBuildBarracksReactor"/>
+        <CombineArray value="OrderBuildBarracksTechLab"/>
+        <CombineArray value="OrderBuildBarracksLiftOff"/>
+        <CombineArray value="IsConstructing"/>
+        <CombineArray value="FlyingBarracks"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="NotBarracks">
+        <Value value="Barracks"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
     <CValidatorUnitOrderQueue id="IsGatheringResourcesTerranMULE">
         <WhichUnit Value="Target"/>
         <AbilLink value="MULEGather"/>
     </CValidatorUnitOrderQueue>
+    <CValidatorUnitType id="NotFactory">
+        <Value value="Factory"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="FlyingBarracks">
+        <ResultNoUnit value="CantTargetThatUnit"/>
+        <Value value="BarracksFlying"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotStarport">
+        <Value value="Starport"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="OrderIsGatherOrReturnMULE">
         <CombineArray value="IsGatheringResourcesTerranMULE"/>
         <CombineArray value="IsReturningResourcesTerranMULE"/>
@@ -96,6 +237,33 @@
         <AbilCmdIndex value="1"/>
         <Value value="1"/>
     </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildBarracksLiftOff">
+        <AbilLink value="BarracksLiftOff"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildBarracksReactor">
+        <AbilLink value="BarracksAddOns"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildBarracksReactor">
+        <AbilLink value="BarracksAddOns"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildBarracksLiftOff">
+        <AbilLink value="BarracksLiftOff"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildBarracksTechLab">
+        <AbilLink value="BarracksAddOns"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildBarracksTechLab">
+        <AbilLink value="BarracksAddOns"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareBehaviorCount id="ReactorBarracks">
+        <Value value="1"/>
+        <Behavior value="BarracksReactor"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitOrderQueue id="SourceNoMoveOrder">
         <WhichUnit Value="Source"/>
         <AbilLink value="move"/>
@@ -111,6 +279,18 @@
         <CombineArray value="NearNexus"/>
         <CombineArray value="SpecialPylonRange"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="TechLabBarracks">
+        <Value value="1"/>
+        <Behavior value="BarracksTechLab"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TechLabFactory">
+        <Value value="1"/>
+        <Behavior value="FactoryTechLab"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TechLabStarport">
+        <Value value="1"/>
+        <Behavior value="StarportTechLab"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitType id="UnitIsNexus">
         <ResultFailed value="Error,Error/IsNexus"/>
         <Value value="Nexus"/>

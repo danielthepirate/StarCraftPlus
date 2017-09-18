@@ -448,7 +448,7 @@
         <NodeArray index="Use" Link="AndOr96167438CountUnitFactoryCompleteOnly96167438TechTreeCheatCountUnitFactoryFlyingCompleteOnly1718561093TechTreeCheatCountUnitGhostAcademyCompleteOnlyTechTreeCheatNot1833567690CountUnitNukeQueuedOrBetterAtUnit"/>
     </CRequirement>
     <CRequirement id="UCBOrbitalCommand">
-        <NodeArray index="Use" Link="AndCountUnitCommandCenterCompleteOnlyCountUnitBarracksCompleteOnly"/>
+        <NodeArray index="Use" Link="AndCountUnitCommandCenterCompleteOnlyCountUnitAlias_BarracksCompleteOnly"/>
     </CRequirement>
     <CRequirement id="UCBPlanetaryFortress">
         <NodeArray index="Use" Link="AndCountUnitCommandCenterCompleteOnlyCountUnitEngineeringBayCompleteOnly"/>
