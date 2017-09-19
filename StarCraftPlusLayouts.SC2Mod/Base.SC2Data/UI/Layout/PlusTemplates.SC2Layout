@@ -18,10 +18,16 @@
 		<Event event="EventColorize" action="Reset,Play"/>
 		<Event event="EventPause" action="Pause"/>
 		<Event event="EventReset" action="Pause"/>
+		<!-- <Controller type="AdjustmentColor" end="Pause"> -->
+			<!-- <Key type="Curve" time="0" value="0,148,0" inout="slow"/> -->
+			<!-- <Key type="Curve" time="50" value="111,111,0" inout="slow"/> -->
+			<!-- <Key type="Curve" time="100" value="148,0,0" inout="slow"/> -->
+		<!-- </Controller> -->
 		<Controller type="AdjustmentColor" end="Pause">
-			<Key type="Curve" time="0" value="0,148,0" inout="slow"/>
-			<Key type="Curve" time="50" value="111,111,0" inout="slow"/>
-			<Key type="Curve" time="100" value="148,0,0" inout="slow"/>
+			<Key type="Curve" time="0" value="0,0,0" inout="slow"/>
+			<Key type="Curve" time="25" value="128,128,0" inout="slow"/>
+			<Key type="Curve" time="50" value="255,0,0" inout="slow"/>
+			<Key type="Curve" time="100" value="255,0,0" inout="slow"/>
 		</Controller>
 	</Animation>
 
@@ -31,6 +37,98 @@
 			<Key type="Curve" time="0" value="0,0,0"/>
 		</Controller>
 	</Animation>
+	
+	<Frame type="Image" name="AutoCastTemplate">
+		<Texture val="Assets/Textures/protossautocast8x4.dds"/>
+		<!-- <TextureCoords val="0.000,	0.000,	0.250,	0.125"/> -->
+		<Alpha val="172"/>
+		
+		<Animation name="Flipbook">
+			<Event event="OnShown" action="Play" frame="$parent"/>
+			<Controller type="LayerUV" side="Left" relative="false" end="Loop">
+				<Key type="Curve" time="0.0000" value="0.000" inout="step"/>
+				<Key type="Curve" time="0.0500" value="0.125" inout="step"/>
+				<Key type="Curve" time="0.1000" value="0.250" inout="step"/>
+				<Key type="Curve" time="0.1500" value="0.375" inout="step"/>
+				<Key type="Curve" time="0.2000" value="0.500" inout="step"/>
+				<Key type="Curve" time="0.2500" value="0.625" inout="step"/>
+				<Key type="Curve" time="0.3000" value="0.750" inout="step"/>
+				<Key type="Curve" time="0.3500" value="0.875" inout="step"/>
+				<Key type="Curve" time="0.4000" value="0.000" inout="step"/>
+				<Key type="Curve" time="0.4500" value="0.125" inout="step"/>
+				<Key type="Curve" time="0.5000" value="0.250" inout="step"/>
+				<Key type="Curve" time="0.5500" value="0.375" inout="step"/>
+				<Key type="Curve" time="0.6000" value="0.500" inout="step"/>
+				<Key type="Curve" time="0.6500" value="0.625" inout="step"/>
+				<Key type="Curve" time="0.7000" value="0.750" inout="step"/>
+				<Key type="Curve" time="0.7500" value="0.875" inout="step"/>
+				<Key type="Curve" time="0.8000" value="0.000" inout="step"/>
+				<Key type="Curve" time="0.8500" value="0.125" inout="step"/>
+				<Key type="Curve" time="0.9000" value="0.250" inout="step"/>
+				<Key type="Curve" time="0.9500" value="0.375" inout="step"/>
+				<Key type="Curve" time="1.0000" value="0.500" inout="step"/>
+				<Key type="Curve" time="1.0500" value="0.625" inout="step"/>
+				<Key type="Curve" time="1.1000" value="0.750" inout="step"/>
+				<Key type="Curve" time="1.1500" value="0.875" inout="step"/>
+				<Key type="Curve" time="1.2000" value="0.000" inout="step"/>
+				<Key type="Curve" time="1.2500" value="0.125" inout="step"/>
+				<Key type="Curve" time="1.3000" value="0.250" inout="step"/>
+				<Key type="Curve" time="1.3500" value="0.375" inout="step"/>
+				<Key type="Curve" time="1.4000" value="0.500" inout="step"/>
+				<Key type="Curve" time="1.4500" value="0.625" inout="step"/>
+				<Key type="Curve" time="1.5000" value="0.750" inout="step"/>
+				<Key type="Curve" time="1.5500" value="0.875" inout="step"/>
+			</Controller>
+			<Controller type="LayerUV" side="Right" relative="false" end="Loop">
+				<Key type="Curve" time="0.0000" value="0.125" inout="step"/>
+				<Key type="Curve" time="0.0500" value="0.250" inout="step"/>
+				<Key type="Curve" time="0.1000" value="0.375" inout="step"/>
+				<Key type="Curve" time="0.1500" value="0.500" inout="step"/>
+				<Key type="Curve" time="0.2000" value="0.625" inout="step"/>
+				<Key type="Curve" time="0.2500" value="0.750" inout="step"/>
+				<Key type="Curve" time="0.3000" value="0.875" inout="step"/>
+				<Key type="Curve" time="0.3500" value="1.000" inout="step"/>
+				<Key type="Curve" time="0.4000" value="0.125" inout="step"/>
+				<Key type="Curve" time="0.4500" value="0.250" inout="step"/>
+				<Key type="Curve" time="0.5000" value="0.375" inout="step"/>
+				<Key type="Curve" time="0.5500" value="0.500" inout="step"/>
+				<Key type="Curve" time="0.6000" value="0.625" inout="step"/>
+				<Key type="Curve" time="0.6500" value="0.750" inout="step"/>
+				<Key type="Curve" time="0.7000" value="0.875" inout="step"/>
+				<Key type="Curve" time="0.7500" value="1.000" inout="step"/>
+				<Key type="Curve" time="0.8000" value="0.125" inout="step"/>
+				<Key type="Curve" time="0.8500" value="0.250" inout="step"/>
+				<Key type="Curve" time="0.9000" value="0.375" inout="step"/>
+				<Key type="Curve" time="0.9500" value="0.500" inout="step"/>
+				<Key type="Curve" time="1.0000" value="0.625" inout="step"/>
+				<Key type="Curve" time="1.0500" value="0.750" inout="step"/>
+				<Key type="Curve" time="1.1000" value="0.875" inout="step"/>
+				<Key type="Curve" time="1.1500" value="1.000" inout="step"/>
+				<Key type="Curve" time="1.2000" value="0.125" inout="step"/>
+				<Key type="Curve" time="1.2500" value="0.250" inout="step"/>
+				<Key type="Curve" time="1.3000" value="0.375" inout="step"/>
+				<Key type="Curve" time="1.3500" value="0.500" inout="step"/>
+				<Key type="Curve" time="1.4000" value="0.625" inout="step"/>
+				<Key type="Curve" time="1.4500" value="0.750" inout="step"/>
+				<Key type="Curve" time="1.5000" value="0.875" inout="step"/>
+				<Key type="Curve" time="1.5500" value="1.000" inout="step"/>
+			</Controller>
+			<Controller type="LayerUV" side="Top" relative="false" end="Loop">
+				<Key type="Curve" time="0.000" value="0.000" inout="step"/>
+				<Key type="Curve" time="0.400" value="0.250" inout="step"/>
+				<Key type="Curve" time="0.800" value="0.500" inout="step"/>
+				<Key type="Curve" time="1.200" value="0.750" inout="step"/>
+				<Key type="Curve" time="1.550" value="0.000" inout="step"/>
+			</Controller>
+			<Controller type="LayerUV" side="Bottom" relative="false" end="Loop">
+				<Key type="Curve" time="0.000" value="0.250" inout="step"/>
+				<Key type="Curve" time="0.400" value="0.500" inout="step"/>
+				<Key type="Curve" time="0.800" value="0.750" inout="step"/>
+				<Key type="Curve" time="1.200" value="1.000" inout="step"/>
+				<Key type="Curve" time="1.550" value="0.250" inout="step"/>
+			</Controller>
+		</Animation>
+	</Frame>
 	
 	<Frame type="CommandButton" name="RallyButtonTemplate" template="ArmyButton/ArmyButtonTemplate">
 		

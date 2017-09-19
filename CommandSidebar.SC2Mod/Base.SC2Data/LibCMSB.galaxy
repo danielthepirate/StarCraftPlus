@@ -10,9 +10,11 @@ include "LibCMSB_h"
 // Custom Script: Script
 //--------------------------------------------------------------------------------------------------
 include "Script/CMSDB"
+include "Script/ControlGroups"
 
 void libCMSB_InitCustomScript () {
     InitCommandSideBar();
+	InitACG();
 }
 
 //--------------------------------------------------------------------------------------------------

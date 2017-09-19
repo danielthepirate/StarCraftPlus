@@ -32,6 +32,7 @@
 <Unit id="Starport"/>
 <Unit id="FusionCore"/>
 <Unit id="SCV"/>
+<Unit id="Marine"/>
 <Unit id="Probe"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>

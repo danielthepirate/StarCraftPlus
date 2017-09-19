@@ -103,9 +103,9 @@
 	</Frame>
 	
 	<Frame type="Button" name="SideBarTabButtonTemplate">
-        <!-- <Width val="74"/> -->
         <Width val="128"/>
-        <Height val="38"/>
+        <!-- <Height val="38"/> -->
+        <Height val="48"/>
         <NormalImage val="NormalImage"/>
         <HoverImage val="HoverImage"/>
         <Label val="MenuLabel"/>

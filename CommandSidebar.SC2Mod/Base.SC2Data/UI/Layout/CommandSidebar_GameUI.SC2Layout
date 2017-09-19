@@ -65,43 +65,29 @@
 		</Frame>
 		
 		<Frame type="Frame" name="SideBarTabAnchor">
-			<Anchor side="Top" relative="$parent/ControlGroupPanel" pos="Min" offset="0"/>
-			<Anchor side="Left" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/>
+			<Anchor side="Top" relative="$ACGContainer" pos="Min" offset="0"/>
+			<Anchor side="Left" relative="$ACGContainer" pos="Max" offset="0"/>
 			<Anchor side="Bottom" relative="$MenuBarConsoleAnchor" pos="Max" offset="0"/>
 			<Anchor side="Right" relative="$MenuBarConsoleAnchor" pos="Min" offset="0"/>
 		</Frame>
 		
 		<Frame type="TabControl" name="SideBarTab">
-			<!-- <Anchor side="Left" relative="$parent/ControlGroupPanel" pos="Max" offset="0"/> -->
+			<!-- <Anchor side="Left" relative="$ACGContainer" pos="Max" offset="0"/> -->
 			<!-- <Anchor side="Right" relative="$parent/SideBarTabAnchor" pos="Mid" offset="0"/> -->
 			<Anchor side="Right" relative="SidebarResearch" pos="Max" offset="0"/>
-			<Anchor side="Left" relative="$parent/SideBarTabAnchor" pos="Mid" offset="-253"/>
-			<Anchor side="Bottom" relative="$parent/ControlGroupPanel" pos="Max" offset="-16"/>
-			<Height val="38"/>
+			<Anchor side="Left" relative="$parent/SideBarTabAnchor" pos="Mid" offset="-192"/>
+			<Anchor side="Bottom" relative="$ACGContainer" pos="Max" offset="-22"/>
+			<Height val="48"/>
         
-			<!-- <TabListItem val="SidebarGlobal"/> -->
 			<TabListItem val="SidebarBuildings"/>
 			<TabListItem val="SidebarUnits"/>
 			<TabListItem val="SidebarResearch"/>
-			<!-- <PanelListItem val="$parent/GlobalCommandContainer"/> -->
 			<PanelListItem val="$parent/BuilderCommandContainer"/>
 			<PanelListItem val="$parent/TrainerCommandContainer"/>
 			<PanelListItem val="$parent/ResearcherCommandContainer"/>
 			<SelectedIndex val="0"/>
 
-			<!-- <Frame type="Button" name="SidebarGlobal" template="CommandSidebar/SideBarTabButtonTemplate"> -->
-				<!-- <Anchor side="Left" relative="$parent" pos="Min" offset="0"/> -->
-				<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="0"/> -->
-				<!-- <Frame type="Label" name="MenuLabel"> -->
-					<!-- <Text val="@UI/UCBTabButtons/Global"/> -->
-				<!-- </Frame> -->
-				<!-- <Shortcut val="@Button/Hotkey/SidebarGlobal"/> -->
-				
-				<!-- <Visible val="true"/> -->
-			<!-- </Frame> -->
 			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
-				<!-- <Anchor side="Left" relative="$parent/SidebarGlobal" pos="Max" offset="-2"/> -->
-				<!-- <Anchor side="Top" relative="$parent/SidebarGlobal" pos="Min" offset="0"/> -->
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">

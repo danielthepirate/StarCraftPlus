@@ -33,11 +33,9 @@
 			<Handle val="ControlGroupListener09"/>
 		</Frame>
 	
-		<Frame type="ControlGroupPanel" name="ControlGroupPanel">
-			<Anchor side="Left" relative="$parent/MinimapPanel" pos="Max" offset="32"/>
-			<Anchor side="Bottom" relative="$parent/InfoPanel" pos="Min" offset="4"/>
+		<Frame type="Frame" name="AxiomACGContainer">
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton0" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group00">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener00/@AdjustmentColor}"/>
 				</Frame>
@@ -46,34 +44,55 @@
 				</Frame>
 			</Frame>
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton1" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group01">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener01/@AdjustmentColor}"/>
 				</Frame>
 				<Frame type="Image" name="HoverImage">
 					<AdjustmentColor val="{$ControlGroupListener01/@AdjustmentColor}"/>
 				</Frame>
+				
+				<Frame type="Image" name="AutoCast" template="PlusTemplates/AutoCastTemplate">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+					<Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
+					<Anchor side="Bottom" relative="$parent" pos="Max" offset="-26"/>
+					<Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
+				</Frame>
 			</Frame>
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton2" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group02">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener02/@AdjustmentColor}"/>
 				</Frame>
 				<Frame type="Image" name="HoverImage">
 					<AdjustmentColor val="{$ControlGroupListener02/@AdjustmentColor}"/>
 				</Frame>
+				
+				<Frame type="Image" name="AutoCast" template="PlusTemplates/AutoCastTemplate">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+					<Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
+					<Anchor side="Bottom" relative="$parent" pos="Max" offset="-26"/>
+					<Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
+				</Frame>
 			</Frame>
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton3" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group03">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener03/@AdjustmentColor}"/>
 				</Frame>
 				<Frame type="Image" name="HoverImage">
 					<AdjustmentColor val="{$ControlGroupListener03/@AdjustmentColor}"/>
 				</Frame>
+				
+				<Frame type="Image" name="AutoCast" template="PlusTemplates/AutoCastTemplate">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+					<Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
+					<Anchor side="Bottom" relative="$parent" pos="Max" offset="-26"/>
+					<Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
+				</Frame>
 			</Frame>
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton4" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group04">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener04/@AdjustmentColor}"/>
 				</Frame>
@@ -82,7 +101,7 @@
 				</Frame>
 			</Frame>
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton5" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group05">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener05/@AdjustmentColor}"/>
 				</Frame>
@@ -91,7 +110,7 @@
 				</Frame>
 			</Frame>
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton6" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group06">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener06/@AdjustmentColor}"/>
 				</Frame>
@@ -100,7 +119,7 @@
 				</Frame>
 			</Frame>
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton7" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group07">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener07/@AdjustmentColor}"/>
 				</Frame>
@@ -109,7 +128,7 @@
 				</Frame>
 			</Frame>
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton8" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group08">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener08/@AdjustmentColor}"/>
 				</Frame>
@@ -118,7 +137,7 @@
 				</Frame>
 			</Frame>
 			
-			<Frame type="ControlGroupButton" name="ControlGroupButton9" template="PlusTemplates/ControlGroupButtonTemplate">
+			<Frame type="Button" name="Group09">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener09/@AdjustmentColor}"/>
 				</Frame>
