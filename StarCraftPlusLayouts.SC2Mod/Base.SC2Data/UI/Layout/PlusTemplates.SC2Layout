@@ -40,8 +40,8 @@
 	
 	<Frame type="Image" name="AutoCastTemplate">
 		<Texture val="Assets/Textures/protossautocast8x4.dds"/>
-		<!-- <TextureCoords val="0.000,	0.000,	0.250,	0.125"/> -->
-		<Alpha val="172"/>
+		<TextureCoords val="0.000,	0.000,	0.250,	0.125"/>
+		<Alpha val="204"/>
 		
 		<Animation name="Flipbook">
 			<Event event="OnShown" action="Play" frame="$parent"/>
@@ -130,7 +130,25 @@
 		</Animation>
 	</Frame>
 	
+	<Frame type="Image" name="ZergRallyTypeTemplate">
+		<Anchor side="Top" relative="$parent" pos="Min" offset="24"/>
+		<Anchor side="Left" relative="$parent" pos="Mid" offset="12"/>
+		<Anchor side="Right" relative="$parent" pos="Mid" offset="12"/>
+		
+		<Visible val="false"/>
+		<Alpha val="224"/>
+		<Height val="40"/>
+		<Width val="40"/>
+	</Frame>
+	
 	<Frame type="CommandButton" name="RallyButtonTemplate" template="ArmyButton/ArmyButtonTemplate">
+		<Frame type="Image" name="AutoCastImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="14"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+			<Alpha val="192"/>
+        </Frame>
 		
 		<Frame type="Image" name="NormalImage">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>

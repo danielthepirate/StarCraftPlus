@@ -11,6 +11,11 @@
 			
 			<Animation name="LayoutInitializer">
 				<Event event="OnShown" action="Reset,Play"/>
+				<!-- This is a dirty hack to get rid of the hotkey conflict message on map start -->
+				<Controller type="Fade" end="Pause" frame="$SystemAlertPanel">
+					<Key type="Curve" time="00" value="0" inout="step"/>
+					<Key type="Curve" time="10" value="255" inout="step"/>
+				</Controller>
 				<Controller type="Visibility" end="Pause" frame="$StandardCommandPanel">
 					<Key type="Bool" time="0" value="false"/>
 				</Controller>

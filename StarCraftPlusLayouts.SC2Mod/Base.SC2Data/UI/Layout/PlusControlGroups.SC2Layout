@@ -34,7 +34,6 @@
 		</Frame>
 	
 		<Frame type="Frame" name="AxiomACGContainer">
-			
 			<Frame type="Button" name="Group00">
 				<Frame type="Image" name="NormalImage">
 					<AdjustmentColor val="{$ControlGroupListener00/@AdjustmentColor}"/>
@@ -51,13 +50,6 @@
 				<Frame type="Image" name="HoverImage">
 					<AdjustmentColor val="{$ControlGroupListener01/@AdjustmentColor}"/>
 				</Frame>
-				
-				<Frame type="Image" name="AutoCast" template="PlusTemplates/AutoCastTemplate">
-					<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-					<Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
-					<Anchor side="Bottom" relative="$parent" pos="Max" offset="-26"/>
-					<Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
-				</Frame>
 			</Frame>
 			
 			<Frame type="Button" name="Group02">
@@ -67,13 +59,6 @@
 				<Frame type="Image" name="HoverImage">
 					<AdjustmentColor val="{$ControlGroupListener02/@AdjustmentColor}"/>
 				</Frame>
-				
-				<Frame type="Image" name="AutoCast" template="PlusTemplates/AutoCastTemplate">
-					<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-					<Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
-					<Anchor side="Bottom" relative="$parent" pos="Max" offset="-26"/>
-					<Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
-				</Frame>
 			</Frame>
 			
 			<Frame type="Button" name="Group03">
@@ -82,13 +67,6 @@
 				</Frame>
 				<Frame type="Image" name="HoverImage">
 					<AdjustmentColor val="{$ControlGroupListener03/@AdjustmentColor}"/>
-				</Frame>
-				
-				<Frame type="Image" name="AutoCast" template="PlusTemplates/AutoCastTemplate">
-					<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-					<Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
-					<Anchor side="Bottom" relative="$parent" pos="Max" offset="-26"/>
-					<Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
 				</Frame>
 			</Frame>
 			

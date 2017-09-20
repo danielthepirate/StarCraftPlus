@@ -1,53 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
     <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
-	
-		<!-- <Frame type="CommandTooltip" name="RallyCommandTooltip" template="CommandButton/CommandTooltipTemplate"> -->
 		<Frame type="StandardTooltip" name="RallyCommandTooltip" template="StandardTooltip/StandardTooltip">
 			<PositionFixed val="false"/>
 			<MinWidth val="1"/>
-			
-			<!-- <Frame type="Label" name="Label"> -->
-				<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="15"/> -->
-				<!-- <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/> -->
-				<!-- <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/> -->
-				<!-- <AutoSizeClamps maxWidth="450"/> -->
-			<!-- </Frame> -->
-			
 			<Frame type="Label" name="TipLabel">
 				<Style val="@@StandardTooltip"/>
 				<Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
 				<Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
 				<Width val="450"/>
 			</Frame>
-			
-			<!-- <Frame type="Label" name="TipLabel"> -->
-				<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="15"/> -->
-				<!-- <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/> -->
-				<!-- <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/> -->
-				<!-- <AutoSizeClamps maxWidth="450"/> -->
-			<!-- </Frame> -->
-	
-			<!-- <Frame type="Frame" name="AnchorFrame"> -->
-				<!-- <Anchor side="Left" relative="$parent/TipLabel" pos="Min" offset="-15"/> -->
-				<!-- <Anchor side="Right" relative="$parent/TipLabel" pos="Max" offset="15"/> -->
-			<!-- </Frame> -->
-			
-			<!-- <Frame type="Image" name="BackgroundImage"> -->
-				<!-- <Anchor side="Top" relative="$parent/AnchorFrame" pos="Min" offset="0"/> -->
-				<!-- <Anchor side="Left" relative="$parent/AnchorFrame" pos="Min" offset="0"/> -->
-				<!-- <Anchor side="Right" relative="$parent/AnchorFrame" pos="Max" offset="0"/> -->
-				<!-- <Anchor side="Bottom" relative="$parent/AnchorFrame" pos="Max" offset="0"/> -->
-			<!-- </Frame> -->
         </Frame>
-		
-		
 		
 		<Frame type="CommandPanel" name="GlobalRallyPanel" template="CommandSidebar/CommandSidebarPanelTemplate">
 			<Anchor side="Top" relative="$parent/ArmyButton" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/ArmyButton" pos="Max" offset="-6"/>
 			<Anchor side="Bottom" relative="$parent/ArmyButton" pos="Max" offset="0"/>
-			<!-- <Anchor side="Right" relative="CommandButton02" pos="Max" offset="0"/> -->
 			<RenderPriority val="500"/>
 			<Width val="264"/>
 		
@@ -56,6 +24,10 @@
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<TooltipFrame val="RallyCommandTooltip"/>
 				<Handle val="GlobalRally00"/>
+				
+				<Frame type="Image" name="ZergType" template="PlusTemplates/ZergRallyTypeTemplate">
+					<Texture val="Assets/Textures/scp-zerg-type-melee.dds"/>
+				</Frame>
 			</Frame>
 			
 			<Frame type="CommandButton" name="CommandButton01" template="PlusTemplates/RallyButtonTemplate">
@@ -63,6 +35,10 @@
 				<Anchor side="Left" relative="$parent/CommandButton00" pos="Max" offset="-6"/>
 				<TooltipFrame val="RallyCommandTooltip"/>
 				<Handle val="GlobalRally01"/>
+				
+				<Frame type="Image" name="ZergType" template="PlusTemplates/ZergRallyTypeTemplate">
+					<Texture val="Assets/Textures/scp-zerg-type-ranged.dds"/>
+				</Frame>
 			</Frame>
 			
 			<Frame type="CommandButton" name="CommandButton02" template="PlusTemplates/RallyButtonTemplate">
@@ -70,6 +46,10 @@
 				<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="-6"/>
 				<TooltipFrame val="RallyCommandTooltip"/>
 				<Handle val="GlobalRally02"/>
+				
+				<Frame type="Image" name="ZergType" template="PlusTemplates/ZergRallyTypeTemplate">
+					<Texture val="Assets/Textures/scp-zerg-type-flyer.dds"/>
+				</Frame>
 			</Frame>
 			
 			
@@ -99,22 +79,24 @@
 				<DefaultState val="Terran"/>
 				<State name="Terran">
 					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
-					<Action type="SetProperty" frame="CommandButton00" tooltip="Global Rally Barracks (&lt;c val=&quot;FFFFFF&quot;&gt;F3&lt;/c&gt;)"/>
-					<Action type="SetProperty" frame="CommandButton01" tooltip="Global Rally Factory (&lt;c val=&quot;FFFFFF&quot;&gt;F4&lt;/c&gt;)"/>
-					<Action type="SetProperty" frame="CommandButton02" tooltip="Global Rally Starport (&lt;c val=&quot;FFFFFF&quot;&gt;F5&lt;/c&gt;)"/>
+					<Action type="SetProperty" frame="CommandButton00" tooltip="@Button/Label/GlobalRallyTerran00"/>
+					<Action type="SetProperty" frame="CommandButton01" tooltip="@Button/Label/GlobalRallyTerran01"/>
+					<Action type="SetProperty" frame="CommandButton02" tooltip="@Button/Label/GlobalRallyTerran02"/>
 				</State>
 				<State name="Protoss">
 					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
-					<Action type="SetProperty" frame="CommandButton00" tooltip="Global Rally Gateway (&lt;c val=&quot;FFFFFF&quot;&gt;F3&lt;/c&gt;)"/>
-					<Action type="SetProperty" frame="CommandButton01" tooltip="Global Rally Robotics Facility (&lt;c val=&quot;FFFFFF&quot;&gt;F4&lt;/c&gt;)"/>
-					<Action type="SetProperty" frame="CommandButton02" tooltip="Global Rally Stargate (&lt;c val=&quot;FFFFFF&quot;&gt;F5&lt;/c&gt;)"/>
+					<Action type="SetProperty" frame="CommandButton00" tooltip="@Button/Label/GlobalRallyProtoss00"/>
+					<Action type="SetProperty" frame="CommandButton01" tooltip="@Button/Label/GlobalRallyProtoss01"/>
+					<Action type="SetProperty" frame="CommandButton02" tooltip="@Button/Label/GlobalRallyProtoss02"/>
 				</State>
 				<State name="Zerg">
 					<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
-					<Action type="SetProperty" frame="CommandButton00" tooltip="Global Rally Hatchery (&lt;c val=&quot;FFFFFF&quot;&gt;F3&lt;/c&gt;)"/>
-					<Action type="SetAnchor" frame="$parent" side="Right" relative="CommandButton00" pos="Max" offset="0"/>
-					<Action type="ApplyTemplate" frame="CommandButton01" template="CommandSidebar/CommandButtonInvisible"/>
-					<Action type="ApplyTemplate" frame="CommandButton02" template="CommandSidebar/CommandButtonInvisible"/>
+					<Action type="SetProperty" frame="CommandButton00" tooltip="@Button/Label/GlobalRallyZerg00"/>
+					<Action type="SetProperty" frame="CommandButton01" tooltip="@Button/Label/GlobalRallyZerg01"/>
+					<Action type="SetProperty" frame="CommandButton02" tooltip="@Button/Label/GlobalRallyZerg02"/>
+					<Action type="SetProperty" frame="CommandButton00/ZergType" visible="true"/>
+					<Action type="SetProperty" frame="CommandButton01/ZergType" visible="true"/>
+					<Action type="SetProperty" frame="CommandButton02/ZergType" visible="true"/>
 				</State>
 			</StateGroup>
 			

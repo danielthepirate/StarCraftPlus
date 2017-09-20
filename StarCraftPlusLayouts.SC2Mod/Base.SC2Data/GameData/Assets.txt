@@ -27,20 +27,20 @@ UI/RallyButton00Hover_Zerg=Assets\Textures\ui_rally_hover_zerg00.dds
 UI/RallyButton01Normal=Assets\Textures\UI_SelectArmy_NormalPressed_Terran.dds
 UI/RallyButton01Normal_Prot=Assets\Textures\ui_rally_normal_protoss01.dds
 UI/RallyButton01Normal_Terr=Assets\Textures\ui_rally_normal_terran01.dds
-UI/RallyButton01Normal_Zerg=Assets\Textures\ui_rally_normal_zerg01.dds
+UI/RallyButton01Normal_Zerg=Assets\Textures\ui_rally_normal_zerg00.dds
 UI/RallyButton01Hover=Assets\Textures\UI_SelectArmy_NormalOverPressedOver_Terran.dds
 UI/RallyButton01Hover_Prot=Assets\Textures\ui_rally_hover_protoss01.dds
 UI/RallyButton01Hover_Terr=Assets\Textures\ui_rally_hover_terran01.dds
-UI/RallyButton01Hover_Zerg=Assets\Textures\ui_rally_hover_zerg01.dds
+UI/RallyButton01Hover_Zerg=Assets\Textures\ui_rally_hover_zerg00.dds
 
 UI/RallyButton02Normal=Assets\Textures\UI_SelectArmy_NormalPressed_Terran.dds
 UI/RallyButton02Normal_Prot=Assets\Textures\ui_rally_normal_protoss02.dds
 UI/RallyButton02Normal_Terr=Assets\Textures\ui_rally_normal_terran02.dds
-UI/RallyButton02Normal_Zerg=Assets\Textures\ui_rally_normal_zerg02.dds
+UI/RallyButton02Normal_Zerg=Assets\Textures\ui_rally_normal_zerg00.dds
 UI/RallyButton02Hover=Assets\Textures\UI_SelectArmy_NormalOverPressedOver_Terran.dds
 UI/RallyButton02Hover_Prot=Assets\Textures\ui_rally_hover_protoss02.dds
 UI/RallyButton02Hover_Terr=Assets\Textures\ui_rally_hover_terran02.dds
-UI/RallyButton02Hover_Zerg=Assets\Textures\ui_rally_hover_zerg02.dds
+UI/RallyButton02Hover_Zerg=Assets\Textures\ui_rally_hover_zerg00.dds
 
 WCS/RoundedRectangle_Small=Assets\Textures\RoundedRectangle_Small.dds
 

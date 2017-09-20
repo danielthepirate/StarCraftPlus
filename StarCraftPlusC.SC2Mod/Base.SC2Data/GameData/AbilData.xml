@@ -555,6 +555,8 @@
     <CAbilEffectTarget id="GameGlobalRallyTarget01">
         <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
         <Effect index="0" value="GlobalRallyTarget01"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Flags index="Transient" value="1"/>
         <Cost>
@@ -567,6 +569,8 @@
     <CAbilEffectTarget id="GameGlobalRallyTarget02">
         <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
         <Effect index="0" value="GlobalRallyTarget02"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Flags index="Transient" value="1"/>
         <Cost>
@@ -1020,6 +1024,8 @@
     <CAbilEffectTarget id="GameGlobalRallyTarget00">
         <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
         <Effect index="0" value="GlobalRallyTarget00"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Flags index="Transient" value="1"/>
         <Cost>

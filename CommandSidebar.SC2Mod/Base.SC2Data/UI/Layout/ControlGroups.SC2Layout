@@ -69,6 +69,7 @@
 			<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall01"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup01"/>
 			<Visible val="true"/>
 			
 			<Frame type="Label" name="IndexLabel">
@@ -80,7 +81,7 @@
 			<Anchor side="Top" relative="$parent/Group01" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/Group01" pos="Max" offset="#ACGOffset"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall02"/>
-			<Visible val="true"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup02"/>
 			
 			<Frame type="Label" name="IndexLabel">
 				<Text val="@Button/Label/ControlGroupAssign02"/>
@@ -91,7 +92,7 @@
 			<Anchor side="Top" relative="$parent/Group01" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/Group02" pos="Max" offset="#ACGOffset"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall03"/>
-			<Visible val="true"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup03"/>
 			
 			<Frame type="Label" name="IndexLabel">
 				<Text val="@Button/Label/ControlGroupAssign03"/>
@@ -102,6 +103,7 @@
 			<Anchor side="Top" relative="$parent/Group01" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/Group03" pos="Max" offset="#ACGOffset"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall04"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup04"/>
 			
 			<Frame type="Label" name="IndexLabel">
 				<Text val="@Button/Label/ControlGroupAssign04"/>
@@ -112,6 +114,7 @@
 			<Anchor side="Top" relative="$parent/Group01" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/Group04" pos="Max" offset="#ACGOffset"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall05"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup05"/>
 			
 			<Frame type="Label" name="IndexLabel">
 				<Text val="@Button/Label/ControlGroupAssign05"/>
@@ -122,6 +125,7 @@
 			<Anchor side="Top" relative="$parent/Group01" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/Group05" pos="Max" offset="#ACGOffset"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall06"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup06"/>
 			
 			<Frame type="Label" name="IndexLabel">
 				<Text val="@Button/Label/ControlGroupAssign06"/>
@@ -132,6 +136,7 @@
 			<Anchor side="Top" relative="$parent/Group01" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/Group06" pos="Max" offset="#ACGOffset"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall07"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup07"/>
 			
 			<Frame type="Label" name="IndexLabel">
 				<Text val="@Button/Label/ControlGroupAssign07"/>
@@ -142,6 +147,7 @@
 			<Anchor side="Top" relative="$parent/Group01" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/Group07" pos="Max" offset="#ACGOffset"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall08"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup08"/>
 			
 			<Frame type="Label" name="IndexLabel">
 				<Text val="@Button/Label/ControlGroupAssign08"/>
@@ -152,6 +158,7 @@
 			<Anchor side="Top" relative="$parent/Group01" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/Group08" pos="Max" offset="#ACGOffset"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall09"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup09"/>
 			
 			<Frame type="Label" name="IndexLabel">
 				<Text val="@Button/Label/ControlGroupAssign09"/>
@@ -162,6 +169,7 @@
 			<Anchor side="Top" relative="$parent/Group01" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent/Group09" pos="Max" offset="#ACGOffset"/>
 			<Shortcut val="@Button/Hotkey/ACGRecall00"/>
+			<Tooltip val="@Button/Tooltip/ControlGroup00"/>
 			
 			<Frame type="Label" name="IndexLabel">
 				<Text val="@Button/Label/ControlGroupAssign00"/>

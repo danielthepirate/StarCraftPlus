@@ -32,7 +32,6 @@
 <Unit id="Starport"/>
 <Unit id="FusionCore"/>
 <Unit id="SCV"/>
-<Unit id="Marine"/>
 <Unit id="Probe"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>
@@ -60,6 +59,5 @@
 <Unit id="GameGlobalRallyTarget01"/>
 <Unit id="GameGlobalRallyTarget02"/>
 <Unit id="GameAutoCreepNodeTarget"/>
-<Unit id="GameGlobalRallyCasterZerg"/>
 <Unit id="GameGlobalRallyCaster"/>
 </Preload>

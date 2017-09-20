@@ -251,6 +251,58 @@
         <BuildModel value="Invisible"/>
         <PlacementModel value="Invisible"/>
     </CActorUnit>
+    <CActorModel id="GameGlobalRallyTargetZergMeleeSecondary" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <AcceptedHostedPropTransfers index="Opacity" value="0"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create GlazeZergGlobalRally"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 128,64,64 128,64,64"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.350000 BSD"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5 SOpGameGlobalRallyZergMeleeSecondary"/>
+        <Model value="GameGlobalRallyTargetZergMelee"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetZergRanged" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <AcceptedHostedPropTransfers index="Opacity" value="0"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create GlazeZergGlobalRally"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 128,64,64 128,64,64"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.350000 BSD"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetZergFlyer" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <AcceptedHostedPropTransfers index="Opacity" value="0"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create GlazeZergGlobalRally"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 128,64,64 128,64,64"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.350000 BSD"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
     <CActorUnit id="Gateway">
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
         <CustomUnitStatusOffset value="0,105"/>
@@ -269,6 +321,13 @@
         </StatusColors>
         <AcceptedTransfers index="Animator" value="1"/>
     </CActorUnit>
+    <CActorModelMaterial id="GlazeZergGlobalRally" parent="GlazeParent">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="ActorCreation" Target="::Creator" Send="SetTintColor {224,192,255 1.500000}"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Creator"/>
+        <On Terms="AgeReached; Age 0.001000" Target="::Creator" Send="SetOpacity 0.400000"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
     <CActorUnit id="GreaterSpire">
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
         <CustomUnitStatusOffset value="0,135"/>
@@ -673,6 +732,14 @@
         <EditorCategories value=""/>
         <Do Send="AnimHookSet HookedBaseline ::Creator ::Baseline"/>
     </CActorEventMacroRunnable>
+    <CActorSiteOpLocalOffset id="SOpGameGlobalRallyZergMelee">
+        <EditorCategories value=""/>
+        <LocalOffset value="0.400000,0.200000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpGameGlobalRallyZergMeleeSecondary">
+        <EditorCategories value=""/>
+        <LocalOffset value="-0.400000,-0.200000,0.000000"/>
+    </CActorSiteOpLocalOffset>
     <CActorUnit id="SensorTower">
         <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
         <CustomUnitStatusOffset value="0,75"/>
@@ -814,6 +881,7 @@
         <On index="4" Terms="Abil.GameGlobalRallyTarget01.Cursor" Send="Create"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranFactory"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossRoboticsFacility"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergRanged"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
         <HostSiteOps Ops="SOpBasicScopeFollow SOpLowerByDot2"/>
         <Model value="GameGlobalRallyCursorTarget"/>
@@ -830,6 +898,7 @@
         <On index="4" Terms="Abil.GameGlobalRallyTarget02.Cursor" Send="Create"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranStarport"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossStargate"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergFlyer"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
         <HostSiteOps Ops="SOpBasicScopeFollow SOpLowerByDot2"/>
         <Model value="GameGlobalRallyCursorTarget"/>
@@ -846,7 +915,7 @@
         <On index="3" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranBarracks"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossGateway"/>
-        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergHatchery"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergMelee"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
         <HostSiteOps Ops="SOpBasicScopeFollow SOpHigherOfTerrainAndWater SOpLowerByDot2"/>
         <Model value="GameGlobalRallyCursorTarget"/>
@@ -873,11 +942,12 @@
         <FogVisibility value="Visible"/>
         <EditorCategories value=""/>
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
-        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
         <On Terms="UnitBirth.GameGlobalRallyTarget01" Send="Create"/>
         <On Terms="UnitDeath.GameGlobalRallyTarget01" Send="Destroy"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranFactory"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossRoboticsFacility"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergRanged"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
         <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
         <Model value="GameGlobalRallyTargetPersistent"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
@@ -904,12 +974,12 @@
         <FogVisibility value="Visible"/>
         <EditorCategories value=""/>
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
-        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
         <On Terms="UnitBirth.GameGlobalRallyTarget00" Send="Create"/>
         <On Terms="UnitDeath.GameGlobalRallyTarget00" Send="Destroy"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranBarracks"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossGateway"/>
-        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergHatchery"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergMelee"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
         <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
         <Model value="GameGlobalRallyTargetPersistent"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
@@ -935,11 +1005,12 @@
         <FogVisibility value="Visible"/>
         <EditorCategories value=""/>
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
-        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
         <On Terms="UnitBirth.GameGlobalRallyTarget02" Send="Create"/>
         <On Terms="UnitDeath.GameGlobalRallyTarget02" Send="Destroy"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranStarport"/>
         <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossStargate"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergFlyer"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
         <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
         <Model value="GameGlobalRallyTargetPersistent"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
@@ -956,16 +1027,23 @@
         <Host Subject="::Creator"/>
         <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
     </CActorModel>
-    <CActorModel id="GameGlobalRallyTargetZergHatchery" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="GameGlobalRallyTargetZergMelee" parent="ModelAnimationStyleContinuous">
         <Filter index="Neutral" value="1"/>
         <Filter index="Enemy" value="1"/>
+        <AcceptedHostedPropTransfers index="Opacity" value="0"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="0"/>
         <FogVisibility value="Visible"/>
         <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
         <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
-        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
-        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create GlazeZergGlobalRally"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 128,64,64 128,64,64"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.350000 BSD"/>
+        <On Terms="ActorCreation" Send="Create GameGlobalRallyTargetZergMeleeSecondary"/>
         <Host Subject="::Creator"/>
-        <HostSiteOps Ops="SOpShadowRespectsBaseHeight SOpHigherBy2Dot5"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5 SOpGameGlobalRallyZergMelee"/>
     </CActorModel>
     <CActorModel id="GameGlobalRallyTargetTerranBarracks" parent="ModelAnimationStyleContinuous">
         <Filter index="Neutral" value="1"/>
