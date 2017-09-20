@@ -495,5 +495,7 @@ Unit/Name/SupplyDepotConstructorPaused=Auto Wall Constructor
 Unit/Name/SupplyDepotLowered=Auto Wall
 Unit/Name/TechLabPaused=Tech Lab
 Unit/Name/UltraliskCavernPaused=Ultralisk Cavern
+Unit/Name/WidowMineBurrowed=Widow Mine
+Unit/Name/WidowMineBurrowedDummy=WidowMineBurrowedDummy
 Upgrade/Name/GameProtossNexusCount=Game Protoss Nexus Count
 Upgrade/Name/GameProtossWarpGateCount=Game Protoss Warp Gate Count

@@ -2218,11 +2218,15 @@ void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_player
     }
     else {
         lv_unitType = libSCPL_gf_ControlGroupUnitsGetPriorityType(lv_controlGroup);
-        lv_controlGroupIcon = CatalogFieldValueGet(c_gameCatalogActor, lv_unitType, "UnitIcon", c_playerAny);;
+        if ((CatalogEntryIsValid(c_gameCatalogActor, lv_unitType) == true)) {
+            lv_controlGroupIcon = CatalogFieldValueGet(c_gameCatalogActor, lv_unitType, "UnitIcon", c_playerAny);;
+        }
         DialogControlSetVisible(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), true);
         DialogControlFadeTransparency(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), 0.0, 0.0);
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_consoleControlGroupLabel[lp_controlGroupIndex], IntToText(lv_controlGroupCount), PlayerGroupSingle(lp_playerIndex));
-        libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], lv_controlGroupIcon, PlayerGroupSingle(lp_playerIndex));
+        if ((libPPRL_gf_StringIsValid(lv_controlGroupIcon) == true)) {
+            libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], lv_controlGroupIcon, PlayerGroupSingle(lp_playerIndex));
+        }
         libSCPL_gf_ControlGroupColorize(lp_playerIndex, lp_controlGroupIndex);
     }
 }

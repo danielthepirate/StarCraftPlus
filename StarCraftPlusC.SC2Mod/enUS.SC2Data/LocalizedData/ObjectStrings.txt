@@ -186,6 +186,7 @@ Actor/Name/UltraliskCavernPaused=Ultralisk Cavern Paused
 Actor/Name/UnpoweredVisualLow=Unpowered Visual Low 
 Actor/Name/UnpoweredVisualNearNexus=Unpowered Visual Near Nexus
 Actor/Name/UnpoweredVisualNearNexusLow=Unpowered Visual Near Nexus Low
+Actor/Name/WidowMineBurrowed=Widow Mine Burrowed
 Behavior/EditorPrefix/CreepGrowthMediumEnhanced=Zerg -
 Behavior/EditorPrefix/GameNearNexus=Pylon -
 Behavior/EditorPrefix/GameNearWarpGate=Pylon -
