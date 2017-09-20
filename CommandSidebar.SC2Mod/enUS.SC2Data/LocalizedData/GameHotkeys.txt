@@ -1,6 +1,9 @@
-﻿Button/Hotkey/SidebarBuildings=F6
-Button/Hotkey/SidebarUnits=F7
-Button/Hotkey/SidebarResearch=F8
+﻿UI/Hotkey/ArmySelect=F4
+UI/Hotkey/IdleWorker=F8
+
+Button/Hotkey/SidebarBuildings=F1
+Button/Hotkey/SidebarUnits=F2
+Button/Hotkey/SidebarResearch=F3
 
 Button/Hotkey/ACGAdd01=Shift+1
 Button/Hotkey/ACGAdd02=Shift+2

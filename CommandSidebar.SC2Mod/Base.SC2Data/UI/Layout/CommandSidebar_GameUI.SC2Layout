@@ -4,14 +4,34 @@
 		<Handle val="ConsoleUIContainer"/>
 		
 		<Frame type="Image" name="TopBarBackground">
-			<Anchor side="Top" relative="$parent/GlobalCommandContainer" pos="Min" offset="-24"/>
-			<Anchor side="Left" relative="$parent/GlobalCommandContainer" pos="Min" offset="-8"/>
-			<Anchor side="Bottom" relative="$parent/GlobalCommandContainer" pos="Max" offset="12"/>
-			<Anchor side="Right" relative="$parent/GlobalCommandContainer" pos="Max" offset="8"/>
+			<Anchor side="Top" relative="$GlobalCommand00" pos="Min" offset="-24"/>
+			<Anchor side="Left" relative="$GlobalCommand00" pos="Min" offset="-8"/>
+			<Anchor side="Bottom" relative="$GlobalCommand02" pos="Max" offset="12"/>
+			<Anchor side="Right" relative="$GlobalCommand02" pos="Max" offset="8"/>
+			<Handle val="GlobalTopBackground"/>
 			<RenderType val="HDR"/>
 			<RenderPriority val="10"/>
 			<Color val="0,0,0"/>
 			<Alpha val="128"/>
+			<Visible val="false"/>
+			
+			<Frame type="BlurFrame" name="Blur">
+				<Anchor relative="$parent"/>
+				<BlurAmount val="0.15"/>
+				<RenderPriority val="1"/>
+			</Frame>
+		</Frame>
+		
+		<Frame type="Image" name="TopBarLeftBackground">
+			<Anchor side="Top" relative="$GlobalCommand03" pos="Min" offset="-8"/>
+			<Anchor side="Left" relative="$GlobalCommand03" pos="Min" offset="-12"/>
+			<Anchor side="Bottom" relative="$GlobalCommand03" pos="Max" offset="36"/>
+			<Anchor side="Right" relative="$GlobalCommand05" pos="Max" offset="8"/>
+			<Handle val="GlobalLeftBackground"/>
+			<RenderType val="HDR"/>
+			<RenderPriority val="10"/>
+			<Color val="0,0,0"/>
+			<Alpha val="172"/>
 			
 			<Frame type="BlurFrame" name="Blur">
 				<Anchor relative="$parent"/>
@@ -75,9 +95,9 @@
 			<!-- <Anchor side="Left" relative="$ACGContainer" pos="Max" offset="0"/> -->
 			<!-- <Anchor side="Right" relative="$parent/SideBarTabAnchor" pos="Mid" offset="0"/> -->
 			<Anchor side="Right" relative="SidebarResearch" pos="Max" offset="0"/>
-			<Anchor side="Left" relative="$parent/SideBarTabAnchor" pos="Mid" offset="-192"/>
-			<Anchor side="Bottom" relative="$ACGContainer" pos="Max" offset="-22"/>
-			<Height val="48"/>
+			<Anchor side="Left" relative="$parent/SideBarTabAnchor" pos="Mid" offset="-256"/>
+			<Anchor side="Bottom" relative="$ACGContainer" pos="Max" offset="-27"/>
+			<Height val="64"/>
         
 			<TabListItem val="SidebarBuildings"/>
 			<TabListItem val="SidebarUnits"/>
@@ -88,8 +108,8 @@
 			<SelectedIndex val="0"/>
 
 			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Build"/>
 				</Frame>
@@ -98,8 +118,8 @@
 			</Frame>
 			
 			<Frame type="Button" name="SidebarUnits" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="-6"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Train"/>
 				</Frame>
@@ -107,8 +127,8 @@
 			</Frame>
 			
 			<Frame type="Button" name="SidebarResearch" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="-2"/>
 				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="-6"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Research"/>
 				</Frame>

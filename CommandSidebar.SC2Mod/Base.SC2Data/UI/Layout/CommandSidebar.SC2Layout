@@ -103,9 +103,8 @@
 	</Frame>
 	
 	<Frame type="Button" name="SideBarTabButtonTemplate">
-        <Width val="128"/>
-        <!-- <Height val="38"/> -->
-        <Height val="48"/>
+        <Width val="172"/>
+        <Height val="64"/>
         <NormalImage val="NormalImage"/>
         <HoverImage val="HoverImage"/>
         <Label val="MenuLabel"/>
@@ -133,7 +132,7 @@
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
             <Anchor side="Left" relative="$parent" pos="Min" offset="2"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-            <Style val="@@MenuBarButton"/>
+            <Style val="@@MenuBarButtonBig"/>
             <Text val="@UI/Menu"/>
         </Frame>
     </Frame>
@@ -530,30 +529,27 @@
 	</Frame>
 	
 	<Frame type="Frame" name="CommandContainerGlobal">
-		<Anchor side="Top" relative="CommandPanel1/CommandButton00" pos="Min" offset="0"/>
-		<Anchor side="Left" relative="CommandPanel1/CommandButton00" pos="Min" offset="0"/>
-		<Anchor side="Bottom" relative="CommandPanel1/CommandButton05" pos="Max" offset="0"/>
-		<Anchor side="Right" relative="CommandPanel1/CommandButton05" pos="Max" offset="0"/>
+		<Anchor relative="$parent"/>
 		
 		<StateGroup name="RaceState">
 			<DefaultState val="Terran"/>
 			<State name="Terran">
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
-				<Action type="SetAnchor" frame="$this" side="Right" relative="CommandPanel1/CommandButton05" pos="Max" offset="0"/>
-				<!-- Terran (6 buttons/1 spacer) | Width x 2.5 + 20 -->
-				<Action type="SetAnchor" frame="CommandPanel1/CommandButton00" side="Left" relative="$ConsoleUIContainer" pos="Mid" offset="-200"/>
+				<!-- 3x LEFT 3x TOP -->
+				<Action type="SetProperty" frame="$GlobalTopBackground" visible="true"/>
+				<Action type="SetAnchor" frame="$GlobalLeftBackground" side="Right" relative="$GlobalCommand05" pos="Max" offset="8"/>
 			</State>
 			<State name="Protoss">
+				<!-- 1x LEFT -->
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
-				<Action type="SetAnchor" frame="$this" side="Right" relative="CommandPanel1/CommandButton00" pos="Max" offset="0"/>
-				<!-- Protoss (1 button) | 0 -->
-				<Action type="SetAnchor" frame="CommandPanel1/CommandButton00" side="Left" relative="$ConsoleUIContainer" pos="Mid" offset="0"/>
+				<Action type="SetAnchor" frame="$GlobalLeftBackground" side="Right" relative="$GlobalCommand03" pos="Max" offset="8"/>
+				<Action type="ApplyTemplate" frame="$GlobalCommand04" template="CommandSidebar/CommandButtonInvisible"/>
+				<Action type="ApplyTemplate" frame="$GlobalCommand05" template="CommandSidebar/CommandButtonInvisible"/>
 			</State>
 			<State name="Zerg">
+				<!-- 3x TOP -->
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
-				<Action type="SetAnchor" frame="$this" side="Right" relative="CommandPanel1/CommandButton02" pos="Max" offset="0"/>
-				<!-- Zerg (3 buttons) | Width + 20 -->
-				<Action type="SetAnchor" frame="CommandPanel1/CommandButton00" side="Left" relative="$ConsoleUIContainer" pos="Mid" offset="-72"/>
+				<Action type="SetAnchor" frame="$GlobalLeftBackground" side="Right" relative="$GlobalCommand05" pos="Max" offset="8"/>
 			</State>
 		</StateGroup>
 		
@@ -562,29 +558,38 @@
 			
 			<Frame type="CommandButton" name="CommandButton00">
 				<Anchor side="Top" relative="$ConsoleUIContainer" pos="Min" offset="16"/>
-				<Anchor side="Left" relative="$ConsoleUIContainer" pos="Mid" offset="-180"/>
+				<Anchor side="Left" relative="$ConsoleUIContainer" pos="Mid" offset="-200"/>
+				
+				<Handle val="GlobalCommand00"/>
 				<Height val="72"/>
 				<Width val="72"/>
 			</Frame>
 			
 			<Frame type="CommandButton" name="CommandButton01">
+				<Handle val="GlobalCommand01"/>
 				<Height val="72"/>
 				<Width val="72"/>
 			</Frame>
 			<Frame type="CommandButton" name="CommandButton02">
+				<Handle val="GlobalCommand02"/>
 				<Height val="72"/>
 				<Width val="72"/>
 			</Frame>
 			<Frame type="CommandButton" name="CommandButton03">
-				<Anchor side="Left" relative="$parent/CommandButton02" pos="Max" offset="40"/>
+				<Anchor side="Top" relative="$MinimapStub" pos="Min" offset="-118"/>
+				<Anchor side="Left" relative="$MinimapStub" pos="Min" offset="4"/>
+				
+				<Handle val="GlobalCommand03"/>
 				<Height val="72"/>
 				<Width val="72"/>
 			</Frame>
 			<Frame type="CommandButton" name="CommandButton04">
+				<Handle val="GlobalCommand04"/>
 				<Height val="72"/>
 				<Width val="72"/>
 			</Frame>
 			<Frame type="CommandButton" name="CommandButton05">
+				<Handle val="GlobalCommand05"/>
 				<Height val="72"/>
 				<Width val="72"/>
 			</Frame>

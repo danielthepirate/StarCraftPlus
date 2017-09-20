@@ -252,6 +252,7 @@ Behavior/Name/GameUCBOrbitalCommandEnergy50LT=Game UCB Orbital Command Energy 50
 Behavior/Name/GameUCBOverlordChargeLink=Game UCB Overlord Charge Link
 Behavior/Name/GameUCBOverlordOrTransportChargeLink=Game UCB Overlord Or Transport Charge Link
 Behavior/Name/GameUCBRavagerChargeLink=Game UCB Ravager Charge Link
+Behavior/Name/GameUCBSpireChargeLink=Game UCB Spire Charge Link
 Behavior/Name/GameUCBSpireChargeLinkConstructing=Game UCB Spire Charge Link Constructing
 Behavior/Name/GameUCBSpireGreaterSpire=Game UCB Spire Greater Spire
 Behavior/Name/GameUCBSpireMorphing=Game UCB Spire Morphing

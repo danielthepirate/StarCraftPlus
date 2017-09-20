@@ -52,7 +52,6 @@
 				</Frame>
 			</Frame>
 			
-			
 			<!-- I get errors for creating frames with existing names when I try to set these textures in the command buttons above, so I'm using a stategroup instead-->
 			<StateGroup name="Initialization">
 				<DefaultState val="Initialize"/>

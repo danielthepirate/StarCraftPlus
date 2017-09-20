@@ -97,9 +97,6 @@ void libSCPL_InitVariables () {
     libSCPL_gv_uI.lv_consoleActiveCommandCard = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_consoleRallyCommandCard = c_invalidDialogControlId;
     for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
-        libSCPL_gv_uI.lv_consoleControlGroupAnimListener[init_i1] = c_invalidDialogControlId;
-    }
-    for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
         libSCPL_gv_uI.lv_consoleControlGroupButton[init_i1] = c_invalidDialogControlId;
     }
     for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
@@ -1347,12 +1344,10 @@ void libSCPL_gf_InitializeUIHookups () {
     DialogControlHookupStandard(c_triggerControlTypeCommandPanel, "UIContainer/ConsoleUIContainer/GlobalRallyPanel");
     libSCPL_gv_uI.lv_consoleRallyCommandCard = DialogControlLastCreated();
     UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeControlGroupPanel, false);
-    autoAAAC514B_ae = 9;
+    autoAAAC514B_ae = 8;
     autoAAAC514B_ai = 1;
-    lv_frameIndex = 0;
+    lv_frameIndex = 1;
     for ( ; ( (autoAAAC514B_ai >= 0 && lv_frameIndex <= autoAAAC514B_ae) || (autoAAAC514B_ai <= 0 && lv_frameIndex >= autoAAAC514B_ae) ) ; lv_frameIndex += autoAAAC514B_ai ) {
-        DialogControlHookupStandard(c_triggerControlTypeImage, ("UIContainer/ConsoleUIContainer/ControlGroupListener" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleControlGroupAnimListener[lv_frameIndex] = DialogControlLastCreated();
         DialogControlHookupStandard(c_triggerControlTypeButton, ("UIContainer/ConsoleUIContainer/AxiomACGContainer/Group" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
         libSCPL_gv_uI.lv_consoleControlGroupButton[lv_frameIndex] = DialogControlLastCreated();
         DialogControlHookupStandard(c_triggerControlTypeButton, ("UIContainer/ConsoleUIContainer/AxiomACGContainer/Assign" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
@@ -2119,13 +2114,35 @@ void libSCPL_gf_ControlGroupUnitPreserve (unit lp_parentUnit, unit lp_childUnit)
 
     // Implementation
     lv_playerIndex = UnitGetOwner(lp_parentUnit);
-    auto7145AD08_ae = 29;
+    auto7145AD08_ae = 28;
     auto7145AD08_ai = 1;
-    lv_controlGroupIndex = 20;
+    lv_controlGroupIndex = 21;
     for ( ; ( (auto7145AD08_ai >= 0 && lv_controlGroupIndex <= auto7145AD08_ae) || (auto7145AD08_ai <= 0 && lv_controlGroupIndex >= auto7145AD08_ae) ) ; lv_controlGroupIndex += auto7145AD08_ai ) {
         if ((UnitGetCustomValue(lp_parentUnit, lv_controlGroupIndex) == 1)) {
             libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lp_childUnit), (lv_controlGroupIndex - 20), lv_playerIndex);
             libSCPL_gf_ControlGroupUnitsUpdate((lv_controlGroupIndex - 20), lv_playerIndex);
+        }
+    }
+}
+
+void libSCPL_gf_ControlGroupDamagePulse (unit lp_unit) {
+    int auto4A02EB2A_ae;
+    int auto4A02EB2A_ai;
+
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlGroupIndex;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_playerIndex = UnitGetOwner(lp_unit);
+    auto4A02EB2A_ae = 28;
+    auto4A02EB2A_ai = 1;
+    lv_controlGroupIndex = 21;
+    for ( ; ( (auto4A02EB2A_ai >= 0 && lv_controlGroupIndex <= auto4A02EB2A_ae) || (auto4A02EB2A_ai <= 0 && lv_controlGroupIndex >= auto4A02EB2A_ae) ) ; lv_controlGroupIndex += auto4A02EB2A_ai ) {
+        if ((UnitGetCustomValue(lp_unit, lv_controlGroupIndex) == 1)) {
+            DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[(lv_controlGroupIndex - 20)], PlayerGroupSingle(lv_playerIndex), "EventDamage");
         }
     }
 }
@@ -2146,9 +2163,9 @@ void libSCPL_gf_ControlGroupColorize (int lp_playerIndex, int lp_controlGroupInd
         return ;
     }
     lv_colorIndex = libSCPL_gf_UnitGroupHealthIndex(lv_controlGroup);
-    DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupAnimListener[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventColorize");
-    DialogControlSetAnimationTime(libSCPL_gv_uI.lv_consoleControlGroupAnimListener[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "ColorizeVitals", lv_colorIndex);
-    DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupAnimListener[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventPause");
+    DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventColorize");
+    DialogControlSetAnimationTime(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "ColorizeVitals", lv_colorIndex);
+    DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventPause");
 }
 
 int libSCPL_gf_UnitGroupHealthIndex (unitgroup lp_unitGroup) {
@@ -2168,7 +2185,7 @@ int libSCPL_gf_UnitGroupHealthIndex (unitgroup lp_unitGroup) {
     autoABB6BC2E_u = 1;
     for ( ; autoABB6BC2E_u <= UnitGroupCount(autoABB6BC2E_g, c_unitCountAll) ; autoABB6BC2E_u += BoolToInt(lv_unit == UnitGroupUnit(autoABB6BC2E_g, autoABB6BC2E_u)) ) {
         lv_unit = UnitGroupUnit(autoABB6BC2E_g, autoABB6BC2E_u);
-        lv_healthIndex += UnitGetPropertyFixed(lv_unit, c_unitPropLifePercent, c_unitPropCurrent);
+        lv_healthIndex += UnitGetPropertyFixed(lv_unit, c_unitPropVitalityPercent, c_unitPropCurrent);
     }
     lv_healthIndex /= lv_unitGroupCount;
     lv_healthIndex = (100 - FixedToInt(lv_healthIndex));
@@ -2181,18 +2198,23 @@ void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_player
     unitgroup lv_controlGroup;
     int lv_controlGroupCount;
     string lv_controlGroupIcon;
+    string lv_race;
 
     // Variable Initialization
     lv_controlGroup = UnitGroupEmpty();
+    lv_race = "";
 
     // Implementation
     lv_controlGroup = libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex];
     lv_controlGroup = UnitGroupFilter(null, c_playerAny, lv_controlGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     lv_controlGroupCount = UnitGroupCount(lv_controlGroup, c_unitCountAlive);
     if ((lv_controlGroupCount == 0)) {
-        DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupAnimListener[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventReset");
+        DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventReset");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_consoleControlGroupLabel[lp_controlGroupIndex], StringToText(""), PlayerGroupSingle(lp_playerIndex));
         libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], "Assets\\Textures\\black.dds", PlayerGroupSingle(lp_playerIndex));
+        if ((lp_controlGroupIndex != 1)) {
+            DialogControlSetVisible(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), false);
+        }
     }
     else {
         lv_unitType = libSCPL_gf_ControlGroupUnitsGetPriorityType(lv_controlGroup);
@@ -9548,9 +9570,9 @@ bool libSCPL_gt_ControlGroupUnitDeath_Func (bool testConds, bool runActions) {
 
     lv_unit = EventUnit();
     lv_playerIndex = UnitGetOwner(lv_unit);
-    autoEACE9E46_ae = 29;
+    autoEACE9E46_ae = 28;
     autoEACE9E46_ai = 1;
-    lv_controlGroupIndex = 20;
+    lv_controlGroupIndex = 21;
     for ( ; ( (autoEACE9E46_ai >= 0 && lv_controlGroupIndex <= autoEACE9E46_ae) || (autoEACE9E46_ai <= 0 && lv_controlGroupIndex >= autoEACE9E46_ae) ) ; lv_controlGroupIndex += autoEACE9E46_ai ) {
         if ((UnitGetCustomValue(lv_unit, lv_controlGroupIndex) == 1)) {
             libSCPL_gf_ControlGroupUnitsUpdate((lv_controlGroupIndex - 20), lv_playerIndex);
@@ -9637,9 +9659,29 @@ void libSCPL_gt_ControlGroupBanelingFinish_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Control Group Vitals Update
+// Trigger: Control Group Unit Damaged
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ControlGroupVitalsUpdate_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_ControlGroupUnitDamaged_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, true);
+    libSCPL_gf_ControlGroupDamagePulse(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupUnitDamaged_Init () {
+    libSCPL_gt_ControlGroupUnitDamaged = TriggerCreate("libSCPL_gt_ControlGroupUnitDamaged_Func");
+    TriggerAddEventUnitDamaged(libSCPL_gt_ControlGroupUnitDamaged, null, c_unitDamageTypeAny, c_unitDamageEither, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Unit Damaged Group Update
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Func (bool testConds, bool runActions) {
     playergroup auto0AE1B3D7_g;
     int auto0AE1B3D7_p;
     int autoB1A98539_ae;
@@ -9656,15 +9698,14 @@ bool libSCPL_gt_ControlGroupVitalsUpdate_Func (bool testConds, bool runActions) 
         return true;
     }
 
-    TriggerEnable(libSCPL_gt_ControlGroupVitalsUpdate, false);
-    TriggerEnable(libSCPL_gt_ControlGroupVitalsUpdateTrigger, true);
+    TriggerEnable(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, false);
     auto0AE1B3D7_g = PlayerGroupActive(); 
     auto0AE1B3D7_p = 1;
     for ( ; auto0AE1B3D7_p <= PlayerGroupCount(auto0AE1B3D7_g) ; auto0AE1B3D7_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto0AE1B3D7_g, auto0AE1B3D7_p)) ) {
         lv_playerIndex = PlayerGroupPlayer(auto0AE1B3D7_g, auto0AE1B3D7_p);
-        autoB1A98539_ae = 9;
+        autoB1A98539_ae = 8;
         autoB1A98539_ai = 1;
-        lv_controlGroupIndex = 0;
+        lv_controlGroupIndex = 1;
         for ( ; ( (autoB1A98539_ai >= 0 && lv_controlGroupIndex <= autoB1A98539_ae) || (autoB1A98539_ai <= 0 && lv_controlGroupIndex >= autoB1A98539_ae) ) ; lv_controlGroupIndex += autoB1A98539_ai ) {
             libSCPL_gf_ControlGroupColorize(lv_playerIndex, lv_controlGroupIndex);
         }
@@ -9673,30 +9714,10 @@ bool libSCPL_gt_ControlGroupVitalsUpdate_Func (bool testConds, bool runActions) 
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ControlGroupVitalsUpdate_Init () {
-    libSCPL_gt_ControlGroupVitalsUpdate = TriggerCreate("libSCPL_gt_ControlGroupVitalsUpdate_Func");
-    TriggerEnable(libSCPL_gt_ControlGroupVitalsUpdate, false);
-    TriggerAddEventTimePeriodic(libSCPL_gt_ControlGroupVitalsUpdate, 0.1875, c_timeGame);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Control Group Vitals Update Trigger
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ControlGroupVitalsUpdateTrigger_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerEnable(libSCPL_gt_ControlGroupVitalsUpdateTrigger, false);
-    TriggerEnable(libSCPL_gt_ControlGroupVitalsUpdate, true);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ControlGroupVitalsUpdateTrigger_Init () {
-    libSCPL_gt_ControlGroupVitalsUpdateTrigger = TriggerCreate("libSCPL_gt_ControlGroupVitalsUpdateTrigger_Func");
-    TriggerAddEventUnitDamaged(libSCPL_gt_ControlGroupVitalsUpdateTrigger, null, c_unitDamageTypeAny, c_unitDamageEither, null);
+void libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init () {
+    libSCPL_gt_ControlGroupUnitDamagedGroupUpdate = TriggerCreate("libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Func");
+    TriggerEnable(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, false);
+    TriggerAddEventTimePeriodic(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, 0.1875, c_timeGame);
 }
 
 void libSCPL_InitTriggers () {
@@ -9846,8 +9867,8 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ControlGroupArchon_Init();
     libSCPL_gt_ControlGroupBaneling_Init();
     libSCPL_gt_ControlGroupBanelingFinish_Init();
-    libSCPL_gt_ControlGroupVitalsUpdate_Init();
-    libSCPL_gt_ControlGroupVitalsUpdateTrigger_Init();
+    libSCPL_gt_ControlGroupUnitDamaged_Init();
+    libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

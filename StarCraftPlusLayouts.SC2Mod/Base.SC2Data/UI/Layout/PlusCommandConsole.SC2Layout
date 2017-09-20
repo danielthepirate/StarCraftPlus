@@ -93,6 +93,7 @@
 			<Frame type="Frame" name="MinimapStub">
 				<Width val="380"/>
 				<Height val="332"/>
+				<Handle val="MinimapStub"/>
 			</Frame>
 	
 			<Frame type="Frame" name="InfoStub">

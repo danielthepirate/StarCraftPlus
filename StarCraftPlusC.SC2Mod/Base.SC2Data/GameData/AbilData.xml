@@ -1229,6 +1229,7 @@
             </Charge>
             <Cooldown TimeUse="0"/>
         </Cost>
+        <CmdButtonArray index="Execute" Requirements="HaveNexus"/>
     </CAbilEffectTarget>
     <CAbilTrain id="TrainQueen">
         <RefundFraction>

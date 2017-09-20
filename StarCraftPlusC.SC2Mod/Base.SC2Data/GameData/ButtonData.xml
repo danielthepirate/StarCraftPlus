@@ -392,14 +392,6 @@
         <Hotkey value="Button/Hotkey/GlobalRallyBarracks"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
-    <CButton id="GlobalRallyHatchery">
-        <TooltipFlags index="ShowName" value="0"/>
-        <TooltipFlags index="ShowHotkey" value="0"/>
-        <Icon value="Assets\Textures\btn-building-zerg-hatchery.dds"/>
-        <Hotkey value="Button/Hotkey/GlobalRallyHatchery"/>
-        <EditorCategories value="Race:Zerg"/>
-        <HotkeyAlias value="GlobalRallyBarracks"/>
-    </CButton>
     <CButton id="GlobalRallyFactory">
         <TooltipFlags index="ShowName" value="0"/>
         <TooltipFlags index="ShowHotkey" value="0"/>
