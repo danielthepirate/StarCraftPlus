@@ -115,9 +115,13 @@
 		
 		<Frame type="ArmyButton" name="ArmyButton">
 			<TooltipFrame val="RallyCommandTooltip"/>
+			<Anchor side="Left" relative="$parent/MinimapPanel" pos="Min" offset="0"/>
 		</Frame>
+		
 		<Frame type="IdleButton" name="IdleButton">
 			<TooltipFrame val="RallyCommandTooltip"/>
+			<Anchor side="Left" relative="$GlobalRally02" pos="Max" offset="-6"/>
+			<RenderPriority val="499"/>
 		</Frame>
 		
 	</Frame>
