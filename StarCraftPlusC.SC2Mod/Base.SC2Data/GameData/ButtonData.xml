@@ -448,43 +448,43 @@
         <Icon value="Assets\Textures\btn-upgrade-karax-pylonwarpininstantly.dds"/>
     </CButton>
     <CButton id="ReactorBarracks">
-        <Icon value="Assets\Textures\btn-building-terran-reactor.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-terran-reactor.dds"/>
+        <Icon value="Assets\Textures\btn-building-terran-barracks-reactor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-barracks-reactor.dds"/>
         <Hotkey value="Button/Hotkey/ReactorBarracks"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Reactor"/>
     </CButton>
     <CButton id="ReactorFactory">
-        <Icon value="Assets\Textures\btn-building-terran-reactor.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-terran-reactor.dds"/>
+        <Icon value="Assets\Textures\btn-building-terran-factory-reactor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-factory-reactor.dds"/>
         <Hotkey value="Button/Hotkey/ReactorFactory"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Reactor"/>
     </CButton>
     <CButton id="ReactoStarport">
-        <Icon value="Assets\Textures\starport_rax.dds"/>
-        <AlertIcon value="Assets\Textures\starport_rax.dds"/>
+        <Icon value="Assets\Textures\btn-building-terran-starport-reactor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-starport-reactor.dds"/>
         <Hotkey value="Button/Hotkey/ReactoStarport"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Reactor"/>
     </CButton>
     <CButton id="TechLabBarracksUCB">
-        <Icon value="Assets\Textures\btn-building-terran-techlab.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-terran-techlab.dds"/>
+        <Icon value="Assets\Textures\btn-building-terran-barracks-techlab.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-barracks-techlab.dds"/>
         <Hotkey value="Button/Hotkey/TechLabBarracksUCB"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="TechLabBarracks"/>
     </CButton>
     <CButton id="TechLabFactoryUCB">
-        <Icon value="Assets\Textures\btn-building-terran-techlab.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-terran-techlab.dds"/>
+        <Icon value="Assets\Textures\btn-building-terran-factory-techlab.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-factory-techlab.dds"/>
         <Hotkey value="Button/Hotkey/TechLabFactoryUCB"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="TechLabFactory"/>
     </CButton>
     <CButton id="TechLabStarportUCB">
-        <Icon value="Assets\Textures\btn-building-terran-techlab.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-terran-techlab.dds"/>
+        <Icon value="Assets\Textures\btn-building-terran-starport-techlab.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-starport-techlab.dds"/>
         <Hotkey value="Button/Hotkey/TechLabStarportUCB"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="TechLabStarport"/>
