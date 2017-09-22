@@ -24,10 +24,6 @@
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				<TooltipFrame val="RallyCommandTooltip"/>
 				<Handle val="GlobalRally00"/>
-				
-				<Frame type="Image" name="ZergType" template="PlusTemplates/ZergRallyTypeTemplate">
-					<Texture val="Assets/Textures/scp-zerg-type-melee.dds"/>
-				</Frame>
 			</Frame>
 			
 			<Frame type="CommandButton" name="CommandButton01" template="PlusTemplates/RallyButtonTemplate">
@@ -35,10 +31,6 @@
 				<Anchor side="Left" relative="$parent/CommandButton00" pos="Max" offset="-6"/>
 				<TooltipFrame val="RallyCommandTooltip"/>
 				<Handle val="GlobalRally01"/>
-				
-				<Frame type="Image" name="ZergType" template="PlusTemplates/ZergRallyTypeTemplate">
-					<Texture val="Assets/Textures/scp-zerg-type-ranged.dds"/>
-				</Frame>
 			</Frame>
 			
 			<Frame type="CommandButton" name="CommandButton02" template="PlusTemplates/RallyButtonTemplate">
@@ -46,10 +38,6 @@
 				<Anchor side="Left" relative="$parent/CommandButton01" pos="Max" offset="-6"/>
 				<TooltipFrame val="RallyCommandTooltip"/>
 				<Handle val="GlobalRally02"/>
-				
-				<Frame type="Image" name="ZergType" template="PlusTemplates/ZergRallyTypeTemplate">
-					<Texture val="Assets/Textures/scp-zerg-type-flyer.dds"/>
-				</Frame>
 			</Frame>
 			
 			<!-- I get errors for creating frames with existing names when I try to set these textures in the command buttons above, so I'm using a stategroup instead-->
@@ -93,9 +81,6 @@
 					<Action type="SetProperty" frame="CommandButton00" tooltip="@Button/Label/GlobalRallyZerg00"/>
 					<Action type="SetProperty" frame="CommandButton01" tooltip="@Button/Label/GlobalRallyZerg01"/>
 					<Action type="SetProperty" frame="CommandButton02" tooltip="@Button/Label/GlobalRallyZerg02"/>
-					<Action type="SetProperty" frame="CommandButton00/ZergType" visible="true"/>
-					<Action type="SetProperty" frame="CommandButton01/ZergType" visible="true"/>
-					<Action type="SetProperty" frame="CommandButton02/ZergType" visible="true"/>
 				</State>
 			</StateGroup>
 			

@@ -462,8 +462,8 @@
         <HotkeyAlias value="Reactor"/>
     </CButton>
     <CButton id="ReactoStarport">
-        <Icon value="Assets\Textures\btn-building-terran-reactor.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-terran-reactor.dds"/>
+        <Icon value="Assets\Textures\starport_rax.dds"/>
+        <AlertIcon value="Assets\Textures\starport_rax.dds"/>
         <Hotkey value="Button/Hotkey/ReactoStarport"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Reactor"/>

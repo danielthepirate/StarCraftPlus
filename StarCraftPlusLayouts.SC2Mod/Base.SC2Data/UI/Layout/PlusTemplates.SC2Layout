@@ -14,17 +14,6 @@
 		</Controller>
 	</Animation>
 
-	<Frame type="Image" name="ZergRallyTypeTemplate">
-		<Anchor side="Top" relative="$parent" pos="Min" offset="24"/>
-		<Anchor side="Left" relative="$parent" pos="Mid" offset="12"/>
-		<Anchor side="Right" relative="$parent" pos="Mid" offset="12"/>
-		
-		<Visible val="false"/>
-		<Alpha val="224"/>
-		<Height val="40"/>
-		<Width val="40"/>
-	</Frame>
-	
 	<Frame type="CommandButton" name="RallyButtonTemplate" template="ArmyButton/ArmyButtonTemplate">
 		<Frame type="Image" name="AutoCastImage">
             <Anchor side="Top" relative="$parent" pos="Min" offset="14"/>
