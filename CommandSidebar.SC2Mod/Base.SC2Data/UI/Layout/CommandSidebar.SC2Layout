@@ -127,15 +127,48 @@
             <StateCount val="2"/>
         </Frame>
 
+		<Frame type="Image" name="MenuIcon">
+			<Anchor side="Top" relative="$parent" pos="Mid" offset="1"/>
+			<Anchor side="Left" relative="$parent" pos="Min" offset="18"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="1"/>
+			
+			<Height val="32"/>
+			<Width val="32"/>
+			<Visible val="false"/>
+			<CollapseLayout val="true"/>
+			<SubpixelRendering val="true"/>
+		</Frame>
+		
         <Frame type="Label" name="MenuLabel">
             <Anchor side="Top" relative="$parent" pos="Min" offset="5"/>
+            <Anchor side="Left" relative="$parent/MenuIcon" pos="Max" offset="-18"/>
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-            <Anchor side="Left" relative="$parent" pos="Min" offset="2"/>
-            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-2"/>
             <Style val="@@MenuBarButtonBig"/>
             <Text val="@UI/Menu"/>
         </Frame>
-    </Frame>
+		
+		<!-- Temporary Race States While Textures Are WIP -->
+		<StateGroup name="RaceState">	
+			<DefaultState val="Terran"/>
+			<State name="Terran">
+				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
+				<Action type="SetProperty" frame="NormalImage" texture="@@UI/UCBTabButtonNormal"/>
+				<Action type="SetProperty" frame="HoverImage" texture="@@UI/UCBTabButtonHover"/>
+				<Action type="SetProperty" frame="NormalImage" height="62"/>
+				<Action type="SetProperty" frame="HoverImage" height="62"/>
+				<Action type="SetProperty" frame="NormalImage" width="166"/>
+				<Action type="SetProperty" frame="HoverImage" width="166"/>
+				<Action type="SetProperty" frame="MenuIcon" visible="true"/>
+			</State>
+			<State name="Protoss">
+				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+			</State>
+			<State name="Zerg">
+				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
+			</State>
+		</StateGroup>
+	</Frame>
 	
 	<Frame type="CommandButton" name="CommandSidebarButtonTemplate" template="CommandButton/CommandButtonTemplate">
 		<TooltipFrame val="TestCommandTooltip"/>

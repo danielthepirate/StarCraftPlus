@@ -143,7 +143,7 @@
 		</StateGroup>
 
 		<Frame type="Image" name="UnitImage">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="13"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="14"/>
             <Anchor side="Left" relative="$parent" pos="Min" offset="13"/>
             <Width val="44"/>
             <Height val="44"/>
@@ -162,7 +162,7 @@
 		<Frame type="Label" name="IndexLabel">
 			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-8"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-6"/>
 			<Style val="ControlGroupButtonIndexBig"/>
         </Frame>
 		

@@ -3,43 +3,6 @@
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
 		<Handle val="ConsoleUIContainer"/>
 		
-		<Frame type="Image" name="TopBarBackground">
-			<Anchor side="Top" relative="$GlobalCommand00" pos="Min" offset="-24"/>
-			<Anchor side="Left" relative="$GlobalCommand00" pos="Min" offset="-8"/>
-			<Anchor side="Bottom" relative="$GlobalCommand02" pos="Max" offset="12"/>
-			<Anchor side="Right" relative="$GlobalCommand02" pos="Max" offset="8"/>
-			<Handle val="GlobalTopBackground"/>
-			<RenderType val="HDR"/>
-			<RenderPriority val="10"/>
-			<Color val="0,0,0"/>
-			<Alpha val="128"/>
-			<Visible val="false"/>
-			
-			<Frame type="BlurFrame" name="Blur">
-				<Anchor relative="$parent"/>
-				<BlurAmount val="0.15"/>
-				<RenderPriority val="1"/>
-			</Frame>
-		</Frame>
-		
-		<Frame type="Image" name="TopBarLeftBackground">
-			<Anchor side="Top" relative="$GlobalCommand03" pos="Min" offset="-8"/>
-			<Anchor side="Left" relative="$GlobalCommand03" pos="Min" offset="-12"/>
-			<Anchor side="Bottom" relative="$GlobalCommand03" pos="Max" offset="36"/>
-			<Anchor side="Right" relative="$GlobalCommand05" pos="Max" offset="8"/>
-			<Handle val="GlobalLeftBackground"/>
-			<RenderType val="HDR"/>
-			<RenderPriority val="10"/>
-			<Color val="0,0,0"/>
-			<Alpha val="172"/>
-			
-			<Frame type="BlurFrame" name="Blur">
-				<Anchor relative="$parent"/>
-				<BlurAmount val="0.15"/>
-				<RenderPriority val="1"/>
-			</Frame>
-		</Frame>
-		
 		<Frame type="Frame" name="GlobalCommandContainer" template="CommandSidebar/CommandContainerGlobal">
 
 			<Frame type="CommandPanel" name="CommandPanel1">
@@ -110,29 +73,83 @@
 			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+				
+				<Shortcut val="@Button/Hotkey/SidebarBuildings"/>
+				<Handle val="SidebarBuildings"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Build"/>
 				</Frame>
-				<Shortcut val="@Button/Hotkey/SidebarBuildings"/>
-				<Handle val="SidebarBuildings"/>
+				<Frame type="Image" name="MenuIcon">
+					<Texture val="@UI/UCBTabButtonIconBuildDown"/>
+				</Frame>
+				
+				<Animation name="OnPushed">
+					<Event event="Pushed" action="Reset,Play"/>
+					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
+						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconBuildDown"/>
+					</Controller>
+				</Animation>
+				
+				<Animation name="OnNormal">
+					<Event event="Normal" action="Reset,Play"/>
+					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
+						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconBuild"/>
+					</Controller>
+				</Animation>
 			</Frame>
 			
 			<Frame type="Button" name="SidebarUnits" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>
 				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="-6"/>
+				
+				<Shortcut val="@Button/Hotkey/SidebarUnits"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Train"/>
 				</Frame>
-				<Shortcut val="@Button/Hotkey/SidebarUnits"/>
+				<Frame type="Image" name="MenuIcon">
+					<Texture val="@UI/UCBTabButtonIconTrain"/>
+				</Frame>
+				
+				<Animation name="OnPushed">
+					<Event event="Pushed" action="Reset,Play"/>
+					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
+						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconTrainDown"/>
+					</Controller>
+				</Animation>
+				
+				<Animation name="OnNormal">
+					<Event event="Normal" action="Reset,Play"/>
+					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
+						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconTrain"/>
+					</Controller>
+				</Animation>
 			</Frame>
 			
 			<Frame type="Button" name="SidebarResearch" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>
 				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="-6"/>
+				
+				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Research"/>
 				</Frame>
-				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
+				<Frame type="Image" name="MenuIcon">
+					<Texture val="@UI/UCBTabButtonIconUpgrade"/>
+				</Frame>
+				
+				<Animation name="OnPushed">
+					<Event event="Pushed" action="Reset,Play"/>
+					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
+						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconUpgradeDown"/>
+					</Controller>
+				</Animation>
+				
+				<Animation name="OnNormal">
+					<Event event="Normal" action="Reset,Play"/>
+					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
+						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconUpgrade"/>
+					</Controller>
+				</Animation>
 			</Frame>
 			
 			<!-- UNCOMMENT THIS TO HIDE QWER/AS WHILE ABILITIES BAR IS TOGGLED -->

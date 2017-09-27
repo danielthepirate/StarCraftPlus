@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <StyleFile>
     <Style name="MenuBarButtonBig_Prot" template="MenuBarButtonBig" textcolor="#ColorProtossLabel"/>
-    <Style name="MenuBarButtonBig" template="HeaderTemplate" font="UI\Fonts\bl.ttf" height="24" vjustify="Middle" hjustify="Center" styleflags="Shadow" textcolor="255,155,255,190" highlightcolor="255,255,255,255" disabledcolor="255,0,0,0" hotkeycolor="255,255,255,255" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="2" outlinewidth="0"/>
+    <Style name="MenuBarButtonBig" template="HeaderTemplate" font="UI\Fonts\Eurostile-Bol.otf" height="17" vjustify="Middle" hjustify="Center" styleflags="Shadow" textcolor="255,155,255,190" highlightcolor="255,255,255,255" disabledcolor="255,0,0,0" hotkeycolor="255,255,255,255" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="2" outlinewidth="0"/>
     <Style name="ControlGroupButtonIndexBig" template="StandardTemplate" font="UI\Fonts\Eurostile-Bol.otf" height="20" vjustify="Middle" hjustify="Center" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="2" outlinewidth="0"/>
     <Style name="MenuBarButtonBig_Zerg" template="MenuBarButtonBig" textcolor="#ColorZergLabel"/>
     <Style name="MenuBarButtonBig_Terr" template="MenuBarButtonBig" textcolor="#ColorTerranLabel"/>

@@ -152,7 +152,8 @@
 	
 	<Frame type="Image" name="CommandBackgroundTemplate">
 		<Color val="0,0,0"/>
-		<Alpha val="172"/>
+		<!-- <Alpha val="172"/> -->
+		<Alpha val="224"/>
 	</Frame>
 	
 	<Frame name="ProductionCountFrameTemplate" type="ProductionCountFrame">

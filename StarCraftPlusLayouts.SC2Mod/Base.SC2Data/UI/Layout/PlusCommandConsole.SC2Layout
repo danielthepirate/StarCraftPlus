@@ -67,6 +67,42 @@
 				<RenderPriority val="1"/>
 			</Frame>
 			
+			<Frame type="Image" name="TopBarBackground">
+				<Anchor side="Top" relative="$GlobalCommand00" pos="Min" offset="-24"/>
+				<Anchor side="Left" relative="$GlobalCommand00" pos="Min" offset="-8"/>
+				<Anchor side="Bottom" relative="$GlobalCommand02" pos="Max" offset="12"/>
+				<Anchor side="Right" relative="$GlobalCommand02" pos="Max" offset="8"/>
+				<Handle val="GlobalTopBackground"/>
+				<RenderType val="HDR"/>
+				<RenderPriority val="10"/>
+				<Color val="0,0,0"/>
+				<Alpha val="128"/>
+				<Visible val="false"/>
+				
+				<Frame type="BlurFrame" name="Blur">
+					<Anchor relative="$parent"/>
+					<BlurAmount val="0.15"/>
+					<RenderPriority val="1"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="Image" name="TopBarLeftBackground">
+				<Anchor side="Top" relative="$GlobalCommand03" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$GlobalCommand03" pos="Min" offset="-20"/>
+				<Anchor side="Bottom" relative="$GlobalCommand03" pos="Max" offset="36"/>
+				<Anchor side="Right" relative="$GlobalCommand05" pos="Max" offset="8"/>
+				<Handle val="GlobalLeftBackground"/>
+				<RenderType val="HDR"/>
+				<RenderPriority val="10"/>
+				<Color val="0,0,0"/>
+				<!-- <Alpha val="172"/> -->
+				<!-- <Frame type="BlurFrame" name="Blur"> -->
+					<!-- <Anchor relative="$parent"/> -->
+					<!-- <BlurAmount val="0.15"/> -->
+					<!-- <RenderPriority val="1"/> -->
+				<!-- </Frame> -->
+			</Frame>
+			
 			<!-- CONSOLE MODELS -->
 			<Frame type="Model" name="MinimapModel">
             	<Visible val="false"/>
@@ -105,6 +141,50 @@
 				<Height val="301"/>
 			</Frame>
 			
+			
+			<Frame type="Image" name="CustomConsoleLeft">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+				
+				<Handle val="CustomConsoleLeft"/>
+				<Texture val="@@UI/CustomConsoleLeft"/>
+
+				<Width val="595"/>
+				<Height val="459"/>
+			</Frame>
+			
+			<Frame type="Image" name="CustomConsoleCommands">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/CustomConsoleLeft" pos="Max" offset="0"/>
+				
+				<Handle val="CustomConsoleCommands"/>
+				<Texture val="@@UI/CustomConsoleCommands"/>
+
+				<Width val="712"/>
+				<Height val="251"/>
+			</Frame>
+			
+			<Frame type="Image" name="CustomConsoleUnitInfo">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/CustomConsoleCommands" pos="Max" offset="0"/>
+				
+				<Handle val="CustomConsoleUnitInfo"/>
+				<Texture val="@@UI/CustomConsoleUnitInfo"/>
+
+				<Width val="589"/>
+				<Height val="251"/>
+			</Frame>
+			
+			<Frame type="Image" name="CustomConsoleRight">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/CustomConsoleUnitInfo" pos="Max" offset="0"/>
+				
+				<Handle val="CustomConsoleRight"/>
+				<Texture val="@@UI/CustomConsoleRight"/>
+				
+				<Width val="237"/>
+				<Height val="251"/>
+			</Frame>
 		</Frame>
 		
 		<Frame type="Frame" name="ConsoleUIContainer">
@@ -122,7 +202,7 @@
 			
 			<Frame type="InfoPanel" name="InfoPanel">
 				<!-- <Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-236"/> -->
-				<Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-200"/>
+				<Anchor side="Left" relative="$parent/InfoPanelAnchor" pos="Max" offset="-206"/>
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="-18"/>
                 <Anchor side="Right" relative="$parent/InfoPanelAnchor" pos="Max" offset="524"/>
 				<Height val="208"/>
