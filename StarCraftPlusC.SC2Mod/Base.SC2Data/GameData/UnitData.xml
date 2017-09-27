@@ -37,7 +37,8 @@
     </CUnit>
     <CUnit id="Banshee">
         <CardLayouts index="0">
-            <LayoutButtons index="6" Face="CloakOffBanshee"/>
+            <LayoutButtons index="5" Face="CloakOffBanshee" AbilCmd="BansheeCloak,Off" Column="2"/>
+            <LayoutButtons index="6" Face="CloakOnBanshee" AbilCmd="BansheeCloak,On" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Barracks">
@@ -336,6 +337,12 @@
         <CardLayouts index="0">
             <LayoutButtons index="4" Row="1"/>
             <LayoutButtons index="8" Row="1" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Ghost">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Face="NukeCalldown" AbilCmd="TacNukeStrike,Execute" Row="2" Column="3"/>
+            <LayoutButtons index="9" Face="CloakOff" AbilCmd="GhostCloak,Off" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="GhostAcademy">

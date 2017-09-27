@@ -6128,7 +6128,7 @@ bool libSCPL_gt_ControlGroupAutoAddT3_Func (bool testConds, bool runActions) {
 
     lv_unit = EventUnitCreatedUnit();
     lv_playerIndex = UnitGetOwner(lv_unit);
-    lv_controlIndex = 2;
+    lv_controlIndex = 3;
     if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] == true)) {
         libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lv_unit), lv_controlIndex, lv_playerIndex);
         libSCPL_gf_ControlGroupUnitsUpdate(lv_controlIndex, lv_playerIndex);
@@ -9544,6 +9544,7 @@ bool libSCPL_gt_ControlGroupSelect_Func (bool testConds, bool runActions) {
     }
     else {
         UnitClearSelection(lv_playerIndex);
+        libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex] = UnitGroupFilter(null, c_playerAny, libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
         UnitGroupSelect(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], lv_playerIndex, true);
         libPPRL_gf_AddTimeToTimer(libSCPL_gv_player[lv_playerIndex].lv_controlGroupJumpTimer[lv_controlGroupIndex], 0.375);
     }

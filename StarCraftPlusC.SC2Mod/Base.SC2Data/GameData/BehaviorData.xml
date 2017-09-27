@@ -455,11 +455,23 @@
         <DisableValidatorArray value="NearWarpGate"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorResource id="HighYieldMineralFieldMinerals">
+        <HarvestAmount value="6"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HighYieldMineralFieldMinerals750">
+        <HarvestAmount value="6"/>
+    </CBehaviorResource>
     <CBehaviorBuff id="KineticFollow">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InitialEffect value="KineticFollow"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorResource id="MineralFieldMinerals">
+        <HarvestAmount value="4"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="MineralFieldMinerals750">
+        <HarvestAmount value="4"/>
+    </CBehaviorResource>
     <CBehaviorBuff id="OverlordEnhancedCreepGrowthAura">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>

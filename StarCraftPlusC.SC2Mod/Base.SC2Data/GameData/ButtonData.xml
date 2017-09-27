@@ -53,9 +53,6 @@
     <CButton id="ArbiterMPStasisField">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="AssaultMode">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="AutoCreepSpreadToggleUCB">
         <Icon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
@@ -107,9 +104,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BeaconMove">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="BlindingCloud">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Bombardment">
@@ -312,9 +306,6 @@
     <CButton id="Dance">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="DefilerMPConsume">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="DefilerMPDarkSwarm">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -364,12 +355,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="EyeStalk">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="FaceEmbrace">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="FighterMode">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Frenzied">
@@ -736,9 +721,6 @@
         <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
     </CButton>
-    <CButton id="ParasiticBomb">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="PenetratingShot">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -957,9 +939,6 @@
         <Hotkey value="Button/Hotkey/UCBUpgradeToPlanetaryFortress"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="UpgradeToPlanetaryFortress"/>
-    </CButton>
-    <CButton id="ViperConsume">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="VoidMPImmortalRevive">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
