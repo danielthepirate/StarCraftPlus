@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
     <Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer" file="GameUI">
+	
+		<Frame type="SystemAlertPanel" name="SystemAlertPanel">
+			<Handle val="SystemAlertPanel"/>
+        </Frame>
+		
 		<Frame type="ResourceFrame" name="ResourcePanel/ResourceFrame">
-			
 			<Frame type="Label" name="ResourceLabel2Spend">
 				<Anchor side="Top" relative="$parent/ResourceLabel2" pos="Max" offset="0"/>
 				<Anchor side="Left" relative="$parent/ResourceLabel2" pos="Min" offset="-26"/>
@@ -16,6 +20,10 @@
 					<State name="Positive">
 						<When type="AnimationState" ResourceState="Positive"/>
 						<Action type="SetProperty" style="ResourcePanelSpend_Minerals"/>
+					</State>
+					<State name="Neutral">
+						<When type="AnimationState" ResourceState="Neutral"/>
+						<Action type="SetProperty" style="ResourcePanelSpend_Neutral"/>
 					</State>
 					<State name="Negative">	
 						<When type="AnimationState" ResourceState="Negative"/>
@@ -37,6 +45,10 @@
 					<State name="Positive">
 						<When type="AnimationState" ResourceState="Positive"/>
 						<Action type="SetProperty" style="ResourcePanelSpend_Vespene"/>
+					</State>
+					<State name="Neutral">
+						<When type="AnimationState" ResourceState="Neutral"/>
+						<Action type="SetProperty" style="ResourcePanelSpend_Neutral"/>
 					</State>
 					<State name="Negative">	
 						<When type="AnimationState" ResourceState="Negative"/>
@@ -67,11 +79,6 @@
 						<Key type="Curve" time="0.55" value="128" in="Slow"/>
 						<Key type="Curve" time="1.35" value="0" in="Slow"/>
 					</Controller>
-					<!-- <Controller type="Style" style1="ResourcePanelAttentionSmall" style2="ResourcePanelAttention" end="Loop"> -->
-						<!-- <Key type="Curve" time="0.00" value="0" out="Slow"/> -->
-						<!-- <Key type="Curve" time="0.84" value="1" in="Slow"/> -->
-						<!-- <Key type="Curve" time="1.40" value="1" in="Slow"/> -->
-					<!-- </Controller> -->
 				</Animation>
 			</Frame>
 				
@@ -97,14 +104,8 @@
 						<Key type="Curve" time="0.55" value="128" in="Slow"/>
 						<Key type="Curve" time="1.35" value="0" in="Slow"/>
 					</Controller>
-					<!-- <Controller type="Style" style1="ResourcePanelAttentionSmall" style2="ResourcePanelAttention" end="Loop"> -->
-						<!-- <Key type="Curve" time="0.00" value="0" out="Slow"/> -->
-						<!-- <Key type="Curve" time="0.84" value="1" in="Slow"/> -->
-						<!-- <Key type="Curve" time="1.40" value="1" in="Slow"/> -->
-					<!-- </Controller> -->
 				</Animation>
 			</Frame>
-			
 		</Frame>
     </Frame>
 </Desc>

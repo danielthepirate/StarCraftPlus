@@ -7,41 +7,41 @@
 		<Frame type="Frame" name="ActiveUnitCommandContainer">
 			<Anchor relative="$parent/InfoPanelAnchor"/>
 			
-			<Frame type="CommandPanel" name="CommandCard" template="CommandSidebar/CommandSidebarPanelTemplate">
+			<Frame type="CommandPanel" name="CommandCard" template="CommandSidebar/CommandActivePanelTemplate">
 				<Anchor relative="$parent"/>
 				<Handle val="ActiveCommandCard"/>
 				
-				<Frame type="CommandButton" name="CommandButton10" template="CommandSidebar/CommandActiveButtonTemplate">
+				<Frame type="CommandButton" name="CommandButton10">
 					<Anchor side="Left" relative="$parent" pos="Min" offset="120"/>
 					<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
 					<Handle val="CommandGrid00"/>
 				</Frame>
 				
-				<Frame type="CommandButton" name="CommandButton11" template="CommandSidebar/CommandActiveButtonTemplate">
+				<Frame type="CommandButton" name="CommandButton11">
 					<Anchor side="Left" relative="$parent/CommandButton10" pos="Max" offset="#GridGap"/>
 					<Anchor side="Top" relative="$parent/CommandButton10" pos="Min" offset="0"/>
 					<Handle val="CommandGrid01"/>
 				</Frame>
 				
-				<Frame type="CommandButton" name="CommandButton12" template="CommandSidebar/CommandActiveButtonTemplate">
+				<Frame type="CommandButton" name="CommandButton12">
 					<Anchor side="Left" relative="$parent/CommandButton11" pos="Max" offset="#GridGap"/>
 					<Anchor side="Top" relative="$parent/CommandButton11" pos="Min" offset="0"/>
 					<Handle val="CommandGrid02"/>
 				</Frame>
 				
-				<Frame type="CommandButton" name="CommandButton13" template="CommandSidebar/CommandActiveButtonTemplate">
+				<Frame type="CommandButton" name="CommandButton13">
 					<Anchor side="Left" relative="$parent/CommandButton12" pos="Max" offset="#GridGap"/>
 					<Anchor side="Top" relative="$parent/CommandButton12" pos="Min" offset="0"/>
 					<Handle val="CommandGrid03"/>
 				</Frame>
 				
-				<Frame type="CommandButton" name="CommandButton04" template="CommandSidebar/CommandActiveButtonTemplate">
+				<Frame type="CommandButton" name="CommandButton04">
 					<Anchor side="Left" relative="$CommandGrid00" pos="Min" offset="34"/>
 					<Anchor side="Top" relative="$CommandGrid00" pos="Max" offset="#HeightGap"/>
 					<Handle val="CommandGrid10"/>
 				</Frame>
 				
-				<Frame type="CommandButton" name="CommandButton02" template="CommandSidebar/CommandActiveButtonTemplate">
+				<Frame type="CommandButton" name="CommandButton02">
 					<Anchor side="Left" relative="$parent/CommandButton04" pos="Max" offset="#GridGap"/>
 					<Anchor side="Top" relative="$parent/CommandButton04" pos="Min" offset="0"/>
 					<Handle val="CommandGrid11"/>
@@ -75,7 +75,6 @@
 						<Action type="ApplyTemplate" frame="CommandButton13" template="CommandSidebar/CommandActiveButtonZergTemplate"/>
 					</State>
 				</StateGroup>
-				
 			</Frame>
 		</Frame>
 	</Frame>

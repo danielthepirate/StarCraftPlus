@@ -23,6 +23,7 @@ void CMSDB_SidebarPathsInit(){
 bool CMSDB_OrderRedirectGetData(CMSDB_OrderRedirect orderdata, string abil){
 	orderdata.abil = abil;
 	orderdata.useIdle = UserDataGetInt(c_CMDSB_orderRedirectData, abil, "UseIdle", 1);
+	orderdata.realAbilIndex = UserDataGetAbilCmd(c_CMDSB_orderRedirectData, abil, "RealAbilIndex", 1);
 	orderdata.dummyCaster = UserDataGetUnit(c_CMDSB_orderRedirectData, abil, "DummyCaster", 1);
 	orderdata.realCaster[0] = UserDataGetUnit(c_CMDSB_orderRedirectData, abil, "RealCaster", 1);
 	orderdata.realCaster[1] = UserDataGetUnit(c_CMDSB_orderRedirectData, abil, "RealCaster", 2);
@@ -101,6 +102,14 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 			PlayerAddChargeUsed(player, "UCB/GhostAcademy", 1.0);
 		}
 		return true;
+	}
+	
+	if(Pir_AbilityIsTerranAddon (abil)){
+		// There's definitely a cleaner way to do this, but this works
+		if(abilCmdIndex == 0){
+			redirAbil = orderdata.realAbilIndex;
+			OrderSetAbilityCommand (o, redirAbil);
+		}
 	}
 
 	if(AbilityClass(abil) == c_classIdCAbilBuild){

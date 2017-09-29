@@ -1,6 +1,11 @@
 // These functions added by Daniel from modified GUI functions in StarCraftPlus.SC2Mod
 // Don't judge me
 
+bool Pir_AbilityIsTerranAddon (string abil) {
+	return ((abil == "BarracksReactorMorphUCB") ||	(abil == "FactoryReactorMorphUCB") ||	(abil == "StarportReactorMorphUCB") ||
+			(abil == "BarracksTechLabMorphUCB") ||	(abil == "FactoryTechLabMorphUCB") ||	(abil == "StarportTechLabMorphUCB"));
+}
+
 unitgroup Pir_WorkerGroupNotHarvestingGas (unitgroup ug) {
 
     unitgroup wg = UnitGroupCopy(ug);

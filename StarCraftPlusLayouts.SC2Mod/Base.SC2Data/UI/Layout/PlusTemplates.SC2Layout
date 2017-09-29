@@ -3,8 +3,8 @@
 	<Constant name="ProductionOffset" val="2"/>
 	<Constant name="ProductionPadding" val="4"/>
 
-	<Constant name="ColorProtoss" val="110,170,255"/>
     <Constant name="ColorTerran" val="155,255,190"/>
+	<Constant name="ColorProtoss" val="110,170,255"/>
     <Constant name="ColorZerg" val="245,140,70"/>
 	
 	<Animation name="ShortcutKill">
@@ -14,25 +14,14 @@
 		</Controller>
 	</Animation>
 
-	<Animation name="ColorizeVitalsTemplate">
-		<Event event="EventColorize" action="Reset,Play"/>
-		<Event event="EventPause" action="Pause"/>
-		<Event event="EventReset" action="Pause"/>
-		<Controller type="AdjustmentColor" end="Pause">
-			<Key type="Curve" time="0" value="0,148,0" inout="slow"/>
-			<Key type="Curve" time="50" value="111,111,0" inout="slow"/>
-			<Key type="Curve" time="100" value="148,0,0" inout="slow"/>
-		</Controller>
-	</Animation>
-
-	<Animation name="ColorizeResetTemplate">
-		<Event event="EventReset" action="Reset,Play"/>
-		<Controller type="AdjustmentColor" end="Pause">
-			<Key type="Curve" time="0" value="0,0,0"/>
-		</Controller>
-	</Animation>
-	
 	<Frame type="CommandButton" name="RallyButtonTemplate" template="ArmyButton/ArmyButtonTemplate">
+		<Frame type="Image" name="AutoCastImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="14"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+			<Alpha val="192"/>
+        </Frame>
 		
 		<Frame type="Image" name="NormalImage">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
@@ -152,17 +141,6 @@
         </Frame>
 	</Frame>
 	
-	<Frame type="Image" name="ControlGroupListenerTemplate">
-		<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-		<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-		<Height val="2"/>
-		<Width val="2"/>
-		<Alpha val="0"/>
-		<Animation name="ColorizeVitals" template="PlusTemplates/ColorizeVitalsTemplate"/>
-		<Animation name="ColorizeReset" template="PlusTemplates/ColorizeResetTemplate"/>
-		<AdjustmentColor val="0,0,0,"/>
-	</Frame>
-	
 	<Frame type="ControlGroupButton" name="ControlGroupButtonTemplate" template="ControlGroupPanel/ControlGroupButtonTemplate">
 		<Frame type="Image" name="NormalImage">
 			<ColorAdjustMode val="AddSelf"/>
@@ -174,7 +152,8 @@
 	
 	<Frame type="Image" name="CommandBackgroundTemplate">
 		<Color val="0,0,0"/>
-		<Alpha val="200"/>
+		<!-- <Alpha val="172"/> -->
+		<Alpha val="224"/>
 	</Frame>
 	
 	<Frame name="ProductionCountFrameTemplate" type="ProductionCountFrame">
@@ -202,7 +181,6 @@
 				<Texture val="@UI/StatusProductionBorder"/>
 				<TextureType val="NineSlice" />
 				<IgnoreParentColor val="True" />
-				<!-- <Color val="{$ancestor[@name=LeaderPlus]/PlayerData/@Color}" /> -->
 				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
 				<Alpha val="200" />
 			</Frame>
@@ -213,7 +191,6 @@
 				<Texture val="@UI/StatusProductionBorder"/>
 				<TextureType val="NineSlice" />
 				<IgnoreParentColor val="True" />
-				<!-- <Color val="{$ancestor[@name=LeaderPlus]/PlayerData/@Color}" /> -->
 				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
 				<ColorAdjustMode val="AddSelf"/>
 				<AdjustmentColor val="32,32,32"/>
@@ -276,8 +253,6 @@
 				<Frame name="FillImage" type="Image">
 				<Anchor relative="$parent/$parent" />
 				<Texture val="Assets/Textures/White.dds" />
-				<!-- <Texture val="Assets/Textures/ui_ingame_lotv_bossbarframe_fill.dds" /> -->
-				<!-- <Color val="{$ancestor[@name=LeaderPlus]/PlayerData/@Color}" /> -->
 				<Color val="{$ancestor[@type=PlayerProductionFrame]/RaceColor/@Color}" />
 				</Frame>
 			</Frame>

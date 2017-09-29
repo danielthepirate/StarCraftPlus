@@ -7,7 +7,8 @@
     <Include path="UI/Layout/PlusCommandCard.SC2Layout"/>
     <Include path="UI/Layout/PlusGlobalRally.SC2Layout"/>
     <Include path="UI/Layout/PlusResourcePanel.SC2Layout"/>
-    <Include path="UI/Layout/PlusControlGroups.SC2Layout"/>
+	<Include path="UI/Layout/PlusControlGroupTemplates.SC2Layout"/>
+    <Include path="UI/Layout/PlusControlGroup.SC2Layout"/>
     <Include path="UI/Layout/PlusRaceCheck.SC2Layout"/>
     <Include path="UI/Layout/PlusUnitStatus.SC2Layout"/>
     <Include path="UI/Layout/PlusLeaderPanel.SC2Layout"/>

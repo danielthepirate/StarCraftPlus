@@ -14,7 +14,41 @@ Unit/Name/SdbPRsrch2=Sidebar Protoss Research 2
 Unit/Name/SdbPTrain1=Sidebar Protoss Train 1
 Unit/Name/SdbPTrain2=Sidebar Protoss Train 2
 Unit/Name/SdbPWarp1=Sidebar Protoss Warp 1
-UI/UCBTabButtons/Global=Abilities (<c val="ffffff">F6</c>)
-UI/UCBTabButtons/Train=Train (<c val="ffffff">F8</c>)
-UI/UCBTabButtons/Research=Research (<c val="ffffff">F9</c>)
-UI/UCBTabButtons/Build=Construct (<c val="ffffff">F7</c>)
+UI/UCBTabButtons/Build=Build (<c val="ffffff">F1</c>)
+UI/UCBTabButtons/Train=Train (<c val="ffffff">F2</c>)
+UI/UCBTabButtons/Research=Upgrade (<c val="ffffff">F3</c>)
+
+Button/Label/ControlGroupAssign01=1
+Button/Label/ControlGroupAssign02=2
+Button/Label/ControlGroupAssign03=3
+Button/Label/ControlGroupAssign04=4
+Button/Label/ControlGroupAssign05=5
+Button/Label/ControlGroupAssign06=6
+Button/Label/ControlGroupAssign07=7
+Button/Label/ControlGroupAssign08=8
+Button/Label/ControlGroupAssign09=9
+Button/Label/ControlGroupAssign00=0
+
+Button/Label/GlobalRallyTerran00=Global Rally Barracks (<c val="ffffff">F5</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 1.
+Button/Label/GlobalRallyTerran01=Global Rally Factory (<c val="ffffff">F6</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 2.
+Button/Label/GlobalRallyTerran02=Global Rally Starport (<c val="ffffff">F7</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 3.
+
+Button/Label/GlobalRallyProtoss00=Global Rally Gateway (<c val="ffffff">F5</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 1.
+Button/Label/GlobalRallyProtoss01=Global Rally Robotics Facility (<c val="ffffff">F6</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 2.
+Button/Label/GlobalRallyProtoss02=Global Rally Stargate (<c val="ffffff">F7</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 3.
+Button/Label/GlobalRallyProtoss00b=Global Rally Warpgate (<c val="ffffff">F5</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 3.
+
+Button/Label/GlobalRallyZerg00=Global Rally Melee Units (<c val="ffffff">F5</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 1.
+Button/Label/GlobalRallyZerg01=Global Rally Ranged Units (<c val="ffffff">F6</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 2.
+Button/Label/GlobalRallyZerg02=Global Rally Flying Units (<c val="ffffff">F7</c>)</n></n><s val="CommandTooltipAutocast">Right-click to toggle automatically adding these unit types to control group 3.
+
+Button/Tooltip/ControlGroup00=(<c val="ffffff">0</c>) to select all units in this control group.</n>Double (<c val="ffffff">0</c>) to jump to this control group.</n>(<c val="ffffff">Control + 0</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 0</c>) to add selected units to this control group.
+Button/Tooltip/ControlGroup01=(<c val="ffffff">1</c>) to select all units in this control group.</n>Double (<c val="ffffff">1</c>) to jump to this control group.</n>(<c val="ffffff">Control + 1</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 1</c>) to add selected units to this control group.
+Button/Tooltip/ControlGroup02=(<c val="ffffff">2</c>) to select all units in this control group.</n>Double (<c val="ffffff">2</c>) to jump to this control group.</n>(<c val="ffffff">Control + 2</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 2</c>) to add selected units to this control group.
+Button/Tooltip/ControlGroup03=(<c val="ffffff">3</c>) to select all units in this control group.</n>Double (<c val="ffffff">3</c>) to jump to this control group.</n>(<c val="ffffff">Control + 3</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 3</c>) to add selected units to this control group.
+Button/Tooltip/ControlGroup04=(<c val="ffffff">4</c>) to select all units in this control group.</n>Double (<c val="ffffff">4</c>) to jump to this control group.</n>(<c val="ffffff">Control + 4</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 4</c>) to add selected units to this control group.
+Button/Tooltip/ControlGroup05=(<c val="ffffff">5</c>) to select all units in this control group.</n>Double (<c val="ffffff">5</c>) to jump to this control group.</n>(<c val="ffffff">Control + 5</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 5</c>) to add selected units to this control group.
+Button/Tooltip/ControlGroup06=(<c val="ffffff">6</c>) to select all units in this control group.</n>Double (<c val="ffffff">6</c>) to jump to this control group.</n>(<c val="ffffff">Control + 6</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 6</c>) to add selected units to this control group.
+Button/Tooltip/ControlGroup07=(<c val="ffffff">7</c>) to select all units in this control group.</n>Double (<c val="ffffff">7</c>) to jump to this control group.</n>(<c val="ffffff">Control + 7</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 7</c>) to add selected units to this control group.
+Button/Tooltip/ControlGroup08=(<c val="ffffff">8</c>) to select all units in this control group.</n>Double (<c val="ffffff">8</c>) to jump to this control group.</n>(<c val="ffffff">Control + 8</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 8</c>) to add selected units to this control group.
+Button/Tooltip/ControlGroup09=(<c val="ffffff">9</c>) to select all units in this control group.</n>Double (<c val="ffffff">9</c>) to jump to this control group.</n>(<c val="ffffff">Control + 9</c>) to set selection to this control group.</n>(<c val="ffffff">Shift + 9</c>) to add selected units to this control group.

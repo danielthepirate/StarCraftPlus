@@ -308,11 +308,88 @@
         <CaseArray Validator="IsMULE" Effect="GameResourceMarkerMineralsMULE"/>
         <CaseDefault value="GameResourceMarkerMinerals"/>
     </CEffectSwitch>
+    <CEffectApplyBehavior id="GameUCBBarracksAddon">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBFactoryAddon">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBStarportAddon">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameUCBFactoryAddonAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/FactoryAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBStarportAddonAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/StarportAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectSet id="GameUCBFactoryAddonFinal">
+        <EditorCategories value=""/>
+        <EffectArray value="GameUCBFactoryAddonRemove"/>
+        <EffectArray value="GameUCBFactoryBusy"/>
+    </CEffectSet>
+    <CEffectSet id="GameUCBStarportAddonFinal">
+        <EditorCategories value=""/>
+        <EffectArray value="GameUCBStarportAddonRemove"/>
+        <EffectArray value="GameUCBStarportBusy"/>
+    </CEffectSet>
+    <CEffectModifyPlayer id="GameUCBFactoryAddonRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/FactoryAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBBarracksBusy">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="GameUCBBarracksAddonFinal">
+        <EditorCategories value=""/>
+        <EffectArray value="GameUCBBarracksAddonRemove"/>
+        <EffectArray value="GameUCBBarracksBusy"/>
+    </CEffectSet>
+    <CEffectModifyPlayer id="GameUCBStarportAddonRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/StarportAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBFactoryBusy">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectSet id="GameUCBChargeLinkCommandCenterRemove">
         <EditorCategories value=""/>
         <EffectArray value="GameUCBCommandCenterChargeRemove"/>
         <EffectArray value="GameUCBChargeLinkCommandCenterConstructing"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="GameUCBStarportBusy">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectModifyPlayer id="GameUCBLairChargeAdd">
         <EditorCategories value=""/>
         <Cost>
@@ -320,6 +397,17 @@
                 <CountMax value="99"/>
                 <CountUse value="-1"/>
                 <Link value="UCB/Lair"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBBarracksAddonAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/BarracksAddon"/>
                 <Location value="Player"/>
             </Charge>
         </Cost>
@@ -375,6 +463,17 @@
                 <CountMax value="999"/>
                 <CountUse value="0.5"/>
                 <Link value="UCB/Archon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBBarracksAddonRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/BarracksAddon"/>
                 <Location value="Player"/>
             </Charge>
         </Cost>

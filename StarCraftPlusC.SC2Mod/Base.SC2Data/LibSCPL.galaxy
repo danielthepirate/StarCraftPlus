@@ -26,7 +26,32 @@ void libSCPL_InitVariables () {
 
     libSCPL_InitVariables_completed = true;
 
-    libSCPL_gv_globalSelectionPlayers = PlayerGroupEmpty();
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemIcon[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemName[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemPanel[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemProgressBar[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= libSCPL_gv_upgradeNotificationsMaxUISlots; init_i1 += 1) {
+        for (init_j1 = 0; init_j1 <= 16; init_j1 += 1) {
+            libSCPL_gv_upgradeNotifications.lv_timerDestruction[init_i1][init_j1] = TimerCreate();
+        }
+    }
+    for (init_i1 = 0; init_i1 <= 16; init_i1 += 1) {
+        libSCPL_gv_upgradeNotifications.lv_slotLastUsed[init_i1] = -1;
+    }
     libSCPL_gv_labels.lv_iconSize = 50;
     libSCPL_gv_labels.lv_iconSizeEgg = 35;
     libSCPL_gv_labels.lv_iconSizeTechLab = 45;
@@ -55,180 +80,37 @@ void libSCPL_InitVariables () {
         for (init_i1 = 0; init_i1 <= 3; init_i1 += 1) {
             libSCPL_gv_player[init_i].lv_globalRallyGroup[init_i1] = UnitGroupEmpty();
         }
-        libSCPL_gv_player[init_i].lv_globalMicroSelection = UnitGroupEmpty();
-        libSCPL_gv_player[init_i].lv_globalMacroTab = 2;
+        for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
+            libSCPL_gv_player[init_i].lv_controlGroup[init_i1] = UnitGroupEmpty();
+        }
+        for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
+            libSCPL_gv_player[init_i].lv_controlGroupJumpTimer[init_i1] = TimerCreate();
+        }
+        for (init_i1 = 0; init_i1 <= 3; init_i1 += 1) {
+            libSCPL_gv_player[init_i].lv_controlGroupAutoAdd[init_i1] = true;
+        }
     }
     libSCPL_gv_uI.lv_resourceMineralSpend = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_resourceVespeneSpend = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_resourceMineralSpendAttention = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_resourceVespeneSpendAttention = c_invalidDialogControlId;
+    libSCPL_gv_uI.lv_consoleActiveCommandCard = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_consoleRallyCommandCard = c_invalidDialogControlId;
     for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
-        libSCPL_gv_uI.lv_consoleControlGroupAnimListener[init_i1] = c_invalidDialogControlId;
+        libSCPL_gv_uI.lv_consoleControlGroupButton[init_i1] = c_invalidDialogControlId;
     }
-    for (init_i1 = 0; init_i1 <= 4; init_i1 += 1) {
-        libSCPL_gv_uI.lv_consoleGlobalTab[init_i1] = c_invalidDialogControlId;
+    for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
+        libSCPL_gv_uI.lv_consoleControlGroupButtonAdd[init_i1] = c_invalidDialogControlId;
     }
-    for (init_i1 = 0; init_i1 <= 4; init_i1 += 1) {
-        for (init_j1 = 0; init_j1 <= 2; init_j1 += 1) {
-            libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[init_i1][init_j1] = c_invalidDialogControlId;
-        }
+    for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
+        libSCPL_gv_uI.lv_consoleControlGroupButtonAssign[init_i1] = c_invalidDialogControlId;
     }
-    libSCPL_gv_uI.lv_consoleActiveCommandCard = c_invalidDialogControlId;
-    libSCPL_gv_hotkey.lv_supplyDepot = "S";
-    libSCPL_gv_hotkey.lv_commandCenter = "C";
-    libSCPL_gv_hotkey.lv_barracks = "B";
-    libSCPL_gv_hotkey.lv_engineeringBay = "E";
-    libSCPL_gv_hotkey.lv_refinery = "R";
-    libSCPL_gv_hotkey.lv_missileTurret = "T";
-    libSCPL_gv_hotkey.lv_sensorTower = "N";
-    libSCPL_gv_hotkey.lv_factory = "F";
-    libSCPL_gv_hotkey.lv_ghostAcademy = "G";
-    libSCPL_gv_hotkey.lv_bunker = "U";
-    libSCPL_gv_hotkey.lv_starport = "S";
-    libSCPL_gv_hotkey.lv_armory = "A";
-    libSCPL_gv_hotkey.lv_fusionCore = "C";
-    libSCPL_gv_hotkey.lv_sCV = "S";
-    libSCPL_gv_hotkey.lv_marine = "A";
-    libSCPL_gv_hotkey.lv_marauder = "D";
-    libSCPL_gv_hotkey.lv_reaper = "R";
-    libSCPL_gv_hotkey.lv_ghost = "G";
-    libSCPL_gv_hotkey.lv_hellion = "E";
-    libSCPL_gv_hotkey.lv_siegeTank = "S";
-    libSCPL_gv_hotkey.lv_widowMine = "D";
-    libSCPL_gv_hotkey.lv_cyclone = "N";
-    libSCPL_gv_hotkey.lv_hellbat = "R";
-    libSCPL_gv_hotkey.lv_thor = "T";
-    libSCPL_gv_hotkey.lv_viking = "V";
-    libSCPL_gv_hotkey.lv_medivac = "D";
-    libSCPL_gv_hotkey.lv_raven = "R";
-    libSCPL_gv_hotkey.lv_banshee = "E";
-    libSCPL_gv_hotkey.lv_battleCruiser = "B";
-    libSCPL_gv_hotkey.lv_liberator = "N";
-    libSCPL_gv_hotkey.lv_nuke = "N";
-    libSCPL_gv_hotkey.lv_infantryWeapons = "E";
-    libSCPL_gv_hotkey.lv_infantryArmor = "A";
-    libSCPL_gv_hotkey.lv_combatShield = "C";
-    libSCPL_gv_hotkey.lv_stimpack = "T";
-    libSCPL_gv_hotkey.lv_concussiveShells = "G";
-    libSCPL_gv_hotkey.lv_autoTracking = "H";
-    libSCPL_gv_hotkey.lv_structureArmor = "B";
-    libSCPL_gv_hotkey.lv_neosteelFrame = "N";
-    libSCPL_gv_hotkey.lv_vehicleWeapons = "E";
-    libSCPL_gv_hotkey.lv_shipWeapons = "S";
-    libSCPL_gv_hotkey.lv_vehicleShipArmor = "V";
-    libSCPL_gv_hotkey.lv_infernalPreIgniters = "I";
-    libSCPL_gv_hotkey.lv_drillingClaws = "C";
-    libSCPL_gv_hotkey.lv_magFieldAccellerators = "R";
-    libSCPL_gv_hotkey.lv_highCapacityFuelTanks = "R";
-    libSCPL_gv_hotkey.lv_explosiveShrapnelShells = "E";
-    libSCPL_gv_hotkey.lv_corvidReactor = "T";
-    libSCPL_gv_hotkey.lv_cloakingField = "C";
-    libSCPL_gv_hotkey.lv_hyperflightRotors = "B";
-    libSCPL_gv_hotkey.lv_advancedBallistics = "N";
-    libSCPL_gv_hotkey.lv_personalCloaking = "C";
-    libSCPL_gv_hotkey.lv_behemothReactor = "B";
-    libSCPL_gv_hotkey.lv_weaponRefit = "R";
-    libSCPL_gv_hotkey.lv_hatchery = "H";
-    libSCPL_gv_hotkey.lv_spawningPool = "S";
-    libSCPL_gv_hotkey.lv_evolutionChamber = "V";
-    libSCPL_gv_hotkey.lv_extractor = "E";
-    libSCPL_gv_hotkey.lv_roachWarren = "R";
-    libSCPL_gv_hotkey.lv_banelingNest = "B";
-    libSCPL_gv_hotkey.lv_spineCrawler = "C";
-    libSCPL_gv_hotkey.lv_sporeCrawler = "A";
-    libSCPL_gv_hotkey.lv_infestationPit = "I";
-    libSCPL_gv_hotkey.lv_hydraliskDen = "H";
-    libSCPL_gv_hotkey.lv_spire = "S";
-    libSCPL_gv_hotkey.lv_nydusNetwork = "N";
-    libSCPL_gv_hotkey.lv_ultraliskCavern = "U";
-    libSCPL_gv_hotkey.lv_lair = "L";
-    libSCPL_gv_hotkey.lv_hive = "H";
-    libSCPL_gv_hotkey.lv_greaterSpire = "G";
-    libSCPL_gv_hotkey.lv_queen = "Q";
-    libSCPL_gv_hotkey.lv_drone = "D";
-    libSCPL_gv_hotkey.lv_overlord = "V";
-    libSCPL_gv_hotkey.lv_mutalisk = "T";
-    libSCPL_gv_hotkey.lv_zergling = "Z";
-    libSCPL_gv_hotkey.lv_infestor = "F";
-    libSCPL_gv_hotkey.lv_roach = "R";
-    libSCPL_gv_hotkey.lv_swarmHost = "A";
-    libSCPL_gv_hotkey.lv_hydralisk = "H";
-    libSCPL_gv_hotkey.lv_viper = "E";
-    libSCPL_gv_hotkey.lv_corruptor = "C";
-    libSCPL_gv_hotkey.lv_ultralisk = "U";
-    libSCPL_gv_hotkey.lv_nydusWorm = "N";
-    libSCPL_gv_hotkey.lv_overseer = "V";
-    libSCPL_gv_hotkey.lv_baneling = "E";
-    libSCPL_gv_hotkey.lv_ravager = "V";
-    libSCPL_gv_hotkey.lv_lurker = "E";
-    libSCPL_gv_hotkey.lv_broodlord = "B";
-    libSCPL_gv_hotkey.lv_burrow = "B";
-    libSCPL_gv_hotkey.lv_pneumatizedCarapace = "P";
-    libSCPL_gv_hotkey.lv_adrenalGlands = "A";
-    libSCPL_gv_hotkey.lv_metabolicBoost = "M";
-    libSCPL_gv_hotkey.lv_meleeAttacks = "M";
-    libSCPL_gv_hotkey.lv_missileAttacks = "A";
-    libSCPL_gv_hotkey.lv_groundCarapace = "C";
-    libSCPL_gv_hotkey.lv_muscularAugmentation = "A";
-    libSCPL_gv_hotkey.lv_groovedSpines = "G";
-    libSCPL_gv_hotkey.lv_tunnelingClaws = "T";
-    libSCPL_gv_hotkey.lv_glialReconstitution = "G";
-    libSCPL_gv_hotkey.lv_centrifugalHooks = "C";
-    libSCPL_gv_hotkey.lv_pathogenGlands = "G";
-    libSCPL_gv_hotkey.lv_neuralParasite = "E";
-    libSCPL_gv_hotkey.lv_flyerAttacks = "A";
-    libSCPL_gv_hotkey.lv_flyerCarapace = "C";
-    libSCPL_gv_hotkey.lv_chitinousPlating = "C";
-    libSCPL_gv_hotkey.lv_nexus = "N";
-    libSCPL_gv_hotkey.lv_pylon = "E";
-    libSCPL_gv_hotkey.lv_assimilator = "A";
-    libSCPL_gv_hotkey.lv_gateway = "G";
-    libSCPL_gv_hotkey.lv_forge = "F";
-    libSCPL_gv_hotkey.lv_cyberneticsCore = "Y";
-    libSCPL_gv_hotkey.lv_photonCannon = "C";
-    libSCPL_gv_hotkey.lv_stargate = "S";
-    libSCPL_gv_hotkey.lv_roboticsFacility = "R";
-    libSCPL_gv_hotkey.lv_twilightCouncil = "C";
-    libSCPL_gv_hotkey.lv_fleetBeacon = "F";
-    libSCPL_gv_hotkey.lv_roboticsBay = "B";
-    libSCPL_gv_hotkey.lv_templarArchives = "T";
-    libSCPL_gv_hotkey.lv_darkShrine = "D";
-    libSCPL_gv_hotkey.lv_probe = "E";
-    libSCPL_gv_hotkey.lv_mothershipCore = "M";
-    libSCPL_gv_hotkey.lv_zealot = "Z";
-    libSCPL_gv_hotkey.lv_sentry = "E";
-    libSCPL_gv_hotkey.lv_stalker = "S";
-    libSCPL_gv_hotkey.lv_highTemplar = "T";
-    libSCPL_gv_hotkey.lv_darkTemplar = "D";
-    libSCPL_gv_hotkey.lv_adept = "H";
-    libSCPL_gv_hotkey.lv_phoenix = "X";
-    libSCPL_gv_hotkey.lv_oracle = "T";
-    libSCPL_gv_hotkey.lv_voidRay = "V";
-    libSCPL_gv_hotkey.lv_tempest = "E";
-    libSCPL_gv_hotkey.lv_carrier = "C";
-    libSCPL_gv_hotkey.lv_observer = "B";
-    libSCPL_gv_hotkey.lv_warpPrism = "A";
-    libSCPL_gv_hotkey.lv_immortal = "I";
-    libSCPL_gv_hotkey.lv_colossus = "C";
-    libSCPL_gv_hotkey.lv_disruptor = "D";
-    libSCPL_gv_hotkey.lv_mothership = "M";
-    libSCPL_gv_hotkey.lv_archon = "C";
-    libSCPL_gv_hotkey.lv_groundWeapons = "G";
-    libSCPL_gv_hotkey.lv_groundArmor = "A";
-    libSCPL_gv_hotkey.lv_shields = "S";
-    libSCPL_gv_hotkey.lv_airWeapons = "E";
-    libSCPL_gv_hotkey.lv_airArmor = "A";
-    libSCPL_gv_hotkey.lv_warpGate = "G";
-    libSCPL_gv_hotkey.lv_charge = "C";
-    libSCPL_gv_hotkey.lv_blink = "B";
-    libSCPL_gv_hotkey.lv_resonatingGlaives = "A";
-    libSCPL_gv_hotkey.lv_graviticBoost = "B";
-    libSCPL_gv_hotkey.lv_graviticDrive = "G";
-    libSCPL_gv_hotkey.lv_extendedThermalLance = "E";
-    libSCPL_gv_hotkey.lv_anionPulseCrystals = "R";
-    libSCPL_gv_hotkey.lv_gravitonCatapult = "G";
-    libSCPL_gv_hotkey.lv_psionicStorm = "T";
+    for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
+        libSCPL_gv_uI.lv_consoleControlGroupIcon[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
+        libSCPL_gv_uI.lv_consoleControlGroupLabel[init_i1] = c_invalidDialogControlId;
+    }
 }
 
 // Presets
@@ -311,6 +193,11 @@ unit libSCPL_gf_DebugSelectedUnit (int lp_playerIndex) {
 void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType, fixed lp_offset) {
     // Implementation
     libNtve_gf_CreateUnitsWithDefaultFacing(1, lp_unitType, 0, lp_playerIndex, PointWithOffsetPolar(PlayerStartLocation(lp_playerIndex), lp_offset, AngleBetweenPoints(PlayerStartLocation(lp_playerIndex), RegionGetCenter(RegionEntireMap()))));
+}
+
+void libSCPL_gf_DebugCreateUnitNearBaseEnemies (int lp_playerIndex, int lp_enemyIndex, string lp_unitType, fixed lp_offset) {
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, lp_unitType, 0, lp_enemyIndex, PointWithOffsetPolar(PlayerStartLocation(lp_playerIndex), lp_offset, AngleBetweenPoints(PlayerStartLocation(lp_playerIndex), RegionGetCenter(RegionEntireMap()))));
 }
 
 void libSCPL_gf_InitializeSpendOverTime () {
@@ -759,8 +646,10 @@ void libSCPL_gf_DebugPanelUpdateSpendOverTime () {
 void libSCPL_gf_InitializeGlobalRallyCaster (int lp_playerIndex) {
     // Implementation
     if ((PlayerRace(lp_playerIndex) == "Zerg")) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameGlobalRallyCasterZerg", c_unitCreateIgnorePlacement, lp_playerIndex, Point(0.0, 0.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameGlobalRallyCaster", c_unitCreateIgnorePlacement, lp_playerIndex, Point(0.0, 0.0));
         PlayerAddChargeUsed(lp_playerIndex, "UCB/GlobalRally00", -1.0);
+        PlayerAddChargeUsed(lp_playerIndex, "UCB/GlobalRally01", -1.0);
+        PlayerAddChargeUsed(lp_playerIndex, "UCB/GlobalRally02", -1.0);
     }
     else if (true) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameGlobalRallyCaster", c_unitCreateIgnorePlacement, lp_playerIndex, Point(0.0, 0.0));
@@ -891,66 +780,6 @@ bool auto_libSCPL_gf_AutoWorkerProductionZergInitial_TriggerFunc (bool testConds
     Wait(0.125, c_timeGame);
     libSCPL_gf_AutoWorkerProductionZerg(lp_townHall, lp_playerIndex, lp_larvaLeftover);
     return true;
-}
-
-void libSCPL_gf_PlayerGlobalTabSelect (int lp_playerIndex, int lp_selectIndex) {
-    int autoC5C56EE4_ae;
-    int autoC5C56EE4_ai;
-
-    // Variable Declarations
-    int lv_tabIndex;
-
-    // Variable Initialization
-
-    // Implementation
-    autoC5C56EE4_ae = 4;
-    autoC5C56EE4_ai = 1;
-    lv_tabIndex = 1;
-    for ( ; ( (autoC5C56EE4_ai >= 0 && lv_tabIndex <= autoC5C56EE4_ae) || (autoC5C56EE4_ai <= 0 && lv_tabIndex >= autoC5C56EE4_ae) ) ; lv_tabIndex += autoC5C56EE4_ai ) {
-        libNtve_gf_SetDialogItemToggled(libSCPL_gv_uI.lv_consoleGlobalTab[lv_tabIndex], false, PlayerGroupSingle(lp_playerIndex));
-        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lv_tabIndex][1], PlayerGroupSingle(lp_playerIndex), false);
-        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lv_tabIndex][2], PlayerGroupSingle(lp_playerIndex), false);
-    }
-    libNtve_gf_SetDialogItemToggled(libSCPL_gv_uI.lv_consoleGlobalTab[lp_selectIndex], true, PlayerGroupSingle(lp_playerIndex));
-    DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lp_selectIndex][1], PlayerGroupSingle(lp_playerIndex), true);
-    DialogControlSetVisible(libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[lp_selectIndex][2], PlayerGroupSingle(lp_playerIndex), true);
-    if ((lp_selectIndex == 1)) {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleActiveCommandCard, PlayerGroupSingle(lp_playerIndex), false);
-    }
-    else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleActiveCommandCard, PlayerGroupSingle(lp_playerIndex), true);
-    }
-}
-
-bool libSCPL_gf_UnitGroupContainsCombatUnits (unitgroup lp_unitGroup) {
-    unitgroup autoBDBBFCBD_g;
-    int autoBDBBFCBD_u;
-
-    // Variable Declarations
-    unit lv_unit;
-
-    // Variable Initialization
-
-    // Implementation
-    autoBDBBFCBD_g = lp_unitGroup;
-    autoBDBBFCBD_u = 1;
-    for ( ; autoBDBBFCBD_u <= UnitGroupCount(autoBDBBFCBD_g, c_unitCountAll) ; autoBDBBFCBD_u += BoolToInt(lv_unit == UnitGroupUnit(autoBDBBFCBD_g, autoBDBBFCBD_u)) ) {
-        lv_unit = UnitGroupUnit(autoBDBBFCBD_g, autoBDBBFCBD_u);
-        if ((libSCPL_gf_UnitIsCombatUnit(lv_unit) == true)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool libSCPL_gf_UnitIsCombatUnit (unit lp_unit) {
-    // Implementation
-    if (((UnitGetType(lp_unit) == "Marine") || (UnitGetType(lp_unit) == "Marauder") || (UnitGetType(lp_unit) == "Reaper") || (UnitGetType(lp_unit) == "Ghost") || (UnitGetType(lp_unit) == "Hellion") || (UnitGetType(lp_unit) == "HellionTank") || (UnitGetType(lp_unit) == "SiegeTankSieged") || (UnitGetType(lp_unit) == "SiegeTank") || (UnitGetType(lp_unit) == "WidowMine") || (UnitGetType(lp_unit) == "WidowMineBurrowed") || (UnitGetType(lp_unit) == "Cyclone") || (UnitGetType(lp_unit) == "Thor") || (UnitGetType(lp_unit) == "ThorAP") || (UnitGetType(lp_unit) == "VikingAssault") || (UnitGetType(lp_unit) == "VikingFighter") || (UnitGetType(lp_unit) == "Medivac") || (UnitGetType(lp_unit) == "Raven") || (UnitGetType(lp_unit) == "AutoTurret") || (UnitGetType(lp_unit) == "Banshee") || (UnitGetType(lp_unit) == "Battlecruiser") || (UnitGetType(lp_unit) == "Liberator") || (UnitGetType(lp_unit) == "LiberatorAG"))) {
-        return true;
-    }
-    else {
-        return false;
-    }
 }
 
 void libSCPL_gf_WarpGateUpdateUI (int lp_playerIndex) {
@@ -1487,8 +1316,6 @@ void libSCPL_gf_InitializeUIHookups () {
     int auto1771840D_p;
     int autoAAAC514B_ae;
     int autoAAAC514B_ai;
-    int auto4211EF39_ae;
-    int auto4211EF39_ai;
 
     // Variable Declarations
     int lv_frameIndex;
@@ -1516,35 +1343,710 @@ void libSCPL_gf_InitializeUIHookups () {
     libSCPL_gv_uI.lv_consoleActiveCommandCard = DialogControlLastCreated();
     DialogControlHookupStandard(c_triggerControlTypeCommandPanel, "UIContainer/ConsoleUIContainer/GlobalRallyPanel");
     libSCPL_gv_uI.lv_consoleRallyCommandCard = DialogControlLastCreated();
-    autoAAAC514B_ae = 9;
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeControlGroupPanel, false);
+    autoAAAC514B_ae = 8;
     autoAAAC514B_ai = 1;
-    lv_frameIndex = 0;
-    for ( ; ( (autoAAAC514B_ai >= 0 && lv_frameIndex <= autoAAAC514B_ae) || (autoAAAC514B_ai <= 0 && lv_frameIndex >= autoAAAC514B_ae) ) ; lv_frameIndex += autoAAAC514B_ai ) {
-        DialogControlHookupStandard(c_triggerControlTypeImage, ("UIContainer/ConsoleUIContainer/ControlGroupListener" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleControlGroupAnimListener[(lv_frameIndex + 1)] = DialogControlLastCreated();
-    }
-    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarGlobal");
-    libSCPL_gv_uI.lv_consoleGlobalTab[1] = DialogControlLastCreated();
-    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarBuildings");
-    libSCPL_gv_uI.lv_consoleGlobalTab[2] = DialogControlLastCreated();
-    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarUnits");
-    libSCPL_gv_uI.lv_consoleGlobalTab[3] = DialogControlLastCreated();
-    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/SideBarTab/SidebarResearch");
-    libSCPL_gv_uI.lv_consoleGlobalTab[4] = DialogControlLastCreated();
-    auto4211EF39_ae = 2;
-    auto4211EF39_ai = 1;
     lv_frameIndex = 1;
-    for ( ; ( (auto4211EF39_ai >= 0 && lv_frameIndex <= auto4211EF39_ae) || (auto4211EF39_ai <= 0 && lv_frameIndex >= auto4211EF39_ae) ) ; lv_frameIndex += auto4211EF39_ai ) {
-        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/GlobalCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[1][lv_frameIndex] = DialogControlLastCreated();
-        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/BuilderCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[2][lv_frameIndex] = DialogControlLastCreated();
-        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/TrainerCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[3][lv_frameIndex] = DialogControlLastCreated();
-        DialogControlHookupStandard(c_triggerControlTypeCommandPanel, ("UIContainer/ConsoleUIContainer/ResearcherCommandContainer/CommandPanel" + IntToString(lv_frameIndex)));
-        libSCPL_gv_uI.lv_consoleGlobalTabCommandCard[4][lv_frameIndex] = DialogControlLastCreated();
+    for ( ; ( (autoAAAC514B_ai >= 0 && lv_frameIndex <= autoAAAC514B_ae) || (autoAAAC514B_ai <= 0 && lv_frameIndex >= autoAAAC514B_ae) ) ; lv_frameIndex += autoAAAC514B_ai ) {
+        DialogControlHookupStandard(c_triggerControlTypeButton, ("UIContainer/ConsoleUIContainer/AxiomACGContainer/Group" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
+        libSCPL_gv_uI.lv_consoleControlGroupButton[lv_frameIndex] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeButton, ("UIContainer/ConsoleUIContainer/AxiomACGContainer/Assign" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
+        libSCPL_gv_uI.lv_consoleControlGroupButtonAssign[lv_frameIndex] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeButton, ("UIContainer/ConsoleUIContainer/AxiomACGContainer/Add" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_frameIndex)));
+        libSCPL_gv_uI.lv_consoleControlGroupButtonAdd[lv_frameIndex] = DialogControlLastCreated();
+        DialogControlHookup(libSCPL_gv_uI.lv_consoleControlGroupButton[lv_frameIndex], c_triggerControlTypeImage, "UnitImage");
+        libSCPL_gv_uI.lv_consoleControlGroupIcon[lv_frameIndex] = DialogControlLastCreated();
+        DialogControlHookup(libSCPL_gv_uI.lv_consoleControlGroupButton[lv_frameIndex], c_triggerControlTypeLabel, "CountLabel");
+        libSCPL_gv_uI.lv_consoleControlGroupLabel[lv_frameIndex] = DialogControlLastCreated();
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_uI.lv_consoleControlGroupButton[lv_frameIndex], lv_frameIndex, PlayerGroupAll());
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_uI.lv_consoleControlGroupButtonAdd[lv_frameIndex], lv_frameIndex, PlayerGroupAll());
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_uI.lv_consoleControlGroupButtonAssign[lv_frameIndex], lv_frameIndex, PlayerGroupAll());
+        libSCPL_gf_TriggerEventRegisterDialogItemClicked(libSCPL_gt_ControlGroupSelect, libSCPL_gv_uI.lv_consoleControlGroupButton[lv_frameIndex]);
+        libSCPL_gf_TriggerEventRegisterDialogItemClicked(libSCPL_gt_ControlGroupAdd, libSCPL_gv_uI.lv_consoleControlGroupButtonAdd[lv_frameIndex]);
+        libSCPL_gf_TriggerEventRegisterDialogItemClicked(libSCPL_gt_ControlGroupAssign, libSCPL_gv_uI.lv_consoleControlGroupButtonAssign[lv_frameIndex]);
     }
     UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypePylonButton, false);
+}
+
+void libSCPL_gf_UpgradeNotificationsRemoveRunningUpgrade (int lp_slot, int lp_playerIndex) {
+    int auto8614652F_ae;
+    int auto8614652F_ai;
+
+    // Variable Declarations
+    int lv_count;
+    string lv_upgrade;
+    int lv_sLOT_MAX_INDEX1;
+    playergroup lv_pLAYER;
+
+    // Variable Initialization
+    lv_sLOT_MAX_INDEX1 = (libSCPL_gv_upgradeNotificationsMaxUISlots + 1);
+    lv_pLAYER = PlayerGroupEmpty();
+
+    // Implementation
+    lv_pLAYER = PlayerGroupSingle(lp_playerIndex);
+    auto8614652F_ae = libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex];
+    auto8614652F_ai = 1;
+    lv_count = (lp_slot + 1);
+    for ( ; ( (auto8614652F_ai >= 0 && lv_count <= auto8614652F_ae) || (auto8614652F_ai <= 0 && lv_count >= auto8614652F_ae) ) ; lv_count += auto8614652F_ai ) {
+        if ((lv_count <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+            libSCPL_gf_UpgradeNotificationsSetSlotData((lv_count - 1), libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lv_count], lp_playerIndex), (libNtve_gf_DialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lv_count], lp_playerIndex)), DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_count], lp_playerIndex), lp_playerIndex);
+            libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_count][lp_playerIndex];
+            libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[(lv_count - 1)], libNtve_gf_DialogItemValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_count], lp_playerIndex), lv_pLAYER);
+            libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_count], lp_playerIndex), lv_pLAYER);
+            libSCPL_gv_upgradeNotifications.lv_slotStatus[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex];
+            if ((TimerGetElapsed(libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex]) <= 0.0)) {
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], StringToText(""), lv_pLAYER);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], lv_pLAYER, true);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], lv_pLAYER, false);
+            }
+            else {
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_count], lp_playerIndex), lv_pLAYER);
+            }
+        }
+        else {
+            libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_count], lp_playerIndex), lv_pLAYER);
+            if ((lv_count == lv_sLOT_MAX_INDEX1)) {
+                lv_upgrade = libNtve_gf_QueuedUpgradeTypeInTrainingQueueSlot(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], 1, 1);
+                libSCPL_gf_UpgradeNotificationsSetSlotData((lv_count - 1), libSCPL_gf_UpgradeNotificationsUpgradeName(lv_upgrade, lp_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeImage(lv_upgrade, lp_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeNeedsToBeVisible(UnitQueueItemTime(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], c_unitQueueTimeRemaining, 1)), lp_playerIndex);
+                libSCPL_gv_upgradeNotifications.lv_slotStatus[(lv_count - 1)][lp_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade;
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], StringToText(""), lv_pLAYER);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], lv_pLAYER, true);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], lv_pLAYER, false);
+                libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex] = TimerCreate();
+            }
+
+        }
+        libSCPL_gv_upgradeNotifications.lv_slotFacility[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex];
+    }
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]][lp_playerIndex] = null;
+    if ((libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        DialogControlSendAnimationEvent(libSCPL_gv_upgradeNotifications.lv_itemPanel[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]], lv_pLAYER, "EventHide");
+    }
+    libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] -= 1;
+}
+
+void libSCPL_gf_UpgradeNotificationsRemoveRunningUpgradeImmediate (int lp_slot, int lp_playerIndex) {
+    int auto30D7FA82_ae;
+    int auto30D7FA82_ai;
+
+    // Variable Declarations
+    int lv_count;
+    string lv_upgrade;
+    int lv_sLOT_MAX_INDEX1;
+    playergroup lv_pLAYER;
+
+    // Variable Initialization
+    lv_sLOT_MAX_INDEX1 = (libSCPL_gv_upgradeNotificationsMaxUISlots + 1);
+    lv_pLAYER = PlayerGroupEmpty();
+
+    // Implementation
+    lv_pLAYER = PlayerGroupSingle(lp_playerIndex);
+    auto30D7FA82_ae = libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex];
+    auto30D7FA82_ai = 1;
+    lv_count = (lp_slot + 1);
+    for ( ; ( (auto30D7FA82_ai >= 0 && lv_count <= auto30D7FA82_ae) || (auto30D7FA82_ai <= 0 && lv_count >= auto30D7FA82_ae) ) ; lv_count += auto30D7FA82_ai ) {
+        if ((lv_count <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+            libSCPL_gf_UpgradeNotificationsSetSlotData((lv_count - 1), libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lv_count], lp_playerIndex), (libNtve_gf_DialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lv_count], lp_playerIndex)), DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_count], lp_playerIndex), lp_playerIndex);
+            libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_count][lp_playerIndex];
+            libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[(lv_count - 1)], libNtve_gf_DialogItemValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_count], lp_playerIndex), lv_pLAYER);
+            libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_count], lp_playerIndex), lv_pLAYER);
+            libSCPL_gv_upgradeNotifications.lv_slotStatus[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex];
+            if ((TimerGetElapsed(libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex]) <= 0.0)) {
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], StringToText(""), lv_pLAYER);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], lv_pLAYER, true);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], lv_pLAYER, false);
+            }
+            else {
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_count], lp_playerIndex), lv_pLAYER);
+            }
+        }
+        else {
+            libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_count], lp_playerIndex), lv_pLAYER);
+            if ((lv_count == lv_sLOT_MAX_INDEX1)) {
+                lv_upgrade = libNtve_gf_QueuedUpgradeTypeInTrainingQueueSlot(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], 1, 1);
+                libSCPL_gf_UpgradeNotificationsSetSlotData((lv_count - 1), libSCPL_gf_UpgradeNotificationsUpgradeName(lv_upgrade, lp_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeImage(lv_upgrade, lp_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeNeedsToBeVisible(UnitQueueItemTime(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], c_unitQueueTimeRemaining, 1)), lp_playerIndex);
+                libSCPL_gv_upgradeNotifications.lv_slotStatus[(lv_count - 1)][lp_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade;
+                libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], StringToText(""), lv_pLAYER);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[(lv_count - 1)], lv_pLAYER, true);
+                DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[(lv_count - 1)], lv_pLAYER, false);
+                libSCPL_gv_upgradeNotifications.lv_timerDestruction[(lv_count - 1)][lp_playerIndex] = TimerCreate();
+            }
+
+        }
+        libSCPL_gv_upgradeNotifications.lv_slotFacility[(lv_count - 1)][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex];
+    }
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]][lp_playerIndex] = null;
+    if ((libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gf_UpgradeNotificationsSetSlotData(libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex], StringToText(""), "Assets\\Textures\\black.dds", false, lp_playerIndex);
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]][lp_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_NoUpgrade;
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]], StringToText(""), lv_pLAYER);
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]], 0.0, lv_pLAYER);
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]], StringToText(""), lv_pLAYER);
+        libSCPL_gv_upgradeNotifications.lv_timerDestruction[libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex]][lp_playerIndex] = TimerCreate();
+    }
+    libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] -= 1;
+}
+
+int libSCPL_gf_UpgradeNotificationsFacilitySlot (unit lp_facility, int lp_playerIndex) {
+    int autoDF4E1DBE_ae;
+    int autoDF4E1DBE_ai;
+
+    // Variable Declarations
+    int lv_count;
+
+    // Variable Initialization
+
+    // Implementation
+    autoDF4E1DBE_ae = libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex];
+    autoDF4E1DBE_ai = 1;
+    lv_count = 0;
+    for ( ; ( (autoDF4E1DBE_ai >= 0 && lv_count <= autoDF4E1DBE_ae) || (autoDF4E1DBE_ai <= 0 && lv_count >= autoDF4E1DBE_ae) ) ; lv_count += autoDF4E1DBE_ai ) {
+        if ((libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex] == lp_facility) && ((libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade) || (libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_VisibleOccupiedwithrunningUpgrade))) {
+            return lv_count;
+        }
+    }
+    return -1;
+}
+
+string libSCPL_gf_UpgradeNotificationsUpgradeImage (string lp_upgrade, int lp_playerIndex) {
+    // Implementation
+    return (CatalogFieldValueGet(c_gameCatalogUpgrade, lp_upgrade, "Icon", lp_playerIndex));
+}
+
+text libSCPL_gf_UpgradeNotificationsUpgradeName (string lp_upgrade, int lp_playerIndex) {
+    string autoF5081664_val;
+    string autoD17A1825_val;
+
+    // Variable Declarations
+    string lv_unittype;
+
+    // Variable Initialization
+
+    // Implementation
+    autoF5081664_val = lp_upgrade;
+    if (autoF5081664_val == "ProtossGroundWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_DCAE8CF0");
+    }
+    else if (autoF5081664_val == "ProtossGroundWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_FFCF9FAD");
+    }
+    else if (autoF5081664_val == "ProtossGroundWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_42975F88");
+    }
+    else if (autoF5081664_val == "ProtossGroundArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_F140373A");
+    }
+    else if (autoF5081664_val == "ProtossGroundArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_28359667");
+    }
+    else if (autoF5081664_val == "ProtossGroundArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_58EE146C");
+    }
+    else if (autoF5081664_val == "ProtossShieldsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_283F79C7");
+    }
+    else if (autoF5081664_val == "ProtossShieldsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_260F9D44");
+    }
+    else if (autoF5081664_val == "ProtossShieldsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_87C323B4");
+    }
+    else if (autoF5081664_val == "ProtossAirWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_B03CC18D");
+    }
+    else if (autoF5081664_val == "ProtossAirWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_1D2AE741");
+    }
+    else if (autoF5081664_val == "ProtossAirWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_971E6079");
+    }
+    else if (autoF5081664_val == "ProtossAirArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_DCF677EB");
+    }
+    else if (autoF5081664_val == "ProtossAirArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_297BE571");
+    }
+    else if (autoF5081664_val == "ProtossAirArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_FD49BB3C");
+    }
+    else if (autoF5081664_val == "PsiStormTech") {
+        return StringExternal("Param/Value/lib_SCPL_B7138B79");
+    }
+    else if (autoF5081664_val == "haltech") {
+        return StringExternal("Param/Value/lib_SCPL_A4C6AA07");
+    }
+    else if (autoF5081664_val == "BlinkTech") {
+        return StringExternal("Param/Value/lib_SCPL_D7BFAED5");
+    }
+    else if (autoF5081664_val == "WarpGateResearch") {
+        return StringExternal("Param/Value/lib_SCPL_53655C25");
+    }
+    else if (autoF5081664_val == "CarrierLaunchSpeedUpgrade") {
+        return StringExternal("Param/Value/lib_SCPL_37AE81D3");
+    }
+    else if (autoF5081664_val == "ExtendedThermalLance") {
+        return StringExternal("Param/Value/lib_SCPL_49EACCC1");
+    }
+    else if (autoF5081664_val == "ObserverGraviticBooster") {
+        return StringExternal("Param/Value/lib_SCPL_8BBDE51E");
+    }
+    else if (autoF5081664_val == "GraviticDrive") {
+        return StringExternal("Param/Value/lib_SCPL_E41DC998");
+    }
+    else if (autoF5081664_val == "Charge") {
+        return StringExternal("Param/Value/lib_SCPL_A223E8B9");
+    }
+    else if (autoF5081664_val == "TerranInfantryWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_A2E66935");
+    }
+    else if (autoF5081664_val == "TerranInfantryWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_C22343DA");
+    }
+    else if (autoF5081664_val == "TerranInfantryWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_A84B8F63");
+    }
+    else if (autoF5081664_val == "TerranInfantryArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_6A6CE349");
+    }
+    else if (autoF5081664_val == "TerranInfantryArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_777F6039");
+    }
+    else if (autoF5081664_val == "TerranInfantryArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_E112C887");
+    }
+    else if (autoF5081664_val == "TerranShipWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_1D239EED");
+    }
+    else if (autoF5081664_val == "TerranShipWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_22DDD9F8");
+    }
+    else if (autoF5081664_val == "TerranShipWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_454A5087");
+    }
+    else if (autoF5081664_val == "TerranShipArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_29D6BF90");
+    }
+    else if (autoF5081664_val == "TerranShipArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_E08A5638");
+    }
+    else if (autoF5081664_val == "TerranShipArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_F6E71BB9");
+    }
+    else if (autoF5081664_val == "TerranVehicleWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_82F18745");
+    }
+    else if (autoF5081664_val == "TerranVehicleWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_31B36035");
+    }
+    else if (autoF5081664_val == "TerranVehicleWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_3FF09317");
+    }
+    else if (autoF5081664_val == "TerranVehicleArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_025CBB60");
+    }
+    else if (autoF5081664_val == "TerranVehicleArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_3E394597");
+    }
+    else if (autoF5081664_val == "TerranVehicleArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_CC951DDB");
+    }
+    else if (autoF5081664_val == "BansheeCloak") {
+        return StringExternal("Param/Value/lib_SCPL_446A6674");
+    }
+    else if (autoF5081664_val == "PersonalCloaking") {
+        return StringExternal("Param/Value/lib_SCPL_23D2DD6B");
+    }
+    else if (autoF5081664_val == "HighCapacityBarrels") {
+        return StringExternal("Param/Value/lib_SCPL_86DBD6A1");
+    }
+    else if (autoF5081664_val == "PunisherGrenades") {
+        return StringExternal("Param/Value/lib_SCPL_8796D3E7");
+    }
+    else if (autoF5081664_val == "HunterSeeker") {
+        return StringExternal("Param/Value/lib_SCPL_3BDC6E5E");
+    }
+    else if (autoF5081664_val == "SiegeTech") {
+        return StringExternal("Param/Value/lib_SCPL_546AA758");
+    }
+    else if (autoF5081664_val == "Stimpack") {
+        return StringExternal("Param/Value/lib_SCPL_1D4ACF86");
+    }
+    else if (autoF5081664_val == "BattlecruiserEnableSpecializations") {
+        return StringExternal("Param/Value/lib_SCPL_C2EDAB79");
+    }
+    else if (autoF5081664_val == "BattlecruiserBehemothReactor") {
+        return StringExternal("Param/Value/lib_SCPL_3095848B");
+    }
+    else if (autoF5081664_val == "NeosteelFrame") {
+        return StringExternal("Param/Value/lib_SCPL_B3EFA97B");
+    }
+    else if (autoF5081664_val == "GhostMoebiusReactor") {
+        return StringExternal("Param/Value/lib_SCPL_40FE5D53");
+    }
+    else if (autoF5081664_val == "HiSecAutoTracking") {
+        return StringExternal("Param/Value/lib_SCPL_00AFF88E");
+    }
+    else if (autoF5081664_val == "ShieldWall") {
+        return StringExternal("Param/Value/lib_SCPL_B932CA0A");
+    }
+    else if (autoF5081664_val == "MedivacCaduceusReactor") {
+        return StringExternal("Param/Value/lib_SCPL_F2EA3576");
+    }
+    else if (autoF5081664_val == "RavenCorvidReactor") {
+        return StringExternal("Param/Value/lib_SCPL_95E125EC");
+    }
+    else if (autoF5081664_val == "DurableMaterials") {
+        return StringExternal("Param/Value/lib_SCPL_E584E573");
+    }
+    else if (autoF5081664_val == "ReaperSpeed") {
+        return StringExternal("Param/Value/lib_SCPL_BCDE05EB");
+    }
+    else if (autoF5081664_val == "TerranBuildingArmor") {
+        return StringExternal("Param/Value/lib_SCPL_95A64B80");
+    }
+    else if (autoF5081664_val == "ZergMeleeWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_861050BC");
+    }
+    else if (autoF5081664_val == "ZergMeleeWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_DB9930FA");
+    }
+    else if (autoF5081664_val == "ZergMeleeWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_452D0D6A");
+    }
+    else if (autoF5081664_val == "ZergMissileWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_6FEB266F");
+    }
+    else if (autoF5081664_val == "ZergMissileWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_DAD60B23");
+    }
+    else if (autoF5081664_val == "ZergMissileWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_E920244D");
+    }
+    else if (autoF5081664_val == "ZergGroundArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_CF8D2A5F");
+    }
+    else if (autoF5081664_val == "ZergGroundArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_EA9F8E17");
+    }
+    else if (autoF5081664_val == "ZergGroundArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_27F66D5E");
+    }
+    else if (autoF5081664_val == "ZergFlyerWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_B57B0D01");
+    }
+    else if (autoF5081664_val == "ZergFlyerWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_1333D60B");
+    }
+    else if (autoF5081664_val == "ZergFlyerWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_11275019");
+    }
+    else if (autoF5081664_val == "ZergFlyerArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_18A272CF");
+    }
+    else if (autoF5081664_val == "ZergFlyerArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_CDD560F4");
+    }
+    else if (autoF5081664_val == "ZergFlyerArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_95DE8464");
+    }
+    else if (autoF5081664_val == "CentrificalHooks") {
+        return StringExternal("Param/Value/lib_SCPL_87A1E312");
+    }
+    else if (autoF5081664_val == "Burrow") {
+        return StringExternal("Param/Value/lib_SCPL_B2B3371E");
+    }
+    else if (autoF5081664_val == "hydraliskspeed") {
+        return StringExternal("Param/Value/lib_SCPL_E658D072");
+    }
+    else if (autoF5081664_val == "InfestorEnergyUpgrade") {
+        return StringExternal("Param/Value/lib_SCPL_8A9925E6");
+    }
+    else if (autoF5081664_val == "overlordspeed") {
+        return StringExternal("Param/Value/lib_SCPL_FA23BFC2");
+    }
+    else if (autoF5081664_val == "overlordtransport") {
+        return StringExternal("Param/Value/lib_SCPL_2615D62C");
+    }
+    else if (autoF5081664_val == "GlialReconstitution") {
+        return StringExternal("Param/Value/lib_SCPL_A7B376FC");
+    }
+    else if (autoF5081664_val == "TunnelingClaws") {
+        return StringExternal("Param/Value/lib_SCPL_E04671DF");
+    }
+    else if (autoF5081664_val == "ChitinousPlating") {
+        return StringExternal("Param/Value/lib_SCPL_5C1A1F49");
+    }
+    else if (autoF5081664_val == "zerglingattackspeed") {
+        return StringExternal("Param/Value/lib_SCPL_49834BAA");
+    }
+    else if (autoF5081664_val == "zerglingmovementspeed") {
+        return StringExternal("Param/Value/lib_SCPL_4DFF6AE6");
+    }
+    else {
+    }
+    autoD17A1825_val = (lp_upgrade);
+    if (autoD17A1825_val == "PhoenixRangeUpgrade") {
+        return StringExternal("Param/Value/lib_SCPL_9E8FF45B");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipArmorsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_435CB8F5");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipArmorsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_DA61236E");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipArmorsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_2339C1F2");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipWeaponsLevel1") {
+        return StringExternal("Param/Value/lib_SCPL_28277442");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipWeaponsLevel2") {
+        return StringExternal("Param/Value/lib_SCPL_B1B45ECA");
+    }
+    else if (autoD17A1825_val == "TerranVehicleAndShipWeaponsLevel3") {
+        return StringExternal("Param/Value/lib_SCPL_48F54F47");
+    }
+    else if (autoD17A1825_val == "DrillClaws") {
+        return StringExternal("Param/Value/lib_SCPL_B248EA6C");
+    }
+    else if (autoD17A1825_val == "TransformationServos") {
+        return StringExternal("Param/Value/lib_SCPL_B32111D2");
+    }
+    else if (autoD17A1825_val == "LocustLifetimeIncrease") {
+        return StringExternal("Param/Value/lib_SCPL_39EA1A3F");
+    }
+    else if (autoD17A1825_val == "NeuralParasite") {
+        return StringExternal("Param/Value/lib_SCPL_9FA30676");
+    }
+    else {
+    }
+    return StringExternal(CatalogFieldValueGet(c_gameCatalogUpgrade, lp_upgrade, "Name", lp_playerIndex));
+}
+
+bool libSCPL_gf_UpgradeNotificationsUpgradeNeedsToBeVisible (fixed lp_remainingTime) {
+    // Implementation
+    if ((lp_remainingTime <= libSCPL_gv_upgradeNotificationsVisibleTime)) {
+        return true;
+    }
+    return false;
+}
+
+trigger auto_libSCPL_gf_UpgradeNotificationsUpdateThread_Trigger = null;
+int auto_libSCPL_gf_UpgradeNotificationsUpdateThread_lp_playerIndex;
+
+void libSCPL_gf_UpgradeNotificationsUpdateThread (int lp_playerIndex) {
+    auto_libSCPL_gf_UpgradeNotificationsUpdateThread_lp_playerIndex = lp_playerIndex;
+
+    if (auto_libSCPL_gf_UpgradeNotificationsUpdateThread_Trigger == null) {
+        auto_libSCPL_gf_UpgradeNotificationsUpdateThread_Trigger = TriggerCreate("auto_libSCPL_gf_UpgradeNotificationsUpdateThread_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libSCPL_gf_UpgradeNotificationsUpdateThread_Trigger, false, false);
+}
+
+bool auto_libSCPL_gf_UpgradeNotificationsUpdateThread_TriggerFunc (bool testConds, bool runActions) {
+    int lp_playerIndex = auto_libSCPL_gf_UpgradeNotificationsUpdateThread_lp_playerIndex;
+
+    int auto5F488D10_ae;
+    int auto5F488D10_ai;
+
+    // Variable Declarations
+    int lv_count;
+
+    // Variable Initialization
+
+    // Implementation
+    while ((libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex] >= 0)) {
+        auto5F488D10_ae = MinI(libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lp_playerIndex], 5);
+        auto5F488D10_ai = 1;
+        lv_count = 0;
+        for ( ; ( (auto5F488D10_ai >= 0 && lv_count <= auto5F488D10_ae) || (auto5F488D10_ai <= 0 && lv_count >= auto5F488D10_ae) ) ; lv_count += auto5F488D10_ai ) {
+            if (((lv_count > libSCPL_gv_upgradeNotificationsMaxUISlots) || (libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade)) && (libSCPL_gf_UpgradeNotificationsUpgradeNeedsToBeVisible(UnitQueueItemTime(libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_count][lp_playerIndex], c_unitQueueTimeRemaining, 1)) == true)) {
+                if ((lv_count <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+                    DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_count], PlayerGroupSingle(lp_playerIndex), true);
+                    libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_VisibleOccupiedwithrunningUpgrade;
+                }
+                libSCPL_gf_UpgradeNotificationsSwapSlotWithLowestInvisibleOne(lv_count, lp_playerIndex);
+            }
+            if ((libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_VisibleOccupiedwithrunningUpgrade)) {
+                libSCPL_gf_UpgradeNotificationsUpdateProgressData(lv_count, lp_playerIndex);
+            }
+        }
+        Wait(0.0625, c_timeGame);
+        Wait(0.0, c_timeGame);
+    }
+    libSCPL_gv_upgradeNotifications.lv_updateThreadRunning[lp_playerIndex] = false;
+    return true;
+}
+
+void libSCPL_gf_UpgradeNotificationsSetStatusLabel (int lp_slot, text lp_status, int lp_playerIndex) {
+    // Implementation
+    DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lp_slot], PlayerGroupSingle(lp_playerIndex), false);
+    DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lp_slot], PlayerGroupSingle(lp_playerIndex), true);
+    libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lp_slot], lp_status, PlayerGroupSingle(lp_playerIndex));
+}
+
+void libSCPL_gf_UpgradeNotificationsSetSlotData (int lp_slot, text lp_name, string lp_icon, bool lp_visible, int lp_playerIndex) {
+    // Variable Declarations
+    color lv_color;
+
+    // Variable Initialization
+    lv_color = Color(0,0,0);
+
+    // Implementation
+    libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lp_slot], lp_name, PlayerGroupSingle(lp_playerIndex));
+    libNtve_gf_SetDialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lp_slot], lp_icon, PlayerGroupSingle(lp_playerIndex));
+    DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slot], PlayerGroupSingle(lp_playerIndex), lp_visible);
+}
+
+void libSCPL_gf_UpgradeNotificationsSwapSlotWithLowestInvisibleOne (int lp_slot, int lp_playerIndex) {
+    int auto0C1145F3_ae;
+    int auto0C1145F3_ai;
+
+    // Variable Declarations
+    int lv_count;
+
+    // Variable Initialization
+
+    // Implementation
+    auto0C1145F3_ae = (lp_slot - 1);
+    auto0C1145F3_ai = 1;
+    lv_count = 0;
+    for ( ; ( (auto0C1145F3_ai >= 0 && lv_count <= auto0C1145F3_ae) || (auto0C1145F3_ai <= 0 && lv_count >= auto0C1145F3_ae) ) ; lv_count += auto0C1145F3_ai ) {
+        if ((libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_count][lp_playerIndex] == libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade)) {
+            libSCPL_gf_UpgradeNotificationsSwapSlotInformation(lv_count, lp_slot, lp_playerIndex);
+            return ;
+        }
+    }
+}
+
+void libSCPL_gf_UpgradeNotificationsSwapSlotInformation (int lp_slotA, int lp_slotB, int lp_playerIndex) {
+    int init_i;
+
+    // Variable Declarations
+    int[2] lv_status;
+    bool[2] lv_visibility;
+    text[2] lv_name;
+    string[2] lv_icon;
+    color[2] lv_color;
+    fixed[2] lv_value;
+    timer[2] lv_timer;
+    unit lv_facility;
+
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_status[init_i] = libSCPL_ge_UpgradeNotificationsSlotStatus_NoUpgrade;
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_icon[init_i] = "Assets\\Textures\\blank.dds";
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_color[init_i] = Color(100,100,100);
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_timer[init_i] = TimerCreate();
+    }
+
+    // Implementation
+    if ((lp_slotA <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        lv_status[0] = libSCPL_gv_upgradeNotifications.lv_slotStatus[lp_slotA][lp_playerIndex];
+        lv_visibility[0] = DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slotA], lp_playerIndex);
+        lv_name[0] = libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lp_slotA], lp_playerIndex);
+        lv_icon[0] = (libNtve_gf_DialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lp_slotA], lp_playerIndex));
+        lv_color[0] = libNtve_gf_DialogItemColor(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slotA], lp_playerIndex);
+        lv_value[0] = libNtve_gf_DialogItemValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slotA], lp_playerIndex);
+        lv_timer[0] = libSCPL_gv_upgradeNotifications.lv_timerDestruction[lp_slotA][lp_playerIndex];
+    }
+    if ((lp_slotB <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        lv_status[1] = libSCPL_gv_upgradeNotifications.lv_slotStatus[lp_slotB][lp_playerIndex];
+        lv_visibility[1] = DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slotB], lp_playerIndex);
+        lv_name[1] = libNtve_gf_DialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lp_slotB], lp_playerIndex);
+        lv_icon[1] = (libNtve_gf_DialogItemImage(libSCPL_gv_upgradeNotifications.lv_itemIcon[lp_slotB], lp_playerIndex));
+        lv_color[1] = libNtve_gf_DialogItemColor(libSCPL_gv_upgradeNotifications.lv_itemPanel[lp_slotB], lp_playerIndex);
+        lv_value[1] = libNtve_gf_DialogItemValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slotB], lp_playerIndex);
+        lv_timer[1] = libSCPL_gv_upgradeNotifications.lv_timerDestruction[lp_slotB][lp_playerIndex];
+    }
+    if ((lp_slotA <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lp_slotA][lp_playerIndex] = lv_status[1];
+        libSCPL_gf_UpgradeNotificationsSetSlotData(lp_slotA, lv_name[1], lv_icon[1], lv_visibility[1], lp_playerIndex);
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slotA], lv_value[1], PlayerGroupSingle(lp_playerIndex));
+        libSCPL_gv_upgradeNotifications.lv_timerDestruction[lp_slotA][lp_playerIndex] = lv_timer[1];
+    }
+    if ((lp_slotB <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lp_slotB][lp_playerIndex] = lv_status[0];
+        libSCPL_gf_UpgradeNotificationsSetSlotData(lp_slotB, lv_name[0], lv_icon[0], lv_visibility[0], lp_playerIndex);
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slotB], lv_value[0], PlayerGroupSingle(lp_playerIndex));
+        libSCPL_gv_upgradeNotifications.lv_timerDestruction[lp_slotB][lp_playerIndex] = lv_timer[0];
+    }
+    lv_facility = libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slotA][lp_playerIndex];
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slotA][lp_playerIndex] = libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slotB][lp_playerIndex];
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slotB][lp_playerIndex] = lv_facility;
+}
+
+void libSCPL_gf_UpgradeNotificationsUpdateProgressData (int lp_slot, int lp_playerIndex) {
+    // Variable Declarations
+    fixed lv_remainingTime;
+    int lv_remainingSeconds;
+    int lv_remainingMilliseconds;
+    text lv_extraZero;
+
+    // Variable Initialization
+    lv_remainingTime = UnitQueueItemTime(libSCPL_gv_upgradeNotifications.lv_slotFacility[lp_slot][lp_playerIndex], c_unitQueueTimeRemaining, 1);
+    lv_remainingSeconds = TruncI(lv_remainingTime);
+    lv_remainingMilliseconds = TruncI(((lv_remainingTime - lv_remainingSeconds) * 10.0));
+
+    // Implementation
+    libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lp_slot], (libSCPL_gv_upgradeNotificationsVisibleTime - lv_remainingTime), PlayerGroupSingle(lp_playerIndex));
+    libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lp_slot], (StringExternal("Param/Value/lib_SCPL_16CF1B5C") + (IntToText(lv_remainingSeconds) + ((StringExternal("Param/Value/lib_SCPL_4E70CEBA") + StringExternal("Param/Value/lib_SCPL_8B856A4B")) + ((StringExternal("Param/Value/lib_SCPL_16BEFEF4") + lv_extraZero) + IntToText(lv_remainingMilliseconds))))), PlayerGroupSingle(lp_playerIndex));
+}
+
+bool libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar (unit lp_unit) {
+    // Variable Declarations
+    bool lv_boolean;
+
+    // Variable Initialization
+
+    // Implementation
+    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "SupplyDepot") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "CyberneticsCore") || (UnitGetType(lp_unit) == "DarkShrine") || (UnitGetType(lp_unit) == "FleetBeacon") || (UnitGetType(lp_unit) == "Forge") || (UnitGetType(lp_unit) == "Gateway") || (UnitGetType(lp_unit) == "Nexus") || (UnitGetType(lp_unit) == "RoboticsBay") || (UnitGetType(lp_unit) == "RoboticsFacility") || (UnitGetType(lp_unit) == "Stargate") || (UnitGetType(lp_unit) == "TemplarArchive") || (UnitGetType(lp_unit) == "TwilightCouncil") || (UnitGetType(lp_unit) == "WarpGate") || (UnitGetType(lp_unit) == "Assimilator") || (UnitGetType(lp_unit) == "PhotonCannon") || (UnitGetType(lp_unit) == "Pylon") || (UnitGetType(lp_unit) == "MothershipCore") || (UnitGetType(lp_unit) == "BanelingNest") || (UnitGetType(lp_unit) == "EvolutionChamber") || (UnitGetType(lp_unit) == "Lair") || (UnitGetType(lp_unit) == "LurkerDenMP") || (UnitGetType(lp_unit) == "GreaterSpire") || (UnitGetType(lp_unit) == "Hatchery") || (UnitGetType(lp_unit) == "Hive") || (UnitGetType(lp_unit) == "HydraliskDen") || (UnitGetType(lp_unit) == "InfestationPit") || (UnitGetType(lp_unit) == "RoachWarren") || (UnitGetType(lp_unit) == "SpawningPool") || (UnitGetType(lp_unit) == "Spire") || (UnitGetType(lp_unit) == "UltraliskCavern") || (UnitGetType(lp_unit) == "Extractor") || (UnitGetType(lp_unit) == "NydusNetwork") || (UnitGetType(lp_unit) == "SpineCrawler") || (UnitGetType(lp_unit) == "SporeCrawler") || (UnitGetType(lp_unit) == "Larva") || (UnitGetType(lp_unit) == "Egg") || (UnitGetType(lp_unit) == "Zergling") || (UnitGetType(lp_unit) == "BanelingCocoon") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor") || (UnitGetType(lp_unit) == "Overlord"))) {
+        lv_boolean = true;
+    }
+    else {
+        lv_boolean = false;
+    }
+    return lv_boolean;
+}
+
+bool libSCPL_gf_LabelsPlusUnitMorphTwoStage (unit lp_unit) {
+    // Variable Declarations
+    bool lv_boolean;
+
+    // Variable Initialization
+
+    // Implementation
+    if (((UnitGetType(lp_unit) == "Overlord") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor"))) {
+        lv_boolean = true;
+    }
+    else {
+        lv_boolean = false;
+    }
+    return lv_boolean;
+}
+
+int libSCPL_gf_LabelsPlusUnitIconSize (unit lp_productionUnit) {
+    // Variable Declarations
+    int lv_iconSize;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_iconSize = libSCPL_gv_labels.lv_iconSize;
+    if (((UnitGetType(lp_productionUnit) == "Egg") || (UnitGetType(lp_productionUnit) == "BanelingCocoon") || (UnitGetType(lp_productionUnit) == "RavagerCocoon") || (UnitGetType(lp_productionUnit) == "LurkerMPEgg") || (UnitGetType(lp_productionUnit) == "BroodLordCocoon") || (UnitGetType(lp_productionUnit) == "TransportOverlordCocoon") || (UnitGetType(lp_productionUnit) == "OverlordCocoon") || (UnitGetType(lp_productionUnit) == "Larva") || (UnitGetType(lp_productionUnit) == "Zergling") || (UnitGetType(lp_productionUnit) == "Roach") || (UnitGetType(lp_productionUnit) == "Hydralisk") || (UnitGetType(lp_productionUnit) == "Corruptor") || (UnitGetType(lp_productionUnit) == "Overlord"))) {
+        lv_iconSize = libSCPL_gv_labels.lv_iconSizeEgg;
+    }
+    else if (((UnitGetType(lp_productionUnit) == "TechLab") || (UnitGetType(lp_productionUnit) == "BarracksTechLab") || (UnitGetType(lp_productionUnit) == "FactoryTechLab") || (UnitGetType(lp_productionUnit) == "StarportTechLab") || (UnitGetType(lp_productionUnit) == "MothershipCore"))) {
+        lv_iconSize = libSCPL_gv_labels.lv_iconSizeTechLab;
+    }
+    return lv_iconSize;
 }
 
 void libSCPL_gf_ResourceDisplayGainAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene) {
@@ -1600,61 +2102,54 @@ void libSCPL_gf_ResourceDisplaySpendUpdate (unit lp_unit, fixed lp_costTime, fix
     }
 }
 
-bool libSCPL_gf_LabelsPlusUnitUsesCustomStatusBar (unit lp_unit) {
+void libSCPL_gf_ControlGroupUnitPreserve (unit lp_parentUnit, unit lp_childUnit) {
+    int auto7145AD08_ae;
+    int auto7145AD08_ai;
+
     // Variable Declarations
-    bool lv_boolean;
+    int lv_controlGroupIndex;
+    int lv_playerIndex;
 
     // Variable Initialization
 
     // Implementation
-    if (((UnitGetType(lp_unit) == "Armory") || (UnitGetType(lp_unit) == "Barracks") || (UnitGetType(lp_unit) == "CommandCenter") || (UnitGetType(lp_unit) == "EngineeringBay") || (UnitGetType(lp_unit) == "Factory") || (UnitGetType(lp_unit) == "FusionCore") || (UnitGetType(lp_unit) == "GhostAcademy") || (UnitGetType(lp_unit) == "OrbitalCommand") || (UnitGetType(lp_unit) == "PlanetaryFortress") || (UnitGetType(lp_unit) == "Starport") || (UnitGetType(lp_unit) == "TechLab") || (UnitGetType(lp_unit) == "BarracksTechLab") || (UnitGetType(lp_unit) == "FactoryTechLab") || (UnitGetType(lp_unit) == "StarportTechLab") || (UnitGetType(lp_unit) == "SupplyDepotConstructor") || (UnitGetType(lp_unit) == "SupplyDepot") || (UnitGetType(lp_unit) == "Refinery") || (UnitGetType(lp_unit) == "MissileTurret") || (UnitGetType(lp_unit) == "SensorTower") || (UnitGetType(lp_unit) == "Bunker") || (UnitGetType(lp_unit) == "Reactor") || (UnitGetType(lp_unit) == "BarracksReactor") || (UnitGetType(lp_unit) == "FactoryReactor") || (UnitGetType(lp_unit) == "StarportReactor") || (UnitGetType(lp_unit) == "CyberneticsCore") || (UnitGetType(lp_unit) == "DarkShrine") || (UnitGetType(lp_unit) == "FleetBeacon") || (UnitGetType(lp_unit) == "Forge") || (UnitGetType(lp_unit) == "Gateway") || (UnitGetType(lp_unit) == "Nexus") || (UnitGetType(lp_unit) == "RoboticsBay") || (UnitGetType(lp_unit) == "RoboticsFacility") || (UnitGetType(lp_unit) == "Stargate") || (UnitGetType(lp_unit) == "TemplarArchive") || (UnitGetType(lp_unit) == "TwilightCouncil") || (UnitGetType(lp_unit) == "WarpGate") || (UnitGetType(lp_unit) == "Assimilator") || (UnitGetType(lp_unit) == "PhotonCannon") || (UnitGetType(lp_unit) == "Pylon") || (UnitGetType(lp_unit) == "MothershipCore") || (UnitGetType(lp_unit) == "BanelingNest") || (UnitGetType(lp_unit) == "EvolutionChamber") || (UnitGetType(lp_unit) == "Lair") || (UnitGetType(lp_unit) == "LurkerDenMP") || (UnitGetType(lp_unit) == "GreaterSpire") || (UnitGetType(lp_unit) == "Hatchery") || (UnitGetType(lp_unit) == "Hive") || (UnitGetType(lp_unit) == "HydraliskDen") || (UnitGetType(lp_unit) == "InfestationPit") || (UnitGetType(lp_unit) == "RoachWarren") || (UnitGetType(lp_unit) == "SpawningPool") || (UnitGetType(lp_unit) == "Spire") || (UnitGetType(lp_unit) == "UltraliskCavern") || (UnitGetType(lp_unit) == "Extractor") || (UnitGetType(lp_unit) == "NydusNetwork") || (UnitGetType(lp_unit) == "SpineCrawler") || (UnitGetType(lp_unit) == "SporeCrawler") || (UnitGetType(lp_unit) == "Larva") || (UnitGetType(lp_unit) == "Egg") || (UnitGetType(lp_unit) == "Zergling") || (UnitGetType(lp_unit) == "BanelingCocoon") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor") || (UnitGetType(lp_unit) == "Overlord"))) {
-        lv_boolean = true;
+    lv_playerIndex = UnitGetOwner(lp_parentUnit);
+    auto7145AD08_ae = 28;
+    auto7145AD08_ai = 1;
+    lv_controlGroupIndex = 21;
+    for ( ; ( (auto7145AD08_ai >= 0 && lv_controlGroupIndex <= auto7145AD08_ae) || (auto7145AD08_ai <= 0 && lv_controlGroupIndex >= auto7145AD08_ae) ) ; lv_controlGroupIndex += auto7145AD08_ai ) {
+        if ((UnitGetCustomValue(lp_parentUnit, lv_controlGroupIndex) == 1)) {
+            libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lp_childUnit), (lv_controlGroupIndex - 20), lv_playerIndex);
+            libSCPL_gf_ControlGroupUnitsUpdate((lv_controlGroupIndex - 20), lv_playerIndex);
+        }
     }
-    else {
-        lv_boolean = false;
-    }
-    return lv_boolean;
 }
 
-bool libSCPL_gf_LabelsPlusUnitMorphTwoStage (unit lp_unit) {
+void libSCPL_gf_ControlGroupDamagePulse (unit lp_unit) {
+    int auto4A02EB2A_ae;
+    int auto4A02EB2A_ai;
+
     // Variable Declarations
-    bool lv_boolean;
+    int lv_playerIndex;
+    int lv_controlGroupIndex;
 
     // Variable Initialization
 
     // Implementation
-    if (((UnitGetType(lp_unit) == "Overlord") || (UnitGetType(lp_unit) == "Roach") || (UnitGetType(lp_unit) == "Hydralisk") || (UnitGetType(lp_unit) == "Corruptor"))) {
-        lv_boolean = true;
+    lv_playerIndex = UnitGetOwner(lp_unit);
+    auto4A02EB2A_ae = 28;
+    auto4A02EB2A_ai = 1;
+    lv_controlGroupIndex = 21;
+    for ( ; ( (auto4A02EB2A_ai >= 0 && lv_controlGroupIndex <= auto4A02EB2A_ae) || (auto4A02EB2A_ai <= 0 && lv_controlGroupIndex >= auto4A02EB2A_ae) ) ; lv_controlGroupIndex += auto4A02EB2A_ai ) {
+        if ((UnitGetCustomValue(lp_unit, lv_controlGroupIndex) == 1)) {
+            DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[(lv_controlGroupIndex - 20)], PlayerGroupSingle(lv_playerIndex), "EventDamage");
+        }
     }
-    else {
-        lv_boolean = false;
-    }
-    return lv_boolean;
 }
 
-int libSCPL_gf_LabelsPlusUnitIconSize (unit lp_productionUnit) {
+void libSCPL_gf_ControlGroupColorize (int lp_playerIndex, int lp_controlGroupIndex) {
     // Variable Declarations
-    int lv_iconSize;
-
-    // Variable Initialization
-
-    // Implementation
-    lv_iconSize = libSCPL_gv_labels.lv_iconSize;
-    if (((UnitGetType(lp_productionUnit) == "Egg") || (UnitGetType(lp_productionUnit) == "BanelingCocoon") || (UnitGetType(lp_productionUnit) == "RavagerCocoon") || (UnitGetType(lp_productionUnit) == "LurkerMPEgg") || (UnitGetType(lp_productionUnit) == "BroodLordCocoon") || (UnitGetType(lp_productionUnit) == "TransportOverlordCocoon") || (UnitGetType(lp_productionUnit) == "OverlordCocoon") || (UnitGetType(lp_productionUnit) == "Larva") || (UnitGetType(lp_productionUnit) == "Zergling") || (UnitGetType(lp_productionUnit) == "Roach") || (UnitGetType(lp_productionUnit) == "Hydralisk") || (UnitGetType(lp_productionUnit) == "Corruptor") || (UnitGetType(lp_productionUnit) == "Overlord"))) {
-        lv_iconSize = libSCPL_gv_labels.lv_iconSizeEgg;
-    }
-    else if (((UnitGetType(lp_productionUnit) == "TechLab") || (UnitGetType(lp_productionUnit) == "BarracksTechLab") || (UnitGetType(lp_productionUnit) == "FactoryTechLab") || (UnitGetType(lp_productionUnit) == "StarportTechLab") || (UnitGetType(lp_productionUnit) == "MothershipCore"))) {
-        lv_iconSize = libSCPL_gv_labels.lv_iconSizeTechLab;
-    }
-    return lv_iconSize;
-}
-
-void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex) {
-    int autoD8374162_ae;
-    int autoD8374162_ai;
-
-    // Variable Declarations
-    int lv_frameIndex;
+    int lv_colorIndex;
     unitgroup lv_controlGroup;
     int lv_controlGroupCount;
 
@@ -1662,13 +2157,150 @@ void libSCPL_gf_PlayerControlGroupUpdate (int lp_playerIndex) {
     lv_controlGroup = UnitGroupEmpty();
 
     // Implementation
-    autoD8374162_ae = 9;
-    autoD8374162_ai = 1;
-    lv_frameIndex = 0;
-    for ( ; ( (autoD8374162_ai >= 0 && lv_frameIndex <= autoD8374162_ae) || (autoD8374162_ai <= 0 && lv_frameIndex >= autoD8374162_ae) ) ; lv_frameIndex += autoD8374162_ai ) {
-        lv_controlGroup = UnitSubgroupSelected(1);
-        libNtve_gf_CopyUnitControlGroups(UnitLastCreated(), EventUnit());
+    lv_controlGroup = libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex];
+    lv_controlGroupCount = UnitGroupCount(lv_controlGroup, c_unitCountAlive);
+    if ((lv_controlGroupCount == 0)) {
+        return ;
     }
+    lv_colorIndex = libSCPL_gf_UnitGroupHealthIndex(lv_controlGroup);
+    DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventColorize");
+    DialogControlSetAnimationTime(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "ColorizeVitals", lv_colorIndex);
+    DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventPause");
+}
+
+int libSCPL_gf_UnitGroupHealthIndex (unitgroup lp_unitGroup) {
+    unitgroup autoABB6BC2E_g;
+    int autoABB6BC2E_u;
+
+    // Variable Declarations
+    fixed lv_healthIndex;
+    int lv_unitGroupCount;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_unitGroupCount = UnitGroupCount(lp_unitGroup, c_unitCountAlive);
+    autoABB6BC2E_g = lp_unitGroup;
+    autoABB6BC2E_u = 1;
+    for ( ; autoABB6BC2E_u <= UnitGroupCount(autoABB6BC2E_g, c_unitCountAll) ; autoABB6BC2E_u += BoolToInt(lv_unit == UnitGroupUnit(autoABB6BC2E_g, autoABB6BC2E_u)) ) {
+        lv_unit = UnitGroupUnit(autoABB6BC2E_g, autoABB6BC2E_u);
+        lv_healthIndex += UnitGetPropertyFixed(lv_unit, c_unitPropVitalityPercent, c_unitPropCurrent);
+    }
+    lv_healthIndex /= lv_unitGroupCount;
+    lv_healthIndex = (100 - FixedToInt(lv_healthIndex));
+    return FixedToInt(lv_healthIndex);
+}
+
+void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_playerIndex) {
+    // Variable Declarations
+    string lv_unitType;
+    unitgroup lv_controlGroup;
+    int lv_controlGroupCount;
+    string lv_controlGroupIcon;
+    string lv_race;
+
+    // Variable Initialization
+    lv_controlGroup = UnitGroupEmpty();
+    lv_race = "";
+
+    // Implementation
+    lv_controlGroup = libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex];
+    lv_controlGroup = UnitGroupFilter(null, c_playerAny, lv_controlGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    lv_controlGroupCount = UnitGroupCount(lv_controlGroup, c_unitCountAlive);
+    if ((lv_controlGroupCount == 0)) {
+        DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventReset");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_consoleControlGroupLabel[lp_controlGroupIndex], StringToText(""), PlayerGroupSingle(lp_playerIndex));
+        libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], "Assets\\Textures\\black.dds", PlayerGroupSingle(lp_playerIndex));
+        if ((lp_controlGroupIndex != 1)) {
+            DialogControlSetVisible(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), false);
+        }
+    }
+    else {
+        lv_controlGroupIcon = "Assets\\Textures\\black.dds";
+        lv_unitType = libSCPL_gf_ControlGroupUnitsGetPriorityType(lv_controlGroup);
+        if ((StringContains(lv_unitType, "Burrowed", c_stringAnywhere, c_stringNoCase) == true)) {
+            lv_unitType = (StringReplaceWord(lv_unitType, "Burrowed", "", 1, c_stringNoCase));
+        }
+        if ((CatalogEntryIsValid(c_gameCatalogActor, lv_unitType) == true)) {
+            lv_controlGroupIcon = CatalogFieldValueGet(c_gameCatalogActor, lv_unitType, "UnitIcon", c_playerAny);;
+        }
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), true);
+        DialogControlFadeTransparency(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), 0.0, 0.0);
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_consoleControlGroupLabel[lp_controlGroupIndex], IntToText(lv_controlGroupCount), PlayerGroupSingle(lp_playerIndex));
+        libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], lv_controlGroupIcon, PlayerGroupSingle(lp_playerIndex));
+        libSCPL_gf_ControlGroupColorize(lp_playerIndex, lp_controlGroupIndex);
+    }
+}
+
+void libSCPL_gf_ControlGroupUnitsAssign (unitgroup lp_unitGroup, int lp_controlGroupIndex, int lp_playerIndex) {
+    unitgroup auto4FE71402_g;
+    int auto4FE71402_u;
+
+    // Variable Declarations
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Implementation
+    auto4FE71402_g = libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex];
+    auto4FE71402_u = 1;
+    for ( ; auto4FE71402_u <= UnitGroupCount(auto4FE71402_g, c_unitCountAll) ; auto4FE71402_u += BoolToInt(lv_unit == UnitGroupUnit(auto4FE71402_g, auto4FE71402_u)) ) {
+        lv_unit = UnitGroupUnit(auto4FE71402_g, auto4FE71402_u);
+        UnitSetCustomValue(lv_unit, (20 + lp_controlGroupIndex), 0.0);
+    }
+    libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex] = UnitGroupEmpty();
+    libSCPL_gf_ControlGroupUnitsAdd(lp_unitGroup, lp_controlGroupIndex, lp_playerIndex);
+}
+
+void libSCPL_gf_ControlGroupUnitsAdd (unitgroup lp_unitGroup, int lp_controlGroupIndex, int lp_playerIndex) {
+    unitgroup auto9CA46B02_g;
+    int auto9CA46B02_u;
+
+    // Variable Declarations
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Implementation
+    UnitGroupAddUnitGroup(libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex], lp_unitGroup);
+    auto9CA46B02_g = lp_unitGroup;
+    auto9CA46B02_u = 1;
+    for ( ; auto9CA46B02_u <= UnitGroupCount(auto9CA46B02_g, c_unitCountAll) ; auto9CA46B02_u += BoolToInt(lv_unit == UnitGroupUnit(auto9CA46B02_g, auto9CA46B02_u)) ) {
+        lv_unit = UnitGroupUnit(auto9CA46B02_g, auto9CA46B02_u);
+        UnitSetCustomValue(lv_unit, (20 + lp_controlGroupIndex), 1.0);
+    }
+}
+
+string libSCPL_gf_ControlGroupUnitsGetPriorityType (unitgroup lp_controlGroup) {
+    unitgroup auto634AEBFD_g;
+    int auto634AEBFD_u;
+
+    // Variable Declarations
+    unit lv_unit;
+    string lv_unitType;
+    string lv_unitTypeBest;
+    int lv_unitScore;
+    int lv_unitScoreBest;
+
+    // Variable Initialization
+
+    // Implementation
+    auto634AEBFD_g = lp_controlGroup;
+    auto634AEBFD_u = 1;
+    for ( ; auto634AEBFD_u <= UnitGroupCount(auto634AEBFD_g, c_unitCountAll) ; auto634AEBFD_u += BoolToInt(lv_unit == UnitGroupUnit(auto634AEBFD_g, auto634AEBFD_u)) ) {
+        lv_unit = UnitGroupUnit(auto634AEBFD_g, auto634AEBFD_u);
+        if ((UnitGetType(lv_unit) == lv_unitType)) {
+            continue;
+        }
+        lv_unitType = UnitGetType(lv_unit);
+        lv_unitScore = CatalogFieldValueGetAsInt(c_gameCatalogUnit, (lv_unitType), "SubgroupPriority", c_playerAny);
+        if ((lv_unitScore > lv_unitScoreBest)) {
+            lv_unitScoreBest = lv_unitScore;
+            lv_unitTypeBest = lv_unitType;
+        }
+    }
+    return lv_unitTypeBest;
 }
 
 void libSCPL_gf_TriggerEventRegisterUnitDies (trigger lp_trigger, unit lp_unit) {
@@ -1679,32 +2311,6 @@ void libSCPL_gf_TriggerEventRegisterUnitDies (trigger lp_trigger, unit lp_unit) 
 void libSCPL_gf_TriggerEventRegisterDialogItemClicked (trigger lp_trigger, int lp_dialogItem) {
     // Implementation
     TriggerAddEventDialogControl(lp_trigger, c_playerAny, lp_dialogItem, c_triggerControlEventTypeClick);
-}
-
-unitgroup libSCPL_gf_WorkerGroupNotHarvestingGas (unitgroup lp_ug) {
-    int auto9B40E8A0_ae;
-    int auto9B40E8A0_ai;
-
-    // Variable Declarations
-    int lv_n;
-    unit lv_w;
-    unitgroup lv_wg;
-
-    // Variable Initialization
-    lv_wg = UnitGroupEmpty();
-
-    // Implementation
-    lv_wg = UnitGroupCopy(lp_ug);
-    auto9B40E8A0_ae = UnitGroupCount(lp_ug, c_unitCountAlive);
-    auto9B40E8A0_ai = 1;
-    lv_n = 1;
-    for ( ; ( (auto9B40E8A0_ai >= 0 && lv_n <= auto9B40E8A0_ae) || (auto9B40E8A0_ai <= 0 && lv_n >= auto9B40E8A0_ae) ) ; lv_n += auto9B40E8A0_ai ) {
-        lv_w = UnitGroupUnit(lv_wg, lv_n);
-        if ((UnitGetChargeUsed(lv_w, "HarvestGas") == 1.0)) {
-            UnitGroupRemove(lv_wg, lv_w);
-        }
-    }
-    return lv_wg;
 }
 
 trigger auto_libSCPL_gf_DebugTextTag_Trigger = null;
@@ -2123,30 +2729,6 @@ void libSCPL_gt_InitializationPlus_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: 0
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
-        GameSetGlobalTimeScale(20.0);
-    }
-    else {
-        GameSetGlobalTimeScale(1.0);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt__0_Init () {
-    libSCPL_gt__0 = TriggerCreate("libSCPL_gt__0_Func");
-    TriggerAddEventKeyPressed(libSCPL_gt__0, c_playerAny, c_keyNumPad0, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: Progress Morph Refund 01
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressMorphRefund01_Func (bool testConds, bool runActions) {
@@ -2214,6 +2796,12 @@ void libSCPL_gt_ProgressMorphRefund01_Init () {
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToOrbitalUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToPlanetaryFortressUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("MorphDummyTrainNukeUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("BarracksReactorMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("FactoryReactorMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("StarportReactorMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("BarracksTechLabMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("FactoryTechLabMorphUCB", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("StarportTechLabMorphUCB", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("MorphToMothership", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToLair", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressMorphRefund01, null, AbilityCommand("UpgradeToHive", 0));
@@ -4919,6 +5507,7 @@ bool libSCPL_gt_GlobalRally00TargetCreated_Func (bool testConds, bool runActions
     lv_rallyUnit = EventUnitCreatedUnit();
     lv_playerIndex = UnitGetOwner(lv_rallyUnit);
     libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex] = lv_rallyUnit;
+    libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex] = null;
     UnitGroupIssueOrder(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], OrderTargetingUnit(AbilityCommand("Rally", 0), lv_rallyUnit), c_orderQueueReplace);
     return true;
 }
@@ -4956,6 +5545,7 @@ bool libSCPL_gt_GlobalRally01TargetCreated_Func (bool testConds, bool runActions
     lv_rallyUnit = EventUnitCreatedUnit();
     lv_playerIndex = UnitGetOwner(lv_rallyUnit);
     libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex] = lv_rallyUnit;
+    libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex] = null;
     UnitGroupIssueOrder(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], OrderTargetingUnit(AbilityCommand("Rally", 0), lv_rallyUnit), c_orderQueueReplace);
     return true;
 }
@@ -4993,6 +5583,7 @@ bool libSCPL_gt_GlobalRally02TargetCreated_Func (bool testConds, bool runActions
     lv_rallyUnit = EventUnitCreatedUnit();
     lv_playerIndex = UnitGetOwner(lv_rallyUnit);
     libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex] = lv_rallyUnit;
+    libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex] = null;
     UnitGroupIssueOrder(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], OrderTargetingUnit(AbilityCommand("Rally", 0), lv_rallyUnit), c_orderQueueReplace);
     return true;
 }
@@ -5014,6 +5605,13 @@ bool libSCPL_gt_GlobalRally00ProducerCreated_Func (bool testConds, bool runActio
 
     // Variable Initialization
 
+    // Conditions
+    if (testConds) {
+        if (!((PlayerRace(EventPlayer()) != "Zerg"))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
@@ -5023,7 +5621,12 @@ bool libSCPL_gt_GlobalRally00ProducerCreated_Func (bool testConds, bool runActio
     lv_productionUnit = EventUnit();
     lv_playerIndex = UnitGetOwner(lv_productionUnit);
     UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], lv_productionUnit);
-    UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    if ((UnitIsAlive(libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]) == true)) {
+        UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]), c_orderQueueReplace);
+    }
+    else {
+        UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    }
     return true;
 }
 
@@ -5044,6 +5647,13 @@ bool libSCPL_gt_GlobalRally01ProducerCreated_Func (bool testConds, bool runActio
 
     // Variable Initialization
 
+    // Conditions
+    if (testConds) {
+        if (!((PlayerRace(EventPlayer()) != "Zerg"))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
@@ -5053,7 +5663,12 @@ bool libSCPL_gt_GlobalRally01ProducerCreated_Func (bool testConds, bool runActio
     lv_productionUnit = EventUnit();
     lv_playerIndex = UnitGetOwner(lv_productionUnit);
     UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], lv_productionUnit);
-    UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    if ((UnitIsAlive(libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]) == true)) {
+        UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]), c_orderQueueReplace);
+    }
+    else {
+        UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    }
     return true;
 }
 
@@ -5074,6 +5689,13 @@ bool libSCPL_gt_GlobalRally02ProducerCreated_Func (bool testConds, bool runActio
 
     // Variable Initialization
 
+    // Conditions
+    if (testConds) {
+        if (!((PlayerRace(EventPlayer()) != "Zerg"))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
@@ -5083,7 +5705,12 @@ bool libSCPL_gt_GlobalRally02ProducerCreated_Func (bool testConds, bool runActio
     lv_productionUnit = EventUnit();
     lv_playerIndex = UnitGetOwner(lv_productionUnit);
     UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], lv_productionUnit);
-    UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    if ((UnitIsAlive(libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]) == true)) {
+        UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]), c_orderQueueReplace);
+    }
+    else {
+        UnitIssueOrder(lv_productionUnit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    }
     return true;
 }
 
@@ -5091,6 +5718,117 @@ bool libSCPL_gt_GlobalRally02ProducerCreated_Func (bool testConds, bool runActio
 void libSCPL_gt_GlobalRally02ProducerCreated_Init () {
     libSCPL_gt_GlobalRally02ProducerCreated = TriggerCreate("libSCPL_gt_GlobalRally02ProducerCreated_Func");
     TriggerAddEventUnitBehaviorChange(libSCPL_gt_GlobalRally02ProducerCreated, null, "GameUCBGlobalRally02ChargeLink", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 00 Producer Created Zerg
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally00ProducerCreatedZerg_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 0;
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], lv_unit);
+    if ((UnitIsAlive(libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]) == true)) {
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]), c_orderQueueReplace);
+    }
+    else {
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally00ProducerCreatedZerg_Init () {
+    libSCPL_gt_GlobalRally00ProducerCreatedZerg = TriggerCreate("libSCPL_gt_GlobalRally00ProducerCreatedZerg_Func");
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally00ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 1));
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally00ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 6));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 01 Producer Created Zerg
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally01ProducerCreatedZerg_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 1;
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], lv_unit);
+    if ((UnitIsAlive(libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]) == true)) {
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]), c_orderQueueReplace);
+    }
+    else {
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally01ProducerCreatedZerg_Init () {
+    libSCPL_gt_GlobalRally01ProducerCreatedZerg = TriggerCreate("libSCPL_gt_GlobalRally01ProducerCreatedZerg_Func");
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally01ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 9));
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally01ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 3));
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally01ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 10));
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally01ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 14));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Global Rally 02 Producer Created Zerg
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GlobalRally02ProducerCreatedZerg_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_rallyIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_rallyIndex = 2;
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], lv_unit);
+    if ((UnitIsAlive(libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]) == true)) {
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex]), c_orderQueueReplace);
+    }
+    else {
+        UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("Rally", 0), libSCPL_gv_player[lv_playerIndex].lv_globalRallyTarget[lv_rallyIndex]), c_orderQueueReplace);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GlobalRally02ProducerCreatedZerg_Init () {
+    libSCPL_gt_GlobalRally02ProducerCreatedZerg = TriggerCreate("libSCPL_gt_GlobalRally02ProducerCreatedZerg_Func");
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally02ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 4));
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally02ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 11));
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally02ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 12));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5130,6 +5868,7 @@ void libSCPL_gt_GlobalRallyProtossWarpGateUnitCreated_Init () {
 bool libSCPL_gt_GlobalRally00AttachUnit_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_playerIndex;
+    int lv_rallyIndex;
     unit lv_rallyUnit;
     unit lv_targetUnit;
 
@@ -5140,9 +5879,12 @@ bool libSCPL_gt_GlobalRally00AttachUnit_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    lv_rallyIndex = 0;
     lv_playerIndex = UnitGetOwner(EventUnitDamageSourceUnit());
     lv_targetUnit = EventUnit();
     lv_rallyUnit = libSCPL_gf_DebugPlayerUnit(lv_playerIndex, "GameGlobalRallyTarget00");
+    libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex] = lv_targetUnit;
+    UnitGroupIssueOrder(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], OrderTargetingUnit(AbilityCommand("Rally", 0), lv_targetUnit), c_orderQueueReplace);
     UnitBehaviorAdd(lv_rallyUnit, "KineticFollow", lv_targetUnit, 1);
     return true;
 }
@@ -5159,6 +5901,7 @@ void libSCPL_gt_GlobalRally00AttachUnit_Init () {
 bool libSCPL_gt_GlobalRally01AttachUnit_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_playerIndex;
+    int lv_rallyIndex;
     unit lv_rallyUnit;
     unit lv_targetUnit;
 
@@ -5169,9 +5912,12 @@ bool libSCPL_gt_GlobalRally01AttachUnit_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    lv_rallyIndex = 1;
     lv_playerIndex = UnitGetOwner(EventUnitDamageSourceUnit());
     lv_targetUnit = EventUnit();
     lv_rallyUnit = libSCPL_gf_DebugPlayerUnit(lv_playerIndex, "GameGlobalRallyTarget01");
+    libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex] = lv_targetUnit;
+    UnitGroupIssueOrder(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], OrderTargetingUnit(AbilityCommand("Rally", 0), lv_targetUnit), c_orderQueueReplace);
     UnitBehaviorAdd(lv_rallyUnit, "KineticFollow", lv_targetUnit, 1);
     return true;
 }
@@ -5188,6 +5934,7 @@ void libSCPL_gt_GlobalRally01AttachUnit_Init () {
 bool libSCPL_gt_GlobalRally02AttachUnit_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_playerIndex;
+    int lv_rallyIndex;
     unit lv_rallyUnit;
     unit lv_targetUnit;
 
@@ -5198,9 +5945,12 @@ bool libSCPL_gt_GlobalRally02AttachUnit_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    lv_rallyIndex = 2;
     lv_playerIndex = UnitGetOwner(EventUnitDamageSourceUnit());
     lv_targetUnit = EventUnit();
     lv_rallyUnit = libSCPL_gf_DebugPlayerUnit(lv_playerIndex, "GameGlobalRallyTarget02");
+    libSCPL_gv_player[lv_playerIndex].lv_globalRallyTargetUnit[lv_rallyIndex] = lv_targetUnit;
+    UnitGroupIssueOrder(libSCPL_gv_player[lv_playerIndex].lv_globalRallyGroup[lv_rallyIndex], OrderTargetingUnit(AbilityCommand("Rally", 0), lv_targetUnit), c_orderQueueReplace);
     UnitBehaviorAdd(lv_rallyUnit, "KineticFollow", lv_targetUnit, 1);
     return true;
 }
@@ -5209,6 +5959,284 @@ bool libSCPL_gt_GlobalRally02AttachUnit_Func (bool testConds, bool runActions) {
 void libSCPL_gt_GlobalRally02AttachUnit_Init () {
     libSCPL_gt_GlobalRally02AttachUnit = TriggerCreate("libSCPL_gt_GlobalRally02AttachUnit_Func");
     TriggerAddEventUnitDamaged(libSCPL_gt_GlobalRally02AttachUnit, null, c_unitDamageTypeAny, c_unitDamageEither, "GlobalRallyTarget02UnitImpact");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Auto Add Toggle T1
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAutoAddToggleT1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_controlIndex = 1;
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] = UnitCheckAbilCmdState(EventUnit(), EventUnitAbility(), c_cmdStateIsAutoCast);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAutoAddToggleT1_Init () {
+    libSCPL_gt_ControlGroupAutoAddToggleT1 = TriggerCreate("libSCPL_gt_ControlGroupAutoAddToggleT1_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(libSCPL_gt_ControlGroupAutoAddToggleT1, null, AbilityCommand("GameGlobalRallyTarget00", 0), c_unitAbilAutoCastChangeAll, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Auto Add Toggle T2
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAutoAddToggleT2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_controlIndex = 2;
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] = UnitCheckAbilCmdState(EventUnit(), EventUnitAbility(), c_cmdStateIsAutoCast);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAutoAddToggleT2_Init () {
+    libSCPL_gt_ControlGroupAutoAddToggleT2 = TriggerCreate("libSCPL_gt_ControlGroupAutoAddToggleT2_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(libSCPL_gt_ControlGroupAutoAddToggleT2, null, AbilityCommand("GameGlobalRallyTarget01", 0), c_unitAbilAutoCastChangeAll, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Auto Add Toggle T3
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAutoAddToggleT3_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_controlIndex = 3;
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] = UnitCheckAbilCmdState(EventUnit(), EventUnitAbility(), c_cmdStateIsAutoCast);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAutoAddToggleT3_Init () {
+    libSCPL_gt_ControlGroupAutoAddToggleT3 = TriggerCreate("libSCPL_gt_ControlGroupAutoAddToggleT3_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(libSCPL_gt_ControlGroupAutoAddToggleT3, null, AbilityCommand("GameGlobalRallyTarget02", 0), c_unitAbilAutoCastChangeAll, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Auto Add T1
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAutoAddT1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_controlIndex;
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnitCreatedUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    lv_controlIndex = 1;
+    if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] == true)) {
+        libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lv_unit), lv_controlIndex, lv_playerIndex);
+        libSCPL_gf_ControlGroupUnitsUpdate(lv_controlIndex, lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAutoAddT1_Init () {
+    libSCPL_gt_ControlGroupAutoAddT1 = TriggerCreate("libSCPL_gt_ControlGroupAutoAddT1_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_ControlGroupAutoAddT1, null, "BarracksTrain", null);
+    TriggerAddEventUnitCreated(libSCPL_gt_ControlGroupAutoAddT1, null, "GatewayTrain", null);
+    TriggerAddEventUnitCreated(libSCPL_gt_ControlGroupAutoAddT1, null, "WarpGateTrain", null);
+    TriggerAddEventUnitCreated(libSCPL_gt_ControlGroupAutoAddT1, null, "WarpGateTrainUCB", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Auto Add T2
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAutoAddT2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_controlIndex;
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnitCreatedUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    lv_controlIndex = 2;
+    if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] == true)) {
+        libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lv_unit), lv_controlIndex, lv_playerIndex);
+        libSCPL_gf_ControlGroupUnitsUpdate(lv_controlIndex, lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAutoAddT2_Init () {
+    libSCPL_gt_ControlGroupAutoAddT2 = TriggerCreate("libSCPL_gt_ControlGroupAutoAddT2_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_ControlGroupAutoAddT2, null, "FactoryTrain", null);
+    TriggerAddEventUnitCreated(libSCPL_gt_ControlGroupAutoAddT2, null, "RoboticsFacilityTrain", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Auto Add T3
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAutoAddT3_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_controlIndex;
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnitCreatedUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    lv_controlIndex = 3;
+    if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] == true)) {
+        libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lv_unit), lv_controlIndex, lv_playerIndex);
+        libSCPL_gf_ControlGroupUnitsUpdate(lv_controlIndex, lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAutoAddT3_Init () {
+    libSCPL_gt_ControlGroupAutoAddT3 = TriggerCreate("libSCPL_gt_ControlGroupAutoAddT3_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_ControlGroupAutoAddT3, null, "StarportTrain", null);
+    TriggerAddEventUnitCreated(libSCPL_gt_ControlGroupAutoAddT3, null, "StargateTrain", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Auto Add T1 Zerg
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAutoAddT1Zerg_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_controlIndex;
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    lv_controlIndex = 1;
+    if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] == true)) {
+        libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lv_unit), lv_controlIndex, lv_playerIndex);
+        libSCPL_gf_ControlGroupUnitsUpdate(lv_controlIndex, lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAutoAddT1Zerg_Init () {
+    libSCPL_gt_ControlGroupAutoAddT1Zerg = TriggerCreate("libSCPL_gt_ControlGroupAutoAddT1Zerg_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ControlGroupAutoAddT1Zerg, null, "GameUCBGlobalRallyZergMelee", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Auto Add T2 Zerg
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAutoAddT2Zerg_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_controlIndex;
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    lv_controlIndex = 2;
+    if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] == true)) {
+        libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lv_unit), lv_controlIndex, lv_playerIndex);
+        libSCPL_gf_ControlGroupUnitsUpdate(lv_controlIndex, lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAutoAddT2Zerg_Init () {
+    libSCPL_gt_ControlGroupAutoAddT2Zerg = TriggerCreate("libSCPL_gt_ControlGroupAutoAddT2Zerg_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ControlGroupAutoAddT2Zerg, null, "GameUCBGlobalRallyZergRanged", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Auto Add T3 Zerg
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAutoAddT3Zerg_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_controlIndex;
+    int lv_playerIndex;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    lv_controlIndex = 3;
+    if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] == true)) {
+        libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lv_unit), lv_controlIndex, lv_playerIndex);
+        libSCPL_gf_ControlGroupUnitsUpdate(lv_controlIndex, lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAutoAddT3Zerg_Init () {
+    libSCPL_gt_ControlGroupAutoAddT3Zerg = TriggerCreate("libSCPL_gt_ControlGroupAutoAddT3Zerg_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ControlGroupAutoAddT3Zerg, null, "GameUCBGlobalRallyZergFlyer", c_unitBehaviorChangeCreate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6080,6 +7108,198 @@ bool libSCPL_gt_MuleHarvestNearestResoures_Func (bool testConds, bool runActions
 void libSCPL_gt_MuleHarvestNearestResoures_Init () {
     libSCPL_gt_MuleHarvestNearestResoures = TriggerCreate("libSCPL_gt_MuleHarvestNearestResoures_Func");
     TriggerAddEventUnitCreated(libSCPL_gt_MuleHarvestNearestResoures, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Barracks Addon Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkBarracksAddonCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Barracks" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == libSCPL_gv_cHARGEMAX) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 1)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, -1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkBarracksAddonCreate_Init () {
+    libSCPL_gt_UCBChargeLinkBarracksAddonCreate = TriggerCreate("libSCPL_gt_UCBChargeLinkBarracksAddonCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkBarracksAddonCreate, null, "GameUCBBarracksAddon", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Barracks Addon Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkBarracksAddonDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Barracks" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == (libSCPL_gv_cHARGEMAX - 1.0)) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 0)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, 1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkBarracksAddonDestroy_Init () {
+    libSCPL_gt_UCBChargeLinkBarracksAddonDestroy = TriggerCreate("libSCPL_gt_UCBChargeLinkBarracksAddonDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkBarracksAddonDestroy, null, "GameUCBBarracksAddon", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Factory Addon Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkFactoryAddonCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Factory" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == libSCPL_gv_cHARGEMAX) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 1)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, -1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkFactoryAddonCreate_Init () {
+    libSCPL_gt_UCBChargeLinkFactoryAddonCreate = TriggerCreate("libSCPL_gt_UCBChargeLinkFactoryAddonCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkFactoryAddonCreate, null, "GameUCBFactoryAddon", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Factory Addon Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkFactoryAddonDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Factory" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == (libSCPL_gv_cHARGEMAX - 1.0)) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 0)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, 1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkFactoryAddonDestroy_Init () {
+    libSCPL_gt_UCBChargeLinkFactoryAddonDestroy = TriggerCreate("libSCPL_gt_UCBChargeLinkFactoryAddonDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkFactoryAddonDestroy, null, "GameUCBFactoryAddon", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Starport Addon Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkStarportAddonCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Starport" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == libSCPL_gv_cHARGEMAX) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 1)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, -1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkStarportAddonCreate_Init () {
+    libSCPL_gt_UCBChargeLinkStarportAddonCreate = TriggerCreate("libSCPL_gt_UCBChargeLinkStarportAddonCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkStarportAddonCreate, null, "GameUCBStarportAddon", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Charge Link Starport Addon Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBChargeLinkStarportAddonDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    string lv_chargeLink;
+    fixed lv_charges;
+
+    // Variable Initialization
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_chargeLink = ("UCB/" + "Starport" + "Addon");
+    lv_charges = PlayerGetChargeUsed(lv_playerIndex, lv_chargeLink);
+    if ((lv_charges == (libSCPL_gv_cHARGEMAX - 1.0)) && (TechTreeBehaviorCount(lv_playerIndex, EventUnitBehavior(), c_techCountCompleteOnly) == 0)) {
+        PlayerAddChargeUsed(lv_playerIndex, lv_chargeLink, 1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBChargeLinkStarportAddonDestroy_Init () {
+    libSCPL_gt_UCBChargeLinkStarportAddonDestroy = TriggerCreate("libSCPL_gt_UCBChargeLinkStarportAddonDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_UCBChargeLinkStarportAddonDestroy, null, "GameUCBStarportAddon", c_unitBehaviorChangeDestroy);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7055,15 +8275,80 @@ void libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Mineral Create
+// Trigger: Upgrade Notifications - Initialization
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplayMineralCreate_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_UpgradeNotificationsInitialization_Func (bool testConds, bool runActions) {
+    int autoF61FB29D_ae;
+    int autoF61FB29D_ai;
+
     // Variable Declarations
-    int lv_playerIndex;
-    fixed lv_resourceModifier;
-    fixed lv_resourceIncome;
+    int lv_slot;
 
     // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoF61FB29D_ae = libSCPL_gv_upgradeNotificationsMaxUISlots;
+    autoF61FB29D_ai = 1;
+    lv_slot = 0;
+    for ( ; ( (autoF61FB29D_ai >= 0 && lv_slot <= autoF61FB29D_ae) || (autoF61FB29D_ai <= 0 && lv_slot >= autoF61FB29D_ae) ) ; lv_slot += autoF61FB29D_ai ) {
+        DialogControlHookupStandard(c_triggerControlTypePanel, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + IntToString(lv_slot)));
+        libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_slot] = DialogControlLastCreated();
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        DialogControlHookupStandard(c_triggerControlTypeLabel, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerStatus")));
+        libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_slot] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeProgressBar, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerBar")));
+        libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_slot] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeLabel, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerCountdown")));
+        libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_slot] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeImage, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerIcon")));
+        libSCPL_gv_upgradeNotifications.lv_itemIcon[lv_slot] = DialogControlLastCreated();
+        DialogControlHookupStandard(c_triggerControlTypeLabel, ("UIContainer/FullscreenUpperContainer/TimerNotificationPanel/ToggledContent/TimerFrame" + (IntToString(lv_slot) + "/TimerWindow/TimerType")));
+        libSCPL_gv_upgradeNotifications.lv_itemName[lv_slot] = DialogControlLastCreated();
+        libNtve_gf_SetDialogItemMaximumValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_slot], libSCPL_gv_upgradeNotificationsVisibleTime, PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_slot], StringToText(""), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemName[lv_slot], StringToText(""), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemColor(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_slot], Color(100,100,100), PlayerGroupAll());
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UpgradeNotificationsInitialization_Init () {
+    libSCPL_gt_UpgradeNotificationsInitialization = TriggerCreate("libSCPL_gt_UpgradeNotificationsInitialization_Func");
+    TriggerAddEventMapInit(libSCPL_gt_UpgradeNotificationsInitialization);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Notifications - Research Started
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UpgradeNotificationsResearchStarted_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_slot;
+    unit lv_facility;
+    string lv_upgrade;
+    int lv_playerIndex;
+    playergroup lv_pLAYER;
+
+    // Variable Initialization
+    lv_facility = EventUnit();
+    lv_upgrade = libNtve_gf_TriggeringProgressUpgrade();
+    lv_pLAYER = PlayerGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsAlive(EventUnit()) == true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
 
     // Actions
     if (!runActions) {
@@ -7071,28 +8356,50 @@ bool libSCPL_gt_ResourceDisplayMineralCreate_Func (bool testConds, bool runActio
     }
 
     lv_playerIndex = UnitGetOwner(EventUnit());
-    lv_resourceModifier = -0.714;
-    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMinerals);
-    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    lv_pLAYER = PlayerGroupSingle(lv_playerIndex);
+    libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lv_playerIndex] += 1;
+    lv_slot = libSCPL_gv_upgradeNotifications.lv_slotLastUsed[lv_playerIndex];
+    libSCPL_gv_upgradeNotifications.lv_slotFacility[lv_slot][lv_playerIndex] = lv_facility;
+    if ((lv_slot <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gf_UpgradeNotificationsSetSlotData(lv_slot, libSCPL_gf_UpgradeNotificationsUpgradeName(lv_upgrade, lv_playerIndex), libSCPL_gf_UpgradeNotificationsUpgradeImage(lv_upgrade, lv_playerIndex), false, lv_playerIndex);
+        if ((libSCPL_gv_upgradeNotifications.lv_updateThreadRunning[lv_playerIndex] == false)) {
+            libSCPL_gv_upgradeNotifications.lv_updateThreadRunning[lv_playerIndex] = true;
+            libSCPL_gf_UpgradeNotificationsUpdateThread(lv_playerIndex);
+        }
+        libNtve_gf_SetDialogItemText(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_slot], StringToText(""), lv_pLAYER);
+        DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerLabel[lv_slot], lv_pLAYER, true);
+        DialogControlSetVisible(libSCPL_gv_upgradeNotifications.lv_itemTimerStatus[lv_slot], lv_pLAYER, false);
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_slot][lv_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_HiddenOccupiedwithrunningUpgrade;
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_slot], 0.0, lv_pLAYER);
+    }
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplayMineralCreate_Init () {
-    libSCPL_gt_ResourceDisplayMineralCreate = TriggerCreate("libSCPL_gt_ResourceDisplayMineralCreate_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralCreate, null, "GameResourceMarkerMinerals", c_unitBehaviorChangeCreate);
+void libSCPL_gt_UpgradeNotificationsResearchStarted_Init () {
+    libSCPL_gt_UpgradeNotificationsResearchStarted = TriggerCreate("libSCPL_gt_UpgradeNotificationsResearchStarted_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_UpgradeNotificationsResearchStarted, null, c_unitProgressStageStart);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Mineral Rich Create
+// Trigger: Upgrade Notifications - Research Cancelled
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplayMineralRichCreate_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_UpgradeNotificationsResearchCancelled_Func (bool testConds, bool runActions) {
     // Variable Declarations
+    unit lv_facility;
+    int lv_slot;
     int lv_playerIndex;
-    fixed lv_resourceModifier;
-    fixed lv_resourceIncome;
 
     // Variable Initialization
+    lv_facility = EventUnit();
+    lv_slot = libSCPL_gf_UpgradeNotificationsFacilitySlot(lv_facility, UnitGetOwner(lv_facility));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
 
     // Actions
     if (!runActions) {
@@ -7100,268 +8407,116 @@ bool libSCPL_gt_ResourceDisplayMineralRichCreate_Func (bool testConds, bool runA
     }
 
     lv_playerIndex = UnitGetOwner(EventUnit());
-    lv_resourceModifier = -0.714;
-    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsRich);
-    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplayMineralRichCreate_Init () {
-    libSCPL_gt_ResourceDisplayMineralRichCreate = TriggerCreate("libSCPL_gt_ResourceDisplayMineralRichCreate_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralRichCreate, null, "GameResourceMarkerMineralsRich", c_unitBehaviorChangeCreate);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Mineral MULE Create
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplayMineralMULECreate_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    fixed lv_resourceModifier;
-    fixed lv_resourceIncome;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = UnitGetOwner(EventUnit());
-    lv_resourceModifier = -0.714;
-    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE);
-    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplayMineralMULECreate_Init () {
-    libSCPL_gt_ResourceDisplayMineralMULECreate = TriggerCreate("libSCPL_gt_ResourceDisplayMineralMULECreate_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralMULECreate, null, "GameResourceMarkerMineralsMULE", c_unitBehaviorChangeCreate);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Vespene Create
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplayVespeneCreate_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    fixed lv_resourceModifier;
-    fixed lv_resourceIncome;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = UnitGetOwner(EventUnit());
-    lv_resourceModifier = -0.714;
-    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeVespene);
-    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, 0.0, lv_resourceIncome);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplayVespeneCreate_Init () {
-    libSCPL_gt_ResourceDisplayVespeneCreate = TriggerCreate("libSCPL_gt_ResourceDisplayVespeneCreate_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayVespeneCreate, null, "GameResourceMarkerVespene", c_unitBehaviorChangeCreate);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Mineral Destroy
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplayMineralDestroy_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    fixed lv_resourceModifier;
-    fixed lv_resourceIncome;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = UnitGetOwner(EventUnit());
-    lv_resourceModifier = 0.714;
-    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMinerals);
-    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplayMineralDestroy_Init () {
-    libSCPL_gt_ResourceDisplayMineralDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralDestroy_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralDestroy, null, "GameResourceMarkerMinerals", c_unitBehaviorChangeDestroy);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Mineral Rich Destroy
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplayMineralRichDestroy_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    fixed lv_resourceModifier;
-    fixed lv_resourceIncome;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = UnitGetOwner(EventUnit());
-    lv_resourceModifier = 0.714;
-    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsRich);
-    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplayMineralRichDestroy_Init () {
-    libSCPL_gt_ResourceDisplayMineralRichDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralRichDestroy_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralRichDestroy, null, "GameResourceMarkerMineralsRich", c_unitBehaviorChangeDestroy);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Mineral MULE Destroy
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplayMineralMULEDestroy_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    fixed lv_resourceModifier;
-    fixed lv_resourceIncome;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = UnitGetOwner(EventUnit());
-    lv_resourceModifier = 0.714;
-    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE);
-    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplayMineralMULEDestroy_Init () {
-    libSCPL_gt_ResourceDisplayMineralMULEDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralMULEDestroy_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralMULEDestroy, null, "GameResourceMarkerMineralsMULE", c_unitBehaviorChangeDestroy);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Vespene Destroy
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplayVespeneDestroy_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    fixed lv_resourceModifier;
-    fixed lv_resourceIncome;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = UnitGetOwner(EventUnit());
-    lv_resourceModifier = 0.714;
-    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeVespene);
-    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, 0.0, lv_resourceIncome);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplayVespeneDestroy_Init () {
-    libSCPL_gt_ResourceDisplayVespeneDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayVespeneDestroy_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayVespeneDestroy, null, "GameResourceMarkerVespene", c_unitBehaviorChangeDestroy);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Resource Display Spend
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    string lv_event;
-    string lv_parameter;
-    int lv_playerIndex;
-    fixed lv_gameSpeedFactor;
-    fixed lv_net;
-    fixed lv_spend;
-    string lv_spendDisplay;
-
-    // Variable Initialization
-    lv_event = "";
-    lv_parameter = "";
-    lv_spendDisplay = "";
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_event = libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend);
-    lv_parameter = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
-    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName(lv_event, lv_parameter));
-    lv_gameSpeedFactor = libSCPL_gv_constants.lv_gameSpeedFactor;
-    DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), true);
-    DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), true);
-    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
-    lv_net = (libSCPL_gv_player[lv_playerIndex].lv_resourceGainMinerals + libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals);
-    lv_net = (lv_net / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
-    if ((Round(lv_net) > 0.0)) {
-        lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
+    if ((lv_slot <= libSCPL_gv_upgradeNotificationsMaxUISlots) && (DialogControlIsVisible(libSCPL_gv_upgradeNotifications.lv_itemPanel[lv_slot], lv_playerIndex) == true)) {
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_slot][lv_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_OccupiedwithdestroyedcompletedUpgrade;
+        TimerStart(libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_slot][lv_playerIndex], libSCPL_gv_upgradeDisplayTime, false, c_timeGame);
+        if ((UnitIsAlive(lv_facility) == false)) {
+            libSCPL_gf_UpgradeNotificationsSetStatusLabel(lv_slot, StringExternal("Param/Value/lib_SCPL_FE8FB489"), lv_playerIndex);
+        }
+        else {
+            libSCPL_gf_UpgradeNotificationsSetStatusLabel(lv_slot, StringExternal("Param/Value/lib_SCPL_F9A0DB61"), lv_playerIndex);
+        }
     }
     else {
-        lv_net = (-1.0 * lv_net);
-        lv_spendDisplay = ("( + " + FixedToString(lv_net, 0) + ")");
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Positive");
-    }
-    if ((lv_spend > libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex))) {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpendAttention, PlayerGroupSingle(lv_playerIndex), true);
-    }
-    else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpendAttention, PlayerGroupSingle(lv_playerIndex), false);
-    }
-    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
-    lv_net = (libSCPL_gv_player[lv_playerIndex].lv_resourceGainVespene + libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene);
-    lv_net = (lv_net / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
-    if ((Round(lv_net) > 0.0)) {
-        lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
-    }
-    else {
-        lv_net = (-1.0 * lv_net);
-        lv_spendDisplay = ("( + " + FixedToString(lv_net, 0) + ")");
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Positive");
-    }
-    if ((lv_spend > libSCPL_gf_PlayerAvailableVespene(lv_playerIndex))) {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpendAttention, PlayerGroupSingle(lv_playerIndex), true);
-    }
-    else {
-        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpendAttention, PlayerGroupSingle(lv_playerIndex), false);
+        libSCPL_gf_UpgradeNotificationsRemoveRunningUpgradeImmediate(libSCPL_gf_UpgradeNotificationsFacilitySlot(lv_facility, lv_playerIndex), lv_playerIndex);
     }
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ResourceDisplaySpend_Init () {
-    libSCPL_gt_ResourceDisplaySpend = TriggerCreate("libSCPL_gt_ResourceDisplaySpend_Func");
-    libSCPL_gf_ResourceSpendChanges(libSCPL_gt_ResourceDisplaySpend);
+void libSCPL_gt_UpgradeNotificationsResearchCancelled_Init () {
+    libSCPL_gt_UpgradeNotificationsResearchCancelled = TriggerCreate("libSCPL_gt_UpgradeNotificationsResearchCancelled_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_UpgradeNotificationsResearchCancelled, null, c_unitProgressStageCancel);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Notifications - Research Completed
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UpgradeNotificationsResearchCompleted_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_facility;
+    int lv_slot;
+    int lv_playerIndex;
+    playergroup lv_pLAYER;
+
+    // Variable Initialization
+    lv_facility = EventUnit();
+    lv_slot = libSCPL_gf_UpgradeNotificationsFacilitySlot(lv_facility, UnitGetOwner(lv_facility));
+    lv_pLAYER = PlayerGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_pLAYER = PlayerGroupSingle(lv_playerIndex);
+    if ((lv_slot <= libSCPL_gv_upgradeNotificationsMaxUISlots)) {
+        libSCPL_gv_upgradeNotifications.lv_slotStatus[lv_slot][lv_playerIndex] = libSCPL_ge_UpgradeNotificationsSlotStatus_OccupiedwithdestroyedcompletedUpgrade;
+        libSCPL_gf_UpgradeNotificationsSetStatusLabel(lv_slot, StringExternal("Param/Value/lib_SCPL_3228FF8F"), lv_playerIndex);
+        libNtve_gf_SetDialogItemCurrentValue(libSCPL_gv_upgradeNotifications.lv_itemProgressBar[lv_slot], libSCPL_gv_upgradeNotificationsVisibleTime, lv_pLAYER);
+        TimerStart(libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_slot][lv_playerIndex], libSCPL_gv_upgradeDisplayTime, false, c_timeGame);
+    }
+    else {
+        libSCPL_gf_UpgradeNotificationsRemoveRunningUpgradeImmediate(libSCPL_gf_UpgradeNotificationsFacilitySlot(lv_facility, lv_playerIndex), lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UpgradeNotificationsResearchCompleted_Init () {
+    libSCPL_gt_UpgradeNotificationsResearchCompleted = TriggerCreate("libSCPL_gt_UpgradeNotificationsResearchCompleted_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_UpgradeNotificationsResearchCompleted, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Notifications - Destruction Timer Runs Out
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut_Func (bool testConds, bool runActions) {
+    playergroup auto7984D9A2_g;
+    int auto7984D9A2_p;
+    int auto75229D90_ae;
+    int auto75229D90_ai;
+
+    // Variable Declarations
+    int lv_slot;
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7984D9A2_g = PlayerGroupActive(); 
+    auto7984D9A2_p = 1;
+    for ( ; auto7984D9A2_p <= PlayerGroupCount(auto7984D9A2_g) ; auto7984D9A2_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto7984D9A2_g, auto7984D9A2_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto7984D9A2_g, auto7984D9A2_p);
+        auto75229D90_ae = libSCPL_gv_upgradeNotificationsMaxUISlots;
+        auto75229D90_ai = 1;
+        lv_slot = 0;
+        for ( ; ( (auto75229D90_ai >= 0 && lv_slot <= auto75229D90_ae) || (auto75229D90_ai <= 0 && lv_slot >= auto75229D90_ae) ) ; lv_slot += auto75229D90_ai ) {
+            if ((EventTimer() == libSCPL_gv_upgradeNotifications.lv_timerDestruction[lv_slot][lv_playerIndex])) {
+                libSCPL_gf_UpgradeNotificationsRemoveRunningUpgrade(lv_slot, lv_playerIndex);
+                return true;
+            }
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut_Init () {
+    libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut = TriggerCreate("libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut_Func");
+    TriggerAddEventTimer(libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7986,32 +9141,13 @@ void libSCPL_gt_LabelsPlusMorphStopped_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Control Group Update Trigger
+// Trigger: Resource Display Mineral Create
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ControlGroupUpdateTrigger_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerEnable(libSCPL_gt_ControlGroupUpdateTrigger, false);
-    TriggerEnable(libSCPL_gt_ControlGroupUpdate, true);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ControlGroupUpdateTrigger_Init () {
-    libSCPL_gt_ControlGroupUpdateTrigger = TriggerCreate("libSCPL_gt_ControlGroupUpdateTrigger_Func");
-    TriggerEnable(libSCPL_gt_ControlGroupUpdateTrigger, false);
-    TriggerAddEventUnitDamaged(libSCPL_gt_ControlGroupUpdateTrigger, null, c_unitDamageTypeAny, c_unitDamageEither, null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Control Group Update
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ControlGroupUpdate_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_ResourceDisplayMineralCreate_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
 
     // Variable Initialization
 
@@ -8020,21 +9156,579 @@ bool libSCPL_gt_ControlGroupUpdate_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TriggerEnable(libSCPL_gt_ControlGroupUpdate, false);
-    TriggerEnable(libSCPL_gt_ControlGroupUpdateTrigger, true);
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = -0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMinerals);
+    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ControlGroupUpdate_Init () {
-    libSCPL_gt_ControlGroupUpdate = TriggerCreate("libSCPL_gt_ControlGroupUpdate_Func");
-    TriggerEnable(libSCPL_gt_ControlGroupUpdate, false);
-    TriggerAddEventTimePeriodic(libSCPL_gt_ControlGroupUpdate, 0.125, c_timeGame);
+void libSCPL_gt_ResourceDisplayMineralCreate_Init () {
+    libSCPL_gt_ResourceDisplayMineralCreate = TriggerCreate("libSCPL_gt_ResourceDisplayMineralCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralCreate, null, "GameResourceMarkerMinerals", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral Rich Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralRichCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = -0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsRich);
+    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralRichCreate_Init () {
+    libSCPL_gt_ResourceDisplayMineralRichCreate = TriggerCreate("libSCPL_gt_ResourceDisplayMineralRichCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralRichCreate, null, "GameResourceMarkerMineralsRich", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral MULE Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralMULECreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = -0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE);
+    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralMULECreate_Init () {
+    libSCPL_gt_ResourceDisplayMineralMULECreate = TriggerCreate("libSCPL_gt_ResourceDisplayMineralMULECreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralMULECreate, null, "GameResourceMarkerMineralsMULE", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Vespene Create
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayVespeneCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = -0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeVespene);
+    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, 0.0, lv_resourceIncome);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayVespeneCreate_Init () {
+    libSCPL_gt_ResourceDisplayVespeneCreate = TriggerCreate("libSCPL_gt_ResourceDisplayVespeneCreate_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayVespeneCreate, null, "GameResourceMarkerVespene", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = 0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMinerals);
+    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralDestroy_Init () {
+    libSCPL_gt_ResourceDisplayMineralDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralDestroy, null, "GameResourceMarkerMinerals", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral Rich Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralRichDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = 0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsRich);
+    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralRichDestroy_Init () {
+    libSCPL_gt_ResourceDisplayMineralRichDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralRichDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralRichDestroy, null, "GameResourceMarkerMineralsRich", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral MULE Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralMULEDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = 0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE);
+    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralMULEDestroy_Init () {
+    libSCPL_gt_ResourceDisplayMineralMULEDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralMULEDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralMULEDestroy, null, "GameResourceMarkerMineralsMULE", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Vespene Destroy
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayVespeneDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = 0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeVespene);
+    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, 0.0, lv_resourceIncome);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayVespeneDestroy_Init () {
+    libSCPL_gt_ResourceDisplayVespeneDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayVespeneDestroy_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayVespeneDestroy, null, "GameResourceMarkerVespene", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Spend
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_event;
+    string lv_parameter;
+    int lv_playerIndex;
+    fixed lv_gameSpeedFactor;
+    fixed lv_net;
+    fixed lv_spend;
+    string lv_spendDisplay;
+
+    // Variable Initialization
+    lv_event = "";
+    lv_parameter = "";
+    lv_spendDisplay = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_event = libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend);
+    lv_parameter = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
+    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName(lv_event, lv_parameter));
+    lv_gameSpeedFactor = libSCPL_gv_constants.lv_gameSpeedFactor;
+    DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), true);
+    DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), true);
+    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
+    lv_net = (libSCPL_gv_player[lv_playerIndex].lv_resourceGainMinerals + libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals);
+    lv_net = (lv_net / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
+    if ((Round(lv_net) > 0.0)) {
+        lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
+    }
+    else {
+        lv_net = (-1.0 * lv_net);
+        lv_spendDisplay = ("( + " + FixedToString(lv_net, 0) + ")");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        if ((Round(lv_net) == 0.0)) {
+            DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Neutral");
+        }
+        else {
+            DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Positive");
+        }
+    }
+    if ((lv_spend > libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex))) {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpendAttention, PlayerGroupSingle(lv_playerIndex), true);
+    }
+    else {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpendAttention, PlayerGroupSingle(lv_playerIndex), false);
+    }
+    lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
+    lv_net = (libSCPL_gv_player[lv_playerIndex].lv_resourceGainVespene + libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene);
+    lv_net = (lv_net / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
+    if ((Round(lv_net) > 0.0)) {
+        lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
+    }
+    else {
+        lv_net = (-1.0 * lv_net);
+        lv_spendDisplay = ("( + " + FixedToString(lv_net, 0) + ")");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
+        if ((Round(lv_net) == 0.0)) {
+            DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Neutral");
+        }
+        else {
+            DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Positive");
+        }
+    }
+    if ((lv_spend > libSCPL_gf_PlayerAvailableVespene(lv_playerIndex))) {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpendAttention, PlayerGroupSingle(lv_playerIndex), true);
+    }
+    else {
+        DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpendAttention, PlayerGroupSingle(lv_playerIndex), false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplaySpend_Init () {
+    libSCPL_gt_ResourceDisplaySpend = TriggerCreate("libSCPL_gt_ResourceDisplaySpend_Func");
+    libSCPL_gf_ResourceSpendChanges(libSCPL_gt_ResourceDisplaySpend);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Assign
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAssign_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlGroupIndex;
+    unitgroup lv_selectedUnits;
+
+    // Variable Initialization
+    lv_selectedUnits = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_controlGroupIndex = FixedToInt(libNtve_gf_DialogItemValue(EventDialogControl(), lv_playerIndex));
+    lv_selectedUnits = UnitGroupSelected(lv_playerIndex);
+    libSCPL_gf_ControlGroupUnitsAssign(lv_selectedUnits, lv_controlGroupIndex, lv_playerIndex);
+    libSCPL_gf_ControlGroupUnitsUpdate(lv_controlGroupIndex, lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAssign_Init () {
+    libSCPL_gt_ControlGroupAssign = TriggerCreate("libSCPL_gt_ControlGroupAssign_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Add
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupAdd_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlGroupIndex;
+    unitgroup lv_selectedUnits;
+
+    // Variable Initialization
+    lv_selectedUnits = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_controlGroupIndex = FixedToInt(libNtve_gf_DialogItemValue(EventDialogControl(), lv_playerIndex));
+    lv_selectedUnits = UnitGroupSelected(lv_playerIndex);
+    libSCPL_gf_ControlGroupUnitsAdd(lv_selectedUnits, lv_controlGroupIndex, lv_playerIndex);
+    libSCPL_gf_ControlGroupUnitsUpdate(lv_controlGroupIndex, lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupAdd_Init () {
+    libSCPL_gt_ControlGroupAdd = TriggerCreate("libSCPL_gt_ControlGroupAdd_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Select
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupSelect_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlGroupIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_controlGroupIndex = FixedToInt(libNtve_gf_DialogItemValue(EventDialogControl(), lv_playerIndex));
+    if ((TimerGetRemaining(libSCPL_gv_player[lv_playerIndex].lv_controlGroupJumpTimer[lv_controlGroupIndex]) > 0.0)) {
+        if ((UnitGroupCount(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], c_unitCountAlive) > 0)) {
+            CameraPan(lv_playerIndex, UnitGroupCenterOfGroup(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex]), 0.0, -1, 10.0, false);
+        }
+    }
+    else {
+        UnitClearSelection(lv_playerIndex);
+        libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex] = UnitGroupFilter(null, c_playerAny, libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        UnitGroupSelect(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], lv_playerIndex, true);
+        libPPRL_gf_AddTimeToTimer(libSCPL_gv_player[lv_playerIndex].lv_controlGroupJumpTimer[lv_controlGroupIndex], 0.375);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupSelect_Init () {
+    libSCPL_gt_ControlGroupSelect = TriggerCreate("libSCPL_gt_ControlGroupSelect_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Unit Death
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupUnitDeath_Func (bool testConds, bool runActions) {
+    int autoEACE9E46_ae;
+    int autoEACE9E46_ai;
+
+    // Variable Declarations
+    unit lv_unit;
+    int lv_playerIndex;
+    int lv_controlGroupIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_playerIndex = UnitGetOwner(lv_unit);
+    autoEACE9E46_ae = 28;
+    autoEACE9E46_ai = 1;
+    lv_controlGroupIndex = 21;
+    for ( ; ( (autoEACE9E46_ai >= 0 && lv_controlGroupIndex <= autoEACE9E46_ae) || (autoEACE9E46_ai <= 0 && lv_controlGroupIndex >= autoEACE9E46_ae) ) ; lv_controlGroupIndex += autoEACE9E46_ai ) {
+        if ((UnitGetCustomValue(lv_unit, lv_controlGroupIndex) == 1)) {
+            libSCPL_gf_ControlGroupUnitsUpdate((lv_controlGroupIndex - 20), lv_playerIndex);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupUnitDeath_Init () {
+    libSCPL_gt_ControlGroupUnitDeath = TriggerCreate("libSCPL_gt_ControlGroupUnitDeath_Func");
+    TriggerAddEventUnitDied(libSCPL_gt_ControlGroupUnitDeath, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Archon
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupArchon_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_ControlGroupUnitPreserve(EventUnit(), EventUnitCreatedUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupArchon_Init () {
+    libSCPL_gt_ControlGroupArchon = TriggerCreate("libSCPL_gt_ControlGroupArchon_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_ControlGroupArchon, null, "ArchonWarp", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Baneling
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupBaneling_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((libNtve_gf_TriggeringProgressUnitType() == "Baneling"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_ControlGroupUnitPreserve(EventUnit(), EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupBaneling_Init () {
+    libSCPL_gt_ControlGroupBaneling = TriggerCreate("libSCPL_gt_ControlGroupBaneling_Func");
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_ControlGroupBaneling, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Baneling Finish
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupBanelingFinish_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((libNtve_gf_TriggeringProgressUnitType() == "Baneling"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_ControlGroupUnitPreserve(EventUnit(), EventUnitProgressUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupBanelingFinish_Init () {
+    libSCPL_gt_ControlGroupBanelingFinish = TriggerCreate("libSCPL_gt_ControlGroupBanelingFinish_Func");
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_ControlGroupBanelingFinish, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Unit Damaged
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupUnitDamaged_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, true);
+    libSCPL_gf_ControlGroupDamagePulse(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupUnitDamaged_Init () {
+    libSCPL_gt_ControlGroupUnitDamaged = TriggerCreate("libSCPL_gt_ControlGroupUnitDamaged_Func");
+    TriggerAddEventUnitDamaged(libSCPL_gt_ControlGroupUnitDamaged, null, c_unitDamageTypeAny, c_unitDamageEither, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Unit Damaged Group Update
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Func (bool testConds, bool runActions) {
+    playergroup auto0AE1B3D7_g;
+    int auto0AE1B3D7_p;
+    int autoB1A98539_ae;
+    int autoB1A98539_ai;
+
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlGroupIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, false);
+    auto0AE1B3D7_g = PlayerGroupActive(); 
+    auto0AE1B3D7_p = 1;
+    for ( ; auto0AE1B3D7_p <= PlayerGroupCount(auto0AE1B3D7_g) ; auto0AE1B3D7_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto0AE1B3D7_g, auto0AE1B3D7_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto0AE1B3D7_g, auto0AE1B3D7_p);
+        autoB1A98539_ae = 8;
+        autoB1A98539_ai = 1;
+        lv_controlGroupIndex = 1;
+        for ( ; ( (autoB1A98539_ai >= 0 && lv_controlGroupIndex <= autoB1A98539_ae) || (autoB1A98539_ai <= 0 && lv_controlGroupIndex >= autoB1A98539_ae) ) ; lv_controlGroupIndex += autoB1A98539_ai ) {
+            libSCPL_gf_ControlGroupColorize(lv_playerIndex, lv_controlGroupIndex);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init () {
+    libSCPL_gt_ControlGroupUnitDamagedGroupUpdate = TriggerCreate("libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Func");
+    TriggerEnable(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, false);
+    TriggerAddEventTimePeriodic(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, 0.1875, c_timeGame);
 }
 
 void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
-    libSCPL_gt__0_Init();
     libSCPL_gt_ProgressMorphRefund01_Init();
     libSCPL_gt_ProgressMorphStart01_Init();
     libSCPL_gt_ProgressMorphRefund02_Init();
@@ -8067,10 +9761,22 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_GlobalRally00ProducerCreated_Init();
     libSCPL_gt_GlobalRally01ProducerCreated_Init();
     libSCPL_gt_GlobalRally02ProducerCreated_Init();
+    libSCPL_gt_GlobalRally00ProducerCreatedZerg_Init();
+    libSCPL_gt_GlobalRally01ProducerCreatedZerg_Init();
+    libSCPL_gt_GlobalRally02ProducerCreatedZerg_Init();
     libSCPL_gt_GlobalRallyProtossWarpGateUnitCreated_Init();
     libSCPL_gt_GlobalRally00AttachUnit_Init();
     libSCPL_gt_GlobalRally01AttachUnit_Init();
     libSCPL_gt_GlobalRally02AttachUnit_Init();
+    libSCPL_gt_ControlGroupAutoAddToggleT1_Init();
+    libSCPL_gt_ControlGroupAutoAddToggleT2_Init();
+    libSCPL_gt_ControlGroupAutoAddToggleT3_Init();
+    libSCPL_gt_ControlGroupAutoAddT1_Init();
+    libSCPL_gt_ControlGroupAutoAddT2_Init();
+    libSCPL_gt_ControlGroupAutoAddT3_Init();
+    libSCPL_gt_ControlGroupAutoAddT1Zerg_Init();
+    libSCPL_gt_ControlGroupAutoAddT2Zerg_Init();
+    libSCPL_gt_ControlGroupAutoAddT3Zerg_Init();
     libSCPL_gt_AutoWorkerProductionCheckWorkerSlot_Init();
     libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Init();
     libSCPL_gt_AutoWorkerProductionCheckVespeneHarvester_Init();
@@ -8094,6 +9800,12 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBChargeLinkArchonMorph_Init();
     libSCPL_gt_BarracksTrainStartStop_Init();
     libSCPL_gt_MuleHarvestNearestResoures_Init();
+    libSCPL_gt_UCBChargeLinkBarracksAddonCreate_Init();
+    libSCPL_gt_UCBChargeLinkBarracksAddonDestroy_Init();
+    libSCPL_gt_UCBChargeLinkFactoryAddonCreate_Init();
+    libSCPL_gt_UCBChargeLinkFactoryAddonDestroy_Init();
+    libSCPL_gt_UCBChargeLinkStarportAddonCreate_Init();
+    libSCPL_gt_UCBChargeLinkStarportAddonDestroy_Init();
     libSCPL_gt_UCBChargeLinkCommandCenterMorphStart_Init();
     libSCPL_gt_UCBChargeLinkCommandCenterMorphCancel_Init();
     libSCPL_gt_UCBAutoWallRaise_Init();
@@ -8131,15 +9843,11 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBAutoLarvaSpawnToggleOn_Init();
     libSCPL_gt_UCBAutoLarvaSpawnToggleOff_Init();
     libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init();
-    libSCPL_gt_ResourceDisplayMineralCreate_Init();
-    libSCPL_gt_ResourceDisplayMineralRichCreate_Init();
-    libSCPL_gt_ResourceDisplayMineralMULECreate_Init();
-    libSCPL_gt_ResourceDisplayVespeneCreate_Init();
-    libSCPL_gt_ResourceDisplayMineralDestroy_Init();
-    libSCPL_gt_ResourceDisplayMineralRichDestroy_Init();
-    libSCPL_gt_ResourceDisplayMineralMULEDestroy_Init();
-    libSCPL_gt_ResourceDisplayVespeneDestroy_Init();
-    libSCPL_gt_ResourceDisplaySpend_Init();
+    libSCPL_gt_UpgradeNotificationsInitialization_Init();
+    libSCPL_gt_UpgradeNotificationsResearchStarted_Init();
+    libSCPL_gt_UpgradeNotificationsResearchCancelled_Init();
+    libSCPL_gt_UpgradeNotificationsResearchCompleted_Init();
+    libSCPL_gt_UpgradeNotificationsDestructionTimerRunsOut_Init();
     libSCPL_gt_LabelsPlusUnitCreated_Init();
     libSCPL_gt_LabelsPlusUnitTrainingStarted_Init();
     libSCPL_gt_LabelsPlusUnitTrainingStopped_Init();
@@ -8150,8 +9858,24 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_LabelsPlusConstructionStopped_Init();
     libSCPL_gt_LabelsPlusMorphStarted_Init();
     libSCPL_gt_LabelsPlusMorphStopped_Init();
-    libSCPL_gt_ControlGroupUpdateTrigger_Init();
-    libSCPL_gt_ControlGroupUpdate_Init();
+    libSCPL_gt_ResourceDisplayMineralCreate_Init();
+    libSCPL_gt_ResourceDisplayMineralRichCreate_Init();
+    libSCPL_gt_ResourceDisplayMineralMULECreate_Init();
+    libSCPL_gt_ResourceDisplayVespeneCreate_Init();
+    libSCPL_gt_ResourceDisplayMineralDestroy_Init();
+    libSCPL_gt_ResourceDisplayMineralRichDestroy_Init();
+    libSCPL_gt_ResourceDisplayMineralMULEDestroy_Init();
+    libSCPL_gt_ResourceDisplayVespeneDestroy_Init();
+    libSCPL_gt_ResourceDisplaySpend_Init();
+    libSCPL_gt_ControlGroupAssign_Init();
+    libSCPL_gt_ControlGroupAdd_Init();
+    libSCPL_gt_ControlGroupSelect_Init();
+    libSCPL_gt_ControlGroupUnitDeath_Init();
+    libSCPL_gt_ControlGroupArchon_Init();
+    libSCPL_gt_ControlGroupBaneling_Init();
+    libSCPL_gt_ControlGroupBanelingFinish_Init();
+    libSCPL_gt_ControlGroupUnitDamaged_Init();
+    libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

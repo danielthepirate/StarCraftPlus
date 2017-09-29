@@ -53,9 +53,6 @@
     <CButton id="ArbiterMPStasisField">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="AssaultMode">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="AutoCreepSpreadToggleUCB">
         <Icon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-zerg-creeptumor.dds"/>
@@ -87,13 +84,13 @@
     <CButton id="AutoWallRaiseUCB">
         <Icon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
-        <Hotkey value="Button/Hotkey/AutoWallRaiseUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalAutoWallRaise"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="AutoWallLowerUCB">
         <Icon value="Assets\Textures\btn-building-terran-supplydepotlowered.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
-        <Hotkey value="Button/Hotkey/AutoWallLowerUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalAutoWallLower"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="BanelingUCB">
@@ -107,9 +104,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="BeaconMove">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="BlindingCloud">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="Bombardment">
@@ -137,7 +131,7 @@
     <CButton id="CalldownMULEUCB">
         <Icon value="Assets\Textures\BTN-Unit-Terran-mule.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Unit-Terran-mule.dds"/>
-        <Hotkey value="Button/Hotkey/CalldownMULEUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalMULE"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="CalldownMULE"/>
     </CButton>
@@ -312,9 +306,6 @@
     <CButton id="Dance">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="DefilerMPConsume">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="DefilerMPDarkSwarm">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -366,12 +357,6 @@
     <CButton id="EyeStalk">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
-    <CButton id="FaceEmbrace">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="FighterMode">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
     <CButton id="Frenzied">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
@@ -391,14 +376,6 @@
         <Icon value="Assets\Textures\btn-building-terran-barracks.dds"/>
         <Hotkey value="Button/Hotkey/GlobalRallyBarracks"/>
         <EditorCategories value="Race:Terran"/>
-    </CButton>
-    <CButton id="GlobalRallyHatchery">
-        <TooltipFlags index="ShowName" value="0"/>
-        <TooltipFlags index="ShowHotkey" value="0"/>
-        <Icon value="Assets\Textures\btn-building-zerg-hatchery.dds"/>
-        <Hotkey value="Button/Hotkey/GlobalRallyHatchery"/>
-        <EditorCategories value="Race:Zerg"/>
-        <HotkeyAlias value="GlobalRallyBarracks"/>
     </CButton>
     <CButton id="GlobalRallyFactory">
         <TooltipFlags index="ShowName" value="0"/>
@@ -454,6 +431,48 @@
     </CButton>
     <CButton id="ImprovedEnergy">
         <Icon value="Assets\Textures\btn-upgrade-karax-pylonwarpininstantly.dds"/>
+    </CButton>
+    <CButton id="ReactorBarracks">
+        <Icon value="Assets\Textures\btn-building-terran-barracks-reactor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-barracks-reactor.dds"/>
+        <Hotkey value="Button/Hotkey/ReactorBarracks"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="Reactor"/>
+    </CButton>
+    <CButton id="ReactorFactory">
+        <Icon value="Assets\Textures\btn-building-terran-factory-reactor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-factory-reactor.dds"/>
+        <Hotkey value="Button/Hotkey/ReactorFactory"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="Reactor"/>
+    </CButton>
+    <CButton id="ReactoStarport">
+        <Icon value="Assets\Textures\btn-building-terran-starport-reactor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-starport-reactor.dds"/>
+        <Hotkey value="Button/Hotkey/ReactoStarport"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="Reactor"/>
+    </CButton>
+    <CButton id="TechLabBarracksUCB">
+        <Icon value="Assets\Textures\btn-building-terran-barracks-techlab.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-barracks-techlab.dds"/>
+        <Hotkey value="Button/Hotkey/TechLabBarracksUCB"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="TechLabBarracks"/>
+    </CButton>
+    <CButton id="TechLabFactoryUCB">
+        <Icon value="Assets\Textures\btn-building-terran-factory-techlab.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-factory-techlab.dds"/>
+        <Hotkey value="Button/Hotkey/TechLabFactoryUCB"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="TechLabFactory"/>
+    </CButton>
+    <CButton id="TechLabStarportUCB">
+        <Icon value="Assets\Textures\btn-building-terran-starport-techlab.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-starport-techlab.dds"/>
+        <Hotkey value="Button/Hotkey/TechLabStarportUCB"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="TechLabStarport"/>
     </CButton>
     <CButton id="WarpResonance">
         <Icon value="Assets\Textures\btn-upgrade-artanis-pylonpower.dds"/>
@@ -662,7 +681,7 @@
     <CButton id="ScanUCB">
         <Icon value="Assets\Textures\btn-ability-terran-scannersweep-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-terran-scannersweep-color.dds"/>
-        <Hotkey value="Button/Hotkey/ScanUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalScan"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Scan"/>
     </CButton>
@@ -670,20 +689,20 @@
     <CButton id="SummonNydusWormUCB">
         <Icon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
-        <Hotkey value="Button/Hotkey/SummonNydusWormUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalSummonNydusWorm"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="SummonNydusWorm"/>
     </CButton>
     <CButton id="SupplyDropUCB">
         <Icon value="Assets\Textures\BTN-Ability-Terran-CalldownExtraSupplies-color.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Ability-Terran-CalldownExtraSupplies-color.dds"/>
-        <Hotkey value="Button/Hotkey/SupplyDropUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalSupplyDrop"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="SupplyDrop"/>
     </CButton>
     <CButton id="TimeWarpUCB">
         <Icon value="Assets\Textures\btn-ability-protoss-protoncharge-color.dds"/>
-        <Hotkey value="Button/Hotkey/TimeWarpUCB"/>
+        <Hotkey value="Button/Hotkey/GlobalTimeWarp"/>
         <EditorCategories value="Race:Protoss"/>
         <HotkeyAlias value="TimeWarp"/>
     </CButton>
@@ -701,9 +720,6 @@
         <TooltipImage value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
-    </CButton>
-    <CButton id="ParasiticBomb">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="PenetratingShot">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -923,9 +939,6 @@
         <Hotkey value="Button/Hotkey/UCBUpgradeToPlanetaryFortress"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="UpgradeToPlanetaryFortress"/>
-    </CButton>
-    <CButton id="ViperConsume">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="VoidMPImmortalRevive">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>

@@ -24,18 +24,21 @@
             <LayoutButtons index="7" Column="2"/>
             <LayoutButtons index="9" Face="DisableBuildingAttack" Type="AbilCmd" AbilCmd="VolatileBurstBuilding,Off" Row="2" Column="3"/>
         </CardLayouts>
+        <BehaviorArray index="1" Link="GameUCBGlobalRallyZergMelee"/>
     </CUnit>
     <CUnit id="BanelingBurrowed">
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="2"/>
         </CardLayouts>
+        <BehaviorArray index="1" Link="GameUCBGlobalRallyZergMelee"/>
     </CUnit>
     <CUnit id="BanelingNest">
         <Food value="10"/>
     </CUnit>
     <CUnit id="Banshee">
         <CardLayouts index="0">
-            <LayoutButtons index="6" Face="CloakOffBanshee"/>
+            <LayoutButtons index="5" Face="CloakOffBanshee" AbilCmd="BansheeCloak,Off" Column="2"/>
+            <LayoutButtons index="6" Face="CloakOnBanshee" AbilCmd="BansheeCloak,On" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Barracks">
@@ -47,6 +50,7 @@
             <LayoutButtons index="12" Face="Reaper" Type="AbilCmd" AbilCmd="BarracksTrain,Train2" Row="0" Column="0"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <BehaviorArray Link="GameUCBBarracksBusy"/>
     </CUnit>
     <CUnit id="BarracksFlying">
         <Food value="10"/>
@@ -56,6 +60,9 @@
             <LayoutButtons index="3" Column="0"/>
             <LayoutButtons index="4" Column="0"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="BroodLord">
+        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
     </CUnit>
     <CUnit id="Bunker">
         <CardLayouts index="0">
@@ -81,6 +88,7 @@
     </CUnit>
     <CUnit id="Corruptor">
         <BehaviorArray Link="GameUCBBroodlordChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
     </CUnit>
     <CUnit id="CreepTumorBurrowed">
         <AbilArray Link="AutoCreepSpread"/>
@@ -179,6 +187,7 @@
             <LayoutButtons index="15" Face="HellionTank" Type="AbilCmd" AbilCmd="FactoryTrain,Train7" Row="0" Column="0"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGlobalRally01ChargeLink"/>
+        <BehaviorArray Link="GameUCBFactoryBusy"/>
     </CUnit>
     <CUnit id="FactoryFlying">
         <Food value="10"/>
@@ -330,6 +339,12 @@
             <LayoutButtons index="8" Row="1" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="Ghost">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Face="NukeCalldown" AbilCmd="TacNukeStrike,Execute" Row="2" Column="3"/>
+            <LayoutButtons index="9" Face="CloakOff" AbilCmd="GhostCloak,Off" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="GhostAcademy">
         <CardLayouts index="0">
             <LayoutButtons index="4" Row="1"/>
@@ -344,9 +359,11 @@
     </CUnit>
     <CUnit id="Hatchery">
         <Food value="25"/>
-        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
         <BehaviorArray Link="GameUCBHatcheryChargeLink"/>
         <BehaviorArray Link="GameUCBHatcheryChargeLinkConstructing"/>
+        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRally01ChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRally02ChargeLink"/>
         <CardLayouts index="0">
             <LayoutButtons index="4" Column="1"/>
             <LayoutButtons index="9" Column="3"/>
@@ -358,8 +375,10 @@
     <CUnit id="Hive">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
-        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
         <BehaviorArray Link="GameUCBHatcheryHiveLair"/>
+        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRally01ChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRally02ChargeLink"/>
         <CardLayouts index="0">
             <LayoutButtons index="7" Column="3"/>
         </CardLayouts>
@@ -369,11 +388,13 @@
             <LayoutButtons index="5" Column="2"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBLurkerChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="HydraliskBurrowed">
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="2"/>
         </CardLayouts>
+        <BehaviorArray index="0" Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="HydraliskDen">
         <Food value="10"/>
@@ -389,6 +410,7 @@
             <LayoutButtons index="8" Face="Cancel" AbilCmd="NeuralParasite,Cancel" Row="2" Column="4"/>
             <LayoutButtons index="10" Face="NeuralParasite" AbilCmd="NeuralParasite,Execute" Column="3"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="InfestorBurrowed">
         <CardLayouts index="0">
@@ -398,6 +420,7 @@
             <LayoutButtons index="10" Face="FungalGrowth" Type="AbilCmd" AbilCmd="FungalGrowth,Execute" Row="2" Column="1"/>
             <LayoutButtons index="11" Face="NeuralParasite" Type="AbilCmd" AbilCmd="NeuralParasite,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="InfestorTerran">
         <CardLayouts index="0">
@@ -412,9 +435,11 @@
     <CUnit id="Lair">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
-        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
         <BehaviorArray Link="GameUCBHatcheryHiveLair"/>
         <BehaviorArray Link="GameUCBLairChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRally01ChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRally02ChargeLink"/>
         <CardLayouts index="0">
             <LayoutButtons index="4" Column="1"/>
             <LayoutButtons index="9" Column="3"/>
@@ -470,6 +495,7 @@
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="LurkerMPBurrowed">
         <CardLayouts index="0">
@@ -478,6 +504,7 @@
             <LayoutButtons index="3" Face="LurkerHoldFire" Type="AbilCmd" AbilCmd="LurkerHoldFire,Execute" Row="2" Column="0"/>
             <LayoutButtons index="4" Face="LurkerCancelHoldFire" Type="AbilCmd" AbilCmd="LurkerRemoveHoldFire,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="MULE">
         <BehaviorArray Link="GameWorkerIdle"/>
@@ -506,6 +533,9 @@
         <CardLayouts index="0">
             <LayoutButtons index="9" Row="2" Column="3"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="Mutalisk">
+        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
     </CUnit>
     <CUnit id="Nexus">
         <Food value="25"/>
@@ -548,6 +578,7 @@
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
         <BehaviorArray Link="GameUCBOverlordChargeLink"/>
         <BehaviorArray Link="GameUCBOverlordOrTransportChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="1"/>
             <LayoutButtons index="8" Column="0"/>
@@ -648,23 +679,27 @@
         <CardLayouts index="0">
             <LayoutButtons index="5" Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerDown,Execute" Row="2" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="RavagerBurrowed">
         <CardLayouts index="0">
             <LayoutButtons index="1" Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowRavagerUp,Execute" Row="2" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="Roach">
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="2"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBRavagerChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="RoachBurrowed">
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="2"/>
             <LayoutButtons index="2" Column="1"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="RoachWarren">
         <Food value="10"/>
@@ -696,7 +731,7 @@
     </CUnit>
     <CUnit id="SdbPAbils1">
         <CardLayouts index="0">
-            <LayoutButtons index="0" Face="TimeWarpUCB" Type="AbilCmd" AbilCmd="TimeWarpUCB,Execute" Row="0" Column="0"/>
+            <LayoutButtons index="0" Face="TimeWarpUCB" Type="AbilCmd" AbilCmd="TimeWarpUCB,Execute" Row="0" Column="3"/>
             <LayoutButtons index="1" removed="1"/>
             <LayoutButtons index="2" removed="1"/>
             <LayoutButtons index="3" removed="1"/>
@@ -822,9 +857,9 @@
             <LayoutButtons index="0" Face="ScanUCB" Type="AbilCmd" AbilCmd="ScannerSweepUCB,Execute" Row="0" Column="2"/>
             <LayoutButtons index="1" Face="CalldownMULEUCB" Type="AbilCmd" AbilCmd="CalldownMULEUCB,Execute" Row="0" Column="0"/>
             <LayoutButtons index="2" Face="SupplyDropUCB" Type="AbilCmd" AbilCmd="SupplyDropUCB,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="AutoWallRaiseUCB" Type="AbilCmd" AbilCmd="AutoWallRaiseUCB,Execute" Row="1" Column="1"/>
-            <LayoutButtons Face="AutoWallLowerUCB" Type="AbilCmd" AbilCmd="AutoWallLowerUCB,Execute" Row="1" Column="2"/>
-            <LayoutButtons Face="AutoWallToggleUCB" Type="AbilCmd" AbilCmd="AutoWallToggleUCB,Execute" Row="1" Column="3"/>
+            <LayoutButtons Face="AutoWallRaiseUCB" Type="AbilCmd" AbilCmd="AutoWallRaiseUCB,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="AutoWallLowerUCB" Type="AbilCmd" AbilCmd="AutoWallLowerUCB,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="AutoWallToggleUCB" Type="AbilCmd" AbilCmd="AutoWallToggleUCB,Execute" Row="1" Column="0"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbTBuild1">
@@ -836,10 +871,21 @@
         <AbilArray index="6" Link="UpgradeToPlanetaryFortressUCB"/>
     </CUnit>
     <CUnit id="SdbTBuild2">
-        <AbilArray index="5" Link="UpgradeToOrbitalUCB"/>
-        <AbilArray index="6" Link="UpgradeToPlanetaryFortressUCB"/>
+        <AbilArray index="2" Link="UpgradeToOrbitalUCB"/>
+        <AbilArray index="3" Link="BarracksReactorMorphUCB"/>
+        <AbilArray index="4" Link="FactoryReactorMorphUCB"/>
+        <AbilArray index="5" Link="StarportReactorMorphUCB"/>
+        <AbilArray index="6" Link="BarracksTechLabMorphUCB"/>
+        <AbilArray Link="FactoryTechLabMorphUCB"/>
+        <AbilArray Link="StarportTechLabMorphUCB"/>
         <CardLayouts index="0">
             <LayoutButtons Face="UCBOrbitalCommand" Type="AbilCmd" AbilCmd="UpgradeToOrbitalUCB,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="TechLabBarracksUCB" Type="AbilCmd" AbilCmd="BarracksTechLabMorphUCB,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="ReactorBarracks" Type="AbilCmd" AbilCmd="BarracksReactorMorphUCB,Execute" Row="0" Column="2"/>
+            <LayoutButtons Face="TechLabFactoryUCB" Type="AbilCmd" AbilCmd="FactoryTechLabMorphUCB,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="ReactorFactory" Type="AbilCmd" AbilCmd="FactoryReactorMorphUCB,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="TechLabStarportUCB" Type="AbilCmd" AbilCmd="StarportTechLabMorphUCB,Execute" Row="1" Column="0"/>
+            <LayoutButtons Face="ReactoStarport" Type="AbilCmd" AbilCmd="StarportReactorMorphUCB,Execute" Row="1" Column="1"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbTRsrch1">
@@ -958,9 +1004,9 @@
     </CUnit>
     <CUnit id="SdbZAbils1">
         <CardLayouts index="0">
-            <LayoutButtons index="0" Face="SpawnLarvaUCB" Type="AbilCmd" AbilCmd="AutoSpawnLarvaToggleUCB,Execute" Row="0" Column="0"/>
-            <LayoutButtons index="1" Face="AutoCreepSpreadToggleUCB" Type="AbilCmd" AbilCmd="AutoCreepSpreadToggleUCB,Execute" Row="0" Column="1"/>
-            <LayoutButtons index="2" Face="SummonNydusWormUCB" Type="AbilCmd" AbilCmd="BuildNydusCanalUCB,Build1" Row="0" Column="3"/>
+            <LayoutButtons index="0" Face="SpawnLarvaUCB" Type="AbilCmd" AbilCmd="AutoSpawnLarvaToggleUCB,Execute" Row="0" Column="3"/>
+            <LayoutButtons index="1" Face="AutoCreepSpreadToggleUCB" Type="AbilCmd" AbilCmd="AutoCreepSpreadToggleUCB,Execute" Row="0" Column="4"/>
+            <LayoutButtons index="2" Face="SummonNydusWormUCB" Type="AbilCmd" AbilCmd="BuildNydusCanalUCB,Build1" Row="1" Column="0"/>
             <LayoutButtons index="3" Face="Cancel" Type="AbilCmd" AbilCmd="BuildNydusCanal,Halt" Row="2" Column="4"/>
             <LayoutButtons index="4" removed="1"/>
             <LayoutButtons index="5" removed="1"/>
@@ -1182,6 +1228,7 @@
             <LayoutButtons index="14" Face="Liberator" Type="AbilCmd" AbilCmd="StarportTrain,Train7" Row="0" Column="0"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGlobalRally02ChargeLink"/>
+        <BehaviorArray Link="GameUCBStarportBusy"/>
     </CUnit>
     <CUnit id="StarportFlying">
         <Food value="10"/>
@@ -1193,6 +1240,7 @@
         <Sight value="13"/>
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
         <BehaviorArray Link="GameUCBOverlordOrTransportChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Face="MorphToOverseer" Type="AbilCmd" AbilCmd="MorphToOverseer,Execute" Row="2" Column="1"/>
             <LayoutButtons index="8" Face="GenerateCreep" Type="AbilCmd" AbilCmd="GenerateCreep,On" Row="2" Column="0"/>
@@ -1258,11 +1306,13 @@
         <CardLayouts index="0">
             <LayoutButtons index="0" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="SwarmHostMP">
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
     <CUnit id="TemplarArchive">
         <DeathTime value="0.5"/>
@@ -1270,6 +1320,7 @@
     <CUnit id="TransportOverlordCocoon">
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="0"/>
+        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
     </CUnit>
     <CUnit id="TwilightCouncil">
         <DeathTime value="0.5"/>
@@ -1281,14 +1332,19 @@
         <CardLayouts index="0">
             <LayoutButtons index="5" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergMelee"/>
     </CUnit>
     <CUnit id="UltraliskBurrowed">
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergMelee"/>
     </CUnit>
     <CUnit id="UltraliskCavern">
         <Food value="10"/>
+    </CUnit>
+    <CUnit id="Viper">
+        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
     </CUnit>
     <CUnit id="WarpDarkTemplar" parent="DarkTemplar">
         <Name value="Unit/Name/WarpDarkTemplar"/>
@@ -1374,10 +1430,12 @@
             <LayoutButtons index="6" Column="2"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBZerglingChargeLink"/>
+        <BehaviorArray Link="GameUCBGlobalRallyZergMelee"/>
     </CUnit>
     <CUnit id="ZerglingBurrowed">
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="GameUCBGlobalRallyZergMelee"/>
     </CUnit>
 </Catalog>

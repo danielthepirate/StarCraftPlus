@@ -1,5 +1,4 @@
 include "TriggerLibs/natives"
-
 include "LibCMSB_h"
 
 //--------------------------------------------------------------------------------------------------
@@ -12,7 +11,7 @@ include "LibCMSB_h"
 include "Script/CMSDB"
 
 void libCMSB_InitCustomScript () {
-    InitCommandSideBar();
+	InitCommandSideBar();
 }
 
 //--------------------------------------------------------------------------------------------------
