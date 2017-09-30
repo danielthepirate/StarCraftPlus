@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CCamera id="Dflt">
+        <ZoomTable index="1" removed="1"/>
+        <ZoomTable index="2" removed="1"/>
+        <ZoomTable index="3" removed="1"/>
+        <ZoomTable index="4" removed="1"/>
+    </CCamera>
+</Catalog>

@@ -65,9 +65,9 @@ void libSCPL_InitVariables () {
     libSCPL_gv_constants.lv_spendTickIncrementBoosted = 0.4375;
     libSCPL_gv_constants.lv_townHallResourceRadius = 15.0;
     libSCPL_gv_constants.lv_gameSpeedFactor = 1.0;
-    libSCPL_gv_constants.lv_harvesterIncomeMinerals = 0.875;
-    libSCPL_gv_constants.lv_harvesterIncomeMineralsRich = 1.25;
-    libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE = 3.5;
+    libSCPL_gv_constants.lv_harvesterIncomeMinerals = 0.625;
+    libSCPL_gv_constants.lv_harvesterIncomeMineralsRich = 0.9375;
+    libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE = 2.5;
     libSCPL_gv_constants.lv_harvesterIncomeVespene = 0.875;
     for (init_i = 0; init_i <= 16; init_i += 1) {
         libSCPL_gv_player[init_i].lv_globalZerg_AutoCreepNodeTargets = UnitGroupEmpty();
@@ -2206,7 +2206,7 @@ void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_player
 
     // Implementation
     lv_controlGroup = libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex];
-    lv_controlGroup = UnitGroupFilter(null, c_playerAny, lv_controlGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    lv_controlGroup = UnitGroupFilter(null, lp_playerIndex, lv_controlGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     lv_controlGroupCount = UnitGroupCount(lv_controlGroup, c_unitCountAlive);
     if ((lv_controlGroupCount == 0)) {
         DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventReset");
@@ -2239,8 +2239,10 @@ void libSCPL_gf_ControlGroupUnitsAssign (unitgroup lp_unitGroup, int lp_controlG
 
     // Variable Declarations
     unit lv_unit;
+    unitgroup lv_controlGroup;
 
     // Variable Initialization
+    lv_controlGroup = UnitGroupEmpty();
 
     // Implementation
     auto4FE71402_g = libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex];
@@ -2249,8 +2251,9 @@ void libSCPL_gf_ControlGroupUnitsAssign (unitgroup lp_unitGroup, int lp_controlG
         lv_unit = UnitGroupUnit(auto4FE71402_g, auto4FE71402_u);
         UnitSetCustomValue(lv_unit, (20 + lp_controlGroupIndex), 0.0);
     }
+    lv_controlGroup = UnitGroupFilter(null, lp_playerIndex, lp_unitGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex] = UnitGroupEmpty();
-    libSCPL_gf_ControlGroupUnitsAdd(lp_unitGroup, lp_controlGroupIndex, lp_playerIndex);
+    libSCPL_gf_ControlGroupUnitsAdd(lv_controlGroup, lp_controlGroupIndex, lp_playerIndex);
 }
 
 void libSCPL_gf_ControlGroupUnitsAdd (unitgroup lp_unitGroup, int lp_controlGroupIndex, int lp_playerIndex) {
@@ -2258,13 +2261,16 @@ void libSCPL_gf_ControlGroupUnitsAdd (unitgroup lp_unitGroup, int lp_controlGrou
     int auto9CA46B02_u;
 
     // Variable Declarations
+    unitgroup lv_controlGroup;
     unit lv_unit;
 
     // Variable Initialization
+    lv_controlGroup = UnitGroupEmpty();
 
     // Implementation
-    UnitGroupAddUnitGroup(libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex], lp_unitGroup);
-    auto9CA46B02_g = lp_unitGroup;
+    lv_controlGroup = UnitGroupFilter(null, lp_playerIndex, lp_unitGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupAddUnitGroup(libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex], lv_controlGroup);
+    auto9CA46B02_g = lv_controlGroup;
     auto9CA46B02_u = 1;
     for ( ; auto9CA46B02_u <= UnitGroupCount(auto9CA46B02_g, c_unitCountAll) ; auto9CA46B02_u += BoolToInt(lv_unit == UnitGroupUnit(auto9CA46B02_g, auto9CA46B02_u)) ) {
         lv_unit = UnitGroupUnit(auto9CA46B02_g, auto9CA46B02_u);
@@ -2726,6 +2732,46 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
 void libSCPL_gt_InitializationPlus_Init () {
     libSCPL_gt_InitializationPlus = TriggerCreate("libSCPL_gt_InitializationPlus_Func");
     TriggerAddEventTimeElapsed(libSCPL_gt_InitializationPlus, 0.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DebugCommand ResourceActual Show
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_DebugCommandResourceActualShow_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeMinerals, true);
+    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeVespene, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_DebugCommandResourceActualShow_Init () {
+    libSCPL_gt_DebugCommandResourceActualShow = TriggerCreate("libSCPL_gt_DebugCommandResourceActualShow_Func");
+    TriggerAddEventChatMessage(libSCPL_gt_DebugCommandResourceActualShow, c_playerAny, "db r show", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DebugCommand ResourceActual Hide
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_DebugCommandResourceActualHide_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeMinerals, false);
+    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeVespene, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_DebugCommandResourceActualHide_Init () {
+    libSCPL_gt_DebugCommandResourceActualHide = TriggerCreate("libSCPL_gt_DebugCommandResourceActualHide_Func");
+    TriggerAddEventChatMessage(libSCPL_gt_DebugCommandResourceActualHide, c_playerAny, "db r hide", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9404,7 +9450,8 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
     lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
     lv_net = (libSCPL_gv_player[lv_playerIndex].lv_resourceGainMinerals + libSCPL_gv_player[lv_playerIndex].lv_resourceSpendMinerals);
     lv_net = (lv_net / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
-    if ((Round(lv_net) > 0.0)) {
+    lv_net = Round(lv_net);
+    if ((lv_net > 0.0)) {
         lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
         DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
@@ -9413,7 +9460,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
         lv_net = (-1.0 * lv_net);
         lv_spendDisplay = ("( + " + FixedToString(lv_net, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        if ((Round(lv_net) == 0.0)) {
+        if ((lv_net == 0.0)) {
             DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Neutral");
         }
         else {
@@ -9429,7 +9476,8 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
     lv_spend = (libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
     lv_net = (libSCPL_gv_player[lv_playerIndex].lv_resourceGainVespene + libSCPL_gv_player[lv_playerIndex].lv_resourceSpendVespene);
     lv_net = (lv_net / (lv_gameSpeedFactor * libSCPL_gv_constants.lv_spendTickIncrement));
-    if ((Round(lv_net) > 0.0)) {
+    lv_net = Round(lv_net);
+    if ((lv_net > 0.0)) {
         lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
         DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
@@ -9438,7 +9486,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
         lv_net = (-1.0 * lv_net);
         lv_spendDisplay = ("( + " + FixedToString(lv_net, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
-        if ((Round(lv_net) == 0.0)) {
+        if ((lv_net == 0.0)) {
             DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Neutral");
         }
         else {
@@ -9729,6 +9777,8 @@ void libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init () {
 
 void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
+    libSCPL_gt_DebugCommandResourceActualShow_Init();
+    libSCPL_gt_DebugCommandResourceActualHide_Init();
     libSCPL_gt_ProgressMorphRefund01_Init();
     libSCPL_gt_ProgressMorphStart01_Init();
     libSCPL_gt_ProgressMorphRefund02_Init();

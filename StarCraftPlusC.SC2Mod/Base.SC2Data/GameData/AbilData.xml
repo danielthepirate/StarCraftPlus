@@ -448,6 +448,9 @@
         </InfoArray>
         <Activity value="UI/Upgrading"/>
     </CAbilMorph>
+    <CAbilHarvest id="MULEGather">
+        <ResourceAmountRequest index="Minerals" value="20"/>
+    </CAbilHarvest>
     <CAbilMorph id="StarportReactorMorphUCB">
         <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>

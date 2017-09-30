@@ -260,12 +260,12 @@
     <CEffectApplyBehavior id="GameResourceMarkerVespene">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
-    <CEffectModifyPlayer id="GameResources5DummyMinerals">
+    <CEffectModifyPlayer id="GameResources4DummyMinerals">
         <ValidatorArray value="NotDead"/>
         <ValidatorArray value="IsReturningResources"/>
         <EditorCategories value=""/>
-        <Resources index="Terrazine" value="5"/>
-        <ResourcesCollected index="Terrazine" value="5"/>
+        <Resources index="Terrazine" value="4"/>
+        <ResourcesCollected index="Terrazine" value="4"/>
     </CEffectModifyPlayer>
     <CEffectModifyPlayer id="GameResources4DummyVespene">
         <ValidatorArray value="NotDead"/>
@@ -274,19 +274,19 @@
         <Resources index="Custom" value="4"/>
         <ResourcesCollected index="Custom" value="4"/>
     </CEffectModifyPlayer>
-    <CEffectModifyPlayer id="GameResources25DummyMinerals">
+    <CEffectModifyPlayer id="GameResources20DummyMinerals">
         <ValidatorArray value="NotDead"/>
         <ValidatorArray value="IsReturningResources"/>
         <EditorCategories value=""/>
-        <Resources index="Terrazine" value="25"/>
-        <ResourcesCollected index="Terrazine" value="25"/>
+        <Resources index="Terrazine" value="20"/>
+        <ResourcesCollected index="Terrazine" value="20"/>
     </CEffectModifyPlayer>
-    <CEffectModifyPlayer id="GameResources7DummyMinerals">
+    <CEffectModifyPlayer id="GameResources6DummyMinerals">
         <ValidatorArray value="NotDead"/>
         <ValidatorArray value="IsReturningResources"/>
         <EditorCategories value=""/>
-        <Resources index="Terrazine" value="7"/>
-        <ResourcesCollected index="Terrazine" value="7"/>
+        <Resources index="Terrazine" value="6"/>
+        <ResourcesCollected index="Terrazine" value="6"/>
     </CEffectModifyPlayer>
     <CEffectSwitch id="GameResourceMarkerMineralsRichSet">
         <EditorCategories value=""/>
@@ -295,13 +295,13 @@
     </CEffectSwitch>
     <CEffectSwitch id="GameResourcesMineralSet">
         <EditorCategories value=""/>
-        <CaseArray Validator="IsMULE" Effect="GameResources25DummyMinerals"/>
-        <CaseDefault value="GameResources5DummyMinerals"/>
+        <CaseArray Validator="IsMULE" Effect="GameResources20DummyMinerals"/>
+        <CaseDefault value="GameResources4DummyMinerals"/>
     </CEffectSwitch>
     <CEffectSwitch id="GameResourcesMineralRichSet">
         <EditorCategories value=""/>
-        <CaseArray Validator="IsMULE" Effect="GameResources25DummyMinerals"/>
-        <CaseDefault value="GameResources7DummyMinerals"/>
+        <CaseArray Validator="IsMULE" Effect="GameResources20DummyMinerals"/>
+        <CaseDefault value="GameResources6DummyMinerals"/>
     </CEffectSwitch>
     <CEffectSwitch id="GameResourceMarkerMineralsSet">
         <EditorCategories value=""/>
