@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+	<Frame type="Frame" name="HelpTipTemplate">
+		<Height val="72"/>
+		<Width val="200"/>
+
+		<Visible val="true"/>
+
+		<Frame type="Image" name="Background">
+			<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+			<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+			<Height val="72"/>
+			<Texture val="@@UI/Axiom_Tip"/>
+			<TextureType val="Normal"/>
+
+			<Frame type="Image" name="Highlight">
+				<Anchor relative="$parent"/>
+				<Texture val="@@UI/Axiom_TipFlash"/>
+				<TextureType val="Normal"/>
+
+				<Animation name="Highlight">
+					<Event event="OnShown" action="Play"/>
+					<Controller type="Fade" end="Loop">
+						<Key type="Curve" time="0" value="0" out="Slow"/>
+						<Key type="Curve" time="1" value="255" in="Slow" out="Slow"/>
+						<Key type="Curve" time="2" value="0" in="Slow"/>
+						<Key type="Curve" time="3" value="0" in="Slow"/>
+					</Controller>
+				</Animation>
+			</Frame>
+		</Frame>
+
+		<Frame type="Label" name="TipText">
+			<Anchor side="Top" relative="$parent" pos="Min" offset="14"/>
+			<Anchor side="Left" relative="$parent" pos="Min" offset="3"/>
+			<Anchor side="Right" relative="$parent" pos="Max" offset="-1"/>
+			<Anchor side="Bottom" relative="$parent" pos="Max" offset="-24"/>
+			<Text val="Im a Tip"/>
+			<Style val="@@Axiom_TipCallout"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer" file="GameUI">
+		
+		<Frame type="Frame" name="Axiom_MenuHelpTip" template="AxiomTips/HelpTipTemplate">
+			<Anchor side="Bottom" relative="$parent/MenuBarConsoleAnchor" pos="Min" offset="7"/>
+			<Anchor side="Right" relative="$parent/MenuBarConsoleAnchor" pos="Max" offset="-114"/>
+		</Frame>
+		<Frame type="Frame" name="Axiom_ControlGroupHelpTip" template="AxiomTips/HelpTipTemplate">
+			<Anchor side="Bottom" relative="$ACGContainer/Group01" pos="Min" offset="7"/>
+			<Anchor side="Right" relative="$ACGContainer/Group01" pos="Mid" offset="100"/>
+			<Frame type="Label" name="TipText">
+				<Text val="Control Group Hint"/>
+			</Frame>
+		</Frame>
+	</Frame>
+</Desc>

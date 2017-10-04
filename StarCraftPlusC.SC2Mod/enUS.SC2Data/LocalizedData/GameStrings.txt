@@ -55,6 +55,9 @@ Abil/Name/UpgradeToPlanetaryFortressUCB=Morph Building (COCE -> Planetary Fortre
 Abil/Name/WarpGateTrainUCB=Train (Warp Gate) UCB
 Actor/AddonIndicator/ReactorPaused=R
 Actor/AddonIndicator/TechLabPaused=T
+Attribute001/Name=Show Axiom Tips
+Attribute001/Value001/Name=Yes
+Attribute001/Value002/Name=No
 Behavior/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
 Behavior/Name/GameHookBarracksStatusUpdate=Game Hook Barracks Status Update
 Behavior/Name/PowerSourceAtNexus=Power Source At Nexus
@@ -497,3 +500,4 @@ Unit/Name/TechLabPaused=Tech Lab
 Unit/Name/UltraliskCavernPaused=Ultralisk Cavern
 Upgrade/Name/GameProtossNexusCount=Game Protoss Nexus Count
 Upgrade/Name/GameProtossWarpGateCount=Game Protoss Warp Gate Count
+Button/Tooltip/Nexus=Primary structure. Can receive gathered resources. Can use the Chrono Boost ability.<n/><n/><c val="ffff8a">Enables:</c><n/>- Probes<n/>- Mothership Core<n/><n/><c val="ffff8a">Provides x supply</c>

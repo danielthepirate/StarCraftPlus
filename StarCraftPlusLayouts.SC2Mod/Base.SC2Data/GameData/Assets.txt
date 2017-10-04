@@ -104,3 +104,10 @@ UI/LeaderPanelRaceImage=Assets\Textures\icon-1v1-terran.dds
 UI/LeaderPanelRaceImage_Prot=Assets\Textures\icon-1v1-protoss.dds
 UI/LeaderPanelRaceImage_Terr=Assets\Textures\icon-1v1-terran.dds
 UI/LeaderPanelRaceImage_Zerg=Assets\Textures\icon-1v1-zerg.dds
+
+UI/Axiom_Tip=Assets\Textures\ui_void_mission_tipframe.dds
+UI/Axiom_Tip_Zerg=Assets\Textures\ui_void_mission_tipframe_zerg.dds
+UI/Axiom_Tip_Terr=Assets\Textures\ui_void_mission_tipframe_terr.dds
+UI/Axiom_TipFlash=Assets\Textures\ui_void_mission_tipframeflash.dds
+UI/Axiom_TipFlash_Zerg=Assets\Textures\ui_void_mission_tipframeflash_zerg.dds
+UI/Axiom_TipFlash_Terr=Assets\Textures\ui_void_mission_tipframeflash_terr.dds
