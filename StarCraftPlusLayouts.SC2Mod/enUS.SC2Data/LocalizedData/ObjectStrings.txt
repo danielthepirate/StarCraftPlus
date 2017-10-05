@@ -1,0 +1,2 @@
+﻿Conversation/Name/AxiomHintTips=Axiom Hint Tips
+User/Name/AxiomHints=AxiomHints

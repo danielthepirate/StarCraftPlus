@@ -163,6 +163,13 @@
 			</State>
 			<State name="Protoss">
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+				<Action type="SetProperty" frame="NormalImage" texture="@@UI/UCBTabButtonNormal"/>
+				<Action type="SetProperty" frame="HoverImage" texture="@@UI/UCBTabButtonHover"/>
+				<Action type="SetProperty" frame="NormalImage" height="62"/>
+				<Action type="SetProperty" frame="HoverImage" height="62"/>
+				<Action type="SetProperty" frame="NormalImage" width="166"/>
+				<Action type="SetProperty" frame="HoverImage" width="166"/>
+				<Action type="SetProperty" frame="MenuIcon" visible="true"/>
 			</State>
 			<State name="Zerg">
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>

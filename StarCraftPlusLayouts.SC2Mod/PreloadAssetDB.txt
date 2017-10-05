@@ -1,0 +1,10 @@
+[Conversation]
+id=AxiomHintTips
+Actor=TerrainMgr
+Character=TotalBiscuit
+ConversationState=Characters
+
+[User]
+id=AxiomHints
+Actor=TerrainMgr
+

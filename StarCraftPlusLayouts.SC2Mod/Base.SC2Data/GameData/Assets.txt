@@ -10,19 +10,19 @@ UI/ResourceIconNoBackground3_Zerg=Assets\Textures\icon-gas-zerg_nobg.dds
 
 UI/ControlGroupBase=Assets\Textures\scp-controlgroup-terran-base.dds
 UI/ControlGroupBase_Terr=Assets\Textures\scp-controlgroup-terran-base.dds
-UI/ControlGroupBase_Prot=Assets\Textures\scp-cg-protoss-base.dds
+UI/ControlGroupBase_Prot=Assets\Textures\scp-controlgroup-protoss-base.dds
 UI/ControlGroupBase_Zerg=Assets\Textures\scp-cg-zerg-base.dds
 UI/ControlGroupBorder=Assets\Textures\scp-controlgroup-terran-border.dds
 UI/ControlGroupBorder_Terr=Assets\Textures\scp-controlgroup-terran-border.dds
-UI/ControlGroupBorder_Prot=Assets\Textures\scp-cg-protoss-border.dds
+UI/ControlGroupBorder_Prot=Assets\Textures\scp-controlgroup-protoss-border.dds
 UI/ControlGroupBorder_Zerg=Assets\Textures\scp-cg-zerg-border.dds
 UI/ControlGroupNormal=Assets\Textures\scp-controlgroup-terran-normal.dds
 UI/ControlGroupNormal_Terr=Assets\Textures\scp-controlgroup-terran-normal.dds
-UI/ControlGroupNormal_Prot=Assets\Textures\scp-cg-protoss-normal.dds
+UI/ControlGroupNormal_Prot=Assets\Textures\scp-controlgroup-protoss-normal.dds
 UI/ControlGroupNormal_Zerg=Assets\Textures\scp-cg-zerg-normal.dds
 UI/ControlGroupHover=Assets\Textures\scp-controlgroup-terran-over.dds
 UI/ControlGroupHover_Terr=Assets\Textures\scp-controlgroup-terran-over.dds
-UI/ControlGroupHover_Prot=Assets\Textures\scp-cg-protoss-over.dds
+UI/ControlGroupHover_Prot=Assets\Textures\scp-controlgroup-protoss-over.dds
 UI/ControlGroupHover_Zerg=Assets\Textures\scp-cg-zerg-over.dds
 
 UI/UCBTabButtonNormal=Assets\Textures\scp-ucbtab-terran-buttonnormal.dds
