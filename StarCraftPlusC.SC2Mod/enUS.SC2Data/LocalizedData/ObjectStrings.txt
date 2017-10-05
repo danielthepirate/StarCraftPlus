@@ -207,7 +207,6 @@ Behavior/Name/CreepGrowthMediumEnhanced=Creep Growth Medium Enhanced
 Behavior/Name/GameAutoCreepNodeSearch=Game Auto Creep Node Search
 Behavior/Name/GameAutoCreepNodeTargetCapped=Game Auto Creep Node Target Capped
 Behavior/Name/GameAutoCreepSpreadReady=Game Auto Creep Spread Ready
-Behavior/Name/GameDroneMorphMarker=Game Drone Morph Marker
 Behavior/Name/GameIncreasedLifeAndShields=Game Increased Life And Shields
 Behavior/Name/GameMineralsNearTownHall=Game Minerals Near Town Hall
 Behavior/Name/GameMineralsNearTownHallSearch=Game Minerals Near Town Hall Search
@@ -371,7 +370,7 @@ RequirementNode/Name/AndCountBehaviorGameUCBSpireGreaterSpireCompleteOnly8360787
 RequirementNode/Name/AndCountUnitBanelingNestCompleteOnlyOr1515591279CountUnitLairCompleteOnlyTechTreeCheatCountUnitHiveCompleteOnlyTechTreeCheat=CountUnit(BanelingNest,CompleteOnly) && (CountUnit(Lair,CompleteOnly)[TechTreeCheat] || {Lair}CountUnit(Hive,CompleteOnly)[TechTreeCheat])
 RequirementNode/Name/AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheat=CountUnit(Barracks,CompleteOnly)[TechTreeCheat] && CountUnit(BarracksTechLab,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitBarracksCompleteOnlyTechTreeCheatCountUnitBarracksTechLabCompleteOnlyTechTreeCheatCountUnitGhostAcademyCompleteOnly=CountUnit(Barracks,CompleteOnly)[TechTreeCheat] && CountUnit(BarracksTechLab,CompleteOnly)[TechTreeCheat] && CountUnit(GhostAcademy,CompleteOnly)
-RequirementNode/Name/AndCountUnitCommandCenterCompleteOnlyCountUnitAlias_BarracksCompleteOnly=CountUnit(CommandCenter,CompleteOnly) && CountUnit(Alias_Barracks,CompleteOnly)
+RequirementNode/Name/AndCountUnitCommandCenterCompleteOnlyCountUnitAlias_BarracksCompleteOnly789532539=CountUnit(CommandCenter,CompleteOnly) && CountUnit(Alias_Barracks,CompleteOnly){Barracks}
 RequirementNode/Name/AndCountUnitCommandCenterCompleteOnlyCountUnitEngineeringBayCompleteOnly=CountUnit(CommandCenter,CompleteOnly) && CountUnit(EngineeringBay,CompleteOnly)
 RequirementNode/Name/AndCountUnitCyberneticsCoreCompleteOnlyEq1491800815CountUpgradeProtossAirWeaponsLevel1CompleteOnly1CountUnitFleetBeaconCompleteOnlyTechTreeCheat=CountUnit(CyberneticsCore,CompleteOnly) && CountUpgrade(ProtossAirWeaponsLevel1,CompleteOnly) == {Protoss Air Weapons Level 1}1 && CountUnit(FleetBeacon,CompleteOnly)[TechTreeCheat]
 RequirementNode/Name/AndCountUnitCyberneticsCoreCompleteOnlyEq2731442398CountUpgradeProtossAirArmorsLevel2CompleteOnly1CountUnitFleetBeaconCompleteOnlyTechTreeCheat=CountUnit(CyberneticsCore,CompleteOnly) && CountUpgrade(ProtossAirArmorsLevel2,CompleteOnly) == {Protoss Air Armor Level 2}1 && CountUnit(FleetBeacon,CompleteOnly)[TechTreeCheat]
@@ -437,7 +436,7 @@ RequirementNode/Name/CountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly297
 RequirementNode/Name/CountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744=CountBehavior(GameUCBSpireGreaterSpire,CompleteOnly){Spire}
 RequirementNode/Name/CountBehaviorPowerSourceFastCompleteOnlyAtUnit22563247=CountBehavior(PowerSourceFast,CompleteOnlyAtUnit){Near Warp Gate}
 RequirementNode/Name/CountBehaviorPowerSourceFastCompleteOnlyAtUnitNearWarpGateorNexus=CountBehavior(PowerSourceFast,CompleteOnlyAtUnit){Near or Nexus}
-RequirementNode/Name/CountUnitAlias_BarracksCompleteOnly=CountUnit(Alias_Barracks,CompleteOnly)
+RequirementNode/Name/CountUnitAlias_BarracksCompleteOnly789532539=CountUnit(Alias_Barracks,CompleteOnly){Barracks}
 RequirementNode/Name/CountUnitBanelingNestCompleteOnly=CountUnit(BanelingNest,CompleteOnly)
 RequirementNode/Name/CountUnitBarracksCompleteOnly789532539TechTreeCheat=CountUnit(Barracks,CompleteOnly){Barracks}[TechTreeCheat]
 RequirementNode/Name/CountUnitBarracksCompleteOnlyTechTreeCheat=CountUnit(Barracks,CompleteOnly)[TechTreeCheat]

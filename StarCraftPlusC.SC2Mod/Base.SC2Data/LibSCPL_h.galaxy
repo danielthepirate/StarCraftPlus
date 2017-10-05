@@ -171,7 +171,6 @@ void libSCPL_gf_AutoCreepLineageSpread (int lp_playerIndex, unit lp_node);
 bool libSCPL_gf_PointsHaveHeightDifference (point lp_pointA, point lp_pointB);
 point libSCPL_gf_AutoCreepPointBest (unit lp_node, unit lp_target);
 int libSCPL_gf_AutoCreepPointValid (unit lp_node, point lp_point);
-void libSCPL_gf_AutoCreepTargetNodesSort (int lp_playerIndex);
 void libSCPL_gf_AutoCreepDebugAll (int lp_playerIndex);
 void libSCPL_gf_AutoCreepDebug (unit lp_unit);
 void libSCPL_gf_InitializeUIHookups ();

@@ -4,14 +4,15 @@
 		<Height val="72"/>
 		<Width val="200"/>
 		
-		<Visible val="true"/>
+		<Visible val="false"/>
 
 		<Frame type="Image" name="Background">
-			<!-- <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+			<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+			<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
 			<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-			<Height val="72"/> -->
-			<Anchor relative="$parent"/>
+			<!-- <Height val="72"/> -->
+			<!-- <Anchor relative="$parent"/> -->
 			<Texture val="@@UI/Axiom_Tip"/>
 			
 			<TextureType val="NineSlice"/>
@@ -42,16 +43,18 @@
 			<Style val="@@Axiom_TipCallout"/>
 		</Frame>
 	</Frame>
+	
 	<Frame type="Frame" name="HelpTipUpsideDownTemplate" template="AxiomTips/HelpTipTemplate">
+		
 		<Frame type="Image" name="Background">
-			<Anchor relative="$parent"/>
+			<!-- <Anchor relative="$parent"/> -->
 			<RotationPosition val="MiddleCenter"/>
 			<Rotation val="180"/>
+			
 			<Frame type="Image" name="Highlight">
 				<Anchor relative="$parent"/>
 				<RotationPosition val="MiddleCenter"/>
 				<Rotation val="180"/>
-			
 			</Frame>
 		</Frame>
 
@@ -62,6 +65,7 @@
 			<Anchor side="Left" relative="$parent" pos="Min" offset="1"/>
 		</Frame>
 	</Frame>
+	
 	<Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer" file="GameUI">
 		
 		<Frame type="Frame" name="Axiom_AutoAddControlGroupHelpTip" template="AxiomTips/HelpTipTemplate">
@@ -69,28 +73,34 @@
 			<Anchor side="Right" relative="$ACGContainer/Group01" pos="Mid" offset="160"/>
 			<Height val="100"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00002"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_MultiTypeControlGroupHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ACGContainer/Group01" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ACGContainer/Group01" pos="Mid" offset="160"/>
 			<Height val="100"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00001"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_ExpansionHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Mid" offset="160"/>
 			<Height val="120"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00003"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_SpentAllMoneyHelpTip" template="AxiomTips/HelpTipUpsideDownTemplate">
 			<Anchor side="Top" relative="$parent/ResourcePanel/ResourceFrame/ResourceLabel2Spend" pos="Max" offset="7"/>
 			<Anchor side="Right" relative="$parent/ResourcePanel/ResourceFrame/ResourceLabel2Spend" pos="Mid" offset="160"/>
@@ -100,132 +110,157 @@
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00004"/>
 			</Frame>
-			
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_OverspendingHelpTip" template="AxiomTips/HelpTipUpsideDownTemplate">
 			<Anchor side="Top" relative="$parent/ResourcePanel/ResourceFrame/ResourceLabel2Spend" pos="Max" offset="7"/>
 			<Anchor side="Right" relative="$parent/ResourcePanel/ResourceFrame/ResourceLabel2Spend" pos="Mid" offset="160"/>
 			<Height val="100"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00005"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_SupplyMaxReachedHelpTip" template="AxiomTips/HelpTipUpsideDownTemplate">
 			<Anchor side="Top" relative="$parent/ResourcePanel/ResourceFrame/SupplyLabel" pos="Max" offset="7"/>
 			<Anchor side="Left" relative="$parent/ResourcePanel/ResourceFrame/SupplyLabel" pos="Min" offset="-125"/>
 			<Height val="150"/>
 			<Width val="250"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00006"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_MineralFieldDepletingHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Mid" offset="160"/>
 			<Height val="120"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00007"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_BuildRefineryHelpTip" template="AxiomTips/HelpTipUpsideDownTemplate">
 			<Anchor side="Top" relative="$parent/ResourcePanel/ResourceFrame/ResourceLabel3Spend" pos="Max" offset="7"/>
 			<Anchor side="Right" relative="$parent/ResourcePanel/ResourceFrame/ResourceLabel3Spend" pos="Mid" offset="160"/>
 			<Height val="100"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00008"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_AutoAddControlGroupHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ACGContainer/Group01" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ACGContainer/Group01" pos="Mid" offset="160"/>
 			<Height val="100"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00009"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_RecallControlGroupHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ACGContainer/Group01" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ACGContainer/Group01" pos="Mid" offset="160"/>
 			<Height val="100"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00010"/>
 			</Frame>
 		</Frame>
-		
 		
 		<Frame type="Frame" name="Axiom_Terr_BuildWallHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Mid" offset="160"/>
 			<Height val="120"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00011"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_Terr_BuildBarracksHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Mid" offset="160"/>
 			<Height val="120"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00012"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_Terr_TrainUnitsHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarUnits" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarUnits" pos="Mid" offset="160"/>
 			<Height val="120"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00013"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_Terr_TechLabHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarUnits" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarUnits" pos="Mid" offset="160"/>
 			<Height val="120"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00014"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_Terr_ReactorHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarUnits" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarUnits" pos="Mid" offset="160"/>
 			<Height val="120"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00015"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_Terr_SupplyCapReachedHelpTip" template="AxiomTips/HelpTipUpsideDownTemplate">
 			<Anchor side="Top" relative="$parent/ResourcePanel/ResourceFrame/SupplyLabel" pos="Max" offset="7"/>
 			<Anchor side="Left" relative="$parent/ResourcePanel/ResourceFrame/SupplyLabel" pos="Min" offset="-125"/>
 			<Height val="150"/>
 			<Width val="250"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00016"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_Terr_GlobalRallyHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/GlobalRallyPanel" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalRallyPanel" pos="Mid" offset="160"/>
 			<Height val="120"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00017"/>
 			</Frame>
 		</Frame>
+		
 		<Frame type="Frame" name="Axiom_Terr_DisableGlobalRallyHelpTip" template="AxiomTips/HelpTipTemplate">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/GlobalRallyPanel" pos="Min" offset="7"/>
 			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalRallyPanel" pos="Mid" offset="160"/>
 			<Height val="120"/>
 			<Width val="320"/>
+			
 			<Frame type="Label" name="TipText">
 				<Text val="@Conversation/AxiomHintTips/Line00019"/>
 			</Frame>

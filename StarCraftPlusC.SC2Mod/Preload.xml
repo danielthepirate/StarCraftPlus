@@ -3,6 +3,7 @@
 <Asset path="assets\textures\black.dds" Type="Image"/>
 <Asset path="assets\textures\blank.dds" Type="Image"/>
 <Actor id="SYSTEM_ActorConfig"/>
+<Behavior id="GameDroneMorphMarker"/>
 <Behavior id="GameUCBCommandCenterChargeLink"/>
 <Behavior id="GameUCBLairChargeLink"/>
 <Behavior id="GameUCBBroodlordChargeLink"/>

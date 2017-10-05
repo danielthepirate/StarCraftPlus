@@ -729,27 +729,36 @@ void libSCPL_gf_AutoWorkerProductionZerg (unit lp_townHall, int lp_playerIndex, 
     int auto8CD8C38B_ai;
 
     // Variable Declarations
+    int lv_droneProductionCurrent;
+    int lv_droneProductionMaximum;
     int lv_dronesNeeded;
     int lv_larvaAvailable;
+    int lv_larvaToDrones;
     int lv_larvaCount;
     int lv_larvaIndex;
     unitgroup lv_larvaGroup;
     unit lv_larva;
+    region lv_townHallRegion;
 
     // Variable Initialization
     lv_larvaGroup = UnitGroupEmpty();
 
     // Implementation
-    lv_larvaGroup = UnitGroup("Larva", c_playerAny, RegionCircle(UnitGetPosition(lp_townHall), 8.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    lv_droneProductionMaximum = 2;
+    lv_townHallRegion = RegionCircle(UnitGetPosition(lp_townHall), 8.0);
+    lv_larvaGroup = libPPRL_gf_UnitsInUnitGroupMatchingBehavior(UnitGroup("Larva", lp_playerIndex, lv_townHallRegion, UnitFilter(0, 0, 0, (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), "GameDroneMorphMarker", false);
+    lv_droneProductionCurrent = UnitGroupCount(libPPRL_gf_UnitsInUnitGroupMatchingBehavior(UnitGroup("Egg", lp_playerIndex, lv_townHallRegion, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), "GameDroneMorphMarker", true), c_unitCountAlive);
     lv_larvaCount = UnitGroupCount(lv_larvaGroup, c_unitCountAlive);
-    lv_dronesNeeded = (libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex) - libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex));
     lv_larvaAvailable = (lv_larvaCount - lp_larvaLeftover);
-    auto8CD8C38B_ae = MinI(lv_larvaAvailable, lv_dronesNeeded);
+    lv_dronesNeeded = (libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex) - libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex));
+    lv_larvaToDrones = MinI(MinI(lv_larvaAvailable, lv_dronesNeeded), (lv_droneProductionMaximum - lv_droneProductionCurrent));
+    auto8CD8C38B_ae = lv_larvaToDrones;
     auto8CD8C38B_ai = 1;
     lv_larvaIndex = 1;
     for ( ; ( (auto8CD8C38B_ai >= 0 && lv_larvaIndex <= auto8CD8C38B_ae) || (auto8CD8C38B_ai <= 0 && lv_larvaIndex >= auto8CD8C38B_ae) ) ; lv_larvaIndex += auto8CD8C38B_ai ) {
         lv_larva = UnitGroupUnit(lv_larvaGroup, lv_larvaIndex);
         UnitIssueOrder(lv_larva, Order(AbilityCommand("LarvaTrain", 0)), c_orderQueueReplace);
+        UnitBehaviorAdd(lv_larva, "GameDroneMorphMarker", lv_larva, 1);
     }
 }
 
@@ -1208,51 +1217,6 @@ int libSCPL_gf_AutoCreepPointValid (unit lp_node, point lp_point) {
         return 1;
     }
     return 0;
-}
-
-void libSCPL_gf_AutoCreepTargetNodesSort (int lp_playerIndex) {
-    unitgroup auto26F85414_g;
-    int auto26F85414_u;
-    int auto9BA6175A_ae;
-    int auto9BA6175A_ai;
-
-    // Variable Declarations
-    point lv_playerPathingOrigin;
-    unitgroup lv_nodesUnsorted;
-    unit lv_node;
-    int lv_nodeScore;
-    unit lv_nodeClosest;
-    int lv_lowestScore;
-    int lv_n;
-
-    // Variable Initialization
-    lv_nodesUnsorted = UnitGroupEmpty();
-
-    // Implementation
-    lv_nodesUnsorted = UnitGroupCopy(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets);
-    libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets = UnitGroupEmpty();
-    lv_playerPathingOrigin = UnitGetPosition(UnitGroupUnit(UnitGroup(null, lp_playerIndex, RegionEntireMap(), UnitFilter((1 << c_targetFilterWorker), 0, (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1));
-    while ((UnitGroupCount(lv_nodesUnsorted, c_unitCountAlive) > 0)) {
-        lv_lowestScore = 9999;
-        auto26F85414_g = lv_nodesUnsorted;
-        auto26F85414_u = 1;
-        for ( ; auto26F85414_u <= UnitGroupCount(auto26F85414_g, c_unitCountAll) ; auto26F85414_u += BoolToInt(lv_node == UnitGroupUnit(auto26F85414_g, auto26F85414_u)) ) {
-            lv_node = UnitGroupUnit(auto26F85414_g, auto26F85414_u);
-            lv_nodeScore = PointPathingCost(UnitGetPosition(lv_node), lv_playerPathingOrigin);
-            if ((lv_nodeScore < lv_lowestScore)) {
-                lv_nodeClosest = lv_node;
-                lv_lowestScore = lv_nodeScore;
-            }
-        }
-        UnitGroupAdd(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets, lv_nodeClosest);
-        UnitGroupRemove(lv_nodesUnsorted, lv_nodeClosest);
-    }
-    auto9BA6175A_ae = UnitGroupCount(libSCPL_gv_player[lp_playerIndex].lv_globalZerg_AutoCreepNodeTargets, c_unitCountAlive);
-    auto9BA6175A_ai = 1;
-    lv_n = 1;
-    for ( ; ( (auto9BA6175A_ai >= 0 && lv_n <= auto9BA6175A_ae) || (auto9BA6175A_ai <= 0 && lv_n >= auto9BA6175A_ae) ) ; lv_n += auto9BA6175A_ai ) {
-        libSCPL_gf_UnitChargeLinkSet(UnitGroupUnit(libSCPL_gv_player[lv_n].lv_globalZerg_AutoCreepNodeTargets, lv_n), "CreepTargetIndex", lv_n);
-    }
 }
 
 void libSCPL_gf_AutoCreepDebugAll (int lp_playerIndex) {
@@ -6352,6 +6316,7 @@ void libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Init () {
     libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg = TriggerCreate("libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Func");
     TriggerEnable(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, false);
     TriggerAddEventUnitCreated(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, null, null, "SpawnLarva");
+    TriggerAddEventUnitCreated(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, null, null, "QueenSpawnLarva");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7645,8 +7610,6 @@ bool libSCPL_gt_AutoCreepTumorLineageChild_Func (bool testConds, bool runActions
     lv_node = EventUnitCreatedUnit();
     lv_nodeParent = EventUnit();
     lv_playerIndex = UnitGetOwner(lv_nodeParent);
-    lv_lineageIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lv_nodeParent, "CreepParentIndex"));
-    libSCPL_gf_UnitChargeLinkSet(lv_node, "CreepTargetIndex", lv_lineageIndex);
     lv_lineageIndex = FixedToInt(libSCPL_gf_UnitChargeLink(lv_nodeParent, "CreepParentIndex"));
     libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_head = lv_node;
     UnitGroupAdd(libSCPL_gv_player[lv_playerIndex].lv_globalZerg_AutoCreepLineage[lv_lineageIndex].lv_zzUnitGroup, lv_node);

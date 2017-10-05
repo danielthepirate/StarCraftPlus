@@ -400,6 +400,7 @@
         <Hotkey value="Button/Hotkey/GreaterSpireUCB"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="GreaterSpire"/>
+        <Tooltip value="Button/Tooltip/GreaterSpire"/>
     </CButton>
     <CButton id="HERC">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -416,6 +417,7 @@
         <Hotkey value="Button/Hotkey/HiveUCB"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="Hive"/>
+        <Tooltip value="Button/Tooltip/Hive"/>
     </CButton>
     <CButton id="HoldFire">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -489,6 +491,7 @@
         <Hotkey value="Button/Hotkey/LairUCB"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="Lair"/>
+        <Tooltip value="Button/Tooltip/Lair"/>
     </CButton>
     <CButton id="Larva"/>
     <CButton id="LaunchDefenders">
@@ -510,9 +513,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="LocustMP">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="LurkerDenMP">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="LurkerMPFromHydraliskBurrowed">
@@ -617,6 +617,8 @@
         <Hotkey value="Button/Hotkey/MutateintoLurkerDenUCB"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="MutateintoLurkerDen"/>
+        <Tooltip value="Button/Tooltip/MutateintoLurkerDen"/>
+        <AlertTooltip value="Button/Tooltip/MutateintoLurkerDen"/>
     </CButton>
     <CButton id="NexusInvulnerability">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -712,6 +714,7 @@
         <Hotkey value="Button/Hotkey/UCBOrbitalCommand"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="OrbitalCommand"/>
+        <Tooltip value="Button/Tooltip/OrbitalCommand"/>
     </CButton>
     <CButton id="OverlordEnhancedCreepGrowthAura">
         <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
@@ -767,9 +770,6 @@
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="QueenMPEnsnare">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
-    </CButton>
-    <CButton id="QueenMPInfestCommandCenter">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
     </CButton>
     <CButton id="QueenMPSpawnBroodlings">
@@ -939,6 +939,7 @@
         <Hotkey value="Button/Hotkey/UCBUpgradeToPlanetaryFortress"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="UpgradeToPlanetaryFortress"/>
+        <Tooltip value="Button/Tooltip/UpgradeToPlanetaryFortress"/>
     </CButton>
     <CButton id="VoidMPImmortalRevive">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>

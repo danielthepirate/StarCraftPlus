@@ -661,7 +661,6 @@
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
         </RefundFraction>
-        <InfoArray index="Train1" Effect="GameDroneMorphMarker"/>
     </CAbilTrain>
     <CAbilTrain id="LarvaTrainDummyRedirect">
         <InfoArray index="Train1">

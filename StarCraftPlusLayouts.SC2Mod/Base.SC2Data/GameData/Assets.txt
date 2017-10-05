@@ -27,41 +27,46 @@ UI/ControlGroupHover_Zerg=Assets\Textures\scp-cg-zerg-over.dds
 
 UI/UCBTabButtonNormal=Assets\Textures\scp-ucbtab-terran-buttonnormal.dds
 UI/UCBTabButtonNormal_Terr=Assets\Textures\scp-ucbtab-terran-buttonnormal.dds
+UI/UCBTabButtonNormal_Prot=Assets\Textures\scp-ucbtab-protoss-buttonnormal.dds
 UI/UCBTabButtonHover=Assets\Textures\scp-ucbtab-terran-buttonhover.dds
 UI/UCBTabButtonHover_Terr=Assets\Textures\scp-ucbtab-terran-buttonhover.dds
+UI/UCBTabButtonHover_Prot=Assets\Textures\scp-ucbtab-protoss-buttonhover.dds
 
 UI/UCBTabButtonIconBuild=Assets\Textures\scp-ucbtab-terran-iconbuild.dds
 UI/UCBTabButtonIconBuild_Terr=Assets\Textures\scp-ucbtab-terran-iconbuild.dds
+UI/UCBTabButtonIconBuild_Prot=Assets\Textures\scp-ucbtab-protoss-iconbuild.dds
+UI/UCBTabButtonIconBuild_Zerg=Assets\Textures\scp-ucbtab-zerg-iconbuild.dds
 UI/UCBTabButtonIconTrain=Assets\Textures\scp-ucbtab-terran-icontrain.dds
 UI/UCBTabButtonIconTrain_Terr=Assets\Textures\scp-ucbtab-terran-icontrain.dds
+UI/UCBTabButtonIconTrain_Prot=Assets\Textures\scp-ucbtab-protoss-icontrain.dds
+UI/UCBTabButtonIconTrain_Zerg=Assets\Textures\scp-ucbtab-zerg-icontrain.dds
 UI/UCBTabButtonIconUpgrade=Assets\Textures\scp-ucbtab-terran-iconupgrade.dds
 UI/UCBTabButtonIconUpgrade_Terr=Assets\Textures\scp-ucbtab-terran-iconupgrade.dds
+UI/UCBTabButtonIconUpgrade_Prot=Assets\Textures\scp-ucbtab-protoss-iconupgrade.dds
+UI/UCBTabButtonIconUpgrade_Zerg=Assets\Textures\scp-ucbtab-zerg-iconupgrade.dds
 
-UI/UCBTabButtonIconBuildDown=Assets\Textures\scp-ucbtab-terran-iconbuild-down.dds
-UI/UCBTabButtonIconBuildDown_Terr=Assets\Textures\scp-ucbtab-terran-iconbuild-down.dds
-UI/UCBTabButtonIconTrainDown=Assets\Textures\scp-ucbtab-terran-icontrain-down.dds
-UI/UCBTabButtonIconTrainDown_Terr=Assets\Textures\scp-ucbtab-terran-icontrain-down.dds
-UI/UCBTabButtonIconUpgradeDown=Assets\Textures\scp-ucbtab-terran-iconupgrade-down.dds
-UI/UCBTabButtonIconUpgradeDown_Terr=Assets\Textures\scp-ucbtab-terran-iconupgrade-down.dds
+UI/UCBTabButtonIconBuildDown=Assets\Textures\scp-ucbtab-iconbuild-down.dds
+UI/UCBTabButtonIconTrainDown=Assets\Textures\scp-ucbtab-icontrain-down.dds
+UI/UCBTabButtonIconUpgradeDown=Assets\Textures\scp-ucbtab-iconupgrade-down.dds
 
 UI/CustomConsoleLeft=Assets/Textures/scp-console-terran-left.dds
 UI/CustomConsoleLeft_Terr=Assets/Textures/scp-console-terran-left.dds
-UI/CustomConsoleLeft_Prot=Assets/Textures/black.dds
+UI/CustomConsoleLeft_Prot=Assets/Textures/scp-console-protoss-left.dds
 UI/CustomConsoleLeft_Zerg=Assets/Textures/black.dds
 
 UI/CustomConsoleCommands=Assets/Textures/scp-console-terran-commands.dds
 UI/CustomConsoleCommands_Terr=Assets/Textures/scp-console-terran-commands.dds
-UI/CustomConsoleCommands_Prot=Assets/Textures/black.dds
+UI/CustomConsoleCommands_Prot=Assets/Textures/scp-console-protoss-commands.dds
 UI/CustomConsoleCommands_Zerg=Assets/Textures/black.dds
 
 UI/CustomConsoleUnitInfo=Assets/Textures/scp-console-terran-unitinfo.dds
 UI/CustomConsoleUnitInfo_Terr=Assets/Textures/scp-console-terran-unitinfo.dds
-UI/CustomConsoleUnitInfo_Prot=Assets/Textures/black.dds
+UI/CustomConsoleUnitInfo_Prot=Assets/Textures/scp-console-protoss-unitinfo.dds
 UI/CustomConsoleUnitInfo_Zerg=Assets/Textures/black.dds
 
 UI/CustomConsoleRight=Assets/Textures/scp-console-terran-right.dds
 UI/CustomConsoleRight_Terr=Assets/Textures/scp-console-terran-right.dds
-UI/CustomConsoleRight_Prot=Assets/Textures/black.dds
+UI/CustomConsoleRight_Prot=Assets/Textures/scp-console-protoss-right.dds
 UI/CustomConsoleRight_Zerg=Assets/Textures/black.dds
 
 

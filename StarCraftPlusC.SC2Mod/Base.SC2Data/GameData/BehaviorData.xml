@@ -118,7 +118,7 @@
     <CBehaviorBuff id="GameAutoCreepSpreadReady">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="-1"/>
-        <Period value="28"/>
+        <Period value="40"/>
         <PeriodicEffect value="GameAutoCreepSpreadHook"/>
         <InfoFlags index="Hidden" value="1"/>
         <DisableValidatorArray value="AutoCreepAutocastEnabled"/>
@@ -127,7 +127,6 @@
     <CBehaviorBuff id="GameDroneMorphMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="17"/>
-        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameHookBarracksStatusUpdate">
         <EditorCategories value="AbilityorEffectType:Units"/>

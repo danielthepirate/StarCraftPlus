@@ -57,7 +57,7 @@
 			<Key type="Curve" time="0" value="40,112,255"/>
 		</Controller>
 		<Controller  type="AdjustmentColor" end="Pause" frame="HoverImage/Protoss">
-			<Key type="Curve" time="0" value="222,40,255"/>
+			<Key type="Curve" time="0" value="40,112,255"/>
 		</Controller>
 		<Controller  type="AdjustmentColor" end="Pause" frame="NormalImage/Zerg">
 			<Key type="Curve" time="0" value="164,30,208"/>

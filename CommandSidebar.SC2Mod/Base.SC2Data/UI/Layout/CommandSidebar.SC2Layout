@@ -165,10 +165,10 @@
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
 				<Action type="SetProperty" frame="NormalImage" texture="@@UI/UCBTabButtonNormal"/>
 				<Action type="SetProperty" frame="HoverImage" texture="@@UI/UCBTabButtonHover"/>
-				<Action type="SetProperty" frame="NormalImage" height="62"/>
-				<Action type="SetProperty" frame="HoverImage" height="62"/>
-				<Action type="SetProperty" frame="NormalImage" width="166"/>
-				<Action type="SetProperty" frame="HoverImage" width="166"/>
+				<Action type="SetProperty" frame="NormalImage" height="68"/>
+				<Action type="SetProperty" frame="HoverImage" height="68"/>
+				<Action type="SetProperty" frame="NormalImage" width="167"/>
+				<Action type="SetProperty" frame="HoverImage" width="167"/>
 				<Action type="SetProperty" frame="MenuIcon" visible="true"/>
 			</State>
 			<State name="Zerg">
@@ -575,9 +575,10 @@
 			<DefaultState val="Terran"/>
 			<State name="Terran">
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
-				<!-- 3x LEFT 3x TOP -->
+				<!-- 3x LEFT 2x TOP -->
 				<Action type="SetProperty" frame="$GlobalTopBackground" visible="true"/>
 				<Action type="SetAnchor" frame="$GlobalLeftBackground" side="Right" relative="$GlobalCommand05" pos="Max" offset="8"/>
+				<Action type="ApplyTemplate" frame="$GlobalCommand02" template="CommandSidebar/CommandButtonInvisible"/>
 			</State>
 			<State name="Protoss">
 				<!-- 1x LEFT -->
@@ -587,7 +588,7 @@
 				<Action type="ApplyTemplate" frame="$GlobalCommand05" template="CommandSidebar/CommandButtonInvisible"/>
 			</State>
 			<State name="Zerg">
-				<!-- 3x TOP -->
+				<!-- 3x LEFT -->
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
 				<Action type="SetAnchor" frame="$GlobalLeftBackground" side="Right" relative="$GlobalCommand05" pos="Max" offset="8"/>
 			</State>
@@ -598,7 +599,7 @@
 			
 			<Frame type="CommandButton" name="CommandButton00">
 				<Anchor side="Top" relative="$ConsoleUIContainer" pos="Min" offset="16"/>
-				<Anchor side="Left" relative="$ConsoleUIContainer" pos="Mid" offset="-200"/>
+				<Anchor side="Left" relative="$ConsoleUIContainer" pos="Mid" offset="-74"/>
 				
 				<Handle val="GlobalCommand00"/>
 				<Height val="72"/>

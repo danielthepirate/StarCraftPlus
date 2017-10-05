@@ -33,10 +33,10 @@
         <OperandArray value="CountUnitBarracksTechLabCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitGhostAcademyCompleteOnly"/>
     </CRequirementAnd>
-    <CRequirementAnd id="AndCountUnitCommandCenterCompleteOnlyCountUnitAlias_BarracksCompleteOnly">
+    <CRequirementAnd id="AndCountUnitCommandCenterCompleteOnlyCountUnitAlias_BarracksCompleteOnly789532539">
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitCommandCenterCompleteOnly"/>
-        <OperandArray value="CountUnitAlias_BarracksCompleteOnly"/>
+        <OperandArray value="CountUnitAlias_BarracksCompleteOnly789532539"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitCommandCenterCompleteOnlyCountUnitEngineeringBayCompleteOnly">
         <OperandArray value="CountUnitCommandCenterCompleteOnly"/>
@@ -324,9 +324,8 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="PowerSourceFastNexus" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
-    <CRequirementCountUnit id="CountUnitAlias_BarracksCompleteOnly">
+    <CRequirementCountUnit id="CountUnitAlias_BarracksCompleteOnly789532539">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Alias_Barracks" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitBanelingNestCompleteOnly">

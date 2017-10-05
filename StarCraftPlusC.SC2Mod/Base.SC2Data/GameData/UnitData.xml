@@ -175,6 +175,7 @@
             <LayoutButtons index="3" Column="3"/>
             <LayoutButtons index="4" Column="3"/>
         </CardLayouts>
+        <Food value="10"/>
     </CUnit>
     <CUnit id="Factory">
         <Food value="10"/>
@@ -373,7 +374,7 @@
         <BehaviorArray Link="GameUCBArchonChargeLink"/>
     </CUnit>
     <CUnit id="Hive">
-        <Food value="25"/>
+        <Food value="75"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBHatcheryHiveLair"/>
         <BehaviorArray Link="GameUCBGlobalRally00ChargeLink"/>
@@ -433,7 +434,7 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="Lair">
-        <Food value="25"/>
+        <Food value="50"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBHatcheryHiveLair"/>
         <BehaviorArray Link="GameUCBLairChargeLink"/>
@@ -566,6 +567,16 @@
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameUCBOrbitalCommandEnergy50GE"/>
+        <AbilArray index="2" Link="que5CancelToSelection"/>
+        <AbilArray index="3" Link="RallyCommand"/>
+        <AbilArray index="4" Link="CommandCenterTrain"/>
+        <AbilArray index="5" Link="ScannerSweep"/>
+        <AbilArray index="6" Link="OrbitalLiftOff"/>
+        <AbilArray index="7" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="4" Column="1"/>
+            <LayoutButtons index="7" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="OrbitalCommandFlying">
         <Food value="25"/>
@@ -578,7 +589,6 @@
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
         <BehaviorArray Link="GameUCBOverlordChargeLink"/>
         <BehaviorArray Link="GameUCBOverlordOrTransportChargeLink"/>
-        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="1"/>
             <LayoutButtons index="8" Column="0"/>
@@ -603,11 +613,13 @@
         <Food value="0"/>
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="0"/>
+        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
     </CUnit>
     <CUnit id="Overseer">
         <Food value="0"/>
         <Sight value="13"/>
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
+        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
         <CardLayouts index="0">
             <LayoutButtons index="7" Column="2"/>
             <LayoutButtons Face="OverlordEnhancedCreepGrowthAura" Type="Passive" Behavior="OverlordEnhancedCreepGrowthAura" Row="2" Column="3"/>
@@ -854,10 +866,9 @@
         <AbilArray Link="AutoWallToggleUCBOnHidden"/>
         <AbilArray Link="AutoWallToggleUCBOffHidden"/>
         <CardLayouts index="0">
-            <LayoutButtons index="0" Face="ScanUCB" Type="AbilCmd" AbilCmd="ScannerSweepUCB,Execute" Row="0" Column="2"/>
+            <LayoutButtons index="0" Face="ScanUCB" Type="AbilCmd" AbilCmd="ScannerSweepUCB,Execute" Row="0" Column="1"/>
             <LayoutButtons index="1" Face="CalldownMULEUCB" Type="AbilCmd" AbilCmd="CalldownMULEUCB,Execute" Row="0" Column="0"/>
-            <LayoutButtons index="2" Face="SupplyDropUCB" Type="AbilCmd" AbilCmd="SupplyDropUCB,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="AutoWallRaiseUCB" Type="AbilCmd" AbilCmd="AutoWallRaiseUCB,Execute" Row="0" Column="3"/>
+            <LayoutButtons index="2" Face="AutoWallRaiseUCB" Type="AbilCmd" AbilCmd="AutoWallRaiseUCB,Execute" Row="0" Column="3"/>
             <LayoutButtons Face="AutoWallLowerUCB" Type="AbilCmd" AbilCmd="AutoWallLowerUCB,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="AutoWallToggleUCB" Type="AbilCmd" AbilCmd="AutoWallToggleUCB,Execute" Row="1" Column="0"/>
         </CardLayouts>
@@ -1006,8 +1017,8 @@
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="SpawnLarvaUCB" Type="AbilCmd" AbilCmd="AutoSpawnLarvaToggleUCB,Execute" Row="0" Column="3"/>
             <LayoutButtons index="1" Face="AutoCreepSpreadToggleUCB" Type="AbilCmd" AbilCmd="AutoCreepSpreadToggleUCB,Execute" Row="0" Column="4"/>
-            <LayoutButtons index="2" Face="SummonNydusWormUCB" Type="AbilCmd" AbilCmd="BuildNydusCanalUCB,Build1" Row="1" Column="0"/>
-            <LayoutButtons index="3" Face="Cancel" Type="AbilCmd" AbilCmd="BuildNydusCanal,Halt" Row="2" Column="4"/>
+            <LayoutButtons index="2" Face="Cancel" Type="AbilCmd" AbilCmd="BuildNydusCanal,Halt" Row="2" Column="4"/>
+            <LayoutButtons index="3" removed="1"/>
             <LayoutButtons index="4" removed="1"/>
             <LayoutButtons index="5" removed="1"/>
             <LayoutButtons index="6" removed="1"/>
@@ -1134,11 +1145,12 @@
             <LayoutButtons index="1" Face="LurkerMPUCB" Type="AbilCmd" AbilCmd="MorphToLurkerUCB,Execute" Row="0" Column="1"/>
             <LayoutButtons index="2" Face="BroodLordUCB" Type="AbilCmd" AbilCmd="MorphToBroodLordUCB,Execute" Row="0" Column="2"/>
             <LayoutButtons index="3" Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="0"/>
+            <LayoutButtons Face="SummonNydusWormUCB" Type="AbilCmd" AbilCmd="BuildNydusCanalUCB,Build1" Row="0" Column="3"/>
         </CardLayouts>
         <AbilArray index="8" Link="MorphToRavagerUCB"/>
         <AbilArray index="9" Link="MorphToLurkerUCB"/>
         <AbilArray index="10" Link="MorphToBroodLordUCB"/>
-        <AbilArray index="11" removed="1"/>
+        <AbilArray index="11" Link="BuildNydusCanalUCB"/>
         <AbilArray index="12" removed="1"/>
     </CUnit>
     <CUnit id="SensorTower">
@@ -1240,7 +1252,6 @@
         <Sight value="13"/>
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
         <BehaviorArray Link="GameUCBOverlordOrTransportChargeLink"/>
-        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Face="MorphToOverseer" Type="AbilCmd" AbilCmd="MorphToOverseer,Execute" Row="2" Column="1"/>
             <LayoutButtons index="8" Face="GenerateCreep" Type="AbilCmd" AbilCmd="GenerateCreep,On" Row="2" Column="0"/>
