@@ -1520,7 +1520,7 @@
             <Resource index="Custom" value="0"/>
         </RefundFraction>
         <InfoArray index="Train1">
-            <Charge CountStart="0" Location="Player"/>
+            <Charge CountStart="0"/>
             <Button Requirements="HaveWarpgateActual"/>
         </InfoArray>
         <InfoArray index="Train2">
@@ -1547,23 +1547,40 @@
     <CAbilWarpTrain id="WarpGateTrainUCB" parent="WarpGateTrain">
         <Name value="Abil/Name/WarpGateTrainUCB"/>
         <InfoArray index="Train1">
-            <Charge CountMax="0"/>
+            <Resource index="Terrazine" value="100"/>
+            <Charge>
+                <CountMax value="0"/>
+                <Location value="Player"/>
+                <TimeStart value="0"/>
+                <TimeUse value="0"/>
+            </Charge>
         </InfoArray>
         <InfoArray index="Train2">
-            <Charge CountMax="0"/>
+            <Resource index="Terrazine" value="125"/>
+            <Resource index="Custom" value="50"/>
+            <Charge CountMax="0" TimeUse="0"/>
         </InfoArray>
         <InfoArray index="Train4">
-            <Charge CountMax="0"/>
+            <Resource index="Terrazine" value="50"/>
+            <Resource index="Custom" value="150"/>
+            <Charge CountMax="0" TimeUse="0"/>
         </InfoArray>
         <InfoArray index="Train5">
-            <Charge CountMax="0"/>
+            <Resource index="Terrazine" value="125"/>
+            <Resource index="Custom" value="125"/>
+            <Charge CountMax="0" TimeUse="0"/>
         </InfoArray>
         <InfoArray index="Train6">
-            <Charge CountMax="0"/>
+            <Resource index="Terrazine" value="50"/>
+            <Resource index="Custom" value="100"/>
+            <Charge CountMax="0" TimeUse="0"/>
         </InfoArray>
         <InfoArray index="Train7">
-            <Charge CountMax="0"/>
+            <Resource index="Terrazine" value="100"/>
+            <Resource index="Custom" value="25"/>
+            <Charge CountMax="0" TimeUse="0"/>
         </InfoArray>
+        <Flags index="IgnoreUnitCost" value="1"/>
     </CAbilWarpTrain>
     <CAbilBuild id="ZergBuild">
         <RefundFraction>

@@ -288,6 +288,7 @@
         <EffectArray Reference="Abil,WarpGateTrainUCB,InfoArray[Train5].Charge.CountMax" Value="1"/>
         <EffectArray Reference="Abil,WarpGateTrainUCB,InfoArray[Train6].Charge.CountMax" Value="1"/>
         <EffectArray Reference="Abil,WarpGateTrainUCB,InfoArray[Train7].Charge.CountMax" Value="1"/>
+        <EffectArray Reference="Effect,GameProtossWarpGateTrainCharge,Cost.Charge.CountMax" Value="1"/>
         <MaxLevel value="99"/>
     </CUpgrade>
     <CUpgrade id="ZergGroundArmorsLevel1">

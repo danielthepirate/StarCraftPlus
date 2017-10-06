@@ -19,6 +19,8 @@
 <Behavior id="GameIncreasedLifeAndShields"/>
 <Behavior id="GameWarpGateUpgradeBehavior"/>
 <Behavior id="KineticFollow"/>
+<Behavior id="GameProtossWarpGateTrainCharge"/>
+<Behavior id="GameProtossWarpGateTrainChargeFinal"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
 <Unit id="TechLab"/>
@@ -33,6 +35,7 @@
 <Unit id="Starport"/>
 <Unit id="FusionCore"/>
 <Unit id="SCV"/>
+<Unit id="Pylon"/>
 <Unit id="Probe"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>
@@ -53,6 +56,7 @@
 <Unit id="Mutalisk"/>
 <Unit id="PlanetaryFortress"/>
 <Unit id="OrbitalCommand"/>
+<Unit id="WarpGate"/>
 <Unit id="CreepTumorBurrowed"/>
 <Unit id="Adept"/>
 <Unit id="LurkerDenMP"/>

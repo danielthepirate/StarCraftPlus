@@ -213,6 +213,13 @@
     <CEffectApplyBehavior id="GameNexusCount">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameProtossWarpGateTrainCharge">
+        <ValidatorArray value="SourceNotDead"/>
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge CountUse="-1" Link="WarpGateTrain" Location="Player"/>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectApplyBehavior id="GameResourceMarkerMinerals">
         <EditorCategories value=""/>
     </CEffectApplyBehavior>

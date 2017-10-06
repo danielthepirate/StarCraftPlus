@@ -139,6 +139,15 @@
         <RemoveValidatorArray value="IsConstructing"/>
         <FinalEffect value="GameNexusCount"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameProtossWarpGateTrainCharge">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="-1"/>
+        <FinalEffect value="GameProtossWarpGateTrainCharge"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameProtossWarpGateTrainChargeFinal">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="-1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameResourceMarkerMinerals">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
