@@ -3,6 +3,7 @@ Abil/Name/AutoCreepSpread=Auto Creep Spread
 Abil/Name/AutoCreepSpreadOffHidden=Auto Creep Spread Off Hidden
 Abil/Name/AutoCreepSpreadOnHidden=Auto Creep Spread On Hidden
 Abil/Name/AutoCreepSpreadToggleUCB=Auto Creep Spread Toggle
+Abil/Name/AutoMorphDroneToggleUCb=Auto Morph Drone Toggle
 Abil/Name/AutoSpawnLarvaOffHidden=Auto Spawn Larva Off Hidden
 Abil/Name/AutoSpawnLarvaOnHidden=Auto Spawn Larva On Hidden
 Abil/Name/AutoSpawnLarvaToggleUCB=Auto Spawn Larva Toggle
@@ -85,6 +86,7 @@ Button/Name/GreaterSpireUCB=Mutate into Greater Spire
 Button/Name/HiveUCB=Mutate into Hive
 Button/Name/LairUCB=Mutate into Lair
 Button/Name/LurkerMPUCB=Morph to Lurker
+Button/Name/MorphDroneUCB=Auto Morph Drone Toggle
 Button/Name/MorphToMothershipUCB=Upgrade to Mothership
 Button/Name/MorphToOverseerUBC=Morph to Overseer
 Button/Name/MorphtoOverlordTransportUBC=Mutate Ventral Sacs
@@ -140,6 +142,7 @@ Button/Tooltip/InfestationPit=Contains upgrades for Infestors.<n/><n/><c val="ff
 Button/Tooltip/Lair=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Overseers from Overlords<n/><n/><c val="ffff8a">Provides <d ref="Unit,Lair,Food"/> supply.</c>
 Button/Tooltip/LairUCB=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Overseers from Overlords
 Button/Tooltip/LurkerMPUCB=Anti-ground ambusher. Has a spine attack that damages all enemy units in its line of fire.<n/><n/><c val="ffff8a">Can attack ground units.<n/>Must burrow to attack.</c>
+Button/Tooltip/MorphDroneUCB=Sets the toggle state of automatic drone production.<n/><n/><c val="ffff8a">At least one larva will always be left available while on.
 Button/Tooltip/MorphToMothershipUCB=Upgrades into the Mothership. Can use Photon Overcharge, Mass Recall and Time Warp. Cloaks nearby units and structures.
 Button/Tooltip/MorphToOverseerUBC=Advanced aerial observer. Provides the same supply as an Overlord. Can use the Spawn Changeling and Contaminate abilities.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/MorphtoOverlordTransportUBC=Enables the Overlord to transport units.
@@ -189,8 +192,6 @@ Button/Tooltip/WarpResonance=Power Source radius doubled.
 Button/Tooltip/zerggroundarmor1=Upgrades the armor of all Zerg ground units and structures.
 Button/Tooltip/zerggroundarmor2=Further upgrades the armor of all Zerg ground units and structures.
 Button/Tooltip/zerggroundarmor3=Maximizes the armor of all Zerg ground units and structures.
-e_cmdNotEnoughTerrazine=Not Enough Minerals.
-e_cmdNotEnoughCustom=Not Enough Vespene Gas.
 DocInfo/DescLong=A StarCraft II mod aimed at creating more accessable gameplay for players of all skill levels.
 DocInfo/Name=Shibusa
 Effect/Name/AutoCreepSpreadAutocastBehavior=Auto Creep Spread Autocast Behavior
@@ -345,6 +346,13 @@ Effect/Name/OverlordCreepGrowthAuraSearch=Overlord Creep Growth Aura Search
 Effect/Name/RemoveCaster=Remove Caster
 Effect/Name/SupplyDropApplyTempBehaviorDummy=Supply Drop (Apply Temp Behavior) Dummy
 Effect/Name/TimeWarpUCBDummy=TimeWarpUCB Dummy
+Effect/Name/UCBAutoCreepSpreadToggleOff=UCB Auto Creep Spread Toggle Off
+Effect/Name/UCBAutoCreepSpreadToggleOn=UCB Auto Creep Spread Toggle On
+Effect/Name/UCBDroneMorphToggleOff=UCB Drone Morph Toggle Off
+Effect/Name/UCBGlobalRallyT1Off=UCB Global Rally T1 Off
+Effect/Name/UCBGlobalRallyT2Off=UCB Global Rally T2 Off
+Effect/Name/UCBGlobalRallyT3Off=UCB Global Rally T3 Off
+Effect/Name/UCBSpawnLarvaToggleOff=UCB Spawn Larva Toggle Off
 Kinetic/Name/KineticFollow=KineticFollow
 Param/Value/lib_SCPL_00AFF88E=Hi-Sec Auto Tracking
 Param/Value/lib_SCPL_025CBB60=Vehicle Plating Level 1
@@ -531,3 +539,5 @@ Unit/Name/TechLabPaused=Tech Lab
 Unit/Name/UltraliskCavernPaused=Ultralisk Cavern
 Upgrade/Name/GameProtossNexusCount=Game Protoss Nexus Count
 Upgrade/Name/GameProtossWarpGateCount=Game Protoss Warp Gate Count
+e_cmdNotEnoughCustom=Not Enough Vespene Gas.
+e_cmdNotEnoughTerrazine=Not Enough Minerals.

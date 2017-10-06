@@ -1016,9 +1016,9 @@
     <CUnit id="SdbZAbils1">
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="SpawnLarvaUCB" Type="AbilCmd" AbilCmd="AutoSpawnLarvaToggleUCB,Execute" Row="0" Column="3"/>
-            <LayoutButtons index="1" Face="AutoCreepSpreadToggleUCB" Type="AbilCmd" AbilCmd="AutoCreepSpreadToggleUCB,Execute" Row="0" Column="4"/>
+            <LayoutButtons index="1" Face="AutoCreepSpreadToggleUCB" Type="AbilCmd" AbilCmd="AutoCreepSpreadToggleUCB,Execute" Row="1" Column="0"/>
             <LayoutButtons index="2" Face="Cancel" Type="AbilCmd" AbilCmd="BuildNydusCanal,Halt" Row="2" Column="4"/>
-            <LayoutButtons index="3" removed="1"/>
+            <LayoutButtons index="3" Face="MorphDroneUCB" Type="AbilCmd" AbilCmd="AutoMorphDroneToggleUCb,Execute" Row="0" Column="4"/>
             <LayoutButtons index="4" removed="1"/>
             <LayoutButtons index="5" removed="1"/>
             <LayoutButtons index="6" removed="1"/>
@@ -1032,7 +1032,7 @@
         </CardLayouts>
         <AbilArray index="2" Link="AutoCreepSpreadToggleUCB"/>
         <AbilArray index="3" Link="AutoSpawnLarvaToggleUCB"/>
-        <AbilArray index="4" Link="BuildNydusCanalUCB"/>
+        <AbilArray index="4" Link="AutoMorphDroneToggleUCb"/>
     </CUnit>
     <CUnit id="SdbZBuild1">
         <CardLayouts index="0">

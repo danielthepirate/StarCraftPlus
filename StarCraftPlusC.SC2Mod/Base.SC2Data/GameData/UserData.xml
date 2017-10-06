@@ -333,4 +333,20 @@
             </Unit>
         </Instances>
     </CUser>
+    <CUser id="SCPBankOptions">
+        <Instances Id="[Default]"/>
+        <Instances Id="GlobalToggleTerranAutoWall"/>
+        <Instances Id="GlobalToggleZergLarvaInject"/>
+        <Instances Id="GlobalToggleZergCreepSpread"/>
+        <Instances Id="GlobalToggleZergDroneMorph"/>
+        <Instances Id="GlobalRallyTerrT1"/>
+        <Instances Id="GlobalRallyTerrT2"/>
+        <Instances Id="GlobalRallyTerrT3"/>
+        <Instances Id="GlobalRallyProtT1"/>
+        <Instances Id="GlobalRallyProtT2"/>
+        <Instances Id="GlobalRallyProtT3"/>
+        <Instances Id="GlobalRallyZergT1"/>
+        <Instances Id="GlobalRallyZergT2"/>
+        <Instances Id="GlobalRallyZergT3"/>
+    </CUser>
 </Catalog>

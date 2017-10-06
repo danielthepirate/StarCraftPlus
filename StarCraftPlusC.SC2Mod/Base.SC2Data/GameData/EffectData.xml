@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CEffectIssueOrder id="UCBAutoCreepSpreadToggleOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoCreepSpreadToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
     <CEffectIssueOrder id="AutoSpawnLarvaOff">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
@@ -1019,5 +1025,42 @@
     <CEffectIssueOrder id="IssueOrderUpgradeWarpGate">
         <EditorCategories value=""/>
         <Abil value="UpgradeToWarpGate"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBDroneMorphToggleOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoMorphDroneToggleUCb"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBAutoCreepSpreadToggleOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoCreepSpreadToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBGlobalRallyT2Off">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="GameGlobalRallyTarget01"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBGlobalRallyT3Off">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="GameGlobalRallyTarget02"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBSpawnLarvaToggleOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoSpawnLarvaToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBGlobalRallyT1Off">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="GameGlobalRallyTarget00"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
     </CEffectIssueOrder>
 </Catalog>

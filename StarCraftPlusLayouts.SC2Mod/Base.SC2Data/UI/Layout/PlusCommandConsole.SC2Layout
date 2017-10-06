@@ -148,6 +148,7 @@
 				
 				<Handle val="CustomConsoleLeft"/>
 				<Texture val="@@UI/CustomConsoleLeft"/>
+				<RenderType val="LDR"/>
 
 				<Width val="595"/>
 				<Height val="459"/>
@@ -159,6 +160,7 @@
 				
 				<Handle val="CustomConsoleCommands"/>
 				<Texture val="@@UI/CustomConsoleCommands"/>
+				<RenderType val="LDR"/>
 
 				<Width val="712"/>
 				<Height val="251"/>
@@ -170,6 +172,7 @@
 				
 				<Handle val="CustomConsoleUnitInfo"/>
 				<Texture val="@@UI/CustomConsoleUnitInfo"/>
+				<RenderType val="LDR"/>
 
 				<Width val="589"/>
 				<Height val="251"/>
@@ -181,6 +184,7 @@
 				
 				<Handle val="CustomConsoleRight"/>
 				<Texture val="@@UI/CustomConsoleRight"/>
+				<RenderType val="LDR"/>
 				
 				<Width val="237"/>
 				<Height val="251"/>

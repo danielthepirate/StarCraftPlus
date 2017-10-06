@@ -4,6 +4,8 @@
 <Asset path="assets\textures\blank.dds" Type="Image"/>
 <Actor id="SYSTEM_ActorConfig"/>
 <Behavior id="GameDroneMorphMarker"/>
+<Behavior id="GameProtossWarpGateTrainCharge"/>
+<Behavior id="GameProtossWarpGateTrainChargeFinal"/>
 <Behavior id="GameUCBCommandCenterChargeLink"/>
 <Behavior id="GameUCBLairChargeLink"/>
 <Behavior id="GameUCBBroodlordChargeLink"/>
@@ -19,10 +21,15 @@
 <Behavior id="GameIncreasedLifeAndShields"/>
 <Behavior id="GameWarpGateUpgradeBehavior"/>
 <Behavior id="KineticFollow"/>
-<Behavior id="GameProtossWarpGateTrainCharge"/>
-<Behavior id="GameProtossWarpGateTrainChargeFinal"/>
+<Effect id="AutoWallToggleUCBOff"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
+<Effect id="UCBAutoCreepSpreadToggleOff"/>
+<Effect id="UCBDroneMorphToggleOff"/>
+<Effect id="UCBSpawnLarvaToggleOff"/>
+<Effect id="UCBGlobalRallyT1Off"/>
+<Effect id="UCBGlobalRallyT2Off"/>
+<Effect id="UCBGlobalRallyT3Off"/>
 <Unit id="TechLab"/>
 <Unit id="SupplyDepot"/>
 <Unit id="Barracks"/>
@@ -35,7 +42,6 @@
 <Unit id="Starport"/>
 <Unit id="FusionCore"/>
 <Unit id="SCV"/>
-<Unit id="Pylon"/>
 <Unit id="Probe"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>
@@ -56,7 +62,6 @@
 <Unit id="Mutalisk"/>
 <Unit id="PlanetaryFortress"/>
 <Unit id="OrbitalCommand"/>
-<Unit id="WarpGate"/>
 <Unit id="CreepTumorBurrowed"/>
 <Unit id="Adept"/>
 <Unit id="LurkerDenMP"/>

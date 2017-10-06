@@ -73,6 +73,7 @@ struct libSCPL_gs_Player {
     bool lv_globalTerran_AutoWallToggle;
     bool lv_globalZerg_CreepSpreadToggle;
     bool lv_globalZerg_LarvaSpawnToggle;
+    bool lv_globalZerg_DroneMorphToggle;
     unit lv_globalRallyCaster;
     unit[4] lv_globalRallyTarget;
     unit[4] lv_globalRallyTargetUnit;
@@ -80,6 +81,7 @@ struct libSCPL_gs_Player {
     unitgroup[11] lv_controlGroup;
     timer[11] lv_controlGroupJumpTimer;
     bool[4] lv_controlGroupAutoAdd;
+    bank lv_bank;
 };
 
 struct libSCPL_gs_Map {
@@ -116,6 +118,10 @@ unit libSCPL_gf_DebugPlayerUnit (int lp_playerIndex, string lp_unitType);
 unit libSCPL_gf_DebugSelectedUnit (int lp_playerIndex);
 void libSCPL_gf_DebugCreateUnitNearBase (int lp_playerIndex, string lp_unitType, fixed lp_offset);
 void libSCPL_gf_DebugCreateUnitNearBaseEnemies (int lp_playerIndex, int lp_enemyIndex, string lp_unitType, fixed lp_offset);
+void libSCPL_gf_SCPBankInitialize ();
+void libSCPL_gf_SCPBankOptionSave (string lp_bankOptionInstance, int lp_playerIndex, bool lp_bankOptionSetting);
+bool libSCPL_gf_SCPBankOption (string lp_bankOptionInstance, int lp_playerIndex);
+void libSCPL_gf_SCPBankControlGroupToggle (int lp_playerIndex, int lp_controlIndex, bool lp_bankOptionSetting);
 void libSCPL_gf_InitializeSpendOverTime ();
 void libSCPL_gf_PlayerResourcesAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_PlayerResourcesReset (int lp_playerIndex);
@@ -228,11 +234,6 @@ void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer);
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
-trigger libSCPL_gt__1;
-trigger libSCPL_gt__2;
-trigger libSCPL_gt__3;
-trigger libSCPL_gt__4;
-trigger libSCPL_gt__0;
 trigger libSCPL_gt_DebugCommandResourceActualShow;
 trigger libSCPL_gt_DebugCommandResourceActualHide;
 trigger libSCPL_gt_ProgressMorphRefund01;
@@ -350,6 +351,8 @@ trigger libSCPL_gt_PlayerAutoCreepSpreadUnitCreated;
 trigger libSCPL_gt_UCBAutoLarvaSpawnToggleOn;
 trigger libSCPL_gt_UCBAutoLarvaSpawnToggleOff;
 trigger libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated;
+trigger libSCPL_gt_UCBAutoDroneMorphToggleOn;
+trigger libSCPL_gt_UCBAutoDroneMorphToggleOff;
 trigger libSCPL_gt_UpgradeNotificationsInitialization;
 trigger libSCPL_gt_UpgradeNotificationsResearchStarted;
 trigger libSCPL_gt_UpgradeNotificationsResearchCancelled;

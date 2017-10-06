@@ -455,6 +455,12 @@
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Reactor"/>
     </CButton>
+    <CButton id="MorphDroneUCB">
+        <Icon value="Assets\Textures\btn-unit-zerg-drone.dds"/>
+        <Hotkey value="Button/Hotkey/MorphDroneUCB"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="MorphMorphalisk"/>
+    </CButton>
     <CButton id="TechLabBarracksUCB">
         <Icon value="Assets\Textures\btn-building-terran-barracks-techlab.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-terran-barracks-techlab.dds"/>

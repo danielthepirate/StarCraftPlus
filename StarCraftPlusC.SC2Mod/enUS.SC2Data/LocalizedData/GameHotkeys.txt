@@ -156,6 +156,7 @@ Button/Hotkey/MedivacLoad=E
 Button/Hotkey/MedivacSpeedBoost=W
 Button/Hotkey/MedivacUnloadAll=R
 Button/Hotkey/MissileTurret=P
+Button/Hotkey/MorphDroneUCB=
 Button/Hotkey/MorphMorphalisk=R
 Button/Hotkey/MorphToHellion=Q
 Button/Hotkey/MorphToHellionTank=W

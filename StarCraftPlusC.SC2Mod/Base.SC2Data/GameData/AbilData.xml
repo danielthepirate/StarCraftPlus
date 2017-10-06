@@ -111,6 +111,22 @@
             <Flags index="AllowSelfCast" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoMorphDroneToggleUCb">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MorphDroneUCB">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="AutoWallLowerManual">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="AutoWallManualLowerAbility"/>
