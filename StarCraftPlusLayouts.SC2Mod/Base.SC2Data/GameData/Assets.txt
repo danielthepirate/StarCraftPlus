@@ -11,26 +11,28 @@ UI/ResourceIconNoBackground3_Zerg=Assets\Textures\icon-gas-zerg_nobg.dds
 UI/ControlGroupBase=Assets\Textures\scp-controlgroup-terran-base.dds
 UI/ControlGroupBase_Terr=Assets\Textures\scp-controlgroup-terran-base.dds
 UI/ControlGroupBase_Prot=Assets\Textures\scp-controlgroup-protoss-base.dds
-UI/ControlGroupBase_Zerg=Assets\Textures\scp-cg-zerg-base.dds
+UI/ControlGroupBase_Zerg=Assets\Textures\scp-controlgroup-zerg-base.dds
 UI/ControlGroupBorder=Assets\Textures\scp-controlgroup-terran-border.dds
 UI/ControlGroupBorder_Terr=Assets\Textures\scp-controlgroup-terran-border.dds
 UI/ControlGroupBorder_Prot=Assets\Textures\scp-controlgroup-protoss-border.dds
-UI/ControlGroupBorder_Zerg=Assets\Textures\scp-cg-zerg-border.dds
+UI/ControlGroupBorder_Zerg=Assets\Textures\scp-controlgroup-zerg-border.dds
 UI/ControlGroupNormal=Assets\Textures\scp-controlgroup-terran-normal.dds
 UI/ControlGroupNormal_Terr=Assets\Textures\scp-controlgroup-terran-normal.dds
 UI/ControlGroupNormal_Prot=Assets\Textures\scp-controlgroup-protoss-normal.dds
-UI/ControlGroupNormal_Zerg=Assets\Textures\scp-cg-zerg-normal.dds
+UI/ControlGroupNormal_Zerg=Assets\Textures\scp-controlgroup-zerg-normal.dds
 UI/ControlGroupHover=Assets\Textures\scp-controlgroup-terran-over.dds
 UI/ControlGroupHover_Terr=Assets\Textures\scp-controlgroup-terran-over.dds
 UI/ControlGroupHover_Prot=Assets\Textures\scp-controlgroup-protoss-over.dds
-UI/ControlGroupHover_Zerg=Assets\Textures\scp-cg-zerg-over.dds
+UI/ControlGroupHover_Zerg=Assets\Textures\scp-controlgroup-zerg-over.dds
 
 UI/UCBTabButtonNormal=Assets\Textures\scp-ucbtab-terran-buttonnormal.dds
 UI/UCBTabButtonNormal_Terr=Assets\Textures\scp-ucbtab-terran-buttonnormal.dds
 UI/UCBTabButtonNormal_Prot=Assets\Textures\scp-ucbtab-protoss-buttonnormal.dds
+UI/UCBTabButtonNormal_Zerg=Assets\Textures\scp-ucbtab-zerg-buttonnormal.dds
 UI/UCBTabButtonHover=Assets\Textures\scp-ucbtab-terran-buttonhover.dds
 UI/UCBTabButtonHover_Terr=Assets\Textures\scp-ucbtab-terran-buttonhover.dds
 UI/UCBTabButtonHover_Prot=Assets\Textures\scp-ucbtab-protoss-buttonhover.dds
+UI/UCBTabButtonHover_Zerg=Assets\Textures\scp-ucbtab-zerg-buttonhover.dds
 
 UI/UCBTabButtonIconBuild=Assets\Textures\scp-ucbtab-terran-iconbuild.dds
 UI/UCBTabButtonIconBuild_Terr=Assets\Textures\scp-ucbtab-terran-iconbuild.dds
@@ -52,22 +54,22 @@ UI/UCBTabButtonIconUpgradeDown=Assets\Textures\scp-ucbtab-iconupgrade-down.dds
 UI/CustomConsoleLeft=Assets/Textures/scp-console-terran-left.dds
 UI/CustomConsoleLeft_Terr=Assets/Textures/scp-console-terran-left.dds
 UI/CustomConsoleLeft_Prot=Assets/Textures/scp-console-protoss-left.dds
-UI/CustomConsoleLeft_Zerg=Assets/Textures/black.dds
+UI/CustomConsoleLeft_Zerg=Assets/Textures/scp-console-zerg-left.dds
 
 UI/CustomConsoleCommands=Assets/Textures/scp-console-terran-commands.dds
 UI/CustomConsoleCommands_Terr=Assets/Textures/scp-console-terran-commands.dds
 UI/CustomConsoleCommands_Prot=Assets/Textures/scp-console-protoss-commands.dds
-UI/CustomConsoleCommands_Zerg=Assets/Textures/black.dds
+UI/CustomConsoleCommands_Zerg=Assets/Textures/scp-console-zerg-commands.dds
 
 UI/CustomConsoleUnitInfo=Assets/Textures/scp-console-terran-unitinfo.dds
 UI/CustomConsoleUnitInfo_Terr=Assets/Textures/scp-console-terran-unitinfo.dds
 UI/CustomConsoleUnitInfo_Prot=Assets/Textures/scp-console-protoss-unitinfo.dds
-UI/CustomConsoleUnitInfo_Zerg=Assets/Textures/black.dds
+UI/CustomConsoleUnitInfo_Zerg=Assets/Textures/scp-console-zerg-unitinfo.dds
 
 UI/CustomConsoleRight=Assets/Textures/scp-console-terran-right.dds
 UI/CustomConsoleRight_Terr=Assets/Textures/scp-console-terran-right.dds
 UI/CustomConsoleRight_Prot=Assets/Textures/scp-console-protoss-right.dds
-UI/CustomConsoleRight_Zerg=Assets/Textures/black.dds
+UI/CustomConsoleRight_Zerg=Assets/Textures/scp-console-zerg-right.dds
 
 
 UI/StatusProductionBG=Assets\Textures\ui_production_bg.dds

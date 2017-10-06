@@ -107,7 +107,7 @@
 					<Text val="@UI/UCBTabButtons/Train"/>
 				</Frame>
 				<Frame type="Image" name="MenuIcon">
-					<Texture val="@UI/UCBTabButtonIconTrain"/>
+					<Texture val="@@UI/UCBTabButtonIconTrain"/>
 				</Frame>
 				
 				<Animation name="OnPushed">
@@ -134,7 +134,7 @@
 					<Text val="@UI/UCBTabButtons/Research"/>
 				</Frame>
 				<Frame type="Image" name="MenuIcon">
-					<Texture val="@UI/UCBTabButtonIconUpgrade"/>
+					<Texture val="@@UI/UCBTabButtonIconUpgrade"/>
 				</Frame>
 				
 				<Animation name="OnPushed">

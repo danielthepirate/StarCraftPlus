@@ -91,6 +91,14 @@
 	<Frame type="Image" name="ControlGroupHover" template="PlusControlGroupTemplates/ControlGroupNormal">
 		<Texture val="@@UI/ControlGroupHover"/>
 	</Frame>
+	
+	<Frame type="Image" name="ControlGroupNormalZerg" template="PlusControlGroupTemplates/ControlGroupNormal">
+		<Anchor relative="$parent" offset="-1"/>
+	</Frame>
+	
+	<Frame type="Image" name="ControlGroupHoverZerg" template="PlusControlGroupTemplates/ControlGroupHover">
+		<Anchor relative="$parent" offset="-1"/>
+	</Frame>
 
 	<Frame type="Button" name="ControlGroupButtonTemplate">
         <Width val="124"/>
@@ -112,7 +120,7 @@
 			<Texture val="Assets/Textures/black.dds"/>
 			<Frame type="Image" name="Terran" template="PlusControlGroupTemplates/ControlGroupNormal"/>
 			<Frame type="Image" name="Protoss" template="PlusControlGroupTemplates/ControlGroupNormal"/>
-			<Frame type="Image" name="Zerg" template="PlusControlGroupTemplates/ControlGroupNormal"/>
+			<Frame type="Image" name="Zerg" template="PlusControlGroupTemplates/ControlGroupNormalZerg"/>
 		</Frame>
 		
 		<Frame type="Image" name="HoverImage">
@@ -120,7 +128,7 @@
 			<Texture val="Assets/Textures/black.dds"/>
 			<Frame type="Image" name="Terran" template="PlusControlGroupTemplates/ControlGroupHover"/>
 			<Frame type="Image" name="Protoss" template="PlusControlGroupTemplates/ControlGroupHover"/>
-			<Frame type="Image" name="Zerg" template="PlusControlGroupTemplates/ControlGroupHover"/>
+			<Frame type="Image" name="Zerg" template="PlusControlGroupTemplates/ControlGroupHoverZerg"/>
 		</Frame>
 		
 		<StateGroup name="RaceState">

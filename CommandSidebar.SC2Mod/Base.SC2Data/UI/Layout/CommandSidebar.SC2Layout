@@ -113,8 +113,12 @@
 
         <Frame type="Image" name="NormalImage">
 			<Anchor relative="$parent"/>
-            <Texture val="@@UI/MenuBarMenuButtonNormal" layer="0"/>
+            <!-- <Texture val="@@UI/MenuBarMenuButtonNormal" layer="0"/> -->
+			<Texture val="@@UI/UCBTabButtonNormal"/>
             <StateCount val="2"/>
+			
+			<Height val="62"/>
+			<Width val="166"/>
 			
 			<AdjustmentColor val="0,0,0"/>
 			<ColorAdjustMode val="None"/>
@@ -123,8 +127,12 @@
 
         <Frame type="Image" name="HoverImage">
 			<Anchor relative="$parent"/>
-            <Texture val="@@UI/MenuBarMenuButtonHover" layer="0"/>
+            <!-- <Texture val="@@UI/MenuBarMenuButtonHover" layer="0"/> -->
+			<Texture val="@@UI/UCBTabButtonHover"/>
             <StateCount val="2"/>
+			
+			<Height val="62"/>
+			<Width val="166"/>
         </Frame>
 
 		<Frame type="Image" name="MenuIcon">
@@ -134,7 +142,7 @@
 			
 			<Height val="32"/>
 			<Width val="32"/>
-			<Visible val="false"/>
+			<!-- <Visible val="false"/> -->
 			<CollapseLayout val="true"/>
 			<SubpixelRendering val="true"/>
 		</Frame>
@@ -148,28 +156,17 @@
             <Text val="@UI/Menu"/>
         </Frame>
 		
-		<!-- Temporary Race States While Textures Are WIP -->
 		<StateGroup name="RaceState">	
 			<DefaultState val="Terran"/>
 			<State name="Terran">
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
-				<Action type="SetProperty" frame="NormalImage" texture="@@UI/UCBTabButtonNormal"/>
-				<Action type="SetProperty" frame="HoverImage" texture="@@UI/UCBTabButtonHover"/>
-				<Action type="SetProperty" frame="NormalImage" height="62"/>
-				<Action type="SetProperty" frame="HoverImage" height="62"/>
-				<Action type="SetProperty" frame="NormalImage" width="166"/>
-				<Action type="SetProperty" frame="HoverImage" width="166"/>
-				<Action type="SetProperty" frame="MenuIcon" visible="true"/>
 			</State>
 			<State name="Protoss">
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
-				<Action type="SetProperty" frame="NormalImage" texture="@@UI/UCBTabButtonNormal"/>
-				<Action type="SetProperty" frame="HoverImage" texture="@@UI/UCBTabButtonHover"/>
 				<Action type="SetProperty" frame="NormalImage" height="68"/>
 				<Action type="SetProperty" frame="HoverImage" height="68"/>
 				<Action type="SetProperty" frame="NormalImage" width="167"/>
 				<Action type="SetProperty" frame="HoverImage" width="167"/>
-				<Action type="SetProperty" frame="MenuIcon" visible="true"/>
 			</State>
 			<State name="Zerg">
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
@@ -590,7 +587,7 @@
 			<State name="Zerg">
 				<!-- 3x LEFT -->
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
-				<Action type="SetAnchor" frame="$GlobalLeftBackground" side="Right" relative="$GlobalCommand05" pos="Max" offset="8"/>
+				<Action type="SetAnchor" frame="$GlobalLeftBackground" side="Right" relative="$GlobalCommand05" pos="Max" offset="-20"/>
 			</State>
 		</StateGroup>
 		

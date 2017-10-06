@@ -90,12 +90,12 @@
 				<Anchor side="Top" relative="$GlobalCommand03" pos="Min" offset="0"/>
 				<Anchor side="Left" relative="$GlobalCommand03" pos="Min" offset="-20"/>
 				<Anchor side="Bottom" relative="$GlobalCommand03" pos="Max" offset="36"/>
-				<Anchor side="Right" relative="$GlobalCommand05" pos="Max" offset="8"/>
+				<Anchor side="Right" relative="$GlobalCommand05" pos="Max" offset="0"/>
 				<Handle val="GlobalLeftBackground"/>
 				<RenderType val="HDR"/>
 				<RenderPriority val="10"/>
 				<Color val="0,0,0"/>
-				<!-- <Alpha val="172"/> -->
+				<Alpha val="255"/>
 				<!-- <Frame type="BlurFrame" name="Blur"> -->
 					<!-- <Anchor relative="$parent"/> -->
 					<!-- <BlurAmount val="0.15"/> -->
@@ -189,6 +189,21 @@
 				<Width val="237"/>
 				<Height val="251"/>
 			</Frame>
+			
+			<StateGroup name="RaceState">	
+			<DefaultState val="Terran"/>
+			<State name="Terran">
+				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
+			</State>
+			<State name="Protoss">
+				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
+			</State>
+			<State name="Zerg">
+				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
+				<Action type="SetProperty" frame="CustomConsoleUnitInfo" height="263"/>
+				<Action type="SetProperty" frame="CustomConsoleLeft" height="475"/>
+			</State>
+		</StateGroup>
 		</Frame>
 		
 		<Frame type="Frame" name="ConsoleUIContainer">
