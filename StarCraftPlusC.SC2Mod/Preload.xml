@@ -22,14 +22,13 @@
 <Behavior id="GameWarpGateUpgradeBehavior"/>
 <Behavior id="KineticFollow"/>
 <Effect id="AutoWallToggleUCBOff"/>
+<Effect id="UCBAutoCreepSpreadToggleOff"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
-<Effect id="UCBAutoCreepSpreadToggleOff"/>
-<Effect id="UCBDroneMorphToggleOff"/>
-<Effect id="UCBSpawnLarvaToggleOff"/>
-<Effect id="UCBGlobalRallyT1Off"/>
 <Effect id="UCBGlobalRallyT2Off"/>
 <Effect id="UCBGlobalRallyT3Off"/>
+<Effect id="UCBSpawnLarvaToggleOff"/>
+<Effect id="UCBGlobalRallyT1Off"/>
 <Unit id="TechLab"/>
 <Unit id="SupplyDepot"/>
 <Unit id="Barracks"/>

@@ -112,12 +112,12 @@ Button/Name/UCBUpgradeToPlanetaryFortress=Upgrade to Planetary Fortress
 Button/Name/WarpResonance=Warp Resonance
 Button/Tooltip/AWrpUCB=Sacrifices 2 Templar to create an Archon.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/AutoCreepSpreadAutocastToggle=Automatically spread creep across the map.
-Button/Tooltip/AutoCreepSpreadToggleUCB=Sets toggle state for automatic creep spread of all creep tumors.
+Button/Tooltip/AutoCreepSpreadToggleUCB=Toggles automatic creep spread of all creep tumors.
 Button/Tooltip/AutoLower=Automatically lower the structure when your units are nearby.
 Button/Tooltip/AutoRaise=Automatically raise the structure when none of your units are nearby.
 Button/Tooltip/AutoWallLowerUCB=Lowers all auto walls, allowing ground units to move across them.
 Button/Tooltip/AutoWallRaiseUCB=Raises all auto walls, preventing ground units from moving across them.
-Button/Tooltip/AutoWallToggleUCB=Sets the toggle state for all auto walls.
+Button/Tooltip/AutoWallToggleUCB=Toggles the automatic raising/lowering of all auto walls.
 Button/Tooltip/BanelingNest=Contains an upgrade for Banelings.<n/><n/><c val="ffff8a">Enables:</c><n/>- Banelings from Zerglings<n/><n/><c val="ffff8a">Provides <d ref="Unit,BanelingNest,Food"/> supply.</c>
 Button/Tooltip/BanelingUCB=Suicide unit. Does damage over a small area on death. <n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/Barracks=Infantry-production facility.<n/><n/><c val="ffff8a">Enables:</c><n/>- Marines<n/>- Reapers<n/>- Bunkers from SCVs<n/>- Orbital Commands from Command Centers<n/><n/><c val="ffff8a">Provides <d ref="Unit,Barracks,Food"/> supply.
@@ -142,7 +142,7 @@ Button/Tooltip/InfestationPit=Contains upgrades for Infestors.<n/><n/><c val="ff
 Button/Tooltip/Lair=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Overseers from Overlords<n/><n/><c val="ffff8a">Provides <d ref="Unit,Lair,Food"/> supply.</c>
 Button/Tooltip/LairUCB=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Overseers from Overlords
 Button/Tooltip/LurkerMPUCB=Anti-ground ambusher. Has a spine attack that damages all enemy units in its line of fire.<n/><n/><c val="ffff8a">Can attack ground units.<n/>Must burrow to attack.</c>
-Button/Tooltip/MorphDroneUCB=Sets the toggle state of automatic drone production.<n/><n/><c val="ffff8a">At least one larva will always be left available while on.
+Button/Tooltip/MorphDroneUCB=Toggles automatic drone production.<n/><n/><c val="ffff8a">While on, at least one larva will always be left available.<n/><n/>This setting is always on at the game's start.
 Button/Tooltip/MorphToMothershipUCB=Upgrades into the Mothership. Can use Photon Overcharge, Mass Recall and Time Warp. Cloaks nearby units and structures.
 Button/Tooltip/MorphToOverseerUBC=Advanced aerial observer. Provides the same supply as an Overlord. Can use the Spawn Changeling and Contaminate abilities.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/MorphtoOverlordTransportUBC=Enables the Overlord to transport units.
@@ -167,7 +167,7 @@ Button/Tooltip/ResearchWarpGate=Upgrades all <c val="ffff8a">Gateways</c> to War
 Button/Tooltip/RoachWarren=Contains upgrades for Roaches.<n/><n/><c val="ffff8a">Enables:</c><n/>- Roaches from Larvae<n/>- Ravagers from Roaches<n/><n/><c val="ffff8a">Provides <d ref="Unit,RoachWarren,Food"/> supply.</c>
 Button/Tooltip/RoboticsFacility=Warps in Protoss robotic units.<n/><n/><c val="ffff8a">Enables:</c><n/>- Observers<n/>- Warp Prisms<n/>- Immortals<n/><n/><c val="ffff8a">Provides <d ref="Unit,RoboticsFacility,Food"/> supply.
 Button/Tooltip/ScanUCB=Reveals an area of the map, detecting cloaked and burrowed units. Lasts <d time="12"/>.
-Button/Tooltip/SpawnLarvaUCB=Sets the toggle state of automatic larva spawning for all queens.
+Button/Tooltip/SpawnLarvaUCB=Toggles automatic larva spawning for all queens.
 Button/Tooltip/SpawningPool=Contains upgrades for Zerglings.<n/><n/><c val="ffff8a">Enables:</c><n/>- Queens at the Hatchery, Lair, or Hive<n/>- Zerglings from Larvae<n/>- Spine Crawlers from Drones<n/>- Spore Crawlers from Drones<n/><n/><c val="ffff8a">Provides <d ref="Unit,SpawningPool,Food"/> supply.</c>
 Button/Tooltip/Spire=Contains upgrades for Zerg air units. Can mutate into a Greater Spire.<n/><n/><c val="ffff8a">Enables:</c><n/>- Mutalisks from Larvae<n/>- Corruptors from Larvae<n/><n/><c val="ffff8a">Provides <d ref="Unit,Spire,Food"/> supply.</c>
 Button/Tooltip/Stargate=Warps in Protoss air units.<n/><n/><c val="ffff8a">Enables:</c><n/>- Phoenixes<n/>- Void Rays<n/>- Oracles<n/><n/><c val="ffff8a">Provides <d ref="Unit,Stargate,Food"/> supply.

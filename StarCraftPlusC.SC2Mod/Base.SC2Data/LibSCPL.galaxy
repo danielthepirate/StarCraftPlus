@@ -247,7 +247,6 @@ void libSCPL_gf_SCPBankInitialize () {
         }
         if ((PlayerRace(lv_playerIndex) == "Zerg") && (libSCPL_gv_player[lv_playerIndex].lv_globalZerg_DroneMorphToggle == false)) {
             lv_globalCaster = UnitGroupUnit(UnitGroup("SdbZAbils1", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1);
-            UnitCreateEffectUnit(lv_globalCaster, "UCBDroneMorphToggleOff", lv_globalCaster);
         }
         if ((PlayerRace(lv_playerIndex) == "Zerg") && (libSCPL_gv_player[lv_playerIndex].lv_globalZerg_LarvaSpawnToggle == false)) {
             lv_globalCaster = UnitGroupUnit(UnitGroup("SdbZAbils1", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1);
