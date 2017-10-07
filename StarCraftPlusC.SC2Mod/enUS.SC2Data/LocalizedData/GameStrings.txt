@@ -60,7 +60,6 @@ Attribute001/Name=Show Axiom Tips
 Attribute001/Value001/Name=Yes
 Attribute001/Value002/Name=No
 Behavior/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
-Behavior/Name/GameDroneMorphMarker=Game Drone Morph Marker
 Behavior/Name/GameHookBarracksStatusUpdate=Game Hook Barracks Status Update
 Behavior/Name/GameProtossWarpGateTrainCharge=Game Protoss Warp Gate Train Charge
 Behavior/Name/GameProtossWarpGateTrainChargeFinal=Game Protoss Warp Gate Train Charge Final
@@ -125,7 +124,7 @@ Button/Tooltip/BroodLordUCB=Flying heavy-assault unit. Shoots Broodlings at its 
 Button/Tooltip/CalldownMULEUCB=Drops an experimental robotic MULE miner onto the target Mineral Field. MULEs collect minerals more quickly than SCVs.  <n/><n/>MULEs last <d time="90"/> before their systems fail.
 Button/Tooltip/CloakOffBanshee=Decloaks the selected unit, making it visible to enemies.
 Button/Tooltip/CommandCenter=Primary structure. Used to receive gathered resources. Can use the Lift Off ability and can upgrade into an Orbital Command or a Planetary Fortress.<n/><n/><c val="ffff8a">Enables:</c><n/>- SCVs<n/><n/><c val="ffff8a">Provides <d ref="Unit,CommandCenter,Food"/> supply.</c>
-Button/Tooltip/CreepTumorEnhancedCreepGrowthAura=Spreading creep 50% faster.
+Button/Tooltip/CreepTumorEnhancedCreepGrowthAura=Spreading creep 25% faster.
 Button/Tooltip/EvolutionChamber=Contains upgrades for Zerg ground units. <n/><n/><c val="ffff8a">Provides <d ref="Unit,EvolutionChamber,Food"/> supply.
 Button/Tooltip/Factory=Vehicle-production facility. <n/><n/><c val="ffff8a">Enables:</c><n/>- Hellions<n/>- Widow Mines<n/>- Cyclones<n/><n/><c val="ffff8a">Provides <d ref="Unit,Factory,Food"/> supply.
 Button/Tooltip/Gateway=Warps in Protoss ground units.<n/><n/><c val="ffff8a">Enables:</c><n/>- Zealots<n/><n/><c val="ffff8a">Provides <d ref="Unit,Gateway,Food"/> supply.
@@ -153,7 +152,7 @@ Button/Tooltip/NukeArmUCB=Arms the Silo with a Tactical Nuke.<n/><n/>Nukes take 
 Button/Tooltip/NydusCanalPlacementDummy=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/OrbitalCommand=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep, Calldown: MULE, and Calldown: Extra Supplies. Cannot load SCVs.<n/><n/><c val="ffff8a">Provides <d ref="Unit,OrbitalCommand,Food"/> supply.</c>
 Button/Tooltip/Overlord=Aerial Watcher.<n/>Provides an aura increases speed of creep spread.
-Button/Tooltip/OverlordEnhancedCreepGrowthAura=Nearby creep tumors spread 50% faster.
+Button/Tooltip/OverlordEnhancedCreepGrowthAura=Nearby creep tumors spread 25% faster.
 Button/Tooltip/ProtossGroundArmorLevel1=Upgrades the armor of Protoss ground units and structures.
 Button/Tooltip/ProtossGroundArmorLevel2=Further upgrades the armor of Protoss ground units and structures.
 Button/Tooltip/ProtossGroundArmorLevel3=Maximizes the armor of Protoss ground units and structures.

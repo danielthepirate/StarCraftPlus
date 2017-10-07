@@ -814,6 +814,7 @@ Variable/Name/lib_SCPL_14A41293=::unittype::
 Variable/Name/lib_SCPL_1598C48D=Icon Size
 Variable/Name/lib_SCPL_16066E80=ResourceModifier
 Variable/Name/lib_SCPL_16BA3714=PlayerIndex
+Variable/Name/lib_SCPL_16C035CA=n
 Variable/Name/lib_SCPL_16F01C61=Bank
 Variable/Name/lib_SCPL_16F8BF82=Obs Group
 Variable/Name/lib_SCPL_17266AAC=TargetNodeCount

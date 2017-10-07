@@ -208,6 +208,7 @@ Behavior/Name/CreepGrowthMediumEnhanced=Creep Growth Medium Enhanced
 Behavior/Name/GameAutoCreepNodeSearch=Game Auto Creep Node Search
 Behavior/Name/GameAutoCreepNodeTargetCapped=Game Auto Creep Node Target Capped
 Behavior/Name/GameAutoCreepSpreadReady=Game Auto Creep Spread Ready
+Behavior/Name/GameDroneMorphMarker=Game Drone Morph Marker
 Behavior/Name/GameIncreasedLifeAndShields=Game Increased Life And Shields
 Behavior/Name/GameMineralsNearTownHall=Game Minerals Near Town Hall
 Behavior/Name/GameMineralsNearTownHallSearch=Game Minerals Near Town Hall Search

@@ -326,8 +326,6 @@ void libSCPL_gf_InitializeSpendOverTime () {
 
     // Implementation
     lv_gamePlayers = PlayerGroupActive();
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 
@@ -2362,47 +2360,6 @@ int libSCPL_gf_UnitGroupHealthIndex (unitgroup lp_unitGroup) {
     return FixedToInt(lv_healthIndex);
 }
 
-void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_playerIndex) {
-    // Variable Declarations
-    string lv_unitType;
-    unitgroup lv_controlGroup;
-    int lv_controlGroupCount;
-    string lv_controlGroupIcon;
-    string lv_race;
-
-    // Variable Initialization
-    lv_controlGroup = UnitGroupEmpty();
-    lv_race = "";
-
-    // Implementation
-    lv_controlGroup = libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex];
-    lv_controlGroup = UnitGroupFilter(null, lp_playerIndex, lv_controlGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    lv_controlGroupCount = UnitGroupCount(lv_controlGroup, c_unitCountAlive);
-    if ((lv_controlGroupCount == 0)) {
-        DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventReset");
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_consoleControlGroupLabel[lp_controlGroupIndex], StringToText(""), PlayerGroupSingle(lp_playerIndex));
-        libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], "Assets\\Textures\\black.dds", PlayerGroupSingle(lp_playerIndex));
-        if ((lp_controlGroupIndex != 1)) {
-            DialogControlSetVisible(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), false);
-        }
-    }
-    else {
-        lv_controlGroupIcon = "Assets\\Textures\\black.dds";
-        lv_unitType = libSCPL_gf_ControlGroupUnitsGetPriorityType(lv_controlGroup);
-        if ((StringContains(lv_unitType, "Burrowed", c_stringAnywhere, c_stringNoCase) == true)) {
-            lv_unitType = (StringReplaceWord(lv_unitType, "Burrowed", "", 1, c_stringNoCase));
-        }
-        if ((CatalogEntryIsValid(c_gameCatalogActor, lv_unitType) == true)) {
-            lv_controlGroupIcon = CatalogFieldValueGet(c_gameCatalogActor, lv_unitType, "UnitIcon", c_playerAny);;
-        }
-        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), true);
-        DialogControlFadeTransparency(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), 0.0, 0.0);
-        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_consoleControlGroupLabel[lp_controlGroupIndex], IntToText(lv_controlGroupCount), PlayerGroupSingle(lp_playerIndex));
-        libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], lv_controlGroupIcon, PlayerGroupSingle(lp_playerIndex));
-        libSCPL_gf_ControlGroupColorize(lp_playerIndex, lp_controlGroupIndex);
-    }
-}
-
 void libSCPL_gf_ControlGroupUnitsAssign (unitgroup lp_unitGroup, int lp_controlGroupIndex, int lp_playerIndex) {
     unitgroup auto4FE71402_g;
     int auto4FE71402_u;
@@ -2445,6 +2402,47 @@ void libSCPL_gf_ControlGroupUnitsAdd (unitgroup lp_unitGroup, int lp_controlGrou
     for ( ; auto9CA46B02_u <= UnitGroupCount(auto9CA46B02_g, c_unitCountAll) ; auto9CA46B02_u += BoolToInt(lv_unit == UnitGroupUnit(auto9CA46B02_g, auto9CA46B02_u)) ) {
         lv_unit = UnitGroupUnit(auto9CA46B02_g, auto9CA46B02_u);
         UnitSetCustomValue(lv_unit, (20 + lp_controlGroupIndex), 1.0);
+    }
+}
+
+void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_playerIndex) {
+    // Variable Declarations
+    string lv_unitType;
+    unitgroup lv_controlGroup;
+    int lv_controlGroupCount;
+    string lv_controlGroupIcon;
+    string lv_race;
+
+    // Variable Initialization
+    lv_controlGroup = UnitGroupEmpty();
+    lv_race = "";
+
+    // Implementation
+    lv_controlGroup = libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex];
+    lv_controlGroup = UnitGroupFilter(null, lp_playerIndex, lv_controlGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    lv_controlGroupCount = UnitGroupCount(lv_controlGroup, c_unitCountAlive);
+    if ((lv_controlGroupCount == 0)) {
+        DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), "EventReset");
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_consoleControlGroupLabel[lp_controlGroupIndex], StringToText(""), PlayerGroupSingle(lp_playerIndex));
+        libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], "Assets\\Textures\\black.dds", PlayerGroupSingle(lp_playerIndex));
+        if ((lp_controlGroupIndex != 1)) {
+            DialogControlSetVisible(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), false);
+        }
+    }
+    else {
+        lv_controlGroupIcon = "Assets\\Textures\\black.dds";
+        lv_unitType = libSCPL_gf_ControlGroupUnitsGetPriorityType(lv_controlGroup);
+        if ((StringContains(lv_unitType, "Burrowed", c_stringAnywhere, c_stringNoCase) == true)) {
+            lv_unitType = (StringReplaceWord(lv_unitType, "Burrowed", "", 1, c_stringNoCase));
+        }
+        if ((CatalogEntryIsValid(c_gameCatalogActor, lv_unitType) == true)) {
+            lv_controlGroupIcon = CatalogFieldValueGet(c_gameCatalogActor, lv_unitType, "UnitIcon", c_playerAny);;
+        }
+        DialogControlSetVisible(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), true);
+        DialogControlFadeTransparency(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), 0.0, 0.0);
+        libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_consoleControlGroupLabel[lp_controlGroupIndex], IntToText(lv_controlGroupCount), PlayerGroupSingle(lp_playerIndex));
+        libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], lv_controlGroupIcon, PlayerGroupSingle(lp_playerIndex));
+        libSCPL_gf_ControlGroupColorize(lp_playerIndex, lp_controlGroupIndex);
     }
 }
 
@@ -9872,9 +9870,13 @@ void libSCPL_gt_ControlGroupAdd_Init () {
 // Trigger: Control Group Select
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ControlGroupSelect_Func (bool testConds, bool runActions) {
+    int autoDBDEED2D_ae;
+    int autoDBDEED2D_ai;
+
     // Variable Declarations
     int lv_playerIndex;
     int lv_controlGroupIndex;
+    int lv_n;
 
     // Variable Initialization
 
@@ -9885,15 +9887,20 @@ bool libSCPL_gt_ControlGroupSelect_Func (bool testConds, bool runActions) {
 
     lv_playerIndex = EventPlayer();
     lv_controlGroupIndex = FixedToInt(libNtve_gf_DialogItemValue(EventDialogControl(), lv_playerIndex));
+    UnitClearSelection(lv_playerIndex);
+    autoDBDEED2D_ae = 8;
+    autoDBDEED2D_ai = 1;
+    lv_n = 1;
+    for ( ; ( (autoDBDEED2D_ai >= 0 && lv_n <= autoDBDEED2D_ae) || (autoDBDEED2D_ai <= 0 && lv_n >= autoDBDEED2D_ae) ) ; lv_n += autoDBDEED2D_ai ) {
+        UnitGroupSelect(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_n], lv_playerIndex, false);
+    }
+    UnitGroupSelect(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], lv_playerIndex, true);
     if ((TimerGetRemaining(libSCPL_gv_player[lv_playerIndex].lv_controlGroupJumpTimer[lv_controlGroupIndex]) > 0.0)) {
         if ((UnitGroupCount(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], c_unitCountAlive) > 0)) {
             CameraPan(lv_playerIndex, UnitGroupCenterOfGroup(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex]), 0.0, -1, 10.0, false);
         }
     }
     else {
-        UnitClearSelection(lv_playerIndex);
-        libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex] = UnitGroupFilter(null, c_playerAny, libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-        UnitGroupSelect(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], lv_playerIndex, true);
         libPPRL_gf_AddTimeToTimer(libSCPL_gv_player[lv_playerIndex].lv_controlGroupJumpTimer[lv_controlGroupIndex], 0.375);
     }
     return true;

@@ -206,9 +206,9 @@ void libSCPL_gf_ControlGroupUnitPreserve (unit lp_parentUnit, unit lp_childUnit)
 void libSCPL_gf_ControlGroupDamagePulse (unit lp_unit);
 void libSCPL_gf_ControlGroupColorize (int lp_playerIndex, int lp_controlGroupIndex);
 int libSCPL_gf_UnitGroupHealthIndex (unitgroup lp_unitGroup);
-void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_playerIndex);
 void libSCPL_gf_ControlGroupUnitsAssign (unitgroup lp_unitGroup, int lp_controlGroupIndex, int lp_playerIndex);
 void libSCPL_gf_ControlGroupUnitsAdd (unitgroup lp_unitGroup, int lp_controlGroupIndex, int lp_playerIndex);
+void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_playerIndex);
 string libSCPL_gf_ControlGroupUnitsGetPriorityType (unitgroup lp_controlGroup);
 void libSCPL_gf_TriggerEventRegisterUnitDies (trigger lp_trigger, unit lp_unit);
 void libSCPL_gf_TriggerEventRegisterDialogItemClicked (trigger lp_trigger, int lp_dialogItem);

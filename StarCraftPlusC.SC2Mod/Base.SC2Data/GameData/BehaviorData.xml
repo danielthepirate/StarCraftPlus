@@ -101,7 +101,7 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BuffFlags index="RefreshStack" value="1"/>
         <Duration value="0.375"/>
-        <Modification TimeScale="1.5"/>
+        <Modification TimeScale="1.25"/>
         <MaxStackCount value="2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameAutoCreepNodeSearch">
@@ -118,7 +118,7 @@
     <CBehaviorBuff id="GameAutoCreepSpreadReady">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="-1"/>
-        <Period value="40"/>
+        <Period value="60"/>
         <PeriodicEffect value="GameAutoCreepSpreadHook"/>
         <InfoFlags index="Hidden" value="1"/>
         <DisableValidatorArray value="AutoCreepAutocastEnabled"/>
@@ -127,6 +127,7 @@
     <CBehaviorBuff id="GameDroneMorphMarker">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="17"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameHookBarracksStatusUpdate">
         <EditorCategories value="AbilityorEffectType:Units"/>

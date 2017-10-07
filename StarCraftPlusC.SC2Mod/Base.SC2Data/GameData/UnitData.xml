@@ -1073,8 +1073,8 @@
             <LayoutButtons index="3" Face="zergmeleeweapons2" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research2" Row="0" Column="2"/>
             <LayoutButtons index="4" Face="zergmeleeweapons3" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research3" Row="0" Column="2"/>
             <LayoutButtons index="5" Face="zergmissileweapons1" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research7" Row="0" Column="3"/>
-            <LayoutButtons index="6" Face="zergmissileweapons3" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research9" Row="0" Column="3"/>
-            <LayoutButtons index="7" Face="zergmissileweapons3" Type="Passive" AbilCmd="" Row="0" Column="3"/>
+            <LayoutButtons index="6" Face="zergmissileweapons2" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research8" Row="0" Column="3"/>
+            <LayoutButtons index="7" Face="zergmissileweapons3" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research9" Row="0" Column="3"/>
             <LayoutButtons index="8" Face="zerggroundarmor1" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research4" Row="0" Column="4"/>
             <LayoutButtons index="9" Face="zerggroundarmor2" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research5" Row="0" Column="4"/>
             <LayoutButtons index="10" Face="zerggroundarmor3" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research6" Row="0" Column="4"/>
@@ -1095,7 +1095,7 @@
             <LayoutButtons Face="ResearchBurrow" Type="Passive" Row="0" Column="0"/>
             <LayoutButtons Face="overlordspeed" Type="Passive" Row="0" Column="1"/>
             <LayoutButtons Face="zergmeleeweapons3" Type="Passive" Row="0" Column="2"/>
-            <LayoutButtons Face="zergmissileweapons2" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research8" Row="0" Column="3"/>
+            <LayoutButtons Face="zergmissileweapons3" Type="Passive" Row="0" Column="3"/>
             <LayoutButtons Face="zerggroundarmor3" Type="Passive" Row="0" Column="4"/>
             <LayoutButtons Face="zerglingmovementspeed" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="zerglingattackspeed" Type="Passive" Row="1" Column="1"/>
