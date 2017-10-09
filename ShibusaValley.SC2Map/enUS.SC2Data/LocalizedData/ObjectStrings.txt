@@ -1,0 +1,13 @@
+﻿Abil/EditorPrefix/AutoWallToggle=Supply Depot -
+Abil/EditorPrefix/SupplyDepotLowerHidden=Supply Depot -
+Abil/EditorPrefix/SupplyDepotRaiseHidden=Supply Depot -
+Actor/Name/WarpAdept=Warp Adept
+Actor/Name/WarpDarkTemplar=Warp Dark Templar
+Actor/Name/WarpHighTemplar=Warp High Templar
+Actor/Name/WarpSentry=Warp Sentry
+Actor/Name/WarpStalker=Warp Stalker
+Actor/Name/WarpZealot=Warp Zealot
+Unit/EditorPrefix/WarpSentry=
+Unit/EditorSuffix/WarpSentry=
+Water/Name/Agria=Agria
+Water/Name/BelShir=Bel'Shir

@@ -1,0 +1,9 @@
+DocInfo/Author=Blizzard Entertainment
+DocInfo/DescLong=Le due strade principali che portano al nemico passano per espansioni sopraelevate. Assumine il controllo per ottenere un vantaggio tattico ed economico. Usa le torri xel'naga per rilevare i movimenti del nemico lungo i percorsi alternativi a bassa quota.
+DocInfo/DescShort=1v1
+DocInfo/Name=Valle di Agria
+MapInfo/Player00/Name=Neutrale
+MapInfo/Player01/Name=Giocatore 1
+MapInfo/Player02/Name=Giocatore 2
+Variant001/Desc=Due giocatori si sfidano all'ultimo sangue.
+Variant001/Name=Scontro 1v1

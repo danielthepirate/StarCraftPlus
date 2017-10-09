@@ -192,7 +192,7 @@ Button/Tooltip/zerggroundarmor1=Upgrades the armor of all Zerg ground units and 
 Button/Tooltip/zerggroundarmor2=Further upgrades the armor of all Zerg ground units and structures.
 Button/Tooltip/zerggroundarmor3=Maximizes the armor of all Zerg ground units and structures.
 DocInfo/DescLong=A StarCraft II mod aimed at creating more accessable gameplay for players of all skill levels.
-DocInfo/Name=Shibusa
+DocInfo/Name=Axiom
 Effect/Name/AutoCreepSpreadAutocastBehavior=Auto Creep Spread Autocast Behavior
 Effect/Name/AutoCreepSpreadOff=Auto Creep Spread Off
 Effect/Name/AutoCreepSpreadOn=Auto Creep Spread On
@@ -356,6 +356,7 @@ Kinetic/Name/KineticFollow=KineticFollow
 Param/Value/lib_SCPL_00AFF88E=Hi-Sec Auto Tracking
 Param/Value/lib_SCPL_025CBB60=Vehicle Plating Level 1
 Param/Value/lib_SCPL_11275019=Flyer Attacks Level 3
+Param/Value/lib_SCPL_1155FDB8=WorkerSaturationCountReached
 Param/Value/lib_SCPL_1333D60B=Flyer Attacks Level 2
 Param/Value/lib_SCPL_16BEFEF4=<s val="TimerDecimals">
 Param/Value/lib_SCPL_16CF1B5C=<s val="TimerCountdown">
@@ -436,6 +437,7 @@ Param/Value/lib_SCPL_C22343DA=Infantry Weapons Level 2
 Param/Value/lib_SCPL_C2EDAB79=Yamato Cannon
 Param/Value/lib_SCPL_CC951DDB=Vehicle Plating Level 3
 Param/Value/lib_SCPL_CDD560F4=Flyer Carapace Level 2
+Param/Value/lib_SCPL_CE8C6D62=WorkerSaturationCountReached
 Param/Value/lib_SCPL_CF8D2A5F=Ground Carapace Level 1
 Param/Value/lib_SCPL_D7BFAED5=Blink
 Param/Value/lib_SCPL_DA61236E=Vehicle Plating Level 2

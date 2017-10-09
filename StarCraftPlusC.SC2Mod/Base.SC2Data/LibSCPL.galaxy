@@ -114,6 +114,16 @@ void libSCPL_InitVariables () {
     }
 }
 
+// Custom Script
+//--------------------------------------------------------------------------------------------------
+// Custom Script: HintBallonIncludeScript
+//--------------------------------------------------------------------------------------------------
+include "Script/AxiomHints"
+
+void libSCPL_InitCustomScript () {
+    AxiomHints_Init();
+}
+
 // Presets
 string libSCPL_ge_GenericEvent_Ident (int lp_val) {
          if (lp_val == libSCPL_ge_GenericEvent_ResourceSpend) { return "ResourceSpend"; }
@@ -127,6 +137,27 @@ string libSCPL_ge_GenericParameter_Ident (int lp_val) {
 }
 
 // Functions
+void TriggerAddEventWorkerSaturationCountReached (trigger t) {
+    // Implementation
+    TriggerAddEventGeneric(t, "WorkerSaturationCountReached");
+}
+
+void libSCPL_gf_GenericEventResourceSpendChanges3 (int lp_triggeringPlayer) {
+    // Variable Declarations
+    string lv_event;
+    string lv_param;
+
+    // Variable Initialization
+    lv_event = "";
+    lv_param = "";
+
+    // Implementation
+    lv_event = "WorkerSaturationCountReached";
+    lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
+    DataTableSetInt(false, TriggerEventParamName(lv_event, lv_param), lp_triggeringPlayer);
+    TriggerSendEvent(lv_event);
+}
+
 void libSCPL_gf_DebugSpawnBuildingsZerg (int lp_playerIndex) {
     // Variable Declarations
     fixed lv_distance;
@@ -815,18 +846,18 @@ bool auto_libSCPL_gf_InitializeAutomatedWorkerProduction_TriggerFunc (bool testC
 }
 
 void libSCPL_gf_AutoWorkerProduction (unit lp_townHall, int lp_playerIndex) {
-    string auto2FDD7FCA_val;
+    string autoC236014B_val;
 
     // Implementation
     if ((UnitIsAlive(lp_townHall) == true) && (libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex) < libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex)) && (libSCPL_gf_PlayerTownHallWorkerQueue(lp_townHall, lp_playerIndex, false) == 0)) {
-        auto2FDD7FCA_val = PlayerRace(lp_playerIndex);
-        if (auto2FDD7FCA_val == "Terr") {
+        autoC236014B_val = PlayerRace(lp_playerIndex);
+        if (autoC236014B_val == "Terr") {
             UnitIssueOrder(lp_townHall, Order(AbilityCommand("CommandCenterTrain", 0)), c_orderQueueAddToEnd);
         }
-        else if (auto2FDD7FCA_val == "Prot") {
+        else if (autoC236014B_val == "Prot") {
             UnitIssueOrder(lp_townHall, Order(AbilityCommand("NexusTrain", 0)), c_orderQueueAddToEnd);
         }
-        else if (auto2FDD7FCA_val == "Zerg") {
+        else if (autoC236014B_val == "Zerg") {
             libSCPL_gf_AutoWorkerProductionZerg(lp_townHall, lp_playerIndex, 1);
         }
         else {
@@ -2864,6 +2895,28 @@ void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer) {
 }
 
 // Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: zz_Untitled Trigger 001
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_zz_UntitledTrigger001_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerDebugOutput(1, StringExternal("Param/Value/lib_SCPL_CE8C6D62"), true);
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_SCPL_1155FDB8"));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_zz_UntitledTrigger001_Init () {
+    libSCPL_gt_zz_UntitledTrigger001 = TriggerCreate("libSCPL_gt_zz_UntitledTrigger001_Func");
+    TriggerAddEventTimeElapsed(libSCPL_gt_zz_UntitledTrigger001, 5.0, c_timeGame);
+    TriggerAddEventWorkerSaturationCountReached(libSCPL_gt_zz_UntitledTrigger001);
+    TriggerAddEventGeneric(libSCPL_gt_zz_UntitledTrigger001, "WorkerSaturationCountReached");
+}
+
 //--------------------------------------------------------------------------------------------------
 // Trigger: Initialization Plus
 //--------------------------------------------------------------------------------------------------
@@ -6483,6 +6536,10 @@ bool libSCPL_gt_AutoWorkerProductionCheckWorkerSlot_Func (bool testConds, bool r
     lv_playerIndex = EventPlayer();
     lv_townHall = EventUnit();
     libSCPL_gf_AutoWorkerProduction(lv_townHall, lv_playerIndex);
+    if ((libSCPL_gf_PlayerTownHallWorkerCount(lv_townHall, lv_playerIndex) >= libSCPL_gf_PlayerTownHallSaturationCount(lv_townHall, lv_playerIndex))) {
+        TriggerSendEvent("WorkerSaturationCountReached");
+    }
+
     return true;
 }
 
@@ -6517,6 +6574,10 @@ bool libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Func (bool testConds, bo
     lv_playerIndex = UnitGetOwner(EventUnitCreatedUnit());
     lv_townHall = libSCPL_gf_PlayerTownHallClosest(UnitGetPosition(EventUnitCreatedUnit()), lv_playerIndex);
     libSCPL_gf_AutoWorkerProduction(lv_townHall, lv_playerIndex);
+    if ((libSCPL_gf_PlayerTownHallWorkerCount(lv_townHall, lv_playerIndex) >= libSCPL_gf_PlayerTownHallSaturationCount(lv_townHall, lv_playerIndex))) {
+        TriggerSendEvent("WorkerSaturationCountReached");
+    }
+
     return true;
 }
 
@@ -10083,6 +10144,7 @@ void libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init () {
 }
 
 void libSCPL_InitTriggers () {
+    libSCPL_gt_zz_UntitledTrigger001_Init();
     libSCPL_gt_InitializationPlus_Init();
     libSCPL_gt_DebugCommandResourceActualShow_Init();
     libSCPL_gt_DebugCommandResourceActualHide_Init();
@@ -10252,6 +10314,7 @@ void libSCPL_InitLib () {
 
     libSCPL_InitLibraries();
     libSCPL_InitVariables();
+    libSCPL_InitCustomScript();
     libSCPL_InitTriggers();
 }
 

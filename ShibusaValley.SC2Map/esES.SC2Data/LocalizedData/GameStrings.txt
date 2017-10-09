@@ -1,0 +1,9 @@
+DocInfo/Author=Blizzard Entertainment
+DocInfo/DescLong=Los dos caminos principales hasta el enemigo pasan por expansiones en terreno elevado. Captúralas para aventajar al enemigo en posición y en recursos. Utiliza las torres Xel'Naga para avistar los movimientos del enemigo a través de las rutas inferiores alternativas.
+DocInfo/DescShort=1 vs 1
+DocInfo/Name=Valle de Agria
+MapInfo/Player00/Name=Neutral
+MapInfo/Player01/Name=Jugador 1
+MapInfo/Player02/Name=Jugador 2
+Variant001/Desc=Dos jugadores luchan a muerte.
+Variant001/Name=Refriega 1 vs 1

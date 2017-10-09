@@ -1,0 +1,48 @@
+﻿Abil/Name/AutoWallToggle=Auto Wall Toggle
+Abil/Name/SupplyDepotLowerHidden=Lower Hidden
+Abil/Name/SupplyDepotRaiseHidden=Raise Hidden
+Behavior/Name/AutoWallLower=Auto Wall Lower
+Behavior/Name/AutoWallRaise=Auto Wall Raise
+Behavior/Name/AutoWallRaiseOrder=Auto Wall Raise Order
+Behavior/Name/AutoWallRaisePre=Auto Wall Raise Pre
+Behavior/Name/AutoWallRaisePrevention=Auto Wall Raise Prevention
+Behavior/Name/CarrierAutocastOff=Carrier Autocast Off
+Behavior/Name/CarrierAutocastOn=Carrier Autocast On
+Button/Tooltip/WarpDarkTemplar=Deadly warrior-assassin. Cloak renders the unit invisible to enemies without detection. Can transform into an Archon.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/WarpHighTemplar=Potent psionic master. Can use Feedback and be upgraded to use Psionic Storm. Can transform into an Archon.
+Button/Tooltip/WarpInWarpAdept=Ranged specialist. Can use Psionic Transfer.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/WarpSentry=Energy-manipulator unit. Can use Force Field, Guardian Shield, and Hallucination.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/WarpStalker=Ranged support strider.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/WarpZealot=Powerful melee warrior.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+DocInfo/Author=Blizzard Entertainment
+DocInfo/DescLong=The two main paths to the enemy are through high ground expansions. Control these to gain a positional and resource advantage. Use the Xel'Naga Towers to spot enemy movement through the alternate low ground routes.
+DocInfo/DescShort=1v1
+DocInfo/Name=TestTest1234
+Effect/Name/AutoWallLowerOrder=Auto Wall Lower Order
+Effect/Name/AutoWallLowerSearch=Auto Wall Lower Search
+Effect/Name/AutoWallRaiseAdd=Auto Wall Raise Add
+Effect/Name/AutoWallRaiseOrder=Auto Wall Raise Order
+Effect/Name/AutoWallRaiseOrderAdd=Auto Wall Raise Order Add
+Effect/Name/AutoWallRaisePreSearch=Auto Wall Raise Pre Search
+Effect/Name/AutoWallRaisePreventionAdd=Auto Wall Raise Prevention Add
+Effect/Name/AutoWallRaiseRemove=Auto Wall Raise Remove
+Effect/Name/AutoWallRaiseRemoveOrder=Auto Wall Raise Remove Order
+Effect/Name/AutoWallRaiseRemovePrevention=Auto Wall Raise Remove Prevention
+Effect/Name/AutoWallRaiseRemoveSet=Auto Wall Raise Remove Set
+Effect/Name/AutoWallRaiseSearch=Auto Wall Raise Search
+Effect/Name/AutoWallRaiseSet=Auto Wall Raise Set
+Effect/Name/DebugPoint=DebugPoint
+Effect/Name/DebugPointCircle=DebugPointCircle
+MapInfo/Player00/Name=Neutral
+MapInfo/Player01/Name=Player 1
+MapInfo/Player02/Name=Player 2
+Unit/Name/WarpAdept=Warp Adept
+Unit/Name/WarpDarkTemplar=Warp Dark Templar
+Unit/Name/WarpHighTemplar=Warp High Templar
+Unit/Name/WarpSentry=Warp Sentry
+Unit/Name/WarpStalker=Warp Stalker
+Unit/Name/WarpZealot=Warp Zealot
+Variant001/Desc=Two players fight to the death.
+Variant001/ModeDesc=All settings may be customized.
+Variant001/ModeName=1v1
+Variant001/Name=Melee 1v1

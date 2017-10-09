@@ -1,0 +1,9 @@
+DocInfo/Author=블리자드 엔터테인먼트
+DocInfo/DescLong=적 기지와 통하는 두 개의 경로는 고지대 확장 지역으로 이어집니다. 지형상의 이점과 자원상의 우위를 점하려면 이 지역을 장악하십시오. 젤나가 감시탑을 이용하여 적들이 저지대의 다른 통로를 지나는지 감시하십시오.
+DocInfo/DescShort=1대1
+DocInfo/Name=아그리아 골짜기
+MapInfo/Player00/Name=중립
+MapInfo/Player01/Name=플레이어 1
+MapInfo/Player02/Name=플레이어 2
+Variant001/Desc=두 플레이어 중 한 명이 쓰러질 때까지 전투를 벌입니다.
+Variant001/Name=섬멸전 1대1
