@@ -97,7 +97,7 @@
 		
 		<Frame type="TabControl" name="SideBarTab">
 			<Anchor side="Right" relative="SidebarResearch" pos="Max" offset="0"/>
-			<Anchor side="Left" relative="$parent/SideBarTabAnchor" pos="Mid" offset="-256"/>
+			<Anchor side="Left" relative="$parent/SideBarTabAnchor" pos="Mid" offset="-254"/>
 			<Anchor side="Bottom" relative="$ACGContainer" pos="Max" offset="-27"/>
 			<Height val="64"/>
         
@@ -109,12 +109,40 @@
 			<PanelListItem val="$parent/ResearcherCommandContainer"/>
 			<SelectedIndex val="0"/>
 			
+			<StateGroup name="SelectedIndex">
+				<DefaultState val="SelectBuild"/>
+				<State name="SelectBuild">
+					<When type="Property" selectedIndex="0"/>
+					<Action type="SendEvent" frame="SidebarBuildings" event="EventSelect"/>
+					<Action type="SendEvent" frame="SidebarBuildings" event="EventDeselect" on="Exit"/>
+					<Action type="SetProperty" frame="SidebarBuildings/MenuIcon" texture="@@UI/UCBTabButtonIconBuildDown"/>
+					<Action type="SetProperty" frame="SidebarUnits/MenuIcon" texture="@@UI/UCBTabButtonIconTrain"/>
+					<Action type="SetProperty" frame="SidebarResearch/MenuIcon" texture="@@UI/UCBTabButtonIconUpgrade"/>
+				</State>
+				<State name="SelectTrain">
+					<When type="Property" selectedIndex="1"/>
+					<Action type="SendEvent" frame="SidebarUnits" event="EventSelect"/>
+					<Action type="SendEvent" frame="SidebarUnits" event="EventDeselect" on="Exit"/>
+					<Action type="SetProperty" frame="SidebarBuildings/MenuIcon" texture="@@UI/UCBTabButtonIconBuild"/>
+					<Action type="SetProperty" frame="SidebarUnits/MenuIcon" texture="@@UI/UCBTabButtonIconTrainDown"/>
+					<Action type="SetProperty" frame="SidebarResearch/MenuIcon" texture="@@UI/UCBTabButtonIconUpgrade"/>
+				</State>
+				<State name="SelectUpgrade">
+					<When type="Property" selectedIndex="2"/>
+					<Action type="SendEvent" frame="SidebarResearch" event="EventSelect"/>
+					<Action type="SendEvent" frame="SidebarResearch" event="EventDeselect" on="Exit"/>
+					<Action type="SetProperty" frame="SidebarBuildings/MenuIcon" texture="@@UI/UCBTabButtonIconBuildDown"/>
+					<Action type="SetProperty" frame="SidebarUnits/MenuIcon" texture="@@UI/UCBTabButtonIconTrain"/>
+					<Action type="SetProperty" frame="SidebarResearch/MenuIcon" texture="@@UI/UCBTabButtonIconUpgradeDown"/>
+				</State>
+			</StateGroup>
+			
 			<!-- THANKS BLIZZ -->
 			<Wrap val="true"/>
 			<Handle val="GlobalTabControl"/>
 
 			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 				
 				<Shortcut val="@Button/Hotkey/SidebarBuildings"/>
@@ -122,77 +150,26 @@
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Build"/>
 				</Frame>
-				<Frame type="Image" name="MenuIcon">
-					<Texture val="@UI/UCBTabButtonIconBuildDown"/>
-				</Frame>
-				
-				<Animation name="OnPushed">
-					<Event event="Pushed" action="Reset,Play"/>
-					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
-						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconBuildDown"/>
-					</Controller>
-				</Animation>
-				
-				<Animation name="OnNormal">
-					<Event event="Normal" action="Reset,Play"/>
-					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
-						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconBuild"/>
-					</Controller>
-				</Animation>
 			</Frame>
 			
 			<Frame type="Button" name="SidebarUnits" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Top" relative="$parent/SidebarBuildings" pos="Min" offset="0"/>
-				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="-6"/>
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/SidebarBuildings" pos="Max" offset="-3"/>
 				
 				<Shortcut val="@Button/Hotkey/SidebarUnits"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Train"/>
 				</Frame>
-				<Frame type="Image" name="MenuIcon">
-					<Texture val="@@UI/UCBTabButtonIconTrain"/>
-				</Frame>
-				
-				<Animation name="OnPushed">
-					<Event event="Pushed" action="Reset,Play"/>
-					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
-						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconTrainDown"/>
-					</Controller>
-				</Animation>
-				
-				<Animation name="OnNormal">
-					<Event event="Normal" action="Reset,Play"/>
-					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
-						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconTrain"/>
-					</Controller>
-				</Animation>
 			</Frame>
 			
 			<Frame type="Button" name="SidebarResearch" template="CommandSidebar/SideBarTabButtonTemplate">
-				<Anchor side="Top" relative="$parent/SidebarUnits" pos="Min" offset="0"/>
-				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="-6"/>
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent/SidebarUnits" pos="Max" offset="-3"/>
 				
 				<Shortcut val="@Button/Hotkey/SidebarResearch"/>
 				<Frame type="Label" name="MenuLabel">
 					<Text val="@UI/UCBTabButtons/Research"/>
 				</Frame>
-				<Frame type="Image" name="MenuIcon">
-					<Texture val="@@UI/UCBTabButtonIconUpgrade"/>
-				</Frame>
-				
-				<Animation name="OnPushed">
-					<Event event="Pushed" action="Reset,Play"/>
-					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
-						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconUpgradeDown"/>
-					</Controller>
-				</Animation>
-				
-				<Animation name="OnNormal">
-					<Event event="Normal" action="Reset,Play"/>
-					<Controller type="Property" frame="MenuIcon" property="Texture" end="Pause">
-						<Key type="Property" time="0" value="@@UI/UCBTabButtonIconUpgrade"/>
-					</Controller>
-				</Animation>
 			</Frame>
 		</Frame>
 	</Frame>

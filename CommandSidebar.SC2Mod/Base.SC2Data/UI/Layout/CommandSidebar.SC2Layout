@@ -103,14 +103,24 @@
 	</Frame>
 	
 	<Frame type="Button" name="SideBarTabButtonTemplate">
-        <Width val="172"/>
-        <Height val="64"/>
+        <Width val="168"/>
+        <Height val="58"/>
         <NormalImage val="NormalImage"/>
         <HoverImage val="HoverImage"/>
         <Label val="MenuLabel"/>
         <ClickSound val="@UI_ActionButtonSelect"/>
 		<Toggleable val="true"/>
 
+		<Animation name="Expander">
+			<Event event="EventSelect" action="DirectionForward,Play"/>
+			<Event event="EventDeselect" action="DirectionReverse,Play"/>
+			
+			<Controller type="Dimension" dimension="Height" end="Pause" unclipped="true">
+				<Key type="Curve" time="0.00" value="58" inout="Slow"/>
+				<Key type="Curve" time="0.08" value="64" inout="Fast"/>
+			</Controller>
+		</Animation>
+		
         <Frame type="Image" name="NormalImage">
 			<Anchor relative="$parent"/>
 			<Texture val="@@UI/UCBTabButtonNormal"/>
@@ -134,42 +144,24 @@
         </Frame>
 
 		<Frame type="Image" name="MenuIcon">
-			<Anchor side="Top" relative="$parent" pos="Mid" offset="1"/>
+			<Anchor side="Top" relative="$parent" pos="Mid" offset="2"/>
 			<Anchor side="Left" relative="$parent" pos="Min" offset="18"/>
-            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="1"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="2"/>
 			
 			<Height val="32"/>
 			<Width val="32"/>
-			<!-- <Visible val="false"/> -->
 			<CollapseLayout val="true"/>
 			<SubpixelRendering val="true"/>
 		</Frame>
 		
         <Frame type="Label" name="MenuLabel">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="5"/>
+            <Anchor side="Top" relative="$parent/MenuIcon" pos="Min" offset="5"/>
             <Anchor side="Left" relative="$parent/MenuIcon" pos="Max" offset="-18"/>
-            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="-2"/>
             <Style val="@@MenuBarButtonBig"/>
             <Text val="@UI/Menu"/>
+			<SubpixelRendering val="true"/>
         </Frame>
-		
-		<StateGroup name="RaceState">	
-			<DefaultState val="Terran"/>
-			<State name="Terran">
-				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsTerr"/>
-			</State>
-			<State name="Protoss">
-				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
-				<Action type="SetProperty" frame="NormalImage" height="68"/>
-				<Action type="SetProperty" frame="HoverImage" height="68"/>
-				<Action type="SetProperty" frame="NormalImage" width="167"/>
-				<Action type="SetProperty" frame="HoverImage" width="167"/>
-			</State>
-			<State name="Zerg">
-				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsZerg"/>
-			</State>
-		</StateGroup>
 	</Frame>
 	
 	<Frame type="CommandButton" name="CommandSidebarButtonTemplate" template="CommandButton/CommandButtonTemplate">
