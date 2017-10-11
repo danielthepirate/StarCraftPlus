@@ -54,9 +54,48 @@
 			<Anchor side="Right" relative="$MenuBarConsoleAnchor" pos="Min" offset="0"/>
 		</Frame>
 		
+		<Frame type="Frame" name="TabControlHint">
+			<Anchor side="Left" relative="$parent/SideBarTab" pos="Min" offset="0"/>
+			<Anchor side="Right" relative="$parent/SideBarTab" pos="Max" offset="0"/>
+			<Anchor side="Bottom" relative="$parent/SideBarTab" pos="Min" offset="-4"/>
+			
+			<Alpha val="0"/>
+			<Height val="44"/>
+			
+			<Frame type="Label" name="Label">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+				
+				<Text val="@UI/UCBHoverTip"/>
+				<Style val="MenuBarButtonBigTip"/>
+			</Frame>
+			
+			<Frame type="Image" name="Background">
+				<Anchor relative="$parent"/>
+				<Texture val="color_accents/gh-btn-white.dds"/>
+				<Color val="0,0,0"/>
+				<TextureType val="NineSlice"/>
+				<Alpha val="172"/>
+				<RenderPriority val="50"/>
+			</Frame>
+			
+			<Animation name="Fader">
+				<Event event="OnMouseEnter" action="DirectionForward,Play" frame="$parent/SideBarTab/SidebarBuildings"/>
+				<Event event="OnMouseEnter" action="DirectionForward,Play" frame="$parent/SideBarTab/SidebarUnits"/>
+				<Event event="OnMouseEnter" action="DirectionForward,Play" frame="$parent/SideBarTab/SidebarResearch"/>
+				<Event event="OnMouseExit" action="DirectionReverse,Play" frame="$parent/SideBarTab/SidebarBuildings"/>
+				<Event event="OnMouseExit" action="DirectionReverse,Play" frame="$parent/SideBarTab/SidebarUnits"/>
+				<Event event="OnMouseExit" action="DirectionReverse,Play" frame="$parent/SideBarTab/SidebarResearch"/>
+				<Controller type="Fade" end="Pause">
+					<Key type="Curve" time="0.0" value="0" inout="Slow"/>
+					<Key type="Curve" time="0.2" value="255" inout="Fast"/>
+				</Controller>
+			</Animation>
+		</Frame>
+		
 		<Frame type="TabControl" name="SideBarTab">
-			<!-- <Anchor side="Left" relative="$ACGContainer" pos="Max" offset="0"/> -->
-			<!-- <Anchor side="Right" relative="$parent/SideBarTabAnchor" pos="Mid" offset="0"/> -->
 			<Anchor side="Right" relative="SidebarResearch" pos="Max" offset="0"/>
 			<Anchor side="Left" relative="$parent/SideBarTabAnchor" pos="Mid" offset="-256"/>
 			<Anchor side="Bottom" relative="$ACGContainer" pos="Max" offset="-27"/>

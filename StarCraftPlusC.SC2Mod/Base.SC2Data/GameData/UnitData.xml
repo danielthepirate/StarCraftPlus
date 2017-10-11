@@ -28,7 +28,7 @@
     </CUnit>
     <CUnit id="BanelingBurrowed">
         <CardLayouts index="0">
-            <LayoutButtons index="1" Column="2"/>
+            <LayoutButtons index="1" Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowBanelingUp,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <BehaviorArray index="1" Link="GameUCBGlobalRallyZergMelee"/>
     </CUnit>
@@ -77,8 +77,8 @@
         <BehaviorArray Link="GameUCBCommandCenterChargeLink"/>
         <BehaviorArray Link="GameUCBCommandCenterChargeLinkConstructing"/>
         <CardLayouts index="0">
-            <LayoutButtons index="1" Column="2"/>
-            <LayoutButtons index="12" Row="0" Column="2"/>
+            <LayoutButtons index="1" Face="OrbitalCommand" Type="AbilCmd" AbilCmd="UpgradeToOrbital,Execute" Row="0" Column="2"/>
+            <LayoutButtons index="12" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="CommandCenterTrain,Train1" Row="0" Column="2"/>
             <LayoutButtons Face="Repair" Type="AbilCmd" AbilCmd="GameProductionCharge,Execute" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
@@ -155,7 +155,7 @@
     <CUnit id="DroneBurrowed">
         <CostResource index="Minerals" value="0"/>
         <CardLayouts index="0">
-            <LayoutButtons index="1" Column="2"/>
+            <LayoutButtons index="1" Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDroneUp,Execute" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="EngineeringBay">
@@ -393,7 +393,7 @@
     </CUnit>
     <CUnit id="HydraliskBurrowed">
         <CardLayouts index="0">
-            <LayoutButtons index="1" Column="2"/>
+            <LayoutButtons index="1" Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHydraliskUp,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <BehaviorArray index="0" Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
@@ -515,6 +515,7 @@
             <LayoutButtons index="8" Row="2"/>
             <LayoutButtons index="9" Row="2"/>
         </CardLayouts>
+        <DeathTime value="0.25"/>
     </CUnit>
     <CUnit id="Medivac"/>
     <CUnit id="MissileTurret">
@@ -643,10 +644,24 @@
     <CUnit id="Probe">
         <CostResource index="Minerals" value="0"/>
         <CardLayouts index="0">
-            <LayoutButtons index="5" Row="2"/>
-            <LayoutButtons index="6" Row="2"/>
-            <LayoutButtons index="7" AbilCmd="255,255" Row="1"/>
-            <LayoutButtons index="8" AbilCmd="255,255" Row="1"/>
+            <LayoutButtons index="5" Face="GatherProt" Type="AbilCmd" AbilCmd="ProbeHarvest,Gather" Row="2" Column="0"/>
+            <LayoutButtons index="6" Face="ReturnCargo" Type="AbilCmd" AbilCmd="ProbeHarvest,Return" Row="2" Column="1"/>
+            <LayoutButtons index="7">
+                <Face value="ProtossBuild"/>
+                <Type value="Submenu"/>
+                <AbilCmd value="255,255"/>
+                <SubmenuCardId value="PBl1"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="8">
+                <Face value="ProtossBuildAdvanced"/>
+                <Type value="Submenu"/>
+                <AbilCmd value="255,255"/>
+                <SubmenuCardId value="PBl2"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
         </CardLayouts>
         <BehaviorArray Link="GameWorkerIdle"/>
     </CUnit>
@@ -684,7 +699,7 @@
     </CUnit>
     <CUnit id="QueenBurrowed">
         <CardLayouts index="0">
-            <LayoutButtons index="1" Column="2"/>
+            <LayoutButtons index="1" Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowQueenUp,Execute" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Ravager">
@@ -734,10 +749,10 @@
     <CUnit id="SCV">
         <CostResource index="Minerals" value="0"/>
         <CardLayouts index="0">
-            <LayoutButtons index="6" Row="2"/>
-            <LayoutButtons index="7" Row="2"/>
-            <LayoutButtons index="8" Row="1"/>
-            <LayoutButtons index="9" Row="1"/>
+            <LayoutButtons index="6" Face="GatherTerr" Type="AbilCmd" AbilCmd="SCVHarvest,Gather" Row="2" Column="0"/>
+            <LayoutButtons index="7" Face="ReturnCargo" Type="AbilCmd" AbilCmd="SCVHarvest,Return" Row="2" Column="1"/>
+            <LayoutButtons index="8" Face="TerranBuild" Type="Submenu" SubmenuCardId="TBl1" Row="1" Column="0"/>
+            <LayoutButtons index="9" Face="TerranBuildAdvanced" Type="Submenu" SubmenuCardId="TBl2" Row="1" Column="1"/>
         </CardLayouts>
         <BehaviorArray Link="GameWorkerIdle"/>
     </CUnit>
@@ -1201,7 +1216,7 @@
     </CUnit>
     <CUnit id="SpineCrawlerUprooted">
         <CardLayouts index="0">
-            <LayoutButtons index="6" Column="2"/>
+            <LayoutButtons index="6" Face="SpineCrawlerRoot" Type="AbilCmd" AbilCmd="SpineCrawlerRoot,Execute" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Spire">
@@ -1445,7 +1460,7 @@
     </CUnit>
     <CUnit id="ZerglingBurrowed">
         <CardLayouts index="0">
-            <LayoutButtons index="1" Column="2"/>
+            <LayoutButtons index="1" Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowZerglingUp,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGlobalRallyZergMelee"/>
     </CUnit>

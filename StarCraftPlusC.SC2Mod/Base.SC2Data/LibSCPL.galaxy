@@ -3160,6 +3160,25 @@ void libSCPL_gt__2_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: 3
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitKill(libSCPL_gf_DebugSelectedUnit(1));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__3_Init () {
+    libSCPL_gt__3 = TriggerCreate("libSCPL_gt__3_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__3, c_playerAny, c_keyNumPad3, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: 0
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
@@ -9114,7 +9133,9 @@ bool libSCPL_gt_GameTip_GlobalEconomyVespene_Func (bool testConds, bool runActio
     auto740F5AED_p = 1;
     for ( ; auto740F5AED_p <= PlayerGroupCount(auto740F5AED_g) ; auto740F5AED_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto740F5AED_g, auto740F5AED_p)) ) {
         lv_playerIndex = PlayerGroupPlayer(auto740F5AED_g, auto740F5AED_p);
-        libSCPL_gf_GameTipCreateInstance("GlobalEconomyVespene", lv_playerIndex);
+        if ((PlayerGetPropertyInt(lv_playerIndex, c_playerPropVespene) == 0)) {
+            libSCPL_gf_GameTipCreateInstance("GlobalEconomyVespene", lv_playerIndex);
+        }
     }
     return true;
 }
@@ -10913,6 +10934,9 @@ bool libSCPL_gt_ResourceDisplayMineralMULEDestroy_Func (bool testConds, bool run
     }
 
     lv_playerIndex = UnitGetOwner(EventUnit());
+    if ((lv_playerIndex == 16)) {
+        return true;
+    }
     lv_resourceModifier = 0.714;
     lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE);
     libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
@@ -10923,6 +10947,46 @@ bool libSCPL_gt_ResourceDisplayMineralMULEDestroy_Func (bool testConds, bool run
 void libSCPL_gt_ResourceDisplayMineralMULEDestroy_Init () {
     libSCPL_gt_ResourceDisplayMineralMULEDestroy = TriggerCreate("libSCPL_gt_ResourceDisplayMineralMULEDestroy_Func");
     TriggerAddEventUnitBehaviorChange(libSCPL_gt_ResourceDisplayMineralMULEDestroy, null, "GameResourceMarkerMineralsMULE", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Resource Display Mineral MULE Death
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ResourceDisplayMineralMULEDeath_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    fixed lv_resourceModifier;
+    fixed lv_resourceIncome;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "MULE"))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "GameResourceMarkerMineralsMULE") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnit());
+    lv_resourceModifier = 0.714;
+    lv_resourceIncome = (lv_resourceModifier * libSCPL_gv_constants.lv_harvesterIncomeMineralsMULE);
+    libSCPL_gf_ResourceDisplayGainAdd(lv_playerIndex, lv_resourceIncome, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ResourceDisplayMineralMULEDeath_Init () {
+    libSCPL_gt_ResourceDisplayMineralMULEDeath = TriggerCreate("libSCPL_gt_ResourceDisplayMineralMULEDeath_Func");
+    TriggerAddEventUnitDied(libSCPL_gt_ResourceDisplayMineralMULEDeath, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11328,6 +11392,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
     libSCPL_gt__1_Init();
     libSCPL_gt__2_Init();
+    libSCPL_gt__3_Init();
     libSCPL_gt__0_Init();
     libSCPL_gt_DebugCommandResourceActualShow_Init();
     libSCPL_gt_DebugCommandResourceActualHide_Init();
@@ -11500,6 +11565,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ResourceDisplayMineralDestroy_Init();
     libSCPL_gt_ResourceDisplayMineralRichDestroy_Init();
     libSCPL_gt_ResourceDisplayMineralMULEDestroy_Init();
+    libSCPL_gt_ResourceDisplayMineralMULEDeath_Init();
     libSCPL_gt_ResourceDisplayVespeneDestroy_Init();
     libSCPL_gt_ResourceDisplaySpend_Init();
     libSCPL_gt_ControlGroupAssign_Init();

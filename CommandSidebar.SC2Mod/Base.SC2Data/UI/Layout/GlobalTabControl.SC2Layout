@@ -3,16 +3,16 @@
 	<Frame type="Frame" name="GameUI" file="GameUI">
 		
 		<Animation name="MouseWheelIncrement">
-			<Event event="OnMouseWheelIncrement" action="Play,Reset"/>
-			<Event event="OnMouseWheelIncrement" action="Play,Reset" frame="WorldPanel"/>
+			<Event event="OnMouseWheelDecrement" action="Play,Reset"/>
+			<Event event="OnMouseWheelDecrement" action="Play,Reset" frame="WorldPanel"/>
 			<Controller type="Event" end="Pause" frame="$GlobalTabControl">
 				<Key type="Event" time="0" event="IncrementSelectedIndex"/>
 			</Controller>
 		</Animation>
 		
 		<Animation name="MouseWheelDecrement">
-			<Event event="OnMouseWheelDecrement" action="Play,Reset"/>
-			<Event event="OnMouseWheelDecrement" action="Play,Reset" frame="WorldPanel"/>
+			<Event event="OnMouseWheelIncrement" action="Play,Reset"/>
+			<Event event="OnMouseWheelIncrement" action="Play,Reset" frame="WorldPanel"/>
 			<Controller type="Event" end="Pause" frame="$GlobalTabControl">
 				<Key type="Event" time="0" event="DecrementSelectedIndex"/>
 			</Controller>

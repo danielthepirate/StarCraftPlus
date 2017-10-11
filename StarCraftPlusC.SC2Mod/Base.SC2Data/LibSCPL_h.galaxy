@@ -246,6 +246,7 @@ void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer, int 
 trigger libSCPL_gt_InitializationPlus;
 trigger libSCPL_gt__1;
 trigger libSCPL_gt__2;
+trigger libSCPL_gt__3;
 trigger libSCPL_gt__0;
 trigger libSCPL_gt_DebugCommandResourceActualShow;
 trigger libSCPL_gt_DebugCommandResourceActualHide;
@@ -418,6 +419,7 @@ trigger libSCPL_gt_ResourceDisplayVespeneCreate;
 trigger libSCPL_gt_ResourceDisplayMineralDestroy;
 trigger libSCPL_gt_ResourceDisplayMineralRichDestroy;
 trigger libSCPL_gt_ResourceDisplayMineralMULEDestroy;
+trigger libSCPL_gt_ResourceDisplayMineralMULEDeath;
 trigger libSCPL_gt_ResourceDisplayVespeneDestroy;
 trigger libSCPL_gt_ResourceDisplaySpend;
 trigger libSCPL_gt_ControlGroupAssign;

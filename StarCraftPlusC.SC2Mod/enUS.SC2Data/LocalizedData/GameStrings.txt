@@ -1,4 +1,5 @@
 ﻿UI/GameTipsShowTips=Show Tips?
+UI/UCBHoverTip=Cycle through tabs using the mouse wheel!
 
 Abil/Name/ArchonMergeUCB=Archon Merge UCB
 Abil/Name/AutoCreepSpread=Auto Creep Spread

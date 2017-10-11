@@ -113,7 +113,6 @@
 
         <Frame type="Image" name="NormalImage">
 			<Anchor relative="$parent"/>
-            <!-- <Texture val="@@UI/MenuBarMenuButtonNormal" layer="0"/> -->
 			<Texture val="@@UI/UCBTabButtonNormal"/>
             <StateCount val="2"/>
 			
@@ -127,7 +126,6 @@
 
         <Frame type="Image" name="HoverImage">
 			<Anchor relative="$parent"/>
-            <!-- <Texture val="@@UI/MenuBarMenuButtonHover" layer="0"/> -->
 			<Texture val="@@UI/UCBTabButtonHover"/>
             <StateCount val="2"/>
 			
@@ -188,8 +186,6 @@
 		<Frame type="Image" name="AutoCastImage">
 			<RenderPriority val="514"/>
 		</Frame>
-		
-		<!-- <Frame type="Frame" name="GridHotkeyFrame" template="CommandSidebar/GridHotkeyFrame"/> -->
 	</Frame>
 	
 	<Frame type="CommandButton" name="CommandSidebarButtonFlashingTemplate" template="CommandSidebar/CommandSidebarButtonTemplate">
