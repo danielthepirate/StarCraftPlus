@@ -348,5 +348,415 @@
         <Instances Id="GlobalRallyZergT1"/>
         <Instances Id="GlobalRallyZergT2"/>
         <Instances Id="GlobalRallyZergT3"/>
+        <Instances Id="OptionShowTips"/>
+    </CUser>
+    <CUser id="SCPTipData">
+        <Fields Id="Text" Type="String" EditorColumn="2"/>
+        <Fields>
+            <Id value="Position"/>
+            <Type value="User"/>
+            <UserType value="SCPTipPosition"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="GlobalControlGroupComposition">
+            <String String="Press TAB to cycle through available abilities for the selected units.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ControlGroup01">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="GlobalControlGroupAutoAdd">
+            <String String="Units are automatically added to control groups 1-3 based on unit type. Press the corresponding number to select these units.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ControlGroup01">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="GlobalControlGroupAttacked">
+            <String String="This control group is under attack. Double tap the corresponding key to jump to this control group.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ControlGroup01">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="GlobalControlGroupSelected">
+            <String String="Now that these units are selected, you can RIGHT CLICK to issue a move order or press A + LEFT CLICK to order them to attack move.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ControlGroup01">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="GlobalTownHallSaturated">
+            <String String="You have reached the optimal number of workers for this base. Now would be a good time to expand.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="GlobalEconomyDepleted">
+            <String String="You are out of resources. Your production will slow down considerably until your income is positive again.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ResourceMinerals">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="GlobalEconomyOutspending">
+            <String String="You are currently spending more than you are harvesting. If you run out of resources completely, production will grind to a halt.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ResourceMinerals">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="GlobalEconomySupplyCap">
+            <String String="Supply cannot be increased beyond 200.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ResourceSupplies">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="GlobalEconomyMineralFieldDepleted">
+            <String String="You have begun depleting mineral fields. You should expand to continue harvesting resources.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabUpgrade">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="GlobalEconomyVespene">
+            <String String="You will need to harvest vespene gas in order build more powerful units. To do this, build a gas-harvesting-structure on top of a vespene geyser.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ResourceVespene">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranTutorial00">
+            <String String="Welcome to the terran dominion. To get started, build an auto-wall, preferably at the top of ramp leading to your base.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranTutorial01A">
+            <String String="Next you should build a barracks so you can train units.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranTutorial01B">
+            <String String="The auto-wall will lower for your units automatically and raise afterwards. It will not open for enemies. Build auto-walls to keep enemies out of your base.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalAbility03">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranTutorial02">
+            <String String="The barracks can train marines, a staple of terran armies. Additionally you can upgrade the barracks with a tech-lab or reactor add-on to unlock additional options.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabTrain">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranTutorial03">
+            <String String="Upgrade your command center into an orbital command to gain access to powerful new abilities.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranAddonReactor">
+            <String String="Reactors let you train two units at a time from the building it is attached to.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranAddonTechLab">
+            <String String="Tech labs give you access to more advanced units and upgrades from the building it is attached to.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranSupplyBlock">
+            <String String="You have become supply blocked. Build additional command centers, barracks&apos;, factories, or starports to increase maximum supply.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ResourceSupplies">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranGlobalRallyBarracks">
+            <String String="Now that you have two barracks&apos;, use the global rally command to set the rally point for all barracks&apos;.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalRally01">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranGlobalRallyFactory">
+            <String String="Now that you have a factory, use the global rally command to set the rally point for all factories.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalRally02">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranControlGroupFactory">
+            <String String="Factory units are automatically added to control group 2. You can disable this by right clicking the corresponding global rally button.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalRally02">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="TerranExpansion">
+            <String String="Now is a good time to build an expansion. Build a command center near resources outside of your base.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossTutorial00">
+            <String String="Welcome to the protoss protectorate. To get started, build a pylon. Notice that it creates a much larger power field when placed close to your nexus.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossTutorial01">
+            <String String="Protoss buildings must be built inside a power field. Now build a gateway so you can gateway so you can train units.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossTutorial02">
+            <String String="The gateway can train zealots and stalkers, a staple combination of any protoss army.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabTrain">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossTutorial03">
+            <String String="The protoss can warp units onto the battlefield once the warp gate is researched, which requires a cybernetics core.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabUpgrade">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossTutorial04">
+            <String String="With warp gate research completed, all of your gateways will become warp gates and will warp units near-instaneously onto the battlefield while inside a power field.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabTrain">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossWarpInSlow">
+            <String String="Units warp in much faster when placed near a nexus or warp gate.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabTrain">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossSupplyBlock">
+            <String String="You have become supply blocked. Build additional nexus&apos;, gateway, robotics facilities, or stargates to increase maximum supply.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ResourceSupplies">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossGlobalRallyGateway">
+            <String String="Now that you have two gateways, use the global rally command to set the rally point for all gateways.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalRally01">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossGlobalRallyWarpGate">
+            <String String="Now that you have two warp gates, use the global rally command to set the rally point for all warp gates.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalRally01">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossGlobalRallyRoboticsFacility">
+            <String String="Now that you have a robotics facility, use the global rally command to set the rally point for all robotics facilities.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalRally02">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossMothershipCore">
+            <String String="The mothership core is a powerful defensive unit. You can only have one mothership core at a time.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabTrain">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossExpansion">
+            <String String="Now is a good time to build an expansion. Build a nexus near resources outside of your base.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossControlGroupRoboticsFacility">
+            <String String="Robotics facility units are automatically added to control group 2. You can disable this by right clicking the corresponding global rally button.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalRally02">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ProtossShields">
+            <String String="Protoss units have shields which regenerate while not in combat. Pull back damaged units so they can live to fight again once their shields are restored.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ControlGroup01">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergTutorial00">
+            <String String="Welcome to the zerg swarm. To get started, build a spawning pool on creep.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergTutorial01">
+            <String String="You can now build zerglings (a staple zerg army unit) and queens (capable of spreading creep and increasing larva production).">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabTrain">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergTutorial02">
+            <String String="Select your queen and place a creep tumor to start spreading creep across the map.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabTrain">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergTutorial03">
+            <String String="Creep tumors slowly spread creep across the map. You can speed up this process by placing an overlord nearby.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalAbility03">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergTutorial04">
+            <String String="Queens will automatically inject nearby hatcheries with additional larva as long as they have enough energy.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalAbility01">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergTutorial05">
+            <String String="The lair and hive upgrades are required to access advanced zerg untis. These upgrades also produce additional supply.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergSupplyBlock">
+            <String String="You have become supply blocked. Build additional hatcheries, upgrade your current ones, or build production buildings.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="ResourceSupplies">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergExpansion">
+            <String String="Now is a good time to build an expansion. Build a hatchery near resources outside of your base.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabBuild">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergGlobalRallyRanged">
+            <String String="Now that you can produce ranged units, use the global rally command to set the rally point for all ranged units.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalRally02">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergAutoProduceDrones">
+            <String String="By default, drones are automatically produced until your base is saturated. Right click this button to toggle this off to free up larva for army production.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalAbility02">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+        <Instances Id="ZergOverlordSelect">
+            <String String="Overlords generate a creep-growth aura that increases the rate and frequency of creep spread.">
+                <Field Id="Text"/>
+            </String>
+            <User Type="SCPTipPosition" Instance="GlobalTabTrain">
+                <Field Id="Position"/>
+            </User>
+        </Instances>
+    </CUser>
+    <CUser id="SCPTipPosition">
+        <Instances Id="[Default]"/>
+        <Instances Id="ControlGroup01"/>
+        <Instances Id="ControlGroup02"/>
+        <Instances Id="ControlGroup03"/>
+        <Instances Id="ControlGroup04"/>
+        <Instances Id="ControlGroup05"/>
+        <Instances Id="ControlGroup06"/>
+        <Instances Id="ControlGroup07"/>
+        <Instances Id="ControlGroup08"/>
+        <Instances Id="GlobalTabBuild"/>
+        <Instances Id="GlobalTabTrain"/>
+        <Instances Id="GlobalTabUpgrade"/>
+        <Instances Id="ResourceMinerals"/>
+        <Instances Id="ResourceVespene"/>
+        <Instances Id="ResourceSupplies"/>
+        <Instances Id="GlobalRally01"/>
+        <Instances Id="GlobalRally02"/>
+        <Instances Id="GlobalRally03"/>
+        <Instances Id="GlobalAbility01"/>
+        <Instances Id="GlobalAbility02"/>
+        <Instances Id="GlobalAbility03"/>
     </CUser>
 </Catalog>

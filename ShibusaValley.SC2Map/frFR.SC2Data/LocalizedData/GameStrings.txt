@@ -1,9 +1,0 @@
-DocInfo/Author=Blizzard Entertainment
-DocInfo/DescLong=Les deux voies d'attaque principales vers les positions adverses traversent des sites d'extension en hauteur. Prenez-en le contrôle pour y gagner un avantage positionnel et économique. Utilisez les tours Xel'Naga pour repérer les déplacements de l'ennemi le long des routes secondaires en contrebas.
-DocInfo/DescShort=1c1
-DocInfo/Name=Vallée d'Agria
-MapInfo/Player00/Name=Neutre
-MapInfo/Player01/Name=Joueur 1
-MapInfo/Player02/Name=Joueur 2
-Variant001/Desc=Deux joueurs combattent à mort.
-Variant001/Name=Mêlée 1c1

@@ -1,2 +1,0 @@
-﻿Trigger/Name/6FA6D993=Melee Initialization
-Trigger/Name/BFDAC40F=Bank Initialization

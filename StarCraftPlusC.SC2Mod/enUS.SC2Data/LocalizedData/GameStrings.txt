@@ -1,4 +1,6 @@
-﻿Abil/Name/ArchonMergeUCB=Archon Merge UCB
+﻿UI/GameTipsShowTips=Show Tips?
+
+Abil/Name/ArchonMergeUCB=Archon Merge UCB
 Abil/Name/AutoCreepSpread=Auto Creep Spread
 Abil/Name/AutoCreepSpreadOffHidden=Auto Creep Spread Off Hidden
 Abil/Name/AutoCreepSpreadOnHidden=Auto Creep Spread On Hidden

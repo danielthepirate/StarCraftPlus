@@ -1,9 +1,0 @@
-DocInfo/Author=Blizzard Entertainment
-DocInfo/DescLong=Los dos senderos principales hacia el enemigo se alcanzan a través de expansiones a terrenos elevados. Controla estos para obtener una ventaja en ubicación y los recursos. Usa las Torres Xel'Naga para detectar movimiento enemigo a través de rutas alternativas de terreno bajo.
-DocInfo/DescShort=1 vs. 1
-DocInfo/Name=Valle de Agria
-MapInfo/Player00/Name=Neutral
-MapInfo/Player01/Name=Jugador 1
-MapInfo/Player02/Name=Jugador 2
-Variant001/Desc=Dos jugadores luchan a muerte.
-Variant001/Name=Melé 1 vs. 1

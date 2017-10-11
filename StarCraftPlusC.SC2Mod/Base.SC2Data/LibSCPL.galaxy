@@ -78,11 +78,15 @@ void libSCPL_InitVariables () {
         libSCPL_gv_player[init_i].lv_globalZerg_CreepSpreadToggle = true;
         libSCPL_gv_player[init_i].lv_globalZerg_LarvaSpawnToggle = true;
         libSCPL_gv_player[init_i].lv_globalZerg_DroneMorphToggle = true;
+        libSCPL_gv_player[init_i].lv_global_ShowTips = true;
         for (init_i1 = 0; init_i1 <= 3; init_i1 += 1) {
             libSCPL_gv_player[init_i].lv_globalRallyGroup[init_i1] = UnitGroupEmpty();
         }
         for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
             libSCPL_gv_player[init_i].lv_controlGroup[init_i1] = UnitGroupEmpty();
+        }
+        for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
+            libSCPL_gv_player[init_i].lv_controlGroupTip[init_i1] = c_invalidDialogId;
         }
         for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
             libSCPL_gv_player[init_i].lv_controlGroupJumpTimer[init_i1] = TimerCreate();
@@ -96,6 +100,7 @@ void libSCPL_InitVariables () {
     libSCPL_gv_uI.lv_resourceMineralSpendAttention = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_resourceVespeneSpendAttention = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_consoleActiveCommandCard = c_invalidDialogControlId;
+    libSCPL_gv_uI.lv_gameOptionGameTips = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_consoleRallyCommandCard = c_invalidDialogControlId;
     for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
         libSCPL_gv_uI.lv_consoleControlGroupButton[init_i1] = c_invalidDialogControlId;
@@ -114,50 +119,22 @@ void libSCPL_InitVariables () {
     }
 }
 
-// Custom Script
-//--------------------------------------------------------------------------------------------------
-// Custom Script: HintBallonIncludeScript
-//--------------------------------------------------------------------------------------------------
-include "Script/AxiomHints"
-
-void libSCPL_InitCustomScript () {
-    AxiomHints_Init();
-}
-
 // Presets
 string libSCPL_ge_GenericEvent_Ident (int lp_val) {
          if (lp_val == libSCPL_ge_GenericEvent_ResourceSpend) { return "ResourceSpend"; }
+    else if (lp_val == libSCPL_ge_GenericEvent_TownHallSaturated) { return "TownHallSaturated"; }
     else if (lp_val == libSCPL_ge_GenericEvent_HarvesterUpdate) { return "HarvesterUpdate"; }
+    else if (lp_val == libSCPL_ge_GenericEvent_ControlGroupComposition) { return "ControlGroupComposition"; }
     return null;
 }
 
 string libSCPL_ge_GenericParameter_Ident (int lp_val) {
          if (lp_val == libSCPL_ge_GenericParameter_TriggeringPlayer) { return "TriggeringPlayer"; }
+    else if (lp_val == libSCPL_ge_GenericParameter_ControlGroup) { return "ControlGroup"; }
     return null;
 }
 
 // Functions
-void TriggerAddEventWorkerSaturationCountReached (trigger t) {
-    // Implementation
-    TriggerAddEventGeneric(t, "WorkerSaturationCountReached");
-}
-
-void libSCPL_gf_GenericEventResourceSpendChanges3 (int lp_triggeringPlayer) {
-    // Variable Declarations
-    string lv_event;
-    string lv_param;
-
-    // Variable Initialization
-    lv_event = "";
-    lv_param = "";
-
-    // Implementation
-    lv_event = "WorkerSaturationCountReached";
-    lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
-    DataTableSetInt(false, TriggerEventParamName(lv_event, lv_param), lp_triggeringPlayer);
-    TriggerSendEvent(lv_event);
-}
-
 void libSCPL_gf_DebugSpawnBuildingsZerg (int lp_playerIndex) {
     // Variable Declarations
     fixed lv_distance;
@@ -249,6 +226,7 @@ void libSCPL_gf_SCPBankInitialize () {
         lv_playerIndex = PlayerGroupPlayer(autoDF98E9B8_g, autoDF98E9B8_p);
         BankLoad("SCPBank", lv_playerIndex);
         libSCPL_gv_player[lv_playerIndex].lv_bank = BankLastCreated();
+        libSCPL_gv_player[lv_playerIndex].lv_global_ShowTips = libSCPL_gf_SCPBankOption(("OptionShowTips"), lv_playerIndex);
         libSCPL_gv_player[lv_playerIndex].lv_globalTerran_AutoWallToggle = libSCPL_gf_SCPBankOption(("GlobalToggleTerranAutoWall"), lv_playerIndex);
         libSCPL_gv_player[lv_playerIndex].lv_globalZerg_CreepSpreadToggle = libSCPL_gf_SCPBankOption(("GlobalToggleZergCreepSpread"), lv_playerIndex);
         libSCPL_gv_player[lv_playerIndex].lv_globalZerg_DroneMorphToggle = libSCPL_gf_SCPBankOption(("GlobalToggleZergDroneMorph"), lv_playerIndex);
@@ -292,6 +270,9 @@ void libSCPL_gf_SCPBankInitialize () {
         }
         if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[3] == false)) {
             UnitCreateEffectUnit(lv_globalCaster, "UCBGlobalRallyT3Off", lv_globalCaster);
+        }
+        if ((libSCPL_gv_player[lv_playerIndex].lv_global_ShowTips == true)) {
+            libNtve_gf_SetDialogItemChecked(libSCPL_gv_uI.lv_gameOptionGameTips, true, PlayerGroupSingle(lv_playerIndex));
         }
     }
 }
@@ -792,6 +773,7 @@ void libSCPL_gf_InitializeGlobalRallyCaster (int lp_playerIndex) {
         PlayerAddChargeUsed(lp_playerIndex, "UCB/GlobalRally00", -1.0);
         PlayerAddChargeUsed(lp_playerIndex, "UCB/GlobalRally01", -1.0);
         PlayerAddChargeUsed(lp_playerIndex, "UCB/GlobalRally02", -1.0);
+        TriggerEnable(libSCPL_gt_GameTip_ZergOverlord, true);
     }
     else if (true) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "GameGlobalRallyCaster", c_unitCreateIgnorePlacement, lp_playerIndex, Point(0.0, 0.0));
@@ -862,8 +844,10 @@ void libSCPL_gf_AutoWorkerProduction (unit lp_townHall, int lp_playerIndex) {
         }
         else {
         }
+        if ((libSCPL_gf_PlayerTownHallWorkerCount(lp_townHall, lp_playerIndex) > libSCPL_gf_PlayerTownHallSaturationCount(lp_townHall, lp_playerIndex))) {
+            libSCPL_gf_GameTipCreateInstance("GlobalTownHallSaturated", lp_playerIndex);
+        }
     }
-
 }
 
 void libSCPL_gf_AutoWorkerProductionZerg (unit lp_townHall, int lp_playerIndex, int lp_larvaLeftover) {
@@ -1557,7 +1541,169 @@ void libSCPL_gf_InitializeUIHookups () {
         libSCPL_gf_TriggerEventRegisterDialogItemClicked(libSCPL_gt_ControlGroupAdd, libSCPL_gv_uI.lv_consoleControlGroupButtonAdd[lv_frameIndex]);
         libSCPL_gf_TriggerEventRegisterDialogItemClicked(libSCPL_gt_ControlGroupAssign, libSCPL_gv_uI.lv_consoleControlGroupButtonAssign[lv_frameIndex]);
     }
+    DialogControlHookupStandard(c_triggerControlTypeCheckBox, "UIContainer/ConsoleUIContainer/TutorialTipsCheckBox");
+    libSCPL_gv_uI.lv_gameOptionGameTips = DialogControlLastCreated();
     UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypePylonButton, false);
+}
+
+trigger auto_libSCPL_gf_GameTipCreateInstance_Trigger = null;
+string auto_libSCPL_gf_GameTipCreateInstance_lp_tipInstance;
+int auto_libSCPL_gf_GameTipCreateInstance_lp_playerIndex;
+
+void libSCPL_gf_GameTipCreateInstance (string lp_tipInstance, int lp_playerIndex) {
+    auto_libSCPL_gf_GameTipCreateInstance_lp_tipInstance = lp_tipInstance;
+    auto_libSCPL_gf_GameTipCreateInstance_lp_playerIndex = lp_playerIndex;
+
+    if (auto_libSCPL_gf_GameTipCreateInstance_Trigger == null) {
+        auto_libSCPL_gf_GameTipCreateInstance_Trigger = TriggerCreate("auto_libSCPL_gf_GameTipCreateInstance_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libSCPL_gf_GameTipCreateInstance_Trigger, false, false);
+}
+
+bool auto_libSCPL_gf_GameTipCreateInstance_TriggerFunc (bool testConds, bool runActions) {
+    string lp_tipInstance = auto_libSCPL_gf_GameTipCreateInstance_lp_tipInstance;
+    int lp_playerIndex = auto_libSCPL_gf_GameTipCreateInstance_lp_playerIndex;
+
+    // Variable Declarations
+    int lv_dialog;
+    string lv_frameTemplate;
+    int lv_frameLabel;
+    int lv_frame;
+
+    // Variable Initialization
+    lv_dialog = c_invalidDialogId;
+    lv_frameTemplate = "";
+    lv_frameLabel = c_invalidDialogControlId;
+    lv_frame = c_invalidDialogControlId;
+
+    // Implementation
+    if (((DataTableGetBool(true, ((lp_tipInstance) + "|" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lp_playerIndex))) == true) || (libSCPL_gv_player[lp_playerIndex].lv_global_ShowTips == false))) {
+        return true;
+    }
+    DataTableSetBool(true, ((lp_tipInstance) + "|" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lp_playerIndex)), true);
+    DialogCreate(500, 400, c_anchorCenter, 0, 0, true);
+    lv_dialog = DialogLastCreated();
+    DialogSetImageVisible(lv_dialog, false);
+    DialogSetFullscreen(lv_dialog, true);
+    lv_frameTemplate = ("PlusGameTipsTemplates/GameTip" + (UserDataGetUserInstance("SCPTipData", lp_tipInstance, "Position", 1)));
+    DialogControlCreateFromTemplate(lv_dialog, c_triggerControlTypePanel, lv_frameTemplate);
+    lv_frame = DialogControlLastCreated();
+    DialogControlHookup(lv_frame, c_triggerControlTypeLabel, "TipText");
+    lv_frameLabel = DialogControlLastCreated();
+    DialogSetVisible(lv_dialog, PlayerGroupSingle(lp_playerIndex), true);
+    libNtve_gf_SetDialogItemText(lv_frameLabel, StringToText(UserDataGetString("SCPTipData", lp_tipInstance, "Text", 1)), PlayerGroupAll());
+    Wait(13.0, c_timeReal);
+    DialogDestroy(lv_dialog);
+    return true;
+}
+
+trigger auto_libSCPL_gf_GameTipCreateControlGroup_Trigger = null;
+string auto_libSCPL_gf_GameTipCreateControlGroup_lp_tipInstance;
+int auto_libSCPL_gf_GameTipCreateControlGroup_lp_controlGroup;
+int auto_libSCPL_gf_GameTipCreateControlGroup_lp_playerIndex;
+
+void libSCPL_gf_GameTipCreateControlGroup (string lp_tipInstance, int lp_controlGroup, int lp_playerIndex) {
+    auto_libSCPL_gf_GameTipCreateControlGroup_lp_tipInstance = lp_tipInstance;
+    auto_libSCPL_gf_GameTipCreateControlGroup_lp_controlGroup = lp_controlGroup;
+    auto_libSCPL_gf_GameTipCreateControlGroup_lp_playerIndex = lp_playerIndex;
+
+    if (auto_libSCPL_gf_GameTipCreateControlGroup_Trigger == null) {
+        auto_libSCPL_gf_GameTipCreateControlGroup_Trigger = TriggerCreate("auto_libSCPL_gf_GameTipCreateControlGroup_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libSCPL_gf_GameTipCreateControlGroup_Trigger, false, false);
+}
+
+bool auto_libSCPL_gf_GameTipCreateControlGroup_TriggerFunc (bool testConds, bool runActions) {
+    string lp_tipInstance = auto_libSCPL_gf_GameTipCreateControlGroup_lp_tipInstance;
+    int lp_controlGroup = auto_libSCPL_gf_GameTipCreateControlGroup_lp_controlGroup;
+    int lp_playerIndex = auto_libSCPL_gf_GameTipCreateControlGroup_lp_playerIndex;
+
+    // Variable Declarations
+    int lv_dialog;
+    string lv_frameTemplate;
+    int lv_frameLabel;
+    int lv_frame;
+
+    // Variable Initialization
+    lv_dialog = c_invalidDialogId;
+    lv_frameTemplate = "";
+    lv_frameLabel = c_invalidDialogControlId;
+    lv_frame = c_invalidDialogControlId;
+
+    // Implementation
+    if (((libSCPL_gv_player[lp_playerIndex].lv_global_ShowTips == false) || (DataTableGetBool(true, ((lp_tipInstance) + "|" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lp_playerIndex))) == true) || (libSCPL_gv_player[lp_playerIndex].lv_controlGroupTip[lp_controlGroup] != c_invalidDialogId))) {
+        return true;
+    }
+    DataTableSetBool(true, ((lp_tipInstance) + "|" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lp_playerIndex)), true);
+    DialogCreate(500, 400, c_anchorCenter, 0, 0, true);
+    lv_dialog = DialogLastCreated();
+    libSCPL_gv_player[lp_playerIndex].lv_controlGroupTip[lp_controlGroup] = lv_dialog;
+    DialogSetImageVisible(lv_dialog, false);
+    DialogSetFullscreen(lv_dialog, true);
+    lv_frameTemplate = ("PlusGameTipsTemplates/GameTip" + "ControlGroup" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lp_controlGroup));
+    DialogControlCreateFromTemplate(lv_dialog, c_triggerControlTypePanel, lv_frameTemplate);
+    lv_frame = DialogControlLastCreated();
+    DialogControlHookup(lv_frame, c_triggerControlTypeLabel, "TipText");
+    lv_frameLabel = DialogControlLastCreated();
+    DialogSetVisible(lv_dialog, PlayerGroupSingle(lp_playerIndex), true);
+    libNtve_gf_SetDialogItemText(lv_frameLabel, StringToText(UserDataGetString("SCPTipData", lp_tipInstance, "Text", 1)), PlayerGroupAll());
+    Wait(13.0, c_timeReal);
+    libSCPL_gv_player[lp_playerIndex].lv_controlGroupTip[lp_controlGroup] = c_invalidDialogId;
+    DialogDestroy(lv_dialog);
+    return true;
+}
+
+trigger auto_libSCPL_gf_GameTipCreateSimple_Trigger = null;
+string auto_libSCPL_gf_GameTipCreateSimple_lp_tipPosition;
+string auto_libSCPL_gf_GameTipCreateSimple_lp_tipString;
+int auto_libSCPL_gf_GameTipCreateSimple_lp_playerIndex;
+
+void libSCPL_gf_GameTipCreateSimple (string lp_tipPosition, string lp_tipString, int lp_playerIndex) {
+    auto_libSCPL_gf_GameTipCreateSimple_lp_tipPosition = lp_tipPosition;
+    auto_libSCPL_gf_GameTipCreateSimple_lp_tipString = lp_tipString;
+    auto_libSCPL_gf_GameTipCreateSimple_lp_playerIndex = lp_playerIndex;
+
+    if (auto_libSCPL_gf_GameTipCreateSimple_Trigger == null) {
+        auto_libSCPL_gf_GameTipCreateSimple_Trigger = TriggerCreate("auto_libSCPL_gf_GameTipCreateSimple_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libSCPL_gf_GameTipCreateSimple_Trigger, false, false);
+}
+
+bool auto_libSCPL_gf_GameTipCreateSimple_TriggerFunc (bool testConds, bool runActions) {
+    string lp_tipPosition = auto_libSCPL_gf_GameTipCreateSimple_lp_tipPosition;
+    string lp_tipString = auto_libSCPL_gf_GameTipCreateSimple_lp_tipString;
+    int lp_playerIndex = auto_libSCPL_gf_GameTipCreateSimple_lp_playerIndex;
+
+    // Variable Declarations
+    int lv_dialog;
+    string lv_frameTemplate;
+    int lv_frameLabel;
+    int lv_frame;
+
+    // Variable Initialization
+    lv_dialog = c_invalidDialogId;
+    lv_frameTemplate = "";
+    lv_frameLabel = c_invalidDialogControlId;
+    lv_frame = c_invalidDialogControlId;
+
+    // Implementation
+    DialogCreate(500, 400, c_anchorCenter, 0, 0, true);
+    lv_dialog = DialogLastCreated();
+    DialogSetImageVisible(lv_dialog, false);
+    DialogSetFullscreen(lv_dialog, true);
+    lv_frameTemplate = ("PlusGameTipsTemplates/GameTip" + lp_tipPosition);
+    DialogControlCreateFromTemplate(lv_dialog, c_triggerControlTypePanel, lv_frameTemplate);
+    lv_frame = DialogControlLastCreated();
+    DialogControlHookup(lv_frame, c_triggerControlTypeLabel, "TipText");
+    lv_frameLabel = DialogControlLastCreated();
+    DialogSetVisible(lv_dialog, PlayerGroupSingle(lp_playerIndex), true);
+    libNtve_gf_SetDialogItemText(lv_frameLabel, StringToText(lp_tipString), PlayerGroupAll());
+    Wait(13.0, c_timeReal);
+    DialogDestroy(lv_dialog);
+    return true;
 }
 
 void libSCPL_gf_UpgradeNotificationsRemoveRunningUpgrade (int lp_slot, int lp_playerIndex) {
@@ -2335,6 +2481,10 @@ void libSCPL_gf_ControlGroupDamagePulse (unit lp_unit) {
     for ( ; ( (auto4A02EB2A_ai >= 0 && lv_controlGroupIndex <= auto4A02EB2A_ae) || (auto4A02EB2A_ai <= 0 && lv_controlGroupIndex >= auto4A02EB2A_ae) ) ; lv_controlGroupIndex += auto4A02EB2A_ai ) {
         if ((UnitGetCustomValue(lp_unit, lv_controlGroupIndex) == 1)) {
             DialogControlSendAnimationEvent(libSCPL_gv_uI.lv_consoleControlGroupButton[(lv_controlGroupIndex - 20)], PlayerGroupSingle(lv_playerIndex), "EventDamage");
+            libSCPL_gf_GameTipCreateControlGroup("GlobalControlGroupAttacked", (lv_controlGroupIndex - 20), lv_playerIndex);
+            if ((PlayerRace(lv_playerIndex) == "Prot")) {
+                libSCPL_gf_GameTipCreateControlGroup("ProtossShields", (lv_controlGroupIndex - 20), lv_playerIndex);
+            }
         }
     }
 }
@@ -2419,16 +2569,22 @@ void libSCPL_gf_ControlGroupUnitsAdd (unitgroup lp_unitGroup, int lp_controlGrou
     int auto9CA46B02_u;
 
     // Variable Declarations
+    unitgroup lv_filterGroup;
     unitgroup lv_controlGroup;
     unit lv_unit;
 
     // Variable Initialization
+    lv_filterGroup = UnitGroupEmpty();
     lv_controlGroup = UnitGroupEmpty();
 
     // Implementation
-    lv_controlGroup = UnitGroupFilter(null, lp_playerIndex, lp_unitGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupAddUnitGroup(libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex], lv_controlGroup);
-    auto9CA46B02_g = lv_controlGroup;
+    lv_filterGroup = UnitGroupFilter(null, lp_playerIndex, lp_unitGroup, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    lv_controlGroup = libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex];
+    if ((UnitGroupCount(lv_controlGroup, c_unitCountAlive) > 0) && (UnitGetType(UnitGroupUnit(lv_filterGroup, 1)) != UnitGetType(UnitGroupUnit(lv_controlGroup, 1)))) {
+        libSCPL_gf_GenericEventResourceSpendChanges2(lp_playerIndex, lp_controlGroupIndex);
+    }
+    UnitGroupAddUnitGroup(libSCPL_gv_player[lp_playerIndex].lv_controlGroup[lp_controlGroupIndex], lv_filterGroup);
+    auto9CA46B02_g = lv_filterGroup;
     auto9CA46B02_u = 1;
     for ( ; auto9CA46B02_u <= UnitGroupCount(auto9CA46B02_g, c_unitCountAll) ; auto9CA46B02_u += BoolToInt(lv_unit == UnitGroupUnit(auto9CA46B02_g, auto9CA46B02_u)) ) {
         lv_unit = UnitGroupUnit(auto9CA46B02_g, auto9CA46B02_u);
@@ -2847,9 +3003,35 @@ fixed libSCPL_gf_UnitChargeLink (unit lp_unit, string lp_chargeLink) {
     return UnitGetChargeUsed(lp_unit, (lp_chargeLink));
 }
 
+void TriggerAddEventWorkerSaturationCountReached (trigger t) {
+    // Implementation
+    TriggerAddEventGeneric(t, "WorkerSaturationCountReached");
+}
+
 void libSCPL_gf_ResourceSpendChanges (trigger t) {
     // Implementation
     TriggerAddEventGeneric(t, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ResourceSpend));
+}
+
+void libSCPL_gf_ControlGroupComposition (trigger t) {
+    // Implementation
+    TriggerAddEventGeneric(t, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ControlGroupComposition));
+}
+
+void libSCPL_gf_GenericEventResourceSpendChanges3 (int lp_triggeringPlayer) {
+    // Variable Declarations
+    string lv_event;
+    string lv_param;
+
+    // Variable Initialization
+    lv_event = "";
+    lv_param = "";
+
+    // Implementation
+    lv_event = libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_TownHallSaturated);
+    lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
+    DataTableSetInt(false, TriggerEventParamName(lv_event, lv_param), lp_triggeringPlayer);
+    TriggerSendEvent(lv_event);
 }
 
 void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer) {
@@ -2868,17 +3050,7 @@ void libSCPL_gf_GenericEventResourceSpendChanges (int lp_triggeringPlayer) {
     TriggerSendEvent(lv_event);
 }
 
-void libSCPL_gf_ResourceHarvesterUpdate01 (trigger t) {
-    // Implementation
-    TriggerAddEventGeneric(t, (libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_HarvesterUpdate) + "01"));
-}
-
-void libSCPL_gf_ResourceHarvesterUpdate02 (trigger t) {
-    // Implementation
-    TriggerAddEventGeneric(t, (libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_HarvesterUpdate) + "02"));
-}
-
-void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer) {
+void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer, int lp_controlGroup) {
     // Variable Declarations
     string lv_event;
     string lv_param;
@@ -2888,35 +3060,15 @@ void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer) {
     lv_param = "";
 
     // Implementation
-    lv_event = (libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_HarvesterUpdate) + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lp_triggeringPlayer));
+    lv_event = libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ControlGroupComposition);
     lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer);
     DataTableSetInt(false, TriggerEventParamName(lv_event, lv_param), lp_triggeringPlayer);
+    lv_param = libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_ControlGroup);
+    DataTableSetInt(false, TriggerEventParamName(lv_event, lv_param), lp_controlGroup);
     TriggerSendEvent(lv_event);
 }
 
 // Triggers
-//--------------------------------------------------------------------------------------------------
-// Trigger: zz_Untitled Trigger 001
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_zz_UntitledTrigger001_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerDebugOutput(1, StringExternal("Param/Value/lib_SCPL_CE8C6D62"), true);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_SCPL_1155FDB8"));
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_zz_UntitledTrigger001_Init () {
-    libSCPL_gt_zz_UntitledTrigger001 = TriggerCreate("libSCPL_gt_zz_UntitledTrigger001_Func");
-    TriggerAddEventTimeElapsed(libSCPL_gt_zz_UntitledTrigger001, 5.0, c_timeGame);
-    TriggerAddEventWorkerSaturationCountReached(libSCPL_gt_zz_UntitledTrigger001);
-    TriggerAddEventGeneric(libSCPL_gt_zz_UntitledTrigger001, "WorkerSaturationCountReached");
-}
-
 //--------------------------------------------------------------------------------------------------
 // Trigger: Initialization Plus
 //--------------------------------------------------------------------------------------------------
@@ -2954,6 +3106,81 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
 void libSCPL_gt_InitializationPlus_Init () {
     libSCPL_gt_InitializationPlus = TriggerCreate("libSCPL_gt_InitializationPlus_Func");
     TriggerAddEventTimeElapsed(libSCPL_gt_InitializationPlus, 0.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 1
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_tipPosition;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Viper", 6.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "Zergling", 12.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__1_Init () {
+    libSCPL_gt__1 = TriggerCreate("libSCPL_gt__1_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__1, c_playerAny, c_keyNumPad1, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 2
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_subgroup;
+    int lv_playerindex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
+    libSCPL_gf_GameTipCreateInstance("GlobalEconomyVespene", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__2_Init () {
+    libSCPL_gt__2 = TriggerCreate("libSCPL_gt__2_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__2, c_playerAny, c_keyNumPad2, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 0
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
+        GameSetGlobalTimeScale(20.0);
+    }
+    else {
+        GameSetGlobalTimeScale(1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__0_Init () {
+    libSCPL_gt__0 = TriggerCreate("libSCPL_gt__0_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__0, c_playerAny, c_keyNumPad0, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6335,6 +6562,7 @@ bool libSCPL_gt_ControlGroupAutoAddT1_Func (bool testConds, bool runActions) {
     if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] == true)) {
         libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lv_unit), lv_controlIndex, lv_playerIndex);
         libSCPL_gf_ControlGroupUnitsUpdate(lv_controlIndex, lv_playerIndex);
+        libSCPL_gf_GameTipCreateInstance("GlobalControlGroupAutoAdd", lv_playerIndex);
     }
     return true;
 }
@@ -6437,6 +6665,7 @@ bool libSCPL_gt_ControlGroupAutoAddT1Zerg_Func (bool testConds, bool runActions)
     if ((libSCPL_gv_player[lv_playerIndex].lv_controlGroupAutoAdd[lv_controlIndex] == true)) {
         libSCPL_gf_ControlGroupUnitsAdd(libNtve_gf_ConvertUnitToUnitGroup(lv_unit), lv_controlIndex, lv_playerIndex);
         libSCPL_gf_ControlGroupUnitsUpdate(lv_controlIndex, lv_playerIndex);
+        libSCPL_gf_GameTipCreateInstance("GlobalControlGroupAutoAdd", lv_playerIndex);
     }
     return true;
 }
@@ -8680,6 +8909,954 @@ void libSCPL_gt_UCBAutoDroneMorphToggleOff_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_OptionShowTipsChecked
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_OptionShowTipsChecked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == libSCPL_gv_uI.lv_gameOptionGameTips))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    if ((libNtve_gf_DialogItemIsChecked(libSCPL_gv_uI.lv_gameOptionGameTips, lv_playerIndex) == true)) {
+        libSCPL_gv_player[lv_playerIndex].lv_global_ShowTips = true;
+    }
+    else {
+        libSCPL_gv_player[lv_playerIndex].lv_global_ShowTips = false;
+    }
+    libSCPL_gf_SCPBankOptionSave(("OptionShowTips"), lv_playerIndex, libSCPL_gv_player[lv_playerIndex].lv_global_ShowTips);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_OptionShowTipsChecked_Init () {
+    libSCPL_gt_GameTip_OptionShowTipsChecked = TriggerCreate("libSCPL_gt_GameTip_OptionShowTipsChecked_Func");
+    TriggerAddEventDialogControl(libSCPL_gt_GameTip_OptionShowTipsChecked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeChecked);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_GlobalWelcome
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_GlobalWelcome_Func (bool testConds, bool runActions) {
+    playergroup auto1633AB43_g;
+    int auto1633AB43_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto1633AB43_g = PlayerGroupActive(); 
+    auto1633AB43_p = 1;
+    for ( ; auto1633AB43_p <= PlayerGroupCount(auto1633AB43_g) ; auto1633AB43_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto1633AB43_g, auto1633AB43_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto1633AB43_g, auto1633AB43_p);
+        if ((PlayerRace(lv_playerIndex) == "Terr")) {
+            libSCPL_gf_GameTipCreateInstance("TerranTutorial00", lv_playerIndex);
+        }
+        else if ((PlayerRace(lv_playerIndex) == "Prot")) {
+            libSCPL_gf_GameTipCreateInstance("ProtossTutorial00", lv_playerIndex);
+        }
+        else if ((PlayerRace(lv_playerIndex) == "Zerg")) {
+            libSCPL_gf_GameTipCreateInstance("ZergTutorial00", lv_playerIndex);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_GlobalWelcome_Init () {
+    libSCPL_gt_GameTip_GlobalWelcome = TriggerCreate("libSCPL_gt_GameTip_GlobalWelcome_Func");
+    TriggerAddEventTimeElapsed(libSCPL_gt_GameTip_GlobalWelcome, 5.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_GlobalControlGroupComposition
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_GlobalControlGroupComposition_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlGroup;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName(libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ControlGroupComposition), libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_TriggeringPlayer)));
+    lv_controlGroup = DataTableGetInt(false, TriggerEventParamName(libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ControlGroupComposition), libSCPL_ge_GenericParameter_Ident(libSCPL_ge_GenericParameter_ControlGroup)));
+    libSCPL_gf_GameTipCreateControlGroup("GlobalControlGroupComposition", lv_controlGroup, lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_GlobalControlGroupComposition_Init () {
+    libSCPL_gt_GameTip_GlobalControlGroupComposition = TriggerCreate("libSCPL_gt_GameTip_GlobalControlGroupComposition_Func");
+    libSCPL_gf_ControlGroupComposition(libSCPL_gt_GameTip_GlobalControlGroupComposition);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_GlobalEconomySupplyCap
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_GlobalEconomySupplyCap_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((PlayerGetPropertyInt(EventPlayer(), c_playerPropSuppliesUsed) >= 190))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("GlobalEconomySupplyCap", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_GlobalEconomySupplyCap_Init () {
+    libSCPL_gt_GameTip_GlobalEconomySupplyCap = TriggerCreate("libSCPL_gt_GameTip_GlobalEconomySupplyCap_Func");
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyCap, 1, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyCap, 2, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyCap, 3, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyCap, 4, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyCap, 5, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyCap, 6, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyCap, 7, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyCap, 8, c_playerPropSuppliesUsed);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_GlobalEconomySupplyBlocked
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_GlobalEconomySupplyBlocked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerGetPropertyInt(EventPlayer(), c_playerPropSuppliesUsed) >= PlayerGetPropertyInt(EventPlayer(), c_playerPropSuppliesMade)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    if ((PlayerRace(lv_playerIndex) == "Terr")) {
+        libSCPL_gf_GameTipCreateInstance("TerranSupplyBlock", lv_playerIndex);
+    }
+    else if ((PlayerRace(lv_playerIndex) == "Prot")) {
+        libSCPL_gf_GameTipCreateInstance("ProtossSupplyBlock", lv_playerIndex);
+    }
+    else if ((PlayerRace(lv_playerIndex) == "Zerg")) {
+        libSCPL_gf_GameTipCreateInstance("ZergSupplyBlock", lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_GlobalEconomySupplyBlocked_Init () {
+    libSCPL_gt_GameTip_GlobalEconomySupplyBlocked = TriggerCreate("libSCPL_gt_GameTip_GlobalEconomySupplyBlocked_Func");
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyBlocked, 1, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyBlocked, 2, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyBlocked, 3, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyBlocked, 4, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyBlocked, 5, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyBlocked, 6, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyBlocked, 7, c_playerPropSuppliesUsed);
+    TriggerAddEventPlayerPropChange(libSCPL_gt_GameTip_GlobalEconomySupplyBlocked, 8, c_playerPropSuppliesUsed);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_GlobalEconomyVespene
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_GlobalEconomyVespene_Func (bool testConds, bool runActions) {
+    playergroup auto740F5AED_g;
+    int auto740F5AED_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto740F5AED_g = PlayerGroupActive(); 
+    auto740F5AED_p = 1;
+    for ( ; auto740F5AED_p <= PlayerGroupCount(auto740F5AED_g) ; auto740F5AED_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto740F5AED_g, auto740F5AED_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto740F5AED_g, auto740F5AED_p);
+        libSCPL_gf_GameTipCreateInstance("GlobalEconomyVespene", lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_GlobalEconomyVespene_Init () {
+    libSCPL_gt_GameTip_GlobalEconomyVespene = TriggerCreate("libSCPL_gt_GameTip_GlobalEconomyVespene_Func");
+    TriggerAddEventTimeElapsed(libSCPL_gt_GameTip_GlobalEconomyVespene, 120.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_GlobalRally00
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_GlobalRally00_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((TechTreeBehaviorCount(EventPlayer(), "GameUCBGlobalRally00ChargeLink", c_techCountCompleteOnly) >= 2))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGetType(EventUnit()) == "Barracks")) {
+        libSCPL_gf_GameTipCreateInstance("TerranGlobalRallyBarracks", EventPlayer());
+    }
+    else if ((UnitGetType(EventUnit()) == "Gateway")) {
+        libSCPL_gf_GameTipCreateInstance("ProtossGlobalRallyGateway", EventPlayer());
+    }
+    else if ((UnitGetType(EventUnit()) == "WarpGate")) {
+        libSCPL_gf_GameTipCreateInstance("ProtossGlobalRallyWarpGate", EventPlayer());
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_GlobalRally00_Init () {
+    libSCPL_gt_GameTip_GlobalRally00 = TriggerCreate("libSCPL_gt_GameTip_GlobalRally00_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_GameTip_GlobalRally00, null, "GameUCBGlobalRally00ChargeLink", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_GlobalRally01
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_GlobalRally01_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((TechTreeBehaviorCount(EventPlayer(), "GameUCBGlobalRally01ChargeLink", c_techCountCompleteOnly) >= 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGetType(EventUnit()) == "Factory")) {
+        libSCPL_gf_GameTipCreateInstance("TerranGlobalRallyFactory", EventPlayer());
+    }
+    else if ((UnitGetType(EventUnit()) == "RoboticsFacility")) {
+        libSCPL_gf_GameTipCreateInstance("ProtossGlobalRallyRoboticsFacility", EventPlayer());
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_GlobalRally01_Init () {
+    libSCPL_gt_GameTip_GlobalRally01 = TriggerCreate("libSCPL_gt_GameTip_GlobalRally01_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_GameTip_GlobalRally01, null, "GameUCBGlobalRally01ChargeLink", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_GlobalExpansion
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_GlobalExpansion_Func (bool testConds, bool runActions) {
+    playergroup auto30D7E702_g;
+    int auto30D7E702_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto30D7E702_g = PlayerGroupActive(); 
+    auto30D7E702_p = 1;
+    for ( ; auto30D7E702_p <= PlayerGroupCount(auto30D7E702_g) ; auto30D7E702_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto30D7E702_g, auto30D7E702_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto30D7E702_g, auto30D7E702_p);
+        if ((UnitGroupCount(libSCPL_gf_PlayerTownHalls(lv_playerIndex), c_unitCountAlive) == 1) && (PlayerRace(lv_playerIndex) == "Terr")) {
+            libSCPL_gf_GameTipCreateInstance("TerranExpansion", lv_playerIndex);
+        }
+        if ((UnitGroupCount(libSCPL_gf_PlayerTownHalls(lv_playerIndex), c_unitCountAlive) == 1) && (PlayerRace(lv_playerIndex) == "Prot")) {
+            libSCPL_gf_GameTipCreateInstance("ProtossExpansion", lv_playerIndex);
+        }
+        if ((UnitGroupCount(libSCPL_gf_PlayerTownHalls(lv_playerIndex), c_unitCountAlive) == 1) && (PlayerRace(lv_playerIndex) == "Zerg")) {
+            libSCPL_gf_GameTipCreateInstance("ZergExpansion", lv_playerIndex);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_GlobalExpansion_Init () {
+    libSCPL_gt_GameTip_GlobalExpansion = TriggerCreate("libSCPL_gt_GameTip_GlobalExpansion_Func");
+    TriggerAddEventTimeElapsed(libSCPL_gt_GameTip_GlobalExpansion, 180.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_TerranTutorial01
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_TerranTutorial01_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "SupplyDepotConstructor"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("TerranTutorial01A", EventPlayer());
+    Wait(3.0, c_timeGame);
+    libSCPL_gf_GameTipCreateInstance("TerranTutorial01B", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_TerranTutorial01_Init () {
+    libSCPL_gt_GameTip_TerranTutorial01 = TriggerCreate("libSCPL_gt_GameTip_TerranTutorial01_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_TerranTutorial01, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_TerranTutorial02
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_TerranTutorial02_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "Barracks"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("TerranTutorial02", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_TerranTutorial02_Init () {
+    libSCPL_gt_GameTip_TerranTutorial02 = TriggerCreate("libSCPL_gt_GameTip_TerranTutorial02_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_TerranTutorial02, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_TerranTutorial03
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_TerranTutorial03_Func (bool testConds, bool runActions) {
+    playergroup auto3A54313A_g;
+    int auto3A54313A_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto3A54313A_g = PlayerGroupActive(); 
+    auto3A54313A_p = 1;
+    for ( ; auto3A54313A_p <= PlayerGroupCount(auto3A54313A_g) ; auto3A54313A_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto3A54313A_g, auto3A54313A_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto3A54313A_g, auto3A54313A_p);
+        if ((PlayerRace(lv_playerIndex) == "Terr") && (UnitGroupCount(UnitGroup("OrbitalCommand", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1) && (UnitGroupCount(UnitGroup("OrbitalCommandFlying", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1)) {
+            libSCPL_gf_GameTipCreateInstance("TerranTutorial03", lv_playerIndex);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_TerranTutorial03_Init () {
+    libSCPL_gt_GameTip_TerranTutorial03 = TriggerCreate("libSCPL_gt_GameTip_TerranTutorial03_Func");
+    TriggerAddEventTimeElapsed(libSCPL_gt_GameTip_TerranTutorial03, 150.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_TerranAddonTechLab
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_TerranAddonTechLab_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "TechLab") || (UnitGetType(EventUnitProgressUnit()) == "BarracksTechLab") || (UnitGetType(EventUnitProgressUnit()) == "FactoryTechLab") || (UnitGetType(EventUnitProgressUnit()) == "StarportTechLab")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("TerranAddonTechLab", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_TerranAddonTechLab_Init () {
+    libSCPL_gt_GameTip_TerranAddonTechLab = TriggerCreate("libSCPL_gt_GameTip_TerranAddonTechLab_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_TerranAddonTechLab, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_TerranAddonReactor
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_TerranAddonReactor_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "Reactor") || (UnitGetType(EventUnitProgressUnit()) == "BarracksReactor") || (UnitGetType(EventUnitProgressUnit()) == "FactoryReactor") || (UnitGetType(EventUnitProgressUnit()) == "StarportReactor")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("TerranAddonReactor", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_TerranAddonReactor_Init () {
+    libSCPL_gt_GameTip_TerranAddonReactor = TriggerCreate("libSCPL_gt_GameTip_TerranAddonReactor_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_TerranAddonReactor, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_TerranFactoryUnit
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_TerranFactoryUnit_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "Hellion") || (UnitGetType(EventUnitProgressUnit()) == "HellionTank") || (UnitGetType(EventUnitProgressUnit()) == "Cyclone") || (UnitGetType(EventUnitProgressUnit()) == "WidowMine") || (UnitGetType(EventUnitProgressUnit()) == "SiegeTank") || (UnitGetType(EventUnitProgressUnit()) == "Thor")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("TerranControlGroupFactory", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_TerranFactoryUnit_Init () {
+    libSCPL_gt_GameTip_TerranFactoryUnit = TriggerCreate("libSCPL_gt_GameTip_TerranFactoryUnit_Func");
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_GameTip_TerranFactoryUnit, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossTutorial01
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossTutorial01_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "Pylon"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitProgressUnit());
+    libSCPL_gf_GameTipCreateInstance("ProtossTutorial01", lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossTutorial01_Init () {
+    libSCPL_gt_GameTip_ProtossTutorial01 = TriggerCreate("libSCPL_gt_GameTip_ProtossTutorial01_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_ProtossTutorial01, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossTutorial02
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossTutorial02_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "Gateway"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitProgressUnit());
+    libSCPL_gf_GameTipCreateInstance("ProtossTutorial02", lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossTutorial02_Init () {
+    libSCPL_gt_GameTip_ProtossTutorial02 = TriggerCreate("libSCPL_gt_GameTip_ProtossTutorial02_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_ProtossTutorial02, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossTutorial03
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossTutorial03_Func (bool testConds, bool runActions) {
+    playergroup auto6EDB661D_g;
+    int auto6EDB661D_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto6EDB661D_g = PlayerGroupActive(); 
+    auto6EDB661D_p = 1;
+    for ( ; auto6EDB661D_p <= PlayerGroupCount(auto6EDB661D_g) ; auto6EDB661D_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto6EDB661D_g, auto6EDB661D_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto6EDB661D_g, auto6EDB661D_p);
+        if ((PlayerRace(lv_playerIndex) == "Prot") && (TechTreeUpgradeCount(lv_playerIndex, "WarpGateResearch", c_techCountQueuedOrBetter) == 0)) {
+            libSCPL_gf_GameTipCreateInstance("ProtossTutorial03", lv_playerIndex);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossTutorial03_Init () {
+    libSCPL_gt_GameTip_ProtossTutorial03 = TriggerCreate("libSCPL_gt_GameTip_ProtossTutorial03_Func");
+    TriggerAddEventTimeElapsed(libSCPL_gt_GameTip_ProtossTutorial03, 150.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossTutorial04
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossTutorial04_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((libNtve_gf_TriggeringProgressUpgrade() == "WarpGateResearch"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitProgressUnit());
+    libSCPL_gf_GameTipCreateInstance("ProtossTutorial04", lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossTutorial04_Init () {
+    libSCPL_gt_GameTip_ProtossTutorial04 = TriggerCreate("libSCPL_gt_GameTip_ProtossTutorial04_Func");
+    TriggerAddEventUnitResearchProgress(libSCPL_gt_GameTip_ProtossTutorial04, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossMothershipCore
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossMothershipCore_Func (bool testConds, bool runActions) {
+    playergroup auto7B84406A_g;
+    int auto7B84406A_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7B84406A_g = PlayerGroupActive(); 
+    auto7B84406A_p = 1;
+    for ( ; auto7B84406A_p <= PlayerGroupCount(auto7B84406A_g) ; auto7B84406A_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto7B84406A_g, auto7B84406A_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto7B84406A_g, auto7B84406A_p);
+        if ((PlayerRace(lv_playerIndex) == "Prot") && (UnitGroupCount(UnitGroup("MothershipCore", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1)) {
+            libSCPL_gf_GameTipCreateInstance("ProtossMothershipCore", lv_playerIndex);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossMothershipCore_Init () {
+    libSCPL_gt_GameTip_ProtossMothershipCore = TriggerCreate("libSCPL_gt_GameTip_ProtossMothershipCore_Func");
+    TriggerAddEventTimeElapsed(libSCPL_gt_GameTip_ProtossMothershipCore, 240.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossRoboticsUnit
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossRoboticsUnit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "Observer") || (UnitGetType(EventUnitProgressUnit()) == "WarpPrismSkinPreview") || (UnitGetType(EventUnitProgressUnit()) == "Immortal") || (UnitGetType(EventUnitProgressUnit()) == "Colossus") || (UnitGetType(EventUnitProgressUnit()) == "Disruptor")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitProgressUnit());
+    libSCPL_gf_GameTipCreateInstance("ProtossControlGroupRoboticsFacility", lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossRoboticsUnit_Init () {
+    libSCPL_gt_GameTip_ProtossRoboticsUnit = TriggerCreate("libSCPL_gt_GameTip_ProtossRoboticsUnit_Func");
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_GameTip_ProtossRoboticsUnit, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossWarpInSlow
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossWarpInSlow_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitCreatedUnit());
+    if ((PowerLevel(EventPlayer(), UnitGetPosition(EventUnitCreatedUnit()), "PowerSource") != 2)) {
+        libSCPL_gf_GameTipCreateInstance("ProtossWarpInSlow", lv_playerIndex);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossWarpInSlow_Init () {
+    libSCPL_gt_GameTip_ProtossWarpInSlow = TriggerCreate("libSCPL_gt_GameTip_ProtossWarpInSlow_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_GameTip_ProtossWarpInSlow, null, "WarpGateTrainUCB", null);
+    TriggerAddEventUnitCreated(libSCPL_gt_GameTip_ProtossWarpInSlow, null, "WarpGateTrain", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ZergTutorial01
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ZergTutorial01_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "SpawningPool"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("ZergTutorial01", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ZergTutorial01_Init () {
+    libSCPL_gt_GameTip_ZergTutorial01 = TriggerCreate("libSCPL_gt_GameTip_ZergTutorial01_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_ZergTutorial01, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ZergTutorial02
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ZergTutorial02_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "Queen"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("ZergTutorial02", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ZergTutorial02_Init () {
+    libSCPL_gt_GameTip_ZergTutorial02 = TriggerCreate("libSCPL_gt_GameTip_ZergTutorial02_Func");
+    TriggerAddEventUnitTrainProgress(libSCPL_gt_GameTip_ZergTutorial02, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ZergTutorial03
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ZergTutorial03_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("ZergTutorial03", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ZergTutorial03_Init () {
+    libSCPL_gt_GameTip_ZergTutorial03 = TriggerCreate("libSCPL_gt_GameTip_ZergTutorial03_Func");
+    TriggerAddEventUnitCreated(libSCPL_gt_GameTip_ZergTutorial03, null, "QueenBuild", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ZergTutorial04
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ZergTutorial04_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("ZergTutorial03", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ZergTutorial04_Init () {
+    libSCPL_gt_GameTip_ZergTutorial04 = TriggerCreate("libSCPL_gt_GameTip_ZergTutorial04_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_GameTip_ZergTutorial04, null, AbilityCommand("SpawnLarva", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ZergTutorial05
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ZergTutorial05_Func (bool testConds, bool runActions) {
+    playergroup autoFBAD6838_g;
+    int autoFBAD6838_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoFBAD6838_g = PlayerGroupActive(); 
+    autoFBAD6838_p = 1;
+    for ( ; autoFBAD6838_p <= PlayerGroupCount(autoFBAD6838_g) ; autoFBAD6838_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(autoFBAD6838_g, autoFBAD6838_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(autoFBAD6838_g, autoFBAD6838_p);
+        if ((PlayerRace(lv_playerIndex) == "Zerg") && (UnitGroupCount(UnitGroup("Hive", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1) && (UnitGroupCount(UnitGroup("Lair", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1)) {
+            libSCPL_gf_GameTipCreateInstance("ZergTutorial05", EventPlayer());
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ZergTutorial05_Init () {
+    libSCPL_gt_GameTip_ZergTutorial05 = TriggerCreate("libSCPL_gt_GameTip_ZergTutorial05_Func");
+    TriggerAddEventTimeElapsed(libSCPL_gt_GameTip_ZergTutorial05, 300.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ZergGlobalRallyRanged
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ZergGlobalRallyRanged_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitProgressUnit()) == "HydraliskDen") || (UnitGetType(EventUnitProgressUnit()) == "RoachWarren")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("ZergGlobalRallyRanged", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ZergGlobalRallyRanged_Init () {
+    libSCPL_gt_GameTip_ZergGlobalRallyRanged = TriggerCreate("libSCPL_gt_GameTip_ZergGlobalRallyRanged_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_ZergGlobalRallyRanged, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ZergAutoDrones
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ZergAutoDrones_Func (bool testConds, bool runActions) {
+    playergroup auto3B78A5A9_g;
+    int auto3B78A5A9_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto3B78A5A9_g = PlayerGroupActive(); 
+    auto3B78A5A9_p = 1;
+    for ( ; auto3B78A5A9_p <= PlayerGroupCount(auto3B78A5A9_g) ; auto3B78A5A9_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto3B78A5A9_g, auto3B78A5A9_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto3B78A5A9_g, auto3B78A5A9_p);
+        if ((PlayerRace(lv_playerIndex) == "Zerg")) {
+            libSCPL_gf_GameTipCreateInstance("ZergAutoProduceDrones", EventPlayer());
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ZergAutoDrones_Init () {
+    libSCPL_gt_GameTip_ZergAutoDrones = TriggerCreate("libSCPL_gt_GameTip_ZergAutoDrones_Func");
+    TriggerAddEventTimeElapsed(libSCPL_gt_GameTip_ZergAutoDrones, 240.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ZergOverlord
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ZergOverlord_Func (bool testConds, bool runActions) {
+    playergroup auto7D5E9447_g;
+    int auto7D5E9447_p;
+
+    // Variable Declarations
+    int lv_playerIndex;
+    playergroup lv_playersNeedTip;
+
+    // Variable Initialization
+    lv_playersNeedTip = PlayerGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerRace(EventPlayer()) == "Zerg"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnit()) == "Overlord"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("ZergOverlordSelect", EventPlayer());
+    auto7D5E9447_g = PlayerGroupAll(); 
+    auto7D5E9447_p = 1;
+    for ( ; auto7D5E9447_p <= PlayerGroupCount(auto7D5E9447_g) ; auto7D5E9447_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto7D5E9447_g, auto7D5E9447_p)) ) {
+        lv_playerIndex = PlayerGroupPlayer(auto7D5E9447_g, auto7D5E9447_p);
+        if ((PlayerRace(lv_playerIndex) == "Zerg") && (lv_playerIndex != EventPlayer()) && (DataTableGetBool(true, (("ZergOverlordSelect") + "|" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lv_playerIndex))) == false)) {
+            PlayerGroupAdd(lv_playersNeedTip, lv_playerIndex);
+        }
+    }
+    if ((PlayerGroupCount(lv_playersNeedTip) == 0)) {
+        TriggerEnable(libSCPL_gt_GameTip_ZergOverlord, false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ZergOverlord_Init () {
+    libSCPL_gt_GameTip_ZergOverlord = TriggerCreate("libSCPL_gt_GameTip_ZergOverlord_Func");
+    TriggerEnable(libSCPL_gt_GameTip_ZergOverlord, false);
+    TriggerAddEventUnitSelected(libSCPL_gt_GameTip_ZergOverlord, null, c_playerAny, true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Upgrade Notifications - Initialization
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_UpgradeNotificationsInitialization_Func (bool testConds, bool runActions) {
@@ -9814,6 +10991,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
         lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
         DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
+        libSCPL_gf_GameTipCreateInstance("GlobalEconomyOutspending", lv_playerIndex);
     }
     else {
         lv_net = (-1.0 * lv_net);
@@ -9840,6 +11018,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
         lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
         DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
+        libSCPL_gf_GameTipCreateInstance("GlobalEconomyOutspending", lv_playerIndex);
     }
     else {
         lv_net = (-1.0 * lv_net);
@@ -9854,6 +11033,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
     }
     if ((lv_spend > libSCPL_gf_PlayerAvailableVespene(lv_playerIndex))) {
         DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpendAttention, PlayerGroupSingle(lv_playerIndex), true);
+        libSCPL_gf_GameTipCreateInstance("GlobalEconomyDepleted", lv_playerIndex);
     }
     else {
         DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpendAttention, PlayerGroupSingle(lv_playerIndex), false);
@@ -9956,6 +11136,7 @@ bool libSCPL_gt_ControlGroupSelect_Func (bool testConds, bool runActions) {
         UnitGroupSelect(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_n], lv_playerIndex, false);
     }
     UnitGroupSelect(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], lv_playerIndex, true);
+    libSCPL_gf_GameTipCreateControlGroup("GlobalControlGroupSelected", lv_controlGroupIndex, lv_playerIndex);
     if ((TimerGetRemaining(libSCPL_gv_player[lv_playerIndex].lv_controlGroupJumpTimer[lv_controlGroupIndex]) > 0.0)) {
         if ((UnitGroupCount(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], c_unitCountAlive) > 0)) {
             CameraPan(lv_playerIndex, UnitGroupCenterOfGroup(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex]), 0.0, -1, 10.0, false);
@@ -10144,8 +11325,10 @@ void libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init () {
 }
 
 void libSCPL_InitTriggers () {
-    libSCPL_gt_zz_UntitledTrigger001_Init();
     libSCPL_gt_InitializationPlus_Init();
+    libSCPL_gt__1_Init();
+    libSCPL_gt__2_Init();
+    libSCPL_gt__0_Init();
     libSCPL_gt_DebugCommandResourceActualShow_Init();
     libSCPL_gt_DebugCommandResourceActualHide_Init();
     libSCPL_gt_ProgressMorphRefund01_Init();
@@ -10265,6 +11448,36 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_PlayerAutoLarvaSpawnUnitCreated_Init();
     libSCPL_gt_UCBAutoDroneMorphToggleOn_Init();
     libSCPL_gt_UCBAutoDroneMorphToggleOff_Init();
+    libSCPL_gt_GameTip_OptionShowTipsChecked_Init();
+    libSCPL_gt_GameTip_GlobalWelcome_Init();
+    libSCPL_gt_GameTip_GlobalControlGroupComposition_Init();
+    libSCPL_gt_GameTip_GlobalEconomySupplyCap_Init();
+    libSCPL_gt_GameTip_GlobalEconomySupplyBlocked_Init();
+    libSCPL_gt_GameTip_GlobalEconomyVespene_Init();
+    libSCPL_gt_GameTip_GlobalRally00_Init();
+    libSCPL_gt_GameTip_GlobalRally01_Init();
+    libSCPL_gt_GameTip_GlobalExpansion_Init();
+    libSCPL_gt_GameTip_TerranTutorial01_Init();
+    libSCPL_gt_GameTip_TerranTutorial02_Init();
+    libSCPL_gt_GameTip_TerranTutorial03_Init();
+    libSCPL_gt_GameTip_TerranAddonTechLab_Init();
+    libSCPL_gt_GameTip_TerranAddonReactor_Init();
+    libSCPL_gt_GameTip_TerranFactoryUnit_Init();
+    libSCPL_gt_GameTip_ProtossTutorial01_Init();
+    libSCPL_gt_GameTip_ProtossTutorial02_Init();
+    libSCPL_gt_GameTip_ProtossTutorial03_Init();
+    libSCPL_gt_GameTip_ProtossTutorial04_Init();
+    libSCPL_gt_GameTip_ProtossMothershipCore_Init();
+    libSCPL_gt_GameTip_ProtossRoboticsUnit_Init();
+    libSCPL_gt_GameTip_ProtossWarpInSlow_Init();
+    libSCPL_gt_GameTip_ZergTutorial01_Init();
+    libSCPL_gt_GameTip_ZergTutorial02_Init();
+    libSCPL_gt_GameTip_ZergTutorial03_Init();
+    libSCPL_gt_GameTip_ZergTutorial04_Init();
+    libSCPL_gt_GameTip_ZergTutorial05_Init();
+    libSCPL_gt_GameTip_ZergGlobalRallyRanged_Init();
+    libSCPL_gt_GameTip_ZergAutoDrones_Init();
+    libSCPL_gt_GameTip_ZergOverlord_Init();
     libSCPL_gt_UpgradeNotificationsInitialization_Init();
     libSCPL_gt_UpgradeNotificationsResearchStarted_Init();
     libSCPL_gt_UpgradeNotificationsResearchCancelled_Init();
@@ -10314,7 +11527,6 @@ void libSCPL_InitLib () {
 
     libSCPL_InitLibraries();
     libSCPL_InitVariables();
-    libSCPL_InitCustomScript();
     libSCPL_InitTriggers();
 }
 

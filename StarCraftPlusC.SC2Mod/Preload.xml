@@ -62,6 +62,7 @@
 <Unit id="PlanetaryFortress"/>
 <Unit id="OrbitalCommand"/>
 <Unit id="CreepTumorBurrowed"/>
+<Unit id="Viper"/>
 <Unit id="Adept"/>
 <Unit id="LurkerDenMP"/>
 <Unit id="GameGlobalRallyTarget00"/>

@@ -7,6 +7,29 @@
         </Frame>
 		
 		<Frame type="ResourceFrame" name="ResourcePanel/ResourceFrame">
+			<Handle val="ResourceFrame"/>
+			
+			<Frame type="Frame" name="AnchorMinerals">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="8"/>
+				<Anchor side="Right" relative="$parent/AnchorVespene" pos="Min" offset="-32"/>
+				<Height val="64"/>
+				<Width val="108"/>
+			</Frame>
+			
+			<Frame type="Frame" name="AnchorVespene">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="8"/>
+				<Anchor side="Right" relative="$parent/AnchorSupplies" pos="Min" offset="-32"/>
+				<Height val="64"/>
+				<Width val="108"/>
+			</Frame>
+			
+			<Frame type="Frame" name="AnchorSupplies">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="8"/>
+				<Anchor side="Right" relative="$parent" pos="Max" offset="-48"/>
+				<Height val="32"/>
+				<Width val="108"/>
+			</Frame>
+			
 			<Frame type="Label" name="ResourceLabel2Spend">
 				<Anchor side="Top" relative="$parent/ResourceLabel2" pos="Max" offset="0"/>
 				<Anchor side="Left" relative="$parent/ResourceLabel2" pos="Min" offset="-26"/>

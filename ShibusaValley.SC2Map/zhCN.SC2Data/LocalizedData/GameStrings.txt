@@ -1,9 +1,0 @@
-DocInfo/Author=暴雪娱乐
-DocInfo/DescLong=进攻敌人的两条主要路线是穿过高地上的分矿点。占领这里的分矿点将取得地形以及资源上的优势。敌人可能从另一条地势较低的路线逼近，而您可以借助萨尔纳加瞭望塔的视野观察他们的行踪。
-DocInfo/DescShort=1v1
-DocInfo/Name=阿格瑞亚山谷
-MapInfo/Player00/Name=中立
-MapInfo/Player01/Name=玩家1
-MapInfo/Player02/Name=玩家2
-Variant001/Desc=2名玩家的生死决战。
-Variant001/Name=对战 1v1

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+	<Frame type="Frame" name="GameTipTemplate">
+		<Anchor side="Top" relative="TipText" pos="Min" offset="-20"/>
+		<Anchor side="Left" relative="TipText" pos="Min" offset="-26"/>
+		<Anchor side="Bottom" relative="TipText" pos="Max" offset="32"/>
+		<Anchor side="Right" relative="TipText" pos="Max" offset="26"/>
+		
+		<Frame type="Image" name="Background">
+			<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+			<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+			<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+			<Texture val="@@UI/Axiom_Tip"/>
+			
+			<TextureType val="NineSlice"/>
+			<SubpixelRendering val="true"/>
+			
+			<Frame type="Image" name="Highlight">
+				<Anchor relative="$parent"/>
+				<Texture val="@@UI/Axiom_TipFlash"/>
+				<TextureType val="NineSlice"/>
+				
+				<Animation name="Highlight">
+					<Event event="OnShown" action="Play"/>
+					<Controller type="Fade" end="Loop">
+						<Key type="Curve" time="0" value="0" out="Slow"/>
+						<Key type="Curve" time="1" value="255" in="Slow" out="Slow"/>
+						<Key type="Curve" time="2" value="0" in="Slow"/>
+						<Key type="Curve" time="3" value="0" in="Slow"/>
+					</Controller>
+				</Animation>
+				
+				<Frame type="Image" name="Arrow">
+					<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+					<Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+					<Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+					
+					<Alpha val="{$parent/@Alpha}"/>
+					<Texture val="@@UI/Axiom_TipArrowFlash"/>
+					<SubpixelRendering val="true"/>
+				</Frame>
+			</Frame>
+			
+			<Frame type="Image" name="Arrow">
+				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+				<Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+				<Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+				
+				<Alpha val="{$parent/@Alpha}"/>
+				<Texture val="@@UI/Axiom_TipArrow"/>
+				<SubpixelRendering val="true"/>
+			</Frame>
+		</Frame>
+
+		<Frame type="Label" name="TipText">
+			<AutoSizeClamps minwidth="80" maxwidth="320"/>
+			<Text val="Im a Tip"/>
+			<Style val="@@AxiomTipCallout"/>
+		</Frame>
+		
+		<Animation name="FadeIn">
+			<Event event="OnShown" action="DirectionForward,Play"/>
+				
+				<Controller type="Anchor" frame="TipText" side="Bottom" relative="true" end="Pause">
+					<Key type="Curve" time="0.00" value="-8" inout="Slow"/>
+					<Key type="Curve" time="0.25" value="2" inout="Fast"/>
+					<Key type="Curve" time="0.30" value="0" inout="Fast"/>
+				</Controller>
+				<Controller type="Fade" end="Pause">
+					<Key type="Curve" time="0.00" value="0" out="Slow"/>
+					<Key type="Curve" time="0.25" value="255" in="Slow"/>
+					<Key type="Curve" time="11.25" value="255" in="Slow"/>
+					<Key type="Curve" time="12.00" value="0" in="Slow"/>
+				</Controller>
+				<Controller type="Sound" end="Stop">
+					<Key type="Sound" time="0.0" sound="@G_UI_Accept01"/>
+				</Controller>
+		</Animation>
+	</Frame>
+	
+	<Frame type="Frame" name="GameTipDownTemplate" template="PlusGameTipsTemplates/GameTipTemplate">
+		
+		<Anchor side="Top" relative="TipText" pos="Min" offset="-32"/>
+		<Anchor side="Bottom" relative="TipText" pos="Max" offset="20"/>
+		
+		<Frame type="Image" name="Background">
+			<RotationPosition val="MiddleCenter"/>
+			<Rotation val="180"/>
+			
+			<Frame type="Image" name="Arrow">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Bottom" relative="$parent" pos="Min" offset="24"/>
+				<RotationPosition val="MiddleCenter"/>
+				<Rotation val="180"/>
+			</Frame>
+			
+			<Frame type="Image" name="Highlight">
+				<Anchor relative="$parent"/>
+				<RotationPosition val="MiddleCenter"/>
+				<Rotation val="180"/>
+				
+				<Frame type="Image" name="Arrow">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Bottom" relative="$parent" pos="Min" offset="24"/>
+					<RotationPosition val="MiddleCenter"/>
+					<Rotation val="180"/>
+				</Frame>
+			</Frame>
+		</Frame>
+	</Frame>
+	
+	<!-- CONTROL GROUPS -->
+	<Frame type="Frame" name="GameTipControlGroup01" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ACGContainer/Group01" pos="Min" offset="-30"/>
+			<Anchor side="Left" relative="$ACGContainer/Group01" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ACGContainer/Group01" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipControlGroup02" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ACGContainer/Group02" pos="Min" offset="-30"/>
+			<Anchor side="Left" relative="$ACGContainer/Group02" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ACGContainer/Group02" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipControlGroup03" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ACGContainer/Group03" pos="Min" offset="-30"/>
+			<Anchor side="Left" relative="$ACGContainer/Group03" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ACGContainer/Group03" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipControlGroup04" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ACGContainer/Group04" pos="Min" offset="-30"/>
+			<Anchor side="Left" relative="$ACGContainer/Group04" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ACGContainer/Group04" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipControlGroup05" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ACGContainer/Group05" pos="Min" offset="-30"/>
+			<Anchor side="Left" relative="$ACGContainer/Group05" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ACGContainer/Group05" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipControlGroup06" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ACGContainer/Group06" pos="Min" offset="-30"/>
+			<Anchor side="Left" relative="$ACGContainer/Group06" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ACGContainer/Group06" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipControlGroup07" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ACGContainer/Group07" pos="Min" offset="-30"/>
+			<Anchor side="Left" relative="$ACGContainer/Group07" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ACGContainer/Group07" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipControlGroup08" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ACGContainer/Group08" pos="Min" offset="-30"/>
+			<Anchor side="Left" relative="$ACGContainer/Group08" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ACGContainer/Group08" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	
+	<!-- UCB TABS -->
+	<Frame type="Frame" name="GameTipGlobalTabBuild" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Min" offset="-34"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarBuildings" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipGlobalTabTrain" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarUnits" pos="Min" offset="-34"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/SidebarTab/SidebarUnits" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarUnits" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipGlobalTabUpgrade" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ConsoleUIContainer/SidebarTab/SidebarResearch" pos="Min" offset="-34"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/SidebarTab/SidebarResearch" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/SidebarTab/SidebarResearch" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	
+	<!-- RESOURCES -->
+	<Frame type="Frame" name="GameTipResourceMinerals" template="PlusGameTipsTemplates/GameTipDownTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ResourceFrame/AnchorMinerals" pos="Max" offset="108"/>
+			<Anchor side="Left" relative="$ResourceFrame/AnchorMinerals" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ResourceFrame/AnchorMinerals" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipResourceVespene" template="PlusGameTipsTemplates/GameTipDownTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ResourceFrame/AnchorVespene" pos="Max" offset="108"/>
+			<Anchor side="Left" relative="$ResourceFrame/AnchorVespene" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ResourceFrame/AnchorVespene" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipResourceSupplies" template="PlusGameTipsTemplates/GameTipDownTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ResourceFrame/AnchorSupplies" pos="Max" offset="60"/>
+			<Anchor side="Left" relative="$ResourceFrame/AnchorSupplies" pos="Mid" offset="-72"/>
+			<Anchor side="Right" relative="$ResourceFrame/AnchorSupplies" pos="Mid" offset="-72"/>
+		</Frame>
+		<Frame type="Image" name="Background">
+			<Frame type="Image" name="Arrow">
+				<Anchor side="Left" relative="$parent" pos="Mid" offset="72"/>
+				<Anchor side="Right" relative="$parent" pos="Mid" offset="72"/>
+			</Frame>
+			
+			<Frame type="Image" name="Highlight">
+				<Frame type="Image" name="Arrow">
+					<Anchor side="Left" relative="$parent" pos="Mid" offset="72"/>
+					<Anchor side="Right" relative="$parent" pos="Mid" offset="72"/>
+				</Frame>
+			</Frame>
+		</Frame>
+	</Frame>
+	
+	<!-- GLOBAL RALLY -->
+	<Frame type="Frame" name="GameTipGlobalRally01" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton00" pos="Min" offset="-26"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton00" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton00" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipGlobalRally02" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton01" pos="Min" offset="-26"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton01" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton01" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipGlobalRally03" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton02" pos="Min" offset="-26"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton02" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton02" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	
+	<!-- GLOBAL ABILITIES -->
+	<Frame type="Frame" name="GameTipGlobalAbility01" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ConsoleUIContainer/GlobalCommandContainer/CommandPanel1/CommandButton03" pos="Min" offset="-40"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/GlobalCommandContainer/CommandPanel1/CommandButton03" pos="Mid" offset="64"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalCommandContainer/CommandPanel1/CommandButton03" pos="Mid" offset="64"/>
+		</Frame>
+		<Frame type="Image" name="Background">
+			<Frame type="Image" name="Arrow">
+				<Anchor side="Left" relative="$parent" pos="Mid" offset="-64"/>
+				<Anchor side="Right" relative="$parent" pos="Mid" offset="-64"/>
+			</Frame>
+			
+			<Frame type="Image" name="Highlight">
+				<Frame type="Image" name="Arrow">
+					<Anchor side="Left" relative="$parent" pos="Mid" offset="-64"/>
+					<Anchor side="Right" relative="$parent" pos="Mid" offset="-64"/>
+				</Frame>
+			</Frame>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipGlobalAbility02" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ConsoleUIContainer/GlobalCommandContainer/CommandPanel1/CommandButton04" pos="Min" offset="-40"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/GlobalCommandContainer/CommandPanel1/CommandButton04" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalCommandContainer/CommandPanel1/CommandButton04" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+	<Frame type="Frame" name="GameTipGlobalAbility03" template="PlusGameTipsTemplates/GameTipTemplate">
+		<Frame type="Label" name="TipText">
+			<Anchor side="Bottom" relative="$ConsoleUIContainer/GlobalCommandContainer/CommandPanel1/CommandButton05" pos="Min" offset="-40"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/GlobalCommandContainer/CommandPanel1/CommandButton05" pos="Mid" offset="0"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalCommandContainer/CommandPanel1/CommandButton05" pos="Mid" offset="0"/>
+		</Frame>
+	</Frame>
+</Desc>

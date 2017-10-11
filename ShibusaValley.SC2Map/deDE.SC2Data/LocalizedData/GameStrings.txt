@@ -1,9 +1,0 @@
-DocInfo/Author=Blizzard Entertainment
-DocInfo/DescLong=Die zwei Hauptpfade zum Feind verlaufen durch die Expansionen im erhöhten Terrain. Kontrollieren Sie diese, um einen Positions- und Ressourcenvorteil zu erlangen. Nutzen Sie die Xel'Naga-Feldwarten, um feindliche Bewegungen auf den alternativen Wegen im niedrigen Terrain zu sehen.
-DocInfo/DescShort=1vs1
-DocInfo/Name=Tal von Agria
-MapInfo/Player00/Name=Neutral
-MapInfo/Player01/Name=Spieler 1
-MapInfo/Player02/Name=Spieler 2
-Variant001/Desc=Zwei Spieler kämpfen bis zum Tod.
-Variant001/Name=Nahkampf - 1vs1

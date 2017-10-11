@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <StyleFile>
-	<Constant name="Void_Regular" val="#FontStandard"/>
-	<Constant name="Void_FontSizeSmall" val="18"/>
-	<Constant name="Axiom_ColorWhite" val="255, 255, 255"/>
+    <Constant name="Void_Regular" val="#FontStandard"/>
+    <Constant name="Void_FontSizeSmall" val="18"/>
+    <Constant name="AxiomColorWhite" val="255, 255, 255"/>
     <Style name="WorkersKilled" template="InternationalTemplate" height="36" vjustify="Middle" hjustify="Center" fontflags="HintStyleLight" styleflags="Shadow" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="2"/>
     <Style name="TimerDecimals" template="HeaderTemplate" height="34" vjustify="Bottom" hjustify="Left" fontflags="HintStyleLight" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0"/>
     <Style name="TimerStatus" template="HeaderTemplate" height="28" vjustify="Bottom" hjustify="Left" fontflags="HintStyleLight" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0"/>
@@ -10,10 +10,9 @@
     <Style name="TimerType" template="HeaderTemplate" height="20" vjustify="Top" hjustify="Left" fontflags="HintStyleLight" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0"/>
     <Style name="GraphData1" template="InternationalTemplate" height="19" vjustify="Middle" hjustify="Center" fontflags="HintStyleLight" styleflags="!Shadow" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="2"/>
     <Style name="GraphData2" template="InternationalTemplate" height="17" vjustify="Middle" hjustify="Center" fontflags="HintStyleLight" styleflags="!Shadow" textcolor="255,255,255,255" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,0,0,0" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="2"/>
-	<Style name="Axiom_RegularSmall" font="#FontStandard" height="18" vjustify="Middle"/>
-	<Style name="Axiom_TipCallout" template="Axiom_RegularSmall" height="16" hjustify="Center" vjustify="Middle" textcolor="9eccf3" styleflags="Shadow" hotkeycolor="#Axiom_ColorWhite"/>
-    <Style name="Axiom_TipCallout_Prot" template="Axiom_TipCallout" textcolor="9eccf3"/>
-    <Style name="Axiom_TipCallout_Terr" template="Axiom_TipCallout" textcolor="ffe185"/>
-    <Style name="Axiom_TipCallout_Zerg" template="Axiom_TipCallout" textcolor="9ef3ba"/>
-    
+    <Style name="AxiomRegularSmall" font="#FontStandard" height="18" vjustify="Middle"/>
+    <Style name="AxiomTipCallout" template="AxiomRegularSmall" font="UI\Fonts\bl.ttf" height="16" vjustify="Middle" hjustify="Center" styleflags="Shadow" textcolor="255,158,243,186" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,255,255,255" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0" outlinewidth="0"/>
+    <Style name="AxiomTipCallout_Prot" template="AxiomTipCallout" textcolor="9eccf3"/>
+    <Style name="AxiomTipCallout_Terr" template="AxiomTipCallout" font="UI\Fonts\bl.ttf" height="16" vjustify="Middle" hjustify="Center" styleflags="Shadow" textcolor="255,158,243,186" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,255,255,255" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0" outlinewidth="0"/>
+    <Style name="AxiomTipCallout_Zerg" template="AxiomTipCallout" font="UI\Fonts\bl.ttf" height="16" vjustify="Middle" hjustify="Center" styleflags="Shadow" textcolor="255,255,225,133" highlightcolor="255,0,0,0" disabledcolor="255,0,0,0" hotkeycolor="255,255,255,255" hyperlinkcolor="255,0,0,0" glowcolor="255,0,0,0" shadowoffset="0" outlinewidth="0"/>
 </StyleFile>

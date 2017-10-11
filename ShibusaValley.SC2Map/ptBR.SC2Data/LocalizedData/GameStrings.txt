@@ -1,9 +1,0 @@
-DocInfo/Author=Blizzard Entertainment
-DocInfo/DescLong=Os dois caminhos principais até o inimigo passam por expansões em terreno alto. Controle-os para obter vantagem de posição e de recursos. Use as Torres Xel'Naga para detectar movimentações inimigas através das rotas alternativas em terrenos inferiores.
-DocInfo/DescShort=1x1
-DocInfo/Name=Vale de Agria
-MapInfo/Player00/Name=Neutro
-MapInfo/Player01/Name=Jogador 1
-MapInfo/Player02/Name=Jogador 2
-Variant001/Desc=Dois jogadores lutam até morrer.
-Variant001/Name=Corpo-a-corpo 1x1

@@ -69,6 +69,10 @@
 			<PanelListItem val="$parent/TrainerCommandContainer"/>
 			<PanelListItem val="$parent/ResearcherCommandContainer"/>
 			<SelectedIndex val="0"/>
+			
+			<!-- THANKS BLIZZ -->
+			<Wrap val="true"/>
+			<Handle val="GlobalTabControl"/>
 
 			<Frame type="Button" name="SidebarBuildings" template="CommandSidebar/SideBarTabButtonTemplate">
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
@@ -151,19 +155,6 @@
 					</Controller>
 				</Animation>
 			</Frame>
-			
-			<!-- UNCOMMENT THIS TO HIDE QWER/AS WHILE ABILITIES BAR IS TOGGLED -->
-			
-			<!-- <StateGroup name="TabState"> -->
-				<!-- <DefaultState val="TabMacro"/> -->
-				<!-- <State name="TabMacro"> -->
-					<!-- <When type="Property" frame="SidebarGlobal" Toggled="false"/> -->
-				<!-- </State> -->
-				<!-- <State name="TabMicro"> -->
-					<!-- <When type="Property" frame="SidebarGlobal" Toggled="true"/> -->
-					<!-- <Action type="SetProperty" frame="$ActiveCommandCard" visible="false"/> -->
-				<!-- </State> -->
-			<!-- </StateGroup> -->
 		</Frame>
 	</Frame>
 </Desc>

@@ -148,6 +148,7 @@
 				
 				<Handle val="CustomConsoleLeft"/>
 				<Texture val="@@UI/CustomConsoleLeft"/>
+				<SubpixelRendering val="true"/>
 				<RenderType val="LDR"/>
 
 				<Width val="595"/>
@@ -160,6 +161,7 @@
 				
 				<Handle val="CustomConsoleCommands"/>
 				<Texture val="@@UI/CustomConsoleCommands"/>
+				<SubpixelRendering val="true"/>
 				<RenderType val="LDR"/>
 
 				<Width val="712"/>
@@ -172,6 +174,7 @@
 				
 				<Handle val="CustomConsoleUnitInfo"/>
 				<Texture val="@@UI/CustomConsoleUnitInfo"/>
+				<SubpixelRendering val="true"/>
 				<RenderType val="LDR"/>
 
 				<Width val="589"/>
@@ -184,10 +187,12 @@
 				
 				<Handle val="CustomConsoleRight"/>
 				<Texture val="@@UI/CustomConsoleRight"/>
+				<SubpixelRendering val="true"/>
 				<RenderType val="LDR"/>
 				
 				<Width val="237"/>
 				<Height val="251"/>
+				
 			</Frame>
 			
 			<StateGroup name="RaceState">	
@@ -264,6 +269,35 @@
                 <Width val="200"/>
                 <Height val="44"/>
             </Frame>
+			
+			<Frame type="CheckBox" name="TutorialTipsCheckBox" template="StandardTemplates/StandardCheckBoxLabelTemplate">
+				<Anchor side="Top" relative="$MenuBarConsoleAnchor" pos="Max" offset="-112"/>
+                <Anchor side="Left" relative="$MenuBarConsoleAnchor" pos="Min" offset="52"/>
+                <Anchor side="Right" relative="Label" pos="Max" offset="16"/>
+                <Height val="44"/>
+				
+				<Frame type="Label" name="Label">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="2"/>
+					<Anchor side="Left" relative="$parent/Button" pos="Max" offset="8"/>
+					<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+					<Text val="@UI/GameTipsShowTips"/>
+					<Style val="@@MenuBarButtonBig"/>
+				</Frame>
+				
+				<Frame type="Button" name="Button">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="3"/>
+					<Anchor side="Left" relative="$parent" pos="Min" offset="4"/>
+				</Frame>
+				
+				<Frame type="Image" name="Background">
+					<Anchor relative="$parent"/>
+					<Texture val="color_accents/gh-btn-white.dds"/>
+					<Color val="0,0,0"/>
+					<TextureType val="NineSlice"/>
+					<Alpha val="128"/>
+					<RenderPriority val="50"/>
+				</Frame>
+			</Frame>
 		</Frame>
 		
 		<Frame type="Frame" name="FullscreenUpperContainer">

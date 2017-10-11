@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<Desc>
-    <Include path="UI/Layout/ControlGroups.SC2Layout"/>
-    <Include path="UI/Layout/ControlGroups_GameUI.SC2Layout"/>
-</Desc>

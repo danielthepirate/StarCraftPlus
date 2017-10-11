@@ -1,9 +1,0 @@
-DocInfo/Author=Blizzard Entertainment
-DocInfo/DescLong=通往敵方基地的兩條主要道路同時也貫穿高地的資源區。掌控這兩條道路即可取得地理及資源上的優勢。利用薩爾納加薩爾納加監視塔監視其它低地路徑來探查敵方動靜。
-DocInfo/DescShort=1對1
-DocInfo/Name=阿格利亞山谷
-MapInfo/Player00/Name=中立
-MapInfo/Player01/Name=玩家 1
-MapInfo/Player02/Name=玩家 2
-Variant001/Desc=兩名玩家決一死戰。
-Variant001/Name=對戰 - 1對1

@@ -1,10 +1,6 @@
 [Conversation]
 id=AxiomHintTips
-Actor=TerrainMgr
+Actor=CommandUIHarnessAttackProtoss,CommandUIHarnessAttackTerran,CommandUIHarnessAttackZerg,CommandUIHarnessConfirmProtoss,CommandUIHarnessConfirmTerran,CommandUIHarnessConfirmZerg,CommandUIHarnessMoveProtoss,CommandUIHarnessMoveTerran,CommandUIHarnessMoveZerg,CommandUIHarnessRallyProtoss,CommandUIHarnessRallyTerran,CommandUIHarnessRallyZerg,TerrainMgr
 Character=TotalBiscuit
 ConversationState=Characters
-
-[User]
-id=AxiomHints
-Actor=TerrainMgr
 

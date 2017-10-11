@@ -2,4 +2,5 @@
 <Desc>
     <Include path="UI/Layout/CommandSidebar.SC2Layout"/>
     <Include path="UI/Layout/CommandSidebar_GameUI.SC2Layout"/>
+    <Include path="UI/Layout/GlobalTabControl.SC2Layout"/>
 </Desc>

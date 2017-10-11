@@ -1,9 +1,0 @@
-DocInfo/Author=Blizzard Entertainment
-DocInfo/DescLong=Dwie główne drogi do wroga wiodą przez miejsca pod rozbudowę bazy na wysokim terenie. Przejmij nad nimi kontrolę, aby zdobyć przewagę taktyczną i ekonomiczną. Korzystaj z wież xel'naga, aby wypatrywać sił wroga na bocznych szlakach na nizinach.
-DocInfo/DescShort=1 na 1
-DocInfo/Name=Dolina Agrii
-MapInfo/Player00/Name=Neutralny
-MapInfo/Player01/Name=Gracz 1
-MapInfo/Player02/Name=Gracz 2
-Variant001/Desc=Dwóch graczy toczy śmiertelny pojedynek.
-Variant001/Name=Starcie – 1 na 1
