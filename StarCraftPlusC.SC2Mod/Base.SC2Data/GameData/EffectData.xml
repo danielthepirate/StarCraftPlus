@@ -323,12 +323,15 @@
     </CEffectSwitch>
     <CEffectApplyBehavior id="GameUCBBarracksAddon">
         <EditorCategories value=""/>
+        <ValidatorArray index="0" value="NotDead"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBFactoryAddon">
         <EditorCategories value=""/>
+        <ValidatorArray index="0" value="NotDead"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GameUCBStarportAddon">
         <EditorCategories value=""/>
+        <ValidatorArray index="0" value="NotDead"/>
     </CEffectApplyBehavior>
     <CEffectModifyPlayer id="GameUCBFactoryAddonAdd">
         <EditorCategories value=""/>

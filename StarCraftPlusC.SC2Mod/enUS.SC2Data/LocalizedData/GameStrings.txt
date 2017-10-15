@@ -56,9 +56,6 @@ Abil/Name/UpgradeToPlanetaryFortressUCB=Morph Building (COCE -> Planetary Fortre
 Abil/Name/WarpGateTrainUCB=Train (Warp Gate) UCB
 Actor/AddonIndicator/ReactorPaused=R
 Actor/AddonIndicator/TechLabPaused=T
-Attribute001/Name=Show Axiom Tips
-Attribute001/Value001/Name=Yes
-Attribute001/Value002/Name=No
 Behavior/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
 Behavior/Name/GameHookBarracksStatusUpdate=Game Hook Barracks Status Update
 Behavior/Name/GameProtossWarpGateTrainCharge=Game Protoss Warp Gate Train Charge
@@ -356,7 +353,6 @@ Kinetic/Name/KineticFollow=KineticFollow
 Param/Value/lib_SCPL_00AFF88E=Hi-Sec Auto Tracking
 Param/Value/lib_SCPL_025CBB60=Vehicle Plating Level 1
 Param/Value/lib_SCPL_11275019=Flyer Attacks Level 3
-Param/Value/lib_SCPL_1155FDB8=WorkerSaturationCountReached
 Param/Value/lib_SCPL_1333D60B=Flyer Attacks Level 2
 Param/Value/lib_SCPL_16BEFEF4=<s val="TimerDecimals">
 Param/Value/lib_SCPL_16CF1B5C=<s val="TimerCountdown">
@@ -437,7 +433,6 @@ Param/Value/lib_SCPL_C22343DA=Infantry Weapons Level 2
 Param/Value/lib_SCPL_C2EDAB79=Yamato Cannon
 Param/Value/lib_SCPL_CC951DDB=Vehicle Plating Level 3
 Param/Value/lib_SCPL_CDD560F4=Flyer Carapace Level 2
-Param/Value/lib_SCPL_CE8C6D62=WorkerSaturationCountReached
 Param/Value/lib_SCPL_CF8D2A5F=Ground Carapace Level 1
 Param/Value/lib_SCPL_D7BFAED5=Blink
 Param/Value/lib_SCPL_DA61236E=Vehicle Plating Level 2

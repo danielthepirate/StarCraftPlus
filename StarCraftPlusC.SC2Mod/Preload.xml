@@ -2,6 +2,9 @@
 <Preload>
 <Asset path="assets\textures\black.dds" Type="Image"/>
 <Asset path="assets\textures\blank.dds" Type="Image"/>
+<Abil id="BarracksAddOns"/>
+<Abil id="FactoryAddOns"/>
+<Abil id="StarportAddOns"/>
 <Actor id="SYSTEM_ActorConfig"/>
 <Behavior id="GameDroneMorphMarker"/>
 <Behavior id="GameProtossWarpGateTrainCharge"/>
@@ -62,7 +65,6 @@
 <Unit id="PlanetaryFortress"/>
 <Unit id="OrbitalCommand"/>
 <Unit id="CreepTumorBurrowed"/>
-<Unit id="Viper"/>
 <Unit id="Adept"/>
 <Unit id="LurkerDenMP"/>
 <Unit id="GameGlobalRallyTarget00"/>

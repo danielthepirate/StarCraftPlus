@@ -231,8 +231,21 @@
 	<Frame type="Frame" name="GameTipGlobalRally01" template="PlusGameTipsTemplates/GameTipTemplate">
 		<Frame type="Label" name="TipText">
 			<Anchor side="Bottom" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton00" pos="Min" offset="-26"/>
-			<Anchor side="Left" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton00" pos="Mid" offset="0"/>
-			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton00" pos="Mid" offset="0"/>
+			<Anchor side="Left" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton00" pos="Mid" offset="64"/>
+			<Anchor side="Right" relative="$ConsoleUIContainer/GlobalRallyPanel/CommandButton00" pos="Mid" offset="64"/>
+		</Frame>
+		<Frame type="Image" name="Background">
+			<Frame type="Image" name="Arrow">
+				<Anchor side="Left" relative="$parent" pos="Mid" offset="-64"/>
+				<Anchor side="Right" relative="$parent" pos="Mid" offset="-64"/>
+			</Frame>
+			
+			<Frame type="Image" name="Highlight">
+				<Frame type="Image" name="Arrow">
+					<Anchor side="Left" relative="$parent" pos="Mid" offset="-64"/>
+					<Anchor side="Right" relative="$parent" pos="Mid" offset="-64"/>
+				</Frame>
+			</Frame>
 		</Frame>
 	</Frame>
 	<Frame type="Frame" name="GameTipGlobalRally02" template="PlusGameTipsTemplates/GameTipTemplate">

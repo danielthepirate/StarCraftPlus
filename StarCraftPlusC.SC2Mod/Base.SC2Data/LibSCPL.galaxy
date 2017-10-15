@@ -94,6 +94,8 @@ void libSCPL_InitVariables () {
         for (init_i1 = 0; init_i1 <= 3; init_i1 += 1) {
             libSCPL_gv_player[init_i].lv_controlGroupAutoAdd[init_i1] = true;
         }
+        libSCPL_gv_player[init_i].lv_resourceTip = c_invalidDialogId;
+        libSCPL_gv_player[init_i].lv_isInTargetingMode = true;
     }
     libSCPL_gv_uI.lv_resourceMineralSpend = c_invalidDialogControlId;
     libSCPL_gv_uI.lv_resourceVespeneSpend = c_invalidDialogControlId;
@@ -117,6 +119,9 @@ void libSCPL_InitVariables () {
     for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
         libSCPL_gv_uI.lv_consoleControlGroupLabel[init_i1] = c_invalidDialogControlId;
     }
+    for (init_i1 = 0; init_i1 <= 10; init_i1 += 1) {
+        libSCPL_gv_uI.lv_playerProductionTab[init_i1] = c_invalidDialogControlId;
+    }
 }
 
 // Presets
@@ -125,6 +130,8 @@ string libSCPL_ge_GenericEvent_Ident (int lp_val) {
     else if (lp_val == libSCPL_ge_GenericEvent_TownHallSaturated) { return "TownHallSaturated"; }
     else if (lp_val == libSCPL_ge_GenericEvent_HarvesterUpdate) { return "HarvesterUpdate"; }
     else if (lp_val == libSCPL_ge_GenericEvent_ControlGroupComposition) { return "ControlGroupComposition"; }
+    else if (lp_val == libSCPL_ge_GenericEvent_TerranAddonTestReactor) { return "TerranAddonTestReactor"; }
+    else if (lp_val == libSCPL_ge_GenericEvent_TerranAddonTestTechLab) { return "TerranAddonTestTechLab"; }
     return null;
 }
 
@@ -1598,6 +1605,63 @@ bool auto_libSCPL_gf_GameTipCreateInstance_TriggerFunc (bool testConds, bool run
     return true;
 }
 
+trigger auto_libSCPL_gf_GameTipCreateResource_Trigger = null;
+string auto_libSCPL_gf_GameTipCreateResource_lp_tipInstance;
+string auto_libSCPL_gf_GameTipCreateResource_lp_tipPosition;
+int auto_libSCPL_gf_GameTipCreateResource_lp_playerIndex;
+
+void libSCPL_gf_GameTipCreateResource (string lp_tipInstance, string lp_tipPosition, int lp_playerIndex) {
+    auto_libSCPL_gf_GameTipCreateResource_lp_tipInstance = lp_tipInstance;
+    auto_libSCPL_gf_GameTipCreateResource_lp_tipPosition = lp_tipPosition;
+    auto_libSCPL_gf_GameTipCreateResource_lp_playerIndex = lp_playerIndex;
+
+    if (auto_libSCPL_gf_GameTipCreateResource_Trigger == null) {
+        auto_libSCPL_gf_GameTipCreateResource_Trigger = TriggerCreate("auto_libSCPL_gf_GameTipCreateResource_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libSCPL_gf_GameTipCreateResource_Trigger, false, false);
+}
+
+bool auto_libSCPL_gf_GameTipCreateResource_TriggerFunc (bool testConds, bool runActions) {
+    string lp_tipInstance = auto_libSCPL_gf_GameTipCreateResource_lp_tipInstance;
+    string lp_tipPosition = auto_libSCPL_gf_GameTipCreateResource_lp_tipPosition;
+    int lp_playerIndex = auto_libSCPL_gf_GameTipCreateResource_lp_playerIndex;
+
+    // Variable Declarations
+    int lv_dialog;
+    string lv_frameTemplate;
+    int lv_frameLabel;
+    int lv_frame;
+
+    // Variable Initialization
+    lv_dialog = c_invalidDialogId;
+    lv_frameTemplate = "";
+    lv_frameLabel = c_invalidDialogControlId;
+    lv_frame = c_invalidDialogControlId;
+
+    // Implementation
+    if (((DataTableGetBool(true, ((lp_tipInstance) + "|" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lp_playerIndex))) == true) || (libSCPL_gv_player[lp_playerIndex].lv_global_ShowTips == false) || (libSCPL_gv_player[lp_playerIndex].lv_resourceTip != c_invalidDialogId))) {
+        return true;
+    }
+    DataTableSetBool(true, ((lp_tipInstance) + "|" + libPPRL_gf_ConvertIntegerToStringDoubleDigit(lp_playerIndex)), true);
+    DialogCreate(500, 400, c_anchorCenter, 0, 0, true);
+    lv_dialog = DialogLastCreated();
+    libSCPL_gv_player[lp_playerIndex].lv_resourceTip = lv_dialog;
+    DialogSetImageVisible(lv_dialog, false);
+    DialogSetFullscreen(lv_dialog, true);
+    lv_frameTemplate = ("PlusGameTipsTemplates/GameTip" + lp_tipPosition);
+    DialogControlCreateFromTemplate(lv_dialog, c_triggerControlTypePanel, lv_frameTemplate);
+    lv_frame = DialogControlLastCreated();
+    DialogControlHookup(lv_frame, c_triggerControlTypeLabel, "TipText");
+    lv_frameLabel = DialogControlLastCreated();
+    DialogSetVisible(lv_dialog, PlayerGroupSingle(lp_playerIndex), true);
+    libNtve_gf_SetDialogItemText(lv_frameLabel, StringToText(UserDataGetString("SCPTipData", lp_tipInstance, "Text", 1)), PlayerGroupAll());
+    Wait(13.0, c_timeReal);
+    DialogDestroy(lv_dialog);
+    libSCPL_gv_player[lp_playerIndex].lv_resourceTip = c_invalidDialogId;
+    return true;
+}
+
 trigger auto_libSCPL_gf_GameTipCreateControlGroup_Trigger = null;
 string auto_libSCPL_gf_GameTipCreateControlGroup_lp_tipInstance;
 int auto_libSCPL_gf_GameTipCreateControlGroup_lp_controlGroup;
@@ -3018,6 +3082,16 @@ void libSCPL_gf_ControlGroupComposition (trigger t) {
     TriggerAddEventGeneric(t, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_ControlGroupComposition));
 }
 
+void libSCPL_gf_UCBTerranAddonTestReactor (trigger t) {
+    // Implementation
+    TriggerAddEventGeneric(t, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_TerranAddonTestReactor));
+}
+
+void libSCPL_gf_UCBTerranAddonTestTechLab (trigger t) {
+    // Implementation
+    TriggerAddEventGeneric(t, libSCPL_ge_GenericEvent_Ident(libSCPL_ge_GenericEvent_TerranAddonTestTechLab));
+}
+
 void libSCPL_gf_GenericEventResourceSpendChanges3 (int lp_triggeringPlayer) {
     // Variable Declarations
     string lv_event;
@@ -3122,8 +3196,7 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Viper", 6.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Zergling", 12.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "SupplyDepot", 6.0);
     return true;
 }
 
@@ -8075,6 +8148,89 @@ void libSCPL_gt_PlayerAutoWallUnitCreated_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: UCB Addon Test
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBAddonTest_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_testUnit;
+    string lv_testAbility;
+    unitgroup lv_addonGroup;
+    order lv_addonOrder;
+
+    // Variable Initialization
+    lv_testAbility = "";
+    lv_addonGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestPlayer"));
+    lv_testUnit = DataTableGetUnit(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestUnit"));
+    lv_testAbility = DataTableGetString(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestAbility"));
+    if (((UnitOrderHasAbil(lv_testUnit, "BarracksAddOns") == true) || (UnitOrderHasAbil(lv_testUnit, "FactoryAddOns") == true) || (UnitOrderHasAbil(lv_testUnit, "StarportAddOns") == true))) {
+        return true;
+    }
+    if ((lv_testAbility == "BarracksReactorMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("BarracksAddOns", 1), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "FactoryReactorMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("FactoryAddOns", 1), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "StarportReactorMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("StarportAddOns", 1), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "BarracksTechLabMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("BarracksAddOns", 0), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "FactoryTechLabMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("FactoryAddOns", 0), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "StarportTechLabMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("StarportAddOns", 0), Point(0.0, 0.0));
+    }
+    lv_addonGroup = libNtve_gf_ConvertUnitToUnitGroup(lv_testUnit);
+    UISetTargetingOrder(PlayerGroupSingle(lv_playerIndex), lv_addonGroup, lv_addonOrder, false);
+    libSCPL_gv_player[lv_playerIndex].lv_isInTargetingMode = true;
+    while ((libSCPL_gv_player[lv_playerIndex].lv_isInTargetingMode == true)) {
+        Wait(0.0625, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBAddonTest_Init () {
+    libSCPL_gt_UCBAddonTest = TriggerCreate("libSCPL_gt_UCBAddonTest_Func");
+    TriggerAddEventGeneric(libSCPL_gt_UCBAddonTest, "GenericEventTerranAddonTest");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Addon Test End
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBAddonTestEnd_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gv_player[EventPlayer()].lv_isInTargetingMode = false;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBAddonTestEnd_Init () {
+    libSCPL_gt_UCBAddonTestEnd = TriggerCreate("libSCPL_gt_UCBAddonTestEnd_Func");
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("BarracksAddOns", 1), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("BarracksAddOns", 0), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("FactoryAddOns", 1), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("FactoryAddOns", 0), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("StarportAddOns", 1), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("StarportAddOns", 0), c_targetModeStateOff);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Player Zerg Nydus Worm Placement Redirect
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_PlayerZergNydusWormPlacementRedirect_Func (bool testConds, bool runActions) {
@@ -9147,71 +9303,6 @@ void libSCPL_gt_GameTip_GlobalEconomyVespene_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: GameTip_GlobalRally00
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_GameTip_GlobalRally00_Func (bool testConds, bool runActions) {
-    // Conditions
-    if (testConds) {
-        if (!((TechTreeBehaviorCount(EventPlayer(), "GameUCBGlobalRally00ChargeLink", c_techCountCompleteOnly) >= 2))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((UnitGetType(EventUnit()) == "Barracks")) {
-        libSCPL_gf_GameTipCreateInstance("TerranGlobalRallyBarracks", EventPlayer());
-    }
-    else if ((UnitGetType(EventUnit()) == "Gateway")) {
-        libSCPL_gf_GameTipCreateInstance("ProtossGlobalRallyGateway", EventPlayer());
-    }
-    else if ((UnitGetType(EventUnit()) == "WarpGate")) {
-        libSCPL_gf_GameTipCreateInstance("ProtossGlobalRallyWarpGate", EventPlayer());
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_GameTip_GlobalRally00_Init () {
-    libSCPL_gt_GameTip_GlobalRally00 = TriggerCreate("libSCPL_gt_GameTip_GlobalRally00_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_GameTip_GlobalRally00, null, "GameUCBGlobalRally00ChargeLink", c_unitBehaviorChangeCreate);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: GameTip_GlobalRally01
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_GameTip_GlobalRally01_Func (bool testConds, bool runActions) {
-    // Conditions
-    if (testConds) {
-        if (!((TechTreeBehaviorCount(EventPlayer(), "GameUCBGlobalRally01ChargeLink", c_techCountCompleteOnly) >= 1))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((UnitGetType(EventUnit()) == "Factory")) {
-        libSCPL_gf_GameTipCreateInstance("TerranGlobalRallyFactory", EventPlayer());
-    }
-    else if ((UnitGetType(EventUnit()) == "RoboticsFacility")) {
-        libSCPL_gf_GameTipCreateInstance("ProtossGlobalRallyRoboticsFacility", EventPlayer());
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_GameTip_GlobalRally01_Init () {
-    libSCPL_gt_GameTip_GlobalRally01 = TriggerCreate("libSCPL_gt_GameTip_GlobalRally01_Func");
-    TriggerAddEventUnitBehaviorChange(libSCPL_gt_GameTip_GlobalRally01, null, "GameUCBGlobalRally01ChargeLink", c_unitBehaviorChangeCreate);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: GameTip_GlobalExpansion
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_GameTip_GlobalExpansion_Func (bool testConds, bool runActions) {
@@ -9389,6 +9480,62 @@ bool libSCPL_gt_GameTip_TerranAddonReactor_Func (bool testConds, bool runActions
 void libSCPL_gt_GameTip_TerranAddonReactor_Init () {
     libSCPL_gt_GameTip_TerranAddonReactor = TriggerCreate("libSCPL_gt_GameTip_TerranAddonReactor_Func");
     TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_TerranAddonReactor, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_TerranBarracksTwo
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_TerranBarracksTwo_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "Barracks"))) {
+            return false;
+        }
+
+        if (!((UnitGroupCount(UnitGroup("Barracks", EventPlayer(), RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) >= 2))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("TerranGlobalRallyBarracks", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_TerranBarracksTwo_Init () {
+    libSCPL_gt_GameTip_TerranBarracksTwo = TriggerCreate("libSCPL_gt_GameTip_TerranBarracksTwo_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_TerranBarracksTwo, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_TerranFactory
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_TerranFactory_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "Factory"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("TerranGlobalRallyFactory", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_TerranFactory_Init () {
+    libSCPL_gt_GameTip_TerranFactory = TriggerCreate("libSCPL_gt_GameTip_TerranFactory_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_TerranFactory, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9579,6 +9726,104 @@ bool libSCPL_gt_GameTip_ProtossMothershipCore_Func (bool testConds, bool runActi
 void libSCPL_gt_GameTip_ProtossMothershipCore_Init () {
     libSCPL_gt_GameTip_ProtossMothershipCore = TriggerCreate("libSCPL_gt_GameTip_ProtossMothershipCore_Func");
     TriggerAddEventTimeElapsed(libSCPL_gt_GameTip_ProtossMothershipCore, 240.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossGatewayTwo
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossGatewayTwo_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "Gateway"))) {
+            return false;
+        }
+
+        if (!((UnitGroupCount(UnitGroup("Gateway", EventPlayer(), RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) >= 2))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitProgressUnit());
+    libSCPL_gf_GameTipCreateInstance("ProtossGlobalRallyGateway", lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossGatewayTwo_Init () {
+    libSCPL_gt_GameTip_ProtossGatewayTwo = TriggerCreate("libSCPL_gt_GameTip_ProtossGatewayTwo_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_ProtossGatewayTwo, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossGatewayTwoWarpgate
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossGatewayTwoWarpgate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "WarpGate"))) {
+            return false;
+        }
+
+        if (!((UnitGroupCount(UnitGroup("WarpGate", EventPlayer(), RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) >= 2))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = UnitGetOwner(EventUnitProgressUnit());
+    libSCPL_gf_GameTipCreateInstance("ProtossGlobalRallyWarpGate", lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossGatewayTwoWarpgate_Init () {
+    libSCPL_gt_GameTip_ProtossGatewayTwoWarpgate = TriggerCreate("libSCPL_gt_GameTip_ProtossGatewayTwoWarpgate_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_ProtossGatewayTwoWarpgate, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GameTip_ProtossRobotics
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_GameTip_ProtossRobotics_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "RoboticsFacility"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_GameTipCreateInstance("ProtossGlobalRallyRoboticsFacility", EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_GameTip_ProtossRobotics_Init () {
+    libSCPL_gt_GameTip_ProtossRobotics = TriggerCreate("libSCPL_gt_GameTip_ProtossRobotics_Func");
+    TriggerAddEventUnitConstructProgress(libSCPL_gt_GameTip_ProtossRobotics, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11055,7 +11300,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
         lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceMineralSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
         DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceMineralSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
-        libSCPL_gf_GameTipCreateInstance("GlobalEconomyOutspending", lv_playerIndex);
+        libSCPL_gf_GameTipCreateResource("GlobalEconomyOutspending", ("ResourceMinerals"), lv_playerIndex);
     }
     else {
         lv_net = (-1.0 * lv_net);
@@ -11070,6 +11315,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
     }
     if ((lv_spend > libSCPL_gf_PlayerAvailableMinerals(lv_playerIndex))) {
         DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpendAttention, PlayerGroupSingle(lv_playerIndex), true);
+        libSCPL_gf_GameTipCreateResource("GlobalEconomyDepleted", ("ResourceMinerals"), lv_playerIndex);
     }
     else {
         DialogControlSetVisible(libSCPL_gv_uI.lv_resourceMineralSpendAttention, PlayerGroupSingle(lv_playerIndex), false);
@@ -11082,7 +11328,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
         lv_spendDisplay = ("( - " + FixedToString(lv_net, 0) + ")");
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_resourceVespeneSpend, StringToText(lv_spendDisplay), PlayerGroupSingle(lv_playerIndex));
         DialogControlSetAnimationState(libSCPL_gv_uI.lv_resourceVespeneSpend, PlayerGroupSingle(lv_playerIndex), "ResourceState", "Negative");
-        libSCPL_gf_GameTipCreateInstance("GlobalEconomyOutspending", lv_playerIndex);
+        libSCPL_gf_GameTipCreateResource("GlobalEconomyOutspending", ("ResourceVespene"), lv_playerIndex);
     }
     else {
         lv_net = (-1.0 * lv_net);
@@ -11097,7 +11343,7 @@ bool libSCPL_gt_ResourceDisplaySpend_Func (bool testConds, bool runActions) {
     }
     if ((lv_spend > libSCPL_gf_PlayerAvailableVespene(lv_playerIndex))) {
         DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpendAttention, PlayerGroupSingle(lv_playerIndex), true);
-        libSCPL_gf_GameTipCreateInstance("GlobalEconomyDepleted", lv_playerIndex);
+        libSCPL_gf_GameTipCreateResource("GlobalEconomyDepleted", ("ResourceVespene"), lv_playerIndex);
     }
     else {
         DialogControlSetVisible(libSCPL_gv_uI.lv_resourceVespeneSpendAttention, PlayerGroupSingle(lv_playerIndex), false);
@@ -11481,6 +11727,8 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBAutoWallToggleOn_Init();
     libSCPL_gt_UCBAutoWallToggleOff_Init();
     libSCPL_gt_PlayerAutoWallUnitCreated_Init();
+    libSCPL_gt_UCBAddonTest_Init();
+    libSCPL_gt_UCBAddonTestEnd_Init();
     libSCPL_gt_PlayerZergNydusWormPlacementRedirect_Init();
     libSCPL_gt_AutoCreepTumorLineageParent_Init();
     libSCPL_gt_AutoCreepTumorLineageSpread_Init();
@@ -11519,20 +11767,23 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_GameTip_GlobalEconomySupplyCap_Init();
     libSCPL_gt_GameTip_GlobalEconomySupplyBlocked_Init();
     libSCPL_gt_GameTip_GlobalEconomyVespene_Init();
-    libSCPL_gt_GameTip_GlobalRally00_Init();
-    libSCPL_gt_GameTip_GlobalRally01_Init();
     libSCPL_gt_GameTip_GlobalExpansion_Init();
     libSCPL_gt_GameTip_TerranTutorial01_Init();
     libSCPL_gt_GameTip_TerranTutorial02_Init();
     libSCPL_gt_GameTip_TerranTutorial03_Init();
     libSCPL_gt_GameTip_TerranAddonTechLab_Init();
     libSCPL_gt_GameTip_TerranAddonReactor_Init();
+    libSCPL_gt_GameTip_TerranBarracksTwo_Init();
+    libSCPL_gt_GameTip_TerranFactory_Init();
     libSCPL_gt_GameTip_TerranFactoryUnit_Init();
     libSCPL_gt_GameTip_ProtossTutorial01_Init();
     libSCPL_gt_GameTip_ProtossTutorial02_Init();
     libSCPL_gt_GameTip_ProtossTutorial03_Init();
     libSCPL_gt_GameTip_ProtossTutorial04_Init();
     libSCPL_gt_GameTip_ProtossMothershipCore_Init();
+    libSCPL_gt_GameTip_ProtossGatewayTwo_Init();
+    libSCPL_gt_GameTip_ProtossGatewayTwoWarpgate_Init();
+    libSCPL_gt_GameTip_ProtossRobotics_Init();
     libSCPL_gt_GameTip_ProtossRoboticsUnit_Init();
     libSCPL_gt_GameTip_ProtossWarpInSlow_Init();
     libSCPL_gt_GameTip_ZergTutorial01_Init();
