@@ -6,12 +6,20 @@ bool Pir_AbilityIsTerranAddon (string abil) {
 			(abil == "BarracksTechLabMorphUCB") ||	(abil == "FactoryTechLabMorphUCB") ||	(abil == "StarportTechLabMorphUCB"));
 }
 
-void Pir_UCBTerranAddonTest (unit u, string abil, int player){
+void Pir_UCBTerranAddonTest (unitgroup ug, string abil, int player){
 
-	DataTableSetUnit(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestUnit"), u);
+	DataTableSetUnitGroup(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestUnits"), ug);
 	DataTableSetInt(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestPlayer"), player);
 	DataTableSetString(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestAbility"), abil);
     TriggerSendEvent("GenericEventTerranAddonTest");
+}
+
+void Pir_UCBMorphCommand (unitgroup ug, order o, int player){
+
+	DataTableSetUnitGroup(false, TriggerEventParamName("GenericEventMorphCommand", "TestUnits"), ug);
+	DataTableSetOrder(false, TriggerEventParamName("GenericEventMorphCommand", "TestOrder"), o);
+	DataTableSetInt(false, TriggerEventParamName("GenericEventMorphCommand", "TestPlayer"), player);
+    TriggerSendEvent("GenericEventMorphCommand");
 }
 
 unitgroup Pir_WorkerGroupNotHarvestingGas (unitgroup ug) {

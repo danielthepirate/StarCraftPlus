@@ -110,7 +110,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 			redirAbil = orderdata.realAbilIndex;
 			OrderSetAbilityCommand (o, redirAbil);
 			
-			Pir_UCBTerranAddonTest (u, abil, player);
+			Pir_UCBTerranAddonTest (ug, abil, player);
 		}
 	}
 
@@ -151,11 +151,12 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	else if((AbilityClass(abil) == c_classIdCAbilMorph) && (abilCmdIndex != c_abilMorphCmdCancel)){
 		
 		UnitIssueOrder(dummy, Order(AbilityCommand(abil, c_abilMorphCmdCancel)), c_orderQueueReplace);
-		Pir_UnitCancelQueue(u);
+		// Pir_UnitCancelQueue(u);
 
 		// Queue cancelling and addon testing occur at u and not ug so let's send the order to u
 		// UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
-		UnitIssueOrder(u, o, c_orderQueueReplace);
+		// UnitIssueOrder(u, o, c_orderQueueReplace);
+		Pir_UCBMorphCommand (ug, o, player);
 	}
 	else if(AbilityClass(abil) == c_classIdCAbilEffectTarget){
 		

@@ -21,6 +21,9 @@
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="CountUnitGatewayCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="HaveSupplyDepot">
+        <NodeArray index="Use" Link="CountUnitAlias_SupplyDepotCompleteOnly1988487507TechTreeCheat"/>
+    </CRequirement>
     <CRequirement id="HaveWarpgateActual">
         <EditorCategories value="Race:Protoss,TechType:Unit"/>
         <CanBeSuppressed index="Use" value="0"/>

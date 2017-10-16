@@ -60,6 +60,7 @@ Behavior/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
 Behavior/Name/GameHookBarracksStatusUpdate=Game Hook Barracks Status Update
 Behavior/Name/GameProtossWarpGateTrainCharge=Game Protoss Warp Gate Train Charge
 Behavior/Name/GameProtossWarpGateTrainChargeFinal=Game Protoss Warp Gate Train Charge Final
+Behavior/Name/GameUCBBarracksAddon=Game UCB Barracks Addon
 Behavior/Name/PowerSourceAtNexus=Power Source At Nexus
 Button/Name/AWrpUCB=Archon Merge
 Button/Name/AutoCreepSpreadAutocastToggle=Automatic Spread
@@ -463,6 +464,7 @@ RequirementNode/Tooltip/CountBehaviorGameUCBSpireGreaterSpireCompleteOnly8360787
 RequirementNode/Tooltip/CountBehaviorPowerSourceFastCompleteOnlyAtUnit22563247=Near Warp Gate
 RequirementNode/Tooltip/CountBehaviorPowerSourceFastCompleteOnlyAtUnitNearWarpGateorNexus=Near Nexus
 RequirementNode/Tooltip/CountUnitAlias_BarracksCompleteOnly789532539=Barracks
+RequirementNode/Tooltip/CountUnitAlias_SupplyDepotCompleteOnly1988487507TechTreeCheat=Auto Wall
 RequirementNode/Tooltip/CountUnitBarracksCompleteOnly789532539TechTreeCheat=Barracks
 RequirementNode/Tooltip/CountUnitCommandCenterCompleteOnly1610623376TechTreeCheat=Command Center
 RequirementNode/Tooltip/CountUnitFactoryCompleteOnly96167438TechTreeCheat=Factory

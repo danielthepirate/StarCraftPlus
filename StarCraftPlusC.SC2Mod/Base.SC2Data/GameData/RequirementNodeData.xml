@@ -34,7 +34,6 @@
         <OperandArray value="CountUnitGhostAcademyCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitCommandCenterCompleteOnlyCountUnitAlias_BarracksCompleteOnly789532539">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitCommandCenterCompleteOnly"/>
         <OperandArray value="CountUnitAlias_BarracksCompleteOnly789532539"/>
     </CRequirementAnd>
@@ -327,6 +326,9 @@
     <CRequirementCountUnit id="CountUnitAlias_BarracksCompleteOnly789532539">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Alias_Barracks" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitAlias_SupplyDepotCompleteOnly1988487507TechTreeCheat">
+        <Count Link="Alias_SupplyDepot" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitBanelingNestCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>

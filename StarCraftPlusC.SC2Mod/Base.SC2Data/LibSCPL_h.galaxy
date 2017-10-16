@@ -123,6 +123,7 @@ libSCPL_gs_Map libSCPL_gv_map;
 libSCPL_gs_UI libSCPL_gv_uI;
 
 // Function Declarations
+unit libSCPL_gf_UnitGroupBestUnit (unitgroup lp_unitGroup);
 void libSCPL_gf_DebugSpawnBuildingsZerg (int lp_playerIndex);
 void libSCPL_gf_DebugSpawnBuildingsTerran (int lp_playerIndex);
 unit libSCPL_gf_DebugPlayerUnit (int lp_playerIndex, string lp_unitType);
@@ -252,12 +253,7 @@ void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer, int 
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
-trigger libSCPL_gt__1;
-trigger libSCPL_gt__2;
-trigger libSCPL_gt__3;
-trigger libSCPL_gt__0;
-trigger libSCPL_gt_DebugCommandResourceActualShow;
-trigger libSCPL_gt_DebugCommandResourceActualHide;
+trigger libSCPL_gt_UCBMorphCommand;
 trigger libSCPL_gt_ProgressMorphRefund01;
 trigger libSCPL_gt_ProgressMorphStart01;
 trigger libSCPL_gt_ProgressMorphRefund02;

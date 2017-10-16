@@ -247,7 +247,12 @@
         </RefundFraction>
     </CAbilBuild>
     <CAbilMorph id="BarracksTechLabMorphUCB">
-        <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
         <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BuildTechLabBarracks" State="Restricted" Requirements="HaveBarracksOnGround"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
@@ -290,7 +295,12 @@
         <Activity value="UI/Upgrading"/>
     </CAbilMorph>
     <CAbilMorph id="FactoryReactorMorphUCB">
-        <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
         <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Reactor" State="Restricted" Requirements="HaveFactoryOnGround"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
@@ -422,7 +432,12 @@
         </RefundFraction>
     </CAbilBuild>
     <CAbilMorph id="FactoryTechLabMorphUCB">
-        <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
         <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="TechLabFactory" State="Restricted" Requirements="HaveFactoryOnGround"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
@@ -468,7 +483,12 @@
         <ResourceAmountRequest index="Minerals" value="20"/>
     </CAbilHarvest>
     <CAbilMorph id="StarportReactorMorphUCB">
-        <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
         <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Reactor" State="Restricted" Requirements="HaveStarportOnGround"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
@@ -1114,7 +1134,12 @@
         </RefundFraction>
     </CAbilBuild>
     <CAbilMorph id="StarportTechLabMorphUCB">
-        <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
         <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BuildTechLabStarport" State="Restricted" Requirements="HaveStarportOnGround"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
@@ -1175,7 +1200,7 @@
     </CAbilTrain>
     <CAbilMorph id="AutoWallConstructionComplete" parent="SupplyDepotRaise">
         <Name value="Abil/Name/AutoWallConstructionComplete"/>
-        <InfoArray index="0">
+        <InfoArray index="0" Unit="SupplyDepot" CollideRange="0">
             <SectionArray index="Abils">
                 <EffectArray index="Start" value=""/>
             </SectionArray>
@@ -1431,7 +1456,12 @@
         <ValidatorArray index="0" removed="1"/>
     </CAbilMorph>
     <CAbilMorph id="BarracksReactorMorphUCB">
-        <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
         <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Reactor" State="Restricted" Requirements="HaveBarracksOnGround"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>

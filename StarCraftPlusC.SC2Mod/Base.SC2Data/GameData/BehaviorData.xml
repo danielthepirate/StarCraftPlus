@@ -245,7 +245,6 @@
         <RemoveValidatorArray value="GameUCBBarracksAvailable"/>
         <InitialEffect value="GameUCBBarracksAddonAdd"/>
         <FinalEffect value="GameUCBBarracksAddonFinal"/>
-        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBOverlordOrTransportChargeLink">
         <InfoFlags index="Hidden" value="1"/>

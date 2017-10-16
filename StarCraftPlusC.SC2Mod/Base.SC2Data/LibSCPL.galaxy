@@ -142,6 +142,35 @@ string libSCPL_ge_GenericParameter_Ident (int lp_val) {
 }
 
 // Functions
+unit libSCPL_gf_UnitGroupBestUnit (unitgroup lp_unitGroup) {
+    unitgroup auto57522E2A_g;
+    int auto57522E2A_u;
+
+    // Variable Declarations
+    unitgroup lv_unitGroupActual;
+    unitgroup lv_unitGroupExclude;
+    unit lv_bestUnit;
+    unit lv_unit;
+
+    // Variable Initialization
+    lv_unitGroupActual = UnitGroupEmpty();
+    lv_unitGroupExclude = UnitGroupEmpty();
+
+    // Implementation
+    lv_unitGroupActual = lp_unitGroup;
+    auto57522E2A_g = lv_unitGroupActual;
+    auto57522E2A_u = 1;
+    for ( ; auto57522E2A_u <= UnitGroupCount(auto57522E2A_g, c_unitCountAll) ; auto57522E2A_u += BoolToInt(lv_unit == UnitGroupUnit(auto57522E2A_g, auto57522E2A_u)) ) {
+        lv_unit = UnitGroupUnit(auto57522E2A_g, auto57522E2A_u);
+        if (((libNtve_gf_UnitIsUnderConstruction(lv_unit) == true) || (UnitIsAlive(lv_unit) == false) || (libSCPL_gf_UnitMorphProgress(lv_unit) != 0.0) || ((UnitGetType(lv_unit) == "Barracks") && (UnitHasBehavior2(lv_unit, "GameUCBBarracksAddon") == false)) || ((UnitGetType(lv_unit) == "Factory") && (UnitHasBehavior2(lv_unit, "GameUCBFactoryAddon") == false)) || ((UnitGetType(lv_unit) == "Starport") && (UnitHasBehavior2(lv_unit, "GameUCBStarportAddon") == false)))) {
+            UnitGroupAdd(lv_unitGroupExclude, lv_unit);
+        }
+    }
+    UnitGroupRemoveUnitGroup(lv_unitGroupActual, lv_unitGroupExclude);
+    lv_bestUnit = UnitGroupUnit(lv_unitGroupActual, 1);
+    return lv_bestUnit;
+}
+
 void libSCPL_gf_DebugSpawnBuildingsZerg (int lp_playerIndex) {
     // Variable Declarations
     fixed lv_distance;
@@ -345,6 +374,8 @@ void libSCPL_gf_InitializeSpendOverTime () {
 
     // Implementation
     lv_gamePlayers = PlayerGroupActive();
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 
@@ -3183,136 +3214,47 @@ void libSCPL_gt_InitializationPlus_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: 1
+// Trigger: UCB Morph Command
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_UCBMorphCommand_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    string lv_tipPosition;
+    int lv_playerIndex;
+    unitgroup lv_unitGroup;
+    order lv_order;
+    unit lv_bestUnit;
 
     // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    libSCPL_gf_DebugCreateUnitNearBase(1, "SupplyDepot", 6.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt__1_Init () {
-    libSCPL_gt__1 = TriggerCreate("libSCPL_gt__1_Func");
-    TriggerAddEventKeyPressed(libSCPL_gt__1, c_playerAny, c_keyNumPad1, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: 2
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_subgroup;
-    int lv_playerindex;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
+    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName("GenericEventMorphCommand", "TestPlayer"));
+    lv_unitGroup = DataTableGetUnitGroup(false, TriggerEventParamName("GenericEventMorphCommand", "TestUnits"));
+    lv_order = DataTableGetOrder(false, TriggerEventParamName("GenericEventMorphCommand", "TestOrder"));
+    lv_bestUnit = libSCPL_gf_UnitGroupBestUnit(lv_unitGroup);
+    if ((OrderGetAbilityCommand(lv_order) == AbilityCommand("ArchonWarp", 0))) {
+        UnitGroupIssueOrder(lv_unitGroup, lv_order, c_orderQueueReplace);
         return true;
     }
-
-    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
-    libSCPL_gf_GameTipCreateInstance("GlobalEconomyVespene", 1);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt__2_Init () {
-    libSCPL_gt__2 = TriggerCreate("libSCPL_gt__2_Func");
-    TriggerAddEventKeyPressed(libSCPL_gt__2, c_playerAny, c_keyNumPad2, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: 3
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitKill(libSCPL_gf_DebugSelectedUnit(1));
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt__3_Init () {
-    libSCPL_gt__3 = TriggerCreate("libSCPL_gt__3_Func");
-    TriggerAddEventKeyPressed(libSCPL_gt__3, c_playerAny, c_keyNumPad3, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: 0
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
-        GameSetGlobalTimeScale(20.0);
-    }
-    else {
-        GameSetGlobalTimeScale(1.0);
+    if ((UnitIsAlive(lv_bestUnit) == true)) {
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, lv_order, c_orderQueueReplace);
     }
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt__0_Init () {
-    libSCPL_gt__0 = TriggerCreate("libSCPL_gt__0_Func");
-    TriggerAddEventKeyPressed(libSCPL_gt__0, c_playerAny, c_keyNumPad0, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DebugCommand ResourceActual Show
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_DebugCommandResourceActualShow_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeMinerals, true);
-    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeVespene, true);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_DebugCommandResourceActualShow_Init () {
-    libSCPL_gt_DebugCommandResourceActualShow = TriggerCreate("libSCPL_gt_DebugCommandResourceActualShow_Func");
-    TriggerAddEventChatMessage(libSCPL_gt_DebugCommandResourceActualShow, c_playerAny, "db r show", true);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DebugCommand ResourceActual Hide
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_DebugCommandResourceActualHide_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeMinerals, false);
-    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeVespene, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_DebugCommandResourceActualHide_Init () {
-    libSCPL_gt_DebugCommandResourceActualHide = TriggerCreate("libSCPL_gt_DebugCommandResourceActualHide_Func");
-    TriggerAddEventChatMessage(libSCPL_gt_DebugCommandResourceActualHide, c_playerAny, "db r hide", true);
+void libSCPL_gt_UCBMorphCommand_Init () {
+    libSCPL_gt_UCBMorphCommand = TriggerCreate("libSCPL_gt_UCBMorphCommand_Func");
+    TriggerAddEventGeneric(libSCPL_gt_UCBMorphCommand, "GenericEventMorphCommand");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8153,12 +8095,14 @@ void libSCPL_gt_PlayerAutoWallUnitCreated_Init () {
 bool libSCPL_gt_UCBAddonTest_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_playerIndex;
+    unitgroup lv_unitGroup;
     unit lv_testUnit;
     string lv_testAbility;
     unitgroup lv_addonGroup;
     order lv_addonOrder;
 
     // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
     lv_testAbility = "";
     lv_addonGroup = UnitGroupEmpty();
 
@@ -8167,9 +8111,11 @@ bool libSCPL_gt_UCBAddonTest_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    Wait(0.0, c_timeGame);
     lv_playerIndex = DataTableGetInt(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestPlayer"));
-    lv_testUnit = DataTableGetUnit(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestUnit"));
+    lv_unitGroup = DataTableGetUnitGroup(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestUnits"));
     lv_testAbility = DataTableGetString(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestAbility"));
+    lv_testUnit = libSCPL_gf_UnitGroupBestUnit(lv_unitGroup);
     if (((UnitOrderHasAbil(lv_testUnit, "BarracksAddOns") == true) || (UnitOrderHasAbil(lv_testUnit, "FactoryAddOns") == true) || (UnitOrderHasAbil(lv_testUnit, "StarportAddOns") == true))) {
         return true;
     }
@@ -11636,12 +11582,7 @@ void libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init () {
 
 void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
-    libSCPL_gt__1_Init();
-    libSCPL_gt__2_Init();
-    libSCPL_gt__3_Init();
-    libSCPL_gt__0_Init();
-    libSCPL_gt_DebugCommandResourceActualShow_Init();
-    libSCPL_gt_DebugCommandResourceActualHide_Init();
+    libSCPL_gt_UCBMorphCommand_Init();
     libSCPL_gt_ProgressMorphRefund01_Init();
     libSCPL_gt_ProgressMorphStart01_Init();
     libSCPL_gt_ProgressMorphRefund02_Init();
