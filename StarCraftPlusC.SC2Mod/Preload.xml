@@ -45,8 +45,6 @@
 <Unit id="FusionCore"/>
 <Unit id="SCV"/>
 <Unit id="Pylon"/>
-<Unit id="Gateway"/>
-<Unit id="CyberneticsCore"/>
 <Unit id="Probe"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>
@@ -67,6 +65,7 @@
 <Unit id="Mutalisk"/>
 <Unit id="PlanetaryFortress"/>
 <Unit id="OrbitalCommand"/>
+<Unit id="WarpGate"/>
 <Unit id="CreepTumorBurrowed"/>
 <Unit id="Adept"/>
 <Unit id="LurkerDenMP"/>

@@ -1044,7 +1044,7 @@ void libSCPL_gf_WarpGatesLowestCooldownTransfer (int lp_playerIndex) {
     }
     PlayerAddChargeRegenRemaining(lp_playerIndex, "WarpGateTrain", lv_cooldownRemainingLowest);
     UnitBehaviorAdd(lv_warpGateNextAvailable, "GameProtossWarpGateTrainChargeFinal", lv_warpGateNextAvailable, 1);
-    UnitBehaviorSetDuration(lv_warpGateNextAvailable, "GameProtossWarpGateTrainCharge", lv_cooldownRemainingLowest);
+    UnitBehaviorSetDuration(lv_warpGateNextAvailable, "GameProtossWarpGateTrainChargeFinal", lv_cooldownRemainingLowest);
 }
 
 void libSCPL_gf_UnitStatusEvaluateProgressBar (unit lp_statusUnit) {
@@ -2728,6 +2728,28 @@ void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_player
     }
 }
 
+void libSCPL_gf_ControlGroupUnitsUpdateFromUnit (unit lp_unit) {
+    int auto7EAB1379_ae;
+    int auto7EAB1379_ai;
+
+    // Variable Declarations
+    int lv_playerIndex;
+    int lv_controlGroupIndex;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_playerIndex = UnitGetOwner(lp_unit);
+    auto7EAB1379_ae = 28;
+    auto7EAB1379_ai = 1;
+    lv_controlGroupIndex = 21;
+    for ( ; ( (auto7EAB1379_ai >= 0 && lv_controlGroupIndex <= auto7EAB1379_ae) || (auto7EAB1379_ai <= 0 && lv_controlGroupIndex >= auto7EAB1379_ae) ) ; lv_controlGroupIndex += auto7EAB1379_ai ) {
+        if ((UnitGetCustomValue(lp_unit, lv_controlGroupIndex) == 1)) {
+            libSCPL_gf_ControlGroupUnitsUpdate((lv_controlGroupIndex - 20), lv_playerIndex);
+        }
+    }
+}
+
 string libSCPL_gf_ControlGroupUnitsGetPriorityType (unitgroup lp_controlGroup) {
     unitgroup auto634AEBFD_g;
     int auto634AEBFD_u;
@@ -3276,8 +3298,7 @@ bool libSCPL_gt__1_Func (bool testConds, bool runActions) {
     }
 
     libSCPL_gf_DebugCreateUnitNearBase(1, "Pylon", 6.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "Gateway", 6.0);
-    libSCPL_gf_DebugCreateUnitNearBase(1, "CyberneticsCore", 6.0);
+    libSCPL_gf_DebugCreateUnitNearBase(1, "WarpGate", 6.0);
     return true;
 }
 
@@ -3303,6 +3324,7 @@ bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
     }
 
     libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
+    libNtve_gf_SetUpgradeLevelForPlayer(1, "WarpGateResearch", 1);
     return true;
 }
 
@@ -3328,9 +3350,7 @@ bool libSCPL_gt__3_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lv_selectUnit = libSCPL_gf_DebugSelectedUnit(1);
-    UnitIssueOrder(lv_selectUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
-    libPPRL_gf_DebugPoint2(UnitGetPosition(lv_bestUnit), 1.0);
+    UnitKill(libSCPL_gf_DebugSelectedUnit(1));
     return true;
 }
 
@@ -11485,6 +11505,7 @@ bool libSCPL_gt_ControlGroupSelect_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_playerIndex;
     int lv_controlGroupIndex;
+    point lv_cameraPoint;
     int lv_n;
 
     // Variable Initialization
@@ -11507,7 +11528,8 @@ bool libSCPL_gt_ControlGroupSelect_Func (bool testConds, bool runActions) {
     libSCPL_gf_GameTipCreateControlGroup("GlobalControlGroupSelected", lv_controlGroupIndex, lv_playerIndex);
     if ((TimerGetRemaining(libSCPL_gv_player[lv_playerIndex].lv_controlGroupJumpTimer[lv_controlGroupIndex]) > 0.0)) {
         if ((UnitGroupCount(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], c_unitCountAlive) > 0)) {
-            CameraPan(lv_playerIndex, UnitGroupCenterOfGroup(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex]), 0.0, -1, 10.0, false);
+            lv_cameraPoint = UnitGetPosition(UnitGroupClosestToPoint(libSCPL_gv_player[lv_playerIndex].lv_controlGroup[lv_controlGroupIndex], CameraGetTarget(lv_playerIndex)));
+            CameraPan(lv_playerIndex, lv_cameraPoint, 0.0, -1, 10.0, false);
         }
     }
     else {
@@ -11525,9 +11547,6 @@ void libSCPL_gt_ControlGroupSelect_Init () {
 // Trigger: Control Group Unit Death
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ControlGroupUnitDeath_Func (bool testConds, bool runActions) {
-    int autoEACE9E46_ae;
-    int autoEACE9E46_ai;
-
     // Variable Declarations
     unit lv_unit;
     int lv_playerIndex;
@@ -11541,15 +11560,7 @@ bool libSCPL_gt_ControlGroupUnitDeath_Func (bool testConds, bool runActions) {
     }
 
     lv_unit = EventUnit();
-    lv_playerIndex = UnitGetOwner(lv_unit);
-    autoEACE9E46_ae = 28;
-    autoEACE9E46_ai = 1;
-    lv_controlGroupIndex = 21;
-    for ( ; ( (autoEACE9E46_ai >= 0 && lv_controlGroupIndex <= autoEACE9E46_ae) || (autoEACE9E46_ai <= 0 && lv_controlGroupIndex >= autoEACE9E46_ae) ) ; lv_controlGroupIndex += autoEACE9E46_ai ) {
-        if ((UnitGetCustomValue(lv_unit, lv_controlGroupIndex) == 1)) {
-            libSCPL_gf_ControlGroupUnitsUpdate((lv_controlGroupIndex - 20), lv_playerIndex);
-        }
-    }
+    libSCPL_gf_ControlGroupUnitsUpdateFromUnit(lv_unit);
     return true;
 }
 
@@ -11557,6 +11568,36 @@ bool libSCPL_gt_ControlGroupUnitDeath_Func (bool testConds, bool runActions) {
 void libSCPL_gt_ControlGroupUnitDeath_Init () {
     libSCPL_gt_ControlGroupUnitDeath = TriggerCreate("libSCPL_gt_ControlGroupUnitDeath_Func");
     TriggerAddEventUnitDied(libSCPL_gt_ControlGroupUnitDeath, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Group Unit Morph Complete
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ControlGroupUnitMorphComplete_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_ControlGroupUnitsUpdateFromUnit(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ControlGroupUnitMorphComplete_Init () {
+    libSCPL_gt_ControlGroupUnitMorphComplete = TriggerCreate("libSCPL_gt_ControlGroupUnitMorphComplete_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("UpgradeToPlanetaryFortress", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("UpgradeToOrbital", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("MorphToMothership", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("UpgradeToLair", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("UpgradeToHive", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("UpgradeToGreaterSpire", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("UpgradeToLurkerDenMP", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("MorphToOverseer", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("MorphToTransportOverlord", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("MorphToRavager", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("MorphToLurker", 0), c_abilMorphStageUnitEnd, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ControlGroupUnitMorphComplete, null, AbilityCommand("MorphToBroodLord", 0), c_abilMorphStageUnitEnd, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11880,6 +11921,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ControlGroupAdd_Init();
     libSCPL_gt_ControlGroupSelect_Init();
     libSCPL_gt_ControlGroupUnitDeath_Init();
+    libSCPL_gt_ControlGroupUnitMorphComplete_Init();
     libSCPL_gt_ControlGroupArchon_Init();
     libSCPL_gt_ControlGroupBaneling_Init();
     libSCPL_gt_ControlGroupBanelingFinish_Init();

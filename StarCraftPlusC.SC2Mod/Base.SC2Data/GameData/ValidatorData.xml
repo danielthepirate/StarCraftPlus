@@ -463,7 +463,7 @@
         <AbilLink value="SCVHarvest"/>
         <AbilCmdIndex value="1"/>
     </CValidatorUnitOrderQueue>
-    <CValidatorLocationEnumArea id="SupplyDepotLowerEnemyEnumerate">
+    <CValidatorLocationEnumArea id="AutoWallNoEnemiesNearby">
         <WhichLocation Value="OriginUnit"/>
         <AreaArray Radius="2.5"/>
         <Compare value="Eq"/>
@@ -471,24 +471,9 @@
         <LaunchLocation Value="OriginUnit"/>
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Dead,Hidden"/>
     </CValidatorLocationEnumArea>
-    <CValidatorLocationEnumArea id="SupplyDepotRaiseAllyEnumerate">
-        <WhichLocation Value="OriginUnit"/>
-        <AreaArray Radius="2.5"/>
-        <Compare value="Eq"/>
-        <SearchFlags index="ExtendByUnitRadius" value="1"/>
-        <LaunchLocation Value="OriginUnit"/>
-        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Hidden"/>
-    </CValidatorLocationEnumArea>
-    <CValidatorLocationEnumArea id="SupplyDepotRaiseEnemyEnumerate">
-        <WhichLocation Value="OriginUnit"/>
-        <AreaArray Radius="2.5"/>
-        <SearchFlags index="ExtendByUnitRadius" value="1"/>
-        <LaunchLocation Value="OriginUnit"/>
-        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Hidden"/>
-    </CValidatorLocationEnumArea>
     <CValidatorCombine id="SupplyDepotRaiseNot">
         <Type value="And"/>
-        <CombineArray value="SupplyDepotLowerEnemyEnumerate"/>
+        <CombineArray value="AutoWallNoEnemiesNearby"/>
         <Negate value="1"/>
     </CValidatorCombine>
     <CValidatorCombine id="SupplyDepotRaiseOr">

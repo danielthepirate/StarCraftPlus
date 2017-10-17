@@ -1241,6 +1241,8 @@
         <On index="87" Terms="ActorCreation; PlayerHasReward SupplyDepotSkin" Target="" Send="AnimBracketStop ::GL_BSD Instant"/>
         <On index="88" removed="1"/>
         <On index="89" removed="1"/>
+        <On index="90" removed="1"/>
+        <On index="91" removed="1"/>
         <CustomUnitStatusOffset value="0,60"/>
         <CustomUnitStatusAttachment value="Ref_Origin"/>
         <HighlightTooltip value="Unit/Name/SupplyDepotConstructor"/>

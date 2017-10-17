@@ -13,6 +13,13 @@
         <BuffFlags index="RefreshStack" value="1"/>
         <Duration value="0.0625"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallForceBehavior">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <Modification>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AutoWallForceField">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
@@ -148,6 +155,7 @@
     <CBehaviorBuff id="GameProtossWarpGateTrainChargeFinal">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="-1"/>
+        <FinalEffect value="DoNothing"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameResourceMarkerMinerals">
         <InfoFlags index="Hidden" value="1"/>
@@ -504,7 +512,7 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
         <Requirements value="HasNexusNearby"/>
         <PowerLevel value="2"/>
-        <Radius value="13"/>
+        <Radius value="12.5"/>
         <PowerLink value="PowerSource"/>
         <CliffLevelFlags index="Higher" value="0"/>
     </CBehaviorPowerSource>

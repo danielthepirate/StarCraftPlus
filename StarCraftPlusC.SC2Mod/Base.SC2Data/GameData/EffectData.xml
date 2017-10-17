@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CEffectApplyBehavior id="AutoWallForceBehavior">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="AutoWallForceSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallForceStop"/>
+        <EffectArray value="AutoWallForce"/>
+        <EffectArray value="AutoWallForceBehavior"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="AutoWallForceStop">
+        <EditorCategories value=""/>
+        <Abil value="stop"/>
+    </CEffectIssueOrder>
     <CEffectIssueOrder id="UCBAutoCreepSpreadToggleOff">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
@@ -32,7 +45,7 @@
     <CEffectEnumArea id="AutoWallForceField">
         <EditorCategories value=""/>
         <SearchFilters value="Ground;Self,Structure,Missile,UnderConstruction,Dead,Hidden"/>
-        <AreaArray RectangleWidth="2" RectangleHeight="2" Effect="AutoWallForce"/>
+        <AreaArray RectangleWidth="2" RectangleHeight="2" Effect="AutoWallForceSet"/>
     </CEffectEnumArea>
     <CEffectIssueOrder id="AutoWallConstructionComplete">
         <EditorCategories value=""/>
@@ -92,6 +105,7 @@
         <EditorCategories value=""/>
         <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1.5" Effect="AutoWallLowerSearchSet"/>
+        <ValidatorArray value="AutoWallNoEnemiesNearby"/>
     </CEffectEnumArea>
     <CEffectSet id="AutoWallManualRaiseSearchSet">
         <EditorCategories value=""/>
