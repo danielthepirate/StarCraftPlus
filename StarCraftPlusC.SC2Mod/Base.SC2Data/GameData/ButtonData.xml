@@ -2317,6 +2317,13 @@
     <CButton id="Queen">
         <HotkeyAlias value=""/>
     </CButton>
+    <CButton id="QueenUCB">
+        <Icon value="Assets\Textures\btn-unit-zerg-queen.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-queen.dds"/>
+        <Hotkey value="Button/Hotkey/QueenUCB"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+    </CButton>
     <CButton id="QueenMPInfestCommandCenter">
         <HotkeyAlias value=""/>
     </CButton>
@@ -2606,6 +2613,14 @@
     <CButton id="Stop">
         <HotkeyAlias value=""/>
     </CButton>
+    <CButton id="StopCarrier">
+        <Icon value="Assets\Textures\btn-command-stop.dds"/>
+        <AlertIcon value="Assets\Textures\btn-command-stop.dds"/>
+        <Hotkey value="Button/Hotkey/StopCarrier"/>
+        <EditorCategories value="Race:Neutral"/>
+        <TintRacially value="1"/>
+        <Universal value="1"/>
+    </CButton>
     <CButton id="StopGenerateCreep">
         <HotkeyAlias value=""/>
     </CButton>
@@ -2861,7 +2876,6 @@
         <AlertName value="Button/Name/LurkerMPUCB"/>
         <AlertTooltip value="Button/Tooltip/LurkerMPUCB"/>
         <Hotkey value="Button/Hotkey/LurkerMPUCB"/>
-        <HotkeyAlias value=""/>
     </CButton>
     <CButton id="MPOdin">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>

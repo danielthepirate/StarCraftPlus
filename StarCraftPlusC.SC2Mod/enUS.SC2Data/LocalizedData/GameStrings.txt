@@ -56,12 +56,8 @@ Abil/Name/UpgradeToPlanetaryFortressUCB=Morph Building (COCE -> Planetary Fortre
 Abil/Name/WarpGateTrainUCB=Train (Warp Gate) UCB
 Actor/AddonIndicator/ReactorPaused=R
 Actor/AddonIndicator/TechLabPaused=T
-Behavior/Name/AutoWallForceBehavior=Auto Wall Force Behavior
 Behavior/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
-Behavior/Name/GameHookBarracksStatusUpdate=Game Hook Barracks Status Update
-Behavior/Name/GameProtossWarpGateTrainCharge=Game Protoss Warp Gate Train Charge
-Behavior/Name/GameProtossWarpGateTrainChargeFinal=Game Protoss Warp Gate Train Charge Final
-Behavior/Name/GameUCBBarracksAddon=Game UCB Barracks Addon
+Behavior/Name/GameResourceMarkerVespene=Game Resource Marker Vespene
 Behavior/Name/PowerSourceAtNexus=Power Source At Nexus
 Button/Name/AWrpUCB=Archon Merge
 Button/Name/AutoCreepSpreadAutocastToggle=Automatic Spread
@@ -91,6 +87,7 @@ Button/Name/MorphtoOverlordTransportUBC=Mutate Ventral Sacs
 Button/Name/MutateintoLurkerDenUCB=Mutate into Lurker Den
 Button/Name/NukeArmUCB=Arm Silo with Nuke
 Button/Name/OverlordEnhancedCreepGrowthAura=Metastatic Aura
+Button/Name/QueenUCB=Birth Queen
 Button/Name/RavagerUCB=Morph to Ravager
 Button/Name/ReactoStarport=Build Starport Reactor
 Button/Name/ReactorBarracks=Build Barracks Reactor
@@ -98,6 +95,7 @@ Button/Name/ReactorFactory=Build Factory Reactor
 Button/Name/ResearchComplete=
 Button/Name/ScanUCB=Scanner Sweep
 Button/Name/SpawnLarvaUCB=Auto Spawn Larvae Toggle
+Button/Name/StopCarrier=Stop
 Button/Name/SummonNydusWormUCB=Summon Nydus Worm
 Button/Name/SupplyDepot=Build Auto Wall
 Button/Name/SupplyDropUCB=Calldown: Extra Supplies
@@ -157,6 +155,7 @@ Button/Tooltip/ProtossGroundArmorLevel2=Further upgrades the armor of Protoss gr
 Button/Tooltip/ProtossGroundArmorLevel3=Maximizes the armor of Protoss ground units and structures.
 Button/Tooltip/Pylon=Creates power for nearby structures.<n/>Size of power field doubled when placed near a Nexus.
 Button/Tooltip/PylonDummy=Creates power for nearby structures.<n/>Size of power field doubled when placed near a Nexus.
+Button/Tooltip/QueenUCB=Defensive unit. Can use Spawn Larvae, Spawn Creep Tumor, and Transfusion. Moves much faster on creep.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/RavagerUCB=Ranged artillery. Can use Corrosive Bile.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/ReactoStarport=Allows 2 units to be created simultaneously.
 Button/Tooltip/ReactorBarracks=Allows 2 units to be created simultaneously.
@@ -170,6 +169,7 @@ Button/Tooltip/SpawningPool=Contains upgrades for Zerglings.<n/><n/><c val="ffff
 Button/Tooltip/Spire=Contains upgrades for Zerg air units. Can mutate into a Greater Spire.<n/><n/><c val="ffff8a">Enables:</c><n/>- Mutalisks from Larvae<n/>- Corruptors from Larvae<n/><n/><c val="ffff8a">Provides <d ref="Unit,Spire,Food"/> supply.</c>
 Button/Tooltip/Stargate=Warps in Protoss air units.<n/><n/><c val="ffff8a">Enables:</c><n/>- Phoenixes<n/>- Void Rays<n/>- Oracles<n/><n/><c val="ffff8a">Provides <d ref="Unit,Stargate,Food"/> supply.
 Button/Tooltip/Starport=Air-unit production facility. <n/><n/><c val="ffff8a">Enables:</c><n/>- Vikings<n/>- Medivacs<n/>- Liberators<n/><n/><c val="ffff8a">Provides <d ref="Unit,Starport,Food"/> supply.
+Button/Tooltip/StopCarrier=Orders selected units to cancel all orders and stop moving.
 Button/Tooltip/SummonNydusWormUCB=Summons a Nydus Worm at the target location.<n/>Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/SupplyDepot=Fortified Walls.<n/><n/>Auto Walls automatically lower to allow your units to walk over them.
 Button/Tooltip/SupplyDepotConstructor=Provides supply.<n/>Supply allows you to create more units.<n/>Supply Depots can be lowered to allow units to walk over them.

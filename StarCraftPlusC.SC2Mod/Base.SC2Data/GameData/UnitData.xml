@@ -70,7 +70,12 @@
             <LayoutButtons index="11" Face="Stop" Type="AbilCmd" AbilCmd="StopRedirect,Execute" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
-    <CUnit id="Carrier"/>
+    <CUnit id="Carrier">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="StopCarrier" Row="2"/>
+            <LayoutButtons index="7" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="CommandCenter">
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
@@ -367,6 +372,7 @@
         <BehaviorArray Link="GameUCBGlobalRally02ChargeLink"/>
         <CardLayouts index="0">
             <LayoutButtons index="4" Column="1"/>
+            <LayoutButtons index="6" Row="2" Column="0"/>
             <LayoutButtons index="9" Column="3"/>
         </CardLayouts>
     </CUnit>
@@ -381,6 +387,7 @@
         <BehaviorArray Link="GameUCBGlobalRally01ChargeLink"/>
         <BehaviorArray Link="GameUCBGlobalRally02ChargeLink"/>
         <CardLayouts index="0">
+            <LayoutButtons index="5" Row="2" Column="0"/>
             <LayoutButtons index="7" Column="3"/>
         </CardLayouts>
     </CUnit>
@@ -443,6 +450,7 @@
         <BehaviorArray Link="GameUCBGlobalRally02ChargeLink"/>
         <CardLayouts index="0">
             <LayoutButtons index="4" Column="1"/>
+            <LayoutButtons index="7" Row="2" Column="0"/>
             <LayoutButtons index="9" Column="3"/>
         </CardLayouts>
     </CUnit>
@@ -1139,7 +1147,7 @@
             <!-- <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="0" Column="0"/> -->
             <LayoutButtons index="0" Face="Drone" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train1" Row="0" Column="0"/>
             <LayoutButtons index="1" Face="Overlord" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train3" Row="0" Column="1"/>
-            <LayoutButtons index="2" Face="Queen" Type="AbilCmd" AbilCmd="TrainQueen,Train1" Row="0" Column="2"/>
+            <LayoutButtons index="2" Face="QueenUCB" Type="AbilCmd" AbilCmd="TrainQueen,Train1" Row="0" Column="2"/>
             <LayoutButtons index="3" Face="Mutalisk" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train5" Row="1" Column="1"/>
             <LayoutButtons index="4" Face="Zergling" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train2" Row="0" Column="3"/>
             <LayoutButtons index="5" Face="Infestor" Type="AbilCmd" AbilCmd="LarvaTrainDummyRedirect,Train11" Row="1" Column="3"/>

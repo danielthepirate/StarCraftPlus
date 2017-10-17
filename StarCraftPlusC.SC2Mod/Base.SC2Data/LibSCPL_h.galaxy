@@ -65,6 +65,7 @@ struct libSCPL_gs_Constant {
     fixed lv_harvesterIncomeMineralsRich;
     fixed lv_harvesterIncomeMineralsMULE;
     fixed lv_harvesterIncomeVespene;
+    int lv_harvesterAutoCap;
 };
 
 struct libSCPL_gs_Player {
@@ -231,9 +232,14 @@ void libSCPL_gf_TriggerEventRegisterUnitDies (trigger lp_trigger, unit lp_unit);
 void libSCPL_gf_TriggerEventRegisterDialogItemClicked (trigger lp_trigger, int lp_dialogItem);
 void libSCPL_gf_DebugTextTag (point lp_point, string lp_string, fixed lp_duration);
 unitgroup libSCPL_gf_MapVespeneGeysers ();
+int libSCPL_gf_PlayerWorkerCount (int lp_playerIndex);
 unit libSCPL_gf_PlayerTownHallClosest (point lp_point, int lp_playerIndex);
 int libSCPL_gf_PlayerTownHallSaturationCount (unit lp_townHall, int lp_playerIndex);
 int libSCPL_gf_PlayerTownHallWorkerCount (unit lp_townHall, int lp_playerIndex);
+int libSCPL_gf_PlayerTownHallVespeneTappedCount (unit lp_townHall, int lp_playerIndex);
+unitgroup libSCPL_gf_PlayerTownHallVespeneTapped (unit lp_townHall, int lp_playerIndex);
+int libSCPL_gf_PlayerTownHallWorkerVespeneCount (unit lp_townHall, int lp_playerIndex);
+int libSCPL_gf_PlayerTownHallWorkerVespenePERGEYSER (unit lp_geyser, int lp_playerIndex);
 int libSCPL_gf_PlayerTownHallWorkerQueue (unit lp_townHall, int lp_playerIndex, bool lp_includeCocoons);
 unitgroup libSCPL_gf_PlayerHarvestableMinerals (int lp_playerIndex);
 unitgroup libSCPL_gf_PlayerHarvestableGas (int lp_playerIndex);
@@ -255,10 +261,6 @@ void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer, int 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
 trigger libSCPL_gt_UCBMorphCommand;
-trigger libSCPL_gt__1;
-trigger libSCPL_gt__2;
-trigger libSCPL_gt__3;
-trigger libSCPL_gt__0;
 trigger libSCPL_gt_ProgressMorphRefund01;
 trigger libSCPL_gt_ProgressMorphStart01;
 trigger libSCPL_gt_ProgressMorphRefund02;
@@ -277,6 +279,7 @@ trigger libSCPL_gt_ProgressBuildingSCVResume;
 trigger libSCPL_gt_ProgressBuildingSCVRefundUndo;
 trigger libSCPL_gt_ProgressBuildingCancel;
 trigger libSCPL_gt_ProgressUnitStartRefund;
+trigger libSCPL_gt_ProgressUnitInterceptorAdjustment;
 trigger libSCPL_gt_ProgressUnitStartRefundTerranDummy;
 trigger libSCPL_gt_ProgressUnitStart;
 trigger libSCPL_gt_ProgressProtossUnitStart;
@@ -315,7 +318,8 @@ trigger libSCPL_gt_AutoWorkerProductionCheckMorphConstructionZerg;
 trigger libSCPL_gt_AutoWorkerProductionCheckTownHallUpgrade;
 trigger libSCPL_gt_AutoWorkerProductionCheckTownHallLand;
 trigger libSCPL_gt_AutoWorkerProductionCheckExpansion;
-trigger libSCPL_gt_AutoWorkerGatherVespene;
+trigger libSCPL_gt_AutoWorkerVespeneTappedTransfer;
+trigger libSCPL_gt_AutoWorkerVespeneAvailableCheck;
 trigger libSCPL_gt_AutoWorkerSetHarvestState;
 trigger libSCPL_gt_AutoWorkerSetHarvestStateNone;
 trigger libSCPL_gt_AutoWorkerSetConstructionState;
