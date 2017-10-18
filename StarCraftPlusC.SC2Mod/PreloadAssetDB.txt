@@ -4590,12 +4590,16 @@ id=GreaterSpireUCB
 asset=Assets\Textures\btn-building-zerg-greaterspire.dds
 id=HiveUCB
 asset=Assets\Textures\btn-building-zerg-hive.dds
+id=QueenUCB
+asset=Assets\Textures\btn-unit-zerg-queen.dds
 id=ReactorBarracks
 asset=Assets\Textures\btn-building-terran-barracks-reactor.dds
 id=ReactorFactory
 asset=Assets\Textures\btn-building-terran-factory-reactor.dds
 id=ReactoStarport
 asset=Assets\Textures\btn-building-terran-starport-reactor.dds
+id=StopCarrier
+asset=Assets\Textures\btn-command-stop.dds
 id=TechLabBarracksUCB
 asset=Assets\Textures\btn-building-terran-barracks-techlab.dds
 id=TechLabFactoryUCB
@@ -4628,10 +4632,6 @@ id=ResearchComplete
 asset=Assets\Textures\btn-blank.dds
 id=UCBUpgradeToPlanetaryFortress
 asset=Assets\Textures\btn-building-terran-planetaryfortress.dds
-id=QueenUCB
-asset=Assets\Textures\btn-unit-zerg-queen.dds
-id=StopCarrier
-asset=Assets\Textures\btn-command-stop.dds
 
 [Conversation]
 id=AxiomHintTips

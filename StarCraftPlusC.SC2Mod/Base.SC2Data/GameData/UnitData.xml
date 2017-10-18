@@ -824,7 +824,7 @@
             <LayoutButtons Face="ResearchExtendedThermalLance" Type="Passive" Row="2" Column="1"/>
             <LayoutButtons Face="AnionPulseCrystals" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research3" Row="2" Column="2"/>
             <LayoutButtons Face="AnionPulseCrystals" Type="Passive" Row="2" Column="2"/>
-            <LayoutButtons Face="ResearchInterceptorLaunchSpeedUpgrade" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research2" Row="2" Column="3"/>
+            <LayoutButtons Face="ResearchInterceptorLaunchSpeedUpgrade" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research1" Row="2" Column="3"/>
             <LayoutButtons Face="ResearchInterceptorLaunchSpeedUpgrade" Type="Passive" Row="2" Column="3"/>
             <LayoutButtons Face="ResearchPsiStorm" Type="AbilCmd" AbilCmd="TemplarArchivesResearch,Research5" Row="2" Column="4"/>
             <LayoutButtons Face="ResearchPsiStorm" Type="Passive" Row="2" Column="4"/>
