@@ -1628,6 +1628,11 @@
         </InfoArray>
         <Flags index="IgnoreUnitCost" value="1"/>
     </CAbilWarpTrain>
+    <CAbilEffectTarget id="WidowMineAttack">
+        <Cost index="0">
+            <Cooldown TimeUse="25"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilBuild id="ZergBuild">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>

@@ -1440,6 +1440,12 @@
         <CostResource index="Terrazine" value="100"/>
         <CostResource index="Custom" value="50"/>
     </CUnit>
+    <CUnit id="Zealot">
+        <LifeStart value="80"/>
+        <LifeMax value="80"/>
+        <ShieldsStart value="40"/>
+        <ShieldsMax value="40"/>
+    </CUnit>
     <CUnit id="WarpZealot" parent="Zealot">
         <Name value="Unit/Name/WarpZealot"/>
         <Description value="Button/Tooltip/WarpZealot"/>

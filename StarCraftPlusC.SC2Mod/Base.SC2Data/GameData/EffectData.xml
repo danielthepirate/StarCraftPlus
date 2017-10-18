@@ -13,6 +13,13 @@
         <EditorCategories value=""/>
         <Abil value="stop"/>
     </CEffectIssueOrder>
+    <CEffectDamage id="OracleWeaponDamage">
+        <AttributeBonus index="Light" value="15"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectDamage id="RavagerCorrosiveBileDamage">
+        <AttributeBonus index="Structure" value="60"/>
+    </CEffectDamage>
     <CEffectIssueOrder id="UCBAutoCreepSpreadToggleOff">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
@@ -1080,4 +1087,18 @@
         <Abil value="GameGlobalRallyTarget00"/>
         <CmdFlags index="SetAutoCast" value="1"/>
     </CEffectIssueOrder>
+    <CEffectDamage id="VolatileBurstFriendlyBuildingDamage">
+        <Amount value="160"/>
+    </CEffectDamage>
+    <CEffectDamage id="VolatileBurstFriendlyUnitDamage">
+        <AttributeBonus index="Light" value="30"/>
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="VolatileBurstU">
+        <AttributeBonus index="Light" value="30"/>
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="VolatileBurstU2">
+        <Amount value="160"/>
+    </CEffectDamage>
 </Catalog>
