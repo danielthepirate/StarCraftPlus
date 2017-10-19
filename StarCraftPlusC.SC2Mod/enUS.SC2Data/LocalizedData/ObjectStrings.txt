@@ -223,6 +223,7 @@ Behavior/Name/GameProtossWarpGateTrainChargeFinal=Game Protoss Warp Gate Train C
 Behavior/Name/GameResourceMarkerMinerals=Game Resource Marker Minerals
 Behavior/Name/GameResourceMarkerMineralsMULE=Game Resource Marker Minerals MULE
 Behavior/Name/GameResourceMarkerMineralsRich=Game Resource Marker Minerals Rich
+Behavior/Name/GameResourceMarkerVespene=Game Resource Marker Vespene
 Behavior/Name/GameUCBArchonChargeLink=Game UCB Archon Charge Link
 Behavior/Name/GameUCBBarracksAddon=Game UCB Barracks Addon
 Behavior/Name/GameUCBBarracksBusy=Game UCB Barracks Busy

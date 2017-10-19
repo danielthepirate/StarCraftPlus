@@ -1355,7 +1355,6 @@
     <CUnit id="TransportOverlordCocoon">
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="0"/>
-        <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
     </CUnit>
     <CUnit id="TwilightCouncil">
         <DeathTime value="0.5"/>

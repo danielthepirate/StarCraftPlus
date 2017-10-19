@@ -1169,7 +1169,7 @@
             </Charge>
             <Cooldown Link="Abil/UpgradeToPlanetaryFortress"/>
         </Cost>
-        <InfoArray Score="1" Unit="StarportReactor">
+        <InfoArray Score="1" Unit="StarportTechLab">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="25"/>
             </SectionArray>

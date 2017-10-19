@@ -57,7 +57,6 @@ Abil/Name/WarpGateTrainUCB=Train (Warp Gate) UCB
 Actor/AddonIndicator/ReactorPaused=R
 Actor/AddonIndicator/TechLabPaused=T
 Behavior/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
-Behavior/Name/GameResourceMarkerVespene=Game Resource Marker Vespene
 Behavior/Name/PowerSourceAtNexus=Power Source At Nexus
 Button/Name/AWrpUCB=Archon Merge
 Button/Name/AutoCreepSpreadAutocastToggle=Automatic Spread

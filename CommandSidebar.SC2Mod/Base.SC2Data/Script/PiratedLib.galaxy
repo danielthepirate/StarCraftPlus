@@ -14,8 +14,9 @@ void Pir_UCBTerranAddonTest (unitgroup ug, string abil, int player){
     TriggerSendEvent("GenericEventTerranAddonTest");
 }
 
-void Pir_UCBMorphCommand (unitgroup ug, order o, int player){
+void Pir_UCBMorphCommand (unitgroup ug, string abil, order o, int player){
 
+	DataTableSetString(false, TriggerEventParamName("GenericEventMorphCommand", "TestAbility"), abil);
 	DataTableSetUnitGroup(false, TriggerEventParamName("GenericEventMorphCommand", "TestUnits"), ug);
 	DataTableSetOrder(false, TriggerEventParamName("GenericEventMorphCommand", "TestOrder"), o);
 	DataTableSetInt(false, TriggerEventParamName("GenericEventMorphCommand", "TestPlayer"), player);

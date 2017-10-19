@@ -14,12 +14,13 @@
         <Duration value="0.0625"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AutoWallForceBehavior">
+        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="0.0625"/>
+        <Duration value="0.125"/>
         <Modification>
+            <StateFlags index="SuppressCollision" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
-        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AutoWallForceField">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -171,6 +172,7 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="OrderIsGatherOrReturn"/>
         <InitialEffect value="GameResourceMarkerSetVespene"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GameResourceMarkerMineralsRich">
         <InfoFlags index="Hidden" value="1"/>

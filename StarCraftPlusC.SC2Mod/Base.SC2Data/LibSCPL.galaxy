@@ -143,54 +143,6 @@ string libSCPL_ge_GenericParameter_Ident (int lp_val) {
 }
 
 // Functions
-unit libSCPL_gf_UnitGroupBestUnit (unitgroup lp_unitGroup) {
-    unitgroup auto57522E2A_g;
-    int auto57522E2A_u;
-    unitgroup auto3CF2CBB0_g;
-    int auto3CF2CBB0_u;
-
-    // Variable Declarations
-    unitgroup lv_unitGroupActual;
-    unitgroup lv_unitGroupIdle;
-    unitgroup lv_unitGroupExclude;
-    unit lv_bestUnit;
-    unit lv_unit;
-
-    // Variable Initialization
-    lv_unitGroupActual = UnitGroupEmpty();
-    lv_unitGroupIdle = UnitGroupEmpty();
-    lv_unitGroupExclude = UnitGroupEmpty();
-
-    // Implementation
-    lv_unitGroupActual = lp_unitGroup;
-    auto57522E2A_g = lv_unitGroupActual;
-    auto57522E2A_u = 1;
-    for ( ; auto57522E2A_u <= UnitGroupCount(auto57522E2A_g, c_unitCountAll) ; auto57522E2A_u += BoolToInt(lv_unit == UnitGroupUnit(auto57522E2A_g, auto57522E2A_u)) ) {
-        lv_unit = UnitGroupUnit(auto57522E2A_g, auto57522E2A_u);
-        if (((libNtve_gf_UnitIsUnderConstruction(lv_unit) == true) || (UnitIsAlive(lv_unit) == false) || (libSCPL_gf_UnitMorphProgress(lv_unit) != 0.0) || ((UnitGetType(lv_unit) == "Barracks") && (UnitHasBehavior2(lv_unit, "GameUCBBarracksAddon") == false)) || ((UnitGetType(lv_unit) == "Factory") && (UnitHasBehavior2(lv_unit, "GameUCBFactoryAddon") == false)) || ((UnitGetType(lv_unit) == "Starport") && (UnitHasBehavior2(lv_unit, "GameUCBStarportAddon") == false)))) {
-            UnitGroupAdd(lv_unitGroupExclude, lv_unit);
-        }
-    }
-    UnitGroupRemoveUnitGroup(lv_unitGroupActual, lv_unitGroupExclude);
-    lv_unitGroupExclude = UnitGroupEmpty();
-    lv_unitGroupIdle = UnitGroupCopy(lv_unitGroupActual);
-    auto3CF2CBB0_g = lv_unitGroupIdle;
-    auto3CF2CBB0_u = 1;
-    for ( ; auto3CF2CBB0_u <= UnitGroupCount(auto3CF2CBB0_g, c_unitCountAll) ; auto3CF2CBB0_u += BoolToInt(lv_unit == UnitGroupUnit(auto3CF2CBB0_g, auto3CF2CBB0_u)) ) {
-        lv_unit = UnitGroupUnit(auto3CF2CBB0_g, auto3CF2CBB0_u);
-        if ((UnitOrderCount(lv_unit) > 0)) {
-            UnitGroupAdd(lv_unitGroupExclude, lv_unit);
-        }
-    }
-    UnitGroupRemoveUnitGroup(lv_unitGroupIdle, lv_unitGroupExclude);
-    if ((UnitGroupCount(lv_unitGroupIdle, c_unitCountAlive) >= 1)) {
-        lv_bestUnit = UnitGroupUnit(lv_unitGroupIdle, 1);
-        return lv_bestUnit;
-    }
-    lv_bestUnit = UnitGroupUnit(lv_unitGroupActual, 1);
-    return lv_bestUnit;
-}
-
 void libSCPL_gf_DebugSpawnBuildingsZerg (int lp_playerIndex) {
     // Variable Declarations
     fixed lv_distance;
@@ -576,30 +528,9 @@ fixed libSCPL_gf_UnitProtossProgressVespene (unit lp_unit) {
     return lv_progress;
 }
 
-fixed libSCPL_gf_TickIncrementActual (unit lp_parentUnit) {
+fixed libSCPL_gf_TickIncrement (unit lp_parentUnit) {
     // Implementation
-    if ((UnitHasBehavior2(lp_parentUnit, "TimeWarpProduction") == true)) {
-        return libSCPL_gv_constants.lv_spendTickIncrementBoosted;
-    }
-    else {
-        return libSCPL_gv_constants.lv_spendTickIncrement;
-    }
-}
-
-fixed libSCPL_gf_TimeExpectedActual (unit lp_parentUnit, int lp_slot) {
-    // Variable Declarations
-    fixed lv_timeElapsed;
-
-    // Variable Initialization
-
-    // Implementation
-    lv_timeElapsed = UnitQueueItemTime(lp_parentUnit, c_unitQueueTimeElapsed, lp_slot);
-    if ((UnitHasBehavior2(lp_parentUnit, "TimeWarpProduction") == true)) {
-        return UnitQueueItemTime(lp_parentUnit, c_unitQueueTimeElapsed, lp_slot);
-    }
-    else {
-        return UnitQueueItemTime(lp_parentUnit, c_unitQueueTimeElapsed, lp_slot);
-    }
+    return libSCPL_gv_constants.lv_spendTickIncrement;
 }
 
 fixed libSCPL_gf_NormalizeBuildingProgress (fixed lp_value) {
@@ -976,6 +907,54 @@ bool auto_libSCPL_gf_AutoWorkerProductionZergInitial_TriggerFunc (bool testConds
     Wait(0.125, c_timeGame);
     libSCPL_gf_AutoWorkerProductionZerg(lp_townHall, lp_playerIndex, lp_larvaLeftover);
     return true;
+}
+
+unit libSCPL_gf_UnitGroupBestUnit (unitgroup lp_unitGroup) {
+    unitgroup auto57522E2A_g;
+    int auto57522E2A_u;
+    unitgroup auto3CF2CBB0_g;
+    int auto3CF2CBB0_u;
+
+    // Variable Declarations
+    unitgroup lv_unitGroupActual;
+    unitgroup lv_unitGroupIdle;
+    unitgroup lv_unitGroupExclude;
+    unit lv_bestUnit;
+    unit lv_unit;
+
+    // Variable Initialization
+    lv_unitGroupActual = UnitGroupEmpty();
+    lv_unitGroupIdle = UnitGroupEmpty();
+    lv_unitGroupExclude = UnitGroupEmpty();
+
+    // Implementation
+    lv_unitGroupActual = lp_unitGroup;
+    auto57522E2A_g = lv_unitGroupActual;
+    auto57522E2A_u = 1;
+    for ( ; auto57522E2A_u <= UnitGroupCount(auto57522E2A_g, c_unitCountAll) ; auto57522E2A_u += BoolToInt(lv_unit == UnitGroupUnit(auto57522E2A_g, auto57522E2A_u)) ) {
+        lv_unit = UnitGroupUnit(auto57522E2A_g, auto57522E2A_u);
+        if (((libNtve_gf_UnitIsUnderConstruction(lv_unit) == true) || (UnitIsAlive(lv_unit) == false) || (libSCPL_gf_UnitMorphProgress(lv_unit) != 0.0) || ((UnitGetType(lv_unit) == "Barracks") && (UnitHasBehavior2(lv_unit, "GameUCBBarracksAddon") == false)) || ((UnitGetType(lv_unit) == "Factory") && (UnitHasBehavior2(lv_unit, "GameUCBFactoryAddon") == false)) || ((UnitGetType(lv_unit) == "Starport") && (UnitHasBehavior2(lv_unit, "GameUCBStarportAddon") == false)))) {
+            UnitGroupAdd(lv_unitGroupExclude, lv_unit);
+        }
+    }
+    UnitGroupRemoveUnitGroup(lv_unitGroupActual, lv_unitGroupExclude);
+    lv_unitGroupExclude = UnitGroupEmpty();
+    lv_unitGroupIdle = UnitGroupCopy(lv_unitGroupActual);
+    auto3CF2CBB0_g = lv_unitGroupIdle;
+    auto3CF2CBB0_u = 1;
+    for ( ; auto3CF2CBB0_u <= UnitGroupCount(auto3CF2CBB0_g, c_unitCountAll) ; auto3CF2CBB0_u += BoolToInt(lv_unit == UnitGroupUnit(auto3CF2CBB0_g, auto3CF2CBB0_u)) ) {
+        lv_unit = UnitGroupUnit(auto3CF2CBB0_g, auto3CF2CBB0_u);
+        if ((UnitOrderCount(lv_unit) > 0)) {
+            UnitGroupAdd(lv_unitGroupExclude, lv_unit);
+        }
+    }
+    UnitGroupRemoveUnitGroup(lv_unitGroupIdle, lv_unitGroupExclude);
+    if ((UnitGroupCount(lv_unitGroupIdle, c_unitCountAlive) >= 1)) {
+        lv_bestUnit = UnitGroupUnit(lv_unitGroupIdle, 1);
+        return lv_bestUnit;
+    }
+    lv_bestUnit = UnitGroupUnit(lv_unitGroupActual, 1);
+    return lv_bestUnit;
 }
 
 void libSCPL_gf_WarpGateUpdateUI (int lp_playerIndex) {
@@ -3380,54 +3359,6 @@ void libSCPL_gt_InitializationPlus_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: UCB Morph Command
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_UCBMorphCommand_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    unitgroup lv_unitGroup;
-    order lv_order;
-    unit lv_bestUnit;
-
-    // Variable Initialization
-    lv_unitGroup = UnitGroupEmpty();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName("GenericEventMorphCommand", "TestPlayer"));
-    lv_unitGroup = DataTableGetUnitGroup(false, TriggerEventParamName("GenericEventMorphCommand", "TestUnits"));
-    lv_order = DataTableGetOrder(false, TriggerEventParamName("GenericEventMorphCommand", "TestOrder"));
-    lv_bestUnit = libSCPL_gf_UnitGroupBestUnit(lv_unitGroup);
-    if ((OrderGetAbilityCommand(lv_order) == AbilityCommand("ArchonWarp", 0))) {
-        UnitGroupIssueOrder(lv_unitGroup, lv_order, c_orderQueueReplace);
-        return true;
-    }
-    if ((UnitIsAlive(lv_bestUnit) == true)) {
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
-        UnitIssueOrder(lv_bestUnit, lv_order, c_orderQueueReplace);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_UCBMorphCommand_Init () {
-    libSCPL_gt_UCBMorphCommand = TriggerCreate("libSCPL_gt_UCBMorphCommand_Func");
-    TriggerAddEventGeneric(libSCPL_gt_UCBMorphCommand, "GenericEventMorphCommand");
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: Progress Morph Refund 01
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressMorphRefund01_Func (bool testConds, bool runActions) {
@@ -3623,6 +3554,7 @@ bool libSCPL_gt_ProgressMorphStart01_Func (bool testConds, bool runActions) {
         Wait(lv_tickIncrement, c_timeGame);
     }
     libSCPL_gf_ResourceDisplaySpendSubtract(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
+    libSCPL_gf_UnitMorphProgressSet(lv_progressUnit, 0.0);
     if ((lv_progressIsCancelled == true)) {
         lv_tickTotalMinerals *= 0.75;
         lv_tickTotalVespene *= 0.75;
@@ -3822,6 +3754,7 @@ bool libSCPL_gt_ProgressMorphStart02_Func (bool testConds, bool runActions) {
         Wait(lv_tickIncrement, c_timeGame);
     }
     libSCPL_gf_ResourceDisplaySpendSubtract(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
+    libSCPL_gf_UnitMorphProgressSet(lv_progressUnit, 0.0);
     if ((lv_progressIsCancelled == true)) {
         lv_tickTotalMinerals *= 0.75;
         lv_tickTotalVespene *= 0.75;
@@ -3930,9 +3863,9 @@ void libSCPL_gt_ProgressUpgradeRefund_Init () {
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 14));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 15));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 16));
-    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 8));
-    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 9));
-    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 10));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 5));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 6));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 7));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 11));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 12));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("ArmoryResearch", 13));
@@ -3988,6 +3921,7 @@ void libSCPL_gt_ProgressUpgradeRefund_Init () {
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("TwilightCouncilResearch", 2));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("TwilightCouncilResearch", 1));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("TwilightCouncilResearch", 0));
+    TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("DarkShrineResearch", 0));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("evolutionchamberresearch", 3));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("evolutionchamberresearch", 4));
     TriggerAddEventUnitOrder(libSCPL_gt_ProgressUpgradeRefund, null, AbilityCommand("evolutionchamberresearch", 5));
@@ -4583,6 +4517,103 @@ void libSCPL_gt_ProgressBuildingStartRefund_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Progress Building Cancel Refund
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ProgressBuildingCancelRefund_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_parentUnit;
+    string lv_triggeringAbility;
+    string lv_registerName;
+    string lv_progressUnitType;
+    int lv_progressIndex;
+    int lv_costMinerals;
+    int lv_costVespene;
+    fixed lv_costTime;
+
+    // Variable Initialization
+    lv_registerName = "";
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_parentUnit = EventUnit();
+    lv_progressIndex = AbilityCommandGetCommand(EventUnitAbility());
+    lv_triggeringAbility = AbilityCommandGetAbility(EventUnitAbility());
+    lv_registerName = CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, "InfoArray[" + IntToString(lv_progressIndex) + "].Unit", c_playerAny);
+    lv_progressUnitType = (CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, ("InfoArray[" + IntToString(lv_progressIndex) + "].Unit[0]"), c_playerAny));
+    lv_costMinerals = UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals);
+    lv_costVespene = UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene);
+    if ((UnitGetType(EventUnitTargetUnit()) == (lv_registerName))) {
+        return true;
+    }
+    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropMinerals, c_playerPropOperSubtract, lv_costMinerals);
+    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropVespene, c_playerPropOperSubtract, lv_costVespene);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ProgressBuildingCancelRefund_Init () {
+    libSCPL_gt_ProgressBuildingCancelRefund = TriggerCreate("libSCPL_gt_ProgressBuildingCancelRefund_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 1), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 11), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 8), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 2), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 5), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 9), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 15), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 10), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 4), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 6), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 3), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("TerranBuild", 13), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("BarracksAddOns", 1), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("BarracksAddOns", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("FactoryAddOns", 1), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("FactoryAddOns", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("StarportAddOns", 1), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("StarportAddOns", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 2), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 14), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 11), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 5), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 4), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 3), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 7), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 1), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 12), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 13), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 9), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 10), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 6), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 10), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 4), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 2), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 5), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 8), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 9), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 13), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 3), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 14), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 6), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 15), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 7), c_unitAbilStageCancel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Progress Building Start
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressBuildingStart_Func (bool testConds, bool runActions) {
@@ -4985,70 +5016,6 @@ void libSCPL_gt_ProgressBuildingSCVResume_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Progress Building SCV Refund Undo
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ProgressBuildingSCVRefundUndo_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_playerIndex;
-    unit lv_parentUnit;
-    string lv_triggeringAbility;
-    string lv_registerName;
-    string lv_progressUnitType;
-    int lv_progressIndex;
-    int lv_costMinerals;
-    int lv_costVespene;
-    fixed lv_costTime;
-
-    // Variable Initialization
-    lv_registerName = "";
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_playerIndex = EventPlayer();
-    lv_parentUnit = EventUnit();
-    lv_progressIndex = AbilityCommandGetCommand(EventUnitAbility());
-    lv_triggeringAbility = AbilityCommandGetAbility(EventUnitAbility());
-    lv_registerName = CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, "InfoArray[" + IntToString(lv_progressIndex) + "].Unit", c_playerAny);
-    lv_progressUnitType = (CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, ("InfoArray[" + IntToString(lv_progressIndex) + "].Unit[0]"), c_playerAny));
-    lv_costMinerals = UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals);
-    lv_costVespene = UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene);
-    if ((UnitGetType(EventUnitTargetUnit()) == (lv_registerName))) {
-        return true;
-    }
-    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropMinerals, c_playerPropOperSubtract, lv_costMinerals);
-    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropVespene, c_playerPropOperSubtract, lv_costVespene);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ProgressBuildingSCVRefundUndo_Init () {
-    libSCPL_gt_ProgressBuildingSCVRefundUndo = TriggerCreate("libSCPL_gt_ProgressBuildingSCVRefundUndo_Func");
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 1), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 11), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 8), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 2), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 5), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 9), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 15), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 10), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 4), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 0), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 6), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 3), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingSCVRefundUndo, null, AbilityCommand("TerranBuild", 13), c_unitAbilStageCancel, false);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: Progress Building Cancel
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressBuildingCancel_Func (bool testConds, bool runActions) {
@@ -5422,7 +5389,7 @@ bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
                 if ((lv_progressIsCancelled == true)) {
                     break;
                 }
-                Wait(libSCPL_gf_TickIncrementActual(lv_parentUnit), c_timeGame);
+                Wait(libSCPL_gf_TickIncrement(lv_parentUnit), c_timeGame);
             }
             if ((UnitIsAlive(lv_parentUnit) == true)) {
                 libSCPL_gf_PlayerResourcesSubtract(lv_playerIndex, Trunc(lv_tickCostMinerals), Trunc(lv_tickCostVespene));
@@ -5447,11 +5414,11 @@ bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
             libSCPL_gf_UnitStatusPauseProgressBar(lv_parentUnit, lv_parentUnit, lv_progressIndex, true);
             Wait(0.0625, c_timeGame);
             libSCPL_gf_UnitStatusPauseProgressBar(lv_parentUnit, lv_parentUnit, lv_progressIndex, false);
-            Wait((libSCPL_gf_TickIncrementActual(lv_parentUnit) - 0.0625), c_timeGame);
+            Wait((libSCPL_gf_TickIncrement(lv_parentUnit) - 0.0625), c_timeGame);
             continue;
         }
         if (((lv_tick + lv_tickIncrement) >= (lv_progressTime - lv_tickIncrement))) {
-            Wait((libSCPL_gf_TickIncrementActual(lv_parentUnit) - 0.0625), c_timeGame);
+            Wait((libSCPL_gf_TickIncrement(lv_parentUnit) - 0.0625), c_timeGame);
             lv_tick += (lv_tickIncrement - 0.0625);
             lv_expectedTime = UnitQueueItemTime(lv_parentUnit, c_unitQueueTimeElapsed, lv_progressIndex);
             if ((lv_progressIndex == 1) && (lv_tick != lv_expectedTime)) {
@@ -5466,7 +5433,7 @@ bool libSCPL_gt_ProgressUnitStart_Func (bool testConds, bool runActions) {
             }
             continue;
         }
-        Wait(libSCPL_gf_TickIncrementActual(lv_parentUnit), c_timeGame);
+        Wait(libSCPL_gf_TickIncrement(lv_parentUnit), c_timeGame);
     }
     libSCPL_gf_ResourceDisplaySpendSubtract(lv_playerIndex, lv_tickCostBaseMinerals, lv_tickCostBaseVespene);
     if ((lv_progressUnitType == "Baneling")) {
@@ -6567,6 +6534,7 @@ void libSCPL_gt_GlobalRally02ProducerCreatedZerg_Init () {
     TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally02ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 4));
     TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally02ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 11));
     TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally02ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 12));
+    TriggerAddEventUnitOrder(libSCPL_gt_GlobalRally02ProducerCreatedZerg, null, AbilityCommand("LarvaTrain", 2));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7059,6 +7027,42 @@ void libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Init () {
     TriggerEnable(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, false);
     TriggerAddEventUnitCreated(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, null, null, "SpawnLarva");
     TriggerAddEventUnitCreated(libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg, null, null, "QueenSpawnLarva");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Auto Worker Production Check Worker Death
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_AutoWorkerProductionCheckWorkerDeath_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_townHall;
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsAlive(EventUnit()) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_townHall = libSCPL_gf_PlayerTownHallClosest(UnitGetPosition(EventUnit()), lv_playerIndex);
+    libSCPL_gf_AutoWorkerProduction(lv_townHall, lv_playerIndex);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_AutoWorkerProductionCheckWorkerDeath_Init () {
+    libSCPL_gt_AutoWorkerProductionCheckWorkerDeath = TriggerCreate("libSCPL_gt_AutoWorkerProductionCheckWorkerDeath_Func");
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_AutoWorkerProductionCheckWorkerDeath, null, "GameResourceMarkerVespene", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_AutoWorkerProductionCheckWorkerDeath, null, "GameResourceMarkerMinerals", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_AutoWorkerProductionCheckWorkerDeath, null, "GameResourceMarkerMineralsRich", c_unitBehaviorChangeDestroy);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7591,6 +7595,112 @@ bool libSCPL_gt_AutoWorkerIdleHarvestResume_Func (bool testConds, bool runAction
 void libSCPL_gt_AutoWorkerIdleHarvestResume_Init () {
     libSCPL_gt_AutoWorkerIdleHarvestResume = TriggerCreate("libSCPL_gt_AutoWorkerIdleHarvestResume_Func");
     TriggerAddEventUnitBehaviorChange(libSCPL_gt_AutoWorkerIdleHarvestResume, null, "GameWorkerIdle", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Morph Command
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBMorphCommand_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unitgroup lv_unitGroup;
+    order lv_order;
+    unit lv_bestUnit;
+    string lv_testAbility;
+    unitgroup lv_addonGroup;
+    order lv_addonOrder;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+    lv_testAbility = "";
+    lv_addonGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName("GenericEventMorphCommand", "TestPlayer"));
+    lv_unitGroup = DataTableGetUnitGroup(false, TriggerEventParamName("GenericEventMorphCommand", "TestUnits"));
+    lv_testAbility = DataTableGetString(false, TriggerEventParamName("GenericEventMorphCommand", "TestAbility"));
+    lv_order = DataTableGetOrder(false, TriggerEventParamName("GenericEventMorphCommand", "TestOrder"));
+    lv_bestUnit = libSCPL_gf_UnitGroupBestUnit(lv_unitGroup);
+    if ((OrderGetAbilityCommand(lv_order) == AbilityCommand("ArchonWarp", 0))) {
+        UnitGroupIssueOrder(lv_unitGroup, lv_order, c_orderQueueReplace);
+        return true;
+    }
+    if ((UnitIsAlive(lv_bestUnit) == true)) {
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, Order(AbilityCommand("que5CancelToSelection", 0)), c_orderQueueReplace);
+        UnitIssueOrder(lv_bestUnit, lv_order, c_orderQueueReplace);
+    }
+    Wait(0.0, c_timeGame);
+    if (((UnitOrderHasAbil(lv_bestUnit, "BarracksAddOns") == true) || (UnitOrderHasAbil(lv_bestUnit, "FactoryAddOns") == true) || (UnitOrderHasAbil(lv_bestUnit, "StarportAddOns") == true))) {
+        return true;
+    }
+    if ((lv_testAbility == "BarracksReactorMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("BarracksAddOns", 1), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "FactoryReactorMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("FactoryAddOns", 1), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "StarportReactorMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("StarportAddOns", 1), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "BarracksTechLabMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("BarracksAddOns", 0), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "FactoryTechLabMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("FactoryAddOns", 0), Point(0.0, 0.0));
+    }
+    else if ((lv_testAbility == "StarportTechLabMorphUCB")) {
+        lv_addonOrder = OrderTargetingPoint(AbilityCommand("StarportAddOns", 0), Point(0.0, 0.0));
+    }
+    lv_addonGroup = libNtve_gf_ConvertUnitToUnitGroup(lv_bestUnit);
+    UISetTargetingOrder(PlayerGroupSingle(lv_playerIndex), lv_addonGroup, lv_addonOrder, false);
+    libSCPL_gv_player[lv_playerIndex].lv_isInTargetingMode = true;
+    while ((libSCPL_gv_player[lv_playerIndex].lv_isInTargetingMode == true)) {
+        Wait(0.0625, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBMorphCommand_Init () {
+    libSCPL_gt_UCBMorphCommand = TriggerCreate("libSCPL_gt_UCBMorphCommand_Func");
+    TriggerAddEventGeneric(libSCPL_gt_UCBMorphCommand, "GenericEventMorphCommand");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UCB Addon Test End
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_UCBAddonTestEnd_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gv_player[EventPlayer()].lv_isInTargetingMode = false;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_UCBAddonTestEnd_Init () {
+    libSCPL_gt_UCBAddonTestEnd = TriggerCreate("libSCPL_gt_UCBAddonTestEnd_Func");
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("BarracksAddOns", 1), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("BarracksAddOns", 0), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("FactoryAddOns", 1), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("FactoryAddOns", 0), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("StarportAddOns", 1), c_targetModeStateOff);
+    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("StarportAddOns", 0), c_targetModeStateOff);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8355,90 +8465,45 @@ void libSCPL_gt_PlayerAutoWallUnitCreated_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: UCB Addon Test
+// Trigger: UCB Nuke Launch Charge Helper
 //--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_UCBAddonTest_Func (bool testConds, bool runActions) {
+bool libSCPL_gt_UCBNukeLaunchChargeHelper_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_playerIndex;
-    unitgroup lv_unitGroup;
-    unit lv_testUnit;
-    string lv_testAbility;
-    unitgroup lv_addonGroup;
-    order lv_addonOrder;
+    int lv_availableSilos;
+    unitgroup lv_siloUnitsAvailable;
+    unitgroup lv_excludeGroup;
 
     // Variable Initialization
-    lv_unitGroup = UnitGroupEmpty();
-    lv_testAbility = "";
-    lv_addonGroup = UnitGroupEmpty();
+    lv_siloUnitsAvailable = UnitGroupEmpty();
+    lv_excludeGroup = UnitGroupEmpty();
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    Wait(0.0, c_timeGame);
-    lv_playerIndex = DataTableGetInt(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestPlayer"));
-    lv_unitGroup = DataTableGetUnitGroup(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestUnits"));
-    lv_testAbility = DataTableGetString(false, TriggerEventParamName("GenericEventTerranAddonTest", "TestAbility"));
-    lv_testUnit = libSCPL_gf_UnitGroupBestUnit(lv_unitGroup);
-    if (((UnitOrderHasAbil(lv_testUnit, "BarracksAddOns") == true) || (UnitOrderHasAbil(lv_testUnit, "FactoryAddOns") == true) || (UnitOrderHasAbil(lv_testUnit, "StarportAddOns") == true))) {
-        return true;
+    lv_playerIndex = EventPlayer();
+    lv_siloUnitsAvailable = UnitGroup("GhostAcademy", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupLoopBegin(lv_siloUnitsAvailable);
+    for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+        if (((UnitMagazineCount(UnitGroupLoopCurrent(), "ArmSiloWithNuke") == 1) || (UnitOrder(UnitGroupLoopCurrent(), 0) == Order(AbilityCommand("ArmSiloWithNuke", 0))))) {
+            UnitGroupAdd(lv_excludeGroup, UnitGroupLoopCurrent());
+        }
     }
-    if ((lv_testAbility == "BarracksReactorMorphUCB")) {
-        lv_addonOrder = OrderTargetingPoint(AbilityCommand("BarracksAddOns", 1), Point(0.0, 0.0));
-    }
-    else if ((lv_testAbility == "FactoryReactorMorphUCB")) {
-        lv_addonOrder = OrderTargetingPoint(AbilityCommand("FactoryAddOns", 1), Point(0.0, 0.0));
-    }
-    else if ((lv_testAbility == "StarportReactorMorphUCB")) {
-        lv_addonOrder = OrderTargetingPoint(AbilityCommand("StarportAddOns", 1), Point(0.0, 0.0));
-    }
-    else if ((lv_testAbility == "BarracksTechLabMorphUCB")) {
-        lv_addonOrder = OrderTargetingPoint(AbilityCommand("BarracksAddOns", 0), Point(0.0, 0.0));
-    }
-    else if ((lv_testAbility == "FactoryTechLabMorphUCB")) {
-        lv_addonOrder = OrderTargetingPoint(AbilityCommand("FactoryAddOns", 0), Point(0.0, 0.0));
-    }
-    else if ((lv_testAbility == "StarportTechLabMorphUCB")) {
-        lv_addonOrder = OrderTargetingPoint(AbilityCommand("StarportAddOns", 0), Point(0.0, 0.0));
-    }
-    lv_addonGroup = libNtve_gf_ConvertUnitToUnitGroup(lv_testUnit);
-    UISetTargetingOrder(PlayerGroupSingle(lv_playerIndex), lv_addonGroup, lv_addonOrder, false);
-    libSCPL_gv_player[lv_playerIndex].lv_isInTargetingMode = true;
-    while ((libSCPL_gv_player[lv_playerIndex].lv_isInTargetingMode == true)) {
-        Wait(0.0625, c_timeGame);
+    UnitGroupLoopEnd();
+    UnitGroupRemoveUnitGroup(lv_siloUnitsAvailable, lv_excludeGroup);
+    lv_availableSilos = UnitGroupCount(lv_siloUnitsAvailable, c_unitCountAlive);
+    if ((lv_availableSilos > 0)) {
+        PlayerAddChargeUsed(lv_playerIndex, "UCB/GhostAcademy", -1.0);
     }
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void libSCPL_gt_UCBAddonTest_Init () {
-    libSCPL_gt_UCBAddonTest = TriggerCreate("libSCPL_gt_UCBAddonTest_Func");
-    TriggerAddEventGeneric(libSCPL_gt_UCBAddonTest, "GenericEventTerranAddonTest");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: UCB Addon Test End
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_UCBAddonTestEnd_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libSCPL_gv_player[EventPlayer()].lv_isInTargetingMode = false;
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_UCBAddonTestEnd_Init () {
-    libSCPL_gt_UCBAddonTestEnd = TriggerCreate("libSCPL_gt_UCBAddonTestEnd_Func");
-    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("BarracksAddOns", 1), c_targetModeStateOff);
-    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("BarracksAddOns", 0), c_targetModeStateOff);
-    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("FactoryAddOns", 1), c_targetModeStateOff);
-    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("FactoryAddOns", 0), c_targetModeStateOff);
-    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("StarportAddOns", 1), c_targetModeStateOff);
-    TriggerAddEventTargetModeUpdate(libSCPL_gt_UCBAddonTestEnd, c_playerAny, AbilityCommand("StarportAddOns", 0), c_targetModeStateOff);
+void libSCPL_gt_UCBNukeLaunchChargeHelper_Init () {
+    libSCPL_gt_UCBNukeLaunchChargeHelper = TriggerCreate("libSCPL_gt_UCBNukeLaunchChargeHelper_Func");
+    TriggerAddEventPlayerEffectUsed(libSCPL_gt_UCBNukeLaunchChargeHelper, c_playerAny, "NukeDamage");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11868,7 +11933,6 @@ void libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init () {
 
 void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
-    libSCPL_gt_UCBMorphCommand_Init();
     libSCPL_gt_ProgressMorphRefund01_Init();
     libSCPL_gt_ProgressMorphStart01_Init();
     libSCPL_gt_ProgressMorphRefund02_Init();
@@ -11881,10 +11945,10 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ProgressArmamentStartRefund_Init();
     libSCPL_gt_ProgressArmamentStart_Init();
     libSCPL_gt_ProgressBuildingStartRefund_Init();
+    libSCPL_gt_ProgressBuildingCancelRefund_Init();
     libSCPL_gt_ProgressBuildingStart_Init();
     libSCPL_gt_ProgressBuildingSCVStart_Init();
     libSCPL_gt_ProgressBuildingSCVResume_Init();
-    libSCPL_gt_ProgressBuildingSCVRefundUndo_Init();
     libSCPL_gt_ProgressBuildingCancel_Init();
     libSCPL_gt_ProgressUnitStartRefund_Init();
     libSCPL_gt_ProgressUnitInterceptorAdjustment_Init();
@@ -11920,6 +11984,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ControlGroupAutoAddT3Zerg_Init();
     libSCPL_gt_AutoWorkerProductionCheckWorkerSlot_Init();
     libSCPL_gt_AutoWorkerProductionCheckWorkerSlotZerg_Init();
+    libSCPL_gt_AutoWorkerProductionCheckWorkerDeath_Init();
     libSCPL_gt_AutoWorkerProductionCheckVespeneHarvester_Init();
     libSCPL_gt_AutoWorkerProductionCheckVespeneHarvesterZerg_Init();
     libSCPL_gt_AutoWorkerProductionCheckMorphConstructionZerg_Init();
@@ -11932,6 +11997,8 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_AutoWorkerSetHarvestStateNone_Init();
     libSCPL_gt_AutoWorkerSetConstructionState_Init();
     libSCPL_gt_AutoWorkerIdleHarvestResume_Init();
+    libSCPL_gt_UCBMorphCommand_Init();
+    libSCPL_gt_UCBAddonTestEnd_Init();
     libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Init();
     libSCPL_gt_WarpGateResearchUpgradeAllGateways_Init();
     libSCPL_gt_WarpGateResearchGatewayBuilt_Init();
@@ -11956,8 +12023,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_UCBAutoWallToggleOn_Init();
     libSCPL_gt_UCBAutoWallToggleOff_Init();
     libSCPL_gt_PlayerAutoWallUnitCreated_Init();
-    libSCPL_gt_UCBAddonTest_Init();
-    libSCPL_gt_UCBAddonTestEnd_Init();
+    libSCPL_gt_UCBNukeLaunchChargeHelper_Init();
     libSCPL_gt_PlayerZergNydusWormPlacementRedirect_Init();
     libSCPL_gt_AutoCreepTumorLineageParent_Init();
     libSCPL_gt_AutoCreepTumorLineageSpread_Init();
