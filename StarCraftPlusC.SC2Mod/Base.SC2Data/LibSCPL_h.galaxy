@@ -259,6 +259,8 @@ void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer, int 
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
+trigger libSCPL_gt__2;
+trigger libSCPL_gt__0;
 trigger libSCPL_gt_ProgressMorphRefund01;
 trigger libSCPL_gt_ProgressMorphStart01;
 trigger libSCPL_gt_ProgressMorphRefund02;
@@ -272,6 +274,7 @@ trigger libSCPL_gt_ProgressArmamentStartRefund;
 trigger libSCPL_gt_ProgressArmamentStart;
 trigger libSCPL_gt_ProgressBuildingStartRefund;
 trigger libSCPL_gt_ProgressBuildingCancelRefund;
+trigger libSCPL_gt_ProgressBuildingCancelRefundZerg;
 trigger libSCPL_gt_ProgressBuildingStart;
 trigger libSCPL_gt_ProgressBuildingSCVStart;
 trigger libSCPL_gt_ProgressBuildingSCVResume;

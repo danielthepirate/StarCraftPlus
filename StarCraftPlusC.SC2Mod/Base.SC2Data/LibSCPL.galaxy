@@ -346,8 +346,6 @@ void libSCPL_gf_InitializeSpendOverTime () {
 
     // Implementation
     lv_gamePlayers = PlayerGroupActive();
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
-    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 
@@ -3359,6 +3357,55 @@ void libSCPL_gt_InitializationPlus_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: 2
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_subgroup;
+    int lv_playerindex;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__2_Init () {
+    libSCPL_gt__2 = TriggerCreate("libSCPL_gt__2_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__2, c_playerAny, c_keyNumPad2, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 0
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
+        GameSetGlobalTimeScale(20.0);
+    }
+    else {
+        GameSetGlobalTimeScale(1.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt__0_Init () {
+    libSCPL_gt__0 = TriggerCreate("libSCPL_gt__0_Func");
+    TriggerAddEventKeyPressed(libSCPL_gt__0, c_playerAny, c_keyNumPad0, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Progress Morph Refund 01
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_ProgressMorphRefund01_Func (bool testConds, bool runActions) {
@@ -4598,19 +4645,70 @@ void libSCPL_gt_ProgressBuildingCancelRefund_Init () {
     TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 9), c_unitAbilStageCancel, false);
     TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 10), c_unitAbilStageCancel, false);
     TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ProtossBuild", 6), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 10), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 4), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 2), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 0), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 5), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 8), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 9), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 13), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 3), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 14), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 6), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 15), c_unitAbilStageCancel, false);
-    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefund, null, AbilityCommand("ZergBuild", 7), c_unitAbilStageCancel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Progress Building Cancel Refund Zerg
+//--------------------------------------------------------------------------------------------------
+bool libSCPL_gt_ProgressBuildingCancelRefundZerg_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_playerIndex;
+    unit lv_parentUnit;
+    string lv_triggeringAbility;
+    string lv_registerName;
+    string lv_progressUnitType;
+    int lv_progressIndex;
+    int lv_costMinerals;
+    int lv_costVespene;
+    fixed lv_costTime;
+
+    // Variable Initialization
+    lv_registerName = "";
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SidebarDummy") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_playerIndex = EventPlayer();
+    lv_parentUnit = EventUnit();
+    lv_progressIndex = AbilityCommandGetCommand(EventUnitAbility());
+    lv_triggeringAbility = AbilityCommandGetAbility(EventUnitAbility());
+    lv_registerName = CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, "InfoArray[" + IntToString(lv_progressIndex) + "].Unit", c_playerAny);
+    lv_progressUnitType = (CatalogFieldValueGet(c_gameCatalogAbil, lv_triggeringAbility, ("InfoArray[" + IntToString(lv_progressIndex) + "].Unit[0]"), c_playerAny));
+    lv_costMinerals = UnitTypeGetCost(lv_progressUnitType, c_unitCostMinerals);
+    lv_costVespene = UnitTypeGetCost(lv_progressUnitType, c_unitCostVespene);
+    if ((UnitGetPropertyFixed(EventUnit(), c_unitPropLife, c_unitPropCurrent) == 0.0)) {
+        return true;
+    }
+    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropMinerals, c_playerPropOperSubtract, lv_costMinerals);
+    PlayerModifyPropertyFixed(lv_playerIndex, c_playerPropVespene, c_playerPropOperSubtract, lv_costVespene);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSCPL_gt_ProgressBuildingCancelRefundZerg_Init () {
+    libSCPL_gt_ProgressBuildingCancelRefundZerg = TriggerCreate("libSCPL_gt_ProgressBuildingCancelRefundZerg_Func");
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 10), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 4), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 2), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 5), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 8), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 9), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 13), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 3), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 14), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 6), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 15), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libSCPL_gt_ProgressBuildingCancelRefundZerg, null, AbilityCommand("ZergBuild", 7), c_unitAbilStageCancel, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11933,6 +12031,8 @@ void libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init () {
 
 void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
+    libSCPL_gt__2_Init();
+    libSCPL_gt__0_Init();
     libSCPL_gt_ProgressMorphRefund01_Init();
     libSCPL_gt_ProgressMorphStart01_Init();
     libSCPL_gt_ProgressMorphRefund02_Init();
@@ -11946,6 +12046,7 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ProgressArmamentStart_Init();
     libSCPL_gt_ProgressBuildingStartRefund_Init();
     libSCPL_gt_ProgressBuildingCancelRefund_Init();
+    libSCPL_gt_ProgressBuildingCancelRefundZerg_Init();
     libSCPL_gt_ProgressBuildingStart_Init();
     libSCPL_gt_ProgressBuildingSCVStart_Init();
     libSCPL_gt_ProgressBuildingSCVResume_Init();
