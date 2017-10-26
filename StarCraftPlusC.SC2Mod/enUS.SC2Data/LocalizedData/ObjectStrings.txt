@@ -264,6 +264,7 @@ Behavior/Name/GameUCBSpireMorphing=Game UCB Spire Morphing
 Behavior/Name/GameUCBStarportAddon=Game UCB Starport Addon
 Behavior/Name/GameUCBStarportBusy=Game UCB Starport Busy
 Behavior/Name/GameUCBZerglingChargeLink=Game UCB Zergling Charge Link
+Behavior/Name/GameUnitInCombatMarker=Game Unit In Combat Marker
 Behavior/Name/GameWarpGateCount=Game Warp Gate Count
 Behavior/Name/GameWarpGateUpgradeBehavior=Game Warp Gate Upgrade Behavior
 Behavior/Name/GameWorkerIdle=Game Worker Idle

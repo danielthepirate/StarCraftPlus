@@ -22,6 +22,7 @@
 <Behavior id="GameUCBOverlordChargeLink"/>
 <Behavior id="GameUCBRavagerChargeLink"/>
 <Behavior id="GameIncreasedLifeAndShields"/>
+<Behavior id="GameUnitInCombatMarker"/>
 <Behavior id="GameWarpGateUpgradeBehavior"/>
 <Behavior id="KineticFollow"/>
 <Effect id="AutoWallToggleUCBOff"/>
@@ -32,6 +33,7 @@
 <Effect id="UCBGlobalRallyT3Off"/>
 <Effect id="UCBSpawnLarvaToggleOff"/>
 <Effect id="UCBGlobalRallyT1Off"/>
+<Effect id="UCBDroneMorphToggleOn"/>
 <Unit id="TechLab"/>
 <Unit id="SupplyDepot"/>
 <Unit id="Barracks"/>
@@ -43,8 +45,6 @@
 <Unit id="Factory"/>
 <Unit id="Starport"/>
 <Unit id="FusionCore"/>
-<Unit id="SCV"/>
-<Unit id="Probe"/>
 <Unit id="SpawningPool"/>
 <Unit id="EvolutionChamber"/>
 <Unit id="HydraliskDen"/>
@@ -59,7 +59,6 @@
 <Unit id="Lair"/>
 <Unit id="Hive"/>
 <Unit id="GreaterSpire"/>
-<Unit id="Drone"/>
 <Unit id="Zergling"/>
 <Unit id="Mutalisk"/>
 <Unit id="PlanetaryFortress"/>

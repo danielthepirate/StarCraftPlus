@@ -262,8 +262,9 @@ void libSCPL_gf_SCPBankInitialize () {
             lv_globalCaster = UnitGroupUnit(UnitGroup("SdbZAbils1", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1);
             UnitCreateEffectUnit(lv_globalCaster, "UCBAutoCreepSpreadToggleOff", lv_globalCaster);
         }
-        if ((PlayerRace(lv_playerIndex) == "Zerg") && (libSCPL_gv_player[lv_playerIndex].lv_globalZerg_DroneMorphToggle == false)) {
+        if ((PlayerRace(lv_playerIndex) == "Zerg")) {
             lv_globalCaster = UnitGroupUnit(UnitGroup("SdbZAbils1", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1);
+            UnitCreateEffectUnit(lv_globalCaster, "UCBDroneMorphToggleOn", lv_globalCaster);
         }
         if ((PlayerRace(lv_playerIndex) == "Zerg") && (libSCPL_gv_player[lv_playerIndex].lv_globalZerg_LarvaSpawnToggle == false)) {
             lv_globalCaster = UnitGroupUnit(UnitGroup("SdbZAbils1", lv_playerIndex, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), 1);
@@ -346,6 +347,8 @@ void libSCPL_gf_InitializeSpendOverTime () {
 
     // Implementation
     lv_gamePlayers = PlayerGroupActive();
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeMinerals, false);
+    UISetResourceVisible(lv_gamePlayers, c_resourceTypeVespene, false);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeTerrazine, true);
     UISetResourceVisible(lv_gamePlayers, c_resourceTypeCustom, true);
     auto2BCF2D93_g = lv_gamePlayers; 
@@ -905,6 +908,79 @@ bool auto_libSCPL_gf_AutoWorkerProductionZergInitial_TriggerFunc (bool testConds
     Wait(0.125, c_timeGame);
     libSCPL_gf_AutoWorkerProductionZerg(lp_townHall, lp_playerIndex, lp_larvaLeftover);
     return true;
+}
+
+void libSCPL_gf_UnitDeathWorkerEvaluation (unit lp_unit, int lp_killingPlayer) {
+    // Variable Declarations
+    int lv_playerIndex;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_playerIndex = UnitGetOwner(lp_unit);
+    if (((UnitGetType(lp_unit) == "SCV") || (UnitGetType(lp_unit) == "Probe") || (UnitGetType(lp_unit) == "Drone")) && (lp_killingPlayer == lv_playerIndex)) {
+        libSCPL_gv_player[lp_killingPlayer].lv_global_OwnWorkersKilled += 1;
+    }
+}
+
+void libSCPL_gf_FreeExpansionWorkerEvaluation (unit lp_townHall, int lp_playerIndex, unitgroup lp_nearbyResources) {
+    // Variable Declarations
+    unit lv_resourceClosest;
+    point lv_expansionWorkerPoint;
+    unitgroup lv_expansionWorkers;
+
+    // Variable Initialization
+    lv_expansionWorkers = UnitGroupEmpty();
+
+    // Implementation
+    lv_expansionWorkerPoint = UnitGetPosition(lp_townHall);
+    if ((UnitGroupCount(lp_nearbyResources, c_unitCountAlive) >= 1)) {
+        lv_resourceClosest = UnitGroupClosestToPoint(lp_nearbyResources, UnitGetPosition(lp_townHall));
+        lv_expansionWorkerPoint = PointWithOffsetPolar(UnitGetPosition(lp_townHall), 2.5, AngleBetweenPoints(UnitGetPosition(lp_townHall), UnitGetPosition(lv_resourceClosest)));
+        lv_expansionWorkers = libSCPL_gf_FreeExpansionWorkers(lp_townHall, lp_playerIndex, lv_expansionWorkerPoint);
+        UnitGroupIssueOrder(lv_expansionWorkers, OrderTargetingUnit(AbilityCommand("DroneHarvest", 0), lv_resourceClosest), c_orderQueueReplace);
+        UnitIssueOrder(lp_townHall, OrderTargetingUnit(AbilityCommand("RallyCommand", 0), lv_resourceClosest), c_orderQueueReplace);
+    }
+}
+
+unitgroup libSCPL_gf_FreeExpansionWorkers (unit lp_townHall, int lp_playerIndex, point lp_workerPoint) {
+    string autoB0C8AFAA_val;
+    int autoD7ED7214_ae;
+    int autoD7ED7214_ai;
+
+    // Variable Declarations
+    int lv_workerCountFree;
+    unitgroup lv_workers;
+    string lv_workerType;
+    int lv_n;
+
+    // Variable Initialization
+    lv_workers = UnitGroupEmpty();
+
+    // Implementation
+    lv_workerCountFree = 4;
+    autoB0C8AFAA_val = UnitGetType(lp_townHall);
+    if (autoB0C8AFAA_val == "CommandCenter") {
+        lv_workerType = "SCV";
+    }
+    else if (autoB0C8AFAA_val == "Nexus") {
+        lv_workerType = "Probe";
+    }
+    else if (autoB0C8AFAA_val == "Hatchery") {
+        lv_workerType = "Drone";
+    }
+    else {
+    }
+    autoD7ED7214_ae = lv_workerCountFree;
+    autoD7ED7214_ai = 1;
+    lv_n = 1;
+    for ( ; ( (autoD7ED7214_ai >= 0 && lv_n <= autoD7ED7214_ae) || (autoD7ED7214_ai <= 0 && lv_n >= autoD7ED7214_ae) ) ; lv_n += autoD7ED7214_ai ) {
+        if (((PlayerGetPropertyInt(lp_playerIndex, c_playerPropSuppliesUsed) + 1) < MinI(PlayerGetPropertyInt(lp_playerIndex, c_playerPropSuppliesMade), PlayerGetPropertyInt(lp_playerIndex, c_playerPropSuppliesLimit)))) {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, lv_workerType, c_unitCreateIgnorePlacement, lp_playerIndex, lp_workerPoint);
+            UnitGroupAdd(lv_workers, UnitLastCreated());
+        }
+    }
+    return lv_workers;
 }
 
 unit libSCPL_gf_UnitGroupBestUnit (unitgroup lp_unitGroup) {
@@ -2721,7 +2797,6 @@ void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_player
         DialogControlFadeTransparency(libSCPL_gv_uI.lv_consoleControlGroupButton[lp_controlGroupIndex], PlayerGroupSingle(lp_playerIndex), 0.0, 0.0);
         libNtve_gf_SetDialogItemText(libSCPL_gv_uI.lv_consoleControlGroupLabel[lp_controlGroupIndex], IntToText(lv_controlGroupCount), PlayerGroupSingle(lp_playerIndex));
         libNtve_gf_SetDialogItemImage(libSCPL_gv_uI.lv_consoleControlGroupIcon[lp_controlGroupIndex], lv_controlGroupIcon, PlayerGroupSingle(lp_playerIndex));
-        libSCPL_gf_ControlGroupColorize(lp_playerIndex, lp_controlGroupIndex);
     }
 }
 
@@ -2919,6 +2994,7 @@ int libSCPL_gf_PlayerTownHallSaturationCount (unit lp_townHall, int lp_playerInd
         }
     }
     UnitGroupLoopEnd();
+    lv_townHallSaturationCount = (lv_townHallSaturationCount - libSCPL_gv_player[lp_playerIndex].lv_global_OwnWorkersKilled);
     return lv_townHallSaturationCount;
 }
 
@@ -3354,55 +3430,6 @@ bool libSCPL_gt_InitializationPlus_Func (bool testConds, bool runActions) {
 void libSCPL_gt_InitializationPlus_Init () {
     libSCPL_gt_InitializationPlus = TriggerCreate("libSCPL_gt_InitializationPlus_Func");
     TriggerAddEventTimeElapsed(libSCPL_gt_InitializationPlus, 0.0, c_timeGame);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: 2
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt__2_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_subgroup;
-    int lv_playerindex;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libSCPL_gf_PlayerResourcesAdd(1, 500.0, 500.0);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt__2_Init () {
-    libSCPL_gt__2 = TriggerCreate("libSCPL_gt__2_Func");
-    TriggerAddEventKeyPressed(libSCPL_gt__2, c_playerAny, c_keyNumPad2, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: 0
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt__0_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if (((GameGetGlobalTimeScale() == 0.25) || (GameGetGlobalTimeScale() == 1.0))) {
-        GameSetGlobalTimeScale(20.0);
-    }
-    else {
-        GameSetGlobalTimeScale(1.0);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt__0_Init () {
-    libSCPL_gt__0 = TriggerCreate("libSCPL_gt__0_Func");
-    TriggerAddEventKeyPressed(libSCPL_gt__0, c_playerAny, c_keyNumPad0, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7150,6 +7177,7 @@ bool libSCPL_gt_AutoWorkerProductionCheckWorkerDeath_Func (bool testConds, bool 
     }
 
     lv_playerIndex = EventPlayer();
+    lv_playerIndex = UnitGetOwner(EventUnit());
     lv_townHall = libSCPL_gf_PlayerTownHallClosest(UnitGetPosition(EventUnit()), lv_playerIndex);
     libSCPL_gf_AutoWorkerProduction(lv_townHall, lv_playerIndex);
     return true;
@@ -7341,21 +7369,14 @@ void libSCPL_gt_AutoWorkerProductionCheckTownHallLand_Init () {
 // Trigger: Auto Worker Production Check Expansion
 //--------------------------------------------------------------------------------------------------
 bool libSCPL_gt_AutoWorkerProductionCheckExpansion_Func (bool testConds, bool runActions) {
-    string auto9E44F9EA_val;
-
     // Variable Declarations
     region lv_resourceRegion;
     unitgroup lv_resourceGroup;
-    unit lv_resourceClosest;
     unit lv_townHall;
     int lv_playerIndex;
-    int lv_expansionWorkerCount;
-    point lv_expansionWorkerPoint;
-    unitgroup lv_expansionWorkers;
 
     // Variable Initialization
     lv_resourceGroup = UnitGroupEmpty();
-    lv_expansionWorkers = UnitGroupEmpty();
 
     // Conditions
     if (testConds) {
@@ -7369,7 +7390,6 @@ bool libSCPL_gt_AutoWorkerProductionCheckExpansion_Func (bool testConds, bool ru
         return true;
     }
 
-    lv_expansionWorkerCount = 4;
     lv_townHall = EventUnitProgressUnit();
     lv_playerIndex = UnitGetOwner(lv_townHall);
     lv_resourceRegion = RegionCircle(UnitGetPosition(lv_townHall), libSCPL_gv_constants.lv_townHallResourceRadius);
@@ -7381,33 +7401,7 @@ bool libSCPL_gt_AutoWorkerProductionCheckExpansion_Func (bool testConds, bool ru
         }
     }
     UnitGroupLoopEnd();
-    if ((UnitGroupCount(lv_resourceGroup, c_unitCountAlive) < 1)) {
-        return true;
-    }
-    lv_resourceClosest = UnitGroupClosestToPoint(lv_resourceGroup, UnitGetPosition(lv_townHall));
-    lv_expansionWorkerPoint = PointWithOffsetPolar(UnitGetPosition(lv_townHall), 2.5, AngleBetweenPoints(UnitGetPosition(lv_townHall), UnitGetPosition(lv_resourceClosest)));
-    auto9E44F9EA_val = UnitGetType(EventUnitProgressUnit());
-    if (auto9E44F9EA_val == "CommandCenter") {
-        UnitIssueOrder(lv_townHall, Order(AbilityCommand("CommandCenterTrain", 0)), c_orderQueueAddToEnd);
-        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyCommand", 0), lv_resourceClosest), c_orderQueueReplace);
-        libNtve_gf_CreateUnitsWithDefaultFacing(lv_expansionWorkerCount, "SCV", 0, lv_playerIndex, lv_expansionWorkerPoint);
-        lv_expansionWorkers = UnitLastCreatedGroup();
-    }
-    else if (auto9E44F9EA_val == "Nexus") {
-        UnitIssueOrder(lv_townHall, Order(AbilityCommand("NexusTrain", 0)), c_orderQueueAddToEnd);
-        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyNexus", 0), lv_resourceClosest), c_orderQueueReplace);
-        libNtve_gf_CreateUnitsWithDefaultFacing(lv_expansionWorkerCount, "Probe", 0, lv_playerIndex, lv_expansionWorkerPoint);
-        lv_expansionWorkers = UnitLastCreatedGroup();
-    }
-    else if (auto9E44F9EA_val == "Hatchery") {
-        libSCPL_gf_AutoWorkerProductionZerg(lv_townHall, lv_playerIndex, 0);
-        UnitIssueOrder(lv_townHall, OrderTargetingUnit(AbilityCommand("RallyHatchery", 1), lv_resourceClosest), c_orderQueueReplace);
-        libNtve_gf_CreateUnitsWithDefaultFacing(lv_expansionWorkerCount, "Drone", 0, lv_playerIndex, lv_expansionWorkerPoint);
-        lv_expansionWorkers = UnitLastCreatedGroup();
-    }
-    else {
-    }
-    UnitGroupIssueOrder(lv_expansionWorkers, OrderTargetingUnit(AbilityCommand("DroneHarvest", 0), lv_resourceClosest), c_orderQueueReplace);
+    libSCPL_gf_FreeExpansionWorkerEvaluation(lv_townHall, lv_playerIndex, lv_resourceGroup);
     return true;
 }
 
@@ -7811,6 +7805,7 @@ bool libSCPL_gt_UnitLifeAndShieldScalingOnCreation_Func (bool testConds, bool ru
     }
 
     UnitBehaviorAdd(EventUnit(), "GameIncreasedLifeAndShields", EventUnit(), 1);
+    UnitBehaviorAdd(EventUnit(), "GameUnitInCombatMarker", EventUnit(), 1);
     return true;
 }
 
@@ -9421,7 +9416,6 @@ bool libSCPL_gt_UCBAutoDroneMorphToggleOn_Func (bool testConds, bool runActions)
         lv_townHall = UnitGroupUnit(auto96A750AA_g, auto96A750AA_u);
         libSCPL_gf_AutoWorkerProduction(lv_townHall, lv_playerIndex);
     }
-    libSCPL_gf_SCPBankOptionSave(("GlobalToggleZergDroneMorph"), lv_playerIndex, true);
     return true;
 }
 
@@ -9447,7 +9441,6 @@ bool libSCPL_gt_UCBAutoDroneMorphToggleOff_Func (bool testConds, bool runActions
 
     lv_playerIndex = UnitGetOwner(EventUnit());
     libSCPL_gv_player[lv_playerIndex].lv_globalZerg_DroneMorphToggle = false;
-    libSCPL_gf_SCPBankOptionSave(("GlobalToggleZergDroneMorph"), lv_playerIndex, false);
     return true;
 }
 
@@ -11856,6 +11849,7 @@ bool libSCPL_gt_ControlGroupUnitDeath_Func (bool testConds, bool runActions) {
     }
 
     lv_unit = EventUnit();
+    libSCPL_gf_UnitDeathWorkerEvaluation(lv_unit, libNtve_gf_KillingPlayer());
     libSCPL_gf_ControlGroupUnitsUpdateFromUnit(lv_unit);
     return true;
 }
@@ -11976,7 +11970,6 @@ bool libSCPL_gt_ControlGroupUnitDamaged_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TriggerEnable(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, true);
     libSCPL_gf_ControlGroupDamagePulse(EventUnit());
     return true;
 }
@@ -11984,55 +11977,11 @@ bool libSCPL_gt_ControlGroupUnitDamaged_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void libSCPL_gt_ControlGroupUnitDamaged_Init () {
     libSCPL_gt_ControlGroupUnitDamaged = TriggerCreate("libSCPL_gt_ControlGroupUnitDamaged_Func");
-    TriggerAddEventUnitDamaged(libSCPL_gt_ControlGroupUnitDamaged, null, c_unitDamageTypeAny, c_unitDamageEither, null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Control Group Unit Damaged Group Update
-//--------------------------------------------------------------------------------------------------
-bool libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Func (bool testConds, bool runActions) {
-    playergroup auto0AE1B3D7_g;
-    int auto0AE1B3D7_p;
-    int autoB1A98539_ae;
-    int autoB1A98539_ai;
-
-    // Variable Declarations
-    int lv_playerIndex;
-    int lv_controlGroupIndex;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerEnable(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, false);
-    auto0AE1B3D7_g = PlayerGroupActive(); 
-    auto0AE1B3D7_p = 1;
-    for ( ; auto0AE1B3D7_p <= PlayerGroupCount(auto0AE1B3D7_g) ; auto0AE1B3D7_p += BoolToInt(lv_playerIndex == PlayerGroupPlayer(auto0AE1B3D7_g, auto0AE1B3D7_p)) ) {
-        lv_playerIndex = PlayerGroupPlayer(auto0AE1B3D7_g, auto0AE1B3D7_p);
-        autoB1A98539_ae = 8;
-        autoB1A98539_ai = 1;
-        lv_controlGroupIndex = 1;
-        for ( ; ( (autoB1A98539_ai >= 0 && lv_controlGroupIndex <= autoB1A98539_ae) || (autoB1A98539_ai <= 0 && lv_controlGroupIndex >= autoB1A98539_ae) ) ; lv_controlGroupIndex += autoB1A98539_ai ) {
-            libSCPL_gf_ControlGroupColorize(lv_playerIndex, lv_controlGroupIndex);
-        }
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init () {
-    libSCPL_gt_ControlGroupUnitDamagedGroupUpdate = TriggerCreate("libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Func");
-    TriggerEnable(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, false);
-    TriggerAddEventTimePeriodic(libSCPL_gt_ControlGroupUnitDamagedGroupUpdate, 0.1875, c_timeGame);
+    TriggerAddEventUnitBehaviorChange(libSCPL_gt_ControlGroupUnitDamaged, null, "GameUnitInCombatMarker", c_unitBehaviorChangeActivate);
 }
 
 void libSCPL_InitTriggers () {
     libSCPL_gt_InitializationPlus_Init();
-    libSCPL_gt__2_Init();
-    libSCPL_gt__0_Init();
     libSCPL_gt_ProgressMorphRefund01_Init();
     libSCPL_gt_ProgressMorphStart01_Init();
     libSCPL_gt_ProgressMorphRefund02_Init();
@@ -12224,7 +12173,6 @@ void libSCPL_InitTriggers () {
     libSCPL_gt_ControlGroupBaneling_Init();
     libSCPL_gt_ControlGroupBanelingFinish_Init();
     libSCPL_gt_ControlGroupUnitDamaged_Init();
-    libSCPL_gt_ControlGroupUnitDamagedGroupUpdate_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

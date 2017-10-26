@@ -349,6 +349,7 @@ Effect/Name/TimeWarpUCBDummy=TimeWarpUCB Dummy
 Effect/Name/UCBAutoCreepSpreadToggleOff=UCB Auto Creep Spread Toggle Off
 Effect/Name/UCBAutoCreepSpreadToggleOn=UCB Auto Creep Spread Toggle On
 Effect/Name/UCBDroneMorphToggleOff=UCB Drone Morph Toggle Off
+Effect/Name/UCBDroneMorphToggleOn=UCB Drone Morph Toggle On
 Effect/Name/UCBGlobalRallyT1Off=UCB Global Rally T1 Off
 Effect/Name/UCBGlobalRallyT2Off=UCB Global Rally T2 Off
 Effect/Name/UCBGlobalRallyT3Off=UCB Global Rally T3 Off

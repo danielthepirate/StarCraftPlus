@@ -1063,6 +1063,13 @@
         <CmdFlags index="SetAutoCast" value="1"/>
         <CmdFlags index="SetAutoCastOn" value="1"/>
     </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBDroneMorphToggleOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoMorphDroneToggleUCb"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
     <CEffectIssueOrder id="UCBGlobalRallyT2Off">
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>

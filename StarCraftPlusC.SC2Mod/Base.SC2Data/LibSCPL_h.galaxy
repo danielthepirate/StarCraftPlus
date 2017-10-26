@@ -80,6 +80,7 @@ struct libSCPL_gs_Player {
     bool lv_globalZerg_CreepSpreadToggle;
     bool lv_globalZerg_LarvaSpawnToggle;
     bool lv_globalZerg_DroneMorphToggle;
+    int lv_global_OwnWorkersKilled;
     bool lv_global_ShowTips;
     unit lv_globalRallyCaster;
     unit[4] lv_globalRallyTarget;
@@ -177,6 +178,9 @@ void libSCPL_gf_InitializeAutomatedWorkerProduction ();
 void libSCPL_gf_AutoWorkerProduction (unit lp_townHall, int lp_playerIndex);
 void libSCPL_gf_AutoWorkerProductionZerg (unit lp_townHall, int lp_playerIndex, int lp_larvaLeftover);
 void libSCPL_gf_AutoWorkerProductionZergInitial (unit lp_townHall, int lp_playerIndex, int lp_larvaLeftover);
+void libSCPL_gf_UnitDeathWorkerEvaluation (unit lp_unit, int lp_killingPlayer);
+void libSCPL_gf_FreeExpansionWorkerEvaluation (unit lp_townHall, int lp_playerIndex, unitgroup lp_nearbyResources);
+unitgroup libSCPL_gf_FreeExpansionWorkers (unit lp_townHall, int lp_playerIndex, point lp_workerPoint);
 unit libSCPL_gf_UnitGroupBestUnit (unitgroup lp_unitGroup);
 void libSCPL_gf_WarpGateUpdateUI (int lp_playerIndex);
 void libSCPL_gf_WarpGatesCooldownSet (fixed lp_cooldown, int lp_playerIndex);
@@ -259,8 +263,6 @@ void libSCPL_gf_GenericEventResourceSpendChanges2 (int lp_triggeringPlayer, int 
 
 // Trigger Declarations
 trigger libSCPL_gt_InitializationPlus;
-trigger libSCPL_gt__2;
-trigger libSCPL_gt__0;
 trigger libSCPL_gt_ProgressMorphRefund01;
 trigger libSCPL_gt_ProgressMorphStart01;
 trigger libSCPL_gt_ProgressMorphRefund02;
@@ -452,7 +454,6 @@ trigger libSCPL_gt_ControlGroupArchon;
 trigger libSCPL_gt_ControlGroupBaneling;
 trigger libSCPL_gt_ControlGroupBanelingFinish;
 trigger libSCPL_gt_ControlGroupUnitDamaged;
-trigger libSCPL_gt_ControlGroupUnitDamagedGroupUpdate;
 
 // Library Initialization
 void libSCPL_InitVariables ();
