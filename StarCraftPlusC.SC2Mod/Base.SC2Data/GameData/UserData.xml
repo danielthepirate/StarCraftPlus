@@ -45,82 +45,46 @@
         <Instances index="22" Id="UpgradeToGreaterSpireUCB">
             <Int index="0" removed="1"/>
         </Instances>
-        <Instances index="23" Id="UpgradeToLurkerDenMPUCB">
-            <Int index="0" removed="1"/>
-            <Unit index="0" Unit="HydraliskDen">
-                <Field Id="RealCaster"/>
-            </Unit>
-            <Unit index="1" removed="1"/>
-            <Unit index="2" removed="1"/>
-            <Unit index="3" removed="1"/>
-        </Instances>
-        <Instances index="24" Id="TrainQueen">
-            <AbilCmd index="0" removed="1"/>
-            <GameLink index="0" removed="1"/>
-            <Int>
-                <Field Id="UseIdle"/>
-            </Int>
-            <Unit index="1" Unit="Hatchery"/>
-            <Unit Unit="Lair">
-                <Field Id="RealCaster" Index="1"/>
-            </Unit>
-            <Unit Unit="Hive">
-                <Field Id="RealCaster" Index="2"/>
-            </Unit>
-        </Instances>
-        <Instances index="25" Id="LarvaTrain"/>
-        <Instances index="26" Id="LarvaTrainDummyRedirect">
-            <AbilCmd Abil="LarvaTrain" Cmd="11">
-                <Field Id="RealAbilIndex"/>
-            </AbilCmd>
-            <GameLink GameLink="LarvaTrain">
-                <Field Id="RealAbil"/>
-            </GameLink>
-            <Int index="0" removed="1"/>
-            <Unit index="1" Unit="Larva"/>
-        </Instances>
-        <Instances index="27" Id="BuildNydusCanalUCB">
+        <Instances index="26" Id="BuildNydusCanalUCB">
             <AbilCmd Abil="BuildNydusCanal">
                 <Field Id="RealAbilIndex"/>
             </AbilCmd>
             <GameLink GameLink="BuildNydusCanalUCB">
                 <Field Id="RealAbil"/>
             </GameLink>
-            <Unit index="1" Unit="NydusNetwork"/>
         </Instances>
-        <Instances index="28" Id="MorphToOverseerUCB">
+        <Instances index="27" Id="MorphToOverseerUCB">
             <Int index="0" removed="1"/>
-            <Unit index="1" Unit="Overlord"/>
             <Unit Unit="OverlordTransport">
                 <Field Id="RealCaster" Index="1"/>
             </Unit>
         </Instances>
-        <Instances index="29" Id="MorphToTransportOverlordUCB">
+        <Instances index="28" Id="MorphToTransportOverlordUCB">
             <Int index="0" removed="1"/>
             <Unit index="0" Unit="Overlord">
                 <Field Id="RealCaster"/>
             </Unit>
             <Unit index="1" removed="1"/>
         </Instances>
-        <Instances index="30" Id="MorphZerglingToBanelingUCB">
+        <Instances index="29" Id="MorphZerglingToBanelingUCB">
             <GameLink GameLink="MorphZerglingToBaneling">
                 <Field Id="RealAbil"/>
             </GameLink>
             <Int index="0" removed="1"/>
             <Unit index="1" Unit="Zergling"/>
         </Instances>
-        <Instances index="31" Id="MorphToRavagerUCB">
+        <Instances index="30" Id="MorphToRavagerUCB">
             <Unit index="1" Unit="Roach"/>
         </Instances>
-        <Instances index="32" Id="MorphToLurkerUCB">
+        <Instances index="31" Id="MorphToLurkerUCB">
             <Unit index="1" Unit="Hydralisk"/>
+        </Instances>
+        <Instances index="32" Id="MorphToBroodLordUCB">
+            <Unit index="1" Unit="Corruptor"/>
             <Unit index="2" removed="1"/>
             <Unit index="3" removed="1"/>
         </Instances>
-        <Instances index="33" Id="MorphToBroodLordUCB">
-            <Unit index="1" Unit="Corruptor"/>
-        </Instances>
-        <Instances index="34" Id="LairResearch">
+        <Instances index="33" Id="LairResearch">
             <Unit index="1" Unit="Hatchery"/>
             <Unit Unit="Lair">
                 <Field Id="RealCaster" Index="1"/>
@@ -129,58 +93,43 @@
                 <Field Id="RealCaster" Index="2"/>
             </Unit>
         </Instances>
-        <Instances index="35" Id="SpawningPoolResearch">
+        <Instances index="34" Id="SpawningPoolResearch">
             <Unit index="1" Unit="SpawningPool"/>
+        </Instances>
+        <Instances index="35" Id="evolutionchamberresearch">
+            <Unit index="1" Unit="EvolutionChamber"/>
             <Unit index="2" removed="1"/>
         </Instances>
-        <Instances index="36" Id="evolutionchamberresearch">
-            <Unit index="1" Unit="EvolutionChamber"/>
-        </Instances>
-        <Instances index="37" Id="HydraliskDenResearch">
+        <Instances index="36" Id="HydraliskDenResearch">
             <Unit index="1" Unit="HydraliskDen"/>
             <Unit Unit="LurkerDenMP">
                 <Field Id="RealCaster" Index="1"/>
             </Unit>
         </Instances>
-        <Instances index="38" Id="RoachWarrenResearch">
+        <Instances index="37" Id="RoachWarrenResearch">
             <Unit index="1" Unit="RoachWarren"/>
         </Instances>
-        <Instances index="39" Id="BanelingNestResearch">
+        <Instances index="38" Id="BanelingNestResearch">
             <Unit index="1" Unit="BanelingNest"/>
+        </Instances>
+        <Instances index="39" Id="InfestationPitResearch">
+            <Unit index="1" Unit="InfestationPit"/>
             <Unit index="2" removed="1"/>
         </Instances>
-        <Instances index="40" Id="InfestationPitResearch">
-            <Unit index="1" Unit="InfestationPit"/>
-        </Instances>
-        <Instances index="41" Id="SpireResearch">
+        <Instances index="40" Id="SpireResearch">
             <Unit index="1" Unit="Spire"/>
             <Unit Unit="GreaterSpire">
                 <Field Id="RealCaster" Index="1"/>
             </Unit>
         </Instances>
-        <Instances index="42" Id="UltraliskCavernResearch">
+        <Instances index="41" Id="UltraliskCavernResearch">
             <Unit index="1" Unit="UltraliskCavern"/>
         </Instances>
-        <Instances index="43" Id="ProtossBuild">
+        <Instances index="42" Id="ProtossBuild">
             <Unit index="1" Unit="Probe"/>
         </Instances>
-        <Instances index="44" Id="NexusTrain">
-            <Unit index="1" Unit="Nexus"/>
-        </Instances>
-        <Instances index="45" Id="NexusTrainMothershipCore">
-            <Unit index="1" Unit="Nexus"/>
-        </Instances>
-        <Instances index="46" Id="GatewayTrain">
-            <Unit index="1" Unit="Gateway"/>
-        </Instances>
-        <Instances index="47" Id="StargateTrain">
-            <Unit index="1" Unit="Stargate"/>
-        </Instances>
-        <Instances index="48" Id="RoboticsFacilityTrain">
-            <Unit index="1" Unit="RoboticsFacility"/>
-            <Unit index="2" removed="1"/>
-        </Instances>
-        <Instances index="49" Id="NexusTrainMothershipUCB">
+        <Instances index="43" Id="NexusTrain"/>
+        <Instances index="47" Id="NexusTrainMothershipUCB">
             <AbilCmd Abil="MorphToMothership">
                 <Field Id="RealAbilIndex"/>
             </AbilCmd>
@@ -188,50 +137,6 @@
                 <Field Id="RealAbil"/>
             </GameLink>
             <Int index="0" removed="1"/>
-            <Unit index="1" Unit="MothershipCore"/>
-        </Instances>
-        <Instances index="50" Id="ArchonWarp">
-            <Unit index="1" Unit="HighTemplar"/>
-            <Unit Unit="DarkTemplar">
-                <Field Id="RealCaster" Index="1"/>
-            </Unit>
-        </Instances>
-        <Instances index="51" Id="ForgeResearch">
-            <Unit index="1" Unit="Forge"/>
-        </Instances>
-        <Instances index="52" Id="CyberneticsCoreResearch">
-            <Unit index="1" Unit="CyberneticsCore"/>
-        </Instances>
-        <Instances index="53" Id="TwilightCouncilResearch">
-            <Unit index="1" Unit="TwilightCouncil"/>
-        </Instances>
-        <Instances index="54" Id="RoboticsBayResearch">
-            <Unit index="1" Unit="RoboticsBay"/>
-        </Instances>
-        <Instances index="55" Id="FleetBeaconResearch">
-            <Unit index="1" Unit="FleetBeacon"/>
-        </Instances>
-        <Instances Id="TemplarArchivesResearch">
-            <Int>
-                <Field Id="UseIdle"/>
-            </Int>
-            <Unit Unit="ProbeDummy">
-                <Field Id="DummyCaster"/>
-            </Unit>
-            <Unit Unit="TemplarArchive">
-                <Field Id="RealCaster"/>
-            </Unit>
-        </Instances>
-        <Instances Id="DarkShrineResearch">
-            <Int>
-                <Field Id="UseIdle"/>
-            </Int>
-            <Unit Unit="ProbeDummy">
-                <Field Id="DummyCaster"/>
-            </Unit>
-            <Unit Unit="DarkShrine">
-                <Field Id="RealCaster"/>
-            </Unit>
         </Instances>
         <Instances Id="MorphDummyTrainNukeUCB">
             <GameLink GameLink="ArmSiloWithNuke">
@@ -241,11 +146,22 @@
                 <Field Id="RealCaster"/>
             </Unit>
         </Instances>
-        <Instances Id="TimeWarpUCB">
+        <Instances Id="ChronoBoostEnergyCostUCB">
             <AbilCmd Abil="TimeWarp">
                 <Field Id="RealAbilIndex"/>
             </AbilCmd>
-            <GameLink GameLink="TimeWarp">
+            <GameLink GameLink="ChronoBoostEnergyCost">
+                <Field Id="RealAbil"/>
+            </GameLink>
+            <Unit Unit="Nexus">
+                <Field Id="RealCaster"/>
+            </Unit>
+        </Instances>
+        <Instances Id="NexusMassRecallUCB">
+            <AbilCmd Abil="NexusMassRecall">
+                <Field Id="RealAbilIndex"/>
+            </AbilCmd>
+            <GameLink GameLink="NexusMassRecall">
                 <Field Id="RealAbil"/>
             </GameLink>
             <Unit Unit="Nexus">

@@ -566,11 +566,14 @@
 				<Action type="ApplyTemplate" frame="$GlobalCommand02" template="CommandSidebar/CommandButtonInvisible"/>
 			</State>
 			<State name="Protoss">
-				<!-- 1x LEFT -->
+				<!-- 0x LEFT 2x TOP -->
 				<When type="StateGroup" frame="$RaceCheckPlus" RaceCheck="IsProt"/>
-				<Action type="SetAnchor" frame="$GlobalLeftBackground" side="Right" relative="$GlobalCommand03" pos="Max" offset="8"/>
-				<Action type="ApplyTemplate" frame="$GlobalCommand04" template="CommandSidebar/CommandButtonInvisible"/>
-				<Action type="ApplyTemplate" frame="$GlobalCommand05" template="CommandSidebar/CommandButtonInvisible"/>
+				<Action type="SetAnchor" frame="$GlobalLeftBackground" side="Right" relative="$GlobalCommand05" pos="Max" offset="-500"/>
+				<Action type="SetProperty" frame="$GlobalCommand03" alpha="0"/>
+				<Action type="SetProperty" frame="$GlobalCommand04" alpha="0"/>
+				<Action type="SetProperty" frame="$GlobalCommand05" alpha="0"/>
+				<Action type="SetProperty" frame="$GlobalTopBackground" visible="true"/>
+				<Action type="ApplyTemplate" frame="$GlobalCommand02" template="CommandSidebar/CommandButtonInvisible"/>
 			</State>
 			<State name="Zerg">
 				<!-- 3x LEFT -->

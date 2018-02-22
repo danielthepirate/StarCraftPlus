@@ -25,6 +25,7 @@ Abil/Name/BarracksTechLabMorphUCB=Tech Lab Morph (Barracks)
 Abil/Name/BarracksTrainUCB=Train UCB
 Abil/Name/BuildNydusCanalUCB=Build Nydus Canal
 Abil/Name/CalldownMULEUCB=Calldown MULE UCB
+Abil/Name/ChronoBoostEnergyCostUCB=Chrono Boost Energy Cost 
 Abil/Name/FactoryReactorMorphUCB=Nuclear Reactor Morph (Factory)
 Abil/Name/FactoryTechLabMorphUCB=Tech Lab Morph (Factory)
 Abil/Name/FactoryTrainUCB=Train (Factory) UCB
@@ -32,6 +33,7 @@ Abil/Name/GameGlobalRallyTarget00=Game Global Rally Target 00
 Abil/Name/GameGlobalRallyTarget01=Game Global Rally Target 01
 Abil/Name/GameGlobalRallyTarget02=Game Global Rally Target 02
 Abil/Name/GameProductionCharge=Game Production Charge
+Abil/Name/GhostAcademyResearch=Ghost Academy Research
 Abil/Name/MorphDummyTrainNukeUCB=Morph Dummy Train Nuke UCB
 Abil/Name/MorphToBroodLordUCB=Morph (Corruptor - > Brood Lord) UCB
 Abil/Name/MorphToLurker2=Morph To Lurker Copy
@@ -40,17 +42,16 @@ Abil/Name/MorphToOverseerUCB=Overlord Morph to Overseer UCB
 Abil/Name/MorphToRavagerUCB=Morph To Ravager UCB
 Abil/Name/MorphToTransportOverlordUCB=Morph To Transport Overlord UCB
 Abil/Name/MorphZerglingToBanelingUCB=MorphZerglingToBaneling UCB
+Abil/Name/NexusMassRecallUCB=Nexus Mass Recall
 Abil/Name/NexusTrainMothershipUCB=Train Mothership
 Abil/Name/ScannerSweepUCB=Scanner Sweep UCB
 Abil/Name/StarportReactorMorphUCB=Nuclear Reactor Morph (Starport)
 Abil/Name/StarportTechLabMorphUCB=Tech Lab Morph (Starport)
 Abil/Name/StarportTrainUCB=Train UCB
 Abil/Name/SupplyDropUCB=Supply Drop UCB
-Abil/Name/TimeWarpUCB=Chrono Boost
 Abil/Name/UpgradeToGreaterSpireUCB=Morph Building (Spire -> Greater Spire) UCB
 Abil/Name/UpgradeToHiveUCB=Morph Building (Lair -> Hive) UCB
 Abil/Name/UpgradeToLairUCB=Morph Building (Hatchery -> Lair) UCB
-Abil/Name/UpgradeToLurkerDenMPUCB=Upgrade To Lurker Den MP UCB
 Abil/Name/UpgradeToOrbitalUCB=Morph Building (COCE -> Orbital Command)
 Abil/Name/UpgradeToPlanetaryFortressUCB=Morph Building (COCE -> Planetary Fortress)
 Abil/Name/WarpGateTrainUCB=Train (Warp Gate) UCB
@@ -69,6 +70,7 @@ Button/Name/AutoWallToggleUCB=Auto Wall Toggle
 Button/Name/BanelingUCB=Morph to Baneling
 Button/Name/BroodLordUCB=Morph to Brood Lord
 Button/Name/CalldownMULEUCB=Calldown: MULE
+Button/Name/ChronoBoostEnergyCostUCB=Chrono Boost
 Button/Name/CloakOffBanshee=Decloak
 Button/Name/CreepTumorEnhancedCreepGrowthAura=Metastatic Aura
 Button/Name/GlobalGridButton=GlobalGridButton
@@ -80,10 +82,10 @@ Button/Name/HiveUCB=Mutate into Hive
 Button/Name/LairUCB=Mutate into Lair
 Button/Name/LurkerMPUCB=Morph to Lurker
 Button/Name/MorphDroneUCB=Auto Morph Drone Toggle
-Button/Name/MorphToMothershipUCB=Upgrade to Mothership
 Button/Name/MorphToOverseerUBC=Morph to Overseer
 Button/Name/MorphtoOverlordTransportUBC=Mutate Ventral Sacs
-Button/Name/MutateintoLurkerDenUCB=Mutate into Lurker Den
+Button/Name/NexusMassRecall2=Mass Recall Copy
+Button/Name/NexusMassRecallUCB2=Mass Recall
 Button/Name/NukeArmUCB=Arm Silo with Nuke
 Button/Name/OverlordEnhancedCreepGrowthAura=Metastatic Aura
 Button/Name/QueenUCB=Birth Queen
@@ -95,13 +97,13 @@ Button/Name/ResearchComplete=
 Button/Name/ScanUCB=Scanner Sweep
 Button/Name/SpawnLarvaUCB=Auto Spawn Larvae Toggle
 Button/Name/StopCarrier=Stop
+Button/Name/StopShieldBattery=Stop
 Button/Name/SummonNydusWormUCB=Summon Nydus Worm
 Button/Name/SupplyDepot=Build Auto Wall
 Button/Name/SupplyDropUCB=Calldown: Extra Supplies
 Button/Name/TechLabBarracksUCB=Build Barracks Tech Lab
 Button/Name/TechLabFactoryUCB=Build Factory Tech Lab
 Button/Name/TechLabStarportUCB=Build Starport Tech Lab
-Button/Name/TimeWarpUCB=Chrono Boost
 Button/Name/UCBOrbitalCommand=Upgrade to Orbital Command
 Button/Name/UCBUpgradeToPlanetaryFortress=Upgrade to Planetary Fortress
 Button/Name/WarpResonance=Warp Resonance
@@ -118,6 +120,7 @@ Button/Tooltip/BanelingUCB=Suicide unit. Does damage over a small area on death.
 Button/Tooltip/Barracks=Infantry-production facility.<n/><n/><c val="ffff8a">Enables:</c><n/>- Marines<n/>- Reapers<n/>- Bunkers from SCVs<n/>- Orbital Commands from Command Centers<n/><n/><c val="ffff8a">Provides <d ref="Unit,Barracks,Food"/> supply.
 Button/Tooltip/BroodLordUCB=Flying heavy-assault unit. Shoots Broodlings at its target. A Broodling is a small creature that can attack ground units.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/CalldownMULEUCB=Drops an experimental robotic MULE miner onto the target Mineral Field. MULEs collect minerals more quickly than SCVs.  <n/><n/>MULEs last <d time="90"/> before their systems fail.
+Button/Tooltip/ChronoBoostEnergyCostUCB=Places target structure in a Chrono Boost, causing it to operate <d ref="(((Behavior,ChronoBoostEnergyCost,Modification.TimeScale)-1)*100)" precision="1"/>% faster for <d ref="Behavior,ChronoBoostEnergyCost,Duration"/> seconds.
 Button/Tooltip/CloakOffBanshee=Decloaks the selected unit, making it visible to enemies.
 Button/Tooltip/CommandCenter=Primary structure. Used to receive gathered resources. Can use the Lift Off ability and can upgrade into an Orbital Command or a Planetary Fortress.<n/><n/><c val="ffff8a">Enables:</c><n/>- SCVs<n/><n/><c val="ffff8a">Provides <d ref="Unit,CommandCenter,Food"/> supply.</c>
 Button/Tooltip/CreepTumorEnhancedCreepGrowthAura=Spreading creep 25% faster.
@@ -132,18 +135,18 @@ Button/Tooltip/GreaterSpireUCB=Contains upgrades for Zerg air units.<n/><n/><c v
 Button/Tooltip/Hatchery=Primary structure. Used to spawn all Zerg units and receive gathered resources. Grows creep used to feed nearby Zerg structures. Can mutate into a Lair.<n/><n/><c val="ffff8a">Provides <d ref="Unit,Hatchery,Food"/> supply.</c><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/Hive=Further evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Vipers from Larvae<n/><n/><c val="ffff8a">Provides <d ref="Unit,Hive,Food"/> supply.</c>
 Button/Tooltip/HiveUCB=Further evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Vipers from Larvae
-Button/Tooltip/HydraliskDen=Contains an upgrade for Hydralisks. Can mutate into a Lurker Den.<n/><n/><c val="ffff8a">Enables:</c><n/>- Hydralisks from Larvae<n/><n/><c val="ffff8a">Provides <d ref="Unit,HydraliskDen,Food"/> supply.</c>
+Button/Tooltip/HydraliskDen=Contains an upgrade for Hydralisks.<n/><n/><c val="ffff8a">Enables:</c><n/>- Hydralisks from Larvae<n/><n/><c val="ffff8a">Provides <d ref="Unit,HydraliskDen,Food"/> supply.</c>
 Button/Tooltip/InfestationPit=Contains upgrades for Infestors.<n/><n/><c val="ffff8a">Enables:</c><n/>- Infestors from Larvae<n/>- Swarm Hosts from Larvae<n/><n/><c val="ffff8a">Provides <d ref="Unit,InfestationPit,Food"/> supply.</c>
 Button/Tooltip/Lair=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Overseers from Overlords<n/><n/><c val="ffff8a">Provides <d ref="Unit,Lair,Food"/> supply.</c>
 Button/Tooltip/LairUCB=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.<n/><n/><c val="ffff8a">Enables:</c><n/>- Overseers from Overlords
 Button/Tooltip/LurkerMPUCB=Anti-ground ambusher. Has a spine attack that damages all enemy units in its line of fire.<n/><n/><c val="ffff8a">Can attack ground units.<n/>Must burrow to attack.</c>
 Button/Tooltip/MorphDroneUCB=Toggles automatic drone production.<n/><n/><c val="ffff8a">While on, at least one larva will always be left available.<n/><n/>This setting is always on at the game's start.
-Button/Tooltip/MorphToMothershipUCB=Upgrades into the Mothership. Can use Photon Overcharge, Mass Recall and Time Warp. Cloaks nearby units and structures.
 Button/Tooltip/MorphToOverseerUBC=Advanced aerial observer. Provides the same supply as an Overlord. Can use the Spawn Changeling and Contaminate abilities.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/MorphtoOverlordTransportUBC=Enables the Overlord to transport units.
 Button/Tooltip/MothershipUCB=Ultimate Protoss vessel. Can use Photon Overcharge, Mass Recall, and Time Warp abilities. Cloaks nearby friendly units and structures.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
-Button/Tooltip/MutateintoLurkerDen=Morph into a Lurker Den, allowing Hydralisks to morph into Lurkers.<n/><n/><c val="ffff8a">Provides <d ref="Unit,LurkerDenMP,Food"/> supply.
 Button/Tooltip/Nexus=Primary structure. Can receive gathered resources. Can use the Chrono Boost ability.<n/><n/><c val="ffff8a">Enables:</c><n/>- Probes<n/>- Mothership Core<n/><n/><c val="ffff8a">Provides <d ref="Unit,Nexus,Food"/> supply.
+Button/Tooltip/NexusMassRecall2=Recalls all units owned by the player in the target area to the Nexus.
+Button/Tooltip/NexusMassRecallUCB2=Recalls all units owned by the player in the target area to the Nexus.
 Button/Tooltip/NukeArmUCB=Arms the Silo with a Tactical Nuke.<n/><n/>Nukes take <d time="20"/> to land, but they deal up to 300 (+200 vs. structures) damage in a large radius.<n/><n/>Use a Ghost to designate the target.
 Button/Tooltip/NydusCanalPlacementDummy=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/OrbitalCommand=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep, Calldown: MULE, and Calldown: Extra Supplies. Cannot load SCVs.<n/><n/><c val="ffff8a">Provides <d ref="Unit,OrbitalCommand,Food"/> supply.</c>
@@ -169,6 +172,7 @@ Button/Tooltip/Spire=Contains upgrades for Zerg air units. Can mutate into a Gre
 Button/Tooltip/Stargate=Warps in Protoss air units.<n/><n/><c val="ffff8a">Enables:</c><n/>- Phoenixes<n/>- Void Rays<n/>- Oracles<n/><n/><c val="ffff8a">Provides <d ref="Unit,Stargate,Food"/> supply.
 Button/Tooltip/Starport=Air-unit production facility. <n/><n/><c val="ffff8a">Enables:</c><n/>- Vikings<n/>- Medivacs<n/>- Liberators<n/><n/><c val="ffff8a">Provides <d ref="Unit,Starport,Food"/> supply.
 Button/Tooltip/StopCarrier=Orders selected units to cancel all orders and stop moving.
+Button/Tooltip/StopShieldBattery=Orders selected units to cancel all orders and stop moving.
 Button/Tooltip/SummonNydusWormUCB=Summons a Nydus Worm at the target location.<n/>Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/SupplyDepot=Fortified Walls.<n/><n/>Auto Walls automatically lower to allow your units to walk over them.
 Button/Tooltip/SupplyDepotConstructor=Provides supply.<n/>Supply allows you to create more units.<n/>Supply Depots can be lowered to allow units to walk over them.
@@ -179,7 +183,6 @@ Button/Tooltip/TechLabStarportUCB=Aircraft-research structure. A Tech Lab can fi
 Button/Tooltip/TerranInfantryArmorLevel1=Upgrades the armor of infantry units and structures.
 Button/Tooltip/TerranInfantryArmorLevel2=Further upgrades the armor of infantry units and structures.
 Button/Tooltip/TerranInfantryArmorLevel3=Maximizes the armor of infantry units and structures.
-Button/Tooltip/TimeWarpUCB=Places target structure in a Chrono Boost, causing it to operate <d ref="(((Behavior,TimeWarpProduction,Modification.TimeScale)-1)*100)" precision="1"/>% faster.
 Button/Tooltip/UCBOrbitalCommand=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep, Calldown: MULE, and Calldown: Extra Supplies. Cannot load SCVs.
 Button/Tooltip/UCBUpgradeToPlanetaryFortress=Upgrades Command Center to a Planetary Fortress, greatly increasing its armor and arming it with a powerful defensive turret. Cannot lift off.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/UltraliskCavern=Contains an upgrade for Ultralisks.<n/><n/><c val="ffff8a">Enables:</c><n/>- Ultralisks from Larvae<n/><n/><c val="ffff8a">Provides <d ref="Unit,UltraliskCavern,Food"/> supply.</c>
@@ -228,6 +231,7 @@ Effect/Name/CalldownMULECreateUnitDummy=Calldown MULE (Create Unit) Dummy
 Effect/Name/CreepTumorEnhancedCreepGrowth=Creep Tumor Enhanced Creep Growth
 Effect/Name/DebugEffectHook=Debug Effect Hook
 Effect/Name/DoNothing=Do Nothing
+Effect/Name/DoNothingAtUnit=Do Nothing At Unit
 Effect/Name/GameAutoCreepNodeTargetCapped=Game Auto Creep Node Target Capped
 Effect/Name/GameAutoCreepSpreadHook=Game Auto Creep Spread Hook
 Effect/Name/GameAutoCreepSpreadReadyRemove=Game Auto Creep Spread Ready Remove
@@ -299,6 +303,8 @@ Effect/Name/GameUCBLarvaChargeLink=Game UCB Larva Charge Link
 Effect/Name/GameUCBLarvaChargeRemove=Game UCB Larva Charge Remove
 Effect/Name/GameUCBLurkerChargeAdd=Game UCB Lurker Charge Add
 Effect/Name/GameUCBLurkerChargeRemove=Game UCB Lurker Charge Remove
+Effect/Name/GameUCBNexusEnergy50GE=Game UCB Nexus Energy 50 GE
+Effect/Name/GameUCBNexusEnergy50LT=Game UCB Nexus Energy 50 LT
 Effect/Name/GameUCBOrbitalCommandEnergy50GE=Game UCB Orbital Command Energy 50 GE
 Effect/Name/GameUCBOrbitalCommandEnergy50LT=Game UCB Orbital Command Energy 50 LT
 Effect/Name/GameUCBOverlordChargeAdd=Game UCB Overlord Charge Add
@@ -463,6 +469,7 @@ Param/Value/lib_SCPL_FE8FB489=Denied
 Param/Value/lib_SCPL_FFCF9FAD=Ground Weapons Level 2
 RequirementNode/Tooltip/CountBehaviorGameUCBHatcheryHiveLairCompleteOnly3846943109=Hatchery
 RequirementNode/Tooltip/CountBehaviorGameUCBHydraliskLurkerDenCompleteOnly4037297345=Hydralisk Den
+RequirementNode/Tooltip/CountBehaviorGameUCBNexusEnergy50GECompleteOnly1851786957=Nexus Has 50 Energy
 RequirementNode/Tooltip/CountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704=Orbital Command Has 50 Energy
 RequirementNode/Tooltip/CountBehaviorGameUCBSpireGreaterSpireCompleteOnly836078744=Spire
 RequirementNode/Tooltip/CountBehaviorPowerSourceFastCompleteOnlyAtUnit22563247=Near Warp Gate

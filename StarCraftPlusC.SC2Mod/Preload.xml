@@ -29,11 +29,11 @@
 <Effect id="UCBAutoCreepSpreadToggleOff"/>
 <Effect id="DebugPoint"/>
 <Effect id="DebugPointCircle"/>
+<Effect id="UCBDroneMorphToggleOn"/>
 <Effect id="UCBGlobalRallyT2Off"/>
 <Effect id="UCBGlobalRallyT3Off"/>
 <Effect id="UCBSpawnLarvaToggleOff"/>
 <Effect id="UCBGlobalRallyT1Off"/>
-<Effect id="UCBDroneMorphToggleOn"/>
 <Unit id="TechLab"/>
 <Unit id="SupplyDepot"/>
 <Unit id="Barracks"/>

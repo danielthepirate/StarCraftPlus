@@ -13,6 +13,18 @@
         <EditorCategories value=""/>
         <Abil value="stop"/>
     </CEffectIssueOrder>
+    <CEffectCreatePersistent id="DoNothingAtUnit">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="GameUCBNexusEnergy50GE">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBNexusEnergy50LT">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="OracleWeaponDamage">
         <AttributeBonus index="Light" value="15"/>
         <Amount value="20"/>

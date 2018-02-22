@@ -201,6 +201,8 @@
     <CUnit id="FactoryTechLab">
         <CardLayouts index="0">
             <LayoutButtons index="3" Face="ResearchDrillClaws" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research5" Row="0" Column="0"/>
+            <LayoutButtons index="4" Face="ResearchSmartServos" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research7" Row="0" Column="0"/>
+            <LayoutButtons index="5" Face="ResearchCycloneRapidFireLaunchers" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research9" Row="0" Column="0"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="FleetBeacon">
@@ -347,13 +349,13 @@
     </CUnit>
     <CUnit id="Ghost">
         <CardLayouts index="0">
-            <LayoutButtons index="7" Face="NukeCalldown" AbilCmd="TacNukeStrike,Execute" Row="2" Column="3"/>
-            <LayoutButtons index="9" Face="CloakOff" AbilCmd="GhostCloak,Off" Column="2"/>
+            <LayoutButtons index="7" Face="NukeCalldown" Type="AbilCmd" AbilCmd="TacNukeStrike,Execute" Row="2" Column="3"/>
+            <LayoutButtons index="9" Face="CloakOff" Type="AbilCmd" AbilCmd="GhostCloak,Off" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="GhostAcademy">
         <CardLayouts index="0">
-            <LayoutButtons index="4" Row="1"/>
+            <LayoutButtons index="4" Face="ResearchGhostEnergyUpgrade" Type="AbilCmd" AbilCmd="GhostAcademyResearch,Research2" Row="1" Column="4"/>
             <LayoutButtons index="5" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="0" Column="2"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGhostAcademyChargeLink"/>
@@ -406,17 +408,15 @@
     </CUnit>
     <CUnit id="HydraliskDen">
         <Food value="10"/>
-        <BehaviorArray Link="GameUCBHydraliskDenChargeLink"/>
-        <BehaviorArray Link="GameUCBHydraliskDenChargeLinkConstructing"/>
     </CUnit>
     <CUnit id="InfestationPit">
         <Food value="10"/>
     </CUnit>
     <CUnit id="Infestor">
         <CardLayouts index="0">
-            <LayoutButtons index="7" Face="BurrowMove" AbilCmd="BurrowInfestorDown,Execute" Row="2" Column="2"/>
-            <LayoutButtons index="8" Face="Cancel" AbilCmd="NeuralParasite,Cancel" Row="2" Column="4"/>
-            <LayoutButtons index="10" Face="NeuralParasite" AbilCmd="NeuralParasite,Execute" Column="3"/>
+            <LayoutButtons index="7" Face="BurrowMove" Type="AbilCmd" AbilCmd="BurrowInfestorDown,Execute" Row="2" Column="2"/>
+            <LayoutButtons index="8" Face="Cancel" Type="AbilCmd" AbilCmd="NeuralParasite,Cancel" Row="2" Column="4"/>
+            <LayoutButtons index="10" Face="NeuralParasite" Type="AbilCmd" AbilCmd="NeuralParasite,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
@@ -426,7 +426,7 @@
             <LayoutButtons index="8" Face="Cancel" Type="AbilCmd" AbilCmd="NeuralParasite,Cancel" Row="2" Column="4"/>
             <LayoutButtons index="9" Face="BurrowedMove" Type="Passive" AbilCmd="" Row="1" Column="4"/>
             <LayoutButtons index="10" Face="FungalGrowth" Type="AbilCmd" AbilCmd="FungalGrowth,Execute" Row="2" Column="1"/>
-            <LayoutButtons index="11" Face="NeuralParasite" Type="AbilCmd" AbilCmd="NeuralParasite,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="NeuralParasite" Type="AbilCmd" AbilCmd="NeuralParasite,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <BehaviorArray Link="GameUCBGlobalRallyZergRanged"/>
     </CUnit>
@@ -539,11 +539,6 @@
         <CostResource index="Minerals" value="300"/>
         <CostResource index="Vespene" value="300"/>
     </CUnit>
-    <CUnit id="MothershipCore">
-        <CardLayouts index="0">
-            <LayoutButtons index="9" Row="2" Column="3"/>
-        </CardLayouts>
-    </CUnit>
     <CUnit id="Mutalisk">
         <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
     </CUnit>
@@ -551,6 +546,7 @@
         <Food value="25"/>
         <BehaviorArray Link="GameMineralsNearTownHallSearch"/>
         <BehaviorArray Link="GameNexusCountConstructing"/>
+        <BehaviorArray Link="GameUCBNexusEnergy50GE"/>
         <DeathTime value="0.5"/>
     </CUnit>
     <CUnit id="NydusCanal">
@@ -630,10 +626,27 @@
         <BehaviorArray Link="OverlordEnhancedCreepGrowthAura"/>
         <BehaviorArray Link="GameUCBGlobalRallyZergFlyer"/>
         <CardLayouts index="0">
-            <LayoutButtons index="7" Column="2"/>
-            <LayoutButtons Face="OverlordEnhancedCreepGrowthAura" Type="Passive" Behavior="OverlordEnhancedCreepGrowthAura" Row="2" Column="3"/>
+            <LayoutButtons index="6" Face="SpawnChangeling" Type="AbilCmd" AbilCmd="SpawnChangeling,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="7" Face="Detector" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons index="8">
+                <Face value="OverlordEnhancedCreepGrowthAura"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Behavior value="OverlordEnhancedCreepGrowthAura"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons Face="Contaminate" Type="AbilCmd" AbilCmd="Contaminate,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <CostResource index="Minerals" value="100"/>
+    </CUnit>
+    <CUnit id="OverseerSiegeMode">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="Detector" Type="Passive" AbilCmd="" Row="2" Column="3"/>
+            <LayoutButtons index="7" Face="MorphtoOverseerNormal" Type="AbilCmd" AbilCmd="OverseerSiegeModeMorphtoOverseer,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="8" Face="SpawnChangeling" Type="AbilCmd" AbilCmd="SpawnChangeling,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="9" Face="Contaminate" Type="AbilCmd" AbilCmd="Contaminate,Execute" Row="2" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="PhotonCannon">
         <CardLayouts index="0">
@@ -646,7 +659,7 @@
     </CUnit>
     <CUnit id="PointDefenseDrone">
         <CardLayouts index="0">
-            <LayoutButtons index="0" Face="PointDefense" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons index="0" Row="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Probe">
@@ -766,9 +779,9 @@
     </CUnit>
     <CUnit id="SdbPAbils1">
         <CardLayouts index="0">
-            <LayoutButtons index="0" Face="TimeWarpUCB" Type="AbilCmd" AbilCmd="TimeWarpUCB,Execute" Row="0" Column="3"/>
-            <LayoutButtons index="1" removed="1"/>
-            <LayoutButtons index="2" removed="1"/>
+            <LayoutButtons index="0" Face="TimeWarpUCB" Type="AbilCmd" AbilCmd="TimeWarpUCB,255" Row="0" Column="3"/>
+            <LayoutButtons index="1" Face="ChronoBoostEnergyCostUCB" Type="AbilCmd" AbilCmd="ChronoBoostEnergyCostUCB,Execute" Row="0" Column="0"/>
+            <LayoutButtons index="2" Face="NexusMassRecallUCB" Type="AbilCmd" AbilCmd="NexusMassRecallUCB,Execute" Row="0" Column="1"/>
             <LayoutButtons index="3" removed="1"/>
             <LayoutButtons index="4" removed="1"/>
             <LayoutButtons index="5" removed="1"/>
@@ -781,12 +794,14 @@
             <LayoutButtons index="12" removed="1"/>
             <LayoutButtons index="13" removed="1"/>
         </CardLayouts>
-        <AbilArray Link="TimeWarpUCB"/>
+        <AbilArray Link="ChronoBoostEnergyCostUCB"/>
+        <AbilArray Link="NexusMassRecallUCB"/>
     </CUnit>
     <CUnit id="SdbPBuild1">
         <CardLayouts index="0">
             <LayoutButtons index="7" Face="RoboticsFacility" Type="AbilCmd" AbilCmd="ProtossBuild,Build14" Row="1" Column="2"/>
             <LayoutButtons index="8" Face="Stargate" Type="AbilCmd" AbilCmd="ProtossBuild,Build10" Row="1" Column="3"/>
+            <LayoutButtons Face="ShieldBattery" Type="AbilCmd" AbilCmd="ProtossBuild,Build16" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbPRsrch1">
@@ -837,47 +852,49 @@
     </CUnit>
     <CUnit id="SdbPTrain1">
         <CardLayouts index="0">
-            <LayoutButtons index="3" Face="Zealot" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train1" Row="0" Column="2"/>
-            <LayoutButtons index="4" Face="Sentry" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train6" Row="0" Column="3"/>
-            <LayoutButtons index="5" Face="Stalker" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train2" Row="0" Column="4"/>
-            <LayoutButtons index="6" Face="HighTemplar" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train4" Row="1" Column="0"/>
-            <LayoutButtons index="7" Face="DarkTemplar" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train5" Row="1" Column="1"/>
-            <LayoutButtons index="8" Face="WarpInAdept" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train7" Row="1" Column="2"/>
-            <LayoutButtons index="9" Face="Observer" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train2" Row="1" Column="3"/>
-            <LayoutButtons index="10" Face="WarpPrism" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train1" Row="1" Column="4"/>
-            <LayoutButtons index="11" Face="Immortal" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train4" Row="2" Column="0"/>
-            <LayoutButtons index="12" Face="Colossus" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train3" Row="2" Column="1"/>
-            <LayoutButtons index="13" Face="WarpinDisruptor" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train19" Row="2" Column="2"/>
-            <LayoutButtons index="14" Face="Phoenix" Type="AbilCmd" AbilCmd="StargateTrain,Train1" Row="2" Column="3"/>
-            <LayoutButtons index="15" Face="Oracle" Type="AbilCmd" AbilCmd="StargateTrain,Train9" Row="2" Column="4"/>
-            <LayoutButtons Face="Zealot" Type="AbilCmd" AbilCmd="GatewayTrain,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Sentry" Type="AbilCmd" AbilCmd="GatewayTrain,Train6" Row="0" Column="3"/>
-            <LayoutButtons Face="Stalker" Type="AbilCmd" AbilCmd="GatewayTrain,Train2" Row="0" Column="4"/>
-            <LayoutButtons Face="HighTemplar" Type="AbilCmd" AbilCmd="GatewayTrain,Train4" Row="1" Column="0"/>
-            <LayoutButtons Face="DarkTemplar" Type="AbilCmd" AbilCmd="GatewayTrain,Train5" Row="1" Column="1"/>
-            <LayoutButtons Face="WarpInAdept" Type="AbilCmd" AbilCmd="GatewayTrain,Train7" Row="1" Column="2"/>
+            <LayoutButtons index="2" Face="Zealot" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train1" Row="0" Column="1"/>
+            <LayoutButtons index="3" Face="Sentry" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train6" Row="0" Column="2"/>
+            <LayoutButtons index="4" Face="Stalker" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train2" Row="0" Column="3"/>
+            <LayoutButtons index="5" Face="HighTemplar" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train4" Row="0" Column="4"/>
+            <LayoutButtons index="6" Face="DarkTemplar" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train5" Row="1" Column="0"/>
+            <LayoutButtons index="7" Face="WarpInAdept" Type="AbilCmd" AbilCmd="WarpGateTrainUCB,Train7" Row="1" Column="1"/>
+            <LayoutButtons index="8" Face="Observer" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train2" Row="1" Column="2"/>
+            <LayoutButtons index="9" Face="WarpPrism" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train1" Row="1" Column="3"/>
+            <LayoutButtons index="10" Face="Immortal" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train4" Row="1" Column="4"/>
+            <LayoutButtons index="11" Face="Colossus" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train3" Row="2" Column="0"/>
+            <LayoutButtons index="12" Face="WarpinDisruptor" Type="AbilCmd" AbilCmd="RoboticsFacilityTrain,Train19" Row="2" Column="1"/>
+            <LayoutButtons index="13" Face="Phoenix" Type="AbilCmd" AbilCmd="StargateTrain,Train1" Row="2" Column="2"/>
+            <LayoutButtons index="14" Face="Oracle" Type="AbilCmd" AbilCmd="StargateTrain,Train9" Row="2" Column="3"/>
+            <LayoutButtons index="15" Face="Zealot" Type="AbilCmd" AbilCmd="GatewayTrain,Train1" Row="0" Column="1"/>
+            <LayoutButtons Face="Sentry" Type="AbilCmd" AbilCmd="GatewayTrain,Train6" Row="0" Column="2"/>
+            <LayoutButtons Face="Stalker" Type="AbilCmd" AbilCmd="GatewayTrain,Train2" Row="0" Column="3"/>
+            <LayoutButtons Face="HighTemplar" Type="AbilCmd" AbilCmd="GatewayTrain,Train4" Row="0" Column="4"/>
+            <LayoutButtons Face="DarkTemplar" Type="AbilCmd" AbilCmd="GatewayTrain,Train5" Row="1" Column="0"/>
+            <LayoutButtons Face="WarpInAdept" Type="AbilCmd" AbilCmd="GatewayTrain,Train7" Row="1" Column="1"/>
+            <LayoutButtons Face="VoidRay" Type="AbilCmd" AbilCmd="StargateTrain,Train5" Row="2" Column="4"/>
         </CardLayouts>
         <AbilArray index="2" Link="NexusTrain"/>
-        <AbilArray index="3" Link="NexusTrainMothershipCore"/>
+        <AbilArray index="3" Link="NexusTrainMothership"/>
         <AbilArray index="4" Link="GatewayTrain"/>
         <AbilArray index="5" Link="StargateTrain"/>
         <AbilArray index="6" Link="RoboticsFacilityTrain"/>
-        <AbilArray index="7" Link="MorphToMothership"/>
-        <AbilArray index="8" Link="ArchonWarp"/>
-        <AbilArray index="9" Link="WarpGateTrainUCB"/>
+        <AbilArray index="7" Link="ArchonWarp"/>
+        <AbilArray index="8" Link="WarpGateTrainUCB"/>
+        <AbilArray index="9" removed="1"/>
         <AbilArray index="10" removed="1"/>
     </CUnit>
     <CUnit id="SdbPTrain2">
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="1" Column="0"/>
-            <LayoutButtons index="1" Face="VoidRay" Type="AbilCmd" AbilCmd="StargateTrain,Train5" Row="0" Column="0"/>
-            <LayoutButtons index="2" Face="Tempest" Type="AbilCmd" AbilCmd="StargateTrain,Train10" Row="0" Column="1"/>
-            <LayoutButtons index="3" Face="Carrier" Type="AbilCmd" AbilCmd="StargateTrain,Train3" Row="0" Column="2"/>
-            <LayoutButtons index="4" Face="AWrpUCB" Type="AbilCmd" AbilCmd="ArchonMergeUCB,Execute" Row="0" Column="3"/>
-            <LayoutButtons index="5" Face="MorphToMothershipUCB" Type="AbilCmd" AbilCmd="NexusTrainMothershipUCB,Train1" Row="0" Column="4"/>
+            <LayoutButtons index="1" Face="Tempest" Type="AbilCmd" AbilCmd="StargateTrain,Train10" Row="0" Column="0"/>
+            <LayoutButtons index="2" Face="Carrier" Type="AbilCmd" AbilCmd="StargateTrain,Train3" Row="0" Column="1"/>
+            <LayoutButtons index="3" Face="AWrpUCB" Type="AbilCmd" AbilCmd="ArchonMergeUCB,Execute" Row="0" Column="2"/>
+            <LayoutButtons index="4" Face="Mothership" Type="AbilCmd" AbilCmd="NexusTrainMothership,Train1" Row="0" Column="3"/>
+            <LayoutButtons index="5" removed="1"/>
         </CardLayouts>
-        <AbilArray index="9" Link="NexusTrainMothershipUCB"/>
-        <AbilArray Link="ArchonMergeUCB"/>
+        <AbilArray index="5" Link="NexusTrainMothership"/>
+        <AbilArray index="9" Link="ArchonWarp"/>
+        <AbilArray index="10" Link="ArchonMergeUCB"/>
     </CUnit>
     <CUnit id="SdbTAbils1">
         <AbilArray index="4" Link="CalldownMULEUCB"/>
@@ -940,11 +957,10 @@
             <LayoutButtons index="19" Face="TerranVehicleAndShipPlatingLevel2" Type="AbilCmd" AbilCmd="ArmoryResearch,Research16" Row="2" Column="0"/>
             <LayoutButtons index="20" Face="TerranVehicleAndShipPlatingLevel3" Type="AbilCmd" AbilCmd="ArmoryResearch,Research17" Row="2" Column="0"/>
             <LayoutButtons index="21" Face="ResearchHighCapacityBarrels" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research2" Row="2" Column="1"/>
-            <LayoutButtons index="22" Face="ResearchDrillClaws" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research5" Row="2" Column="2"/>
-            <LayoutButtons index="23" Face="ResearchHighCapacityFuelTanks" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research15" Row="2" Column="4"/>
-            <LayoutButtons index="24" Face="TerranInfantryArmorLevel3" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research9" Row="0" Column="1"/>
-            <LayoutButtons index="25" Face="TerranInfantryWeaponsLevel3" Type="Passive" AbilCmd="" Row="0" Column="0"/>
-            <LayoutButtons Face="TerranInfantryArmorLevel3" Type="Passive" Row="0" Column="1"/>
+            <LayoutButtons index="22" Face="ResearchDrillClaws" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research5" Row="2" Column="3"/>
+            <LayoutButtons index="23" Face="TerranInfantryArmorLevel3" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research9" Row="0" Column="1"/>
+            <LayoutButtons index="24" Face="TerranInfantryWeaponsLevel3" Type="Passive" AbilCmd="" Row="0" Column="0"/>
+            <LayoutButtons index="25" Face="TerranInfantryArmorLevel3" Type="Passive" AbilCmd="" Row="0" Column="1"/>
             <LayoutButtons Face="ResearchShieldWall" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="Stimpack" Type="Passive" Row="1" Column="1"/>
             <LayoutButtons Face="ResearchPunisherGrenades" Type="Passive" Row="1" Column="2"/>
@@ -955,26 +971,31 @@
             <LayoutButtons Face="TerranShipWeaponsLevel3" Type="Passive" Row="1" Column="4"/>
             <LayoutButtons Face="TerranVehicleAndShipPlatingLevel3" Type="Passive" Row="2" Column="0"/>
             <LayoutButtons Face="ResearchHighCapacityBarrels" Type="Passive" Row="2" Column="1"/>
-            <LayoutButtons Face="ResearchDrillClaws" Type="Passive" Row="2" Column="2"/>
-            <LayoutButtons Face="ResearchHighCapacityFuelTanks" Type="Passive" Row="2" Column="4"/>
-            <LayoutButtons Face="ResearchPersonalCloaking" Type="AbilCmd" AbilCmd="GhostAcademyResearch,Research1" Row="2" Column="3"/>
-            <LayoutButtons Face="ResearchPersonalCloaking" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="ResearchDrillClaws" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="ResearchCycloneRapidFireLaunchers" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research9" Row="2" Column="2"/>
+            <LayoutButtons Face="ResearchCycloneRapidFireLaunchers" Type="Passive" Row="2" Column="2"/>
+            <LayoutButtons Face="ResearchSmartServos" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research7" Row="2" Column="4"/>
+            <LayoutButtons Face="ResearchSmartServos" Type="Passive" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbTRsrch2">
         <CardLayouts index="0">
-            <LayoutButtons index="1" Face="ResearchRavenEnergyUpgrade" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research4" Row="0" Column="1"/>
-            <LayoutButtons index="2" Face="ResearchBansheeCloak" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research1" Row="0" Column="2"/>
-            <LayoutButtons index="3" Face="BansheeSpeed" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research10" Row="0" Column="3"/>
-            <LayoutButtons index="4" Face="ResearchBallisticRange" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research16" Row="0" Column="4"/>
-            <LayoutButtons index="5" Face="ResearchBattlecruiserSpecializations" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research1" Row="1" Column="0"/>
-            <LayoutButtons index="6" Face="ResearchRavenEnergyUpgrade" Type="Passive" AbilCmd="" Row="0" Column="1"/>
-            <LayoutButtons index="7" Face="ResearchBansheeCloak" Type="Passive" AbilCmd="" Row="0" Column="2"/>
-            <LayoutButtons index="8" Face="ResearchRavenRecalibratedExplosives" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research14" Row="0" Column="0"/>
-            <LayoutButtons Face="ResearchRavenRecalibratedExplosives" Type="Passive" Row="0" Column="0"/>
-            <LayoutButtons Face="BansheeSpeed" Type="Passive" Row="0" Column="3"/>
-            <LayoutButtons Face="ResearchBallisticRange" Type="Passive" Row="0" Column="4"/>
-            <LayoutButtons Face="ResearchBattlecruiserSpecializations" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons index="1" Face="ResearchRavenEnergyUpgrade" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research4" Row="0" Column="3"/>
+            <LayoutButtons index="2" Face="ResearchBansheeCloak" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research1" Row="0" Column="4"/>
+            <LayoutButtons index="3" Face="BansheeSpeed" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research10" Row="1" Column="0"/>
+            <LayoutButtons index="4" Face="ResearchBallisticRange" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research16" Row="1" Column="1"/>
+            <LayoutButtons index="5" Face="ResearchBattlecruiserSpecializations" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research1" Row="1" Column="2"/>
+            <LayoutButtons index="6" Face="ResearchRavenEnergyUpgrade" Type="Passive" AbilCmd="" Row="0" Column="3"/>
+            <LayoutButtons index="7" Face="ResearchBansheeCloak" Type="Passive" AbilCmd="" Row="0" Column="4"/>
+            <LayoutButtons index="8" Face="ResearchRavenRecalibratedExplosives" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research14" Row="0" Column="2"/>
+            <LayoutButtons Face="ResearchGhostEnergyUpgrade" Type="AbilCmd" AbilCmd="GhostAcademyResearch,Research2" Row="0" Column="0"/>
+            <LayoutButtons Face="ResearchGhostEnergyUpgrade" Type="Passive" Row="0" Column="0"/>
+            <LayoutButtons Face="ResearchRavenRecalibratedExplosives" Type="Passive" Row="0" Column="2"/>
+            <LayoutButtons Face="BansheeSpeed" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="ResearchBallisticRange" Type="Passive" Row="1" Column="1"/>
+            <LayoutButtons Face="ResearchHighCapacityFuelTanks" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research15" Row="0" Column="1"/>
+            <LayoutButtons Face="ResearchHighCapacityFuelTanks" Type="Passive" Row="0" Column="1"/>
+            <LayoutButtons Face="ResearchBattlecruiserSpecializations" Type="Passive" Row="1" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="GameGlobalRallyCaster" parent="SIDEBARCASTER_BASE">
@@ -1070,10 +1091,9 @@
             <LayoutButtons index="10" Face="HydraliskDen" Type="AbilCmd" AbilCmd="ZergBuild,Build6" Row="1" Column="3"/>
             <LayoutButtons index="11" Face="Spire" Type="AbilCmd" AbilCmd="ZergBuild,Build7" Row="1" Column="4"/>
             <LayoutButtons index="12" Face="InfestationPit" Type="AbilCmd" AbilCmd="ZergBuild,Build9" Row="2" Column="0"/>
-            <LayoutButtons index="13" Face="UltraliskCavern" Type="AbilCmd" AbilCmd="ZergBuild,Build8" Row="2" Column="1"/>
-            <LayoutButtons index="14" Face="NydusNetwork" Type="AbilCmd" AbilCmd="ZergBuild,Build10" Row="2" Column="2"/>
+            <LayoutButtons index="14" Face="NydusNetwork" Type="AbilCmd" AbilCmd="ZergBuild,Build10" Row="2" Column="3"/>
             <LayoutButtons index="15" Face="LairUCB" Type="AbilCmd" AbilCmd="UpgradeToLairUCB,Execute" Row="2" Column="4"/>
-            <LayoutButtons index="16" removed="1"/>
+            <LayoutButtons index="16" Face="MutateintoLurkerDen" Type="AbilCmd" AbilCmd="ZergBuild,Build12" Row="2" Column="1"/>
         </CardLayouts>
         <AbilArray index="5" Link="UpgradeToLairUCB"/>
     </CUnit>
@@ -1086,8 +1106,7 @@
         <AbilArray index="7" Link="UpgradeToLurkerDenMPUCB"/>
         <CardLayouts index="0">
             <LayoutButtons Face="HiveUCB" Type="AbilCmd" AbilCmd="UpgradeToHiveUCB,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="MutateintoLurkerDenUCB" Type="AbilCmd" AbilCmd="UpgradeToLurkerDenMPUCB,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="GreaterSpireUCB" Type="AbilCmd" AbilCmd="UpgradeToGreaterSpireUCB,Execute" Row="0" Column="2"/>
+            <LayoutButtons Face="GreaterSpireUCB" Type="AbilCmd" AbilCmd="UpgradeToGreaterSpireUCB,Execute" Row="0" Column="1"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SdbZRsrch1">
@@ -1134,8 +1153,12 @@
     </CUnit>
     <CUnit id="SdbZRsrch2">
         <CardLayouts index="0">
-            <LayoutButtons Face="EvolveChitinousPlating" Type="Passive" Row="0" Column="0"/>
+            <LayoutButtons index="0" Face="EvolveChitinousPlating" Type="AbilCmd" AbilCmd="UltraliskCavernResearch,Research3" Row="0" Column="1"/>
+            <LayoutButtons Face="EvolveDiggingClaws" Type="AbilCmd" AbilCmd="LurkerDenResearch,Research1" Row="0" Column="0"/>
+            <LayoutButtons Face="EvolveDiggingClaws" Type="Passive" Row="0" Column="0"/>
+            <LayoutButtons Face="EvolveChitinousPlating" Type="Passive" Row="0" Column="1"/>
         </CardLayouts>
+        <AbilArray index="7" Link="LurkerDenResearch"/>
     </CUnit>
     <CUnit id="SdbZTrain1">
         <AbilArray index="8" Link="MorphToOverseerUCB"/>
@@ -1213,6 +1236,12 @@
         <Collide index="Larva" value="1"/>
         <Radius value="0.625"/>
     </CUnit>
+    <CUnit id="ShieldBattery">
+        <DeathTime value="0.5"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Face="StopShieldBattery" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SpawningPool">
         <Food value="10"/>
     </CUnit>
@@ -1286,9 +1315,22 @@
         <CardLayouts index="0">
             <LayoutButtons index="2" Face="ResearchBansheeCloak" AbilCmd="StarportTechLabResearch,Research1" Column="0"/>
             <LayoutButtons index="3" Face="ResearchRavenEnergyUpgrade" AbilCmd="StarportTechLabResearch,Research4" Column="0"/>
-            <LayoutButtons index="4" Face="BansheeSpeed" AbilCmd="StarportTechLabResearch,Research10" Row="0" Column="0"/>
+            <LayoutButtons index="4" Face="BansheeSpeed" AbilCmd="StarportTechLabResearch,Research10" Column="0"/>
             <LayoutButtons index="5" Face="ResearchRavenRecalibratedExplosives" AbilCmd="StarportTechLabResearch,Research14" Column="0"/>
-            <LayoutButtons index="7" Face="ResearchBallisticRange" Type="AbilCmd" AbilCmd="StarportTechLabResearch,Research16" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="ResearchBallisticRange"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="StarportTechLabResearch,Research16"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
         </CardLayouts>
     </CUnit>
     <CUnit id="SupplyDepot">

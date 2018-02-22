@@ -294,6 +294,11 @@
         </InfoArray>
         <Activity value="UI/Upgrading"/>
     </CAbilMorph>
+    <CAbilEffectTarget id="ChronoBoostEnergyCostUCB" parent="ChronoBoostEnergyCost">
+        <Name value="Abil/Name/ChronoBoostEnergyCostUCB"/>
+        <Effect index="0" value="DoNothingAtUnit"/>
+        <CmdButtonArray index="Execute" Requirements="UCBNexusEnergy50"/>
+    </CAbilEffectTarget>
     <CAbilMorph id="FactoryReactorMorphUCB">
         <OrderArray index="0">
             <DisplayType value="Confirm"/>
@@ -479,9 +484,26 @@
         </InfoArray>
         <Activity value="UI/Upgrading"/>
     </CAbilMorph>
+    <CAbilResearch id="GhostAcademyResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
     <CAbilHarvest id="MULEGather">
         <ResourceAmountRequest index="Minerals" value="20"/>
     </CAbilHarvest>
+    <CAbilEffectTarget id="NexusMassRecallUCB" parent="NexusMassRecall">
+        <Name value="Abil/Name/NexusMassRecallUCB"/>
+        <Effect index="0" value="DoNothing"/>
+        <CmdButtonArray index="Execute" Requirements="UCBNexusEnergy50"/>
+        <Cost index="0">
+            <Vital index="Energy" value="50"/>
+            <Cooldown Link="Abil/NexusMassRecall2" Location="Player" TimeUse="182"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilMorph id="StarportReactorMorphUCB">
         <OrderArray index="0">
             <DisplayType value="Confirm"/>
@@ -658,14 +680,6 @@
             <Button Requirements="HaveGatewayAndCyberneticsCore"/>
         </InfoArray>
     </CAbilTrain>
-    <CAbilResearch id="GhostAcademyResearch">
-        <RefundFraction>
-            <Resource index="Minerals" value="0"/>
-            <Resource index="Vespene" value="0"/>
-            <Resource index="Terrazine" value="0"/>
-            <Resource index="Custom" value="0"/>
-        </RefundFraction>
-    </CAbilResearch>
     <CAbilResearch id="HydraliskDenResearch">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -1259,21 +1273,6 @@
         </RefundFraction>
         <EffectArray index="Finish" value="AutoWallConstructionComplete"/>
     </CAbilBuild>
-    <CAbilEffectTarget id="TimeWarpUCB" parent="TimeWarp">
-        <Name value="Abil/Name/TimeWarpUCB"/>
-        <Effect index="0" value="TimeWarpUCBDummy"/>
-        <Cost index="0">
-            <Vital index="Energy" value="0"/>
-            <Charge>
-                <CountUse value="1"/>
-                <Link value="UCB/TimeWarp"/>
-                <Location value="Player"/>
-                <TimeUse value="5"/>
-            </Charge>
-            <Cooldown TimeUse="0"/>
-        </Cost>
-        <CmdButtonArray index="Execute" Requirements="HaveNexus"/>
-    </CAbilEffectTarget>
     <CAbilTrain id="TrainQueen">
         <RefundFraction>
             <Resource index="Minerals" value="0"/>
@@ -1366,30 +1365,6 @@
                 <CountMax value="99"/>
                 <CountUse value="1"/>
                 <Link value="UCB/Hatchery"/>
-                <Location value="Player"/>
-            </Charge>
-        </Cost>
-    </CAbilMorph>
-    <CAbilMorph id="UpgradeToLurkerDenMP">
-        <RefundFraction>
-            <Resource index="Minerals" value="0"/>
-            <Resource index="Vespene" value="0"/>
-            <Resource index="Terrazine" value="0"/>
-            <Resource index="Custom" value="0"/>
-        </RefundFraction>
-        <AbilSetId value="LurkerDen"/>
-    </CAbilMorph>
-    <CAbilMorph id="UpgradeToLurkerDenMPUCB" parent="UpgradeToLurkerDenMP">
-        <Name value="Abil/Name/UpgradeToLurkerDenMPUCB"/>
-        <CmdButtonArray index="Execute" Requirements="UpgradeLurkerDen"/>
-        <Flags index="IgnoreUnitCost" value="1"/>
-        <Cost>
-            <Resource index="Minerals" value="150"/>
-            <Resource index="Vespene" value="150"/>
-            <Charge>
-                <CountMax value="99"/>
-                <CountUse value="1"/>
-                <Link value="UCB/HydraliskDen"/>
                 <Location value="Player"/>
             </Charge>
         </Cost>
@@ -1677,6 +1652,10 @@
         <InfoArray index="Build11">
             <Resource index="Minerals" value="150"/>
             <Resource index="Vespene" value="50"/>
+        </InfoArray>
+        <InfoArray index="Build12">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="150"/>
         </InfoArray>
         <InfoArray index="Build14">
             <Resource index="Minerals" value="200"/>

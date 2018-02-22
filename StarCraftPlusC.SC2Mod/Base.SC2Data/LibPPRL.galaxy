@@ -42,19 +42,19 @@ void libPPRL_InitVariables () {
 
 // Functions
 int libPPRL_gf_UserDataInstanceID (string lp_userType, string lp_userDataInstance) {
-    int auto18FABF19_ae;
-    int auto18FABF19_ai;
-
     // Variable Declarations
     int lv_instanceIndex;
+
+    // Automatic Variable Declarations
+    int auto18FABF19_ae;
+    const int auto18FABF19_ai = 1;
 
     // Variable Initialization
 
     // Implementation
     auto18FABF19_ae = UserDataInstanceCount(lp_userType);
-    auto18FABF19_ai = 1;
     lv_instanceIndex = 1;
-    for ( ; ( (auto18FABF19_ai >= 0 && lv_instanceIndex <= auto18FABF19_ae) || (auto18FABF19_ai <= 0 && lv_instanceIndex >= auto18FABF19_ae) ) ; lv_instanceIndex += auto18FABF19_ai ) {
+    for ( ; ( (auto18FABF19_ai >= 0 && lv_instanceIndex <= auto18FABF19_ae) || (auto18FABF19_ai < 0 && lv_instanceIndex >= auto18FABF19_ae) ) ; lv_instanceIndex += auto18FABF19_ai ) {
         if ((UserDataInstance(lp_userType, lv_instanceIndex) == lp_userDataInstance)) {
             return lv_instanceIndex;
         }
@@ -63,20 +63,29 @@ int libPPRL_gf_UserDataInstanceID (string lp_userType, string lp_userDataInstanc
 }
 
 void libPPRL_gf_SendActorMessageToUnitGroup (string lp_actorMessage, unitgroup lp_unitGroup) {
+    // Automatic Variable Declarations
+    unitgroup auto35D93E78_g;
+    int auto35D93E78_u;
+    unit auto35D93E78_var;
+
     // Implementation
-    UnitGroupLoopBegin(lp_unitGroup);
-    for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
-        libNtve_gf_SendActorMessageToUnit(UnitGroupLoopCurrent(), lp_actorMessage);
+    auto35D93E78_g = lp_unitGroup;
+    auto35D93E78_u = UnitGroupCount(auto35D93E78_g, c_unitCountAll);
+    for (;; auto35D93E78_u -= 1) {
+        auto35D93E78_var = UnitGroupUnitFromEnd(auto35D93E78_g, auto35D93E78_u);
+        if (auto35D93E78_var == null) { break; }
+        libNtve_gf_SendActorMessageToUnit(auto35D93E78_var, lp_actorMessage);
     }
-    UnitGroupLoopEnd();
 }
 
 void libPPRL_gf_ShakeCameraForPlayer (int lp_p, string lp_cameraSetting) {
+    // Automatic Variable Declarations
     // Implementation
     CameraShake(lp_p, lp_cameraSetting, "Earthquake", 0.125, 0.25, 0.375);
 }
 
 fixed libPPRL_gf_ConvertBooleanToReal (bool lp_boolean) {
+    // Automatic Variable Declarations
     // Implementation
     return IntToFixed(BoolToInt(lp_boolean));
 }
@@ -85,6 +94,7 @@ string libPPRL_gf_ConvertIntegerToStringDoubleDigit (int lp_integer) {
     // Variable Declarations
     string lv_integerString;
 
+    // Automatic Variable Declarations
     // Variable Initialization
     lv_integerString = "";
 
@@ -97,23 +107,27 @@ string libPPRL_gf_ConvertIntegerToStringDoubleDigit (int lp_integer) {
 }
 
 void libPPRL_gf_DebugFlashUnit (unit lp_unit) {
+    // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SendActorMessageToUnit(lp_unit, "SetTintColor 255,0,0");
     libNtve_gf_SendActorMessageToUnit(lp_unit, "SetTintColor 255,255,255 1.000000");
 }
 
 void libPPRL_gf_DebugPoint (point lp_point) {
+    // Automatic Variable Declarations
     // Implementation
     PlayerCreateEffectPoint(0, "DebugPoint", lp_point);
 }
 
 void libPPRL_gf_DebugPoint2 (point lp_point, fixed lp_radius) {
+    // Automatic Variable Declarations
     // Implementation
     CatalogFieldValueSet(c_gameCatalogEffect, "DebugPointCircle", "AreaArray[" + IntToString(0) + "].Radius", 0, FixedToString(lp_radius, c_fixedPrecisionAny));
     PlayerCreateEffectPoint(0, "DebugPointCircle", lp_point);
 }
 
 void libPPRL_gf_DebugPoint3 (point lp_point, fixed lp_width, fixed lp_height) {
+    // Automatic Variable Declarations
     // Implementation
     CatalogFieldValueSet(c_gameCatalogEffect, "DebugRectangleVariable", "AreaArray[" + IntToString(0) + "].RectangleHeight", 0, FixedToString(lp_height, c_fixedPrecisionAny));
     CatalogFieldValueSet(c_gameCatalogEffect, "DebugRectangleVariable", "AreaArray[" + IntToString(0) + "].RectangleWidth", 0, FixedToString(lp_width, c_fixedPrecisionAny));
@@ -142,6 +156,7 @@ bool auto_libPPRL_gf_DebugPoint4_TriggerFunc (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_debugUnit;
 
+    // Automatic Variable Declarations
     // Variable Initialization
 
     // Implementation
@@ -174,6 +189,7 @@ bool auto_libPPRL_gf_DebugPoint5_TriggerFunc (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_debugUnit;
 
+    // Automatic Variable Declarations
     // Variable Initialization
 
     // Implementation
@@ -185,21 +201,25 @@ bool auto_libPPRL_gf_DebugPoint5_TriggerFunc (bool testConds, bool runActions) {
 }
 
 void libPPRL_gf_DebugString (string lp_message) {
+    // Automatic Variable Declarations
     // Implementation
     TriggerDebugOutput(1, StringToText(lp_message), true);
 }
 
 void libPPRL_gf_DebugPanelShow () {
+    // Automatic Variable Declarations
     // Implementation
     DialogControlSetVisible(libPPRL_gv_supportPanel.lv_main, PlayerGroupAll(), true);
 }
 
 void libPPRL_gf_DebugPanelHide () {
+    // Automatic Variable Declarations
     // Implementation
     DialogControlSetVisible(libPPRL_gv_supportPanel.lv_main, PlayerGroupAll(), false);
 }
 
 void libPPRL_gf_DebugPanelSetFieldValue (int lp_entry, string lp_string) {
+    // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SetDialogItemText(libPPRL_gv_supportPanel.lv_value[lp_entry], StringToText(lp_string), PlayerGroupAll());
     if ((libPPRL_gf_StringIsValid(lp_string) == true)) {
@@ -211,6 +231,7 @@ void libPPRL_gf_DebugPanelSetFieldValue (int lp_entry, string lp_string) {
 }
 
 void libPPRL_gf_DebugPanelSetFieldName (int lp_entry, string lp_string) {
+    // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SetDialogItemText(libPPRL_gv_supportPanel.lv_field[lp_entry], StringToText(lp_string), PlayerGroupAll());
     if ((libPPRL_gf_StringIsValid(lp_string) == true)) {
@@ -222,6 +243,7 @@ void libPPRL_gf_DebugPanelSetFieldName (int lp_entry, string lp_string) {
 }
 
 bool libPPRL_gf_AngleIsBetweenBounds (fixed lp_angle, fixed lp_minBound, fixed lp_maxBound) {
+    // Automatic Variable Declarations
     // Implementation
     if ((lp_angle < lp_maxBound) && (lp_angle > lp_minBound)) {
         return true;
@@ -232,6 +254,7 @@ bool libPPRL_gf_AngleIsBetweenBounds (fixed lp_angle, fixed lp_minBound, fixed l
 }
 
 bool libPPRL_gf_StringIsValid2 (int lp_integer) {
+    // Automatic Variable Declarations
     // Implementation
     if ((ModI(lp_integer, 2) == 1)) {
         return true;
@@ -245,6 +268,7 @@ int libPPRL_gf_SignInteger (int lp_inputInteger) {
     // Variable Declarations
     int lv_sign;
 
+    // Automatic Variable Declarations
     // Variable Initialization
 
     // Implementation
@@ -264,6 +288,7 @@ fixed libPPRL_gf_SignReal (fixed lp_inputReal) {
     // Variable Declarations
     fixed lv_sign;
 
+    // Automatic Variable Declarations
     // Variable Initialization
 
     // Implementation
@@ -280,9 +305,6 @@ fixed libPPRL_gf_SignReal (fixed lp_inputReal) {
 }
 
 point libPPRL_gf_ConstrainPointToRegion (point lp_point, region lp_contrainedRegion) {
-    fixed auto2B8FCF9F_ae;
-    fixed auto2B8FCF9F_ai;
-
     // Variable Declarations
     point lv_constrainedRegionCenter;
     fixed lv_constrainedRegionDistance;
@@ -290,6 +312,10 @@ point libPPRL_gf_ConstrainPointToRegion (point lp_point, region lp_contrainedReg
     fixed lv_constrainedCheckIncrement;
     point lv_constrainedPoint;
     fixed lv_i;
+
+    // Automatic Variable Declarations
+    fixed auto2B8FCF9F_ae;
+    fixed auto2B8FCF9F_ai;
 
     // Variable Initialization
 
@@ -305,7 +331,7 @@ point libPPRL_gf_ConstrainPointToRegion (point lp_point, region lp_contrainedReg
     auto2B8FCF9F_ae = lv_constrainedRegionDistance;
     auto2B8FCF9F_ai = lv_constrainedCheckIncrement;
     lv_i = 0.0;
-    for ( ; ( (auto2B8FCF9F_ai >= 0 && lv_i <= auto2B8FCF9F_ae) || (auto2B8FCF9F_ai <= 0 && lv_i >= auto2B8FCF9F_ae) ) ; lv_i += auto2B8FCF9F_ai ) {
+    for ( ; ( (auto2B8FCF9F_ai >= 0 && lv_i <= auto2B8FCF9F_ae) || (auto2B8FCF9F_ai < 0 && lv_i >= auto2B8FCF9F_ae) ) ; lv_i += auto2B8FCF9F_ai ) {
         lv_constrainedPoint = PointWithOffsetPolar(lv_constrainedPoint, lv_constrainedCheckIncrement, lv_constrainedRegionAngle);
         if ((RegionContainsPoint(lp_contrainedRegion, lv_constrainedPoint) == true)) {
             return lv_constrainedPoint;
@@ -315,15 +341,16 @@ point libPPRL_gf_ConstrainPointToRegion (point lp_point, region lp_contrainedReg
 }
 
 string libPPRL_gf_DeCamel (string lp_camelCaseString) {
-    int auto5D1280DC_ae;
-    int auto5D1280DC_ai;
-
     // Variable Declarations
     int lv_stringLength;
     int lv_letterIndex;
     string lv_letter;
     string lv_outputString;
     bool lv_isFirstCapital;
+
+    // Automatic Variable Declarations
+    int auto5D1280DC_ae;
+    const int auto5D1280DC_ai = 1;
 
     // Variable Initialization
     lv_letter = "";
@@ -334,9 +361,8 @@ string libPPRL_gf_DeCamel (string lp_camelCaseString) {
     lv_outputString = lp_camelCaseString;
     lv_isFirstCapital = true;
     auto5D1280DC_ae = lv_stringLength;
-    auto5D1280DC_ai = 1;
     lv_letterIndex = 1;
-    for ( ; ( (auto5D1280DC_ai >= 0 && lv_letterIndex <= auto5D1280DC_ae) || (auto5D1280DC_ai <= 0 && lv_letterIndex >= auto5D1280DC_ae) ) ; lv_letterIndex += auto5D1280DC_ai ) {
+    for ( ; ( (auto5D1280DC_ai >= 0 && lv_letterIndex <= auto5D1280DC_ae) || (auto5D1280DC_ai < 0 && lv_letterIndex >= auto5D1280DC_ae) ) ; lv_letterIndex += auto5D1280DC_ai ) {
         lv_letter = StringSub(lv_outputString, lv_letterIndex, lv_letterIndex);
         if ((StringSub(lv_outputString, (lv_letterIndex - 1), (lv_letterIndex - 1)) != "-") && ((lv_letter == "A") || (lv_letter == "B") || (lv_letter == "C") || (lv_letter == "D") || (lv_letter == "E") || (lv_letter == "F") || (lv_letter == "G") || (lv_letter == "H") || (lv_letter == "I") || (lv_letter == "J") || (lv_letter == "K") || (lv_letter == "L") || (lv_letter == "M") || (lv_letter == "N") || (lv_letter == "O") || (lv_letter == "P") || (lv_letter == "Q") || (lv_letter == "R") || (lv_letter == "S") || (lv_letter == "T") || (lv_letter == "U") || (lv_letter == "V") || (lv_letter == "W") || (lv_letter == "X") || (lv_letter == "Y") || (lv_letter == "Z"))) {
             if ((lv_isFirstCapital == true)) {
@@ -357,6 +383,7 @@ string libPPRL_gf_Capitalize (string lp_input) {
     int lv_inputLength;
     string lv_output;
 
+    // Automatic Variable Declarations
     // Variable Initialization
     lv_output = "";
 
@@ -367,6 +394,7 @@ string libPPRL_gf_Capitalize (string lp_input) {
 }
 
 bool libPPRL_gf_StringIsValid (string lp_string) {
+    // Automatic Variable Declarations
     // Implementation
     if ((lp_string != "") && (lp_string != null)) {
         return true;
@@ -380,6 +408,7 @@ string libPPRL_gf_ConvertPointXYtoString (point lp_point, int lp_precision) {
     // Variable Declarations
     string lv_outputString;
 
+    // Automatic Variable Declarations
     // Variable Initialization
     lv_outputString = "";
 
@@ -389,11 +418,13 @@ string libPPRL_gf_ConvertPointXYtoString (point lp_point, int lp_precision) {
 }
 
 void libPPRL_gf_AddTimeToTimer (timer lp_timer, fixed lp_additionalTime) {
+    // Automatic Variable Declarations
     // Implementation
     TimerStart(lp_timer, (TimerGetRemaining(lp_timer) + lp_additionalTime), false, c_timeGame);
 }
 
 void libPPRL_gf_HideAllUIFramesForPlayers (playergroup lp_playerGroup) {
+    // Automatic Variable Declarations
     // Implementation
     UISetFrameVisible(lp_playerGroup, c_syncFrameTypeAchievementMenuButton, false);
     UISetFrameVisible(lp_playerGroup, c_syncFrameTypeAlertPanel, false);
@@ -436,13 +467,14 @@ void libPPRL_gf_HideAllUIFramesForPlayers (playergroup lp_playerGroup) {
 }
 
 bool libPPRL_gf_UnitHasBehaviorWithBehaviorFlag (unit lp_unit, int lp_behaviorFlag) {
-    int auto452D5312_ae;
-    int auto452D5312_ai;
-
     // Variable Declarations
     int lv_behaviorCount;
     string lv_pickedBehavior;
     int lv_i;
+
+    // Automatic Variable Declarations
+    int auto452D5312_ae;
+    const int auto452D5312_ai = 1;
 
     // Variable Initialization
 
@@ -452,9 +484,8 @@ bool libPPRL_gf_UnitHasBehaviorWithBehaviorFlag (unit lp_unit, int lp_behaviorFl
     }
     lv_behaviorCount = UnitBehaviorCountAll(lp_unit);
     auto452D5312_ae = lv_behaviorCount;
-    auto452D5312_ai = 1;
     lv_i = 1;
-    for ( ; ( (auto452D5312_ai >= 0 && lv_i <= auto452D5312_ae) || (auto452D5312_ai <= 0 && lv_i >= auto452D5312_ae) ) ; lv_i += auto452D5312_ai ) {
+    for ( ; ( (auto452D5312_ai >= 0 && lv_i <= auto452D5312_ae) || (auto452D5312_ai < 0 && lv_i >= auto452D5312_ae) ) ; lv_i += auto452D5312_ai ) {
         lv_pickedBehavior = UnitBehaviorGet(lp_unit, lv_i);
         if ((UnitBehaviorHasFlag(lv_pickedBehavior, lp_behaviorFlag) == true)) {
             return true;
@@ -464,21 +495,23 @@ bool libPPRL_gf_UnitHasBehaviorWithBehaviorFlag (unit lp_unit, int lp_behaviorFl
 }
 
 unitgroup libPPRL_gf_UnitsInUnitGroupMatchingBehavior (unitgroup lp_unitGroup, string lp_behavior, bool lp_match) {
-    unitgroup autoCE902C40_g;
-    int autoCE902C40_u;
-
     // Variable Declarations
     unitgroup lv_behaviorUnits;
     unit lv_unit;
+
+    // Automatic Variable Declarations
+    unitgroup autoCE902C40_g;
+    int autoCE902C40_u;
 
     // Variable Initialization
     lv_behaviorUnits = UnitGroupEmpty();
 
     // Implementation
     autoCE902C40_g = lp_unitGroup;
-    autoCE902C40_u = 1;
-    for ( ; autoCE902C40_u <= UnitGroupCount(autoCE902C40_g, c_unitCountAll) ; autoCE902C40_u += BoolToInt(lv_unit == UnitGroupUnit(autoCE902C40_g, autoCE902C40_u)) ) {
-        lv_unit = UnitGroupUnit(autoCE902C40_g, autoCE902C40_u);
+    autoCE902C40_u = UnitGroupCount(autoCE902C40_g, c_unitCountAll);
+    for (;; autoCE902C40_u -= 1) {
+        lv_unit = UnitGroupUnitFromEnd(autoCE902C40_g, autoCE902C40_u);
+        if (lv_unit == null) { break; }
         if ((UnitHasBehavior2(lv_unit, lp_behavior) == lp_match)) {
             UnitGroupAdd(lv_behaviorUnits, lv_unit);
         }
@@ -491,13 +524,14 @@ unitgroup libPPRL_gf_UnitsInUnitGroupMatchingBehavior (unitgroup lp_unitGroup, s
 // Trigger: Debug Panel Initialize
 //--------------------------------------------------------------------------------------------------
 bool libPPRL_gt_DebugPanelInitialize_Func (bool testConds, bool runActions) {
-    int auto43A163B3_ae;
-    int auto43A163B3_ai;
-
     // Variable Declarations
     int lv_n;
     string lv_debugPanelFrameName;
     string lv_debugPanelFrameNumber;
+
+    // Automatic Variable Declarations
+    int auto43A163B3_ae;
+    const int auto43A163B3_ai = 1;
 
     // Variable Initialization
     lv_debugPanelFrameName = "";
@@ -515,9 +549,8 @@ bool libPPRL_gt_DebugPanelInitialize_Func (bool testConds, bool runActions) {
     DialogControlHookupStandard(c_triggerControlTypeLabel, lv_debugPanelFrameName);
     libPPRL_gv_supportPanel.lv_header = DialogControlLastCreated();
     auto43A163B3_ae = libPPRL_gv_supportPanel.lv_maxEntryCount;
-    auto43A163B3_ai = 1;
     lv_n = 1;
-    for ( ; ( (auto43A163B3_ai >= 0 && lv_n <= auto43A163B3_ae) || (auto43A163B3_ai <= 0 && lv_n >= auto43A163B3_ae) ) ; lv_n += auto43A163B3_ai ) {
+    for ( ; ( (auto43A163B3_ai >= 0 && lv_n <= auto43A163B3_ae) || (auto43A163B3_ai < 0 && lv_n >= auto43A163B3_ae) ) ; lv_n += auto43A163B3_ai ) {
         if ((lv_n < 10)) {
             lv_debugPanelFrameNumber = ("0" + IntToString(lv_n));
             libPPRL_gv_supportPanel.lv_updateEvent[lv_n] = ("DebugPanelUpdate" + "0" + IntToString(lv_n));

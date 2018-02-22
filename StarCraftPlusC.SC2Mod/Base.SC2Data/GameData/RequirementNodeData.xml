@@ -168,8 +168,14 @@
         <OperandArray value="CountUnitLairCompleteOnly"/>
         <OperandArray value="CountUnitInfestationPitCompleteOnlyTechTreeCheat"/>
     </CRequirementAnd>
-    <CRequirementAnd id="AndCountUnitMothershipCoreCompleteOnlyCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipQueuedOrBetter0">
-        <OperandArray value="CountUnitMothershipCoreCompleteOnly"/>
+    <CRequirementAnd id="AndCountUnitNexusCompleteOnlyTechTreeCheatCountBehaviorGameUCBNexusEnergy50GECompleteOnly1851786957">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUnitNexusCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="CountBehaviorGameUCBNexusEnergy50GECompleteOnly1851786957"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUnitNexusCompleteOnlyTechTreeCheatCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipQueuedOrBetter0">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUnitNexusCompleteOnlyTechTreeCheat"/>
         <OperandArray value="CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Eq1228785331CountUnitMothershipQueuedOrBetter0"/>
     </CRequirementAnd>
@@ -291,6 +297,11 @@
         <OperandArray value="CountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Not1833567690CountUnitNukeQueuedOrBetterAtUnit"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndTechTreeCheatCountUnitLurkerDenMPCompleteOnlyTechTreeCheat">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUnitLurkerDenMPCompleteOnlyTechTreeCheat"/>
+    </CRequirementAnd>
     <CRequirementCountBehavior id="CountBehaviorGameNearNexusCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="GameNearNexus" State="CompleteOnlyAtUnit"/>
@@ -306,6 +317,10 @@
     <CRequirementCountBehavior id="CountBehaviorGameUCBHydraliskLurkerDenCompleteOnly4037297345">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="GameUCBHydraliskLurkerDen" State="CompleteOnly"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorGameUCBNexusEnergy50GECompleteOnly1851786957">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GameUCBNexusEnergy50GE" State="CompleteOnly"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorGameUCBOrbitalCommandEnergy50GECompleteOnly2976604704">
         <Flags index="TechTreeCheat" value="0"/>
@@ -405,10 +420,6 @@
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitLairCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-    </CRequirementCountUnit>
-    <CRequirementCountUnit id="CountUnitMothershipCoreCompleteOnly">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="MothershipCore" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitOrbitalCommandCompleteOnlyTechTreeCheat">
         <Count Link="OrbitalCommand" State="CompleteOnly"/>

@@ -308,9 +308,6 @@
     <CButton id="CancelCocoonMorph">
         <HotkeyAlias value=""/>
     </CButton>
-    <CButton id="CancelMothershipMorph">
-        <HotkeyAlias value=""/>
-    </CButton>
     <CButton id="CancelMutateMorph">
         <HotkeyAlias value=""/>
     </CButton>
@@ -335,6 +332,16 @@
     <CButton id="Cheer">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
         <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="ChronoBoostEnergyCost">
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="ChronoBoostEnergyCostUCB" parent="ChronoBoostEnergyCost">
+        <Name value="Button/Name/ChronoBoostEnergyCostUCB"/>
+        <Tooltip value="Button/Tooltip/ChronoBoostEnergyCostUCB"/>
+        <AlertName value="Button/Name/ChronoBoostEnergyCostUCB"/>
+        <AlertTooltip value="Button/Tooltip/ChronoBoostEnergyCostUCB"/>
+        <Hotkey value="Button/Hotkey/ChronoBoostEnergyCostUCB"/>
     </CButton>
     <CButton id="CliffJumper">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -1409,6 +1416,9 @@
     <CButton id="EvolveChitinousPlating">
         <HotkeyAlias value=""/>
     </CButton>
+    <CButton id="EvolveDiggingClaws">
+        <HotkeyAlias value=""/>
+    </CButton>
     <CButton id="EvolveFlyingLocusts">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
         <HotkeyAlias value=""/>
@@ -1852,9 +1862,7 @@
     <CButton id="MasteryFenixChronoBoostExtra">
         <HotkeyAlias value=""/>
     </CButton>
-    <CButton id="MasteryFenixReducedResearchCosts">
-        <HotkeyAlias value=""/>
-    </CButton>
+    <CButton id="MasteryFenixReducedResearchCosts"/>
     <CButton id="MasteryFenixSuitAttackSpeed">
         <HotkeyAlias value=""/>
     </CButton>
@@ -2125,10 +2133,13 @@
     <CButton id="MorphToSwarmHostMP">
         <HotkeyAlias value=""/>
     </CButton>
-    <CButton id="Mothership">
+    <CButton id="MorphtoObserver">
         <HotkeyAlias value=""/>
     </CButton>
-    <CButton id="MothershipCore">
+    <CButton id="MorphtoObserverSiege">
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Mothership">
         <HotkeyAlias value=""/>
     </CButton>
     <CButton id="MothershipCoreAttack">
@@ -2157,6 +2168,16 @@
     </CButton>
     <CButton id="Nexus">
         <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="NexusMassRecall">
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="NexusMassRecallUCB" parent="NexusMassRecall">
+        <Name value="Button/Name/NexusMassRecallUCB2"/>
+        <Tooltip value="Button/Tooltip/NexusMassRecallUCB2"/>
+        <AlertName value="Button/Name/NexusMassRecallUCB2"/>
+        <AlertTooltip value="Button/Tooltip/NexusMassRecallUCB2"/>
+        <Hotkey value="Button/Hotkey/NexusMassRecallUCB"/>
     </CButton>
     <CButton id="NukeCalldown">
         <HotkeyAlias value=""/>
@@ -2354,6 +2375,12 @@
     <CButton id="RavenRecalibratedExplosives">
         <HotkeyAlias value=""/>
     </CButton>
+    <CButton id="RavenScramblerMissile">
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="RavenShredderMissile">
+        <HotkeyAlias value=""/>
+    </CButton>
     <CButton id="Reactor">
         <HotkeyAlias value=""/>
     </CButton>
@@ -2539,6 +2566,12 @@
     <CButton id="SetRallyPointSwarmHost">
         <HotkeyAlias value=""/>
     </CButton>
+    <CButton id="ShieldBattery">
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="ShieldBatteryRecharge">
+        <HotkeyAlias value=""/>
+    </CButton>
     <CButton id="SiegeMode">
         <HotkeyAlias value=""/>
     </CButton>
@@ -2612,6 +2645,14 @@
     </CButton>
     <CButton id="Stop">
         <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="StopShieldBattery">
+        <Icon value="Assets\Textures\btn-command-stop.dds"/>
+        <AlertIcon value="Assets\Textures\btn-command-stop.dds"/>
+        <Hotkey value="Button/Hotkey/StopShieldBattery"/>
+        <EditorCategories value="Race:Neutral"/>
+        <TintRacially value="1"/>
+        <Universal value="1"/>
     </CButton>
     <CButton id="StopCarrier">
         <Icon value="Assets\Textures\btn-command-stop.dds"/>
@@ -2886,7 +2927,6 @@
         <HotkeyAlias value=""/>
     </CButton>
     <CButton id="MassRecall">
-        <Hotkey value="Button/Hotkey/GlobalGridButton"/>
         <HotkeyAlias value=""/>
     </CButton>
     <CButton id="MassiveKnockover">
@@ -2928,13 +2968,6 @@
     <CButton id="MorphBackToGateway">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
         <HotkeyAlias value=""/>
-    </CButton>
-    <CButton id="MorphToMothershipUCB">
-        <Icon value="Assets\Textures\btn-unit-protoss-mothership.dds"/>
-        <AlertIcon value="Assets\Textures\btn-unit-protoss-mothership.dds"/>
-        <Hotkey value="Button/Hotkey/MorphToMothershipUCB"/>
-        <EditorCategories value="Race:Terran"/>
-        <HidesForSimpleText value="0"/>
     </CButton>
     <CButton id="SpawnLarvaUCB">
         <Icon value="Assets\Textures\BTN-Unit-Zerg-Larva.dds"/>
@@ -2984,14 +3017,6 @@
     </CButton>
     <CButton id="MovePatrol">
         <HotkeyAlias value=""/>
-    </CButton>
-    <CButton id="MutateintoLurkerDenUCB">
-        <Icon value="Assets\Textures\btn-building-zerg-lurkerden.dds"/>
-        <AlertIcon value="Assets\Textures\btn-building-zerg-lurkerden.dds"/>
-        <Hotkey value="Button/Hotkey/MutateintoLurkerDenUCB"/>
-        <EditorCategories value="Race:Zerg"/>
-        <Tooltip value="Button/Tooltip/MutateintoLurkerDen"/>
-        <AlertTooltip value="Button/Tooltip/MutateintoLurkerDen"/>
     </CButton>
     <CButton id="NexusInvulnerability">
         <Hotkey value="Button/Hotkey/GlobalGridButton"/>
@@ -3084,11 +3109,6 @@
         <AlertIcon value="Assets\Textures\BTN-Ability-Terran-CalldownExtraSupplies-color.dds"/>
         <Hotkey value="Button/Hotkey/GlobalSupplyDrop"/>
         <EditorCategories value="Race:Terran"/>
-    </CButton>
-    <CButton id="TimeWarpUCB">
-        <Icon value="Assets\Textures\btn-ability-protoss-protoncharge-color.dds"/>
-        <Hotkey value="Button/Hotkey/GlobalTimeWarp"/>
-        <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="UCBOrbitalCommand">
         <Icon value="Assets\Textures\BTN-Building-Terran-SurveillanceStation.dds"/>

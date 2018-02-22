@@ -210,6 +210,18 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBNexusEnergy50GE">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterEnergyGE50"/>
+        <FinalEffect value="GameUCBNexusEnergy50LT"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBNexusEnergy50LT">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterEnergyLT50"/>
+        <FinalEffect value="GameUCBNexusEnergy50GE"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GameUCBStarportAddon">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>

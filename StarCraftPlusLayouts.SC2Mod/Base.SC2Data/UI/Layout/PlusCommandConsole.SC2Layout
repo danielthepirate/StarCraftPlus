@@ -55,18 +55,6 @@
 				<RenderPriority val="10"/>
 			</Frame>
 			
-			<Frame type="BlurFrame" name="InfoPanelBlur">
-				<Anchor relative="$parent/InfoPanelBackground"/>
-				<BlurAmount val="0.15"/>
-				<RenderPriority val="1"/>
-			</Frame>
-			
-			<Frame type="BlurFrame" name="MinimapBlur">
-				<Anchor relative="$parent/MinimapBackground"/>
-				<BlurAmount val="0.15"/>
-				<RenderPriority val="1"/>
-			</Frame>
-			
 			<Frame type="Image" name="TopBarBackground">
 				<Anchor side="Top" relative="$GlobalCommand00" pos="Min" offset="-24"/>
 				<Anchor side="Left" relative="$GlobalCommand00" pos="Min" offset="-8"/>
@@ -78,12 +66,6 @@
 				<Color val="0,0,0"/>
 				<Alpha val="128"/>
 				<Visible val="false"/>
-				
-				<Frame type="BlurFrame" name="Blur">
-					<Anchor relative="$parent"/>
-					<BlurAmount val="0.15"/>
-					<RenderPriority val="1"/>
-				</Frame>
 			</Frame>
 			
 			<Frame type="Image" name="TopBarLeftBackground">
@@ -96,11 +78,6 @@
 				<RenderPriority val="10"/>
 				<Color val="0,0,0"/>
 				<Alpha val="255"/>
-				<!-- <Frame type="BlurFrame" name="Blur"> -->
-					<!-- <Anchor relative="$parent"/> -->
-					<!-- <BlurAmount val="0.15"/> -->
-					<!-- <RenderPriority val="1"/> -->
-				<!-- </Frame> -->
 			</Frame>
 			
 			<!-- CONSOLE MODELS -->

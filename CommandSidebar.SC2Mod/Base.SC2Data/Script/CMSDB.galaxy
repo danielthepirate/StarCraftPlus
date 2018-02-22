@@ -43,6 +43,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	abilcmd redirAbil;
 	region r;
 	order o;
+	
 	CMSDB_OrderRedirectData orderdata;
 	
 	r = RegionEntireMap();
@@ -83,7 +84,8 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 	if(orderdata.realAbil != ""){
 		redirAbil = AbilityCommand(orderdata.realAbil, abilCmdIndex);
 		OrderSetAbilityCommand (o, redirAbil);
-		TriggerDebugOutput(1, StringToText("Abil Substitution: "+orderdata.realAbil+" From: "+abil), CMSDB_DebugOutput);
+		
+		TriggerDebugOutput(1, StringToText("Abil Substitution: "+orderdata.realAbil+" From: "+abil+" :: "+IntToString(abilCmdIndex)), CMSDB_DebugOutput);
 	}
 	
 	if(abil == "MorphDummyTrainNukeUCB"){
@@ -164,7 +166,7 @@ bool CMSDB_InterceptOrder_Func (bool testConds, bool runActions) {
 		UnitIssueOrder(dummy, Order(AbilityCommand(abil, c_abilEffectTargetCmdCancel)), c_orderQueueReplace);
 
 		UnitGroupIssueOrder(ug, o, c_orderQueueReplace);
-		//UnitIssueOrder(u, o, c_orderQueueReplace);
+		// UnitIssueOrder(u, o, c_orderQueueReplace);
 	}
 	
 	return true;

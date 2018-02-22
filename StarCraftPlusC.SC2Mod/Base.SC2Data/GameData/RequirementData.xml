@@ -82,11 +82,20 @@
     <CRequirement id="LearnCharge">
         <NodeArray index="Use" Link="CountUnitTwilightCouncilCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="LearnCycloneRapidFireLaunchers">
+        <NodeArray index="Use" Link="AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
     <CRequirement id="LearnDarkTemplarBlink">
         <NodeArray index="Use" Link="CountUnitDarkShrineCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="LearnEvolveDiggingClaws">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitLurkerDenMPCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
     <CRequirement id="LearnExtendedThermalLance">
         <NodeArray index="Use" Link="CountUnitRoboticsBayCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnGhostEnergyUpgrade">
+        <NodeArray index="Use" Link="CountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="LearnGraviticBooster">
         <NodeArray index="Use" Link="CountUnitRoboticsBayCompleteOnly"/>
@@ -149,11 +158,17 @@
     <CRequirement id="LearnPsiStorm">
         <NodeArray index="Use" Link="CountUnitTemplarArchiveCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="LearnSmartServos">
+        <NodeArray index="Use" Link="AndCountUnitFactoryCompleteOnlyTechTreeCheatCountUnitFactoryTechLabCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
     <CRequirement id="LearnWarpGate">
         <NodeArray index="Use" Link="CountUnitCyberneticsCoreCompleteOnly"/>
     </CRequirement>
     <CRequirement id="MothershipRequirements">
-        <NodeArray index="Use" Link="AndCountUnitMothershipCoreCompleteOnlyCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipQueuedOrBetter0"/>
+        <NodeArray index="Use" Link="AndCountUnitNexusCompleteOnlyTechTreeCheatCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipQueuedOrBetter0"/>
+    </CRequirement>
+    <CRequirement id="UCBNexusEnergy50">
+        <NodeArray index="Use" Link="AndCountUnitNexusCompleteOnlyTechTreeCheatCountBehaviorGameUCBNexusEnergy50GECompleteOnly1851786957"/>
     </CRequirement>
     <CRequirement id="UpgradeHive">
         <EditorCategories value="Race:Zerg,TechType:Unit"/>
