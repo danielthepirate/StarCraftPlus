@@ -41,6 +41,12 @@ void libPPRL_InitVariables () {
 }
 
 // Functions
+bool libPPRL_gf_Boolean (bool lp_argument) {
+    // Automatic Variable Declarations
+    // Implementation
+    return lp_argument;
+}
+
 int libPPRL_gf_UserDataInstanceID (string lp_userType, string lp_userDataInstance) {
     // Variable Declarations
     int lv_instanceIndex;

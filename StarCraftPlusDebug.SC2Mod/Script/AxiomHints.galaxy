@@ -1,0 +1,692 @@
+trigger AxiomHints;
+trigger AxiomHints_Welcome;
+
+trigger Axiom_AutoAddControlGroupHelpTip_Trg;
+trigger Axiom_MultiTypeControlGroupHelpTip_Trg;
+trigger Axiom_ExpansionHelpTip_Trg;
+trigger Axiom_SpentAllMoneyHelpTip_Trg;
+trigger Axiom_OverspendingHelpTip_Trg;
+trigger Axiom_SupplyMaxReachedHelpTip_Trg;
+trigger Axiom_MineralFieldDepletingHelpTip_Trg;
+trigger Axiom_BuildRefineryHelpTip_Trg;
+//trigger Axiom_AutoAddControlGroupHelpTip_Trg;
+trigger Axiom_RecallControlGroupHelpTip_Trg;
+trigger Axiom_Terr_BuildWallHelpTip_Trg;
+trigger Axiom_Terr_BuildBarracksHelpTip_Trg;
+trigger Axiom_Terr_TrainUnitsHelpTip_Trg;
+trigger Axiom_Terr_TechLabHelpTip_Trg;
+trigger Axiom_Terr_ReactorHelpTip_Trg;
+trigger Axiom_Terr_SupplyCapReachedHelpTip_Trg;
+trigger Axiom_Terr_GlobalRallyHelpTip_Trg;
+trigger Axiom_Terr_GlobalRally2HelpTip_Trg;
+trigger Axiom_Terr_DisableGlobalRallyHelpTip_Trg;
+trigger Axiom_Terr_AutoWallHelpTip_Trg;
+trigger Axiom_Terr_OrbitalUpgradeHelpTip_Trg;
+trigger Axiom_Terr_BuildExpoHelpTip_Trg;
+		
+// PROTOSS
+trigger Axiom_Prot_BuildPylonHelpTip_Trg;
+trigger Axiom_Prot_BuildGatewayHelpTip_Trg;
+trigger Axiom_Prot_TrainUnitsHelpTip_Trg;
+trigger Axiom_Prot_BuildCybCoreHelpTip_Trg;
+trigger Axiom_Prot_BuildPylonNearNexusHelpTip_Trg;
+trigger Axiom_Prot_SupplyCapReachedHelpTip_Trg;
+trigger Axiom_Prot_GlobalRallyHelpTip_Trg;
+trigger Axiom_Prot_MothershipTrainHelpTip_Trg;
+trigger Axiom_Prot_BuildExpoHelpTip_Trg;
+trigger Axiom_Prot_GlobalRally2HelpTip_Trg;
+trigger Axiom_Prot_WarpgateUpgradeDoneHelpTip_Trg;
+//trigger Axiom_Prot_WarpgateUpgradeDoneHelpTip_Trg;
+trigger Axiom_Prot_ShieldRegensHelpTip_Trg;
+		
+// ZERG
+trigger Axiom_Zerg_BuildPoolHelpTip_Trg;
+trigger Axiom_Zerg_TrainUnitsHelpTip_Trg;
+trigger Axiom_Zerg_SupplyCapReachedHelpTip_Trg;
+trigger Axiom_Zerg_FirstQueenHelpTip_Trg;
+trigger Axiom_Zerg_FirstTumorHelpTip_Trg;
+trigger Axiom_Zerg_FirstInjectHelpTip_Trg;
+trigger Axiom_Zerg_GlobalRallyHelpTip_Trg;
+trigger Axiom_Zerg_BuildExpoHelpTip_Trg;
+trigger Axiom_Zerg_OverlorNewAbildHelpTip_Trg;
+trigger Axiom_Zerg_AutoDroneHelpTip_Trg;
+trigger Axiom_Zerg_BuildLairHelpTip_Trg;
+
+bool AxiomHint_DebugOutput = true;
+const string c_AxiomHints_UIBasePath = "UIContainer/FullscreenUpperContainer/";
+
+string Axiom_AutoAddControlGroupHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_AutoAddControlGroupHelpTip";
+string Axiom_MultiTypeControlGroupHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_MultiTypeControlGroupHelpTip";
+string Axiom_ExpansionHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_ExpansionHelpTip";
+string Axiom_SpentAllMoneyHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_SpentAllMoneyHelpTip";
+string Axiom_OverspendingHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_OverspendingHelpTip";
+string Axiom_SupplyMaxReachedHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_SupplyMaxReachedHelpTip";
+string Axiom_MineralFieldDepletingHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_MineralFieldDepletingHelpTip";
+string Axiom_BuildRefineryHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_BuildRefineryHelpTip";
+//string Axiom_AutoAddControlGroupHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_AutoAddControlGroupHelpTip";
+string Axiom_RecallControlGroupHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_RecallControlGroupHelpTip";
+
+string Axiom_Terr_BuildWallHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_BuildWallHelpTip";
+string Axiom_Terr_BuildBarracksHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_BuildBarracksHelpTip";
+string Axiom_Terr_TrainUnitsHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_TrainUnitsHelpTip";
+string Axiom_Terr_TechLabHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_TechLabHelpTip";
+string Axiom_Terr_ReactorHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_ReactorHelpTip";
+string Axiom_Terr_SupplyCapReachedHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_SupplyCapReachedHelpTip";
+string Axiom_Terr_GlobalRallyHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_GlobalRallyHelpTip";
+string Axiom_Terr_GlobalRally2HelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_GlobalRally2HelpTip";
+string Axiom_Terr_DisableGlobalRallyHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_DisableGlobalRallyHelpTip";
+string Axiom_Terr_AutoWallHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_AutoWallHelpTip";
+string Axiom_Terr_OrbitalUpgradeHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_OrbitalUpgradeHelpTip";
+string Axiom_Terr_BuildExpoHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Terr_BuildExpoHelpTip";
+
+string Axiom_Prot_BuildPylonHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_BuildPylonHelpTip";
+string Axiom_Prot_BuildGatewayHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_BuildGatewayHelpTip";
+string Axiom_Prot_TrainUnitsHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_TrainUnitsHelpTip";
+string Axiom_Prot_BuildCybCoreHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_BuildCybCoreHelpTip";
+string Axiom_Prot_BuildPylonNearNexusHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_BuildPylonNearNexusHelpTip";
+string Axiom_Prot_SupplyCapReachedHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_SupplyCapReachedHelpTip";
+string Axiom_Prot_GlobalRallyHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_GlobalRallyHelpTip";
+string Axiom_Prot_MothershipTrainHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_MothershipTrainHelpTip";
+string Axiom_Prot_BuildExpoHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_BuildExpoHelpTip";
+string Axiom_Prot_GlobalRally2HelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_GlobalRally2HelpTip";
+string Axiom_Prot_WarpgateUpgradeDoneHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_WarpgateUpgradeDoneHelpTip";
+//string Axiom_Prot_WarpgateUpgradeDoneHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_WarpgateUpgradeDoneHelpTip";
+string Axiom_Prot_ShieldRegensHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Prot_ShieldRegensHelpTip";
+
+string Axiom_Zerg_BuildPoolHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_BuildPoolHelpTip";
+string Axiom_Zerg_TrainUnitsHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_TrainUnitsHelpTip";
+string Axiom_Zerg_SupplyCapReachedHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_SupplyCapReachedHelpTip";
+string Axiom_Zerg_FirstQueenHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_FirstQueenHelpTip";
+string Axiom_Zerg_FirstTumorHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_FirstTumorHelpTip";
+string Axiom_Zerg_FirstInjectHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_FirstInjectHelpTip";
+string Axiom_Zerg_GlobalRallyHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_GlobalRallyHelpTip";
+string Axiom_Zerg_BuildExpoHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_BuildExpoHelpTip";
+string Axiom_Zerg_OverlorNewAbildHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_OverlorNewAbildHelpTip";
+string Axiom_Zerg_AutoDroneHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_AutoDroneHelpTip";
+string Axiom_Zerg_BuildLairHelpTip_DlgPath = c_AxiomHints_UIBasePath+"Axiom_Zerg_BuildLairHelpTip";
+
+int Axiom_AutoAddControlGroupHelpTip_Dlg;
+int Axiom_MultiTypeControlGroupHelpTip_Dlg;
+int Axiom_ExpansionHelpTip_Dlg;
+int Axiom_SpentAllMoneyHelpTip_Dlg;
+int Axiom_OverspendingHelpTip_Dlg;
+int Axiom_SupplyMaxReachedHelpTip_Dlg;
+int Axiom_MineralFieldDepletingHelpTip_Dlg;
+int Axiom_BuildRefineryHelpTip_Dlg;
+//int Axiom_AutoAddControlGroupHelpTip_Dlg;
+int Axiom_RecallControlGroupHelpTip_Dlg;
+
+int Axiom_Terr_BuildWallHelpTip_Dlg;
+int Axiom_Terr_BuildBarracksHelpTip_Dlg;
+int Axiom_Terr_TrainUnitsHelpTip_Dlg;
+int Axiom_Terr_TechLabHelpTip_Dlg;
+int Axiom_Terr_ReactorHelpTip_Dlg;
+int Axiom_Terr_SupplyCapReachedHelpTip_Dlg;
+int Axiom_Terr_GlobalRallyHelpTip_Dlg;
+int Axiom_Terr_GlobalRally2HelpTip_Dlg;
+int Axiom_Terr_DisableGlobalRallyHelpTip_Dlg;
+int Axiom_Terr_AutoWallHelpTip_Dlg;
+int Axiom_Terr_OrbitalUpgradeHelpTip_Dlg;
+int Axiom_Terr_BuildExpoHelpTip_Dlg;
+
+int Axiom_Prot_BuildPylonHelpTip_Dlg;
+int Axiom_Prot_BuildGatewayHelpTip_Dlg;
+int Axiom_Prot_TrainUnitsHelpTip_Dlg;
+int Axiom_Prot_BuildCybCoreHelpTip_Dlg;
+int Axiom_Prot_BuildPylonNearNexusHelpTip_Dlg;
+int Axiom_Prot_SupplyCapReachedHelpTip_Dlg;
+int Axiom_Prot_GlobalRallyHelpTip_Dlg;
+int Axiom_Prot_MothershipTrainHelpTip_Dlg;
+int Axiom_Prot_BuildExpoHelpTip_Dlg;
+int Axiom_Prot_GlobalRally2HelpTip_Dlg;
+int Axiom_Prot_WarpgateUpgradeDoneHelpTip_Dlg;
+//int Axiom_Prot_WarpgateUpgradeDoneHelpTip_Dlg;
+int Axiom_Prot_ShieldRegensHelpTip_Dlg;
+
+int Axiom_Zerg_BuildPoolHelpTip_Dlg;
+int Axiom_Zerg_TrainUnitsHelpTip_Dlg;
+int Axiom_Zerg_SupplyCapReachedHelpTip_Dlg;
+int Axiom_Zerg_FirstQueenHelpTip_Dlg;
+int Axiom_Zerg_FirstTumorHelpTip_Dlg;
+int Axiom_Zerg_FirstInjectHelpTip_Dlg;
+int Axiom_Zerg_GlobalRallyHelpTip_Dlg;
+int Axiom_Zerg_BuildExpoHelpTip_Dlg;
+int Axiom_Zerg_OverlorNewAbildHelpTip_Dlg;
+int Axiom_Zerg_AutoDroneHelpTip_Dlg;
+int Axiom_Zerg_BuildLairHelpTip_Dlg;
+
+void AxiomHints_ShowHint(int dlg, int player){
+	DialogControlSetVisible (dlg, PlayerGroupSingle(player), true);
+}
+
+bool Axiom_AutoAddControlGroupHelpTip_Func(bool c, bool a) { 
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_AutoAddControlGroupHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true; 
+}
+bool Axiom_MultiTypeControlGroupHelpTip_Func(bool c, bool a){
+//
+	int player = EventPlayer();
+	unit u = EventUnitProgressUnit();
+	string ut = UnitGetType(u);
+	trigger t = EventTrigger();
+	
+	//;
+	if(UnitTypeTestAttribute(ut, c_unitAttributeStructure) || UnitTypeTestFlag (ut, c_unitFlagWorker)){
+		return false;
+	}
+	
+	AxiomHints_ShowHint(Axiom_MultiTypeControlGroupHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(t)), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_ExpansionHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_ExpansionHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_SpentAllMoneyHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_SpentAllMoneyHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_OverspendingHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_OverspendingHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_SupplyMaxReachedHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_SupplyMaxReachedHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_MineralFieldDepletingHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_MineralFieldDepletingHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_BuildRefineryHelpTip_Func(bool c, bool a) { 
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_BuildRefineryHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true; 
+}
+//bool Axiom_AutoAddControlGroupHelpTip_Func(bool c, bool a){
+
+// }
+bool Axiom_RecallControlGroupHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_RecallControlGroupHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+
+bool Axiom_Terr_BuildWallHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_BuildWallHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_BuildBarracksHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_BuildBarracksHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_TrainUnitsHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_TrainUnitsHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_TechLabHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_TechLabHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_ReactorHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_ReactorHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_SupplyCapReachedHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_SupplyCapReachedHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_GlobalRallyHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_GlobalRallyHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_GlobalRally2HelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_GlobalRally2HelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_DisableGlobalRallyHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_DisableGlobalRallyHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_AutoWallHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_AutoWallHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Terr_OrbitalUpgradeHelpTip_Func(bool c, bool a) { 
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_OrbitalUpgradeHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true; 
+}
+bool Axiom_Terr_BuildExpoHelpTip_Func(bool c, bool a) { 
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Terr_BuildExpoHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true; 
+}
+
+bool Axiom_Prot_BuildPylonHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_BuildPylonHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Prot_BuildGatewayHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_BuildGatewayHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Prot_TrainUnitsHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_TrainUnitsHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Prot_BuildCybCoreHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_BuildCybCoreHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Prot_BuildPylonNearNexusHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_BuildPylonNearNexusHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Prot_SupplyCapReachedHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_SupplyCapReachedHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Prot_GlobalRallyHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_GlobalRallyHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Prot_MothershipTrainHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_MothershipTrainHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Prot_BuildExpoHelpTip_Func(bool c, bool a) { 
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_BuildExpoHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true; 
+}
+bool Axiom_Prot_GlobalRally2HelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_GlobalRally2HelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Prot_WarpgateUpgradeDoneHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_WarpgateUpgradeDoneHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+//bool Axiom_Prot_WarpgateUpgradeDoneHelpTip_Func(bool c, bool a){
+
+	// int player = 1;
+	// AxiomHints_ShowHint(Axiom_BuildRefineryHelpTip_Dlg, player);
+	// TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	// return true;
+// }
+bool Axiom_Prot_ShieldRegensHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Prot_ShieldRegensHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+
+bool Axiom_Zerg_BuildPoolHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_BuildPoolHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Zerg_TrainUnitsHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_TrainUnitsHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Zerg_SupplyCapReachedHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_SupplyCapReachedHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Zerg_FirstQueenHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_FirstQueenHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Zerg_FirstTumorHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_FirstTumorHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Zerg_FirstInjectHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_FirstInjectHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Zerg_GlobalRallyHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_GlobalRallyHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Zerg_BuildExpoHelpTip_Func(bool c, bool a) { 
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_BuildExpoHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true; 
+}
+bool Axiom_Zerg_OverlorNewAbildHelpTip_Func(bool c, bool a){
+
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_OverlorNewAbildHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true;
+}
+bool Axiom_Zerg_AutoDroneHelpTip_Func(bool c, bool a) { 
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_AutoDroneHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true; 
+}
+bool Axiom_Zerg_BuildLairHelpTip_Func(bool c, bool a) { 
+	int player = 1;
+	AxiomHints_ShowHint(Axiom_Zerg_BuildLairHelpTip_Dlg, player);
+	TriggerDebugOutput(1, StringToText(TriggerGetFunction(EventTrigger())), AxiomHint_DebugOutput);
+	return true; 
+}
+
+
+
+
+bool AxiomHints_Func (bool testConds, bool runActions) {
+	return true;
+}
+bool AxiomHints_Welcome_Func (bool testConds, bool runActions) {
+	int player;
+	int [c_maxPlayers] Dlg;
+	for(player=0;player < c_maxPlayers;player+=1){
+		if (IsActiveUser(player)) {
+			if (PlayerRace(player)=="Terr"){
+				Dlg[player] = Axiom_Terr_BuildWallHelpTip_Dlg; 
+			}
+			else if (PlayerRace(player)=="Prot"){
+				Dlg[player] = Axiom_Prot_BuildPylonHelpTip_Dlg; 
+			}
+			else if (PlayerRace(player)=="Zerg"){
+				Dlg[player] = Axiom_Zerg_BuildPoolHelpTip_Dlg; 	
+			}
+			DialogControlSetVisible (Dlg[player], PlayerGroupSingle(player), true);
+		}
+	}
+	return true;
+}
+
+
+void AxiomHints_InitTriggers(){
+
+// Axiom_AutoAddControlGroupHelpTip	[upon having more than 1 unit type in a control group]
+Axiom_AutoAddControlGroupHelpTip_Trg = TriggerCreate("Axiom_AutoAddControlGroupHelpTip_Func");
+TriggerAddEventGeneric(Axiom_AutoAddControlGroupHelpTip_Trg, "MultipleUnitTypesInControlGroup");
+
+// Axiom_MultiTypeControlGroupHelpTip	[upon building first unit]
+Axiom_MultiTypeControlGroupHelpTip_Trg = TriggerCreate("Axiom_MultiTypeControlGroupHelpTip_Func");
+TriggerAddEventUnitTrainProgress(Axiom_MultiTypeControlGroupHelpTip_Trg, null, c_unitProgressStageComplete);
+
+// Axiom_ExpansionHelpTip	[Once mineral patch saturation + gas is reached]
+Axiom_ExpansionHelpTip_Trg = TriggerCreate("Axiom_ExpansionHelpTip_Func");
+
+// Axiom_SpentAllMoneyHelpTip	[Out of money]
+Axiom_SpentAllMoneyHelpTip_Trg = TriggerCreate("Axiom_SpentAllMoneyHelpTip_Func");
+
+// Axiom_OverspendingHelpTip	[Spending more than earning]
+Axiom_OverspendingHelpTip_Trg = TriggerCreate("Axiom_OverspendingHelpTip_Func");
+
+// Axiom_SupplyMaxReachedHelpTip	[Hit 190 army supply]
+Axiom_SupplyMaxReachedHelpTip_Trg = TriggerCreate("Axiom_SupplyMaxReachedHelpTip_Func");
+
+// Axiom_MineralFieldDepletingHelpTip	[After mining one mineral field out]
+Axiom_MineralFieldDepletingHelpTip_Trg = TriggerCreate("Axiom_MineralFieldDepletingHelpTip_Func");
+
+// Axiom_BuildRefineryHelpTip	[2 mins into game]
+Axiom_BuildRefineryHelpTip_Trg = TriggerCreate("Axiom_BuildRefineryHelpTip_Func");
+TriggerAddEventTimeElapsed (Axiom_BuildRefineryHelpTip_Trg, 120.0, c_timeGame);
+
+// Axiom_AutoAddControlGroupHelpTip	[On control group unit being attacked for first time]
+Axiom_AutoAddControlGroupHelpTip_Trg = TriggerCreate("Axiom_AutoAddControlGroupHelpTip_Func");
+
+// Axiom_RecallControlGroupHelpTip	[On first selecting a control group]
+Axiom_RecallControlGroupHelpTip_Trg = TriggerCreate("Axiom_RecallControlGroupHelpTip_Func");
+
+
+// Axiom_Terr_BuildWallHelpTip	[Start of Game]
+Axiom_Terr_BuildWallHelpTip_Trg = TriggerCreate("Axiom_Terr_BuildWallHelpTip_Func");
+// Axiom_Terr_BuildBarracksHelpTip	[Auto-wall complete]
+Axiom_Terr_BuildBarracksHelpTip_Trg = TriggerCreate("Axiom_Terr_BuildBarracksHelpTip_Func");
+// Axiom_Terr_TrainUnitsHelpTip	[Barracks complete]
+Axiom_Terr_TrainUnitsHelpTip_Trg = TriggerCreate("Axiom_Terr_TrainUnitsHelpTip_Func");
+// Axiom_Terr_TechLabHelpTip	[1st Tech-lab built]
+Axiom_Terr_TechLabHelpTip_Trg = TriggerCreate("Axiom_Terr_TechLabHelpTip_Func");
+// Axiom_Terr_ReactorHelpTip	[1st Reactor built]
+Axiom_Terr_ReactorHelpTip_Trg = TriggerCreate("Axiom_Terr_ReactorHelpTip_Func");
+// Axiom_Terr_SupplyCapReachedHelpTip	[Hit supply cap]
+Axiom_Terr_SupplyCapReachedHelpTip_Trg = TriggerCreate("Axiom_Terr_SupplyCapReachedHelpTip_Func");
+// Axiom_Terr_GlobalRallyHelpTip	[After building 2nd barracks]
+Axiom_Terr_GlobalRallyHelpTip_Trg = TriggerCreate("Axiom_Terr_GlobalRallyHelpTip_Func");
+// Axiom_Terr_GlobalRally2HelpTip	[After building first factory]
+Axiom_Terr_GlobalRally2HelpTip_Trg = TriggerCreate("Axiom_Terr_GlobalRally2HelpTip_Func");
+// Axiom_Terr_DisableGlobalRallyHelpTip	[After building first factory unit]
+Axiom_Terr_DisableGlobalRallyHelpTip_Trg = TriggerCreate("Axiom_Terr_DisableGlobalRallyHelpTip_Func");
+// Axiom_Terr_AutoWallHelpTip	[After building first auto-wall]
+Axiom_Terr_AutoWallHelpTip_Trg = TriggerCreate("Axiom_Terr_AutoWallHelpTip_Func");
+// Axiom_Terr_OrbitalUpgradeHelpTip	[2 mins 30 into the game but NOT if an Orbital Command upgrade is being built]
+Axiom_Terr_OrbitalUpgradeHelpTip_Trg = TriggerCreate("Axiom_Terr_OrbitalUpgradeHelpTip_Func");
+TriggerAddEventTimeElapsed (Axiom_Terr_OrbitalUpgradeHelpTip_Trg, 150.0, c_timeGame);
+// Axiom_Terr_BuildExpoHelpTip	[3 mins into the game but NOT if a 2nd CC has been built]
+Axiom_Terr_BuildExpoHelpTip_Trg = TriggerCreate("Axiom_Terr_BuildExpoHelpTip_Func");
+TriggerAddEventTimeElapsed (Axiom_Terr_BuildExpoHelpTip_Trg, 180.0, c_timeGame);
+
+// Axiom_Prot_BuildPylonHelpTip	[Start]
+Axiom_Prot_BuildPylonHelpTip_Trg = TriggerCreate("Axiom_Prot_BuildPylonHelpTip_Func");
+// Axiom_Prot_BuildGatewayHelpTip	[Pylon complete]
+Axiom_Prot_BuildGatewayHelpTip_Trg = TriggerCreate("Axiom_Prot_BuildGatewayHelpTip_Func");
+// Axiom_Prot_TrainUnitsHelpTip	[Gateway complete]
+Axiom_Prot_TrainUnitsHelpTip_Trg = TriggerCreate("Axiom_Prot_TrainUnitsHelpTip_Func");
+// Axiom_Prot_BuildCybCoreHelpTip	[2 mins 30 into the game]
+Axiom_Prot_BuildCybCoreHelpTip_Trg = TriggerCreate("Axiom_Prot_BuildCybCoreHelpTip_Func");
+TriggerAddEventTimeElapsed (Axiom_Prot_BuildCybCoreHelpTip_Trg, 150.0, c_timeGame);
+// Axiom_Prot_BuildPylonNearNexusHelpTip	[Warpgate research complete]
+Axiom_Prot_BuildPylonNearNexusHelpTip_Trg = TriggerCreate("Axiom_Prot_BuildPylonNearNexusHelpTip_Func");
+// Axiom_Prot_SupplyCapReachedHelpTip	[Warp-in far away from Nexus]
+Axiom_Prot_SupplyCapReachedHelpTip_Trg = TriggerCreate("Axiom_Prot_SupplyCapReachedHelpTip_Func");
+// Axiom_Prot_GlobalRallyHelpTip	[Hit supply cap]
+Axiom_Prot_GlobalRallyHelpTip_Trg = TriggerCreate("Axiom_Prot_GlobalRallyHelpTip_Func");
+// Axiom_Prot_MothershipTrainHelpTip	[After building 2nd warpgate]
+Axiom_Prot_MothershipTrainHelpTip_Trg = TriggerCreate("Axiom_Prot_MothershipTrainHelpTip_Func");
+// Axiom_Prot_BuildExpoHelpTip	[4 mins into the game but DONT show if a mothership core has already been built before then]
+Axiom_Prot_BuildExpoHelpTip_Trg = TriggerCreate("Axiom_Prot_BuildExpoHelpTip_Func");
+TriggerAddEventTimeElapsed (Axiom_Prot_BuildExpoHelpTip_Trg, 240.0, c_timeGame);
+// Axiom_Prot_GlobalRally2HelpTip	[3 mins into the game but not if another Nexus has already been built]
+Axiom_Prot_GlobalRally2HelpTip_Trg = TriggerCreate("Axiom_Prot_GlobalRally2HelpTip_Func");
+TriggerAddEventTimeElapsed (Axiom_Prot_GlobalRally2HelpTip_Trg, 180.0, c_timeGame);
+// Axiom_Prot_WarpgateUpgradeDoneHelpTip	[After building Stargate or Robotics Facility for first time]
+Axiom_Prot_WarpgateUpgradeDoneHelpTip_Trg = TriggerCreate("Axiom_Prot_WarpgateUpgradeDoneHelpTip_Func");
+// Axiom_Prot_WarpgateUpgradeDoneHelpTip	[After adding first unit to control group 2 or 3]
+Axiom_Prot_WarpgateUpgradeDoneHelpTip_Trg = TriggerCreate("Axiom_Prot_WarpgateUpgradeDoneHelpTip_Func");
+// Axiom_Prot_ShieldRegensHelpTip	[After first unit has taken damage]
+Axiom_Prot_ShieldRegensHelpTip_Trg = TriggerCreate("Axiom_Prot_ShieldRegensHelpTip_Func");
+
+// Axiom_Zerg_BuildPoolHelpTip	[Start]
+Axiom_Zerg_BuildPoolHelpTip_Trg = TriggerCreate("Axiom_Zerg_BuildPoolHelpTip_Func");
+// Axiom_Zerg_TrainUnitsHelpTip	[Spawning Pool Complete]
+Axiom_Zerg_TrainUnitsHelpTip_Trg = TriggerCreate("Axiom_Zerg_TrainUnitsHelpTip_Func");
+// Axiom_Prot_SupplyCapReachedHelpTip	[Hit supply cap]
+Axiom_Prot_SupplyCapReachedHelpTip_Trg = TriggerCreate("Axiom_Prot_SupplyCapReachedHelpTip_Func");
+// Axiom_Zerg_FirstQueenHelpTip	[Build first Queen]
+Axiom_Zerg_FirstQueenHelpTip_Trg = TriggerCreate("Axiom_Zerg_FirstQueenHelpTip_Func");
+// Axiom_Zerg_FirstTumorHelpTip	[Once first creep tumor is built]
+Axiom_Zerg_FirstTumorHelpTip_Trg = TriggerCreate("Axiom_Zerg_FirstTumorHelpTip_Func");
+// Axiom_Zerg_FirstInjectHelpTip	[After first inject]
+Axiom_Zerg_FirstInjectHelpTip_Trg = TriggerCreate("Axiom_Zerg_FirstInjectHelpTip_Func");
+// Axiom_Zerg_GlobalRallyHelpTip	[After building roach warren, hydralisk den or spire, whichever comes first]
+Axiom_Zerg_GlobalRallyHelpTip_Trg = TriggerCreate("Axiom_Zerg_GlobalRallyHelpTip_Func");
+// Axiom_Zerg_BuildExpoHelpTip	[3 mins into the game but NOT if another Hatchery has been built]
+Axiom_Zerg_BuildExpoHelpTip_Trg = TriggerCreate("Axiom_Zerg_BuildExpoHelpTip_Func");
+// Axiom_Zerg_OverlorNewAbildHelpTip	[When selecting Overlord]
+Axiom_Zerg_OverlorNewAbildHelpTip_Trg = TriggerCreate("Axiom_Zerg_OverlorNewAbildHelpTip_Func");
+// Axiom_Zerg_AutoDroneHelpTip	[4 mins into the game]
+Axiom_Zerg_AutoDroneHelpTip_Trg = TriggerCreate("Axiom_Zerg_AutoDroneHelpTip_Func");
+TriggerAddEventTimeElapsed (Axiom_Zerg_AutoDroneHelpTip_Trg, 240.0, c_timeGame);
+// Axiom_Zerg_BuildLairHelpTip	[5 mins in but NOT if Lair is already under construction]
+Axiom_Zerg_BuildLairHelpTip_Trg = TriggerCreate("Axiom_Zerg_BuildLairHelpTip_Func");
+TriggerAddEventTimeElapsed (Axiom_Zerg_BuildLairHelpTip_Trg, 300.0, c_timeGame);
+
+
+}
+
+void AxiomHints_InitDlg(){
+	Axiom_AutoAddControlGroupHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_AutoAddControlGroupHelpTip_DlgPath);
+	Axiom_MultiTypeControlGroupHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_MultiTypeControlGroupHelpTip_DlgPath);
+	Axiom_ExpansionHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_ExpansionHelpTip_DlgPath);
+	Axiom_SpentAllMoneyHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_SpentAllMoneyHelpTip_DlgPath);
+	Axiom_OverspendingHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_OverspendingHelpTip_DlgPath);
+	Axiom_SupplyMaxReachedHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_SupplyMaxReachedHelpTip_DlgPath);
+	Axiom_MineralFieldDepletingHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_MineralFieldDepletingHelpTip_DlgPath);
+	Axiom_BuildRefineryHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_BuildRefineryHelpTip_DlgPath);
+	//Axiom_AutoAddControlGroupHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_AutoAddControlGroupHelpTip_DlgPath);
+	Axiom_RecallControlGroupHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_RecallControlGroupHelpTip_DlgPath);
+	Axiom_Terr_BuildWallHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_BuildWallHelpTip_DlgPath);
+	Axiom_Terr_BuildBarracksHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_BuildBarracksHelpTip_DlgPath);
+	Axiom_Terr_TrainUnitsHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_TrainUnitsHelpTip_DlgPath);
+	Axiom_Terr_TechLabHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_TechLabHelpTip_DlgPath);
+	Axiom_Terr_ReactorHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_ReactorHelpTip_DlgPath);
+	Axiom_Terr_SupplyCapReachedHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_SupplyCapReachedHelpTip_DlgPath);
+	Axiom_Terr_GlobalRallyHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_GlobalRallyHelpTip_DlgPath);
+	Axiom_Terr_GlobalRally2HelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_GlobalRally2HelpTip_DlgPath);
+	Axiom_Terr_DisableGlobalRallyHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_DisableGlobalRallyHelpTip_DlgPath);
+	Axiom_Terr_AutoWallHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_AutoWallHelpTip_DlgPath);
+	Axiom_Terr_OrbitalUpgradeHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_OrbitalUpgradeHelpTip_DlgPath);
+	Axiom_Terr_BuildExpoHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Terr_BuildExpoHelpTip_DlgPath);
+	Axiom_Prot_BuildPylonHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_BuildPylonHelpTip_DlgPath);
+	Axiom_Prot_BuildGatewayHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_BuildGatewayHelpTip_DlgPath);
+	Axiom_Prot_TrainUnitsHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_TrainUnitsHelpTip_DlgPath);
+	Axiom_Prot_BuildCybCoreHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_BuildCybCoreHelpTip_DlgPath);
+	Axiom_Prot_BuildPylonNearNexusHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_BuildPylonNearNexusHelpTip_DlgPath);
+	Axiom_Prot_SupplyCapReachedHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_SupplyCapReachedHelpTip_DlgPath);
+	Axiom_Prot_GlobalRallyHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_GlobalRallyHelpTip_DlgPath);
+	Axiom_Prot_MothershipTrainHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_MothershipTrainHelpTip_DlgPath);
+	Axiom_Prot_BuildExpoHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_BuildExpoHelpTip_DlgPath);
+	Axiom_Prot_GlobalRally2HelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_GlobalRally2HelpTip_DlgPath);
+	Axiom_Prot_WarpgateUpgradeDoneHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_WarpgateUpgradeDoneHelpTip_DlgPath);
+	//Axiom_Prot_WarpgateUpgradeDoneHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_WarpgateUpgradeDoneHelpTip_DlgPath);
+	Axiom_Prot_ShieldRegensHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Prot_ShieldRegensHelpTip_DlgPath);
+	Axiom_Zerg_BuildPoolHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_BuildPoolHelpTip_DlgPath);
+	Axiom_Zerg_TrainUnitsHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_TrainUnitsHelpTip_DlgPath);
+	Axiom_Zerg_SupplyCapReachedHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_SupplyCapReachedHelpTip_DlgPath);
+	Axiom_Zerg_FirstQueenHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_FirstQueenHelpTip_DlgPath);
+	Axiom_Zerg_FirstTumorHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_FirstTumorHelpTip_DlgPath);
+	Axiom_Zerg_FirstInjectHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_FirstInjectHelpTip_DlgPath);
+	Axiom_Zerg_GlobalRallyHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_GlobalRallyHelpTip_DlgPath);
+	Axiom_Zerg_BuildExpoHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_BuildExpoHelpTip_DlgPath);
+	Axiom_Zerg_OverlorNewAbildHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_OverlorNewAbildHelpTip_DlgPath);
+	Axiom_Zerg_AutoDroneHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_AutoDroneHelpTip_DlgPath);
+	Axiom_Zerg_BuildLairHelpTip_Dlg = DialogControlHookupStandard (c_triggerControlTypePanel, Axiom_Zerg_BuildLairHelpTip_DlgPath);
+
+}
+
+
+
+void AxiomHints_Init(){
+	AxiomHints_InitDlg();
+	AxiomHints_InitTriggers();
+	AxiomHints_Welcome = TriggerCreate("AxiomHints_Welcome_Func");
+	TriggerAddEventTimeElapsed (AxiomHints_Welcome, 5.0, c_timeGame);
+	
+}

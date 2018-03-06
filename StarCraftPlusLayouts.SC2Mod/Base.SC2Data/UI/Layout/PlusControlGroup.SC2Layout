@@ -1,13 +1,60 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
-    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
-		<Frame type="Frame" name="AxiomACGContainer" template="PlusControlGroupTemplates/ControlGroupContainer">
-			<Anchor side="Left" relative="$InfoPanel" pos="Min" offset="-80"/>
-			<Anchor side="Right" relative="Group08" pos="Max" offset="0"/>
-			<Anchor side="Bottom" relative="$InfoPanel" pos="Min" offset="8"/>
+	<Constant name="CGOffset" val="-9"/>
+	<Constant name="RaceTerr" val="40,255,100"/>
+	<Constant name="RaceProt" val="40,112,255"/>
+	<Constant name="RaceZerg" val="164,30,208"/>
 
-			<Handle val="ACGContainer"/>
+	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+		<Frame type="ControlGroupPanel" name="ControlGroupPanel">
+			<Batch val="false"/>
+			<Anchor side="Bottom" relative="$parent/InfoPanel" pos="Min" offset="8"/>
+
 			<Height val="96"/>
+			<Width val="964"/>
+			<Handle val="ACGContainer"/>
+
+			<Frame type="ControlGroupButton" name="ControlGroupButton0" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent" pos="Min" offset="35"/>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton1" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent/ControlGroupButton0" pos="Max" offset="#CGOffset"/>
+			</Frame>
+
+			<Frame type="ControlGroupButton" name="ControlGroupButton2" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent/ControlGroupButton1" pos="Max" offset="#CGOffset"/>
+			</Frame>
+
+			<Frame type="ControlGroupButton" name="ControlGroupButton3" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent/ControlGroupButton2" pos="Max" offset="#CGOffset"/>
+			</Frame>
+
+			<Frame type="ControlGroupButton" name="ControlGroupButton4" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent/ControlGroupButton3" pos="Max" offset="#CGOffset"/>
+			</Frame>
+
+			<Frame type="ControlGroupButton" name="ControlGroupButton5" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent/ControlGroupButton4" pos="Max" offset="#CGOffset"/>
+			</Frame>
+
+			<Frame type="ControlGroupButton" name="ControlGroupButton6" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent/ControlGroupButton5" pos="Max" offset="#CGOffset"/>
+			</Frame>
+
+			<Frame type="ControlGroupButton" name="ControlGroupButton7" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent/ControlGroupButton6" pos="Max" offset="#CGOffset"/>
+			</Frame>
+			
+			<Frame type="ControlGroupButton" name="ControlGroupButton8" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent/ControlGroupButton7" pos="Max" offset="#CGOffset"/>
+				<Alpha val="0"/>
+			</Frame>
+
+			<Frame type="ControlGroupButton" name="ControlGroupButton9" template="PlusControlGroupTemplates/ControlGroupButtonTemplate">
+				<Anchor side="Left" relative="$parent/ControlGroupButton8" pos="Max" offset="#CGOffset"/>
+				<Alpha val="0"/>
+			</Frame>
 		</Frame>
     </Frame>
 </Desc>

@@ -1,0 +1,603 @@
+include "TriggerLibs/NativeLib"
+
+include "LibPPRL_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: PIRL Plus
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libPPRL_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Variable Initialization
+bool libPPRL_InitVariables_completed = false;
+
+void libPPRL_InitVariables () {
+    int init_i1;
+
+    if (libPPRL_InitVariables_completed) {
+        return;
+    }
+
+    libPPRL_InitVariables_completed = true;
+
+    libPPRL_gv_supportPanel.lv_main = c_invalidDialogControlId;
+    libPPRL_gv_supportPanel.lv_header = c_invalidDialogControlId;
+    for (init_i1 = 0; init_i1 <= 20; init_i1 += 1) {
+        libPPRL_gv_supportPanel.lv_entry[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= 20; init_i1 += 1) {
+        libPPRL_gv_supportPanel.lv_field[init_i1] = c_invalidDialogControlId;
+    }
+    for (init_i1 = 0; init_i1 <= 20; init_i1 += 1) {
+        libPPRL_gv_supportPanel.lv_value[init_i1] = c_invalidDialogControlId;
+    }
+    libPPRL_gv_supportPanel.lv_maxEntryCount = 20;
+    for (init_i1 = 0; init_i1 <= 20; init_i1 += 1) {
+        libPPRL_gv_supportPanel.lv_updateEvent[init_i1] = "";
+    }
+    libPPRL_gv_supportPanel.lv_eventParameter = "";
+}
+
+// Functions
+int libPPRL_gf_UserDataInstanceID (string lp_userType, string lp_userDataInstance) {
+    // Variable Declarations
+    int lv_instanceIndex;
+
+    // Automatic Variable Declarations
+    int auto18FABF19_ae;
+    const int auto18FABF19_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    auto18FABF19_ae = UserDataInstanceCount(lp_userType);
+    lv_instanceIndex = 1;
+    for ( ; ( (auto18FABF19_ai >= 0 && lv_instanceIndex <= auto18FABF19_ae) || (auto18FABF19_ai < 0 && lv_instanceIndex >= auto18FABF19_ae) ) ; lv_instanceIndex += auto18FABF19_ai ) {
+        if ((UserDataInstance(lp_userType, lv_instanceIndex) == lp_userDataInstance)) {
+            return lv_instanceIndex;
+        }
+    }
+    return 0;
+}
+
+void libPPRL_gf_SendActorMessageToUnitGroup (string lp_actorMessage, unitgroup lp_unitGroup) {
+    // Automatic Variable Declarations
+    unitgroup auto35D93E78_g;
+    int auto35D93E78_u;
+    unit auto35D93E78_var;
+
+    // Implementation
+    auto35D93E78_g = lp_unitGroup;
+    auto35D93E78_u = UnitGroupCount(auto35D93E78_g, c_unitCountAll);
+    for (;; auto35D93E78_u -= 1) {
+        auto35D93E78_var = UnitGroupUnitFromEnd(auto35D93E78_g, auto35D93E78_u);
+        if (auto35D93E78_var == null) { break; }
+        libNtve_gf_SendActorMessageToUnit(auto35D93E78_var, lp_actorMessage);
+    }
+}
+
+void libPPRL_gf_ShakeCameraForPlayer (int lp_p, string lp_cameraSetting) {
+    // Automatic Variable Declarations
+    // Implementation
+    CameraShake(lp_p, lp_cameraSetting, "Earthquake", 0.125, 0.25, 0.375);
+}
+
+fixed libPPRL_gf_ConvertBooleanToReal (bool lp_boolean) {
+    // Automatic Variable Declarations
+    // Implementation
+    return IntToFixed(BoolToInt(lp_boolean));
+}
+
+string libPPRL_gf_ConvertIntegerToStringDoubleDigit (int lp_integer) {
+    // Variable Declarations
+    string lv_integerString;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_integerString = "";
+
+    // Implementation
+    lv_integerString = IntToString(lp_integer);
+    if ((StringLength(lv_integerString) == 1)) {
+        lv_integerString = ("0" + lv_integerString);
+    }
+    return lv_integerString;
+}
+
+void libPPRL_gf_DebugFlashUnit (unit lp_unit) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SendActorMessageToUnit(lp_unit, "SetTintColor 255,0,0");
+    libNtve_gf_SendActorMessageToUnit(lp_unit, "SetTintColor 255,255,255 1.000000");
+}
+
+void libPPRL_gf_DebugPoint (point lp_point) {
+    // Automatic Variable Declarations
+    // Implementation
+    PlayerCreateEffectPoint(0, "DebugPoint", lp_point);
+}
+
+void libPPRL_gf_DebugPoint2 (point lp_point, fixed lp_radius) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogEffect, "DebugPointCircle", "AreaArray[" + IntToString(0) + "].Radius", 0, FixedToString(lp_radius, c_fixedPrecisionAny));
+    PlayerCreateEffectPoint(0, "DebugPointCircle", lp_point);
+}
+
+void libPPRL_gf_DebugPoint3 (point lp_point, fixed lp_width, fixed lp_height) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogEffect, "DebugRectangleVariable", "AreaArray[" + IntToString(0) + "].RectangleHeight", 0, FixedToString(lp_height, c_fixedPrecisionAny));
+    CatalogFieldValueSet(c_gameCatalogEffect, "DebugRectangleVariable", "AreaArray[" + IntToString(0) + "].RectangleWidth", 0, FixedToString(lp_width, c_fixedPrecisionAny));
+    PlayerCreateEffectPoint(0, "DebugPointRectangle", lp_point);
+}
+
+trigger auto_libPPRL_gf_DebugPoint4_Trigger = null;
+point auto_libPPRL_gf_DebugPoint4_lp_point;
+fixed auto_libPPRL_gf_DebugPoint4_lp_duration;
+
+void libPPRL_gf_DebugPoint4 (point lp_point, fixed lp_duration) {
+    auto_libPPRL_gf_DebugPoint4_lp_point = lp_point;
+    auto_libPPRL_gf_DebugPoint4_lp_duration = lp_duration;
+
+    if (auto_libPPRL_gf_DebugPoint4_Trigger == null) {
+        auto_libPPRL_gf_DebugPoint4_Trigger = TriggerCreate("auto_libPPRL_gf_DebugPoint4_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libPPRL_gf_DebugPoint4_Trigger, false, false);
+}
+
+bool auto_libPPRL_gf_DebugPoint4_TriggerFunc (bool testConds, bool runActions) {
+    point lp_point = auto_libPPRL_gf_DebugPoint4_lp_point;
+    fixed lp_duration = auto_libPPRL_gf_DebugPoint4_lp_duration;
+
+    // Variable Declarations
+    unit lv_debugUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Zergling", c_unitCreateIgnorePlacement, 0, lp_point);
+    lv_debugUnit = UnitLastCreated();
+    Wait(lp_duration, c_timeGame);
+    UnitRemove(lv_debugUnit);
+    return true;
+}
+
+trigger auto_libPPRL_gf_DebugPoint5_Trigger = null;
+point auto_libPPRL_gf_DebugPoint5_lp_point;
+fixed auto_libPPRL_gf_DebugPoint5_lp_duration;
+
+void libPPRL_gf_DebugPoint5 (point lp_point, fixed lp_duration) {
+    auto_libPPRL_gf_DebugPoint5_lp_point = lp_point;
+    auto_libPPRL_gf_DebugPoint5_lp_duration = lp_duration;
+
+    if (auto_libPPRL_gf_DebugPoint5_Trigger == null) {
+        auto_libPPRL_gf_DebugPoint5_Trigger = TriggerCreate("auto_libPPRL_gf_DebugPoint5_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libPPRL_gf_DebugPoint5_Trigger, false, false);
+}
+
+bool auto_libPPRL_gf_DebugPoint5_TriggerFunc (bool testConds, bool runActions) {
+    point lp_point = auto_libPPRL_gf_DebugPoint5_lp_point;
+    fixed lp_duration = auto_libPPRL_gf_DebugPoint5_lp_duration;
+
+    // Variable Declarations
+    unit lv_debugUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Mutalisk", c_unitCreateIgnorePlacement, 0, lp_point);
+    lv_debugUnit = UnitLastCreated();
+    Wait(lp_duration, c_timeGame);
+    UnitRemove(lv_debugUnit);
+    return true;
+}
+
+void libPPRL_gf_DebugString (string lp_message) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerDebugOutput(1, StringToText(lp_message), true);
+}
+
+void libPPRL_gf_DebugPanelShow () {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogControlSetVisible(libPPRL_gv_supportPanel.lv_main, PlayerGroupAll(), true);
+}
+
+void libPPRL_gf_DebugPanelHide () {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogControlSetVisible(libPPRL_gv_supportPanel.lv_main, PlayerGroupAll(), false);
+}
+
+void libPPRL_gf_DebugPanelSetFieldValue (int lp_entry, string lp_string) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemText(libPPRL_gv_supportPanel.lv_value[lp_entry], StringToText(lp_string), PlayerGroupAll());
+    if ((libPPRL_gf_StringIsValid(lp_string) == true)) {
+        DialogControlSetVisible(libPPRL_gv_supportPanel.lv_field[lp_entry], PlayerGroupAll(), true);
+    }
+    else {
+        DialogControlSetVisible(libPPRL_gv_supportPanel.lv_field[lp_entry], PlayerGroupAll(), false);
+    }
+}
+
+void libPPRL_gf_DebugPanelSetFieldName (int lp_entry, string lp_string) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemText(libPPRL_gv_supportPanel.lv_field[lp_entry], StringToText(lp_string), PlayerGroupAll());
+    if ((libPPRL_gf_StringIsValid(lp_string) == true)) {
+        DialogControlSetVisible(libPPRL_gv_supportPanel.lv_entry[lp_entry], PlayerGroupAll(), true);
+    }
+    else {
+        DialogControlSetVisible(libPPRL_gv_supportPanel.lv_entry[lp_entry], PlayerGroupAll(), false);
+    }
+}
+
+bool libPPRL_gf_AngleIsBetweenBounds (fixed lp_angle, fixed lp_minBound, fixed lp_maxBound) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_angle < lp_maxBound) && (lp_angle > lp_minBound)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool libPPRL_gf_StringIsValid2 (int lp_integer) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((ModI(lp_integer, 2) == 1)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+int libPPRL_gf_SignInteger (int lp_inputInteger) {
+    // Variable Declarations
+    int lv_sign;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((lp_inputInteger > 0)) {
+        lv_sign = 1;
+    }
+    else if ((lp_inputInteger == 0)) {
+        lv_sign = 0;
+    }
+    else if ((lp_inputInteger < 0)) {
+        lv_sign = -1;
+    }
+    return lv_sign;
+}
+
+fixed libPPRL_gf_SignReal (fixed lp_inputReal) {
+    // Variable Declarations
+    fixed lv_sign;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((lp_inputReal > 0.0)) {
+        lv_sign = 1.0;
+    }
+    else if ((lp_inputReal == 0.0)) {
+        lv_sign = 0.0;
+    }
+    else if ((lp_inputReal < 0.0)) {
+        lv_sign = -1.0;
+    }
+    return lv_sign;
+}
+
+point libPPRL_gf_ConstrainPointToRegion (point lp_point, region lp_contrainedRegion) {
+    // Variable Declarations
+    point lv_constrainedRegionCenter;
+    fixed lv_constrainedRegionDistance;
+    fixed lv_constrainedRegionAngle;
+    fixed lv_constrainedCheckIncrement;
+    point lv_constrainedPoint;
+    fixed lv_i;
+
+    // Automatic Variable Declarations
+    fixed auto2B8FCF9F_ae;
+    fixed auto2B8FCF9F_ai;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((RegionContainsPoint(lp_contrainedRegion, lp_point) == true)) {
+        return lp_point;
+    }
+    lv_constrainedPoint = lp_point;
+    lv_constrainedCheckIncrement = 0.25;
+    lv_constrainedRegionCenter = RegionGetCenter(lp_contrainedRegion);
+    lv_constrainedRegionDistance = DistanceBetweenPoints(lp_point, lv_constrainedRegionCenter);
+    lv_constrainedRegionAngle = AngleBetweenPoints(lp_point, lv_constrainedRegionCenter);
+    auto2B8FCF9F_ae = lv_constrainedRegionDistance;
+    auto2B8FCF9F_ai = lv_constrainedCheckIncrement;
+    lv_i = 0.0;
+    for ( ; ( (auto2B8FCF9F_ai >= 0 && lv_i <= auto2B8FCF9F_ae) || (auto2B8FCF9F_ai < 0 && lv_i >= auto2B8FCF9F_ae) ) ; lv_i += auto2B8FCF9F_ai ) {
+        lv_constrainedPoint = PointWithOffsetPolar(lv_constrainedPoint, lv_constrainedCheckIncrement, lv_constrainedRegionAngle);
+        if ((RegionContainsPoint(lp_contrainedRegion, lv_constrainedPoint) == true)) {
+            return lv_constrainedPoint;
+        }
+    }
+    return lv_constrainedRegionCenter;
+}
+
+string libPPRL_gf_DeCamel (string lp_camelCaseString) {
+    // Variable Declarations
+    int lv_stringLength;
+    int lv_letterIndex;
+    string lv_letter;
+    string lv_outputString;
+    bool lv_isFirstCapital;
+
+    // Automatic Variable Declarations
+    int auto5D1280DC_ae;
+    const int auto5D1280DC_ai = 1;
+
+    // Variable Initialization
+    lv_letter = "";
+    lv_outputString = "";
+
+    // Implementation
+    lv_stringLength = StringLength(lp_camelCaseString);
+    lv_outputString = lp_camelCaseString;
+    lv_isFirstCapital = true;
+    auto5D1280DC_ae = lv_stringLength;
+    lv_letterIndex = 1;
+    for ( ; ( (auto5D1280DC_ai >= 0 && lv_letterIndex <= auto5D1280DC_ae) || (auto5D1280DC_ai < 0 && lv_letterIndex >= auto5D1280DC_ae) ) ; lv_letterIndex += auto5D1280DC_ai ) {
+        lv_letter = StringSub(lv_outputString, lv_letterIndex, lv_letterIndex);
+        if ((StringSub(lv_outputString, (lv_letterIndex - 1), (lv_letterIndex - 1)) != "-") && ((lv_letter == "A") || (lv_letter == "B") || (lv_letter == "C") || (lv_letter == "D") || (lv_letter == "E") || (lv_letter == "F") || (lv_letter == "G") || (lv_letter == "H") || (lv_letter == "I") || (lv_letter == "J") || (lv_letter == "K") || (lv_letter == "L") || (lv_letter == "M") || (lv_letter == "N") || (lv_letter == "O") || (lv_letter == "P") || (lv_letter == "Q") || (lv_letter == "R") || (lv_letter == "S") || (lv_letter == "T") || (lv_letter == "U") || (lv_letter == "V") || (lv_letter == "W") || (lv_letter == "X") || (lv_letter == "Y") || (lv_letter == "Z"))) {
+            if ((lv_isFirstCapital == true)) {
+                lv_isFirstCapital = false;
+            }
+            else {
+                lv_outputString = StringReplace(lv_outputString, (" " + lv_letter), lv_letterIndex, lv_letterIndex);
+                lv_letterIndex += 1;
+                lv_stringLength += 1;
+            }
+        }
+    }
+    return lv_outputString;
+}
+
+string libPPRL_gf_Capitalize (string lp_input) {
+    // Variable Declarations
+    int lv_inputLength;
+    string lv_output;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_output = "";
+
+    // Implementation
+    lv_inputLength = StringLength(lp_input);
+    lv_output = (StringCase(StringSub(lp_input, 1, 1), true) + StringSub(lp_input, 2, lv_inputLength));
+    return lv_output;
+}
+
+bool libPPRL_gf_StringIsValid (string lp_string) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_string != "") && (lp_string != null)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+string libPPRL_gf_ConvertPointXYtoString (point lp_point, int lp_precision) {
+    // Variable Declarations
+    string lv_outputString;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_outputString = "";
+
+    // Implementation
+    lv_outputString = (FixedToString(PointGetX(lp_point), lp_precision) + ", " + FixedToString(PointGetY(lp_point), lp_precision));
+    return lv_outputString;
+}
+
+void libPPRL_gf_AddTimeToTimer (timer lp_timer, fixed lp_additionalTime) {
+    // Automatic Variable Declarations
+    // Implementation
+    TimerStart(lp_timer, (TimerGetRemaining(lp_timer) + lp_additionalTime), false, c_timeGame);
+}
+
+void libPPRL_gf_HideAllUIFramesForPlayers (playergroup lp_playerGroup) {
+    // Automatic Variable Declarations
+    // Implementation
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeAchievementMenuButton, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeAlertPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeAllianceButton, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeArmyButton, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeCashPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeCharacterSheetButton, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeCommandPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeConsolePanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeControlGroupPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeCreditsPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeErrorDisplayPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeHelpMenuButton, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeHeroPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeIdleWorkerButton, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeInfoPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeInventoryPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeLeaderPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeMenuBar, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeMercenaryPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeMinimapPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeBattleReportPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeMissionTimePanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeObjectivePanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypePingPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypePlanetPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypePurchasePanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypePylonButton, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeResearchPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeResourcePanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeRoomPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeStatusUI, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeSupply, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeTeamResourceButton, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeTechGlossaryPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeTechTreePanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeTextTag, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeTipAlertPanel, false);
+    UISetFrameVisible(lp_playerGroup, c_syncFrameTypeVictoryPanel, false);
+}
+
+bool libPPRL_gf_UnitHasBehaviorWithBehaviorFlag (unit lp_unit, int lp_behaviorFlag) {
+    // Variable Declarations
+    int lv_behaviorCount;
+    string lv_pickedBehavior;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int auto452D5312_ae;
+    const int auto452D5312_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((lp_unit == null)) {
+        return false;
+    }
+    lv_behaviorCount = UnitBehaviorCountAll(lp_unit);
+    auto452D5312_ae = lv_behaviorCount;
+    lv_i = 1;
+    for ( ; ( (auto452D5312_ai >= 0 && lv_i <= auto452D5312_ae) || (auto452D5312_ai < 0 && lv_i >= auto452D5312_ae) ) ; lv_i += auto452D5312_ai ) {
+        lv_pickedBehavior = UnitBehaviorGet(lp_unit, lv_i);
+        if ((UnitBehaviorHasFlag(lv_pickedBehavior, lp_behaviorFlag) == true)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+unitgroup libPPRL_gf_UnitsInUnitGroupMatchingBehavior (unitgroup lp_unitGroup, string lp_behavior, bool lp_match) {
+    // Variable Declarations
+    unitgroup lv_behaviorUnits;
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    unitgroup autoCE902C40_g;
+    int autoCE902C40_u;
+
+    // Variable Initialization
+    lv_behaviorUnits = UnitGroupEmpty();
+
+    // Implementation
+    autoCE902C40_g = lp_unitGroup;
+    autoCE902C40_u = UnitGroupCount(autoCE902C40_g, c_unitCountAll);
+    for (;; autoCE902C40_u -= 1) {
+        lv_unit = UnitGroupUnitFromEnd(autoCE902C40_g, autoCE902C40_u);
+        if (lv_unit == null) { break; }
+        if ((UnitHasBehavior2(lv_unit, lp_behavior) == lp_match)) {
+            UnitGroupAdd(lv_behaviorUnits, lv_unit);
+        }
+    }
+    return lv_behaviorUnits;
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Debug Panel Initialize
+//--------------------------------------------------------------------------------------------------
+bool libPPRL_gt_DebugPanelInitialize_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_n;
+    string lv_debugPanelFrameName;
+    string lv_debugPanelFrameNumber;
+
+    // Automatic Variable Declarations
+    int auto43A163B3_ae;
+    const int auto43A163B3_ai = 1;
+
+    // Variable Initialization
+    lv_debugPanelFrameName = "";
+    lv_debugPanelFrameNumber = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/PIRLDebugPanel");
+    libPPRL_gv_supportPanel.lv_main = DialogControlLastCreated();
+    libPPRL_gv_supportPanel.lv_eventParameter = "EventField";
+    lv_debugPanelFrameName = ("UIContainer/ConsoleUIContainer/PIRLDebugPanel/Header");
+    DialogControlHookupStandard(c_triggerControlTypeLabel, lv_debugPanelFrameName);
+    libPPRL_gv_supportPanel.lv_header = DialogControlLastCreated();
+    auto43A163B3_ae = libPPRL_gv_supportPanel.lv_maxEntryCount;
+    lv_n = 1;
+    for ( ; ( (auto43A163B3_ai >= 0 && lv_n <= auto43A163B3_ae) || (auto43A163B3_ai < 0 && lv_n >= auto43A163B3_ae) ) ; lv_n += auto43A163B3_ai ) {
+        if ((lv_n < 10)) {
+            lv_debugPanelFrameNumber = ("0" + IntToString(lv_n));
+            libPPRL_gv_supportPanel.lv_updateEvent[lv_n] = ("DebugPanelUpdate" + "0" + IntToString(lv_n));
+        }
+        else {
+            lv_debugPanelFrameNumber = IntToString(lv_n);
+            libPPRL_gv_supportPanel.lv_updateEvent[lv_n] = ("DebugPanelUpdate" + IntToString(lv_n));
+        }
+        lv_debugPanelFrameName = ("UIContainer/ConsoleUIContainer/PIRLDebugPanel/Entry" + lv_debugPanelFrameNumber);
+        DialogControlHookupStandard(c_triggerControlTypePanel, lv_debugPanelFrameName);
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        libPPRL_gv_supportPanel.lv_entry[lv_n] = DialogControlLastCreated();
+        lv_debugPanelFrameName = ("UIContainer/ConsoleUIContainer/PIRLDebugPanel/Entry" + lv_debugPanelFrameNumber + "/Field");
+        DialogControlHookupStandard(c_triggerControlTypeLabel, lv_debugPanelFrameName);
+        libPPRL_gv_supportPanel.lv_field[lv_n] = DialogControlLastCreated();
+        lv_debugPanelFrameName = ("UIContainer/ConsoleUIContainer/PIRLDebugPanel/Entry" + lv_debugPanelFrameNumber + "/Value");
+        DialogControlHookupStandard(c_triggerControlTypeLabel, lv_debugPanelFrameName);
+        libPPRL_gv_supportPanel.lv_value[lv_n] = DialogControlLastCreated();
+    }
+    DialogControlSetVisible(libPPRL_gv_supportPanel.lv_main, PlayerGroupAll(), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libPPRL_gt_DebugPanelInitialize_Init () {
+    libPPRL_gt_DebugPanelInitialize = TriggerCreate("libPPRL_gt_DebugPanelInitialize_Func");
+    TriggerAddEventMapInit(libPPRL_gt_DebugPanelInitialize);
+}
+
+void libPPRL_InitTriggers () {
+    libPPRL_gt_DebugPanelInitialize_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libPPRL_InitLib_completed = false;
+
+void libPPRL_InitLib () {
+    if (libPPRL_InitLib_completed) {
+        return;
+    }
+
+    libPPRL_InitLib_completed = true;
+
+    libPPRL_InitLibraries();
+    libPPRL_InitVariables();
+    libPPRL_InitTriggers();
+}
+

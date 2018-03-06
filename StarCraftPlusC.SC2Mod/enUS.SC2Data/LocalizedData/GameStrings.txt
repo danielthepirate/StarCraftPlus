@@ -438,7 +438,6 @@ Param/Value/lib_SCPL_B3EFA97B=Neosteel Frame
 Param/Value/lib_SCPL_B57B0D01=Flyer Attacks Level 1
 Param/Value/lib_SCPL_B7138B79=Psionic Storm
 Param/Value/lib_SCPL_B932CA0A=Combat Shield
-Param/Value/lib_SCPL_BBE808C7=
 Param/Value/lib_SCPL_BCDE05EB=Nitro Packs
 Param/Value/lib_SCPL_C22343DA=Infantry Weapons Level 2
 Param/Value/lib_SCPL_C2EDAB79=Yamato Cannon

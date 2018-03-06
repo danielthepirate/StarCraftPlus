@@ -1,0 +1,1123 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CEffectApplyBehavior id="AutoWallForceBehavior">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="AutoWallForceSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallForceStop"/>
+        <EffectArray value="AutoWallForce"/>
+        <EffectArray value="AutoWallForceBehavior"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="AutoWallForceStop">
+        <EditorCategories value=""/>
+        <Abil value="stop"/>
+    </CEffectIssueOrder>
+    <CEffectCreatePersistent id="DoNothingAtUnit">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="GameUCBNexusEnergy50GE">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBNexusEnergy50LT">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="OracleWeaponDamage">
+        <AttributeBonus index="Light" value="15"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectDamage id="RavagerCorrosiveBileDamage">
+        <AttributeBonus index="Structure" value="60"/>
+    </CEffectDamage>
+    <CEffectIssueOrder id="UCBAutoCreepSpreadToggleOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoCreepSpreadToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoSpawnLarvaOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="SpawnLarva"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoSpawnLarvaOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="SpawnLarva"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectApplyBehavior id="AutoWallAutocastBehavior">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AutoCreepSpreadAutocastBehavior">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="AutoWallForce">
+        <EditorCategories value=""/>
+        <Amount value="0.25"/>
+    </CEffectApplyForce>
+    <CEffectEnumArea id="AutoWallForceField">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Self,Structure,Missile,UnderConstruction,Dead,Hidden"/>
+        <AreaArray RectangleWidth="2" RectangleHeight="2" Effect="AutoWallForceSet"/>
+    </CEffectEnumArea>
+    <CEffectIssueOrder id="AutoWallConstructionComplete">
+        <EditorCategories value=""/>
+        <Abil value="AutoWallConstructionComplete"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="AutoWallManualLowerAbility">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallLowerOrder"/>
+        <EffectArray value="AutoWallManualRaiseCooldown"/>
+    </CEffectSet>
+    <CEffectSet id="AutoWallManualRaiseAbility">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallRaiseOrder"/>
+        <EffectArray value="AutoWallToggleOff"/>
+        <EffectArray value="AutoWallManualRaiseCooldown"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="AutoWallManualRaise">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AutoWallManualRaiseCooldown">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="AutoWallManualRaiseRemove">
+        <EditorCategories value=""/>
+        <BehaviorLink value="AutoWallManualRaise"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="AutoWallRaise">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AutoWallLower">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="AutoWallRaiseSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="AutoWallRaiseSearchSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AutoWallLowerSearchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallLowerOrder"/>
+    </CEffectSet>
+    <CEffectEnumArea id="AutoWallManualRaiseSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="AutoWallManualRaiseSearchSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AutoWallRaiseSearchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallRaise"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="AutoWallLowerRemove">
+        <EditorCategories value=""/>
+        <BehaviorLink value="AutoWallLower"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="AutoWallLowerSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Self,Neutral,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="AutoWallLowerSearchSet"/>
+        <ValidatorArray value="AutoWallNoEnemiesNearby"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AutoWallManualRaiseSearchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AutoWallRaise"/>
+        <EffectArray value="AutoWallManualRaiseRemove"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="AutoWallToggleOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallToggle"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoCreepSpreadOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoCreepSpread"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoWallToggleOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallToggle"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoCreepSpreadOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoCreepSpread"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoWallToggleUCBOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoWallToggleUCBOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectCreateUnit id="CalldownMULECreateUnitDummy">
+        <ValidatorArray value="MULETargetCheck"/>
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+    </CEffectCreateUnit>
+    <CEffectApplyBehavior id="CreepTumorEnhancedCreepGrowth">
+        <ValidatorArray index="0" value="IsCreepTumorAny"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="CreepTumorLaunchMissileSet">
+        <EffectArray index="0" value="GameAutoCreepSpreadReadyRemove"/>
+        <EffectArray index="1" value="CreepTumorBuildAB"/>
+        <EffectArray value="CreepTumorLaunchMissile"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="DebugEffectHook">
+        <ValidatorArray value="IsReturningResourcesTerran"/>
+        <ValidatorArray value="NotDead"/>
+        <EditorCategories value=""/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="DebugPoint">
+        <EditorCategories value=""/>
+        <DebugTrace value="1"/>
+        <AreaArray Radius="0.1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DebugPointCircle">
+        <EditorCategories value=""/>
+        <DebugTrace value="1"/>
+        <AreaArray Radius="0.1"/>
+    </CEffectEnumArea>
+    <CEffectIssueOrder id="AutoWallLowerOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallLowerHidden"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="AutoWallRaiseOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoWallRaiseHidden"/>
+    </CEffectIssueOrder>
+    <CEffectRemoveBehavior id="AutoWallRaiseRemove">
+        <EditorCategories value=""/>
+        <BehaviorLink value="AutoWallRaise"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="DoNothing">
+        <EditorCategories value=""/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="GameAutoCreepNodeTargetCapped">
+        <ValidatorArray index="0" value="AutoCreepTargetNodeReachable"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="GameAutoCreepSpreadReadyRemove">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="GameAutoCreepSpreadReady"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="GameAutoCreepSpreadHook">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="GameAutoCreepTargetSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Invulnerable;Ally,Neutral,Enemy,Missile,Dead"/>
+        <AreaArray Radius="10" Effect="GameAutoCreepNodeTargetCapped"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="GameDroneMorphMarker">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GameHookBarracksStatusUpdate">
+        <EditorCategories value=""/>
+    </CEffectDamage>
+    <CEffectEnumArea id="GameMineralsNearTownHallSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="HarvestableResource;Player,Ally,Enemy,Missile,Dead,Hidden"/>
+        <AreaArray Radius="16" Effect="GameMineralsNearTownHall"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="GameMineralsNearTownHall">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameNexusCount">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameProtossWarpGateTrainCharge">
+        <ValidatorArray value="SourceNotDead"/>
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge CountUse="-1" Link="WarpGateTrain" Location="Player"/>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameResourceMarkerMinerals">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameResourceMarkerMineralsMULE">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="GameResourceMarkerRemoveMinerals">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GameResourceMarkerMinerals"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="GameResourceMarkerMineralsRich">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="GameResourceMarkerRemoveVespene">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GameResourceMarkerVespene"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="GameResourceMarkerRemoveMineralsRich">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GameResourceMarkerMineralsRich"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="GameResourceMarkerRemoveMineralsMULE">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GameResourceMarkerMineralsMULE"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="GameResourceMarkerSetMinerals">
+        <EditorCategories value=""/>
+        <EffectArray value="GameResourceMarkerRemoveVespene"/>
+        <EffectArray value="GameResourceMarkerRemoveMineralsRich"/>
+    </CEffectSet>
+    <CEffectSet id="GameResourceMarkerSetVespene">
+        <EditorCategories value=""/>
+        <EffectArray value="GameResourceMarkerRemoveMinerals"/>
+        <EffectArray value="GameResourceMarkerRemoveMineralsRich"/>
+    </CEffectSet>
+    <CEffectSet id="GameResourceMarkerSetMineralsRich">
+        <EditorCategories value=""/>
+        <EffectArray value="GameResourceMarkerRemoveVespene"/>
+        <EffectArray value="GameResourceMarkerRemoveMinerals"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GameResourceMarkerVespene">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameResources4DummyMinerals">
+        <ValidatorArray value="NotDead"/>
+        <ValidatorArray value="IsReturningResources"/>
+        <EditorCategories value=""/>
+        <Resources index="Terrazine" value="4"/>
+        <ResourcesCollected index="Terrazine" value="4"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameResources4DummyVespene">
+        <ValidatorArray value="NotDead"/>
+        <ValidatorArray value="IsReturningResources"/>
+        <EditorCategories value=""/>
+        <Resources index="Custom" value="4"/>
+        <ResourcesCollected index="Custom" value="4"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameResources20DummyMinerals">
+        <ValidatorArray value="NotDead"/>
+        <ValidatorArray value="IsReturningResources"/>
+        <EditorCategories value=""/>
+        <Resources index="Terrazine" value="20"/>
+        <ResourcesCollected index="Terrazine" value="20"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameResources6DummyMinerals">
+        <ValidatorArray value="NotDead"/>
+        <ValidatorArray value="IsReturningResources"/>
+        <EditorCategories value=""/>
+        <Resources index="Terrazine" value="6"/>
+        <ResourcesCollected index="Terrazine" value="6"/>
+    </CEffectModifyPlayer>
+    <CEffectSwitch id="GameResourceMarkerMineralsRichSet">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsMULE" Effect="GameResourceMarkerMineralsMULE"/>
+        <CaseDefault value="GameResourceMarkerMineralsRich"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="GameResourcesMineralSet">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsMULE" Effect="GameResources20DummyMinerals"/>
+        <CaseDefault value="GameResources4DummyMinerals"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="GameResourcesMineralRichSet">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsMULE" Effect="GameResources20DummyMinerals"/>
+        <CaseDefault value="GameResources6DummyMinerals"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="GameResourceMarkerMineralsSet">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsMULE" Effect="GameResourceMarkerMineralsMULE"/>
+        <CaseDefault value="GameResourceMarkerMinerals"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="GameUCBBarracksAddon">
+        <EditorCategories value=""/>
+        <ValidatorArray index="0" value="NotDead"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBFactoryAddon">
+        <EditorCategories value=""/>
+        <ValidatorArray index="0" value="NotDead"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBStarportAddon">
+        <EditorCategories value=""/>
+        <ValidatorArray index="0" value="NotDead"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameUCBFactoryAddonAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/FactoryAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBStarportAddonAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/StarportAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectSet id="GameUCBFactoryAddonFinal">
+        <EditorCategories value=""/>
+        <EffectArray value="GameUCBFactoryAddonRemove"/>
+        <EffectArray value="GameUCBFactoryBusy"/>
+    </CEffectSet>
+    <CEffectSet id="GameUCBStarportAddonFinal">
+        <EditorCategories value=""/>
+        <EffectArray value="GameUCBStarportAddonRemove"/>
+        <EffectArray value="GameUCBStarportBusy"/>
+    </CEffectSet>
+    <CEffectModifyPlayer id="GameUCBFactoryAddonRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/FactoryAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBBarracksBusy">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="GameUCBBarracksAddonFinal">
+        <EditorCategories value=""/>
+        <EffectArray value="GameUCBBarracksAddonRemove"/>
+        <EffectArray value="GameUCBBarracksBusy"/>
+    </CEffectSet>
+    <CEffectModifyPlayer id="GameUCBStarportAddonRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/StarportAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBFactoryBusy">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="GameUCBChargeLinkCommandCenterRemove">
+        <EditorCategories value=""/>
+        <EffectArray value="GameUCBCommandCenterChargeRemove"/>
+        <EffectArray value="GameUCBChargeLinkCommandCenterConstructing"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GameUCBStarportBusy">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameUCBLairChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Lair"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBBarracksAddonAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/BarracksAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBLairChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Lair"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBBroodlordChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Broodlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBBroodlordChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Broodlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBArchonChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-0.5"/>
+                <Link value="UCB/Archon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBArchonChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="0.5"/>
+                <Link value="UCB/Archon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBBarracksAddonRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/BarracksAddon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBOverlordOrTransportChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/OverlordT"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBOverlordOrTransportChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/OverlordT"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBLurkerChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Lurker"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBLurkerChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Lurker"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBZerglingChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Zergling"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBOverlordChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Overlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBRavagerChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Ravager"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBZerglingChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Zergling"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBSpireChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Spire"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBHydraliskDenChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/HydraliskDen"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBHatcheryChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Hatchery"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBSpireChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Spire"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBCommandCenterChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/CommandCenter"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBLarvaChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBLarvaChargeLink">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameUCBLarvaChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGhostAcademyChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/GhostAcademy"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGhostAcademyChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GhostAcademy"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally00ChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/GlobalRally00"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBCommandCenterChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/CommandCenter"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally01ChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/GlobalRally01"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally00ChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GlobalRally00"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally02ChargeAdd">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="UCB/GlobalRally02"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally01ChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GlobalRally01"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBGlobalRally02ChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GlobalRally02"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBHatcheryHiveLair">
+        <ValidatorArray index="0" value="IsNotConstructing"/>
+        <ValidatorArray value="TargetNotDead"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBHatcheryHiveLairMorphing">
+        <ValidatorArray index="0" value="IsNotConstructing"/>
+        <ValidatorArray value="TargetNotDead"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBHydraliskLurkerDen">
+        <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBHydraliskLurkerDenMorphing">
+        <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBOrbitalCommandEnergy50GE">
+        <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBChargeLinkCommandCenter">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBOrbitalCommandEnergy50LT">
+        <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBChargeLinkCommandCenterConstructing">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GameUCBSpire">
+        <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Behavior value="GameUCBSpireGreaterSpire"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="GameUCBHydraliskDenChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/HydraliskDen"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBHatcheryChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Hatchery"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="GameUCBSpireMorphing">
+        <EditorCategories value=""/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="GameUCBZergBuildingMarker">
+        <EditorCategories value=""/>
+        <CaseArray Effect="RemoveCaster" FallThrough="1"/>
+        <CaseArray Validator="IsHatcheryLairOrHive" Effect="GameUCBHatcheryHiveLair"/>
+        <CaseArray Validator="IsHydraliskDen" Effect="GameUCBHydraliskLurkerDen"/>
+        <CaseArray Validator="IsSpire" Effect="GameUCBSpire"/>
+    </CEffectSwitch>
+    <CEffectModifyPlayer id="GameUCBOverlordChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Overlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="GameUCBRavagerChargeRemove">
+        <EditorCategories value=""/>
+        <Cost>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Ravager"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectSet id="GlobalRallyTarget01Set">
+        <EditorCategories value=""/>
+        <EffectArray value="GlobalRallyTarget01Create"/>
+        <EffectArray value="GlobalRallyTarget01UnitImpact"/>
+    </CEffectSet>
+    <CEffectDamage id="GlobalRallyTarget00UnitImpact">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="GlobalRallyTarget00Clear">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <AreaArray MaxCount="1" Radius="500" Effect="GlobalRallyTarget00KillRemove"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GlobalRallyTarget00Set">
+        <EditorCategories value=""/>
+        <EffectArray value="GlobalRallyTarget00Create"/>
+        <EffectArray value="GlobalRallyTarget00UnitImpact"/>
+    </CEffectSet>
+    <CEffectSet id="GlobalRallyTarget02Set">
+        <EditorCategories value=""/>
+        <EffectArray value="GlobalRallyTarget02Create"/>
+        <EffectArray value="GlobalRallyTarget02UnitImpact"/>
+    </CEffectSet>
+    <CEffectDamage id="GlobalRallyTarget01UnitImpact">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="GlobalRallyTarget01">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <InitialEffect value="GlobalRallyTarget01Clear"/>
+        <FinalEffect value="GlobalRallyTarget01Set"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="GlobalRallyTarget02UnitImpact">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="GlobalRallyTarget02">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <InitialEffect value="GlobalRallyTarget02Clear"/>
+        <FinalEffect value="GlobalRallyTarget02Set"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GlobalRallyTarget01Clear">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <AreaArray MaxCount="1" Radius="500" Effect="GlobalRallyTarget01KillRemove"/>
+    </CEffectEnumArea>
+    <CEffectCreateUnit id="GlobalRallyTarget00Create">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnUnit value="GameGlobalRallyTarget00"/>
+    </CEffectCreateUnit>
+    <CEffectCreatePersistent id="GlobalRallyTarget00">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <InitialEffect value="GlobalRallyTarget00Clear"/>
+        <FinalEffect value="GlobalRallyTarget00Set"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GlobalRallyTarget02Clear">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <AreaArray MaxCount="1" Radius="500" Effect="GlobalRallyTarget02KillRemove"/>
+    </CEffectEnumArea>
+    <CEffectCreateUnit id="GlobalRallyTarget01Create">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnUnit value="GameGlobalRallyTarget01"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="GlobalRallyTarget00KillRemove">
+        <ValidatorArray value="IsGlobalRallyTarget00"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectCreateUnit id="GlobalRallyTarget02Create">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnUnit value="GameGlobalRallyTarget02"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="GlobalRallyTarget01KillRemove">
+        <ValidatorArray value="IsGlobalRallyTarget01"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectDamage id="GlobalRallyTarget02KillRemove">
+        <ValidatorArray value="IsGlobalRallyTarget02"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectModifyPlayer id="NydusBuildUCBRefund">
+        <EditorCategories value=""/>
+        <Resources index="Terrazine" value="100"/>
+        <Resources index="Custom" value="100"/>
+    </CEffectModifyPlayer>
+    <CEffectDamage id="NydusBuildUCBRemoveDummy">
+        <EditorCategories value=""/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectSet id="NydusBuildUCBSet">
+        <EditorCategories value=""/>
+        <EffectArray value="NydusBuildUCBRefund"/>
+        <EffectArray value="NydusBuildUCBRemoveDummy"/>
+    </CEffectSet>
+    <CEffectDamage id="RemoveCaster">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectApplyKinetic id="KineticFollow">
+        <EditorCategories value=""/>
+    </CEffectApplyKinetic>
+    <CEffectEnumArea id="OverlordCreepGrowthAuraSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Ally,Neutral,Enemy,Missile,Dead,Hidden"/>
+        <AreaArray Radius="11" Effect="CreepTumorEnhancedCreepGrowth"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="SupplyDropApplyTempBehaviorDummy">
+        <ValidatorArray index="0" value="IsSupplyDepotEitherFlavor"/>
+        <ValidatorArray value="NotSupplyDrop"/>
+        <ValidatorArray value="NotSupplyDropEnRoute"/>
+        <ValidatorArray value="IsSupplyDepotMorphing"/>
+        <EditorCategories value="Race:Terran"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="TimeWarpUCBDummy">
+        <ValidatorArray value="TimeWarpTargetFilters"/>
+        <ValidatorArray value="TimeWarpViableTargets"/>
+        <ValidatorArray value="IsNotChronoBoosted"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectIssueOrder id="IssueOrderUpgradeWarpGate">
+        <EditorCategories value=""/>
+        <Abil value="UpgradeToWarpGate"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBDroneMorphToggleOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoMorphDroneToggleUCb"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBAutoCreepSpreadToggleOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoCreepSpreadToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBDroneMorphToggleOn">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoMorphDroneToggleUCb"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBGlobalRallyT2Off">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="GameGlobalRallyTarget01"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBGlobalRallyT3Off">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="GameGlobalRallyTarget02"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBSpawnLarvaToggleOff">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="AutoSpawnLarvaToggleUCB"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="UCBGlobalRallyT1Off">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="GameGlobalRallyTarget00"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectDamage id="VolatileBurstFriendlyBuildingDamage">
+        <Amount value="160"/>
+    </CEffectDamage>
+    <CEffectDamage id="VolatileBurstFriendlyUnitDamage">
+        <AttributeBonus index="Light" value="30"/>
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="VolatileBurstU">
+        <AttributeBonus index="Light" value="30"/>
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="VolatileBurstU2">
+        <Amount value="160"/>
+    </CEffectDamage>
+</Catalog>

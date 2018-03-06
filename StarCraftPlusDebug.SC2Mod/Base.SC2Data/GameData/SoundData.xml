@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CSound id="AbathurA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="AbathurA_NeedMoreFoodPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="AbathurA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="AbathurA_NeedMoreFoodProtossPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="AbathurA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="AbathurA_NeedMoreFoodTerranPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="AlarakA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="AlarakA_NeedMoreFoodPreview">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav" FacialGroup="Default"/>
+    </CSound>
+    <CSound id="AlarakA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="AlarakA_NeedMoreFoodTerranPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="AlarakA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="AlarakA_NeedMoreFoodZergPreview">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav" FacialGroup="Default"/>
+    </CSound>
+    <CSound id="Alert_ProtossNeedMoreFood">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="Alert_TerranNeedMoreFood">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav" FacialAnim=""/>
+    </CSound>
+    <CSound id="Alert_ZergNeedMoreFood">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="ArtanisA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="ArtanisA_NeedMoreFoodPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="ArtanisA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="ArtanisA_NeedMoreFoodTerranPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="ArtanisA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="ArtanisA_NeedMoreFoodZergPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="DVaA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="DVaA_NeedMoreFoodPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="DVaA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="DVaA_NeedMoreFoodProtossPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="DVaA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+    </CSound>
+    <CSound id="DVaA_NeedMoreFoodZergPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="Day9Announcer_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+    </CSound>
+    <CSound id="Day9Announcer_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="Day9Announcer_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="DayNine_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+    </CSound>
+    <CSound id="DayNine_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav" Weight="100"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="DayNine_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav" Weight="100"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="DehakaA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="DehakaA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="DehakaA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="FenixA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="FenixA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="FenixA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="IzshaA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="IzshaA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="IzshaA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="KaraxA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="KaraxA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="KaraxA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="KerriganA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="KerriganA_NeedMoreFoodPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="KerriganA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="KerriganA_NeedMoreFoodProtossPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="KerriganA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="KerriganA_NeedMoreFoodTerranPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="NathaniasA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+    </CSound>
+    <CSound id="NathaniasA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="NathaniasA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+    </CSound>
+    <CSound id="NovaA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="NovaA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="NovaA_NeedMoreFoodProtoss_Preview">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav" FacialGroup="Default"/>
+    </CSound>
+    <CSound id="NovaA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="NovaA_NeedMoreFoodZerg_Preview">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav" FacialGroup="Default"/>
+    </CSound>
+    <CSound id="NovaA_NeedMoreFood_Preview">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav" FacialGroup="Default"/>
+    </CSound>
+    <CSound id="ParkA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+    </CSound>
+    <CSound id="ParkA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+    </CSound>
+    <CSound id="ParkA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="RaynorA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="RaynorA_NeedMoreFoodPreview">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav" FacialGroup="Default"/>
+    </CSound>
+    <CSound id="RaynorA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="RaynorA_NeedMoreFoodProtossPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="RaynorA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="RaynorA_NeedMoreFoodZergPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="SwannA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="SwannA_NeedMoreFoodPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="SwannA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="SwannA_NeedMoreFoodProtossPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="SwannA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="SwannA_NeedMoreFoodZergPreview">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="TastosisA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+    </CSound>
+    <CSound id="TastosisA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav" Weight="100"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="TastosisA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="TastosisArenaCrowdA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+    </CSound>
+    <CSound id="TastosisArenaCrowdA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav" Weight="100"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="TastosisArenaCrowdA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="TotalBiscuitA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+    </CSound>
+    <CSound id="TotalBiscuitA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="TotalBiscuitA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+        <AssetArray index="5" removed="1"/>
+    </CSound>
+    <CSound id="VorazunA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="VorazunA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="VorazunA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="ZagaraA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="ZagaraA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="ZagaraA_NeedMoreFoodTerran">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+    </CSound>
+    <CSound id="e_cmdNotEnoughFood">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav" FacialAnim=""/>
+    </CSound>
+    <CSound id="e_cmdNotEnoughFood_Prot">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="e_cmdNotEnoughFood_Zerg">
+        <AssetArray index="0" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+    </CSound>
+    <CSound id="iNcontrolA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+    </CSound>
+    <CSound id="iNcontrolA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+    </CSound>
+    <CSound id="iNcontrolA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+    </CSound>
+    <CSound id="scboyA_NeedMoreFood">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+    </CSound>
+    <CSound id="scboyA_NeedMoreFoodProtoss">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+    </CSound>
+    <CSound id="scboyA_NeedMoreFoodZerg">
+        <AssetArray index="0" TemplateParam="" File="Assets\Sounds\Uni\UI\UI_Error.wav"/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+    </CSound>
+</Catalog>

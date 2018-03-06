@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CBehaviorBuff id="AutoWallAutocastBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoCreepSpreadAutocastBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallForceBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.125"/>
+        <Modification>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallForceField">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallForceField"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaise">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.125"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallRaiseSearch"/>
+        <FinalEffect value="AutoWallRaiseOrder"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="AutoWallAutocastEnabled"/>
+        <RemoveValidatorArray value="AutoWallLoweredManual"/>
+        <ExpireEffect value="AutoWallManualRaiseRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallManualRaise">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AutoWallAutocastEnabled"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallManualRaiseSearch"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallRaiseCooldown">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Duration value="0.0625"/>
+        <InitialEffect value="AutoWallLowerRemove"/>
+        <ExpireEffect value="AutoWallRaise"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+        <RemoveValidatorArray value="AutoWallLoweredManual"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallLowerCooldown">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <InitialEffect value="AutoWallRaiseRemove"/>
+        <ExpireEffect value="AutoWallLower"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallManualRaiseCooldown">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Duration value="0.0625"/>
+        <InitialEffect value="AutoWallLowerRemove"/>
+        <ExpireEffect value="AutoWallManualRaise"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="AutoWallForceField"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableVespeneGeyserGas">
+        <FinalEffect value="GameResources4DummyVespene"/>
+        <InitialEffect value="GameResourceMarkerVespene"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableVespeneGeyserGasProtoss">
+        <FinalEffect value="GameResources4DummyVespene"/>
+        <InitialEffect value="GameResourceMarkerVespene"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableVespeneGeyserGasZerg">
+        <FinalEffect value="GameResources4DummyVespene"/>
+        <InitialEffect value="GameResourceMarkerVespene"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHighYieldMineralFieldMinerals">
+        <FinalEffect value="GameResourcesMineralRichSet"/>
+        <InitialEffect value="GameResourceMarkerMineralsRichSet"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryMineralFieldMinerals">
+        <FinalEffect value="GameResourcesMineralSet"/>
+        <InitialEffect value="GameResourceMarkerMineralsSet"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CreepTumorEnhancedCreepGrowth">
+        <Face value="CreepTumorEnhancedCreepGrowthAura"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-zerg-stukov-creepspread.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.375"/>
+        <Modification TimeScale="1.25"/>
+        <MaxStackCount value="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameAutoCreepNodeSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="GameAutoCreepTargetSearch"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameAutoCreepNodeTargetCapped">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="KillSource"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameAutoCreepSpreadReady">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="-1"/>
+        <Period value="60"/>
+        <PeriodicEffect value="GameAutoCreepSpreadHook"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="AutoCreepAutocastEnabled"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameDroneMorphMarker">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="17"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameHookBarracksStatusUpdate">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="GameHookBarracksStatusUpdate"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameNexusCountConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <FinalEffect value="GameNexusCount"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameProtossWarpGateTrainCharge">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="-1"/>
+        <FinalEffect value="GameProtossWarpGateTrainCharge"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameProtossWarpGateTrainChargeFinal">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="-1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <FinalEffect value="DoNothing"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameResourceMarkerMinerals">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="OrderIsGatherOrReturn"/>
+        <InitialEffect value="GameResourceMarkerSetMinerals"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameResourceMarkerVespene">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="OrderIsGatherOrReturn"/>
+        <InitialEffect value="GameResourceMarkerSetVespene"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameResourceMarkerMineralsRich">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="OrderIsGatherOrReturn"/>
+        <InitialEffect value="GameResourceMarkerSetMineralsRich"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameResourceMarkerMineralsMULE">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="OrderIsGatherOrReturnMULE"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBFactoryAddon">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBFactoryAvailable"/>
+        <InitialEffect value="GameUCBFactoryAddonAdd"/>
+        <FinalEffect value="GameUCBFactoryAddonFinal"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBBarracksBusy">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBBarracksBusy"/>
+        <FinalEffect value="GameUCBBarracksAddon"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGlobalRallyZergMelee">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGlobalRallyZergRanged">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGlobalRallyZergFlyer">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBNexusEnergy50GE">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterEnergyGE50"/>
+        <FinalEffect value="GameUCBNexusEnergy50LT"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBNexusEnergy50LT">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterEnergyLT50"/>
+        <FinalEffect value="GameUCBNexusEnergy50GE"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBStarportAddon">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBStarportAvailable"/>
+        <InitialEffect value="GameUCBStarportAddonAdd"/>
+        <FinalEffect value="GameUCBStarportAddonFinal"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBFactoryBusy">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBFactoryBusy"/>
+        <FinalEffect value="GameUCBFactoryAddon"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBCommandCenterChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBCommandCenterChargeAdd"/>
+        <FinalEffect value="GameUCBCommandCenterChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBStarportBusy">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBStarportBusy"/>
+        <FinalEffect value="GameUCBStarportAddon"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBLairChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBLairChargeAdd"/>
+        <FinalEffect value="GameUCBLairChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBBroodlordChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBBroodlordChargeAdd"/>
+        <FinalEffect value="GameUCBBroodlordChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBArchonChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBArchonChargeAdd"/>
+        <FinalEffect value="GameUCBArchonChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBBarracksAddon">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="GameUCBBarracksAvailable"/>
+        <InitialEffect value="GameUCBBarracksAddonAdd"/>
+        <FinalEffect value="GameUCBBarracksAddonFinal"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBOverlordOrTransportChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBOverlordOrTransportChargeAdd"/>
+        <FinalEffect value="GameUCBOverlordOrTransportChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBLurkerChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBLurkerChargeAdd"/>
+        <FinalEffect value="GameUCBLurkerChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBZerglingChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBZerglingChargeAdd"/>
+        <FinalEffect value="GameUCBZerglingChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBSpireChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBSpireChargeAdd"/>
+        <FinalEffect value="GameUCBSpireChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHydraliskDenChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBHydraliskDenChargeAdd"/>
+        <FinalEffect value="GameUCBHydraliskDenChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHatcheryChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBHatcheryChargeAdd"/>
+        <FinalEffect value="GameUCBHatcheryChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBSpireChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBSpireChargeRemove"/>
+        <FinalEffect value="GameUCBSpireChargeAdd"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBLarvaChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="NoOrdersAndNoMove"/>
+        <InitialEffect value="GameUCBLarvaChargeAdd"/>
+        <FinalEffect value="GameUCBLarvaChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBCommandCenterChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBCommandCenterChargeRemove"/>
+        <FinalEffect value="GameUCBCommandCenterChargeAdd"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGhostAcademyChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBGhostAcademyChargeAdd"/>
+        <FinalEffect value="GameUCBGhostAcademyChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGhostAcademyChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBGhostAcademyChargeRemove"/>
+        <FinalEffect value="GameUCBGhostAcademyChargeAdd"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGlobalRally00ChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBGlobalRally00ChargeAdd"/>
+        <FinalEffect value="GameUCBGlobalRally00ChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGlobalRally01ChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBGlobalRally01ChargeAdd"/>
+        <FinalEffect value="GameUCBGlobalRally01ChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBGlobalRally02ChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBGlobalRally02ChargeAdd"/>
+        <FinalEffect value="GameUCBGlobalRally02ChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHatcheryHiveLair">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="ZergHallNotMorphing"/>
+        <FinalEffect value="GameUCBHatcheryHiveLairMorphing"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHatcheryHiveLairMorphing">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="ZergHallIsMorphing"/>
+        <FinalEffect value="GameUCBHatcheryHiveLair"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHydraliskLurkerDen">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="HydraliskDenNotMorphing"/>
+        <FinalEffect value="GameUCBHydraliskLurkerDenMorphing"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHydraliskLurkerDenMorphing">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="HydraliskDenIsMorphing"/>
+        <FinalEffect value="GameUCBHydraliskLurkerDen"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBLarvaChargeLinkPre">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <FinalEffect value="GameUCBLarvaChargeLink"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBOrbitalCommandEnergy50GE">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterEnergyGE50"/>
+        <FinalEffect value="GameUCBOrbitalCommandEnergy50LT"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBOrbitalCommandEnergy50LT">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterEnergyLT50"/>
+        <FinalEffect value="GameUCBOrbitalCommandEnergy50GE"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHatcheryChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBHatcheryChargeRemove"/>
+        <FinalEffect value="GameUCBHatcheryChargeAdd"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBSpireGreaterSpire">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="SpireNotMorphing"/>
+        <FinalEffect value="GameUCBSpireMorphing"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBHydraliskDenChargeLinkConstructing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsConstructing"/>
+        <InitialEffect value="GameUCBHydraliskDenChargeRemove"/>
+        <FinalEffect value="GameUCBHydraliskDenChargeAdd"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBSpireMorphing">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="SpireIsMorphing"/>
+        <FinalEffect value="GameUCBSpire"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBOverlordChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBOverlordChargeAdd"/>
+        <FinalEffect value="GameUCBOverlordChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUCBRavagerChargeLink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="GameUCBRavagerChargeAdd"/>
+        <FinalEffect value="GameUCBRavagerChargeRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameIncreasedLifeAndShields">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxFractionArray index="Life" value="1"/>
+            <VitalMaxFractionArray index="Shields" value="1"/>
+        </Modification>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameMineralsNearTownHall">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="Extend" value="1"/>
+        <Duration value="0.625"/>
+        <Replace value="FarthestDistance"/>
+        <ReplaceLocation Value="TargetUnit"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameMineralsNearTownHallSearch">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="GameMineralsNearTownHallSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameNexusCount">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameUnitInCombatMarker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="CasterInCombat"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameWarpGateUpgradeBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="IsGateway"/>
+        <Period value="0.125"/>
+        <PeriodicEffect value="IssueOrderUpgradeWarpGate"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameWorkerIdle">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="SourceHasNoOrders"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameNearNexus">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="NearNexus"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GameNearWarpGate">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="NearWarpGate"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorResource id="HighYieldMineralFieldMinerals">
+        <HarvestAmount value="6"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HighYieldMineralFieldMinerals750">
+        <HarvestAmount value="6"/>
+    </CBehaviorResource>
+    <CBehaviorBuff id="KineticFollow">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InitialEffect value="KineticFollow"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorResource id="MineralFieldMinerals">
+        <HarvestAmount value="4"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="MineralFieldMinerals750">
+        <HarvestAmount value="4"/>
+    </CBehaviorResource>
+    <CBehaviorBuff id="OverlordEnhancedCreepGrowthAura">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.125"/>
+        <PeriodicEffect value="OverlordCreepGrowthAuraSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorPowerSource id="PowerSource">
+        <Requirements value="DoesNotHaveNexusNearby"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="PowerSourceAtNexus" parent="PowerSource">
+        <Name value="Behavior/Name/PowerSourceAtNexus"/>
+        <InfoFlags index="Hidden" value="0"/>
+        <Requirements value="HasNexusNearby"/>
+        <Radius value="13"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="PowerSourceFast">
+        <Requirements value="DoesNotHaveNexusNearby"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="PowerSourceFastAtNexus">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-building-protoss-pylon.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
+        <Requirements value="HasNexusNearby"/>
+        <PowerLevel value="2"/>
+        <Radius value="12.5"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorBuff id="CarrierAutocastOff">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarrierAutocastOn">
+        <Cost>
+            <Charge Link="Behavior/CarrierAutocastOff"/>
+            <Cooldown Link="Behavior/CarrierAutocastOff"/>
+        </Cost>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <DamageResponse>
+            <Cost>
+                <Charge Link="Behavior/CarrierAutocastOff"/>
+                <Cooldown Link="Behavior/CarrierAutocastOff"/>
+            </Cost>
+        </DamageResponse>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SidebarDummy">
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoWallLower">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AutoWallLowerSearch"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="AutoWallAutocastEnabled"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorCreepSource id="CreepGrowthMediumEnhanced">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <Period value="0.28"/>
+        <Start value="Footprint4x4CreepSourceGrown"/>
+        <Birth value="Footprint4x4CreepSourceStart"/>
+        <Grown value="Footprint4x4CreepSourceGrown"/>
+        <DisableValidatorArray value="HasEnhancedCreepGrowth"/>
+    </CBehaviorCreepSource>
+    <CBehaviorBuff id="GameWarpGateCount">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+</Catalog>

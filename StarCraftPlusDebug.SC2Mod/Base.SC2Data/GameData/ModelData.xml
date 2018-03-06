@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CModel id="CreepTumorEnhancedCreepGrowthModel">
+        <Model value="Assets\Effects\Zerg\CreepTumorFrenzy\CreepTumorFrenzy.m3"/>
+    </CModel>
+    <CModel id="GameGlobalRallyCursorTarget" parent="UI">
+        <Model value="Assets\UI\Feedback\WayPointConfirm_TeamColor\WayPointConfirm_TeamColor.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetPersistent">
+        <Model value="Assets\UI\Feedback\WayPointMove_TeamColor\WayPointMove_TeamColor.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTarget01Persistent">
+        <Model value="Assets\UI\Feedback\WayPointConfirm_TeamColor\WayPointConfirm_TeamColor.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTarget02Persistent">
+        <Model value="Assets\UI\Feedback\WayPointConfirm_TeamColor\WayPointConfirm_TeamColor.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetPersistent2">
+        <Model value="Assets\UI\Feedback\WayPointMove_TeamColor\WayPointMove_TeamColor.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetProtossStargate">
+        <Model value="Assets\Buildings\Protoss\StargatePlacement\StargatePlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetZergMelee">
+        <Model value="Assets\Units\Zerg\Zergling\Zergling.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.950000,0.950000,0.950000"/>
+        <ScaleMin value="0.950000,0.950000,0.950000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetTerranBarracks">
+        <Model value="Assets\Buildings\Terran\BarracksPlacement\BarracksPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetTerranFactory">
+        <Model value="Assets\Buildings\Terran\FactoryPlacement\FactoryPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetProtossRoboticsFacility">
+        <Model value="Assets\Buildings\Protoss\RoboticsFacilityPlacement\RoboticsFacilityPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetTerranStarport">
+        <Model value="Assets\Buildings\Terran\StarportPlacement\StarportPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetProtossGateway">
+        <Model value="Assets\Buildings\Protoss\GatewayPlacement\GatewayPlacement.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetZergRanged">
+        <Model value="Assets\Units\Zerg\Hydralisk\Hydralisk.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+    </CModel>
+    <CModel id="GameGlobalRallyTargetZergFlyer">
+        <Model value="Assets\Units\Zerg\Mutalisk\Mutalisk.m3"/>
+        <Flags index="FOW" value="0"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+    </CModel>
+    <CModel id="GlazeZergGlobalRally">
+        <Model value="Assets\Buildings\Zerg\ZergNydusAttackerPlacement\ZergNydusAttackerPlacement.m3"/>
+    </CModel>
+    <CModel id="PowerVisualFastNexus" parent="UI">
+        <Model value="Assets\UI\Feedback\Pylon_WarpIn_Radius\Pylon_WarpIn_RadiusLarge.m3"/>
+        <ScaleMax value="1.800000,1.800000,1.800000"/>
+        <ScaleMin value="1.800000,1.800000,1.800000"/>
+    </CModel>
+    <CModel id="UnpoweredVisualNearNexus" parent="UI">
+        <Model value="Assets\UI\Feedback\PylonRadiusUnpowered_X1\PylonRadiusUnpowered_X1large.m3"/>
+        <ScaleMax value="1.800000,1.800000,1.800000"/>
+        <ScaleMin value="1.800000,1.800000,1.800000"/>
+    </CModel>
+</Catalog>

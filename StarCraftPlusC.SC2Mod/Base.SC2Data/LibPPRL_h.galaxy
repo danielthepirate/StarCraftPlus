@@ -19,6 +19,7 @@ struct libPPRL_gs_SupportPanelRecord {
 libPPRL_gs_SupportPanelRecord libPPRL_gv_supportPanel;
 
 // Function Declarations
+bool libPPRL_gf_Boolean (bool lp_argument);
 int libPPRL_gf_UserDataInstanceID (string lp_userType, string lp_userDataInstance);
 void libPPRL_gf_SendActorMessageToUnitGroup (string lp_actorMessage, unitgroup lp_unitGroup);
 void libPPRL_gf_ShakeCameraForPlayer (int lp_p, string lp_cameraSetting);

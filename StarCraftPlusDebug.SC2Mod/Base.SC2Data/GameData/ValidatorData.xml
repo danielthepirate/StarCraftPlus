@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CValidatorUnitType id="AutoCreepTargetNode">
+        <Value value="GameAutoCreepNodeTarget"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="AutoCreepTargetNodeReachable">
+        <Type value="And"/>
+        <CombineArray value="AutoCreepTargetNode"/>
+        <CombineArray value="CliffLevelEqualSource"/>
+        <CombineArray value="TargetOnCreep"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="AutoWallConstructionFootprint">
+        <Value value="SupplyDepotConstructionFootprint"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="AutoWallLoweredManual">
+        <Behavior value="AutoWallManualRaiseCooldown"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="AutoWallAutocastEnabled">
+        <Value value="1"/>
+        <Behavior value="AutoWallAutocastBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareOrderCount id="FactoryNotTraining">
+        <AbilLink value="FactoryTrain"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareBehaviorCount id="CarryNoMinerals">
+        <Behavior value="CarryMineralFieldMinerals"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CarryNoVespeneTerran">
+        <Behavior value="CarryHarvestableVespeneGeyserGas"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CarryNoMineralsHighYield">
+        <Behavior value="CarryHighYieldMineralFieldMinerals"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CarryNoVespeneZerg">
+        <Behavior value="CarryHarvestableVespeneGeyserGasZerg"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CarryNoVespeneProtoss">
+        <Behavior value="CarryHarvestableVespeneGeyserGasProtoss"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="CarryOnlyMinerals">
+        <Type value="And"/>
+        <CombineArray value="CarryNoMineralsHighYield"/>
+        <CombineArray value="CarryNoVespeneProtoss"/>
+        <CombineArray value="CarryNoVespeneTerran"/>
+        <CombineArray value="CarryNoVespeneZerg"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="CarryOnlyVespene">
+        <Type value="And"/>
+        <CombineArray value="CarryNoMineralsHighYield"/>
+        <CombineArray value="CarryNoMinerals"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="CarryOnlyMineralsHighYield">
+        <Type value="And"/>
+        <CombineArray value="CarryNoMinerals"/>
+        <CombineArray value="CarryNoVespeneProtoss"/>
+        <CombineArray value="CarryNoVespeneTerran"/>
+        <CombineArray value="CarryNoVespeneZerg"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GameUCBStarportBusy">
+        <CombineArray value="TechLabStarport"/>
+        <CombineArray value="ReactorStarport"/>
+        <CombineArray value="OrderBuildStarportReactor"/>
+        <CombineArray value="OrderBuildStarportTechLab"/>
+        <CombineArray value="OrderBuildStarportLiftOff"/>
+        <CombineArray value="IsConstructing"/>
+        <CombineArray value="FlyingStarport"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GameUCBStarportAvailable">
+        <Type value="And"/>
+        <CombineArray value="TechLabNotStarport"/>
+        <CombineArray value="ReactorNotStarport"/>
+        <CombineArray value="OrderNotBuildStarportReactor"/>
+        <CombineArray value="OrderNotBuildStarportTechLab"/>
+        <CombineArray value="OrderNotBuildStarportLiftOff"/>
+        <CombineArray value="IsNotConstructing"/>
+        <CombineArray value="NotFlyingStarport"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GameUCBFactoryBusy">
+        <CombineArray value="TechLabFactory"/>
+        <CombineArray value="ReactorFactory"/>
+        <CombineArray value="OrderBuildFactoryReactor"/>
+        <CombineArray value="OrderBuildFactoryTechLab"/>
+        <CombineArray value="OrderBuildFactoryLiftOff"/>
+        <CombineArray value="IsConstructing"/>
+        <CombineArray value="FlyingFactory"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GameUCBFactoryAvailable">
+        <Type value="And"/>
+        <CombineArray value="TechLabNotFactory"/>
+        <CombineArray value="ReactorNotFactory"/>
+        <CombineArray value="OrderNotBuildFactoryReactor"/>
+        <CombineArray value="OrderNotBuildFactoryTechLab"/>
+        <CombineArray value="OrderNotBuildFactoryLiftOff"/>
+        <CombineArray value="IsNotConstructing"/>
+        <CombineArray value="NotFlyingFactory"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="OrderBuildFactoryLiftOff">
+        <AbilLink value="FactoryLiftOff"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildStarportLiftOff">
+        <AbilLink value="StarportLiftOff"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildFactoryReactor">
+        <AbilLink value="FactoryAddOns"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildStarportReactor">
+        <AbilLink value="StarportAddOns"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildFactoryTechLab">
+        <AbilLink value="FactoryAddOns"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildStarportTechLab">
+        <AbilLink value="StarportAddOns"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildFactoryLiftOff">
+        <AbilLink value="FactoryLiftOff"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildStarportLiftOff">
+        <AbilLink value="StarportLiftOff"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildFactoryReactor">
+        <AbilLink value="FactoryAddOns"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildStarportReactor">
+        <AbilLink value="StarportAddOns"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildFactoryTechLab">
+        <AbilLink value="FactoryAddOns"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildStarportTechLab">
+        <AbilLink value="StarportAddOns"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareBehaviorCount id="ReactorFactory">
+        <Value value="1"/>
+        <Behavior value="FactoryReactor"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ReactorStarport">
+        <Value value="1"/>
+        <Behavior value="StarportReactor"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareOrderCount id="StarportNotTraining">
+        <AbilLink value="StarportTrain"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitType id="FlyingFactory">
+        <ResultNoUnit value="CantTargetThatUnit"/>
+        <Value value="FactoryFlying"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="FlyingStarport">
+        <ResultNoUnit value="CantTargetThatUnit"/>
+        <Value value="StarportFlying"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="GameUCBBarracksAvailable">
+        <Type value="And"/>
+        <CombineArray value="TechLabNotBarracks"/>
+        <CombineArray value="ReactorNotBarracks"/>
+        <CombineArray value="OrderNotBuildBarracksReactor"/>
+        <CombineArray value="OrderNotBuildBarracksTechLab"/>
+        <CombineArray value="OrderNotBuildBarracksLiftOff"/>
+        <CombineArray value="IsNotConstructing"/>
+        <CombineArray value="NotFlyingBarracks"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GameUCBBarracksBusy">
+        <CombineArray value="TechLabBarracks"/>
+        <CombineArray value="ReactorBarracks"/>
+        <CombineArray value="OrderBuildBarracksReactor"/>
+        <CombineArray value="OrderBuildBarracksTechLab"/>
+        <CombineArray value="OrderBuildBarracksLiftOff"/>
+        <CombineArray value="IsConstructing"/>
+        <CombineArray value="FlyingBarracks"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="NotBarracks">
+        <Value value="Barracks"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitOrderQueue id="IsGatheringResourcesTerranMULE">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="MULEGather"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitType id="NotFactory">
+        <Value value="Factory"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="FlyingBarracks">
+        <ResultNoUnit value="CantTargetThatUnit"/>
+        <Value value="BarracksFlying"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotStarport">
+        <Value value="Starport"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="OrderIsGatherOrReturnMULE">
+        <CombineArray value="IsGatheringResourcesTerranMULE"/>
+        <CombineArray value="IsReturningResourcesTerranMULE"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="OrderIsGatherDrone">
+        <AbilLink value="DroneHarvest"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderIsGatherSCV">
+        <AbilLink value="SCVHarvest"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorCombine id="OrderIsGatherOrReturn">
+        <CombineArray value="OrderIsGatherDrone"/>
+        <CombineArray value="OrderIsGatherProbe"/>
+        <CombineArray value="OrderIsGatherSCV"/>
+        <CombineArray value="OrderIsReturnDrone"/>
+        <CombineArray value="OrderIsReturnProbe"/>
+        <CombineArray value="OrderIsReturnSCV"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="OrderIsReturnDrone">
+        <AbilLink value="DroneHarvest"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderIsReturnSCV">
+        <AbilLink value="SCVHarvest"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderIsGatherProbe">
+        <AbilLink value="ProbeHarvest"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderIsReturnProbe">
+        <AbilLink value="ProbeHarvest"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildBarracksLiftOff">
+        <AbilLink value="BarracksLiftOff"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildBarracksReactor">
+        <AbilLink value="BarracksAddOns"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildBarracksReactor">
+        <AbilLink value="BarracksAddOns"/>
+        <AbilCmdIndex value="1"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildBarracksLiftOff">
+        <AbilLink value="BarracksLiftOff"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderNotBuildBarracksTechLab">
+        <AbilLink value="BarracksAddOns"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="OrderBuildBarracksTechLab">
+        <AbilLink value="BarracksAddOns"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareBehaviorCount id="ReactorBarracks">
+        <Value value="1"/>
+        <Behavior value="BarracksReactor"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitOrderQueue id="SourceNoMoveOrder">
+        <WhichUnit Value="Source"/>
+        <AbilLink value="move"/>
+        <Find value="0"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorCombine id="NearWarpGateActual">
+        <Type value="And"/>
+        <CombineArray value="NearWarpGate"/>
+        <CombineArray value="SpecialPylonRange"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="NearNexusActual">
+        <Type value="And"/>
+        <CombineArray value="NearNexus"/>
+        <CombineArray value="SpecialPylonRange"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="TechLabBarracks">
+        <Value value="1"/>
+        <Behavior value="BarracksTechLab"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TechLabFactory">
+        <Value value="1"/>
+        <Behavior value="FactoryTechLab"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TechLabStarport">
+        <Value value="1"/>
+        <Behavior value="StarportTechLab"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="UnitIsNexus">
+        <ResultFailed value="Error,Error/IsNexus"/>
+        <Value value="Nexus"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareOrderCount id="SourceHasNoOrders"/>
+    <CValidatorLocationCompareCliffLevel id="CliffLevelEqualSource">
+        <WhichLocation Value="TargetUnit"/>
+        <OtherLocation Value="SourceUnit"/>
+    </CValidatorLocationCompareCliffLevel>
+    <CValidatorCombine id="CommandCenterNotMorphing">
+        <Type value="And"/>
+        <CombineArray value="CommandCenterNotMorphingOC"/>
+        <CombineArray value="CommandCenterNotMorphingPF"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="HatcheryIsMorphing">
+        <AbilLink value="UpgradeToLair"/>
+        <Value value="1"/>
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="HatcheryNotCanceling">
+        <AbilLink value="UpgradeToLair"/>
+        <AbilCmdIndex value="2"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="HatcheryNotMorphing">
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="HydraliskDenNotMorphing">
+        <AbilLink value="UpgradeToLurkerDenMP"/>
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="HydraliskDenIsMorphing">
+        <AbilLink value="UpgradeToLurkerDenMP"/>
+        <Value value="1"/>
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="LairIsMorphing">
+        <AbilLink value="UpgradeToHive"/>
+        <Value value="1"/>
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="LairNotMorphing">
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="SpireNotMorphing">
+        <AbilLink value="UpgradeToGreaterSpire"/>
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="SpireIsMorphing">
+        <AbilLink value="UpgradeToGreaterSpire"/>
+        <Value value="1"/>
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorCombine id="ZergHallNotMorphing">
+        <Type value="And"/>
+        <CombineArray value="HatcheryNotMorphing"/>
+        <CombineArray value="LairNotMorphing"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareOrderCount id="CommandCenterNotMorphingOC">
+        <AbilLink value="UpgradeToOrbital"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="BarracksNotTraining">
+        <AbilLink value="BarracksTrain"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareBehaviorCount id="HasEnhancedCreepGrowth">
+        <Value value="1"/>
+        <Behavior value="CreepTumorEnhancedCreepGrowth"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="AutoCreepAutocastEnabled">
+        <Value value="1"/>
+        <Behavior value="AutoCreepSpreadAutocastBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareOrderCount id="CommandCenterNotMorphingPF">
+        <AbilLink value="UpgradeToPlanetaryFortress"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitType id="IsGlobalRallyTarget00">
+        <Value value="GameGlobalRallyTarget00"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsGlobalRallyTarget01">
+        <Value value="GameGlobalRallyTarget01"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsGlobalRallyTarget02">
+        <Value value="GameGlobalRallyTarget02"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="IsReturningResources">
+        <CombineArray value="IsReturningResourcesZerg"/>
+        <CombineArray value="IsReturningResourcesProtoss"/>
+        <CombineArray value="IsReturningResourcesTerran"/>
+        <CombineArray value="IsReturningResourcesTerranMULE"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrderQueue id="IsReturningResourcesTerranMULE">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="MULEGather"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitOrderQueue id="IsReturningResourcesZerg">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="DroneHarvest"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitOrderQueue id="IsReturningResourcesProtoss">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="ProbeHarvest"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitCompareBehaviorCount id="NoEnhancedCreepGrowth">
+        <Behavior value="CreepTumorEnhancedCreepGrowth"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="IsCreepTumorAny">
+        <CombineArray value="IsCreepTumor"/>
+        <CombineArray value="IsCreepTumorQueen"/>
+        <CombineArray value="IsCreepTumorUnburrowed"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="IsCreepTumorUnburrowed">
+        <ResultFailed value="CantTargetThatUnit"/>
+        <Value value="CreepTumor"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsCreepTumorQueen">
+        <ResultFailed value="CantTargetThatUnit"/>
+        <Value value="CreepTumorQueen"/>
+    </CValidatorUnitType>
+    <CValidatorLocationEnumArea id="NearNexus">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="4.5"/>
+            <Validator value="UnitIsNexus"/>
+        </AreaArray>
+        <Compare value="GE"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <Count value="1"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="HasNexusNearbyBehavior">
+        <Value value="1"/>
+        <Behavior value="GameNearNexus"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasNexusNotNearbyBehavior">
+        <Behavior value="GameNearNexus"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasWarpGateNearbyBehavior">
+        <Value value="1"/>
+        <Behavior value="GameNearWarpGate"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="NearWarpGate">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="4.625"/>
+            <Validator value="IsWarpgate"/>
+        </AreaArray>
+        <Compare value="GE"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy"/>
+        <Count value="1"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="NearNeitherNexusNorWarpGate">
+        <Type value="And"/>
+        <CombineArray value="HasNexusNearbyBehavior"/>
+        <CombineArray value="HasWarpGateNearbyBehavior"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="NearWarpGateNotNexus">
+        <Type value="And"/>
+        <CombineArray value="HasNexusNotNearbyBehavior"/>
+        <CombineArray value="HasWarpGateNearbyBehavior"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrderQueue id="IsReturningResourcesTerran">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="SCVHarvest"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorLocationEnumArea id="AutoWallNoEnemiesNearby">
+        <WhichLocation Value="OriginUnit"/>
+        <AreaArray Radius="2.5"/>
+        <Compare value="Eq"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <LaunchLocation Value="OriginUnit"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="SupplyDepotRaiseNot">
+        <Type value="And"/>
+        <CombineArray value="AutoWallNoEnemiesNearby"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SupplyDepotRaiseOr">
+        <CombineArray value="SupplyDepotRaiseEnemyEnumerate"/>
+        <CombineArray value="SupplyDepotRaiseAllyEnumerate"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="ZergHallIsMorphing">
+        <CombineArray value="HatcheryIsMorphing"/>
+        <CombineArray value="LairIsMorphing"/>
+    </CValidatorCombine>
+</Catalog>

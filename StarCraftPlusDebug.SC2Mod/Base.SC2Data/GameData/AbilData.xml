@@ -1,0 +1,1711 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CAbilResearch default="1">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilTrain default="1">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilWarpTrain default="1">
+        <RefundFraction>
+            <Vital index="Life" value="-1"/>
+            <Vital index="Shields" value="-1"/>
+            <Vital index="Energy" value="-1"/>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilWarpTrain>
+    <CAbilBuild default="1" id="TerranAddOns">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilBuild>
+    <CAbilArmMagazine id="ArmSiloWithNuke">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <AbilSetId value="ArmNuke"/>
+        <InfoArray index="Ammo1">
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GhostAcademy"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/##id##"/>
+        </InfoArray>
+    </CAbilArmMagazine>
+    <CAbilResearch id="ArmoryResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="ArmoryResearchSwarm">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilEffectInstant id="AutoSpawnLarvaOffHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoSpawnLarvaOff"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoSpawnLarvaOnHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoSpawnLarvaOn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoCreepSpreadToggleUCB">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoCreepSpreadToggleUCB">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoSpawnLarvaToggleUCB">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SpawnLarvaUCB">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoMorphDroneToggleUCb">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MorphDroneUCB">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallLowerManual">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallManualLowerAbility"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Lower"/>
+        <AbilSetId value="AutoLower"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallRaiseManual">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallManualRaiseAbility"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+        <AbilSetId value="AutoRaise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoCreepSpread">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoCreepSpreadAutocastBehavior"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CastIntroTime value="0.0625"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoCreepSpreadAutocastToggle">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallLowerUCB">
+        <AbilSetId value="AutoLower"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallLowerUCB" Requirements="HaveSupplyDepot">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleUCBOnHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallToggleUCBOn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleUCB">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallAutocastBehavior"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallToggleUCB" Requirements="HaveSupplyDepot">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleOffHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallToggleOff"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoCreepSpreadOffHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoCreepSpreadOff"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleOnHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallToggleOn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoCreepSpreadOnHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoCreepSpreadOn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallRaiseUCB">
+        <AbilSetId value="AutoRaise"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AutoWallRaiseUCB" Requirements="HaveSupplyDepot">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AutoWallToggleUCBOffHidden">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AutoWallToggleUCBOff"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+    </CAbilEffectInstant>
+    <CAbilResearch id="BanelingNestResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilBuild id="BarracksAddOns">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilBuild>
+    <CAbilMorph id="BarracksTechLabMorphUCB">
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BuildTechLabBarracks" State="Restricted" Requirements="HaveBarracksOnGround"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="Interruptible" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Flags index="Produce" value="1"/>
+        <Flags index="ShowProgress" value="1"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="25"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/BarracksAddon"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/UpgradeToPlanetaryFortress"/>
+        </Cost>
+        <InfoArray Score="1" Unit="BarracksTechLab">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="25"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="25"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="25"/>
+            </SectionArray>
+        </InfoArray>
+        <Activity value="UI/Upgrading"/>
+    </CAbilMorph>
+    <CAbilEffectTarget id="ChronoBoostEnergyCostUCB" parent="ChronoBoostEnergyCost">
+        <Name value="Abil/Name/ChronoBoostEnergyCostUCB"/>
+        <Effect index="0" value="DoNothingAtUnit"/>
+        <CmdButtonArray index="Execute" Requirements="UCBNexusEnergy50"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="FactoryReactorMorphUCB">
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Reactor" State="Restricted" Requirements="HaveFactoryOnGround"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="Interruptible" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Flags index="Produce" value="1"/>
+        <Flags index="ShowProgress" value="1"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="50"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/FactoryAddon"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/UpgradeToPlanetaryFortress"/>
+        </Cost>
+        <InfoArray Score="1" Unit="FactoryReactor">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="50"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="50"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="50"/>
+            </SectionArray>
+        </InfoArray>
+        <Activity value="UI/Upgrading"/>
+    </CAbilMorph>
+    <CAbilResearch id="BarracksTechLabResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilTrain id="BarracksTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="BarracksTrainUCB" parent="BarracksTrain">
+        <Name value="Abil/Name/BarracksTrainUCB"/>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveBarracksOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveBarracksOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="HaveBarracksWithTechLabAndGhostAcademy"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="HaveBarracksWithTechLab"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilBuild id="BuildNydusCanal">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilBuild>
+    <CAbilBuild id="BuildNydusCanalUCB" parent="BuildNydusCanal">
+        <Name value="Abil/Name/BuildNydusCanalUCB"/>
+        <InfoArray index="Build1" Unit="NydusCanalPlacementDummy"/>
+        <EffectArray index="Start" value="NydusBuildUCBSet"/>
+    </CAbilBuild>
+    <CAbilEffectTarget id="CalldownMULEUCB" parent="CalldownMULE">
+        <Name value="Abil/Name/CalldownMULEUCB"/>
+        <Effect index="0" value="CalldownMULECreateUnitDummy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CalldownMULEUCB" Requirements="UCBOrbitalCommandEnergy50"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="CommandCenterTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilResearch id="CyberneticsCoreResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="DarkShrineResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="EngineeringBayResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilBuild id="FactoryAddOns">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilBuild>
+    <CAbilMorph id="FactoryTechLabMorphUCB">
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TechLabFactory" State="Restricted" Requirements="HaveFactoryOnGround"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="Interruptible" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Flags index="Produce" value="1"/>
+        <Flags index="ShowProgress" value="1"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="25"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/FactoryAddon"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/UpgradeToPlanetaryFortress"/>
+        </Cost>
+        <InfoArray Score="1" Unit="FactoryTechLab">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="25"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="25"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="25"/>
+            </SectionArray>
+        </InfoArray>
+        <Activity value="UI/Upgrading"/>
+    </CAbilMorph>
+    <CAbilResearch id="GhostAcademyResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilHarvest id="MULEGather">
+        <ResourceAmountRequest index="Minerals" value="20"/>
+    </CAbilHarvest>
+    <CAbilEffectTarget id="NexusMassRecallUCB" parent="NexusMassRecall">
+        <Name value="Abil/Name/NexusMassRecallUCB"/>
+        <Effect index="0" value="DoNothing"/>
+        <CmdButtonArray index="Execute" Requirements="UCBNexusEnergy50"/>
+        <Cost index="0">
+            <Vital index="Energy" value="50"/>
+            <Cooldown Link="Abil/NexusMassRecall2" Location="Player" TimeUse="182"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilMorph id="StarportReactorMorphUCB">
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Reactor" State="Restricted" Requirements="HaveStarportOnGround"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="Interruptible" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Flags index="Produce" value="1"/>
+        <Flags index="ShowProgress" value="1"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="50"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/StarportAddon"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/UpgradeToPlanetaryFortress"/>
+        </Cost>
+        <InfoArray Score="1" Unit="StarportReactor">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="50"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="50"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="50"/>
+            </SectionArray>
+        </InfoArray>
+        <Activity value="UI/Upgrading"/>
+    </CAbilMorph>
+    <CAbilResearch id="FactoryTechLabResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilTrain id="FactoryTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="FactoryTrainUCB" parent="FactoryTrain">
+        <Name value="Abil/Name/FactoryTrainUCB"/>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveFactoryWithTechLab"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="HaveFactoryWithTechLabAndArmory"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Button Requirements="HaveFactoryOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button Requirements="HaveFactoryAndArmory"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Button Requirements="HaveFactoryOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train25">
+            <Button Requirements="HaveFactoryOnGround"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilResearch id="FleetBeaconResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="ForgeResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="FusionCoreResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilEffectTarget id="GameGlobalRallyTarget01">
+        <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <Effect index="0" value="GlobalRallyTarget01"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge CountMax="99" Link="UCB/GlobalRally01" Location="Player"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Rally"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GameGlobalRallyTarget02">
+        <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <Effect index="0" value="GlobalRallyTarget02"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge CountMax="99" Link="UCB/GlobalRally02" Location="Player"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Rally"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="GameProductionCharge">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DoNothing"/>
+        <Cost>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="1"/>
+                <Location value="Unit"/>
+            </Charge>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Repair"/>
+    </CAbilEffectInstant>
+    <CAbilTrain id="GatewayTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveGatewayActual"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveGatewayAndCyberneticsCore"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="HaveGatewayAndTemplarArchives"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="HaveGatewayAndDarkShrine"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Button Requirements="HaveGatewayAndCyberneticsCore"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button Requirements="HaveGatewayAndCyberneticsCore"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilResearch id="HydraliskDenResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="InfestationPitResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="LairResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilTrain id="LarvaTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="LarvaTrainDummyRedirect">
+        <InfoArray index="Train1">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train11">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train12">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train13">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train15">
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Larva"/>
+                <Location value="Player"/>
+            </Charge>
+        </InfoArray>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="LocustTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilMorph id="LurkerAspectMP">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilMorph>
+    <CAbilMorph id="LurkerAspectMPFromHydraliskBurrowed">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilMorph>
+    <CAbilResearch id="MercCompoundResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilMorph id="MorphToBroodLord">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <InfoArray index="1">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="34"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Delay" value="34"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="34"/>
+            </SectionArray>
+        </InfoArray>
+        <AbilSetId value="UpgradeBroodlord"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToBroodLordUCB" parent="MorphToBroodLord">
+        <Name value="Abil/Name/MorphToBroodLordUCB"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Broodlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToLurker">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <AbilSetId value="UpgradeLurker"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToLurkerUCB" parent="MorphToLurker">
+        <Name value="Abil/Name/MorphToLurkerUCB2"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="100"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Lurker"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToMothership">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToOverseer">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <AbilSetId value="UpgradeOverseer"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToOverseerUCB" parent="MorphToOverseer">
+        <Name value="Abil/Name/MorphToOverseerUCB"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="50"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/OverlordT"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/MorphToTransportOverlord"/>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToRavager">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <AbilSetId value="UpgradeRavager"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToRavagerUCB" parent="MorphToRavager">
+        <Name value="Abil/Name/MorphToRavagerUCB"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="25"/>
+            <Resource index="Vespene" value="75"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Ravager"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToTransportOverlord">
+        <AbilSetId value="UpgradeOverlord"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <Cost>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToTransportOverlordUCB" parent="MorphToTransportOverlord">
+        <Name value="Abil/Name/MorphToTransportOverlordUCB"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="25"/>
+            <Resource index="Vespene" value="25"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Overlord"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoOverlordTransportUBC"/>
+    </CAbilMorph>
+    <CAbilTrain id="MorphZerglingToBaneling">
+        <AbilSetId value="MorphBaneling"/>
+        <RefundFraction>
+            <Vital index="Life" value="0"/>
+            <Vital index="Shields" value="0"/>
+            <Vital index="Energy" value="0"/>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="NexusTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="NexusTrainMothership">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilTrain id="NexusTrainMothershipUCB" parent="NexusTrainMothership">
+        <Name value="Abil/Name/NexusTrainMothershipUCB"/>
+        <InfoArray index="Train1">
+            <Unit index="0" value="MothershipUCB"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="NexusTrainMothershipCore">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilBuild id="ProtossBuild">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilBuild>
+    <CAbilEffectTarget id="Repair">
+        <CmdButtonArray index="Execute" State="Restricted"/>
+    </CAbilEffectTarget>
+    <CAbilResearch id="RoachWarrenResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="RoboticsBayResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilTrain id="RoboticsFacilityTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveRoboticsFa"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveRoboticsFa"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="HaveRoboticsFaAndRoboticsBay"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="HaveRoboticsFa"/>
+        </InfoArray>
+        <InfoArray index="Train19">
+            <Button Requirements="HaveRoboticsFaAndRoboticsBay"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="GameGlobalRallyTarget00">
+        <OrderArray index="0" DisplayType="Legacy" Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <Effect index="0" value="GlobalRallyTarget00"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge CountMax="99" Link="UCB/GlobalRally00" Location="Player"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Rally"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ScannerSweepUCB" parent="ScannerSweep">
+        <Name value="Abil/Name/ScannerSweepUCB"/>
+        <Effect index="0" value="DoNothing"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ScanUCB" Requirements="UCBOrbitalCommandEnergy50"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="SpawnInfestedTerran">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilResearch id="SpawningPoolResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="SpireResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilTrain id="StargateTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveStargate"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="HaveStargateAndFleetBeacon"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="HaveStargate"/>
+        </InfoArray>
+        <InfoArray index="Train9">
+            <Button Requirements="HaveStargate"/>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Button Requirements="HaveStargateAndFleetBeacon"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilBuild id="StarportAddOns">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilBuild>
+    <CAbilMorph id="StarportTechLabMorphUCB">
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BuildTechLabStarport" State="Restricted" Requirements="HaveStarportOnGround"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
+        <ActorKey value="StarportReactorMorphUCB"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="Interruptible" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Flags index="Produce" value="1"/>
+        <Flags index="ShowProgress" value="1"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="25"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/StarportAddon"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/UpgradeToPlanetaryFortress"/>
+        </Cost>
+        <InfoArray Score="1" Unit="StarportTechLab">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="25"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="25"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="25"/>
+            </SectionArray>
+        </InfoArray>
+        <Activity value="UI/Upgrading"/>
+    </CAbilMorph>
+    <CAbilResearch id="StarportTechLabResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilTrain id="StarportTrain">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilMorph id="AutoWallConstructionComplete" parent="SupplyDepotRaise">
+        <Name value="Abil/Name/AutoWallConstructionComplete"/>
+        <InfoArray index="0" Unit="SupplyDepot" CollideRange="0">
+            <SectionArray index="Abils">
+                <EffectArray index="Start" value=""/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilTrain id="StarportTrainUCB" parent="StarportTrain">
+        <Name value="Abil/Name/StarportTrainUCB"/>
+        <InfoArray index="Train1">
+            <Button Requirements="HaveStarportOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button Requirements="HaveStarportWithTechLab"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="HaveStarportWithTechLab"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="HaveStarportWithTechLabAndFusionCore"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="HaveStarportOnGround"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button Requirements="HaveStarportOnGround"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="SupplyDropUCB" parent="SupplyDrop">
+        <Name value="Abil/Name/SupplyDropUCB"/>
+        <Effect index="0" value="SupplyDropApplyTempBehaviorDummy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SupplyDropUCB" Requirements="UCBOrbitalCommandEnergy50"/>
+    </CAbilEffectTarget>
+    <CAbilResearch id="TemplarArchivesResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilBuild id="TerranBuild">
+        <InfoArray index="Build2" Unit="SupplyDepotConstructor"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <EffectArray index="Finish" value="AutoWallConstructionComplete"/>
+    </CAbilBuild>
+    <CAbilTrain id="TrainQueen">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilTrain>
+    <CAbilResearch id="TwilightCouncilResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilResearch id="UltraliskCavernResearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilMorph id="UpgradeToGreaterSpire">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <AbilSetId value="GreaterSpire"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToGreaterSpireUCB" parent="UpgradeToGreaterSpire">
+        <Name value="Abil/Name/UpgradeToGreaterSpireUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UpgradeGreaterSpire"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="150"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Spire"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHive">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <AbilSetId value="UpgradeHive"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHiveUCB" parent="UpgradeToHive">
+        <Name value="Abil/Name/UpgradeToHiveUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UpgradeHive"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="150"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Lair"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToLair">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <AbilSetId value="UpgradeLair"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToLairUCB" parent="UpgradeToLair">
+        <Name value="Abil/Name/UpgradeToLairUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UpgradeLair"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="100"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Hatchery"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToOrbital">
+        <AbilSetId value="OrbitalCommand"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToOrbitalUCB" parent="UpgradeToOrbital">
+        <Name value="Abil/Name/UpgradeToOrbitalUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UCBOrbitalCommand">
+            <Flags index="Continuous" value="1"/>
+        </CmdButtonArray>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/CommandCenter"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/UpgradeToPlanetaryFortress"/>
+        </Cost>
+        <Flags index="IgnoreUnitCost" value="1"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToPlanetaryFortress">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <AbilSetId value="PlanetaryFortress"/>
+    </CAbilMorph>
+    <CAbilMorph id="ArchonMergeUCB" parent="UpgradeToPlanetaryFortress">
+        <Name value="Abil/Name/ArchonMergeUCB"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ArchonWarpTarget" State="Available" Requirements=""/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Archon"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <InfoArray index="0" Unit="Archon">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="12"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="12"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="12"/>
+            </SectionArray>
+        </InfoArray>
+        <ValidatorArray index="0" removed="1"/>
+    </CAbilMorph>
+    <CAbilMorph id="BarracksReactorMorphUCB">
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Reactor" State="Restricted" Requirements="HaveBarracksOnGround"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="Interruptible" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Flags index="Produce" value="1"/>
+        <Flags index="ShowProgress" value="1"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <Cost>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="50"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/BarracksAddon"/>
+                <Location value="Player"/>
+            </Charge>
+            <Cooldown Link="Abil/UpgradeToPlanetaryFortress"/>
+        </Cost>
+        <InfoArray Score="1" Unit="BarracksReactor">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="50"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="50"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="50"/>
+            </SectionArray>
+        </InfoArray>
+        <Activity value="UI/Upgrading"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphZerglingToBanelingUCB" parent="UpgradeToPlanetaryFortress">
+        <Name value="Abil/Name/MorphZerglingToBanelingUCB"/>
+        <AbilSetId value="MorphBaneling"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BanelingUCB" Requirements="HaveBanelingNest"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="25"/>
+            <Resource index="Vespene" value="25"/>
+            <Charge>
+                <CountMax value="999"/>
+                <CountUse value="1"/>
+                <Link value="UCB/Zergling"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <InfoArray index="0" Unit="Baneling"/>
+        <ValidatorArray index="0" removed="1"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToPlanetaryFortressUCB" parent="UpgradeToPlanetaryFortress">
+        <Name value="Abil/Name/UpgradeToPlanetaryFortressUCB"/>
+        <CmdButtonArray index="Execute" Requirements="UCBPlanetaryFortress">
+            <Flags index="Continuous" value="1"/>
+        </CmdButtonArray>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/CommandCenter"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <Flags index="IgnoreUnitCost" value="1"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphDummyTrainNukeUCB" parent="UpgradeToPlanetaryFortress">
+        <Name value="Abil/Name/MorphDummyTrainNukeUCB"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="NukeArm" Requirements="TrainNuke"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Cost>
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="1"/>
+                <Link value="UCB/GhostAcademy"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <InfoArray index="0" Unit="Nuke"/>
+        <ValidatorArray index="0" removed="1"/>
+    </CAbilMorph>
+    <CAbilWarpTrain id="WarpGateTrain">
+        <RefundFraction>
+            <Vital index="Life" value="-1"/>
+            <Vital index="Shields" value="-1"/>
+            <Vital index="Energy" value="-1"/>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <InfoArray index="Train1">
+            <Charge CountStart="0"/>
+            <Button Requirements="HaveWarpgateActual"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge CountStart="0" Location="Player"/>
+            <Button Requirements="HaveWarpgateAndCyberneticsCore"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Charge CountStart="0" Location="Player"/>
+            <Button Requirements="HaveWarpgateAndTemplarArchives"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Charge CountStart="0" Location="Player"/>
+            <Button Requirements="HaveWarpgateAndDarkShrine"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Charge CountStart="0" Location="Player"/>
+            <Button Requirements="HaveWarpgateAndCyberneticsCore"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge CountStart="0" Location="Player"/>
+            <Button Requirements="HaveWarpgateAndCyberneticsCore"/>
+        </InfoArray>
+    </CAbilWarpTrain>
+    <CAbilWarpTrain id="WarpGateTrainUCB" parent="WarpGateTrain">
+        <Name value="Abil/Name/WarpGateTrainUCB"/>
+        <InfoArray index="Train1">
+            <Resource index="Terrazine" value="100"/>
+            <Charge>
+                <CountMax value="0"/>
+                <Location value="Player"/>
+                <TimeStart value="0"/>
+                <TimeUse value="0"/>
+            </Charge>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Resource index="Terrazine" value="125"/>
+            <Resource index="Custom" value="50"/>
+            <Charge CountMax="0" TimeUse="0"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Resource index="Terrazine" value="50"/>
+            <Resource index="Custom" value="150"/>
+            <Charge CountMax="0" TimeUse="0"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Resource index="Terrazine" value="125"/>
+            <Resource index="Custom" value="125"/>
+            <Charge CountMax="0" TimeUse="0"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Resource index="Terrazine" value="50"/>
+            <Resource index="Custom" value="100"/>
+            <Charge CountMax="0" TimeUse="0"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Resource index="Terrazine" value="100"/>
+            <Resource index="Custom" value="25"/>
+            <Charge CountMax="0" TimeUse="0"/>
+        </InfoArray>
+        <Flags index="IgnoreUnitCost" value="1"/>
+    </CAbilWarpTrain>
+    <CAbilEffectTarget id="WidowMineAttack">
+        <Cost index="0">
+            <Cooldown TimeUse="25"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilBuild id="ZergBuild">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <FlagArray index="IgnoreUnitCost" value="1"/>
+        <FlagArray index="PeonKillFinish" value="0"/>
+        <InfoArray index="Build1">
+            <Resource index="Minerals" value="350"/>
+        </InfoArray>
+        <InfoArray index="Build3">
+            <Resource index="Minerals" value="75"/>
+        </InfoArray>
+        <InfoArray index="Build4">
+            <Resource index="Minerals" value="250"/>
+        </InfoArray>
+        <InfoArray index="Build5">
+            <Resource index="Minerals" value="125"/>
+        </InfoArray>
+        <InfoArray index="Build6">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="100"/>
+        </InfoArray>
+        <InfoArray index="Build7">
+            <Resource index="Minerals" value="250"/>
+            <Resource index="Vespene" value="200"/>
+        </InfoArray>
+        <InfoArray index="Build8">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
+        </InfoArray>
+        <InfoArray index="Build9">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="100"/>
+        </InfoArray>
+        <InfoArray index="Build10">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
+        </InfoArray>
+        <InfoArray index="Build11">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="50"/>
+        </InfoArray>
+        <InfoArray index="Build12">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="150"/>
+        </InfoArray>
+        <InfoArray index="Build14">
+            <Resource index="Minerals" value="200"/>
+        </InfoArray>
+        <InfoArray index="Build15">
+            <Resource index="Minerals" value="150"/>
+        </InfoArray>
+        <InfoArray index="Build16">
+            <Resource index="Minerals" value="125"/>
+        </InfoArray>
+        <EffectArray index="Finish" value="GameUCBZergBuildingMarker"/>
+    </CAbilBuild>
+    <CAbilResearch id="evolutionchamberresearch">
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+    </CAbilResearch>
+    <CAbilEffectInstant id="AutoWallToggle">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+        <Effect index="0" value="AutoWallAutocastBehavior"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <CastIntroTime value="0.0625"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="SpawnLarva">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastFilters value="Structure;Ally,Neutral,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="IsHatcheryLairOrHive"/>
+        <AutoCastValidatorArray value="NotContaminated"/>
+        <AutoCastValidatorArray value="CasterEnergyGE50"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="AutoWallLowerHidden" parent="SupplyDepotLower">
+        <Name value="Abil/Name/AutoWallLowerHidden"/>
+    </CAbilMorph>
+    <CAbilMorph id="AutoWallRaiseHidden" parent="SupplyDepotRaise">
+        <Name value="Abil/Name/AutoWallRaiseHidden"/>
+    </CAbilMorph>
+</Catalog>

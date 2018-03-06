@@ -107,11 +107,7 @@ struct libSCPL_gs_UI {
     int lv_consoleActiveCommandCard;
     int lv_gameOptionGameTips;
     int lv_consoleRallyCommandCard;
-    int[11] lv_consoleControlGroupButton;
-    int[11] lv_consoleControlGroupButtonAdd;
-    int[11] lv_consoleControlGroupButtonAssign;
-    int[11] lv_consoleControlGroupIcon;
-    int[11] lv_consoleControlGroupLabel;
+    int[11] lv_consoleControlGroupAnimator;
     int[11] lv_playerProductionTab;
 };
 
@@ -222,15 +218,9 @@ void libSCPL_gf_ResourceDisplayGainAdd (int lp_playerIndex, fixed lp_minerals, f
 void libSCPL_gf_ResourceDisplaySpendAdd (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendSubtract (int lp_playerIndex, fixed lp_minerals, fixed lp_vespene);
 void libSCPL_gf_ResourceDisplaySpendUpdate (unit lp_unit, fixed lp_costTime, fixed lp_costMinerals, fixed lp_costVespene);
-void libSCPL_gf_ControlGroupUnitPreserve (unit lp_parentUnit, unit lp_childUnit);
 void libSCPL_gf_ControlGroupDamagePulse (unit lp_unit);
 void libSCPL_gf_ControlGroupColorize (int lp_playerIndex, int lp_controlGroupIndex);
 int libSCPL_gf_UnitGroupHealthIndex (unitgroup lp_unitGroup);
-void libSCPL_gf_ControlGroupUnitsAssign (unitgroup lp_unitGroup, int lp_controlGroupIndex, int lp_playerIndex);
-void libSCPL_gf_ControlGroupUnitsAdd (unitgroup lp_unitGroup, int lp_controlGroupIndex, int lp_playerIndex);
-void libSCPL_gf_ControlGroupUnitsUpdate (int lp_controlGroupIndex, int lp_playerIndex);
-void libSCPL_gf_ControlGroupUnitsUpdateFromUnit (unit lp_unit);
-string libSCPL_gf_ControlGroupUnitsGetPriorityType (unitgroup lp_controlGroup);
 void libSCPL_gf_TriggerEventRegisterUnitDies (trigger lp_trigger, unit lp_unit);
 void libSCPL_gf_TriggerEventRegisterDialogItemClicked (trigger lp_trigger, int lp_dialogItem);
 void libSCPL_gf_DebugTextTag (point lp_point, string lp_string, fixed lp_duration);
@@ -445,14 +435,6 @@ trigger libSCPL_gt_ResourceDisplayMineralMULEDestroy;
 trigger libSCPL_gt_ResourceDisplayMineralMULEDeath;
 trigger libSCPL_gt_ResourceDisplayVespeneDestroy;
 trigger libSCPL_gt_ResourceDisplaySpend;
-trigger libSCPL_gt_ControlGroupAssign;
-trigger libSCPL_gt_ControlGroupAdd;
-trigger libSCPL_gt_ControlGroupSelect;
-trigger libSCPL_gt_ControlGroupUnitDeath;
-trigger libSCPL_gt_ControlGroupUnitMorphComplete;
-trigger libSCPL_gt_ControlGroupArchon;
-trigger libSCPL_gt_ControlGroupBaneling;
-trigger libSCPL_gt_ControlGroupBanelingFinish;
 trigger libSCPL_gt_ControlGroupUnitDamaged;
 
 // Library Initialization

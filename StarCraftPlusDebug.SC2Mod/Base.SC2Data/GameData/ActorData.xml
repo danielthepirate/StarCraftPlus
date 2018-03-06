@@ -1,0 +1,1536 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CActorUnit id="Armory">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,90"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="ArmoryPaused" parent="Armory">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/ArmoryPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Assimilator">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,90"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Baneling Cocoon........................................................................ -->
+    <!--                                                                                         -->
+    <CActorUnit id="BanelingCocoon">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BanelingNest">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,175"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BanelingNestPaused" parent="BanelingNest">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/BanelingNestPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Barracks">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,95"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BarracksPaused" parent="Barracks">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/BarracksPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="BarracksReactor">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BarracksReactorPaused" parent="BarracksReactor">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="BarracksTechLab">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BarracksTechLabPaused" parent="BarracksTechLab">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Brood Lord Cocoon ..................................................................... -->
+    <!--                                                                                         -->
+    <CActorUnit id="BroodLordCocoon">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="Bunker">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="BunkerPaused" parent="Bunker">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/BunkerPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <!-- Decals and Clan flags -->
+    <!-- Terran -->
+    <CActorUnit id="CommandCenter">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,115"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="CommandCenterPaused" parent="CommandCenter">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/CommandCenterPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorModel id="CreepTumorEnhancedCreepGrowthModel" parent="ModelAnimationStyleContinuous">
+        <EditorCategories value=""/>
+        <On Terms="Behavior.CreepTumorEnhancedCreepGrowth.On" Send="Create"/>
+        <On Terms="Behavior.CreepTumorEnhancedCreepGrowth.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.500000 BSD"/>
+    </CActorModel>
+    <CActorUnit id="CyberneticsCore">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="DarkShrine">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,300"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Egg ................................................................................... -->
+    <!--                                                                                         -->
+    <CActorUnit id="Egg">
+        <Aliases value="_Morph"/>
+        <On Terms="Signal.*.MorphCancel; ModelVariation 0" Send="Create EggsplosionGeneric0"/>
+        <On Terms="Signal.*.MorphCancel; ModelVariation 1" Send="Create EggsplosionGeneric1"/>
+        <On Terms="Signal.*.MorphCancel; ModelVariation 2" Send="Create EggsplosionGeneric2"/>
+        <On Terms="Signal.*.MorphCancel" Send="Destroy"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="EggPaused" parent="Egg">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/EggPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="EngineeringBay">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,80"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="EngineeringBayPaused" parent="EngineeringBay">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/EngineeringBayPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="EvolutionChamber">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,65"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="EvolutionChamberPaused" parent="EvolutionChamber">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/EvolutionChamberPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Extractor">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="ExtractorPaused" parent="Extractor">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/ExtractorPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Factory">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,125"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="FactoryPaused" parent="Factory">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/FactoryPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="FactoryReactor">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="FactoryReactorPaused" parent="FactoryReactor">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="FactoryTechLab">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="FactoryTechLabPaused" parent="FactoryTechLab">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="FleetBeacon">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,95"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="Forge">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="FusionCore">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,80"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="FusionCorePaused" parent="FusionCore">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/FusionCorePaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="GameGlobalRallyCasterZerg" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyCasterZerg">
+        <BuildModel value="Invisible"/>
+        <PlacementModel value="Invisible"/>
+    </CActorUnit>
+    <CActorModel id="GameGlobalRallyTargetZergMeleeSecondary" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <AcceptedHostedPropTransfers index="Opacity" value="0"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create GlazeZergGlobalRally"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 128,64,64 128,64,64"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.350000 BSD"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5 SOpGameGlobalRallyZergMeleeSecondary"/>
+        <Model value="GameGlobalRallyTargetZergMelee"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetZergRanged" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <AcceptedHostedPropTransfers index="Opacity" value="0"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create GlazeZergGlobalRally"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 128,64,64 128,64,64"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.350000 BSD"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetZergFlyer" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <AcceptedHostedPropTransfers index="Opacity" value="0"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create GlazeZergGlobalRally"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 128,64,64 128,64,64"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.350000 BSD"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorUnit id="Gateway">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,105"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="GhostAcademy">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,125"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="GhostAcademyPaused" parent="GhostAcademy">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/GhostAcademyPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorModelMaterial id="GlazeZergGlobalRally" parent="GlazeParent">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="ActorCreation" Target="::Creator" Send="SetTintColor {224,192,255 1.500000}"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Creator"/>
+        <On Terms="AgeReached; Age 0.001000" Target="::Creator" Send="SetOpacity 0.400000"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorUnit id="GreaterSpire">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="GreaterSpirePaused" parent="GreaterSpire">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/GreaterSpirePaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <!-- Zerg -->
+    <CActorUnit id="Hatchery">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="HatcheryPaused" parent="Hatchery">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/HatcheryPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Hive">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="HivePaused" parent="Hive">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/HivePaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="HydraliskDen">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="HydraliskDenPaused" parent="HydraliskDen">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/HydraliskDenPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="InfestationPit">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,65"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="InfestationPitPaused" parent="InfestationPit">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/InfestationPitPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Lair">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="LairPaused" parent="Lair">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/LairPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Larva ................................................................................. -->
+    <!--                                                                                         -->
+    <CActorUnit id="Larva">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+        <On Terms="ActorCreation" Target="Egg" Send="Signal MorphCancel"/>
+    </CActorUnit>
+    <CActorUnit id="LurkerDenMP">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="LurkerDenMPPaused" parent="LurkerDenMP">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/LurkerDenMPPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Lurker Egg ............................................................................ -->
+    <!--                                                                                         -->
+    <CActorUnit id="LurkerMPEgg">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorEventMacro id="MacroGlobalRallyTeamColor">
+        <EditorCategories value=""/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="SetTeamColor 0,208,64 0,208,64"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="SetTeamColor 128,0,208 128,0,208"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="SetTeamColor 0,128,255 0,128,255"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="MacroStatusBarProgressPaused">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimHookSet HookedBaseline ::Creator ::Baseline"/>
+        <On Terms="ActorCreation" Send="AnimHookClear HookedBaseline"/>
+        <On Terms="ActorCreation" Send="RefClear ::Host"/>
+        <On Terms="ActorCreation" Target="::Creator" Send="Destroy"/>
+    </CActorEventMacro>
+    <CActorUnit id="MissileTurret">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="MissileTurretPaused" parent="MissileTurret">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/MissileTurretPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="MothershipUCB" parent="Mothership" unitName="MothershipUCB">
+        <On index="0" Terms="UnitBirth.MothershipUCB"/>
+        <On index="1" Terms="UnitBirth.MothershipUCB"/>
+        <On index="2" Terms="UnitRevive.MothershipUCB"/>
+        <On index="3" Terms="UnitRevive.MothershipUCB"/>
+        <On index="4" Terms="UnitConstruction.MothershipUCB.Start"/>
+        <On index="5" Terms="UnitConstruction.MothershipUCB.Finish"/>
+        <On index="60" removed="1"/>
+        <On index="61" removed="1"/>
+        <On index="62" removed="1"/>
+        <On index="63" removed="1"/>
+        <On index="64" removed="1"/>
+        <On index="65" removed="1"/>
+        <On index="66" removed="1"/>
+        <On index="67" removed="1"/>
+        <On index="68" removed="1"/>
+        <On index="69" removed="1"/>
+        <On index="70" removed="1"/>
+        <On index="71" removed="1"/>
+        <On index="72" removed="1"/>
+        <On index="73" removed="1"/>
+        <On index="74" removed="1"/>
+        <On index="75" removed="1"/>
+        <On index="76" removed="1"/>
+        <On index="77" removed="1"/>
+        <On index="78" removed="1"/>
+        <On index="79" removed="1"/>
+        <On index="80" removed="1"/>
+        <On index="81" removed="1"/>
+        <On index="82" removed="1"/>
+        <On index="83" removed="1"/>
+        <On index="84" removed="1"/>
+        <On index="85" removed="1"/>
+        <On index="86" removed="1"/>
+        <HighlightTooltip value="Unit/Name/MothershipUCB"/>
+    </CActorUnit>
+    <CActorUnit id="MothershipCore">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="Nexus">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,150"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorSplat id="NexusMassRecallCursorSplat">
+        <On Terms="Abil.NexusMassRecallUCB.Cursor" Send="Create"/>
+    </CActorSplat>
+    <CActorUnit id="NexusPaused" parent="Nexus">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/NexusPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorUnit id="NydusCanalPlacementDummy" parent="NydusCanal" unitName="NydusCanalPlacementDummy">
+        <On index="0" Terms="UnitBirth.NydusCanalPlacementDummy"/>
+        <On index="1" Terms="UnitBirth.NydusCanalPlacementDummy"/>
+        <On index="2" Terms="UnitRevive.NydusCanalPlacementDummy"/>
+        <On index="3" Terms="UnitRevive.NydusCanalPlacementDummy"/>
+        <On index="4" Terms="UnitConstruction.NydusCanalPlacementDummy.Start"/>
+        <On index="5" Terms="UnitConstruction.NydusCanalPlacementDummy.Finish"/>
+        <HighlightTooltip value="Unit/Name/NydusCanalPlacementDummy"/>
+    </CActorUnit>
+    <CActorUnit id="NydusNetwork">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,90"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="NydusNetworkPaused" parent="NydusNetwork">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/NydusNetworkPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="OrbitalCommand">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,115"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="OrbitalCommandPaused" parent="OrbitalCommand">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/OrbitalCommandPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Overlord">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+        <!--On Terms="StatusSet.*.CE; IsStatus CE 1" Send="ModelSwap OverlordXPR"/>
+        <On Terms="UnitDeathCustomize; IsStatus CE 1" Send="DeathCustomize Variation10"/>
+        <DeathCustoms ModelLink="OverlordXPRDeath" Name="Variation10"/-->
+    </CActorUnit>
+    <CActorUnit id="OverlordCocoon">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="PhotonCannon">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="PlanetaryFortress">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,130"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="PlanetaryFortressPaused" parent="PlanetaryFortress">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/PlanetaryFortressPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorPower id="PowerFast">
+        <On index="0" removed="1"/>
+        <On index="1" removed="1"/>
+    </CActorPower>
+    <CActorPower id="PowerFastLow"/>
+    <CActorSplat id="PowerVisual">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+    </CActorSplat>
+    <CActorSplat id="PowerVisualFast"/>
+    <CActorRange id="PowerVisualFastLow"/>
+    <CActorRange id="PowerVisualLow"/>
+    <CActorProgress id="ProtossWarpIn">
+        <On Terms="Abil.WarpGateTrainUCB.TargetStart" Send="Create"/>
+    </CActorProgress>
+    <CActorModel id="PylonPlacementModel">
+        <On index="9" Terms="TimerExpired; TimerName PylonPowerSearch" Send="TimerSet 0.062500 PylonPowerSearch"/>
+        <On index="10" Terms="ActorCreation; ModelName PylonPlacement" Send="TimerSet 0.062500 PylonPowerSearch"/>
+        <On index="11" Terms="ActorCreation; ModelName PylonXPRPlacement" Send="TimerSet 0.062500 PylonPowerSearch"/>
+        <On index="12" Terms="ActorCreation; ModelName Pylon" Send="TimerSet 0.062500 PylonPowerSearch"/>
+        <On index="13" Terms="TimerExpired; TimerName PylonPowerSearch" Send="Create PylonUnpoweredSearchCircle"/>
+        <On index="14" Terms="TimerExpired; TimerName PylonPowerSearch" Send="TimerSet 0.062500 PylonPowerSearch"/>
+        <On index="15" Terms="ActorCreation; ModelName PylonPlacement" Send="StatusSet SpecialPower 0"/>
+        <On index="16" Terms="ActorCreation; ModelName PylonXPRPlacement" Send="StatusSet SpecialPower 0"/>
+        <On index="17" Terms="ActorCreation; ModelName PylonPlacement" Send="Create PowerVisualFast"/>
+        <On index="18" Terms="ActorCreation; ModelName PylonXPRPlacement" Send="Create PowerVisualFast"/>
+        <On index="19" Terms="ActorCreation; ModelName Pylon" Send="Create PowerVisualFastLow"/>
+        <On index="20" Terms="ActorCreation; ModelName PylonPlacement" Target="PowerVisualFast" Send="SetVisibility"/>
+        <On index="21" Terms="ActorCreation; ModelName PylonXPRPlacement" Target="PowerVisualFast" Send="SetVisibility"/>
+        <On index="22" Terms="ActorCreation; ModelName Pylon" Target="PowerVisualFastLow" Send="SetVisibility"/>
+        <On index="23" Terms="TimerExpired; TimerName PylonPowerSearch; ValidatePosition LocationHasFastEnablerPower" Target="" Send="Signal SpecialPower"/>
+        <On index="24" Terms="TimerExpired; TimerName PylonPowerSearch; !IsStatus SpecialPower 0" Target="" Send="StatusDecrement SpecialPower"/>
+        <On index="25" Terms="StatusDecrement.*.SpecialPower; IsStatus SpecialPower 0" Target="PowerVisualFast" Send="SetVisibility"/>
+        <On index="26" Terms="StatusDecrement.*.SpecialPower; IsStatus SpecialPower 0" Target="PowerVisualFastLow" Send="SetVisibility"/>
+        <On index="27" Terms="StatusDecrement.*.SpecialPower; IsStatus SpecialPower 0" Target="PowerVisual" Send="SetVisibility 1"/>
+        <On index="28" Terms="StatusDecrement.*.SpecialPower; IsStatus SpecialPower 0" Target="PowerVisualLow" Send="SetVisibility 1"/>
+        <On index="29" Terms="StatusDecrement.*.SpecialPower; !IsStatus SpecialPower 0" Target="PowerVisual" Send="SetVisibility"/>
+        <On index="30" Terms="StatusDecrement.*.SpecialPower; !IsStatus SpecialPower 0" Target="PowerVisualLow" Send="SetVisibility"/>
+        <On index="31" Terms="Signal.*.SpecialPower" Target="" Send="StatusSet SpecialPower 2"/>
+        <On index="32" Terms="ActorCreation; ModelName PylonPlacement" Target="" Send="Create PowerVisualFastNearNexus"/>
+        <On index="33" Terms="ActorCreation; ModelName PylonXPRPlacement" Target="" Send="Create PowerVisualFastNearNexus"/>
+        <On index="34" Terms="ActorCreation; ModelName Pylon" Target="" Send="Create PowerVisualFastNearNexusLow"/>
+        <On index="35" Terms="ActorCreation; ModelName PylonPlacement" Target="PowerVisualFastNearNexus" Send="SetVisibility"/>
+        <On Terms="ActorCreation; ModelName PylonXPRPlacement" Target="PowerVisualFastNearNexus" Send="SetVisibility"/>
+        <On Terms="ActorCreation; ModelName Pylon" Target="PowerVisualFastNearNexusLow" Send="SetVisibility"/>
+        <On Terms="TimerExpired" Send="Create PylonPowerSearchNexusCircle"/>
+        <On Terms="Signal.*.PylonPowerCheckNexus" Send="StatusSet NearNexus 1"/>
+        <On Terms="StatusOff.*.SpecialPower" Send="StatusSet NearNexus 0"/>
+        <On Terms="StatusDecrement.*.SpecialPower; IsStatus SpecialPower 0" Target="PowerVisualFastNearNexus" Send="SetVisibility"/>
+        <On Terms="StatusDecrement.*.SpecialPower; IsStatus SpecialPower 0" Target="PowerVisualFastNearNexusLow" Send="SetVisibility"/>
+        <On Terms="StatusDecrement.*.SpecialPower; !IsStatus SpecialPower 0; HasStatus NearNexus" Target="PowerVisualFastNearNexus" Send="SetVisibility 1"/>
+        <On Terms="StatusDecrement.*.SpecialPower; !IsStatus SpecialPower 0; HasStatus NearNexus" Target="PowerVisualFastNearNexusLow" Send="SetVisibility 1"/>
+        <On Terms="StatusDecrement.*.SpecialPower; !IsStatus SpecialPower 0; !HasStatus NearNexus" Target="PowerVisualFast" Send="SetVisibility 1"/>
+        <On Terms="StatusDecrement.*.SpecialPower; !IsStatus SpecialPower 0; !HasStatus NearNexus" Target="PowerVisualFastLow" Send="SetVisibility 1"/>
+        <On Terms="StatusDecrement.*.SpecialPower; !IsStatus SpecialPower 0; HasStatus NearNexus" Target="PowerVisualFast" Send="SetVisibility"/>
+        <On Terms="StatusDecrement.*.SpecialPower; !IsStatus SpecialPower 0; HasStatus NearNexus" Target="PowerVisualFastLow" Send="SetVisibility"/>
+        <On Terms="TimerExpired; TimerName PylonPowerSearch" Send="Create PylonPowerSearchNexusCircle"/>
+        <On Terms="TimerExpired; TimerName PylonPowerSearch" Send="Create PylonPowerSearchCircle"/>
+    </CActorModel>
+    <CActorRegionCircle id="PylonPowerSearchCircle"/>
+    <CActorQueryResponse id="PylonPowerSearchQuery"/>
+    <CActorRegionCircle id="PylonUnpoweredSearchCircle"/>
+    <CActorQueryResponse id="PylonUnpoweredSearchQuery"/>
+    <CActorUnit id="RavagerCocoon">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="Reactor">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="ReactorPaused" parent="Reactor">
+        <Remove Send="Create"/>
+        <AddonIndicator value="Actor/AddonIndicator/ReactorPaused"/>
+        <HighlightTooltip value="Unit/Name/ReactorPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Refinery">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="RefineryPaused" parent="Refinery">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorSimple id="ResourceMarkerDebugMineral">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMinerals.Create" Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMinerals.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 0,128,255 0.000000 OneShot Mineral"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 0.000000 Mineral"/>
+    </CActorSimple>
+    <CActorSimple id="ResourceMarkerDebugVespene">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerVespene.Create" Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerVespene.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 0,255,64 0.000000 OneShot Gas"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 0.000000 Gas"/>
+    </CActorSimple>
+    <CActorSimple id="ResourceMarkerDebugMineralRich">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMineralsRich.Create" Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMineralsRich.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 255,255,0 0.000000 OneShot Rich"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 0.000000 Rich"/>
+    </CActorSimple>
+    <CActorSimple id="ResourceMarkerDebugMULE">
+        <EditorCategories value=""/>
+        <Remove Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMineralsMULE.Create" Send="Create"/>
+        <On Terms="Behavior.GameResourceMarkerMineralsMULE.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 255,128,0 0.000000 OneShot MULE"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 0.000000 MULE"/>
+    </CActorSimple>
+    <CActorUnit id="RoachWarren">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,65"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="RoachWarrenPaused" parent="RoachWarren">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/RoachWarrenPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="RoboticsBay">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,95"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="RoboticsFacility">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,80"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorEventMacroRunnable id="RunnableClearAnimations">
+        <EditorCategories value=""/>
+        <Do Target="_Unit" Send="AnimClearAllBut Birth"/>
+    </CActorEventMacroRunnable>
+    <CActorEventMacroRunnable id="RunnableStatusBarPause">
+        <EditorCategories value=""/>
+        <Do Send="AnimHookSet HookedBaseline ::Creator ::Baseline"/>
+    </CActorEventMacroRunnable>
+    <CActorSiteOpLocalOffset id="SOpGameGlobalRallyZergMelee">
+        <EditorCategories value=""/>
+        <LocalOffset value="0.400000,0.200000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpGameGlobalRallyZergMeleeSecondary">
+        <EditorCategories value=""/>
+        <LocalOffset value="-0.400000,-0.200000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorUnit id="SensorTower">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="SensorTowerPaused" parent="SensorTower">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SensorTowerPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="ShieldBattery">
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+        <CustomUnitStatusActor value="ProductionStatusBars/ProductionStatus"/>
+    </CActorUnit>
+    <CActorUnit id="SpawningPool">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,70"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="SpawningPoolPaused" parent="SpawningPool">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SpawningPoolPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="SpineCrawler">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,75"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="SpineCrawlerPaused" parent="SpineCrawler">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SpineCrawlerPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Spire">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,135"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="SpirePaused" parent="Spire">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SpirePaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="SporeCrawler">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="SporeCrawlerPaused" parent="SporeCrawler">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SporeCrawlerPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="Stargate">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,120"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="Starport">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,95"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="StarportPaused" parent="Starport">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/StarportPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="StarportReactor">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="StarportReactorPaused" parent="StarportReactor">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="StarportTechLab">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="StarportTechLabPaused" parent="StarportTechLab">
+        <Remove Send="Create"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorSite id="StatusBarStabilizer">
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpStatusBarStabilizer"/>
+        <SiteFlags index="RequiresManualKill" value="1"/>
+    </CActorSite>
+    <CActorSiteOpDeltaSum id="SOpStatusBarStabilizer">
+        <Deltas Subject="_Selectable">
+            <AttachQuerySource Methods="Origin"/>
+            <AttachQueryTarget Methods="StatusBar 0"/>
+        </Deltas>
+    </CActorSiteOpDeltaSum>
+    <CActorUnit id="GameAutoCreepNodeTarget" parent="GenericUnitMinimal" unitName="GameAutoCreepNodeTarget">
+        <EditorCategories value=""/>
+        <Model value="Beacon_ZergSmall"/>
+        <HighlightTooltip value="Unit/Name/Bogus"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarFlags index="Custom" value="0"/>
+    </CActorUnit>
+    <CActorModel id="GameGlobalRallyCursorTarget01" parent="CursorModel" abil="GameGlobalRallyTarget00">
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On index="0" Send="Create CursorRegion"/>
+        <On index="1" Terms="ActorDestruction" Target="CursorRegion"/>
+        <On index="2" Terms="ActorOrphan"/>
+        <On index="3" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On index="4" Terms="Abil.GameGlobalRallyTarget01.Cursor" Send="Create"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranFactory"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossRoboticsFacility"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergRanged"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpLowerByDot2"/>
+        <Model value="GameGlobalRallyCursorTarget"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyCursorTarget02" parent="CursorModel" abil="GameGlobalRallyTarget00">
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On index="0" Send="Create CursorRegion"/>
+        <On index="1" Terms="ActorDestruction" Target="CursorRegion"/>
+        <On index="2" Terms="ActorOrphan"/>
+        <On index="3" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On index="4" Terms="Abil.GameGlobalRallyTarget02.Cursor" Send="Create"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranStarport"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossStargate"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergFlyer"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpLowerByDot2"/>
+        <Model value="GameGlobalRallyCursorTarget"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
+    </CActorModel>
+    <CActorUnit id="GameGlobalRallyTarget00" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyTarget00"/>
+    <CActorModel id="GameGlobalRallyCursorTarget00" parent="CursorModel" abil="GameGlobalRallyTarget00">
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On index="0" Send="Create CursorRegion"/>
+        <On index="1" Terms="ActorDestruction" Target="CursorRegion"/>
+        <On index="2" Terms="ActorOrphan"/>
+        <On index="3" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranBarracks"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossGateway"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergMelee"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpHigherOfTerrainAndWater SOpLowerByDot2"/>
+        <Model value="GameGlobalRallyCursorTarget"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTarget01Persistent" parent="ModelAddition">
+        <Aliases index="0" removed="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On Terms="UnitBirth.GameGlobalRallyTarget01" Send="Create"/>
+        <On Terms="UnitDeath.GameGlobalRallyTarget01" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranFactory"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossRoboticsFacility"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergRanged"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
+        <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
+        <Model value="GameGlobalRallyTargetPersistent"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
+    </CActorModel>
+    <CActorUnit id="GameGlobalRallyTarget01" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyTarget01"/>
+    <CActorModel id="GameGlobalRallyTarget00Persistent" parent="ModelAddition">
+        <Aliases index="0" removed="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On Terms="UnitBirth.GameGlobalRallyTarget00" Send="Create"/>
+        <On Terms="UnitDeath.GameGlobalRallyTarget00" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranBarracks"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossGateway"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergMelee"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
+        <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
+        <Model value="GameGlobalRallyTargetPersistent"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTarget02Persistent" parent="ModelAddition">
+        <Aliases index="0" removed="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 0.600000 AsTimeScale"/>
+        <On Terms="UnitBirth.GameGlobalRallyTarget02" Send="Create"/>
+        <On Terms="UnitDeath.GameGlobalRallyTarget02" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsTerran" Send="Create GameGlobalRallyTargetTerranStarport"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsProtoss" Send="Create GameGlobalRallyTargetProtossStargate"/>
+        <On Terms="ActorCreation; ValidatePlayer PlayerIsZerg" Send="Create GameGlobalRallyTargetZergFlyer"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
+        <HostSiteOps Ops="SOpHigherOfTerrainAndWater" HoldRotation="1"/>
+        <Model value="GameGlobalRallyTargetPersistent"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Macros value="MacroGlobalRallyTeamColor"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetProtossStargate" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetZergMelee" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <AcceptedHostedPropTransfers index="Opacity" value="0"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="0"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create GlazeZergGlobalRally"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+        <On Terms="ActorCreation" Send="SetTeamColor 128,64,64 128,64,64"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 0.350000 BSD"/>
+        <On Terms="ActorCreation" Send="Create GameGlobalRallyTargetZergMeleeSecondary"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5 SOpGameGlobalRallyZergMelee"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetTerranBarracks" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorUnit id="GameGlobalRallyTarget02" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyTarget02"/>
+    <CActorModel id="GameGlobalRallyTargetTerranFactory" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetProtossRoboticsFacility" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetTerranStarport" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorModel id="GameGlobalRallyTargetProtossGateway" parent="ModelAnimationStyleContinuous">
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value=""/>
+        <On index="1" Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadowRespectsBaseHeight TerranBuildingFacing SOpHigherBy2Dot5"/>
+    </CActorModel>
+    <CActorUnit id="InvisibleTargetDummy">
+        <On Terms="ActorCreation" Send="SetVisibility"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="UpdateVisibility" value="0"/>
+    </CActorUnit>
+    <CActorUnit id="LarvaPaused" parent="Larva">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/LarvaPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+        <On index="67" Terms="ActorCreation" Target="_Morph" Send="Signal MorphCancel"/>
+    </CActorUnit>
+    <CActorPower id="PowerFastNearNexus">
+        <PowerSource value="PowerSourceFastAtNexus"/>
+        <VisualArray value="UnpoweredVisualNearNexus"/>
+        <VisualArray value="PowerVisualFastNearNexus"/>
+    </CActorPower>
+    <CActorPower id="PowerFastNearNexusLow">
+        <On Terms="Behavior.PowerSourceFastAtNexus.Enable; Option Model Low" Send="Create"/>
+        <On Terms="Behavior.PowerSourceFastAtNexus.Disable; Option Model Low" Send="Destroy"/>
+        <PowerSource value="PowerSourceFastAtNexus"/>
+        <VisualArray value="UnpoweredVisualLow"/>
+        <VisualArray value="PowerVisualFastLow"/>
+    </CActorPower>
+    <CActorRange id="PowerVisualFastNearNexusLow">
+        <Behavior value="PowerSourceFastAtNexus"/>
+        <Icon value="Assets\Textures\pylonwarpconduitlowringsplat.dds"/>
+        <IconScale value="0.004500,0.004500"/>
+        <IconArcLength value="1.250000"/>
+        <IconTint value="255,0,255,172"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CActorRange>
+    <CActorSplat id="PowerVisualFastNearNexus">
+        <FogVisibility value="Visible"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <FadeIn value="0.000000"/>
+        <FadeOut value="0.000000"/>
+        <HoldTime value="-1.000000"/>
+        <Layer value="PowerLayer"/>
+        <Model value="PowerVisualFastNexus"/>
+    </CActorSplat>
+    <CActorUnit id="Pylon">
+        <On Terms="Behavior.GameNearNexus.On" Target="Power" Send="Destroy"/>
+        <On Terms="Behavior.GameNearNexus.On" Target="PowerFast" Send="Destroy"/>
+        <On Terms="Behavior.GameNearNexus.Off; !ValidateUnit HasWarpGateNearbyBehavior" Send="Create Power"/>
+        <On Terms="Behavior.GameNearNexus.Off; ValidateUnit HasWarpGateNearbyBehavior" Send="Create PowerFast"/>
+        <On Terms="ActorCreation.Pylon; ValidateUnit NearNeitherNexusNorWarpGate" Send="Create Power"/>
+        <On Terms="ActorCreation.Pylon; ValidateUnit NearWarpGateNotNexus" Send="Create PowerFast"/>
+        <On Terms="Behavior.GameNearNexus.On" Send="Create PowerFastNearNexus"/>
+        <On Terms="Behavior.GameNearNexus.Off" Target="PowerFastNearNexus" Send="Destroy"/>
+        <On Terms="Behavior.GameNearWarpGate.On; !ValidateUnit HasNexusNearbyBehavior" Send="Create PowerFast"/>
+        <On Terms="Behavior.GameNearWarpGate.Off; !ValidateUnit HasNexusNearbyBehavior" Send="Create Power"/>
+        <On Terms="Behavior.GameNearWarpGate.Off" Target="PowerFast" Send="Destroy"/>
+        <On Terms="Behavior.GameNearWarpGate.On" Target="Power" Send="Destroy"/>
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,70"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorRegionCircle id="PylonPowerSearchNexusCircle">
+        <On Terms="ActorCreation" Send="QueryRegion ::Self PylonPowerSearchNexusQuery AgainstCenterGame"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.100000 Die"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+        <Radius value="7.000000"/>
+    </CActorRegionCircle>
+    <CActorQueryResponse id="PylonPowerSearchNexusQuery">
+        <Subject Filters="Unit" Terms="ScopeContains _Selectable; ValidateUnit TargetIsPlayer 0 Probe; ValidatePosition CliffLevelEqualOrLesser ::QueryDirector ::Main; ValidateUnitType IsNexus"/>
+        <OnResponse Target="_Selectable" Send="Signal PylonPowerCheckNexus" Scope="QueryDirector"/>
+    </CActorQueryResponse>
+    <CActorRange id="OverlordEnhancedCreepGrowthAuraRange">
+        <On Terms="SelectionLocalUpdate.Overlord.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.OverlordTransport.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.Overseer.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.Overlord.Stop" Send="Destroy"/>
+        <On Terms="SelectionLocalUpdate.OverlordTransport.Stop" Send="Destroy"/>
+        <On Terms="SelectionLocalUpdate.Overseer.Stop" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Overlord; Selected" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo OverlordTransport" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo Overseer" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo OverlordTransport; Selected" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Overseer; Selected" Send="Create"/>
+        <Range value="11.000000"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="1.750000"/>
+        <RangeFlags index="Minimap" value="1"/>
+    </CActorRange>
+    <CActorUnit id="GameGlobalRallyCaster" parent="GenericSidebarCasterBase" unitName="GameGlobalRallyCaster">
+        <BuildModel value="Invisible"/>
+        <PlacementModel value="Invisible"/>
+    </CActorUnit>
+    <CActorSiteOpLocalOffset id="SOpLowerByDot2">
+        <EditorCategories value=""/>
+        <LocalOffset value="0.000000,0.000000,-0.200000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpHigherBy2Dot5">
+        <EditorCategories value=""/>
+        <LocalOffset value="0.000000,0.000000,2.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSplat id="ScannerSweepCursorSplat">
+        <On Terms="Abil.ScannerSweepUCB.Cursor" Send="Create"/>
+    </CActorSplat>
+    <CActorUnit id="SupplyDepot">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <!--On Terms="StatusSet.*.CE; IsStatus CE 1" Send="ModelSwap SupplyDepotXPR"/>
+        <On Terms="UnitDeathCustomize; IsStatus CE 1" Send="DeathCustomize Variation10"/>
+        <DeathCustoms ModelLink="SupplyDepotXPRDeath" Name="Variation10"/>
+        <PlacementActorModel value="SupplyDepotPlacementModel"/>
+        <PlaceholderActorModel value="SupplyDepotPlacementModel"/-->
+    </CActorUnit>
+    <CActorUnit id="SupplyDepotConstructor" parent="SupplyDepot" unitName="SupplyDepotConstructor">
+        <On index="0" Terms="UnitBirth.SupplyDepotConstructor"/>
+        <On index="1" Terms="UnitBirth.SupplyDepotConstructor"/>
+        <On index="2" Terms="UnitRevive.SupplyDepotConstructor"/>
+        <On index="3" Terms="UnitRevive.SupplyDepotConstructor"/>
+        <On index="4" Terms="UnitConstruction.SupplyDepotConstructor.Start"/>
+        <On index="5" Terms="UnitConstruction.SupplyDepotConstructor.Finish"/>
+        <On index="65" Terms="UnitConstruction.SupplyDepotConstructor.Start"/>
+        <On index="66" Terms="UnitConstruction.SupplyDepotConstructor.Start"/>
+        <On index="67" Terms="UnitConstruction.SupplyDepotConstructor.Cancel"/>
+        <On index="68" Terms="UnitConstruction.SupplyDepotConstructor.Finish"/>
+        <On index="69" Terms="UnitConstruction.SupplyDepotConstructor.Start"/>
+        <On index="70" Terms="UnitBirth.SupplyDepotConstructor.Normal"/>
+        <On index="71" Terms="UnitBirth.SupplyDepotConstructor.Suppressed"/>
+        <On index="72" Terms="UnitBirth.SupplyDepotConstructor.EditorPlaced"/>
+        <On index="73" Terms="UnitDeath.SupplyDepotConstructor"/>
+        <On index="79" Send="AnimGroupRemove Burrow"/>
+        <On index="80" Send="AnimGroupApply Unburrow Stand,Unburrow Stand,Unburrow Instant"/>
+        <On index="81" Terms="AbilMorph.*.Finish; MorphFrom SupplyDepotDrop" Send="Create BuildingTerrainFlatten"/>
+        <On index="82" Send="QueryRadius 1.750000 BuildingCrushQueryResponse"/>
+        <On index="83" Terms="Behavior.ColonyInfestation.On" Send="Create InfestationSupplyDepot"/>
+        <On index="84" Terms="Signal.*.Incoming" Send="RefSetFromMsg ::actor.SupplyDropModel ::Sender"/>
+        <On index="85" Terms="Signal.*.Incoming" Target="::actor.SupplyDropModel" Send="Signal Raised"/>
+        <On index="86" Terms="ActorCreation; PlayerHasReward SupplyDepotSkin" Send="StatusSet CE 1"/>
+        <On index="87" Terms="ActorCreation; PlayerHasReward SupplyDepotSkin" Send="AnimBracketStop ::GL_BSD Instant"/>
+        <On index="88" removed="1"/>
+        <On index="89" removed="1"/>
+        <On index="90" removed="1"/>
+        <On index="91" removed="1"/>
+        <On index="92" removed="1"/>
+        <On index="93" removed="1"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+        <HighlightTooltip value="Unit/Name/SupplyDepotConstructor"/>
+    </CActorUnit>
+    <CActorUnit id="SupplyDepotConstructorPaused" parent="SupplyDepotConstructor">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/SupplyDepotConstructorPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="TechLab">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,60"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="TechLabPaused" parent="TechLab">
+        <Remove Send="Create"/>
+        <AddonIndicator value="Actor/AddonIndicator/TechLabPaused"/>
+        <HighlightTooltip value="Unit/Name/TechLabPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="TemplarArchive">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,95"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="TransportOverlordCocoon">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="TwilightCouncil">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,95"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Construction                                                                            -->
+    <!--                                                                                         -->
+    <!-- Having trouble finding a good way to transfer animation stack between actors that doesnt get ruined by ::progress -->
+    <!-- <CActorProgress id="PAUSETerranConstruction"> -->
+    <!-- <On Terms="Abil.TerranBuild.BuiltStart" Send="Create"/> -->
+    <!-- <On Terms="Abil.BarracksAddOns.BuiltStart" Send="Create"/> -->
+    <!-- <On Terms="Abil.FactoryAddOns.BuiltStart" Send="Create"/> -->
+    <!-- <On Terms="Abil.StarportAddOns.BuiltStart" Send="Create"/> -->
+    <!-- <On Terms="Abil.MachineShop.BuiltStart" Send="Create"/> -->
+    <!-- <On Terms="ProgressLevel.TerranConstruction.Start; Level 0" Send="SetTransferOverrideAnim Build,A,Stand"/> -->
+    <!-- <On Terms="ProgressLevel.TerranConstruction.Stop; Level 0" Send="SetTransferOverrideAnim"/> -->
+    <!-- <StageArray AnimProps="Build,A,Start" BlendTime="0.000000"/> -->
+    <!-- <StageArray AnimProps="Build,A,Stand"/> -->
+    <!-- <StageArray AnimProps="Build,B,Start"/> -->
+    <!-- <StageArray AnimProps="Build,B,Stand"/> -->
+    <!-- <StageArray AnimProps="Build,C,Start"/> -->
+    <!-- <StageArray AnimProps="Build,C,Stand"/> -->
+    <!-- <StageArray AnimProps="Build,D"/> -->
+    <!-- <StageArray AnimProps="Stand,00"/> -->
+    <!-- </CActorProgress> -->
+    <!-- <CActorProgress id="PAUSETerranConstructionAttached"> -->
+    <!-- <Supporter Subject="_TerranBuildModel"/> -->
+    <!-- <On Terms="ProgressLevel.TerranConstructionAttached.Start; Level 0" Send="SetTransferOverrideAnim Birth,A,Stand"/> -->
+    <!-- <On Terms="ProgressLevel.TerranConstructionAttached.Stop; Level 0" Send="SetTransferOverrideAnim"/> -->
+    <!-- <StageArray AnimProps="Birth,A,Start" BlendTime="0.000000"/> -->
+    <!-- <StageArray AnimProps="Birth,A,Stand"/> -->
+    <!-- <StageArray AnimProps="Birth,B,Start"/> -->
+    <!-- <StageArray AnimProps="Birth,B,Stand"/> -->
+    <!-- <StageArray AnimProps="Birth,C,Start"/> -->
+    <!-- <StageArray AnimProps="Birth,C,Stand"/> -->
+    <!-- <StageArray/> -->
+    <!-- </CActorProgress> -->
+    <!-- <CActorProgress id="PAUSETerranConstructionAttachedSmall"> -->
+    <!-- <Supporter Subject="_TerranBuildModelSmall"/> -->
+    <!-- <On Terms="ProgressLevel.TerranConstructionAttachedSmall.Start; Level 0" Send="SetTransferOverrideAnim Birth,A,Stand"/> -->
+    <!-- <On Terms="ProgressLevel.TerranConstructionAttachedSmall.Stop; Level 0" Send="SetTransferOverrideAnim"/> -->
+    <!-- <StageArray AnimProps="Birth,A,Start" BlendTime="0.000000"/> -->
+    <!-- <StageArray AnimProps="Birth,A,Stand"/> -->
+    <!-- <StageArray AnimProps="Birth,B,Start"/> -->
+    <!-- <StageArray AnimProps="Birth,B,Stand"/> -->
+    <!-- <StageArray AnimProps="Birth,C,Start"/> -->
+    <!-- <StageArray AnimProps="Birth,C,Stand"/> -->
+    <!-- <StageArray/> -->
+    <!-- </CActorProgress> -->
+    <CActorUnit id="UltraliskCavern">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,100"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="UltraliskCavernPaused" parent="UltraliskCavern">
+        <Remove Send="Create"/>
+        <HighlightTooltip value="Unit/Name/UltraliskCavernPaused"/>
+        <StatusColors index="Progress">
+            <ColorArray index="0" value="255,255,200,0"/>
+        </StatusColors>
+        <AcceptedTransfers index="Animator" value="1"/>
+    </CActorUnit>
+    <CActorRange id="UnpoweredVisualLow"/>
+    <CActorRange id="UnpoweredVisualNearNexusLow">
+        <Behavior value="PowerSourceFastAtNexus"/>
+        <Icon value="Assets\Textures\PylonLowRingSplatGrey.dds"/>
+        <IconArcLength value="0.750000"/>
+    </CActorRange>
+    <CActorSplat id="UnpoweredVisualNearNexus">
+        <FogVisibility value="Visible"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <FadeIn value="0.000000"/>
+        <FadeOut value="0.000000"/>
+        <HoldTime value="-1.000000"/>
+        <Layer value="PowerLayer"/>
+    </CActorSplat>
+    <CActorUnit id="WarpDarkTemplar" parent="DarkTemplar" unitName="WarpDarkTemplar">
+        <On index="0" Terms="UnitBirth.WarpDarkTemplar"/>
+        <On index="1" Terms="UnitBirth.WarpDarkTemplar"/>
+        <On index="2" Terms="UnitRevive.WarpDarkTemplar"/>
+        <On index="3" Terms="UnitRevive.WarpDarkTemplar"/>
+        <On index="4" Terms="UnitConstruction.WarpDarkTemplar.Start"/>
+        <On index="5" Terms="UnitConstruction.WarpDarkTemplar.Finish"/>
+        <On Terms="ActorCreation; ModelVariation 0" Send="Create DarkTemplarGuide0"/>
+        <On Terms="ActorCreation; ModelVariation 1" Send="Create DarkTemplarGuide1"/>
+        <HighlightTooltip value="Unit/Name/WarpDarkTemplar"/>
+    </CActorUnit>
+    <!-- Protoss -->
+    <CActorUnit id="WarpGate">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,105"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+    </CActorUnit>
+    <CActorUnit id="WarpHighTemplar" parent="HighTemplar" unitName="WarpHighTemplar">
+        <On index="0" Terms="UnitBirth.WarpHighTemplar"/>
+        <On index="1" Terms="UnitBirth.WarpHighTemplar"/>
+        <On index="2" Terms="UnitRevive.WarpHighTemplar"/>
+        <On index="3" Terms="UnitRevive.WarpHighTemplar"/>
+        <On index="4" Terms="UnitConstruction.WarpHighTemplar.Start"/>
+        <On index="5" Terms="UnitConstruction.WarpHighTemplar.Finish"/>
+        <HighlightTooltip value="Unit/Name/WarpHighTemplar"/>
+    </CActorUnit>
+    <CActorUnit id="WarpAdept" parent="GenericUnitStandard" unitName="WarpAdept">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="PhysicsDeathsSwarmGround"/>
+        <Macros value="PhysicsDeathsVoidGround"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Adept_Land"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Templar_LandSweetener"/>
+        <On Terms="Abil.AdeptPhaseShift.SourceCastStart" Send="$Spell"/>
+        <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundSmall"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
+        <On Terms="Effect.AdeptPhaseShiftTeleport.Stop" Send="Create AdeptSpiritIn"/>
+        <On Terms="Effect.AdeptPhaseShiftTeleport.Stop" Send="Create AdeptSpiritInSound"/>
+        <On Terms="Behavior.AdeptPhaseShiftCaster.On" Send="Create AdeptSpiritSpawn"/>
+        <On Terms="Behavior.AdeptPhaseShiftCaster.On" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Behavior.AdeptPhaseShiftCaster.Off" Send="AnimBracketStop Cover"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Spell" Send="AnimClear Spell"/>
+        <On Terms="Signal.*.NeuralLinkStarted" Send="RefSetFromMsg ::actor.NeuralLinkSite ::Sender"/>
+        <On Terms="Effect.AdeptPhaseShiftTeleportSet.Start" Target="::actor.NeuralLinkSite" Send="Signal BreakLinkInstant"/>
+        <On Terms="UnitDeathCustomize; !ValidateUnit IsHallucination" Send="Create AdeptProtossSpiritDeathModel"/>
+        <Model value="Adept"/>
+        <AnimBlendTime value="0.200000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="AdeptWarpIn"/>
+        <DeathArray index="Normal" ModelLink="AdeptDeath" SoundLink="Adept_DeathFX"/>
+        <DeathCustoms ActorModel="AdeptDeathRagdoll" ModelLink="AdeptDeathRagdoll" Name="RagdollBasic">
+            <BodySquibs Name="BloodReduced"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollUltraUnburrow" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ActorModel="SpineCrawlerHurlDeathRagdollWithTeamColor" ModelLink="AdeptDeathRagdoll" Name="RagdollSpineCrawlerHurl">
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathSmall" Name="Hallucination"/>
+        <PlacementModel value="AdeptPlacement"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PortraitModel value="ShadePortrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="0.600000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMedium"/>
+        </TerrainSquibs>
+        <WalkAnimMoveSpeed value="2.5"/>
+        <AbilSoundArray AbilCmd="AdeptPhaseShift,Execute" Sound="Adept_PsionicTransferVO"/>
+        <BarOffset value="60"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-unit-protoss-adept.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="Adept_Ready"/>
+        <SoundArray index="Help" value="Adept_Help"/>
+        <SoundArray index="What" value="Adept_What"/>
+        <SoundArray index="Yes" value="Adept_Yes"/>
+        <SoundArray index="Attack" value="Adept_Attack"/>
+        <SoundArray index="Pissed" value="Adept_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-adept.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-adept.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-adept-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-adept-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-adept-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorModel id="WarpInVoid">
+        <On Terms="Abil.WarpGateTrainUCB.TargetStart" Send="Create"/>
+        <On Terms="Abil.WarpGateTrainUCB.TargetStop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorUnit id="WarpStalker" parent="Stalker" unitName="WarpStalker">
+        <On index="0" Terms="UnitBirth.WarpStalker"/>
+        <On index="1" Terms="UnitBirth.WarpStalker"/>
+        <On index="2" Terms="UnitRevive.WarpStalker"/>
+        <On index="3" Terms="UnitRevive.WarpStalker"/>
+        <On index="4" Terms="UnitConstruction.WarpStalker.Start"/>
+        <On index="5" Terms="UnitConstruction.WarpStalker.Finish"/>
+        <HighlightTooltip value="Unit/Name/WarpStalker"/>
+    </CActorUnit>
+    <CActorUnit id="WarpSentry" parent="Sentry" unitName="WarpSentry">
+        <On index="0" Terms="UnitBirth.WarpSentry"/>
+        <On index="1" Terms="UnitBirth.WarpSentry"/>
+        <On index="2" Terms="UnitRevive.WarpSentry"/>
+        <On index="3" Terms="UnitRevive.WarpSentry"/>
+        <On index="4" Terms="UnitConstruction.WarpSentry.Start"/>
+        <On index="5" Terms="UnitConstruction.WarpSentry.Finish"/>
+        <HighlightTooltip value="Unit/Name/WarpSentry"/>
+    </CActorUnit>
+    <CActorUnit id="WarpZealot" parent="Zealot" unitName="WarpZealot">
+        <On index="0" Terms="UnitBirth.WarpZealot"/>
+        <On index="1" Terms="UnitBirth.WarpZealot"/>
+        <On index="2" Terms="UnitRevive.WarpZealot"/>
+        <On index="3" Terms="UnitRevive.WarpZealot"/>
+        <On index="4" Terms="UnitConstruction.WarpZealot.Start"/>
+        <On index="5" Terms="UnitConstruction.WarpZealot.Finish"/>
+        <HighlightTooltip value="Unit/Name/WarpZealot"/>
+    </CActorUnit>
+    <CActorUnit id="Zergling">
+        <CustomUnitStatusFrame value="ProductionStatusBars/ProductionStatus"/>
+        <CustomUnitStatusOffset value="0,50"/>
+        <CustomUnitStatusAttachment value="Ref_Origin"/>
+        <!--On Terms="UnitDeathCustomize; IsStatus CE 1" Send="DeathCustomize Variation10"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit DeathByAcid; IsStatus CE 1" Send="DeathCustomize Variation11"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit DeathByFire; IsStatus CE 1" Send="DeathCustomize Variation12"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit DeathByEviscerate; IsStatus CE 1" Send="DeathCustomize Variation13"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit ZerglingUpgraded; IsStatus CE 1" Send="DeathCustomize Variation15"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit ZerglingUpgradedDeathByAcid; IsStatus CE 1" Send="DeathCustomize Variation16"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit ZerglingUpgradedDeathByFire; IsStatus CE 1" Send="DeathCustomize Variation17"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit ZerglingUpgradedDeathByEviscerate; IsStatus CE 1" Send="DeathCustomize Variation18"/>
+        <DeathCustoms ModelLink="ZerglingXPRDeath" Name="Variation10"/>
+        <DeathCustoms ModelLink="ZerglingXPRDeathAcid" Name="Variation11"/>
+        <DeathCustoms ModelLink="ZerglingXPRDeathFire" Name="Variation12"/>
+        <DeathCustoms ModelLink="ZerglingXPRDeathEviscerate" Name="Variation13"/>
+        <DeathCustoms ModelLink="ZerglingUpgradeXPRDeath" Name="Variation15"/>
+        <DeathCustoms ModelLink="ZerglingUpgradeXPRDeathAcid" Name="Variation16"/>
+        <DeathCustoms ModelLink="ZerglingUpgradeXPRDeathFire" Name="Variation17"/>
+        <DeathCustoms ModelLink="ZerglingUpgradeXPRDeathEviscerate" Name="Variation18"/-->
+    </CActorUnit>
+</Catalog>
